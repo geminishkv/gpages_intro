@@ -75,3 +75,5 @@ npm cache clean --force
 npm install
 npm start // npx react-scripts start
 
+npm run build
+npm run deploy
