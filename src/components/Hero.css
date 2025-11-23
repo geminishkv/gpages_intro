@@ -22,3 +22,11 @@
   padding: 0 8px;
   display: inline-block;
 }
+
+.highlight2 {
+  background: hwb(0 100% 0%);
+  color: #ff0000;
+  font-weight: 900;
+  padding: 0 8px;
+  display: inline-block;
+}

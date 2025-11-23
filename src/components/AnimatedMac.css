@@ -2,32 +2,50 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 350px;
-  min-height: 350px;
-  position: relative;
+  width: 100vw;
+  min-height: 60vh;
 }
 
 .mac-image-wrapper {
   position: relative;
   display: inline-block;
+  width: 100%;
+  max-width: 840px;
 }
 
 .mac-image {
-  width: 340px;
+  width: 100%;
+  max-width: 840px;
   height: auto;
   display: block;
+  margin: 0 auto;
 }
 
 .mac-screen {
   position: absolute;
-  left: 54px;   /* подгоните под вашу картинку */
-  top: 28px;    /* подгоните под вашу картинку */
-  width: 230px; /* ширина экрана */
-  height: 168px;/* высота экрана */
-  background: rgba(20,20,20,0.94); /* условно, закрашивает экран */
-  border-radius: 8px;
+  left: 48%;
+  top: 28%;
+  width: 55%;
+  height: 42%;
+  background: rgba(20,20,20,0.94);
+  border-radius: 12px;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 2px 24px rgba(0,0,0,0.07);
+}
+
+/* Адаптация для мобильных и планшетов */
+@media (max-width: 850px) {
+  .mac-container {
+    min-height: 40vh;
+  }
+  .mac-image-wrapper {
+    max-width: 350px;
+  }
+  .mac-screen {
+    border-radius: 8px;
+  }
 }

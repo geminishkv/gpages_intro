@@ -7,12 +7,9 @@ export default function Hero() {
     <div className="hero">
       <div className="hero-text">
         <h1>
-          <span className="highlight">DevSecOps & AppSec</span>
-        </h1>
-        <h2>
-          <br />
-           - Toolchain
-            <br />
+          <span className="highlight">DevSecOps</span>
+        <br/><span className="highlight2">AppSec</span></h1>
+        <h2><br/>- Toolchain<br/>
            - DevOps
             <br />
            - Infosec Risks 

@@ -9,6 +9,8 @@ export default function Navigation() {
         <li>Обо мне</li>
         <li>GitHub</li>
         <li>Блог</li>
+        <li>CheatSheet</li>
+        <li>References</li>
       </ul>
     </nav>
   );
