@@ -2,7 +2,7 @@
   "name": "gpages_intro",
   "version": "1.2.1",
   "private": true,
-  "homepage": "https://<geminishkv>.github.io/<gpages_intro>",
+  "homepage": "https://geminishkv.github.io/gpages_intro",
 
   "scripts": {
     "start": "react-scripts start",
