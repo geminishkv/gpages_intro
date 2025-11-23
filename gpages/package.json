@@ -2,24 +2,14 @@
   "name": "intro",
   "version": "1.2.1",
   "dependencies": {
-    "gh-pages": "^4.0.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "react-scripts": "5.0.1"
-  },
-  "public": true,
-
-  "dependencies": {
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "react-scripts": "5.0.1"
+    "react-scripts": "5.0.1",
     "eslint": "^8.0.0"
   },
-  
   "devDependencies": {
     "gh-pages": "^4.0.0"
   },
-
   "scripts": {
     "start": "react-scripts start",
     "predeploy": "npm run build",
@@ -28,6 +18,17 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-
-  "homepage": "https://geminishkv.github.io/intro"
+  "homepage": "https://geminishkv.github.io/intro",
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }
