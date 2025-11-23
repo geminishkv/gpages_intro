@@ -1,4 +1,4 @@
-export default App;
+export default function App;
 
 import React from "react";
 import "./App.css";
