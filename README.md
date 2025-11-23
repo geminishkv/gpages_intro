@@ -33,21 +33,47 @@
 │   │   └── logo.jpg
 │   └── style
 │       └── style.css
+├── build
+│   ├── asset-manifest.json
+│   ├── code.jpeg
+│   ├── favicon.ico
+│   ├── index.html
+│   ├── mak.jpeg
+│   └── static
+│       ├── css
+│       │   ├── main.9f1d23ae.css
+│       │   └── main.9f1d23ae.css.map
+│       └── js
+│           ├── main.8cf9dea9.js
+│           ├── main.8cf9dea9.js.LICENSE.txt
+│           └── main.8cf9dea9.js.map
 ├── CODE_OF_CONDUCT.md
 ├── CONTRIBUTING.md
+├── Dockerfile
 ├── LICENSE.md
+├── nginx.conf
 ├── NOTICE.md
 ├── package-lock.json
 ├── package.json
 ├── public
-│   └── index.html
+│   ├── code.jpeg
+│   ├── favicon.ico
+│   ├── index.html
+│   └── mak.jpeg
 ├── react.md
 ├── README.md
 ├── SECURITY.md
 └── src
+    ├── App.css
     ├── App.js
+    ├── components
+    │   ├── AnimatedMac.css
+    │   ├── AnimatedMac.js
+    │   ├── Hero.css
+    │   ├── Hero.js
+    │   ├── Navigation.css
+    │   └── Navigation.js
     └── index.js
-
 ```
 
 ***
