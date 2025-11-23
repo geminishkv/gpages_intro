@@ -1,0 +1,18 @@
+# build
+# nginx.conf
+# README.md
+# .git/
+monitoring/
+node_modules/
+screenshots/
+test/
+build/reports/
+dist/
+vagrant/
+logs/
+# Dockerfile
+.npmrc
+# /bom.json
+# /bom.xml
+frontend/node_modules/
+frontend/dist/
