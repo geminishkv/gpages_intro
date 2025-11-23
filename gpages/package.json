@@ -7,9 +7,11 @@
     "react-scripts": "5.0.1",
     "eslint": "^8.0.0"
   },
+  
   "devDependencies": {
     "gh-pages": "^4.0.0"
   },
+
   "scripts": {
     "start": "react-scripts start",
     "predeploy": "npm run build",
@@ -18,7 +20,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "homepage": "https://geminishkv.github.io/intro",
+
   "browserslist": {
     "production": [
       ">0.2%",
@@ -30,5 +32,7 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+
+  "homepage": "https://geminishkv.github.io/intro"
 }
