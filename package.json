@@ -1,7 +1,7 @@
 {
   "name": "intro",
   "version": "1.2.1",
-  "homepage": "https://geminishkv.github.io/gpages-intro",
+  "homepage": "https://geminishkv.github.io/gpages-intro/",
 
   "dependencies": {
     "gh-pages": "^4.0.0",
