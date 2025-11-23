@@ -7,10 +7,23 @@ export default function Hero() {
     <div className="hero">
       <div className="hero-text">
         <h1>
-          <span className="highlight">CROSS-PLATFORM</span>
-          <br />
-          DESKTOP APPS
+          <span className="highlight">DevSecOps & AppSec</span>
         </h1>
+        <h2>
+          <br />
+           - Toolchain
+            <br />
+           - DevOps
+            <br />
+           - Infosec Risks 
+            <br />
+           - Стратегии и процессы
+            <br />
+           - PMI
+            <br />
+           - Кулуарный ИБ
+            <br />
+        </h2>
       </div>
       {/* В этот блок вставляйте вашу анимацию или любой JSX для отображения внутри "экрана" */}
       <AnimatedMac>
