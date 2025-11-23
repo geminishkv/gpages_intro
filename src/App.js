@@ -1,5 +1,3 @@
-export default function App;
-
 import React from "react";
 import "./App.css";
 import Navigation from "./components/Navigation";
@@ -12,7 +10,7 @@ function App() {
       <Hero />
       <footer className="footer">
         <span>geminishkv (C), 2025</span>
-        <a href="@geminishkv" className="contact">Связаться</a>
+        <a href="https://t.me/geminishkv" className="contact">Связаться</a>
       </footer>
     </div>
   );

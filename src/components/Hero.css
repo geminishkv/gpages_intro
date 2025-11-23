@@ -8,7 +8,7 @@
 }
 
 .hero-text h1 {
-  font-size: 48px;
+  font-size: 72px;
   font-weight: 800;
   line-height: 1.1;
   margin: 0 0 16px 0;
@@ -16,8 +16,8 @@
 }
 
 .highlight {
-  background: #fff;
-  color: #222;
+  background: hwb(0 0% 0%);
+  color: #ffffff;
   font-weight: 900;
   padding: 0 8px;
   display: inline-block;

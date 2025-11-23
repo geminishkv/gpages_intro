@@ -4,10 +4,10 @@ import "./Navigation.css";
 export default function Navigation() {
   return (
     <nav className="nav">
-      <span className="logo">geminishkv DevSecOps</span>
+      <span className="logo">AppSecT.A.</span>
       <ul>
         <li>Обо мне</li>
-        <li>Проекты</li>
+        <li>GitHub</li>
         <li>Блог</li>
       </ul>
     </nav>

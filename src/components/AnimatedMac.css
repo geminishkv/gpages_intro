@@ -1,0 +1,33 @@
+.mac-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 350px;
+  min-height: 350px;
+  position: relative;
+}
+
+.mac-image-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.mac-image {
+  width: 340px;
+  height: auto;
+  display: block;
+}
+
+.mac-screen {
+  position: absolute;
+  left: 54px;   /* подгоните под вашу картинку */
+  top: 28px;    /* подгоните под вашу картинку */
+  width: 230px; /* ширина экрана */
+  height: 168px;/* высота экрана */
+  background: rgba(20,20,20,0.94); /* условно, закрашивает экран */
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
