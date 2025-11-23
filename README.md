@@ -39,11 +39,14 @@
 ├── NOTICE.md
 ├── package-lock.json
 ├── package.json
-├── packages.json
 ├── public
+│   └── index.html
+├── react.md
 ├── README.md
 ├── SECURITY.md
 └── src
+    ├── App.js
+    └── index.js
 
 ```
 
@@ -131,6 +134,14 @@ $ gh repo view --web # Открыть репозитория в web
 $ npm install -g gistup
 $ gh <command> <subcommand> --help
 $ gh gist create -d "my test gist" -f some_local_file.txt  test_gist
+```
+
+- gpages
+s
+```bash
+npx create-react-app my-app
+cd my-app
+npm install gh-pages --save-dev
 ```
 
 - .gitignore

@@ -29,6 +29,7 @@ jspm_packages/
 .lock-wscript
 .node_repl_history
 .webpack/
+/node_modules
 
 # yarn v2
 .yarn/cache
