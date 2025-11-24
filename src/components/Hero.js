@@ -8,8 +8,8 @@ export default function Hero() {
       <div className="hero">
         <div className="hero-text">
           <h1>
-            <Typewriter text="DevSecOps" className="highlight" speed={70}/><br/>
-            <Typewriter text="AppSec" className="highlight2" speed={80}/>
+            <Typewriter text="DevSecOps" className="highlight"/><br/>
+            <Typewriter text="AppSec" className="highlight2"/>
           </h1>
           <h2>
             <br />- Toolchain<br />
