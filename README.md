@@ -6,6 +6,13 @@
 <a href="https://shields.io"><img src="https://img.shields.io/static/v1?logo=shieldsdotio&logoColor=fff&label=&message=Shields&color=36393f&style=flat" alt="Shields"></a>
 <img src="https://img.shields.io/badge/Contributor-Шмаков_И._С.-8b9aff" alt="Contributor Badge"></a></div>
 
+<div align="center">
+<img src="https://img.shields.io/github/repo-size/geminishkv/gpages_intro" alt="repo size"></a>
+<img src="https://img.shields.io/github/last-commit/geminishkv/gpages_intro" alt="repo size"></a>
+<img src="https://img.shields.io/github/commit-activity/m/geminishkv/gpages_intro" alt="repo size"></a>
+<img src="https://img.shields.io/github/issues-pr/geminishkv/gpages_intro"></a>
+<img src="https://img.shields.io/github/contributors/geminishkv/gpages_intro"></a></div>
+
 ***
 
 <br>Салют :wave:,</br>
