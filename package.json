@@ -2,13 +2,13 @@
   "name": "intro",
   "version": "1.0.1",
   "homepage": "https://geminishkv.github.io/gpages_intro",
-
   "dependencies": {
+    "animejs": "^3.2.2",
+    "eslint": "^8.0.0",
     "gh-pages": "^4.0.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "react-scripts": "5.0.1",
-    "eslint": "^8.0.0"
+    "react-scripts": "5.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -18,14 +18,12 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-
   "browserslist": {
     "production": [
       ">0.2%",
       "not dead",
       "not op_mini all"
     ],
-
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",

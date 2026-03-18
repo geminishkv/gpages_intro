@@ -1,19 +1,15 @@
-import React from "react";
-import "./App.css";
-import Navigation from "./components/Navigation";
-import Hero from "./components/Hero";
+import { useState } from 'react';
+import './App.css';
+import SplashScreen from './components/SplashScreen';
+import MainPage from './components/MainPage';
 
-function App() {
+export default function App() {
+  const [splashDone, setSplashDone] = useState(false);
+
   return (
-    <div className="App">
-      <Navigation />
-      <Hero />
-      <footer className="footer">
-        <span>geminishkv (C), 2025</span>
-        <a href="https://t.me/geminishkv" className="contact">Связаться</a>
-      </footer>
+    <div className="app">
+      {!splashDone && <SplashScreen onDone={() => setSplashDone(true)} />}
+      <MainPage isVisible={splashDone} />
     </div>
   );
 }
-
-export default App;
