@@ -144,4 +144,5 @@
     align-items: center;
   }
   .mac-wrap { width: 100%; max-width: 380px; }
+  .mac-work-text { font-size: clamp(0.85rem, 3.5vw, 1.1rem); }
 }
