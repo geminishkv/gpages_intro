@@ -7,4 +7,4 @@ Allow: /
 User-agent: Yandex
 Allow: /
 
-Sitemap: https://geminishkv.github.io/gpages_intro/sitemap.xml
+Sitemap: https://www.geminishkv.tech/sitemap.xml
