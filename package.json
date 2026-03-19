@@ -1,7 +1,7 @@
 {
   "name": "intro",
   "version": "1.0.1",
-  "homepage": "https://www.geminishkv.tech",
+  "homepage": "https://geminishkv.tech",
   "dependencies": {
     "animejs": "^3.2.2",
     "eslint": "^8.0.0",

@@ -7,4 +7,4 @@ Allow: /
 User-agent: Yandex
 Allow: /
 
-Sitemap: https://www.geminishkv.tech/sitemap.xml
+Sitemap: https://geminishkv.tech/sitemap.xml
