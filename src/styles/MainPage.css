@@ -9,7 +9,7 @@
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.5s ease 0.3s, visibility 0.5s ease 0.3s;
-  overflow: hidden;
+  overflow: auto;
 }
 
 .main-page--visible {
@@ -24,8 +24,8 @@
     width: 100%;
     height: auto;
     min-height: 100vh;
-    overflow-x: hidden;
-    overflow-y: visible;
+    overflow: visible;
     -webkit-overflow-scrolling: touch;
+    padding-top: 76px;
   }
 }
