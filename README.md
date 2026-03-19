@@ -1,259 +1,157 @@
 <div align="center">
-<h1><a id="intro"> Infopage <sup></sup></a><br></h1>
-<a href="https://docs.github.com/en"><img src="https://img.shields.io/static/v1?logo=github&logoColor=fff&label=&message=Docs&color=36393f&style=flat" alt="GitHub Docs"></a>
-<a href="https://daringfireball.net/projects/markdown"><img src="https://img.shields.io/static/v1?logo=markdown&logoColor=fff&label=&message=Markdown&color=36393f&style=flat" alt="Markdown"></a> 
-<a href="https://symbl.cc/en/unicode-table"><img src="https://img.shields.io/static/v1?logo=unicode&logoColor=fff&label=&message=Unicode&color=36393f&style=flat" alt="Unicode"></a> 
-<a href="https://shields.io"><img src="https://img.shields.io/static/v1?logo=shieldsdotio&logoColor=fff&label=&message=Shields&color=36393f&style=flat" alt="Shields"></a>
-<img src="https://img.shields.io/badge/Contributor-Шмаков_И._С.-8b9aff" alt="Contributor Badge"></a></div>
+<h1><a id="intro"> geminishkv.tech <sup></sup></a><br></h1>
+<a href="https://reactjs.org"><img src="https://img.shields.io/static/v1?logo=react&logoColor=fff&label=&message=React+18&color=36393f&style=flat" alt="React"></a>
+<a href="https://animejs.com"><img src="https://img.shields.io/static/v1?logo=javascript&logoColor=fff&label=&message=anime.js&color=36393f&style=flat" alt="anime.js"></a>
+<a href="https://pages.github.com"><img src="https://img.shields.io/static/v1?logo=github&logoColor=fff&label=&message=GitHub+Pages&color=36393f&style=flat" alt="GitHub Pages"></a>
+<a href="https://geminishkv.tech"><img src="https://img.shields.io/static/v1?logo=googlechrome&logoColor=fff&label=&message=geminishkv.tech&color=cc2200&style=flat" alt="Live"></a>
+<img src="https://img.shields.io/badge/Contributor-Шмаков_И._С.-8b9aff" alt="Contributor Badge">
+</div>
 
 <div align="center">
-<img src="https://img.shields.io/github/repo-size/geminishkv/gpages_intro" alt="repo size"></a>
-<img src="https://img.shields.io/github/last-commit/geminishkv/gpages_intro" alt="repo size"></a>
-<img src="https://img.shields.io/github/commit-activity/m/geminishkv/gpages_intro" alt="repo size"></a>
-<img src="https://img.shields.io/github/issues-pr/geminishkv/gpages_intro"></a>
-<img src="https://img.shields.io/github/contributors/geminishkv/gpages_intro"></a></div>
+<img src="https://img.shields.io/github/repo-size/geminishkv/gpages_intro" alt="repo size">
+<img src="https://img.shields.io/github/last-commit/geminishkv/gpages_intro" alt="last commit">
+<img src="https://img.shields.io/github/commit-activity/m/geminishkv/gpages_intro" alt="commit activity">
+<img src="https://img.shields.io/github/issues-pr/geminishkv/gpages_intro" alt="pull requests">
+<img src="https://img.shields.io/github/contributors/geminishkv/gpages_intro" alt="contributors">
+</div>
 
 ***
 
-<br>Салют :wave:,</br>
+<br>Салют 👋,</br>
 
+Персональный портфолио-лендинг **Ильи Шмакова** — AppSec & DevSecOps инженера.
+Сайт доступен по адресу: **[geminishkv.tech](https://geminishkv.tech)**
 
-<div align="center"><h3>Stay tuned ;)</h3></div> 
-
-
-
-*** 
-
-### Этапы реализации
-    
-
+<div align="center"><h3>Sic Parvis Magna. Auxilio Divino</h3></div>
 
 ***
 
+### Стек технологий
 
+| Слой | Технология |
+|------|-----------|
+| UI-фреймворк | React 18 (CRA) |
+| Анимации | anime.js 3.2.2 |
+| Стили | CSS (custom properties, keyframes, clip-path) |
+| Деплой | gh-pages 6.3.0 → GitHub Pages |
+| Домен | geminishkv.tech (reg.ru + GitHub Pages custom domain) |
+| SEO | JSON-LD Person schema, Open Graph, sitemap.xml, robots.txt |
+
+***
+
+### Функциональность
+
+- **SplashScreen** — экран загрузки с глитч-анимацией на весь браузер (clip-path + RGB-каналы + scanlines)
+- **Mac mockup** — покадровая анимация сборки ретро-Mac через anime.js timeline, прогресс-бар "Initializing"
+- **Typewriter** — пошаговый набор заголовка по символам
+- **Badges marquee** — бесконечный скролл логотипов слева направо
+- **About modal** — полноэкранный попап с резюме, навыками, инструментами и достижениями
+- **Burger menu** — адаптивное меню (bars-staggered) для мобильных устройств, portal-рендеринг
+- **Responsive** — адаптив под мобильные (≤768px) и планшеты (≤900px)
+
+***
 
 ### Структура репозитория
 
 ```
-├── assets
-│   ├── logotype
-│   │   └── logo.jpg
-│   └── style
-│       └── style.css
-├── build
-│   ├── asset-manifest.json
-│   ├── code.jpeg
-│   ├── favicon.ico
-│   ├── index.html
-│   ├── mak.jpeg
-│   └── static
-│       ├── css
-│       │   ├── main.9f1d23ae.css
-│       │   └── main.9f1d23ae.css.map
-│       └── js
-│           ├── main.8cf9dea9.js
-│           ├── main.8cf9dea9.js.LICENSE.txt
-│           └── main.8cf9dea9.js.map
+gpages_intro/
+├── public/
+│   ├── img/
+│   │   ├── splash/
+│   │   │   └── pretitle.png          # Заставка сплеш-экрана
+│   │   ├── hero/
+│   │   │   ├── logo2.png             # Логотип / favicon
+│   │   │   ├── mac_ns.png            # Корпус ретро-Mac
+│   │   │   ├── window3.png           # Скриншот в экране Mac
+│   │   │   └── uwu.png               # Финальное изображение после загрузки
+│   │   └── badges/
+│   │       ├── lider.png
+│   │       ├── lanit.png
+│   │       ├── bmstu.png
+│   │       ├── mpfi.png
+│   │       └── rbpo.png
+│   ├── CNAME                         # Кастомный домен GitHub Pages
+│   ├── favicon.ico
+│   ├── index.html                    # SEO: JSON-LD, OG, Twitter Card
+│   ├── robots.txt
+│   └── sitemap.xml
+├── src/
+│   ├── components/
+│   │   ├── App.js
+│   │   ├── SplashScreen.js           # Глитч-анимация перехода
+│   │   ├── MainPage.js               # Корневой layout
+│   │   ├── Nav.js                    # Навбар + burger menu (portal)
+│   │   ├── Hero.js                   # Главный блок: текст + Mac + badges
+│   │   ├── Footer.js
+│   │   └── AboutModal.js             # Попап с резюме
+│   ├── hooks/
+│   │   └── useMainAnimation.js       # Вся логика anime.js (timeline)
+│   ├── constants/
+│   │   └── index.js                  # Пути к изображениям, текстовые константы
+│   └── styles/
+│       ├── App.css
+│       ├── SplashScreen.css          # Глитч: clip-path, RGB-layers, scanlines
+│       ├── MainPage.css
+│       ├── Nav.css                   # Burger bars-staggered, mobile overlay
+│       ├── Hero.css                  # Badges marquee, socials grid
+│       ├── Mac.css                   # Mac mockup, progress bar
+│       ├── Footer.css
+│       └── AboutModal.css
+├── package.json
+├── package-lock.json
+├── CNAME
 ├── CODE_OF_CONDUCT.md
 ├── CONTRIBUTING.md
-├── Dockerfile
 ├── LICENSE.md
-├── nginx.conf
 ├── NOTICE.md
-├── package-lock.json
-├── package.json
-├── public
-│   ├── code.jpeg
-│   ├── favicon.ico
-│   ├── index.html
-│   └── mak.jpeg
-├── react.md
-├── README.md
 ├── SECURITY.md
-└── src
-    ├── App.css
-    ├── App.js
-    ├── components
-    │   ├── AnimatedMac.css
-    │   ├── AnimatedMac.js
-    │   ├── Hero.css
-    │   ├── Hero.js
-    │   ├── Navigation.css
-    │   └── Navigation.js
-    └── index.js
+└── README.md
 ```
 
 ***
 
-### Сопроводительыне материалы
-
-- gitscm
+### Локальный запуск
 
 ```bash
-$ git init # Инициализация пустого локального репозитория
-$ git remote add origin URL_link # Связывание удалённого репозитория с именем "origin" по ссылке "URL_link" с локальным
-$ git pull origin name_branch # Ветка из которой мы берем изменения для тестирования
-$ git remote show # Показать подключенные удалённые репозитории
-$ git status 	# Показывает состояние локального репозитория (отслеживаемые, изменённые, новые файлы и пр.)
-$ git add . # Добавить в индекс все новые, изменённые, удалённые файлы из текущей директории и её поддиректорий
-$ git commit -S -m"added sources" # Зафиксировать в коммите проиндексированные изменения (закоммитить), добавить сообщение
-$ git push origin name_branch # Отправляем изменения из локально репозитория в удалённый в ветку "name_branch"
-$ git show HEAD # Информация о последнем комите (git log -1)
-$ git clean -fdn # Удаляет неотслеживаемые файлы и каталоги с предворительным просмотром
-$ git push --set-upstream origin new-name # Установка upstream (связывает локальную ветку с удаленной)
-$ git remote show # Вывод связанных веток
-$ git push origin :old-name # Удаление старой ветки в удаленном репо
-$ git push origin new-name # Публикация новой ветки
-```
-
-- gitscm index
-
-```bash
-$ git add text.txt # Добавить в индекс указанный файл (был изменён, был удалён или это новый файл)
-$ git add -i # Запустить интерактивную оболочку для добавления в индекс только выбранных файлов
-$ git add -p # Показать новые/изменённые файлы по очереди с указанием их изменений и вопросом об отслеживании/индексировании
-$ git reset # Убрать из индекса все добавленные в него изменения (в рабочей директории все изменения сохранятся), антипод git add
-$ git reset readme.txt # Убрать из индекса изменения указанного файла (в рабочей директории изменения сохранятся)
-$ git checkout text.txt # ОПАСНО: отменить изменения в файле, вернуть состояние файла, имеющееся в индексе
-$ git reset --hard # ОПАСНО: отменить изменения; вернуть то, что в коммите, на который указывает HEAD (незакомиченные изменения удалены из индекса и из рабочей директории, неотслеживаемые файлы останутся на месте)
-$ git clean -df # Удалить неотслеживаемые файлы и директории
-```
-
-- gitscm конфликты
-
-```bash
-
-$ git remote set-url origin ssh://git@github.com_gitlab.com/username/newRepoName.git # Замена URL
-$ git pull --rebase origin name_branch # Переинициализация
-$ git remote -v # Проверка правильности указанного link
-$ git reset HEAD~ # Отмена последнего commit$ git reset --hard HEAD~ # Удаление commit с изменениями
-$ git push origin --delete name_branch / git branch -rD origin/name_branch
-$ git branch -d name_branch # Удаление локального репо
-$ git reset HEAD file # Убирает файл из индекса
-$ git checkout -- file # Отменяет изменение
-$ git clean -fdn # Удаляет неотслеживаемые файлы и каталоги с предварительным просмотром
-
-# Установка новой master/main ветки
-$ git branch -m master gpages
-$ git fetch origin
-$ git branch -u origin/gpages gpages
-$ git remote set-head origin -a
-```
-
-- gh actions
-
-```bash
-$ gh auth login
-$ gh repo create repo_name # Cоздание удаленного репозитория (без URL)
-$ gh pr create # pull reguest
-	 —assignee «nickname» 
-	 --base main 
-	 --head feature-branch # Индивидуальный pull request (можно -a)
-$ gh pr create --title "Bug" --body "work"$ gh pr create --base base_name # head changed_branch$ gh repo create repo_name --source=. --public
-$ gh repo clone user/repo
-$ gh issue list # Список открытых issue
-$ gh pr create --title "Название" --body "Описание" --base main --head feature-branch
-	 --title # Заголовок PR
-	 --body # Описание
-	 --base # Целевая ветка
-	 --head # Ваша ветка
-$ gh pr merge --squash
-$ gh repo view --web # Открыть репозитория в web
-```
-
-- gistup
-
-```bash
-$ npm install -g gistup
-$ gh <command> <subcommand> --help
-$ gh gist create -d "my test gist" -f some_local_file.txt  test_gist
-```
-
-- gpages
-s
-```bash
-npx create-react-app my-app
-cd my-app
-npm install gh-pages --save-dev
-```
-
-- .gitignore
-
-```
-*build*/
-*install*/
-*.swp
-.idea/
-```
-
-- Docke
-
-```bash
-$ docker image ls all # все образы
-$ docker container ls # все запущенные контейнера
-$ docker container ls -all # все контейнера
-$ docker run -d --privileged --name docker go:1.16 # привелегированный режим
-
-# Building & Rebuilding
-$ docker compose build	 
-$ docker compose build --no-cache # Создает образы без использования кэша
-$ docker compose build <service> # Создает только определенную службу
-$ docker compose up --build	# Создает изображения, а затем запускает контейнеры
-$ docker compose up --force-recreate # Воссоздает контейнеры, даже если ничего не изменилось
-$ docker compose up --build --force-recreate # Полностью перестраивает и воссоздает контейнеры
-
-# Running Containers
-$ docker compose up	
-$ docker compose up -d	 # Запускает контейнеры в отсоединенном режиме в фоновом режиме
-$ docker compose start	 # Запускает уже созданные контейнеры (не перестраивает и не создает заново)
-
-# Stopping & Removing Containers
-$ docker compose stop	
-$ docker compose down	# Останавливает и удаляет контейнеры, сети и тома по умолчанию
-$ docker compose down --volumes	 # Удаляет контейнеры, сети и именованные/анонимные тома
-$ docker compose down --rmi all	 # Также удаляет все построенные изображения
-$ docker compose rm	 # Удаляет остановленные контейнеры служб (после остановки)
-$ docker compose kill # Принудительно останавливает запуск контейнеров
-
-# Useful Inspection & Debugging
-$ docker compose ps	# Списки запущенных служб и их состояние
-$ docker compose logs # Отображение журналов для всех служб
-$ docker compose logs -f	
-$ docker compose exec <service> sh # Открывает оболочку внутри работающего контейнера
-$ docker compose config
-
-docker exec -it <container_name_or_id> <command> # выполнение команды
-            -i  # интерактивный режим (позволяет передать ввод)
-            -t  # выделяет псевдотерминал (tty) для взаимодействия.
-            <container_name_or_id>  # имя или ID контейнера.
-```
-
-- .dockerignore
-
-```
-.git/
-monitoring/
-node_modules/
-screenshots/
-test/
-build/reports/
-dist/
-vagrant/
-logs/
-Dockerfile
-.npmrc
-/bom.json
-/bom.xml
-frontend/node_modules/
-frontend/dist/
+git clone https://github.com/geminishkv/gpages_intro.git
+cd gpages_intro
+npm install
+npm start        # http://localhost:3000
 ```
 
 ***
 
+### Деплой на GitHub Pages
 
-Copyright (c) 2025 Elijah S Shmakov
+```bash
+# Сборка и публикация в ветку gh-pages
+npm run deploy
+
+# Полный цикл: зафиксировать изменения + задеплоить
+git add .
+git commit -m "your message"
+git push origin gpages
+npm run deploy
+```
+
+> После деплоя сайт доступен по адресу [geminishkv.tech](https://geminishkv.tech)
+> Файл `public/CNAME` обеспечивает сохранение кастомного домена после каждого деплоя.
 
 
-![Logo](assets/logotype/logo.jpg)
+***
 
+### SEO и индексация
 
+Сайт настроен для индексации в Google и Яндекс:
+
+- `index.html` — JSON-LD Person schema, Open Graph, Twitter Card, canonical URL
+- `public/robots.txt` — разрешения для Googlebot и Yandex
+- `public/sitemap.xml` — карта сайта с hreflang
+
+После деплоя зарегистрировать сайт вручную:
+- **Google Search Console** → [search.google.com/search-console](https://search.google.com/search-console)
+- **Яндекс Вебмастер** → [webmaster.yandex.ru](https://webmaster.yandex.ru)
+
+***
+
+Copyright (c) 2026 Elijah S Shmakov
