@@ -1,6 +1,7 @@
 export const MAC_IMG   = process.env.PUBLIC_URL + '/img/hero/mac_ns.png';
 export const LOGO_IMG  = process.env.PUBLIC_URL + '/img/hero/logo2.png';
 export const WIN_IMG   = process.env.PUBLIC_URL + '/img/hero/window3.png';
+export const UWU_IMG   = process.env.PUBLIC_URL + '/img/hero/uwu.png';
 export const LIDER_IMG = process.env.PUBLIC_URL + '/img/badges/lider.png';
 export const LANIT_IMG = process.env.PUBLIC_URL + '/img/badges/lanit.png';
 export const BMSTU_IMG = process.env.PUBLIC_URL + '/img/badges/bmstu.png';

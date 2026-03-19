@@ -23,6 +23,8 @@ export default function MainPage({ isVisible }) {
         whiteBoxRef={refs.whiteBoxRef}
         containerBoxRef={refs.containerBoxRef}
         windowImgRef={refs.windowImgRef}
+        uwuRef={refs.uwuRef}
+        workTextRef={refs.workTextRef}
         progressWrapRef={refs.progressWrapRef}
         progressBarRef={refs.progressBarRef}
       />

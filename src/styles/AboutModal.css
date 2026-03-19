@@ -164,6 +164,27 @@
   font-size: 0.7rem;
 }
 
+/* Вложенный список (университеты) */
+.about-section__sublist {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 6px;
+  padding-left: 12px;
+}
+
+.about-section__sublist li {
+  font-size: 0.78rem;
+  color: #888888;
+  padding-left: 12px;
+}
+
+.about-section__sublist li::before {
+  content: '·';
+  color: #cc2200;
+}
+
 /* ── Tool rows ── */
 .about-tools {
   display: flex;

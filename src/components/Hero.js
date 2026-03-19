@@ -1,14 +1,14 @@
 import '../styles/Hero.css';
 import '../styles/Mac.css';
 import {
-  MAC_IMG, WIN_IMG,
+  MAC_IMG, WIN_IMG, UWU_IMG,
   LIDER_IMG, LANIT_IMG, BMSTU_IMG, MPFI_IMG, RBPO_IMG,
   SUBTITLE_TEXT, TAGLINE_TEXT,
 } from '../constants';
 
 export default function Hero({
   titleRef, subtitleRef, taglineRef, socialsRef, liderRef,
-  blinkerRef, whiteBoxRef, containerBoxRef, windowImgRef,
+  blinkerRef, whiteBoxRef, containerBoxRef, windowImgRef, uwuRef, workTextRef,
   progressWrapRef, progressBarRef,
 }) {
   return (
@@ -59,6 +59,11 @@ export default function Hero({
             <div ref={containerBoxRef} className="mac-container-box" style={{ opacity: 0, width: 0, height: 0 }} />
             <img ref={windowImgRef} src={WIN_IMG} alt="" className="mac-window-img"
                  style={{ opacity: 0, width: 0, height: 0 }} />
+            <img ref={uwuRef} src={UWU_IMG} alt="" className="mac-window-img mac-uwu"
+                 style={{ opacity: 0 }} />
+            <div ref={workTextRef} className="mac-work-text" style={{ opacity: 0 }}>
+              Work harder,&nbsp;<br />comrade
+            </div>
             <div ref={progressWrapRef} className="mac-progress" style={{ opacity: 0 }}>
               <p className="mac-loading-text">
                 Initializing
