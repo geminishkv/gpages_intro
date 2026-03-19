@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './styles/App.css';
 import SplashScreen from './components/SplashScreen';
-import MainPage from './components/MainPage';
+import MainPage     from './components/MainPage';
 
 export default function App() {
   const [splashDone, setSplashDone] = useState(false);

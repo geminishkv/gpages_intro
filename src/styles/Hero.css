@@ -131,7 +131,40 @@
   .hero { flex-direction: column; padding: 20px 24px; gap: 36px; }
 }
 
+@media (max-width: 768px) {
+  /* Mac on top, text below */
+  .hero__mac  { order: -1; }
+  .hero__text { order:  1; }
+
+  .hero__badges-outer {
+    max-width: calc(3 * 80px + 2 * 12px);
+  }
+  .hero__badge {
+    width: 80px;
+    height: 110px;
+  }
+  .hero__badges-track { gap: 12px; }
+
+  .hero__socials {
+    grid-template-columns: repeat(2, max-content);
+  }
+}
+
 @media (max-width: 576px) {
   .hero__title    { font-size: 2.4rem; }
   .hero__subtitle { font-size: 1.8rem; }
+
+  .hero__badges-outer {
+    max-width: calc(3 * 70px + 2 * 10px);
+  }
+  .hero__badge {
+    width: 70px;
+    height: 96px;
+  }
+  .hero__badges-track { gap: 10px; }
+
+  .social-btn {
+    padding: 10px 18px;
+    font-size: 0.75rem;
+  }
 }

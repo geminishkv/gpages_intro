@@ -9,4 +9,4 @@ export const RBPO_IMG  = process.env.PUBLIC_URL + '/img/badges/rbpo.png';
 
 export const TITLE_TEXT    = 'geminishkv';
 export const SUBTITLE_TEXT = 'AppSec & DevSecOps';
-export const TAGLINE_TEXT  = 'Sic Parvis Magna';
+export const TAGLINE_TEXT  = 'Sic Parvis Magna. Auxilio Divino';

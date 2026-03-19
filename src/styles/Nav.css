@@ -63,10 +63,105 @@
   color: #cc2200;
 }
 
+/* ── Burger button ── */
+.nav__burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  z-index: 1200;
+  position: relative;
+}
+
+.nav__burger span {
+  display: block;
+  height: 2px;
+  border-radius: 1px;
+  background: #888888;
+  transition: transform 0.3s ease, opacity 0.3s ease, background 0.2s, width 0.3s ease;
+}
+
+/* bars-staggered: full / short-indented / full */
+.nav__burger span:nth-child(1) { width: 22px; }
+.nav__burger span:nth-child(2) { width: 15px; margin-left: 7px; }
+.nav__burger span:nth-child(3) { width: 22px; }
+
+.nav__burger:hover span { background: #cc2200; }
+
+/* open → X */
+.nav__burger--open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+  background: #cc2200;
+}
+.nav__burger--open span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.nav__burger--open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+  background: #cc2200;
+}
+
+/* ── Mobile overlay (portal, rendered in document.body) ── */
+.nav__mobile-overlay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.97);
+  z-index: 1100;
+}
+
+.nav__mobile-close {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.4rem;
+  color: #888888;
+  line-height: 1;
+  padding: 4px;
+  transition: color 0.2s;
+}
+
+.nav__mobile-close:hover { color: #cc2200; }
+
+.nav__mobile-overlay a,
+.nav__mobile-overlay .nav__link-btn {
+  font-size: 1.2rem;
+  letter-spacing: 0.12em;
+  color: #888888;
+  text-decoration: none;
+  text-transform: uppercase;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: inherit;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.nav__mobile-overlay a:hover,
+.nav__mobile-overlay .nav__link-btn:hover {
+  color: #cc2200;
+}
+
+/* ── Responsive ── */
 @media (max-width: 900px) {
   .nav { padding: 20px 24px; }
 }
 
-@media (max-width: 576px) {
-  .nav__links { gap: 20px; }
+@media (max-width: 768px) {
+  .nav { padding: 18px 24px; }
+  .nav__burger { display: flex; }
+  .nav__links  { display: none; }
 }
