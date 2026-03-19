@@ -78,11 +78,11 @@
 /* Work harder text — поверх uwu, сверху слева */
 .mac-work-text {
   position: absolute;
-  top: 40px;
+  top: 30px;
   left: 20px;
   z-index: 3;
   font-family: 'Montserrat', monospace;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 900;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -137,6 +137,10 @@
 }
 
 @media (max-width: 900px) {
-  .hero__mac { width: 100%; }
-  .mac-wrap  { width: 100%; max-width: 360px; }
+  .hero__mac {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  .mac-wrap { width: 100%; max-width: 380px; }
 }

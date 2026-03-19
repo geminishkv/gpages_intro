@@ -127,22 +127,37 @@
   color: #ffffff;
 }
 
+/* ── Планшет + мобила: колонка, мак сверху, всё по центру ── */
 @media (max-width: 900px) {
-  .hero { flex-direction: column; padding: 20px 24px; gap: 36px; }
+  .hero {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 24px 48px;
+    gap: 32px;
+  }
+  .hero__mac  { order: -1; width: 100%; }
+  .hero__text {
+    order: 1;
+    width: 100%;
+    max-width: 420px;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* Центрируем badges и socials */
+  .hero__badges-outer {
+    margin: 0 auto;
+    max-width: 100%;
+  }
+  .hero__socials { justify-content: center; }
 }
 
+/* ── Мобила ── */
 @media (max-width: 768px) {
-  /* Mac on top, text below */
-  .hero__mac  { order: -1; }
-  .hero__text { order:  1; }
-
   .hero__badges-outer {
     max-width: calc(3 * 80px + 2 * 12px);
   }
-  .hero__badge {
-    width: 80px;
-    height: 110px;
-  }
+  .hero__badge        { width: 80px; height: 110px; }
   .hero__badges-track { gap: 12px; }
 
   .hero__socials {
@@ -157,14 +172,8 @@
   .hero__badges-outer {
     max-width: calc(3 * 70px + 2 * 10px);
   }
-  .hero__badge {
-    width: 70px;
-    height: 96px;
-  }
+  .hero__badge        { width: 70px; height: 96px; }
   .hero__badges-track { gap: 10px; }
 
-  .social-btn {
-    padding: 10px 18px;
-    font-size: 0.75rem;
-  }
+  .social-btn { padding: 10px 18px; font-size: 0.75rem; }
 }

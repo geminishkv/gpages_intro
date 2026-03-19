@@ -1,11 +1,33 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import '../styles/Nav.css';
 import { LOGO_IMG } from '../constants';
 
 export default function Nav({ navRef, onAboutOpen }) {
   const [menuOpen, setMenuOpen] = useState(false);
+
   const close = () => setMenuOpen(false);
+
+  // Блокируем скролл — iOS Safari требует position:fixed на body
+  useEffect(() => {
+    if (menuOpen) {
+      const y = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.top      = `-${y}px`;
+      document.body.style.width    = '100%';
+    } else {
+      const top = parseInt(document.body.style.top || '0', 10);
+      document.body.style.position = '';
+      document.body.style.top      = '';
+      document.body.style.width    = '';
+      window.scrollTo(0, -top);
+    }
+    return () => {
+      document.body.style.position = '';
+      document.body.style.top      = '';
+      document.body.style.width    = '';
+    };
+  }, [menuOpen]);
 
   return (
     <>

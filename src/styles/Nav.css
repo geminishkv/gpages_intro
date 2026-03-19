@@ -157,11 +157,33 @@
 
 /* ── Responsive ── */
 @media (max-width: 900px) {
-  .nav { padding: 20px 24px; }
+  .nav {
+    padding: 20px 24px;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: #0a0a0a;
+  }
+
+  .nav__logo-img { height: 36px; width: 36px; }
+  .nav__brand    { font-size: 1.2rem; }
 }
 
 @media (max-width: 768px) {
   .nav { padding: 18px 24px; }
   .nav__burger { display: flex; }
   .nav__links  { display: none; }
+
+  /* Бургер крупнее */
+  .nav__burger span:nth-child(1) { width: 30px; }
+  .nav__burger span:nth-child(2) { width: 20px; margin-left: 10px; }
+  .nav__burger span:nth-child(3) { width: 30px; }
+  .nav__burger span              { height: 2.5px; }
+
+  /* X при открытии */
+  .nav__burger--open span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+  .nav__burger--open span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+
+  /* Кнопка закрытия в оверлее */
+  .nav__mobile-close { font-size: 1.8rem; top: 22px; right: 24px; }
 }

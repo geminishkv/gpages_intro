@@ -137,7 +137,6 @@ npm run deploy
 > После деплоя сайт доступен по адресу [geminishkv.tech](https://geminishkv.tech)
 > Файл `public/CNAME` обеспечивает сохранение кастомного домена после каждого деплоя.
 
-
 ***
 
 ### SEO и индексация
@@ -147,10 +146,6 @@ npm run deploy
 - `index.html` — JSON-LD Person schema, Open Graph, Twitter Card, canonical URL
 - `public/robots.txt` — разрешения для Googlebot и Yandex
 - `public/sitemap.xml` — карта сайта с hreflang
-
-После деплоя зарегистрировать сайт вручную:
-- **Google Search Console** → [search.google.com/search-console](https://search.google.com/search-console)
-- **Яндекс Вебмастер** → [webmaster.yandex.ru](https://webmaster.yandex.ru)
 
 ***
 

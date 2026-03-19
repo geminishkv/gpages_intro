@@ -16,3 +16,16 @@
   opacity: 1;
   visibility: visible;
 }
+
+@media (max-width: 900px) {
+  .main-page {
+    position: relative;
+    top: auto; left: auto; right: auto; bottom: auto;
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+  }
+}

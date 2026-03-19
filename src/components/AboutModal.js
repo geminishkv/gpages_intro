@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import '../styles/AboutModal.css';
 
 export default function AboutModal({ isOpen, onClose }) {
@@ -9,7 +10,7 @@ export default function AboutModal({ isOpen, onClose }) {
     return () => window.removeEventListener('keydown', handler);
   }, [onClose]);
 
-  return (
+  return createPortal(
     <div
       className={`about-overlay${isOpen ? ' about-overlay--open' : ''}`}
       onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
@@ -154,6 +155,7 @@ export default function AboutModal({ isOpen, onClose }) {
 
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
