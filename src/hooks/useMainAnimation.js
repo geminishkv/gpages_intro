@@ -74,18 +74,30 @@ export function useMainAnimation(isVisible) {
 
   /* ── step 2: mac animation ── */
   const animateMac = useCallback(() => {
+    // Считываем реальные размеры экрана мака из DOM
+    const scr = windowImgRef.current.parentElement;
+    const sw  = scr.clientWidth;
+    const sh  = scr.clientHeight;
+
+    const W  = `${sw}px`;
+    const H  = `${sh}px`;
+    const Wb = `${Math.round(sw * 0.65)}px`;
+    const Hb = `${Math.round(sh * 0.68)}px`;
+    const Wc = `${Math.round(sw * 0.98)}px`;
+    const Hc = `${Math.round(sh * 1.2)}px`;
+
     const tl = anime.timeline({ easing: 'linear' });
 
-    tl.add({ targets: blinkerRef.current,      opacity: [0, 1],                               duration: 300 });
-    tl.add({ targets: whiteBoxRef.current,     opacity: [0, 1], width: '235px',               duration: 350 }, '-=100');
-    tl.add({ targets: whiteBoxRef.current,     height: '155px',                               duration: 350 }, '-=300');
-    tl.add({ targets: containerBoxRef.current, opacity: [0, 1], height: '280px', width: '355px', duration: 420 }, '-=350');
-    tl.add({ targets: windowImgRef.current,    opacity: [0, 1], height: '285px', width: '349px', duration: 500 }, '-=400');
-    tl.add({ targets: progressWrapRef.current, opacity: [0, 1],                  delay: 900,  duration: 450 });
-    tl.add({ targets: progressBarRef.current,  width: ['0%', '100%'],                         duration: 1600, easing: 'easeInOutQuad' });
-    tl.add({ targets: progressWrapRef.current, opacity: [1, 0],                               duration: 500 });
-    tl.add({ targets: uwuRef.current,      opacity: [0, 1], width: '349px', height: '285px', duration: 300, delay: 80 });
-    tl.add({ targets: workTextRef.current, opacity: [0, 1], duration: 400 }, '-=100');
+    tl.add({ targets: blinkerRef.current,      opacity: [0, 1],                    duration: 300 });
+    tl.add({ targets: whiteBoxRef.current,     opacity: [0, 1], width: Wb,         duration: 350 }, '-=100');
+    tl.add({ targets: whiteBoxRef.current,     height: Hb,                         duration: 350 }, '-=300');
+    tl.add({ targets: containerBoxRef.current, opacity: [0, 1], height: Hc, width: Wc, duration: 420 }, '-=350');
+    tl.add({ targets: windowImgRef.current,    opacity: [0, 1], height: H,  width: W,  duration: 500 }, '-=400');
+    tl.add({ targets: progressWrapRef.current, opacity: [0, 1], delay: 900,        duration: 450 });
+    tl.add({ targets: progressBarRef.current,  width: ['0%', '100%'],              duration: 1600, easing: 'easeInOutQuad' });
+    tl.add({ targets: progressWrapRef.current, opacity: [1, 0],                    duration: 500 });
+    tl.add({ targets: uwuRef.current,          opacity: [0, 1], width: W, height: H, duration: 300, delay: 80 });
+    tl.add({ targets: workTextRef.current,     opacity: [0, 1],                    duration: 400 }, '-=100');
 
     tl.finished.then(() => animateText());
   }, [animateText]);
