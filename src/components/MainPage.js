@@ -63,12 +63,17 @@ export default function MainPage({ isVisible }) {
           // badges start after buttons are fully visible (~900ms)
           setTimeout(() => {
             anime({
-              targets: liderRef.current.querySelectorAll('.hero__badge'),
+              targets: liderRef.current.querySelectorAll('.hero__badge:not(.hero__badge--dup)'),
               opacity: [0, 1],
               translateY: [20, 0],
               delay: anime.stagger(500),
               duration: 500,
               easing: 'easeOutExpo',
+              complete: () => {
+                setTimeout(() => {
+                  liderRef.current.classList.add('hero__badges-track--scrolling');
+                }, 600);
+              },
             });
           }, 900);
         }, 500);
@@ -149,12 +154,21 @@ export default function MainPage({ isVisible }) {
           <p ref={taglineRef} className="hero__tagline" style={{ opacity: 0 }}>
             {TAGLINE_TEXT}
           </p>
-          <div ref={liderRef} className="hero__badges">
-            <img src={LIDER_IMG} alt="FinDevSecOps Лидер" className="hero__badge" />
-            <img src={LANIT_IMG} alt="ЛАНИТ"             className="hero__badge hero__badge--invert" />
-            <img src={BMSTU_IMG} alt="МГТУ им. Баумана"  className="hero__badge" />
-            <img src={MPFI_IMG}  alt="МФТИ"              className="hero__badge hero__badge--invert" />
-            <img src={RBPO_IMG}  alt="РБПО.РФ"           className="hero__badge hero__badge--invert" />
+          <div className="hero__badges-outer">
+            <div ref={liderRef} className="hero__badges-track">
+              {/* дубли идут первыми — для скролла слева направо */}
+              <img src={LIDER_IMG} alt="" aria-hidden="true" className="hero__badge hero__badge--dup" />
+              <img src={LANIT_IMG} alt="" aria-hidden="true" className="hero__badge hero__badge--invert hero__badge--dup" />
+              <img src={BMSTU_IMG} alt="" aria-hidden="true" className="hero__badge hero__badge--dup" />
+              <img src={MPFI_IMG}  alt="" aria-hidden="true" className="hero__badge hero__badge--invert hero__badge--dup" />
+              <img src={RBPO_IMG}  alt="" aria-hidden="true" className="hero__badge hero__badge--invert hero__badge--dup" />
+              {/* оригиналы */}
+              <img src={LIDER_IMG} alt="FinDevSecOps Лидер" className="hero__badge" />
+              <img src={LANIT_IMG} alt="ЛАНИТ"              className="hero__badge hero__badge--invert" />
+              <img src={BMSTU_IMG} alt="МГТУ им. Баумана"   className="hero__badge" />
+              <img src={MPFI_IMG}  alt="МФТИ"               className="hero__badge hero__badge--invert" />
+              <img src={RBPO_IMG}  alt="РБПО.РФ"            className="hero__badge hero__badge--invert" />
+            </div>
           </div>
 
           <div ref={socialsRef} className="hero__socials" style={{ opacity: 0 }}>
