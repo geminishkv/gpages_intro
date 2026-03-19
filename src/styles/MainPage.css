@@ -165,13 +165,16 @@
 }
 
 .hero__socials {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
   gap: 14px;
   margin-top: 8px;
 }
 
 .social-btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 12px 28px;
   font-size: 0.8rem;
   font-weight: 700;
@@ -316,6 +319,18 @@
   background: linear-gradient(to right, #7a0000, #cc2200, #ff6a00);
   border-radius: 2px;
   width: 0%;
+}
+
+/* ─────────────────────────────────────────
+   Footer
+───────────────────────────────────────── */
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 12px 60px;
+  font-size: 0.72rem;
+  color: #444444;
+  letter-spacing: 0.06em;
 }
 
 /* ─────────────────────────────────────────

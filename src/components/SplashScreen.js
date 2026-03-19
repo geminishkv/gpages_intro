@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import './SplashScreen.css';
+import '../styles/SplashScreen.css';
 
-const IMG = process.env.PUBLIC_URL + '/pretitle.png';
-const SHOW_MS = 3200;
-const FADE_MS = 500;
+const IMG = process.env.PUBLIC_URL + '/img/splash/pretitle.png';
+const SHOW_MS = 1600;
+const FADE_MS = 250;
 
 export default function SplashScreen({ onDone }) {
   const [fading, setFading] = useState(false);
