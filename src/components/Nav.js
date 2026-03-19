@@ -1,6 +1,7 @@
+import '../styles/Nav.css';
 import { LOGO_IMG } from '../constants';
 
-export default function Nav({ navRef }) {
+export default function Nav({ navRef, onAboutOpen }) {
   return (
     <nav ref={navRef} className="nav" style={{ opacity: 0 }}>
       <div className="nav__logo">
@@ -8,7 +9,7 @@ export default function Nav({ navRef }) {
         <span className="nav__brand">geminishkv</span>
       </div>
       <div className="nav__links">
-        <a href="#about">ABOUT</a>
+        <button className="nav__link-btn" onClick={onAboutOpen}>ABOUT</button>
         <a href="https://my.idot.vip/geminishkv" target="_blank" rel="noreferrer">NFC CARD</a>
         <a href="https://t.me/shmakovis_appsec" target="_blank" rel="noreferrer">BLOG</a>
         <a href="https://www.instagram.com/geminishkv" target="_blank" rel="noreferrer">INSTAGRAM</a>

@@ -1,15 +1,18 @@
+import { useState } from 'react';
 import '../styles/MainPage.css';
 import { useMainAnimation } from '../hooks/useMainAnimation';
-import Nav    from './Nav';
-import Hero   from './Hero';
-import Footer from './Footer';
+import Nav        from './Nav';
+import Hero       from './Hero';
+import Footer     from './Footer';
+import AboutModal from './AboutModal';
 
 export default function MainPage({ isVisible }) {
   const refs = useMainAnimation(isVisible);
+  const [aboutOpen, setAboutOpen] = useState(false);
 
   return (
     <div className={`main-page${isVisible ? ' main-page--visible' : ''}`}>
-      <Nav navRef={refs.navRef} />
+      <Nav navRef={refs.navRef} onAboutOpen={() => setAboutOpen(true)} />
       <Hero
         titleRef={refs.titleRef}
         subtitleRef={refs.subtitleRef}
@@ -24,6 +27,7 @@ export default function MainPage({ isVisible }) {
         progressBarRef={refs.progressBarRef}
       />
       <Footer />
+      <AboutModal isOpen={aboutOpen} onClose={() => setAboutOpen(false)} />
     </div>
   );
 }

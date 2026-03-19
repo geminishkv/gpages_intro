@@ -1,0 +1,72 @@
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 60px;
+  position: relative;
+  z-index: 10;
+}
+
+.nav__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav__logo-img {
+  height: 28px;
+  width: 28px;
+  object-fit: contain;
+  border-radius: 50%;
+  mix-blend-mode: screen;
+  display: block;
+}
+
+.nav__brand {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #ffffff;
+  text-transform: lowercase;
+}
+
+.nav__links {
+  display: flex;
+  gap: 36px;
+}
+
+.nav__links a {
+  font-size: 0.85rem;
+  color: #888888;
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.nav__link-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: inherit;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #888888;
+  transition: color 0.2s;
+  padding: 0;
+}
+
+.nav__links a:hover,
+.nav__link-btn:hover {
+  color: #cc2200;
+}
+
+@media (max-width: 900px) {
+  .nav { padding: 20px 24px; }
+}
+
+@media (max-width: 576px) {
+  .nav__links { gap: 20px; }
+}

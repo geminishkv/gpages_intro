@@ -1,3 +1,5 @@
+import '../styles/Hero.css';
+import '../styles/Mac.css';
 import {
   MAC_IMG, WIN_IMG,
   LIDER_IMG, LANIT_IMG, BMSTU_IMG, MPFI_IMG, RBPO_IMG,
