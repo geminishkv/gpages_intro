@@ -13,7 +13,7 @@ const TOOL_GROUPS = [
   { label: 'DevOps',    items: ['Docker', 'Kubernetes', 'Helm', 'GitLab CI/CD', 'Jenkins', 'WSO2'] },
 ];
 
-const STACK_INITIAL  = 4;
+const STACK_INITIAL  = 3;
 const CERTS_INITIAL  = 4;
 
 export default function Tools() {

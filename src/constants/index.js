@@ -14,10 +14,10 @@ export const SUBTITLE_TEXT = 'AppSec & DevSecOps';
 export const TAGLINE_TEXT  = 'Sic Parvis Magna. Auxilio Divino';
 
 export const STATS = [
-  { value: 8,  suffix: '+', label: 'Лет в ИБ'        },
-  { value: 6,  suffix: '',  label: 'Компании'         },
-  { value: 23, suffix: '+', label: 'Сертификатов'     },
-  { value: 5,  suffix: '+', label: 'Open-Source'      },
+  { value: 8,  suffix: '+', label: 'AppSec & DevSecOps'        },
+  { value: 6,  suffix: '',  label: 'Компаний'         },
+  { value: 23, suffix: '+', label: 'Сертификата'     },
+  { value: 5,  suffix: '+', label: 'Open-Source Проектов'      },
   { value: 13, suffix: '+', label: 'Благодарностей'   },
 ];
 
@@ -62,7 +62,7 @@ export const EXPERIENCE = [
   {
     company: 'Poly Play Inc',
     role:    'Senior IS Specialist (Lead)',
-    url:     null,
+    url:     'https://alfabravo.us/',
     logo:    process.env.PUBLIC_URL + '/img/companies/polyplay.svg',
     period:  'Янв 2020 — Дек 2020',
     current: false,
@@ -70,7 +70,7 @@ export const EXPERIENCE = [
   {
     company: 'Weter IT',
     role:    'Senior IS Specialist',
-    url:     null,
+    url:     'https://weter.denistia.ru/ru/',
     logo:    process.env.PUBLIC_URL + '/img/companies/weter.png',
     period:    'Апр 2019 — Янв 2020',
     current:   false,

@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import '../styles/Projects.css';
 import { PROJECTS } from '../constants';
 
-const MOBILE_BP = 576;
+const PROJECTS_INITIAL = 3;
 
 function StarIcon() {
   return (
@@ -21,22 +21,9 @@ function ForkIcon() {
 }
 
 export default function Projects({ isVisible }) {
-  const [isMobile, setIsMobile] = useState(
-    () => typeof window !== 'undefined' && window.innerWidth <= MOBILE_BP,
-  );
   const [expanded, setExpanded] = useState(false);
 
-  useEffect(() => {
-    const mq = window.matchMedia(`(max-width: ${MOBILE_BP}px)`);
-    const handler = (e) => {
-      setIsMobile(e.matches);
-      if (!e.matches) setExpanded(false);
-    };
-    mq.addEventListener('change', handler);
-    return () => mq.removeEventListener('change', handler);
-  }, []);
-
-  const visible = (isMobile && !expanded) ? PROJECTS.slice(0, 1) : PROJECTS;
+  const visible = expanded ? PROJECTS : PROJECTS.slice(0, PROJECTS_INITIAL);
 
   return (
     <section className={`projects${isVisible ? ' projects--visible' : ''}`}>
@@ -79,13 +66,12 @@ export default function Projects({ isVisible }) {
             </div>
           </a>
         ))}
+        {!expanded && PROJECTS.length > PROJECTS_INITIAL && (
+          <button className="projects__show-more" onClick={() => setExpanded(true)}>
+            Show {PROJECTS.length - PROJECTS_INITIAL} more projects ↓
+          </button>
+        )}
       </div>
-
-      {isMobile && !expanded && PROJECTS.length > 1 && (
-        <button className="projects__show-more" onClick={() => setExpanded(true)}>
-          Show {PROJECTS.length - 1} more projects ↓
-        </button>
-      )}
     </section>
   );
 }

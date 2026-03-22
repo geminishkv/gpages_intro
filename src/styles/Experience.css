@@ -94,21 +94,23 @@
   opacity: 0.75;
 }
 
-.exp-card:hover .exp-card__logo--invert,
-.exp-card--current .exp-card__logo--invert {
-  filter: invert(1);
-  opacity: 1;
-}
-
 /* Оригинальные цвета логотипов */
 .exp-card__logo--color {
   filter: none;
   opacity: 0.7;
 }
 
+/* Hover/current — общее правило */
 .exp-card:hover .exp-card__logo,
 .exp-card--current .exp-card__logo {
   filter: brightness(0) invert(1);
+  opacity: 1;
+}
+
+/* Специфичные переопределения — должны идти ПОСЛЕ общего правила */
+.exp-card:hover .exp-card__logo--invert,
+.exp-card--current .exp-card__logo--invert {
+  filter: invert(1);
   opacity: 1;
 }
 
