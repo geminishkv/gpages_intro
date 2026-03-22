@@ -3,6 +3,10 @@ import '../styles/MainPage.css';
 import { useMainAnimation } from '../hooks/useMainAnimation';
 import Nav        from './Nav';
 import Hero       from './Hero';
+import Stats      from './Stats';
+import Blog       from './Blog';
+import Experience from './Experience';
+import Tools      from './Tools';
 import Projects   from './Projects';
 import Footer     from './Footer';
 import AboutModal from './AboutModal';
@@ -30,8 +34,24 @@ export default function MainPage({ isVisible }) {
         progressWrapRef={refs.progressWrapRef}
         progressBarRef={refs.progressBarRef}
       />
-      <Projects isVisible={animDone} />
-      <Footer />
+      <div className="section-reveal" ref={refs.statsRef}>
+        <Stats active={refs.statsActive} />
+      </div>
+      <div className="section-reveal" ref={refs.projectsRef}>
+        <Projects isVisible={animDone} />
+      </div>
+      <div className="section-reveal" id="blog" ref={refs.blogRef}>
+        <Blog />
+      </div>
+      <div className="section-reveal" id="experience" ref={refs.experienceRef}>
+        <Experience />
+      </div>
+      <div className="section-reveal" id="tools" ref={refs.toolsRef}>
+        <Tools />
+      </div>
+      <div className="section-reveal" ref={refs.footerRef}>
+        <Footer />
+      </div>
       <AboutModal isOpen={aboutOpen} onClose={() => setAboutOpen(false)} />
     </div>
   );

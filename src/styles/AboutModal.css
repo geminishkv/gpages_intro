@@ -127,7 +127,7 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: #cc2200;
+  background: #D51A1A;
   transform: scaleX(0);
   transition: transform 0.2s ease;
 }
@@ -187,7 +187,7 @@
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #cc2200;
+  color: #D51A1A;
 }
 
 .about-info__value {
@@ -206,7 +206,7 @@
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #cc2200;
+  color: #D51A1A;
   margin-bottom: 16px;
   padding-bottom: 8px;
   border-bottom: 1px solid #1a1a1a;
@@ -323,7 +323,7 @@
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #cc2200;
+  color: #D51A1A;
 }
 
 .about-cert__title {

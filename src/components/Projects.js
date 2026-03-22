@@ -21,7 +21,7 @@ export default function Projects({ isVisible }) {
   return (
     <section className={`projects${isVisible ? ' projects--visible' : ''}`}>
       <div className="projects__header">
-        <span className="projects__label">Pinned</span>
+        <span className="projects__label">Open-Source Projects</span>
         <a
           href="https://github.com/geminishkv"
           target="_blank"
@@ -43,7 +43,6 @@ export default function Projects({ isVisible }) {
           >
             <div className="project-card__top">
               <span className="project-card__name">{p.name}</span>
-              <span className="project-card__badge">Public</span>
             </div>
             <p className="project-card__desc">{p.desc}</p>
             <div className="project-card__meta">

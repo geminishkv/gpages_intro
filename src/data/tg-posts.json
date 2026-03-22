@@ -1,0 +1,52 @@
+{
+  "subscribers": 354,
+  "posts": [
+    {
+      "id": "264",
+      "text": "When Local AI Becomes an Attack Vector: A Deep Dive into LLM Infrastructure Security\n\nOriginal text by Charles Senges\n\nThe article “Deep dive into the deployment of an on-premise low-privileged LLM server” by Synacktiv examines how organizations deploy internal Large Language Model (LLM) servers and analyzes the security implications of running such systems inside corporate infrastructure. The researchers study a real deployment where an open-source LLM is hosted on-premise…\n\nhttps://core-jmp.org/2026/03/when-local-ai-becomes-an-attack-vector-a-deep-dive-into-llm-infrastructure-security/",
+      "date": "2026-03-20",
+      "url": "https://t.me/shmakovis_appsec/264",
+      "views": 62,
+      "tags": [],
+      "image": "https://cdn4.telesco.pe/file/K26GYDE9iR-CA5Cb5gyNtA0GLA0QQWJlAodpXj61CIdAvbRBmyDDineqyMBPI6rU0lR3AhqsfG3gyMoo58sgxq02bsQTXeCSnMvbJS1OxMb4Nn3Z8AfXczAQW8pTxeWnzzyQOp6z4a0AuQEnBI410B2NfN1MiiaFqb1ldDU36QyG2LXU6mB12tFCSRyZz9CPO96pfP75zN8N23mcvAk0Kcnf-DENMrBIIdMU5K1n4c5RL3p0qE8oaDaIs4UBxcNWd3b_atJzkjQu7oxLr5Sj-5X1QaFEXsKSNZbIuQ_tCF1EQT__gwOWTtW8b3Ls6xiMAhytJXG-GsJALgl29eORYw.jpg"
+    },
+    {
+      "id": "263",
+      "text": "Иногда кажется, что именно так и происходит 🙃\n\n#lol",
+      "date": "2026-03-20",
+      "url": "https://t.me/shmakovis_appsec/263",
+      "views": 84,
+      "tags": [
+        "lol"
+      ],
+      "image": "https://cdn4.telesco.pe/file/AVYPlzrrO0_Rw04-AyCDyiMjOfj10vkqw3mhkkPtJJYiJkFvu0tnzyrlfjYEx3P0TS_zRDkzSBllS3fxYWB0ILHwTaIwaLxrJFJoNXEiDc0uk2rhaw8Jkl4oCpbMU8wy3ZWXnwCX3PkiBzFDyNncXV0TcO0c6viUtS7PNtoKfw287-i3JmdRxqED3D5sn8m2rng1bgMX4lRRvfW1eCNcGU94Lak28OiKb3Tqh2XF33jCCe_7R86w_JnMVQjMz41AZAL_t517F8u7dNf3hDaeUBpIA00uvZ3k86bRQ3oQRld0sYokjcbG7Q_NZ6rozWOt6fe6GXqc3Y0xGCKqPFisTw.jpg"
+    },
+    {
+      "id": "262",
+      "text": "🤔 InfoSec Reco СУБД\n\nСалют,\nДумаю сегодня классно будет посмотреть, вместе, на то как лучше подойти к защищенности БД, брокеру очередей для записи в БД и, конечно, частично к frontend части при взаимодействии с БД.\n\nМои реко строятся на базе опыта и того, что я чаще всего замечаю, надеюсь, для твоей практики, это будет полезно и ты сможешь более глубоко и сразу смотреть в правильном направлении, - потому что это важно при анализе и не важно аналитики ты или инженер, главное понимать архитектуру и как это построено. В некоторых пунктах отмечу, что плохо и думаю ты поймешь почему.\n\nРеляционные СУБД\n\n• Плохая практика: выдавать приложению  db_owner,  sysadmin или доступ на всю схему без ограничений\n• Чувствительные данные хранить так, чтобы прямой доступ к базовым таблицам был ограничен: использовать views, stored procedures или сервисный слой\n• Размещать СУБД в отдельном сетевом сегменте и запрещать прямой доступ из внешних и полупубличных зон\n• Плохая практика: использовать plaintext-подключения или отключать проверку сертификата\n• Включать аудит критичных операций: чтение, изменение, удаление, DDL-изменения и административные действия\n• Строки подключения, ключи и пароли хранить т",
+      "date": "2026-03-20",
+      "url": "https://t.me/shmakovis_appsec/262",
+      "views": 92,
+      "tags": [
+        "reco",
+        "devsecops",
+        "appsec",
+        "specialty"
+      ],
+      "image": "https://cdn4.telesco.pe/file/WC5VvXgjkGAVMvGWOW_rD_pBm7iehgAKnEfXjoUBqNnCEpgVSyqdyhvtQ04FX687HGs7kKLu9oXjX960eMuNt8eZMo96h45Yn_26Wdnt359orKlZu5vj7CloeEICVMx_O_-iGwJJj-Olwsc9WITwFQ5AyeymGw2aLndTimKexEltVaVm_tJszmSEEL9__iKawArqzYR5tSCeWFwkDsBrqUOzYJkudDSudZ1kjRVua_JcSGnPdJlViGOOREck-11ie74u-Ve28j0sDFnV3r4nEMpdHSNNaHnUWNhpGTYUJRNpJIS20zdfX7jPPqBY6GBAqlhiFD4to80gVeMccJwSsA.jpg"
+    },
+    {
+      "id": "261",
+      "text": "🏆 geminishkv.tech\n\nUwU, короче сделал тут сайтик для себя, хочу поделиться с тобой, считаю получилось особенно прикольно с глитчем, адаптивка отдельно доставила. \n\ngeminishkv.tech - чекай, но конечно простенько, но эффекто для портфолио 🙃\n\n#paper #appsec #devsecops",
+      "date": "2026-03-19",
+      "url": "https://t.me/shmakovis_appsec/261",
+      "views": 101,
+      "tags": [
+        "paper",
+        "appsec",
+        "devsecops"
+      ],
+      "image": "https://cdn4.telesco.pe/file/NUhe9gmTgCvqkv6eNgOEmdzRiV-1oiQzMVLol9V79yOJBfPP64BhaPtGBE0t2BVf-G9uwRwCmJshyHz4-F-uUT-xVA3WjuCQRHyj6neEVEIv0l59Hh_ghiUX6SGWNuFQwbZ77R44mMXU9iBSBmfGnRw9l6oBvmoZqdkXRP5sJpPI7fi5xzEIngbuFoVhf3MhVNPN2HBDEZejSq-tLoFy4ml-YAIpPauWR3Uu7Q-Lx-SI5WnyWFC5yTcMl_7vvJLcAfjeHfbycOvUrgmIG6Ma5aCL56XrdyIe8yR7VnKYA8ED5YXj0_udLweJR27Dqw1gB4PriCllIV47PnzuBSz27w.jpg"
+    }
+  ]
+}

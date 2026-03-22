@@ -13,6 +13,76 @@ export const TITLE_TEXT    = 'geminishkv';
 export const SUBTITLE_TEXT = 'AppSec & DevSecOps';
 export const TAGLINE_TEXT  = 'Sic Parvis Magna. Auxilio Divino';
 
+export const STATS = [
+  { value: 8,  suffix: '+', label: 'Лет в ИБ'        },
+  { value: 6,  suffix: '',  label: 'Компании'         },
+  { value: 23, suffix: '+', label: 'Сертификатов'     },
+  { value: 5,  suffix: '+', label: 'Open-Source'      },
+  { value: 13, suffix: '+', label: 'Благодарностей'   },
+];
+
+export const EXPERIENCE = [
+  {
+    company: 'LANIT',
+    role:    'AppSec Team Lead',
+    url:     'https://lanit.ru',
+    logo:    process.env.PUBLIC_URL + '/img/companies/lanit.png',
+    period:  'Дек 2024 — н.в.',
+    current: true,
+  },
+  {
+    company:    'Росбанк / ТБанк',
+    role:       'Заместитель начальника отдела ИБ по рискам',
+    logoColor:  true,
+    logos: [
+      { src: process.env.PUBLIC_URL + '/img/companies/rosbank.svg', alt: 'Росбанк', url: 'https://www.rosbank.ru' },
+      { src: process.env.PUBLIC_URL + '/img/companies/tbank.png',   alt: 'ТБанк',   url: 'https://www.tbank.ru'  },
+    ],
+    period:  'Июн 2022 — Дек 2024',
+    current: false,
+  },
+  {
+    company:  'EMCD Tech',
+    role:     'Директор по информационной безопасности',
+    url:      'https://emcd.io',
+    logo:     process.env.PUBLIC_URL + '/img/companies/emcd.jpg',
+    logoInvert: true,
+    period:    'Янв 2022 — Июл 2022',
+    current:   false,
+  },
+  {
+    company:   'SUNLIGHT',
+    role:      'Зам. директора по информационной безопасности',
+    url:       'https://sunlight.net',
+    logo:      process.env.PUBLIC_URL + '/img/companies/sunlight.jpg',
+    logoColor: true,
+    period:    'Дек 2020 — Авг 2021',
+    current:   false,
+  },
+  {
+    company: 'Poly Play Inc',
+    role:    'Senior IS Specialist (Lead)',
+    url:     '#',
+    logo:    process.env.PUBLIC_URL + '/img/companies/polyplay.svg',
+    period:  'Янв 2020 — Дек 2020',
+    current: false,
+  },
+  {
+    company: 'Weter IT',
+    role:    'Senior IS Specialist',
+    url:     '#',
+    logo:    process.env.PUBLIC_URL + '/img/companies/weter.png',
+    period:    'Апр 2019 — Янв 2020',
+    current:   false,
+  },
+];
+
+export const DOMAINS = [
+  'Application Security', 'DevSecOps', 'Threat Modeling',
+  'Vulnerability Management', 'Supply Chain Security', 'Architecture Security Review',
+  'API Security', 'Mobile AppSec', 'Payment Systems Security', 'GRC', 'Secure SDLC', 'DevOps',
+];
+
 export const PROJECTS = [
   {
     name: 'oss_toolchainmap',

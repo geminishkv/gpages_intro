@@ -40,7 +40,10 @@ export default function Nav({ navRef, onAboutOpen }) {
         {/* Desktop links */}
         <div className="nav__links">
           <button className="nav__link-btn" onClick={onAboutOpen}>ABOUT</button>
-          <a href="https://my.idot.vip/geminishkv" target="_blank" rel="noreferrer">NFC CARD</a>
+          <a href="#blog">BLOG</a>
+          <a href="#experience">EXPERIENCE</a>
+          <a href="#tools">TOOLS</a>
+          <a href="https://my.idot.vip/geminishkv" target="_blank" rel="noreferrer" className="nav__link--secondary">NFC CARD</a>
         </div>
 
         <button
@@ -59,8 +62,11 @@ export default function Nav({ navRef, onAboutOpen }) {
         <div className="nav__mobile-overlay">
           <button className="nav__mobile-close" onClick={close} aria-label="Close menu">✕</button>
           <button className="nav__link-btn" onClick={() => { onAboutOpen(); close(); }}>ABOUT</button>
-          <a href="https://my.idot.vip/geminishkv" target="_blank" rel="noreferrer" onClick={close}>NFC CARD</a>
-          </div>,
+          <a href="#blog"      onClick={close}>BLOG</a>
+          <a href="#experience" onClick={close}>EXPERIENCE</a>
+          <a href="#tools"     onClick={close}>TOOLS</a>
+          <a href="https://my.idot.vip/geminishkv" target="_blank" rel="noreferrer" className="nav__link--secondary" onClick={close}>NFC CARD</a>
+        </div>,
         document.body
       )}
     </>

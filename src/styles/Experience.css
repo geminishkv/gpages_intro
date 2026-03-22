@@ -1,0 +1,204 @@
+.experience {
+  padding: clamp(40px, 4vw, 64px) clamp(40px, 5vw, 120px);
+  border-top: 1px solid #161616;
+  max-width: 1900px;
+  width: 100%;
+  align-self: center;
+}
+
+/* ── Header ── */
+.experience__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 36px;
+}
+
+.experience__label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.04em;
+}
+
+/* ── Grid ── */
+.experience__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+/* ── Card ── */
+.exp-card {
+  position: relative;
+  background: #0d0d0d;
+  border: 1px solid #1a1a1a;
+  border-radius: 6px;
+  padding: 28px 24px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  cursor: default;
+}
+
+.exp-card:hover {
+  border-color: #2a2a2a;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+}
+
+.exp-card--current {
+  border-color: rgba(213, 26, 26, 0.25);
+  box-shadow: 0 0 0 1px rgba(213, 26, 26, 0.08), 0 4px 32px rgba(213, 26, 26, 0.08);
+}
+
+.exp-card--current:hover {
+  border-color: rgba(213, 26, 26, 0.5);
+  box-shadow: 0 0 0 1px rgba(213, 26, 26, 0.15), 0 8px 40px rgba(213, 26, 26, 0.12);
+}
+
+/* ── Logo area ── */
+.exp-card__logo-area {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  min-height: 52px;
+}
+
+.exp-card__logo-pair {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.exp-card__logo-link {
+  display: inline-flex;
+  align-items: center;
+}
+
+.exp-card__logo {
+  height: 32px;
+  width: 108px;
+  object-fit: contain;
+  object-position: left center;
+  filter: brightness(0) invert(1);
+  opacity: 0.75;
+  transition: filter 0.25s, opacity 0.25s;
+}
+
+/* JPEG со светлым фоном: invert убирает белый фон, делает логотип светлым */
+.exp-card__logo--invert {
+  filter: invert(1);
+  opacity: 0.75;
+}
+
+.exp-card:hover .exp-card__logo--invert,
+.exp-card--current .exp-card__logo--invert {
+  filter: invert(1);
+  opacity: 1;
+}
+
+/* Оригинальные цвета логотипов */
+.exp-card__logo--color {
+  filter: none;
+  opacity: 0.7;
+}
+
+.exp-card:hover .exp-card__logo,
+.exp-card--current .exp-card__logo {
+  filter: brightness(0) invert(1);
+  opacity: 1;
+}
+
+.exp-card:hover .exp-card__logo--color,
+.exp-card--current .exp-card__logo--color {
+  filter: none;
+  opacity: 1;
+}
+
+/* ── Body ── */
+.exp-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.exp-card__names {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0;
+}
+
+.exp-card__company {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #666666;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: color 0.2s;
+}
+
+.exp-card:hover .exp-card__company,
+.exp-card--current .exp-card__company { color: #cccccc; }
+
+.exp-card__slash {
+  color: #2a2a2a;
+  font-size: 0.85rem;
+  margin: 0 4px;
+}
+
+.exp-card__role {
+  font-size: 0.72rem;
+  color: #444444;
+  letter-spacing: 0.01em;
+  line-height: 1.3;
+  transition: color 0.2s;
+}
+
+.exp-card:hover .exp-card__role { color: #666666; }
+.exp-card--current .exp-card__role { color: #666666; }
+
+.exp-card__period {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #2e2e2e;
+  transition: color 0.2s;
+}
+
+.exp-card:hover .exp-card__period { color: #444444; }
+.exp-card--current .exp-card__period { color: #555555; }
+
+/* ── Current badge ── */
+.exp-card__badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #D51A1A;
+  border: 1px solid rgba(213, 26, 26, 0.35);
+  border-radius: 2px;
+  padding: 2px 6px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1100px) {
+  .experience__grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 900px) {
+  .experience { padding: 40px 24px; }
+  .experience__grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+}
+
+@media (max-width: 576px) {
+  .experience__grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .exp-card { padding: 20px 16px 16px; }
+  .exp-card__logo { height: 28px; }
+}

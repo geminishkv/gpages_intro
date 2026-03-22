@@ -35,7 +35,7 @@
   position: absolute;
   width: 10px;
   height: 20px;
-  background: #cc2200;
+  background: #D51A1A;
   border-radius: 2px;
   animation: blink 1.1s ease-in-out infinite;
 }
@@ -86,7 +86,7 @@
   font-weight: 900;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #cc2200;
+  color: #D51A1A;
   line-height: 1.3;
 }
 
@@ -106,8 +106,9 @@
 .mac-loading-text {
   font-family: 'Montserrat', sans-serif;
   font-size: 0.75rem;
-  color: #cc2200;
+  color: #D51A1A;
   letter-spacing: 0.08em;
+  text-align: center;
 }
 
 .dot {
@@ -132,7 +133,7 @@
 
 .mac-progress-bar {
   height: 100%;
-  background: linear-gradient(to right, #7a0000, #cc2200, #ff6a00);
+  background: linear-gradient(to right, #000000, #D51A1A, #F9B361);
   border-radius: 2px;
   width: 0%;
 }

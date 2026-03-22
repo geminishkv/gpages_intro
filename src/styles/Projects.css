@@ -38,7 +38,7 @@
 }
 
 .projects__github-link:hover {
-  color: #cc2200;
+  color: #D51A1A;
 }
 
 /* ── Grid ── */
@@ -62,7 +62,7 @@
 }
 
 .project-card:hover {
-  border-color: #cc2200;
+  border-color: #D51A1A;
   transform: translateY(-2px);
 }
 
@@ -79,7 +79,7 @@
 .project-card__name {
   font-size: 0.82rem;
   font-weight: 700;
-  color: #cc2200;
+  color: #D51A1A;
   font-family: 'Courier New', Courier, monospace;
   word-break: break-all;
 }

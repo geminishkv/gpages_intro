@@ -10,11 +10,26 @@
   visibility: hidden;
   transition: opacity 0.5s ease 0.3s, visibility 0.5s ease 0.3s;
   overflow: auto;
+  scroll-behavior: smooth;
 }
 
 .main-page--visible {
   opacity: 1;
   visibility: visible;
+}
+
+.section-reveal {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(32px);
+  will-change: opacity, transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .main-page { transition: none; scroll-behavior: auto; }
+  .section-reveal { opacity: 1; transform: none; will-change: auto; }
 }
 
 @media (max-width: 900px) {

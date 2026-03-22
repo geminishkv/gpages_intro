@@ -53,7 +53,7 @@
   letter-spacing: -0.02em;
   line-height: 1;
   min-height: 1.1em;
-  color: #cc2200;
+  color: #D51A1A;
 }
 
 .hero__tagline {
@@ -107,6 +107,12 @@
   animation: badgeScroll 18s linear infinite;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .hero__badges-track--scrolling { animation: none; }
+  .dos-cursor { animation: none; opacity: 1; }
+  .dot        { animation: none; opacity: 1; }
+}
+
 /* ── Socials ── */
 .hero__socials {
   display: flex;
@@ -147,9 +153,9 @@
   text-decoration: none;
   border-radius: 2px;
   transition: background 0.2s, color 0.2s, border-color 0.2s;
-  background: #cc2200;
+  background: #D51A1A;
   color: #ffffff;
-  border: 2px solid #cc2200;
+  border: 2px solid #D51A1A;
 }
 
 .social-btn:hover {
@@ -163,11 +169,11 @@
 
 .social-btn--outline {
   background: transparent;
-  color: #cc2200;
+  color: #D51A1A;
 }
 
 .social-btn--outline:hover {
-  background: #cc2200;
+  background: #D51A1A;
   color: #ffffff;
 }
 

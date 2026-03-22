@@ -1,40 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import '../styles/AboutModal.css';
-import { AVATAR_IMG, CERTS } from '../constants';
+import { AVATAR_IMG } from '../constants';
 
-const TABS = ['Профиль', 'Навыки', 'Достижения', 'Сертификаты'];
-
-const SEC_TOOLS = [
-  { label: 'SAST',            items: ['Semgrep', 'SonarQube', 'Checkov', 'cqase', 'Bandit', 'BlackDuck', 'Fortify'] },
-  { label: 'SCA',             items: ['Dependency-Check', 'Grype', 'Trivy', 'Syft', 'Cycode', 'Clair'] },
-  { label: 'Secret Detection',items: ['HashiCorp Vault', 'Bitwarden', 'Senhasegura', 'OPA', 'Gitleaks', 'Keycloak'] },
-  { label: 'DAST',            items: ['Acunetix', 'Nuclei', 'Burp Suite', 'AutoSwagger', 'Checkmarx'] },
-  { label: 'Mobile AppSec',   items: ['Frida', 'MobSF', 'QARK'] },
-  { label: 'Infrasec',        items: ['Nmap', 'MaxPatrol', 'Akto'] },
-  { label: 'Container & Image',items: ['Qualys', 'Cilium', 'Harbor', 'Falco', 'Quay', 'Dagda', 'Prisma', 'Cosign'] },
-  { label: 'SBOM',            items: ['cdxgen', 'RetireJS', 'Sonatype'] },
-];
-
-const DEV_TOOLS = [
-  { label: 'DevOps',       items: ['Git', 'GitLab CI/CD', 'Jenkins', 'Docker', 'Kubernetes', 'Helm', 'Makefile', 'WSO2'] },
-  { label: 'Мониторинг',   items: ['Grafana', 'Zabbix'] },
-  { label: 'Языки & стеки',items: ['Python', 'Java', 'JavaScript', 'React', 'Swift', 'LaTeX', 'Bash'] },
-];
-
-const DOMAINS = [
-  'Application Security', 'DevSecOps', 'DevOps', 'Threat Modeling',
-  'Vulnerability Management', 'Supply Chain Security', 'Architecture Security Review',
-  'API Security', 'Mobile AppSec', 'Payment Systems Security', 'GRC', 'Secure SDLC',
-];
-
-function Chips({ items }) {
-  return (
-    <div className="about-chips">
-      {items.map(item => <span key={item} className="about-chip">{item}</span>)}
-    </div>
-  );
-}
+const TABS = ['Профиль', 'Достижения'];
 
 function TabProfile() {
   return (
@@ -78,31 +47,6 @@ function TabProfile() {
   );
 }
 
-function TabSkills() {
-  return (
-    <div className="about-tab-content">
-      <div className="about-section">
-        <div className="about-section__title">Инструменты безопасности</div>
-        {SEC_TOOLS.map(({ label, items }) => (
-          <div key={label} className="about-toolgroup">
-            <span className="about-toolgroup__label">{label}</span>
-            <Chips items={items} />
-          </div>
-        ))}
-      </div>
-
-      <div className="about-section">
-        <div className="about-section__title">Технологии и DevOps</div>
-        {DEV_TOOLS.map(({ label, items }) => (
-          <div key={label} className="about-toolgroup">
-            <span className="about-toolgroup__label">{label}</span>
-            <Chips items={items} />
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
 
 function TabAchievements() {
   return (
@@ -124,28 +68,10 @@ function TabAchievements() {
         </ul>
       </div>
 
-      <div className="about-section">
-        <div className="about-section__title">Основные домены</div>
-        <Chips items={DOMAINS} />
-      </div>
     </div>
   );
 }
 
-function TabCerts() {
-  return (
-    <div className="about-tab-content">
-      <div className="about-certs-grid">
-        {CERTS.map((c, i) => (
-          <div key={i} className="about-cert">
-            <span className="about-cert__area">{c.area}</span>
-            <span className="about-cert__title">{c.title}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
 
 export default function AboutModal({ isOpen, onClose }) {
   const [tab, setTab]   = useState(0);
@@ -233,9 +159,7 @@ export default function AboutModal({ isOpen, onClose }) {
         {/* ── Body ── */}
         <div className="about-modal__body" ref={bodyRef} role="tabpanel">
           {tab === 0 && <TabProfile />}
-          {tab === 1 && <TabSkills />}
-          {tab === 2 && <TabAchievements />}
-          {tab === 3 && <TabCerts />}
+          {tab === 1 && <TabAchievements />}
         </div>
 
       </div>
