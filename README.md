@@ -9,8 +9,8 @@
 
 <div align="center">
 <img src="https://img.shields.io/github/repo-size/geminishkv/gpages" alt="repo size">
-<img src="https://img.shields.io/github/last-commit/geminishkv/gpages" alt="last commit">
-<img src="https://img.shields.io/github/commit-activity/m/geminishkv/gpages" alt="commit activity">
+<img src="https://img.shields.io/github/last-commit/geminishkv/gpages/gpages" alt="last commit">
+<img src="https://img.shields.io/github/commit-activity/m/geminishkv/gpages/gpages" alt="commit activity">
 <img src="https://img.shields.io/github/issues-pr/geminishkv/gpages" alt="pull requests">
 <img src="https://img.shields.io/github/contributors/geminishkv/gpages" alt="contributors">
 </div>
@@ -33,7 +33,7 @@
 | UI-фреймворк | React 18 (CRA) |
 | Анимации | anime.js 3.2.2 + IntersectionObserver |
 | Стили | CSS (custom properties, clamp, keyframes, clip-path) |
-| Деплой | gh-pages 6.3.0 → GitHub Pages |
+| Деплой | scripts/deploy.js (git) → GitHub Pages, ветка `gh-pages` |
 | Домен | geminishkv.tech (reg.ru + GitHub Pages custom domain) |
 | SEO | JSON-LD Person schema, Open Graph, Twitter Card, sitemap.xml, robots.txt |
 | CI/CD | GitHub Actions — автообновление блога (пн 06:00 UTC) и GitHub stats (пн 01:00 UTC) |
@@ -107,7 +107,9 @@ gpages/
 │       └── Footer.css
 ├── scripts/
 │   ├── update-tg-posts.js    # Парсинг Telegram HTML → tg-posts.json
-│   └── update-stats.js       # GitHub API → stars/forks в constants/index.js
+│   ├── update-stats.js       # GitHub API → stars/forks в constants/index.js
+│   ├── generate-sitemap.js   # Генерация public/sitemap.xml с текущей датой
+│   └── deploy.js             # Кастомный деплой в gh-pages (замена gh-pages пакета)
 ├── .github/workflows/
 │   ├── update-blog.yml       # Cron: пн 06:00 UTC
 │   └── update-stats.yml      # Cron: пн 01:00 UTC
@@ -127,7 +129,7 @@ gpages/
 ### Локальный запуск
 
 ```bash
-git clone https://github.com/geminishkv/gpages.git
+git clone -b gpages https://github.com/geminishkv/gpages.git
 cd gpages
 npm install
 npm start        # http://localhost:3000
