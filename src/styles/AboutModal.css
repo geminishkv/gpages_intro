@@ -335,10 +335,15 @@
 /* ── Responsive ── */
 @media (max-width: 900px) {
   .about-overlay { top: 76px; }
+  .about-modal {
+    max-height: calc(100vh - 96px);
+    width: calc(100vw - 32px);
+  }
 }
 
 @media (max-width: 600px) {
   .about-modal__header  { padding: 16px 20px; }
+  .about-modal__avatar  { width: 64px; height: 64px; }
   .about-tab-content    { padding: 20px 20px 32px; }
   .about-tabs           { padding: 0 20px; overflow-x: auto; }
   .about-tab            { padding: 12px 14px; font-size: 0.78rem; white-space: nowrap; }

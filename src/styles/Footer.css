@@ -4,6 +4,9 @@
   align-items: center;
   padding: 14px clamp(40px, 5vw, 120px);
   border-top: 1px solid #161616;
+  max-width: 1900px;
+  width: 100%;
+  align-self: center;
 }
 
 .footer__copy {
