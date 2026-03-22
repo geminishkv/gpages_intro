@@ -8,18 +8,18 @@
 </div>
 
 <div align="center">
-<img src="https://img.shields.io/github/repo-size/geminishkv/gpages_intro" alt="repo size">
-<img src="https://img.shields.io/github/last-commit/geminishkv/gpages_intro" alt="last commit">
-<img src="https://img.shields.io/github/commit-activity/m/geminishkv/gpages_intro" alt="commit activity">
-<img src="https://img.shields.io/github/issues-pr/geminishkv/gpages_intro" alt="pull requests">
-<img src="https://img.shields.io/github/contributors/geminishkv/gpages_intro" alt="contributors">
+<img src="https://img.shields.io/github/repo-size/geminishkv/gpages" alt="repo size">
+<img src="https://img.shields.io/github/last-commit/geminishkv/gpages" alt="last commit">
+<img src="https://img.shields.io/github/commit-activity/m/geminishkv/gpages" alt="commit activity">
+<img src="https://img.shields.io/github/issues-pr/geminishkv/gpages" alt="pull requests">
+<img src="https://img.shields.io/github/contributors/geminishkv/gpages" alt="contributors">
 </div>
 
 ***
 
 <br>Салют 👋,</br>
 
-Персональный портфолио-лендинг **Ильи Шмакова** — AppSec & DevSecOps инженера.
+Персональный портфолио-лендинг.
 Сайт доступен по адресу: **[geminishkv.tech](https://geminishkv.tech)**
 
 <div align="center"><h3>Sic Parvis Magna. Auxilio Divino</h3></div>
@@ -31,72 +31,86 @@
 | Слой | Технология |
 |------|-----------|
 | UI-фреймворк | React 18 (CRA) |
-| Анимации | anime.js 3.2.2 |
-| Стили | CSS (custom properties, keyframes, clip-path) |
+| Анимации | anime.js 3.2.2 + IntersectionObserver |
+| Стили | CSS (custom properties, clamp, keyframes, clip-path) |
 | Деплой | gh-pages 6.3.0 → GitHub Pages |
 | Домен | geminishkv.tech (reg.ru + GitHub Pages custom domain) |
-| SEO | JSON-LD Person schema, Open Graph, sitemap.xml, robots.txt |
+| SEO | JSON-LD Person schema, Open Graph, Twitter Card, sitemap.xml, robots.txt |
+| CI/CD | GitHub Actions — автообновление блога (пн 06:00 UTC) и GitHub stats (пн 01:00 UTC) |
 
 ***
 
 ### Функциональность
 
-- **SplashScreen** — экран загрузки с глитч-анимацией на весь браузер (clip-path + RGB-каналы + scanlines)
+- **SplashScreen** — экран загрузки с глитч-анимацией (clip-path + RGB-каналы + scanlines)
 - **Mac mockup** — покадровая анимация сборки ретро-Mac через anime.js timeline, прогресс-бар "Initializing"
-- **Typewriter** — пошаговый набор заголовка по символам
-- **Badges marquee** — бесконечный скролл логотипов слева направо
+- **Typewriter** — пошаговый набор заголовка по символам (DOS-стиль)
+- **Badges marquee** — бесконечный скролл логотипов достижений
+- **Stats** — 5 ключевых метрик с анимацией count-up через IntersectionObserver
+- **Open-Source Projects** — карточки GitHub-репозиториев (stars, forks, язык)
+- **Blog** — превью постов из Telegram-канала `shmakovis_appsec` (cover, теги, просмотры, модалка)
+- **Experience** — 6 мест работы в виде карточек с логотипами компаний
+- **Tools** — Tech Stack по категориям, Domains, Certifications (16 сертификатов)
 - **About modal** — полноэкранный попап с резюме, навыками, инструментами и достижениями
-- **Burger menu** — адаптивное меню (bars-staggered) для мобильных устройств, portal-рендеринг
-- **Responsive** — адаптив под мобильные (≤768px) и планшеты (≤900px)
+- **Nav** — якорные ссылки (Blog, Experience, Tools), бургер-меню с portal-рендерингом
+- **Responsive** — адаптив под мобильные (≤576px), планшеты (≤900px) и десктоп
+- **prefers-reduced-motion** — все анимации отключаются по системной настройке
 
 ***
 
 ### Структура репозитория
 
 ```
-gpages_intro/
+gpages/
 ├── public/
 │   ├── img/
-│   │   ├── splash/
-│   │   │   └── pretitle.png          # Заставка сплеш-экрана
-│   │   ├── hero/
-│   │   │   ├── logo2.png             # Логотип / favicon
-│   │   │   ├── mac_ns.png            # Корпус ретро-Mac
-│   │   │   ├── window3.png           # Скриншот в экране Mac
-│   │   │   └── uwu.png               # Финальное изображение после загрузки
-│   │   └── badges/
-│   │       ├── lider.png
-│   │       ├── lanit.png
-│   │       ├── bmstu.png
-│   │       ├── mpfi.png
-│   │       └── rbpo.png
-│   ├── CNAME                         # Кастомный домен GitHub Pages
+│   │   ├── badges/           # Логотипы достижений (marquee)
+│   │   ├── companies/        # Логотипы работодателей
+│   │   ├── hero/             # Mac mockup, логотип, аватар
+│   │   └── splash/           # Заставка сплеш-экрана
+│   ├── CNAME                 # Кастомный домен GitHub Pages
 │   ├── favicon.ico
-│   ├── index.html                    # SEO: JSON-LD, OG, Twitter Card
+│   ├── index.html            # SEO: JSON-LD, OG, Twitter Card
 │   ├── robots.txt
 │   └── sitemap.xml
 ├── src/
 │   ├── components/
-│   │   ├── App.js
-│   │   ├── SplashScreen.js           # Глитч-анимация перехода
-│   │   ├── MainPage.js               # Корневой layout
-│   │   ├── Nav.js                    # Навбар + burger menu (portal)
-│   │   ├── Hero.js                   # Главный блок: текст + Mac + badges
+│   │   ├── SplashScreen.js   # Глитч-анимация перехода
+│   │   ├── MainPage.js       # Корневой layout
+│   │   ├── Nav.js            # Навбар + burger menu (portal)
+│   │   ├── Hero.js           # Главный блок: Mac + badges + typewriter
+│   │   ├── Stats.js          # 5 метрик с count-up анимацией
+│   │   ├── Projects.js       # Open-Source карточки GitHub
+│   │   ├── Blog.js           # Превью постов Telegram + модалка
+│   │   ├── Experience.js     # Карточки опыта работы
+│   │   ├── Tools.js          # Tech Stack / Domains / Certifications
 │   │   ├── Footer.js
-│   │   └── AboutModal.js             # Попап с резюме
+│   │   └── AboutModal.js     # Попап с резюме
 │   ├── hooks/
-│   │   └── useMainAnimation.js       # Вся логика anime.js (timeline)
+│   │   └── useMainAnimation.js  # Вся логика anime.js + IntersectionObserver
 │   ├── constants/
-│   │   └── index.js                  # Пути к изображениям, текстовые константы
+│   │   └── index.js          # Данные: опыт, проекты, статистика, сертификаты
+│   ├── data/
+│   │   └── tg-posts.json     # Посты Telegram (обновляется CI)
 │   └── styles/
 │       ├── App.css
-│       ├── SplashScreen.css          # Глитч: clip-path, RGB-layers, scanlines
+│       ├── SplashScreen.css  # Глитч: clip-path, RGB-layers, scanlines
 │       ├── MainPage.css
-│       ├── Nav.css                   # Burger bars-staggered, mobile overlay
-│       ├── Hero.css                  # Badges marquee, socials grid
-│       ├── Mac.css                   # Mac mockup, progress bar
-│       ├── Footer.css
-│       └── AboutModal.css
+│       ├── Nav.css           # Burger bars-staggered, mobile overlay
+│       ├── Hero.css          # Badges marquee, socials grid
+│       ├── Mac.css           # Mac mockup, progress bar
+│       ├── Stats.css
+│       ├── Projects.css
+│       ├── Blog.css          # Карточки, модалка, CTA-блок
+│       ├── Experience.css    # Карточки работодателей
+│       ├── Tools.css         # Tech Stack, Domains, Certifications
+│       └── Footer.css
+├── scripts/
+│   ├── update-tg-posts.js    # Парсинг Telegram HTML → tg-posts.json
+│   └── update-stats.js       # GitHub API → stars/forks в constants/index.js
+├── .github/workflows/
+│   ├── update-blog.yml       # Cron: пн 06:00 UTC
+│   └── update-stats.yml      # Cron: пн 01:00 UTC
 ├── package.json
 ├── package-lock.json
 ├── CNAME
@@ -113,8 +127,8 @@ gpages_intro/
 ### Локальный запуск
 
 ```bash
-git clone https://github.com/geminishkv/gpages_intro.git
-cd gpages_intro
+git clone https://github.com/geminishkv/gpages.git
+cd gpages
 npm install
 npm start        # http://localhost:3000
 ```
@@ -134,14 +148,20 @@ git push origin gpages
 npm run deploy
 ```
 
-> После деплоя сайт доступен по адресу [geminishkv.tech](https://geminishkv.tech)
-> Файл `public/CNAME` обеспечивает сохранение кастомного домена после каждого деплоя.
+***
+
+### CI/CD
+
+| Workflow | Расписание | Действие |
+|----------|-----------|---------|
+| `update-blog.yml` | Пн 06:00 UTC | Парсинг TG-канала → обновление `tg-posts.json` → деплой |
+| `update-stats.yml` | Пн 01:00 UTC | GitHub API → обновление stars/forks → деплой |
+
+Оба workflow запускаются вручную через `workflow_dispatch`.
 
 ***
 
 ### SEO и индексация
-
-Сайт настроен для индексации в Google и Яндекс:
 
 - `index.html` — JSON-LD Person schema, Open Graph, Twitter Card, canonical URL
 - `public/robots.txt` — разрешения для Googlebot и Yandex

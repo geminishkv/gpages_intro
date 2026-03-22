@@ -62,8 +62,10 @@ export function useMainAnimation(isVisible, onAllDone) {
     typeString(titleRef.current, TITLE_TEXT, 165, () => {
 
       // ── Subtitle ──
+      if (!subtitleRef.current) return;
       subtitleRef.current.style.opacity = '1';
       typeString(subtitleRef.current, SUBTITLE_TEXT, 135, () => {
+        if (!taglineRef.current) return;
 
         // ── Tagline ──
         anime({
@@ -75,6 +77,7 @@ export function useMainAnimation(isVisible, onAllDone) {
           complete: () => {
 
             // ── Social groups one by one ──
+            if (!socialsRef.current) return;
             socialsRef.current.style.opacity = '1';
             const groups = Array.from(
               socialsRef.current.querySelectorAll('.social-group')
@@ -100,6 +103,8 @@ export function useMainAnimation(isVisible, onAllDone) {
                     complete: () => {
                       setTimeout(() => {
                         liderRef.current.classList.add('hero__badges-track--scrolling');
+
+                        if (!liderRef.current) return;
 
                         // ── Sections via IntersectionObserver ──
                         if (onAllDone) onAllDone();

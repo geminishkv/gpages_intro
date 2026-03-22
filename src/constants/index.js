@@ -62,7 +62,7 @@ export const EXPERIENCE = [
   {
     company: 'Poly Play Inc',
     role:    'Senior IS Specialist (Lead)',
-    url:     '#',
+    url:     null,
     logo:    process.env.PUBLIC_URL + '/img/companies/polyplay.svg',
     period:  'Янв 2020 — Дек 2020',
     current: false,
@@ -70,7 +70,7 @@ export const EXPERIENCE = [
   {
     company: 'Weter IT',
     role:    'Senior IS Specialist',
-    url:     '#',
+    url:     null,
     logo:    process.env.PUBLIC_URL + '/img/companies/weter.png',
     period:    'Апр 2019 — Янв 2020',
     current:   false,

@@ -21,7 +21,7 @@ export default function Experience() {
                     </a>
                   ))}
                 </div>
-              ) : (
+              ) : item.url ? (
                 <a href={item.url} target="_blank" rel="noreferrer" className="exp-card__logo-link">
                   <img
                     src={item.logo}
@@ -29,6 +29,14 @@ export default function Experience() {
                     className={`exp-card__logo${item.logoColor ? ' exp-card__logo--color' : ''}${item.logoInvert ? ' exp-card__logo--invert' : ''}`}
                   />
                 </a>
+              ) : (
+                <span className="exp-card__logo-link">
+                  <img
+                    src={item.logo}
+                    alt={item.company}
+                    className={`exp-card__logo${item.logoColor ? ' exp-card__logo--color' : ''}${item.logoInvert ? ' exp-card__logo--invert' : ''}`}
+                  />
+                </span>
               )}
             </div>
 
@@ -42,10 +50,12 @@ export default function Experience() {
                     </span>
                   ))}
                 </div>
-              ) : (
+              ) : item.url ? (
                 <a href={item.url} target="_blank" rel="noreferrer" className="exp-card__company">
                   {item.company}
                 </a>
+              ) : (
+                <span className="exp-card__company">{item.company}</span>
               )}
               <span className="exp-card__role">{item.role}</span>
               <span className="exp-card__period">{item.period}</span>
