@@ -228,9 +228,7 @@
 .blog-modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.82);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.88);
   z-index: 9999;
   display: flex;
   align-items: center;
@@ -356,6 +354,28 @@
 .blog-modal__open:hover {
   background: rgba(213, 26, 26, 0.08);
   border-color: rgba(213, 26, 26, 0.6);
+}
+
+/* ── Show more (mobile) ── */
+.blog__show-more {
+  margin-top: 16px;
+  background: none;
+  border: none;
+  color: #555555;
+  font-size: 0.72rem;
+  font-family: inherit;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0;
+  cursor: pointer;
+  transition: color 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.blog__show-more:hover {
+  color: #D51A1A;
 }
 
 /* ── Responsive ── */

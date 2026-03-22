@@ -57,12 +57,12 @@ export default function Tools() {
             </div>
           </div>
         ))}
+        {!stackExpanded && TOOL_GROUPS.length > STACK_INITIAL && (
+          <button className="tools__show-more" onClick={() => setStackExpanded(true)}>
+            Show {TOOL_GROUPS.length - STACK_INITIAL} more categories ↓
+          </button>
+        )}
       </div>
-      {!stackExpanded && TOOL_GROUPS.length > STACK_INITIAL && (
-        <button className="tools__show-more" onClick={() => setStackExpanded(true)}>
-          Show {TOOL_GROUPS.length - STACK_INITIAL} more categories ↓
-        </button>
-      )}
 
       {/* ── Certifications ── */}
       <div className="tools__header tools__header--stack">
@@ -76,12 +76,12 @@ export default function Tools() {
             <span className="cert-card__title">{c.title}</span>
           </div>
         ))}
+        {!certsExpanded && CERTS.length > CERTS_INITIAL && (
+          <button className="tools__show-more" onClick={() => setCertsExpanded(true)}>
+            Show {CERTS.length - CERTS_INITIAL} more certifications ↓
+          </button>
+        )}
       </div>
-      {!certsExpanded && CERTS.length > CERTS_INITIAL && (
-        <button className="tools__show-more" onClick={() => setCertsExpanded(true)}>
-          Show {CERTS.length - CERTS_INITIAL} more certifications ↓
-        </button>
-      )}
 
     </section>
   );

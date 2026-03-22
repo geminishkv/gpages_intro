@@ -1,5 +1,8 @@
+import { useState, useEffect } from 'react';
 import '../styles/Projects.css';
 import { PROJECTS } from '../constants';
+
+const MOBILE_BP = 576;
 
 function StarIcon() {
   return (
@@ -18,6 +21,23 @@ function ForkIcon() {
 }
 
 export default function Projects({ isVisible }) {
+  const [isMobile, setIsMobile] = useState(
+    () => typeof window !== 'undefined' && window.innerWidth <= MOBILE_BP,
+  );
+  const [expanded, setExpanded] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia(`(max-width: ${MOBILE_BP}px)`);
+    const handler = (e) => {
+      setIsMobile(e.matches);
+      if (!e.matches) setExpanded(false);
+    };
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
+
+  const visible = (isMobile && !expanded) ? PROJECTS.slice(0, 1) : PROJECTS;
+
   return (
     <section className={`projects${isVisible ? ' projects--visible' : ''}`}>
       <div className="projects__header">
@@ -33,7 +53,7 @@ export default function Projects({ isVisible }) {
       </div>
 
       <div className="projects__grid">
-        {PROJECTS.map((p) => (
+        {visible.map((p) => (
           <a
             key={p.name}
             href={p.url}
@@ -47,26 +67,25 @@ export default function Projects({ isVisible }) {
             <p className="project-card__desc">{p.desc}</p>
             <div className="project-card__meta">
               <span className="project-card__lang">
-                <span
-                  className="project-card__lang-dot"
-                  style={{ background: p.langColor }}
-                />
+                <span className="project-card__lang-dot" style={{ background: p.langColor }} />
                 {p.lang}
               </span>
               {p.stars > 0 && (
-                <span className="project-card__stat">
-                  <StarIcon />{p.stars}
-                </span>
+                <span className="project-card__stat"><StarIcon />{p.stars}</span>
               )}
               {p.forks > 0 && (
-                <span className="project-card__stat">
-                  <ForkIcon />{p.forks}
-                </span>
+                <span className="project-card__stat"><ForkIcon />{p.forks}</span>
               )}
             </div>
           </a>
         ))}
       </div>
+
+      {isMobile && !expanded && PROJECTS.length > 1 && (
+        <button className="projects__show-more" onClick={() => setExpanded(true)}>
+          Show {PROJECTS.length - 1} more projects ↓
+        </button>
+      )}
     </section>
   );
 }

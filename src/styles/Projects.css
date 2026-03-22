@@ -131,6 +131,28 @@
   color: #666666;
 }
 
+/* ── Show more ── */
+.projects__show-more {
+  margin-top: 16px;
+  background: none;
+  border: none;
+  color: #555555;
+  font-size: 0.72rem;
+  font-family: inherit;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0;
+  cursor: pointer;
+  transition: color 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.projects__show-more:hover {
+  color: #D51A1A;
+}
+
 /* ── Responsive ── */
 @media (max-width: 900px) {
   .projects {

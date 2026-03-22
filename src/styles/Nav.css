@@ -37,7 +37,7 @@
 
 .nav__links {
   display: flex;
-  gap: 36px;
+  gap: clamp(16px, 2.5vw, 36px);
 }
 
 .nav__links a {
@@ -86,9 +86,11 @@
   color: #ffffff;
 }
 
-.nav__link--secondary,
-.nav__link--secondary::after {
+.nav__link--secondary {
   color: #333333 !important;
+}
+
+.nav__link--secondary::after {
   background: #333333 !important;
 }
 

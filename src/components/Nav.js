@@ -40,10 +40,11 @@ export default function Nav({ navRef, onAboutOpen }) {
         {/* Desktop links */}
         <div className="nav__links">
           <button className="nav__link-btn" onClick={onAboutOpen}>ABOUT</button>
+          <a href="https://hh.ru/resume/af4cc9ceff086141d00039ed1f4b4a6c35706f" target="_blank" rel="noreferrer">RESUME</a>
           <a href="#blog">BLOG</a>
           <a href="#experience">EXPERIENCE</a>
           <a href="#tools">TOOLS</a>
-          <a href="https://my.idot.vip/geminishkv" target="_blank" rel="noreferrer" className="nav__link--secondary">NFC CARD</a>
+          <a href="https://my.idot.vip/geminishkv" target="_blank" rel="noreferrer">NFC CARD</a>
         </div>
 
         <button

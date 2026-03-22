@@ -46,9 +46,19 @@
     grid-template-columns: repeat(2, 1fr);
     padding: 0;
   }
+  /* col 2 items — no right border */
   .stat-item:nth-child(2) { border-right: none; }
+  .stat-item:nth-child(4) { border-right: none; border-top: 1px solid #161616; }
+  /* row 2 left item */
   .stat-item:nth-child(3) { border-top: 1px solid #161616; }
-  .stat-item:nth-child(4) { border-top: 1px solid #161616; }
-  .stat-item:nth-child(5) { border-top: 1px solid #161616; }
+  /* 5th item spans both columns, centered */
+  .stat-item:nth-child(5) {
+    grid-column: 1 / -1;
+    border-top: 1px solid #161616;
+    border-right: none;
+    max-width: 50%;
+    margin: 0 auto;
+    width: 100%;
+  }
   .stat-item { padding: 20px 16px; }
 }

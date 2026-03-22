@@ -4,6 +4,7 @@ import '../styles/Blog.css';
 import DATA from '../data/tg-posts.json';
 
 const CHANNEL_URL = 'https://t.me/shmakovis_appsec';
+const MOBILE_BP   = 576;
 const posts       = DATA.posts  ?? [];
 const subscribers = DATA.subscribers ?? 0;
 
@@ -167,6 +168,23 @@ export default function Blog() {
   const [selected, setSelected] = useState(null);
   const close = useCallback(() => setSelected(null), []);
 
+  const [isMobile, setIsMobile] = useState(
+    () => typeof window !== 'undefined' && window.innerWidth <= MOBILE_BP,
+  );
+  const [expanded, setExpanded] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia(`(max-width: ${MOBILE_BP}px)`);
+    const handler = (e) => {
+      setIsMobile(e.matches);
+      if (!e.matches) setExpanded(false);
+    };
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
+
+  const visible = (isMobile && !expanded) ? posts.slice(0, 1) : posts;
+
   if (!posts.length) return null;
 
   return (
@@ -188,7 +206,7 @@ export default function Blog() {
 
       {/* Grid */}
       <div className="blog__grid">
-        {posts.map(p => (
+        {visible.map(p => (
           <BlogCard key={p.id} post={p} onClick={() => setSelected(p)} />
         ))}
 
@@ -207,6 +225,12 @@ export default function Blog() {
           <span className="blog-cta__btn">Подписаться →</span>
         </a>
       </div>
+
+      {isMobile && !expanded && posts.length > 1 && (
+        <button className="blog__show-more" onClick={() => setExpanded(true)}>
+          Показать ещё {posts.length - 1} {posts.length - 1 === 1 ? 'пост' : 'поста'} ↓
+        </button>
+      )}
 
       {/* Modal */}
       {selected && <BlogModal post={selected} onClose={close} />}
