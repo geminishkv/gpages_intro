@@ -3,7 +3,7 @@ import '../styles/Mac.css';
 import {
   MAC_IMG, WIN_IMG, UWU_IMG,
   LIDER_IMG, LANIT_IMG, BMSTU_IMG, MPFI_IMG, RBPO_IMG,
-  SUBTITLE_TEXT, TAGLINE_TEXT,
+  TAGLINE_TEXT,
 } from '../constants';
 
 export default function Hero({
@@ -16,9 +16,7 @@ export default function Hero({
       {/* Left — text */}
       <div className="hero__text">
         <h1 ref={titleRef} className="hero__title" />
-        <h2 ref={subtitleRef} className="hero__subtitle" style={{ opacity: 0 }}>
-          {SUBTITLE_TEXT}
-        </h2>
+        <h2 ref={subtitleRef} className="hero__subtitle" style={{ opacity: 0 }} />
         <p ref={taglineRef} className="hero__tagline" style={{ opacity: 0 }}>
           {TAGLINE_TEXT}
         </p>

@@ -28,11 +28,28 @@
   display: inline-block;
 }
 
+/* ── DOS cursor ── */
+.dos-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 0.65em;
+  background: currentColor;
+  vertical-align: middle;
+  margin-left: 3px;
+  animation: dosCursorBlink 0.6s step-end infinite;
+}
+
+@keyframes dosCursorBlink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
 .hero__subtitle {
   font-size: clamp(2rem, 4.5vw, 5.5rem);
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1;
+  min-height: 1.1em;
   color: #cc2200;
 }
 

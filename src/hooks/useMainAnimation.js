@@ -1,6 +1,6 @@
 import { useEffect, useRef, useCallback } from 'react';
 import anime from 'animejs/lib/anime.js';
-import { TITLE_TEXT } from '../constants';
+import { TITLE_TEXT, SUBTITLE_TEXT } from '../constants';
 
 export function useMainAnimation(isVisible, onAllDone) {
   const navRef          = useRef(null);
@@ -18,60 +18,70 @@ export function useMainAnimation(isVisible, onAllDone) {
   const socialsRef      = useRef(null);
   const liderRef        = useRef(null);
 
-  /* ── step 3: reveal text after mac loads ── */
+  /* ── step 3: reveal text after mac loads (DOS typewriter) ── */
   const animateText = useCallback(() => {
     if (!titleRef.current) return;
-    titleRef.current.innerHTML = '';
 
-    const chars = TITLE_TEXT.split('');
-    let i = 0;
+    function makeCursor() {
+      const c = document.createElement('span');
+      c.className = 'dos-cursor';
+      return c;
+    }
 
-    const timer = setInterval(() => {
-      if (i >= chars.length) {
-        clearInterval(timer);
+    function typeString(el, text, interval, onDone) {
+      const cursor = makeCursor();
+      el.innerHTML = '';
+      el.appendChild(cursor);
+      const chars = text.split('');
+      let i = 0;
+      const timer = setInterval(() => {
+        if (i >= chars.length) {
+          clearInterval(timer);
+          setTimeout(() => { cursor.remove(); onDone(); }, 350);
+          return;
+        }
+        const span = document.createElement('span');
+        span.className = 'letter';
+        span.textContent = chars[i];
+        el.insertBefore(span, cursor);
+        i++;
+      }, interval);
+    }
+
+    // ── Title ──
+    typeString(titleRef.current, TITLE_TEXT, 165, () => {
+      // ── Subtitle ──
+      subtitleRef.current.style.opacity = '1';
+      typeString(subtitleRef.current, SUBTITLE_TEXT, 135, () => {
+        // ── Tagline + socials (unchanged) ──
         anime({
-          targets: subtitleRef.current,
+          targets: [taglineRef.current, socialsRef.current],
           opacity: [0, 1],
-          translateY: [1200, 0],
-          duration: 750,
+          translateY: [16, 0],
+          delay: anime.stagger(200),
+          duration: 600,
           easing: 'easeOutExpo',
         });
+        // ── Badges ──
         setTimeout(() => {
           anime({
-            targets: [taglineRef.current, socialsRef.current],
+            targets: liderRef.current.querySelectorAll('.hero__badge:not(.hero__badge--dup)'),
             opacity: [0, 1],
-            translateY: [16, 0],
-            delay: anime.stagger(200),
-            duration: 600,
+            translateY: [20, 0],
+            delay: anime.stagger(500),
+            duration: 500,
             easing: 'easeOutExpo',
+            complete: () => {
+              setTimeout(() => {
+                liderRef.current.classList.add('hero__badges-track--scrolling');
+                if (onAllDone) onAllDone();
+              }, 600);
+            },
           });
-          setTimeout(() => {
-            anime({
-              targets: liderRef.current.querySelectorAll('.hero__badge:not(.hero__badge--dup)'),
-              opacity: [0, 1],
-              translateY: [20, 0],
-              delay: anime.stagger(500),
-              duration: 500,
-              easing: 'easeOutExpo',
-              complete: () => {
-                setTimeout(() => {
-                  liderRef.current.classList.add('hero__badges-track--scrolling');
-                  if (onAllDone) onAllDone();
-                }, 600);
-              },
-            });
-          }, 900);
-        }, 500);
-        return;
-      }
-      const span = document.createElement('span');
-      span.className = 'letter';
-      span.textContent = chars[i];
-      titleRef.current.appendChild(span);
-      anime({ targets: span, opacity: [0, 1], translateY: [18, 0], duration: 180, easing: 'easeOutExpo' });
-      i++;
-    }, 145);
-  }, []);
+        }, 900);
+      });
+    });
+  }, []); // eslint-disable-line
 
   /* ── step 2: mac animation ── */
   const animateMac = useCallback(() => {
