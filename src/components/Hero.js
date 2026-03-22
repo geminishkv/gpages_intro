@@ -39,12 +39,37 @@ export default function Hero({
         </div>
 
         <div ref={socialsRef} className="hero__socials" style={{ opacity: 0 }}>
-          <a href="https://github.com/geminishkv?tab=packages" target="_blank" rel="noreferrer" className="social-btn">Packages</a>
-          <a href="https://hub.docker.com/u/geminishkvdev"     target="_blank" rel="noreferrer" className="social-btn">Docker Hub</a>
-          <a href="https://pypi.org/user/geminishkv"            target="_blank" rel="noreferrer" className="social-btn">PyPI</a>
-          <a href="https://t.me/geminishkv"                    target="_blank" rel="noreferrer" className="social-btn social-btn--outline">Telegram</a>
-          <a href="mailto:shmakovis@inbox.ru"                  target="_blank" rel="noreferrer" className="social-btn social-btn--outline">Email</a>
-          <a href="https://course.geminishkv.tech/"             target="_blank" rel="noreferrer" className="social-btn">Course</a>
+
+          {/* Профили */}
+          <div className="social-group">
+            <span className="social-group__label">Профили</span>
+            <div className="social-group__btns">
+              <a href="https://github.com/geminishkv?tab=packages" target="_blank" rel="noreferrer" className="social-btn">Packages</a>
+              <a href="https://hub.docker.com/u/geminishkvdev"     target="_blank" rel="noreferrer" className="social-btn">Docker Hub</a>
+              <a href="https://pypi.org/user/geminishkv"           target="_blank" rel="noreferrer" className="social-btn">PyPI</a>
+            </div>
+          </div>
+
+          {/* Контент */}
+          <div className="social-group">
+            <span className="social-group__label">Контент</span>
+            <div className="social-group__btns">
+              <a href="https://t.me/shmakovis_appsec" target="_blank" rel="noreferrer" className="social-btn social-btn--content">Blog</a>
+              <a href="https://course.geminishkv.tech/" target="_blank" rel="noreferrer" className="social-btn social-btn--content">Course →</a>
+            </div>
+          </div>
+
+          {/* Контакты */}
+          <div className="social-group">
+            <span className="social-group__label">Контакты</span>
+            <div className="social-group__btns">
+              <a href="https://t.me/geminishkv"     target="_blank" rel="noreferrer" className="social-btn social-btn--outline">Telegram</a>
+              <a href="https://www.linkedin.com/in/geminishkvdev/" target="_blank" rel="noreferrer" className="social-btn social-btn--outline">LINKEDIN</a>
+              <a href="mailto:shmakovis@inbox.ru"   target="_blank" rel="noreferrer" className="social-btn social-btn--outline">Email</a>
+              <a href="https://www.instagram.com/geminishkv" target="_blank" rel="noreferrer" className="social-btn social-btn--outline">INSTAGRAM</a>
+            </div>
+          </div>
+
         </div>
       </div>
 

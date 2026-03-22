@@ -3,8 +3,10 @@
   align-items: center;
   justify-content: space-between;
   padding: 24px 60px;
-  position: relative;
+  position: sticky;
+  top: 0;
   z-index: 10;
+  background: #0a0a0a;
 }
 
 .nav__logo {
@@ -37,7 +39,7 @@
 
 .nav__links a {
   font-size: 0.85rem;
-  color: #888888;
+  color: #cc2200;
   text-decoration: none;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -71,14 +73,14 @@
   font-weight: inherit;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #888888;
+  color: #cc2200;
   transition: color 0.2s;
   padding: 0;
 }
 
 .nav__links a:hover,
 .nav__link-btn:hover {
-  color: #cc2200;
+  color: #ffffff;
 }
 
 /* ── Burger button ── */
@@ -178,11 +180,9 @@
   .nav {
     padding: 20px 24px;
     position: fixed;
-    top: 0;
     left: 0;
     right: 0;
     z-index: 50;
-    background: #0a0a0a;
   }
 
   .nav__logo-img { height: 36px; width: 36px; }

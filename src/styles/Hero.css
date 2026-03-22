@@ -106,10 +106,30 @@
 
 /* ── Socials ── */
 .hero__socials {
-  display: grid;
-  grid-template-columns: repeat(3, max-content);
-  gap: clamp(10px, 1vw, 18px);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
   margin-top: 8px;
+}
+
+.social-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.social-group__label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #444444;
+}
+
+.social-group__btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(8px, 0.8vw, 14px);
 }
 
 .social-btn {
@@ -148,6 +168,17 @@
   color: #ffffff;
 }
 
+.social-btn--content {
+  background: transparent;
+  color: #666666;
+  border-color: #333333;
+}
+
+.social-btn--content:hover {
+  color: #ffffff;
+  border-color: #666666;
+}
+
 /* ── Планшет + мобила: колонка, мак сверху, всё по центру ── */
 @media (max-width: 900px) {
   .hero {
@@ -170,7 +201,8 @@
     margin: 0 auto;
     max-width: 100%;
   }
-  .hero__socials { justify-content: center; }
+  .hero__socials { align-items: center; }
+  .social-group  { align-items: center; }
 }
 
 /* ── Мобила ── */
@@ -180,10 +212,6 @@
   }
   .hero__badge        { width: 80px; height: 110px; }
   .hero__badges-track { gap: 12px; }
-
-  .hero__socials {
-    grid-template-columns: repeat(2, max-content);
-  }
 }
 
 @media (max-width: 576px) {

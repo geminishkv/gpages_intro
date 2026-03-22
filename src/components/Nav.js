@@ -41,9 +41,6 @@ export default function Nav({ navRef, onAboutOpen }) {
         <div className="nav__links">
           <button className="nav__link-btn" onClick={onAboutOpen}>ABOUT</button>
           <a href="https://my.idot.vip/geminishkv" target="_blank" rel="noreferrer">NFC CARD</a>
-          <a href="https://t.me/shmakovis_appsec" target="_blank" rel="noreferrer">BLOG</a>
-          <a href="https://www.instagram.com/geminishkv" target="_blank" rel="noreferrer">INSTAGRAM</a>
-          <a href="https://www.linkedin.com/in/geminishkvdev/" target="_blank" rel="noreferrer">LINKEDIN</a>
         </div>
 
         <button
@@ -63,10 +60,7 @@ export default function Nav({ navRef, onAboutOpen }) {
           <button className="nav__mobile-close" onClick={close} aria-label="Close menu">✕</button>
           <button className="nav__link-btn" onClick={() => { onAboutOpen(); close(); }}>ABOUT</button>
           <a href="https://my.idot.vip/geminishkv" target="_blank" rel="noreferrer" onClick={close}>NFC CARD</a>
-          <a href="https://t.me/shmakovis_appsec" target="_blank" rel="noreferrer" onClick={close}>BLOG</a>
-          <a href="https://www.instagram.com/geminishkv" target="_blank" rel="noreferrer" onClick={close}>INSTAGRAM</a>
-          <a href="https://www.linkedin.com/in/geminishkvdev/" target="_blank" rel="noreferrer" onClick={close}>LINKEDIN</a>
-        </div>,
+          </div>,
         document.body
       )}
     </>
