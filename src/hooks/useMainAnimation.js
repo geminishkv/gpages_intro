@@ -2,7 +2,7 @@ import { useEffect, useRef, useCallback } from 'react';
 import anime from 'animejs/lib/anime.js';
 import { TITLE_TEXT } from '../constants';
 
-export function useMainAnimation(isVisible) {
+export function useMainAnimation(isVisible, onAllDone) {
   const navRef          = useRef(null);
   const blinkerRef      = useRef(null);
   const whiteBoxRef     = useRef(null);
@@ -56,6 +56,7 @@ export function useMainAnimation(isVisible) {
               complete: () => {
                 setTimeout(() => {
                   liderRef.current.classList.add('hero__badges-track--scrolling');
+                  if (onAllDone) onAllDone();
                 }, 600);
               },
             });

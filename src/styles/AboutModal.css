@@ -3,7 +3,7 @@
   position: fixed;
   inset: 0;
   z-index: 500;
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.8);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -21,7 +21,7 @@
 .about-modal {
   position: relative;
   background: #111111;
-  border: 1px solid #2a2a2a;
+  border: 1px solid #222222;
   border-radius: 6px;
   width: calc(100vw - 80px);
   height: calc(100vh - 80px);
@@ -43,72 +43,152 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 28px 40px 20px;
+  padding: 20px 32px;
   border-bottom: 1px solid #1e1e1e;
+  flex-shrink: 0;
+  gap: 16px;
+}
+
+.about-modal__identity {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.about-modal__avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #2a2a2a;
   flex-shrink: 0;
 }
 
-.about-modal__title {
-  font-size: 0.75rem;
+.about-modal__identity-text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.about-modal__name {
+  font-size: 0.9rem;
   font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #cc2200;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+}
+
+.about-modal__role {
+  font-size: 0.72rem;
+  color: #666666;
+  letter-spacing: 0.06em;
 }
 
 .about-modal__close {
   background: none;
   border: none;
-  color: #555555;
-  font-size: 1.4rem;
+  color: #444444;
+  font-size: 1.3rem;
   line-height: 1;
   cursor: pointer;
-  padding: 4px 8px;
+  padding: 6px 8px;
   transition: color 0.2s;
+  margin-left: auto;
+  flex-shrink: 0;
 }
 
 .about-modal__close:hover {
-  color: #cc2200;
+  color: #ffffff;
+}
+
+/* ── Tabs ── */
+.about-tabs {
+  display: flex;
+  border-bottom: 1px solid #1e1e1e;
+  padding: 0 32px;
+  flex-shrink: 0;
+}
+
+.about-tab {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #555555;
+  padding: 14px 16px;
+  position: relative;
+  transition: color 0.2s;
+}
+
+.about-tab::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #cc2200;
+  transform: scaleX(0);
+  transition: transform 0.2s ease;
+}
+
+.about-tab:hover {
+  color: #aaaaaa;
+}
+
+.about-tab--active {
+  color: #ffffff;
+}
+
+.about-tab--active::after {
+  transform: scaleX(1);
 }
 
 /* ── Scrollable body ── */
 .about-modal__body {
   overflow-y: auto;
-  padding: 32px 40px 40px;
   flex: 1;
   scrollbar-width: thin;
   scrollbar-color: #2a2a2a #111111;
 }
 
-.about-modal__body::-webkit-scrollbar       { width: 6px; }
+.about-modal__body::-webkit-scrollbar       { width: 4px; }
 .about-modal__body::-webkit-scrollbar-track { background: #111111; }
-.about-modal__body::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 3px; }
+.about-modal__body::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 2px; }
+
+/* ── Tab content wrapper ── */
+.about-tab-content {
+  padding: 28px 32px 36px;
+}
 
 /* ── Location / meta row ── */
 .about-meta {
   font-size: 0.78rem;
-  color: #888888;
+  color: #666666;
   letter-spacing: 0.06em;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
 
 .about-meta__dot {
-  color: #cc2200;
+  color: #444444;
   margin: 0 8px;
 }
 
-/* ── Info grid (roles / employment / format / languages) ── */
+/* ── Info grid ── */
 .about-info {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 12px 40px;
-  margin-bottom: 36px;
+  gap: 16px 40px;
+  margin-bottom: 32px;
 }
 
 .about-info__item {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 5px;
 }
 
 .about-info__label {
@@ -116,18 +196,18 @@
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #555555;
+  color: #444444;
 }
 
 .about-info__value {
-  font-size: 0.82rem;
+  font-size: 0.85rem;
   color: #cccccc;
   line-height: 1.5;
 }
 
 /* ── Section ── */
 .about-section {
-  margin-bottom: 32px;
+  margin-bottom: 28px;
 }
 
 .about-section__title {
@@ -135,24 +215,24 @@
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #cc2200;
+  color: #888888;
   margin-bottom: 14px;
   padding-bottom: 8px;
-  border-bottom: 1px solid #1e1e1e;
+  border-bottom: 1px solid #1a1a1a;
 }
 
 .about-section__list {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
 .about-section__list li {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: #aaaaaa;
-  line-height: 1.55;
-  padding-left: 14px;
+  line-height: 1.6;
+  padding-left: 16px;
   position: relative;
 }
 
@@ -160,59 +240,107 @@
   content: '—';
   position: absolute;
   left: 0;
-  color: #cc2200;
-  font-size: 0.7rem;
+  color: #444444;
+  font-size: 0.75rem;
 }
 
-/* Вложенный список (университеты) */
 .about-section__sublist {
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: 4px;
-  margin-top: 6px;
+  margin-top: 8px;
   padding-left: 12px;
 }
 
 .about-section__sublist li {
-  font-size: 0.78rem;
-  color: #888888;
+  font-size: 0.8rem;
+  color: #777777;
   padding-left: 12px;
 }
 
 .about-section__sublist li::before {
   content: '·';
-  color: #cc2200;
+  color: #555555;
 }
 
-/* ── Tool rows ── */
-.about-tools {
+/* ── Tool groups (skills tab) ── */
+.about-toolgroup {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  gap: 12px;
+  margin-bottom: 12px;
+  align-items: flex-start;
 }
 
-.about-tools__row {
-  display: flex;
-  gap: 10px;
-  align-items: baseline;
-  flex-wrap: wrap;
-}
-
-.about-tools__label {
+.about-toolgroup__label {
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: #555555;
   white-space: nowrap;
-  min-width: 130px;
+  min-width: 140px;
+  padding-top: 4px;
 }
 
-.about-tools__value {
-  font-size: 0.78rem;
-  color: #aaaaaa;
-  line-height: 1.5;
+/* ── Chips ── */
+.about-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.about-chip {
+  display: inline-block;
+  padding: 3px 9px;
+  border: 1px solid #252525;
+  border-radius: 2px;
+  font-size: 0.72rem;
+  color: #888888;
+  background: #161616;
+  letter-spacing: 0.02em;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.about-chip:hover {
+  border-color: #3a3a3a;
+  color: #bbbbbb;
+}
+
+/* ── Certificates grid ── */
+.about-certs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+}
+
+.about-cert {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px;
+  background: #141414;
+  border: 1px solid #1e1e1e;
+  border-radius: 4px;
+  transition: border-color 0.2s;
+}
+
+.about-cert:hover {
+  border-color: #2a2a2a;
+}
+
+.about-cert__area {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #cc2200;
+}
+
+.about-cert__title {
+  font-size: 0.82rem;
+  color: #cccccc;
+  line-height: 1.45;
 }
 
 /* ── Responsive ── */
@@ -221,8 +349,12 @@
 }
 
 @media (max-width: 600px) {
-  .about-modal__header,
-  .about-modal__body { padding-left: 20px; padding-right: 20px; }
-  .about-info { grid-template-columns: 1fr; }
-  .about-tools__label { min-width: unset; width: 100%; }
+  .about-modal__header  { padding: 16px 20px; }
+  .about-tab-content    { padding: 20px 20px 28px; }
+  .about-tabs           { padding: 0 20px; overflow-x: auto; }
+  .about-tab            { padding: 12px 12px; font-size: 0.68rem; white-space: nowrap; }
+  .about-info           { grid-template-columns: 1fr; }
+  .about-toolgroup      { flex-direction: column; gap: 6px; }
+  .about-toolgroup__label { min-width: unset; }
+  .about-certs-grid     { grid-template-columns: 1fr; }
 }

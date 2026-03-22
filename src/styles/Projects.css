@@ -1,0 +1,142 @@
+.projects {
+  padding: clamp(32px, 4vw, 60px) clamp(40px, 5vw, 120px) clamp(48px, 5vw, 80px);
+  border-top: 1px solid #161616;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.projects--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.projects__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.projects__label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.04em;
+}
+
+.projects__github-link {
+  font-size: 0.75rem;
+  color: #555555;
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.projects__github-link:hover {
+  color: #cc2200;
+}
+
+/* ── Grid ── */
+.projects__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 14px;
+}
+
+/* ── Card ── */
+.project-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  background: #111111;
+  border: 1px solid #1e1e1e;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.project-card:hover {
+  border-color: #cc2200;
+  transform: translateY(-2px);
+}
+
+.project-card:active {
+  transform: translateY(0);
+}
+
+.project-card__top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.project-card__name {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #cc2200;
+  font-family: 'Courier New', Courier, monospace;
+  word-break: break-all;
+}
+
+.project-card__badge {
+  font-size: 0.62rem;
+  color: #555555;
+  border: 1px solid #252525;
+  border-radius: 999px;
+  padding: 1px 8px;
+  letter-spacing: 0.06em;
+  flex-shrink: 0;
+}
+
+.project-card__desc {
+  font-size: 0.78rem;
+  color: #777777;
+  line-height: 1.6;
+  flex: 1;
+}
+
+.project-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 4px;
+}
+
+.project-card__lang {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.72rem;
+  color: #666666;
+}
+
+.project-card__lang-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.project-card__stat {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.72rem;
+  color: #666666;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .projects {
+    padding: 32px 24px 48px;
+  }
+}
+
+@media (max-width: 576px) {
+  .projects__grid {
+    grid-template-columns: 1fr;
+  }
+}

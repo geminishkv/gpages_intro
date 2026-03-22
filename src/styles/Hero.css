@@ -1,5 +1,6 @@
 .hero {
   flex: 1;
+  min-height: 70vh;
   display: flex;
   align-items: center;
   padding: 0 clamp(40px, 5vw, 120px);
@@ -114,6 +115,10 @@
 .social-btn:hover {
   background: #e03000;
   border-color: #e03000;
+}
+
+.social-btn:active {
+  transform: scale(0.97);
 }
 
 .social-btn--outline {

@@ -3,11 +3,13 @@ import '../styles/MainPage.css';
 import { useMainAnimation } from '../hooks/useMainAnimation';
 import Nav        from './Nav';
 import Hero       from './Hero';
+import Projects   from './Projects';
 import Footer     from './Footer';
 import AboutModal from './AboutModal';
 
 export default function MainPage({ isVisible }) {
-  const refs = useMainAnimation(isVisible);
+  const [animDone, setAnimDone] = useState(false);
+  const refs = useMainAnimation(isVisible, () => setAnimDone(true));
   const [aboutOpen, setAboutOpen] = useState(false);
 
   return (
@@ -28,6 +30,7 @@ export default function MainPage({ isVisible }) {
         progressWrapRef={refs.progressWrapRef}
         progressBarRef={refs.progressBarRef}
       />
+      <Projects isVisible={animDone} />
       <Footer />
       <AboutModal isOpen={aboutOpen} onClose={() => setAboutOpen(false)} />
     </div>

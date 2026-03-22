@@ -1,15 +1,35 @@
 .footer {
   display: flex;
-  justify-content: flex-end;
-  padding: 12px 60px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px clamp(40px, 5vw, 120px);
+  border-top: 1px solid #161616;
+}
+
+.footer__copy {
   font-size: 0.72rem;
-  color: #444444;
+  color: #333333;
   letter-spacing: 0.06em;
+}
+
+.footer__tagline {
+  font-size: 0.68rem;
+  color: #2a2a2a;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-style: italic;
 }
 
 @media (max-width: 768px) {
   .footer {
     padding: 12px 24px;
-    justify-content: center;
+    flex-direction: column;
+    gap: 4px;
+    align-items: center;
+  }
+
+  .footer__copy,
+  .footer__tagline {
+    text-align: center;
   }
 }

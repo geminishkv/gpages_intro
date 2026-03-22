@@ -42,6 +42,24 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   transition: color 0.2s;
+  position: relative;
+}
+
+.nav__links a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #cc2200;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.22s ease;
+}
+
+.nav__links a:hover::after {
+  transform: scaleX(1);
 }
 
 .nav__link-btn {
