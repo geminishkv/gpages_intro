@@ -8,11 +8,11 @@
 </div>
 
 <div align="center">
-<img src="https://img.shields.io/github/repo-size/geminishkv/gpages" alt="repo size">
-<img src="https://img.shields.io/github/last-commit/geminishkv/gpages/gpages" alt="last commit">
-<img src="https://img.shields.io/github/commit-activity/m/geminishkv/gpages/gpages" alt="commit activity">
-<img src="https://img.shields.io/github/issues-pr/geminishkv/gpages" alt="pull requests">
-<img src="https://img.shields.io/github/contributors/geminishkv/gpages" alt="contributors">
+<img src="https://img.shields.io/github/repo-size/geminishkv/gpages_intro" alt="repo size">
+<img src="https://img.shields.io/github/last-commit/geminishkv/gpages_intro/gpages" alt="last commit">
+<img src="https://img.shields.io/github/commit-activity/m/geminishkv/gpages_intro/gpages" alt="commit activity">
+<img src="https://img.shields.io/github/issues-pr/geminishkv/gpages_intro" alt="pull requests">
+<img src="https://img.shields.io/github/contributors/geminishkv/gpages_intro" alt="contributors">
 </div>
 
 ***
@@ -129,7 +129,7 @@ gpages/
 ### Локальный запуск
 
 ```bash
-git clone -b gpages https://github.com/geminishkv/gpages.git
+git clone -b gpages https://github.com/geminishkv/gpages_intro.git
 cd gpages
 npm install
 npm start        # http://localhost:3000
