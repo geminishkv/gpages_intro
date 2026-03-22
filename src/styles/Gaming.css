@@ -1,0 +1,436 @@
+.gaming {
+  padding: clamp(40px, 4vw, 64px) clamp(40px, 5vw, 120px);
+  border-top: 1px solid #161616;
+  max-width: 1900px;
+  width: 100%;
+  align-self: center;
+}
+
+/* ── Header ── */
+.gaming__header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.gaming__label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.04em;
+}
+
+/* ── Platform cards row — equal height via shared grid ── */
+.gaming__cards-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  align-items: stretch;
+  margin-bottom: 16px;
+}
+
+/* ── Game grids row ── */
+.gaming__columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.gaming__col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── Platform cards ── */
+.gaming__platform-card {
+  background: #0d0d0d;
+  border: 1px solid #1a1a1a;
+  border-radius: 6px;
+  padding: 24px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  transition: border-color 0.2s;
+}
+
+.gaming__platform-card:hover {
+  border-color: rgba(213, 26, 26, 0.25);
+}
+
+/* ── Platform head ── */
+.platform-card__head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.platform-card__icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.platform-card__icon--psn {
+  background: rgba(0, 55, 145, 0.4);
+  color: #5b9cf6;
+}
+
+.platform-card__icon--xbox {
+  background: rgba(16, 124, 16, 0.3);
+  color: #4caf50;
+}
+
+.platform-card__id {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #cccccc;
+  letter-spacing: 0.02em;
+}
+
+.platform-card__platform-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #333333;
+  margin-left: auto;
+}
+
+/* ── Level row ── */
+.platform-card__level-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.platform-card__level-icon {
+  display: flex;
+  align-items: center;
+  color: #d4a520;
+  flex-shrink: 0;
+}
+
+.platform-card__level-num {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  min-width: 3ch;
+}
+
+.platform-card__bar-wrap {
+  flex: 1;
+  min-width: 0;
+  height: 3px;
+  background: #1a1a1a;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.platform-card__bar {
+  height: 100%;
+  background: linear-gradient(90deg, #cc2200, #D51A1A);
+  border-radius: 2px;
+  transition: width 1s ease;
+}
+
+.platform-card__level-pct {
+  font-size: 0.65rem;
+  color: #444444;
+  letter-spacing: 0.06em;
+  min-width: 3ch;
+  text-align: right;
+}
+
+/* ── Trophy badges ── */
+.platform-card__trophies {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.trophy-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 3px;
+  letter-spacing: 0.02em;
+}
+
+.trophy-badge--platinum {
+  background: rgba(170, 130, 200, 0.12);
+  color: #c9a0dc;
+  border: 1px solid rgba(170, 130, 200, 0.2);
+}
+
+.trophy-badge--gold {
+  background: rgba(212, 165, 32, 0.12);
+  color: #d4a520;
+  border: 1px solid rgba(212, 165, 32, 0.2);
+}
+
+.trophy-badge--silver {
+  background: rgba(160, 160, 175, 0.1);
+  color: #a0a0af;
+  border: 1px solid rgba(160, 160, 175, 0.18);
+}
+
+.trophy-badge--bronze {
+  background: rgba(180, 110, 60, 0.12);
+  color: #b46e3c;
+  border: 1px solid rgba(180, 110, 60, 0.2);
+}
+
+.trophy-badge--total {
+  color: #444444;
+  font-size: 0.7rem;
+  padding: 0;
+  background: none;
+  border: none;
+  margin-left: 4px;
+}
+
+/* ── Last platinum ── */
+.platform-card__last-plat {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #c9a0dc;
+  opacity: 0.7;
+  padding-top: 2px;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.platform-card__last-plat-label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #333333;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.platform-card__last-plat-title {
+  font-size: 0.72rem;
+  color: #777777;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── Xbox stats ── */
+.platform-card__xbox-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 32px;
+}
+
+.xbox-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.xbox-stat__value {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+
+.xbox-stat__label {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #333333;
+}
+
+.platform-card__no-data {
+  font-size: 0.72rem;
+  color: #2a2a2a;
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+/* ── Wall header (shared) ── */
+.gaming__wall-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.gaming__wall-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.04em;
+}
+
+.gaming__wall-count {
+  font-size: 0.65rem;
+  color: #333333;
+  letter-spacing: 0.06em;
+}
+
+/* ── In-column mini grid ── */
+.gaming__mini-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 8px;
+}
+
+.platinum-item {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 4px;
+  overflow: visible;
+  background: #111111;
+  border: 1px solid #1a1a1a;
+  transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
+  cursor: default;
+}
+
+.platinum-item > img,
+.platinum-item > .platinum-item__fallback {
+  border-radius: 3px;
+  overflow: hidden;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* CSS tooltip via data-tooltip */
+.platinum-item::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 7px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: #1c1c1c;
+  border: 1px solid #333;
+  color: #cccccc;
+  font-size: 0.6rem;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  white-space: normal;
+  text-align: center;
+  padding: 5px 8px;
+  border-radius: 3px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s, transform 0.15s;
+  z-index: 20;
+  width: max-content;
+  max-width: 160px;
+}
+
+.platinum-item:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.platinum-item:hover {
+  border-color: rgba(213, 26, 26, 0.4);
+  transform: scale(1.05);
+  box-shadow: 0 0 16px rgba(213, 26, 26, 0.15);
+  z-index: 10;
+  overflow: visible;
+}
+
+.platinum-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 3px;
+}
+
+/* ── Xbox cover fallback (no image) ── */
+.platinum-item--no-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0d0d0d;
+}
+
+.platinum-item__fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1e4a1e;
+  opacity: 0.6;
+}
+
+/* ── Show more ── */
+.gaming__show-more {
+  background: #0d0d0d;
+  border: 1px solid rgba(213, 26, 26, 0.2);
+  border-radius: 4px;
+  color: #888888;
+  font-size: 0.72rem;
+  font-family: inherit;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0;
+  cursor: pointer;
+  transition: border-color 0.25s, box-shadow 0.25s, color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+}
+
+.gaming__show-more:hover {
+  border-color: rgba(213, 26, 26, 0.5);
+  box-shadow: 0 0 24px rgba(213, 26, 26, 0.1);
+  color: #D51A1A;
+}
+
+/* ── Responsive ── */
+
+/* Tablet */
+@media (max-width: 900px) {
+  .gaming { padding: 40px 24px; }
+  .gaming__platform-card { padding: 20px 22px; }
+  .gaming__mini-grid { grid-template-columns: repeat(auto-fill, minmax(64px, 1fr)); gap: 6px; }
+}
+
+/* Small tablet — stack platform cards, keep game grids side-by-side */
+@media (max-width: 768px) {
+  .gaming__cards-row { grid-template-columns: 1fr; }
+  .trophy-badge { font-size: 0.74rem; padding: 3px 8px; }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .gaming { padding: 32px 16px; }
+  .gaming__platform-card { padding: 16px 18px; gap: 14px; }
+  .gaming__columns { grid-template-columns: 1fr; }
+  .gaming__mini-grid { grid-template-columns: repeat(auto-fill, minmax(60px, 1fr)); gap: 6px; }
+  .gaming__show-more { aspect-ratio: auto; padding: 14px; grid-column: 1 / -1; }
+  .platform-card__level-num { font-size: 1.2rem; }
+  .xbox-stat__value { font-size: 1.2rem; }
+  .platform-card__last-plat-title { font-size: 0.68rem; }
+  .platinum-item::after { display: none; }
+}
+
+/* Very small phones */
+@media (max-width: 380px) {
+  .gaming__mini-grid { grid-template-columns: repeat(auto-fill, minmax(52px, 1fr)); gap: 5px; }
+  .trophy-badge { font-size: 0.7rem; padding: 2px 6px; }
+}

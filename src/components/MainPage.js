@@ -8,6 +8,7 @@ import Blog       from './Blog';
 import Experience from './Experience';
 import Tools      from './Tools';
 import Projects   from './Projects';
+import Gaming     from './Gaming';
 import Footer     from './Footer';
 import AboutModal from './AboutModal';
 
@@ -48,6 +49,9 @@ export default function MainPage({ isVisible }) {
       </div>
       <div className="section-reveal" id="tools" ref={refs.toolsRef}>
         <Tools />
+      </div>
+      <div className="section-reveal" ref={refs.gamingRef}>
+        <Gaming />
       </div>
       <div className="section-reveal" ref={refs.footerRef}>
         <Footer />

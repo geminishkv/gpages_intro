@@ -8,6 +8,7 @@ const path  = require('path');
 const CHANNEL     = 'shmakovis_appsec';
 const POSTS_COUNT = 4;
 const OUTPUT      = path.join(__dirname, '../src/data/tg-posts.json');
+const IMG_DIR     = path.join(__dirname, '../public/img/blog');
 
 function fetchPage(url) {
   return new Promise((resolve, reject) => {
@@ -62,6 +63,37 @@ function parseHashtags(html) {
     try { tags.push(decodeURIComponent(m[1]).toLowerCase()); } catch { /* skip */ }
   }
   return [...new Set(tags)];
+}
+
+function downloadImage(url, dest) {
+  return new Promise((resolve) => {
+    const parsed = new URL(url);
+    const req = https.request(
+      {
+        hostname: parsed.hostname,
+        path:     parsed.pathname + parsed.search,
+        method:   'GET',
+        headers:  { 'User-Agent': 'Mozilla/5.0 (compatible; gpages-blog-updater/1.0)' },
+      },
+      (res) => {
+        if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
+          downloadImage(res.headers.location, dest).then(resolve);
+          return;
+        }
+        if (res.statusCode !== 200) { resolve(false); return; }
+        const chunks = [];
+        res.on('data', c => chunks.push(c));
+        res.on('end', () => {
+          try {
+            fs.writeFileSync(dest, Buffer.concat(chunks));
+            resolve(true);
+          } catch { resolve(false); }
+        });
+      },
+    );
+    req.on('error', () => resolve(false));
+    req.end();
+  });
 }
 
 function parseSubscribers(html) {
@@ -138,6 +170,21 @@ async function main() {
   if (posts.length === 0) {
     console.error('✗ No posts parsed — keeping existing file.');
     process.exit(0);
+  }
+
+  // Download post images locally so CDN URLs don't expire
+  fs.mkdirSync(IMG_DIR, { recursive: true });
+  for (const post of posts) {
+    if (!post.image) continue;
+    const ext  = post.image.match(/\.(jpe?g|png|webp)/i)?.[1] ?? 'jpg';
+    const dest = path.join(IMG_DIR, `${post.id}.${ext}`);
+    const ok   = await downloadImage(post.image, dest);
+    if (ok) {
+      post.image = `/img/blog/${post.id}.${ext}`;
+      console.log(`  ✓ image ${post.id}.${ext}`);
+    } else {
+      console.warn(`  ✗ image ${post.id} — keeping CDN url`);
+    }
   }
 
   const output = { subscribers, posts };
