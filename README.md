@@ -36,7 +36,7 @@
 | Деплой | scripts/deploy.js (git) → GitHub Pages, ветка `gh-pages` |
 | Домен | geminishkv.tech (reg.ru + GitHub Pages custom domain) |
 | SEO | JSON-LD Person schema, Open Graph, Twitter Card, sitemap.xml, robots.txt |
-| CI/CD | GitHub Actions — автообновление блога (пн 06:00 UTC) и GitHub stats (пн 01:00 UTC) |
+| CI/CD | GitHub Actions — блог (ежедн. 06:00 UTC), gaming (пн 07:00 UTC), stats (пн 01:00 UTC) |
 
 ***
 
@@ -48,9 +48,10 @@
 - **Badges marquee** — бесконечный скролл логотипов достижений
 - **Stats** — 5 ключевых метрик с анимацией count-up через IntersectionObserver
 - **Open-Source Projects** — карточки GitHub-репозиториев (stars, forks, язык)
-- **Blog** — превью постов из Telegram-канала `shmakovis_appsec` (cover, теги, просмотры, модалка)
+- **Blog** — превью постов из Telegram-канала `shmakovis_appsec` (cover, теги, просмотры, модалка); изображения кешируются локально
 - **Experience** — 6 мест работы в виде карточек с логотипами компаний
 - **Tools** — Tech Stack по категориям, Domains, Certifications (16 сертификатов)
+- **Gaming** — PSN и Xbox статистика: уровень, трофеи, platinum wall (90 платин), game history; обновляется через CI
 - **About modal** — полноэкранный попап с резюме, навыками, инструментами и достижениями
 - **Nav** — якорные ссылки (Blog, Experience, Tools), бургер-меню с portal-рендерингом
 - **Responsive** — адаптив под мобильные (≤576px), планшеты (≤900px) и десктоп
@@ -65,7 +66,11 @@ gpages/
 ├── public/
 │   ├── img/
 │   │   ├── badges/           # Логотипы достижений (marquee)
+│   │   ├── blog/             # Обложки постов Telegram (кеш, обновляется CI)
 │   │   ├── companies/        # Логотипы работодателей
+│   │   ├── gaming/
+│   │   │   ├── psn/          # Обложки платиновых трофеев PSN (npwrId.png)
+│   │   │   └── xbox/         # Обложки игр Xbox (slug.jpg)
 │   │   ├── hero/             # Mac mockup, логотип, аватар
 │   │   └── splash/           # Заставка сплеш-экрана
 │   ├── CNAME                 # Кастомный домен GitHub Pages
@@ -84,6 +89,7 @@ gpages/
 │   │   ├── Blog.js           # Превью постов Telegram + модалка
 │   │   ├── Experience.js     # Карточки опыта работы
 │   │   ├── Tools.js          # Tech Stack / Domains / Certifications
+│   │   ├── Gaming.js         # PSN + Xbox статистика, platinum wall, game history
 │   │   ├── Footer.js
 │   │   └── AboutModal.js     # Попап с резюме
 │   ├── hooks/
@@ -91,7 +97,8 @@ gpages/
 │   ├── constants/
 │   │   └── index.js          # Данные: опыт, проекты, статистика, сертификаты
 │   ├── data/
-│   │   └── tg-posts.json     # Посты Telegram (обновляется CI)
+│   │   ├── tg-posts.json     # Посты Telegram (обновляется CI ежедневно)
+│   │   └── gaming.json       # PSN/Xbox статистика (обновляется CI еженедельно)
 │   └── styles/
 │       ├── App.css
 │       ├── SplashScreen.css  # Глитч: clip-path, RGB-layers, scanlines
@@ -104,15 +111,18 @@ gpages/
 │       ├── Blog.css          # Карточки, модалка, CTA-блок
 │       ├── Experience.css    # Карточки работодателей
 │       ├── Tools.css         # Tech Stack, Domains, Certifications
+│       ├── Gaming.css        # Platform cards, platinum wall, game history grid
 │       └── Footer.css
 ├── scripts/
-│   ├── update-tg-posts.js    # Парсинг Telegram HTML → tg-posts.json
+│   ├── update-tg-posts.js    # Парсинг Telegram HTML → tg-posts.json + кеш изображений
+│   ├── update-gaming.js      # Stratege.ru + Xbox API → gaming.json + кеш обложек
 │   ├── update-stats.js       # GitHub API → stars/forks в constants/index.js
 │   ├── generate-sitemap.js   # Генерация public/sitemap.xml с текущей датой
 │   └── deploy.js             # Кастомный деплой в gh-pages (замена gh-pages пакета)
 ├── .github/workflows/
-│   ├── update-blog.yml       # Cron: пн 06:00 UTC
-│   └── update-stats.yml      # Cron: пн 01:00 UTC
+│   ├── update-blog.yml       # Cron: ежедн. 06:00 UTC — TG-посты + деплой
+│   ├── update-interests.yml  # Cron: пн 07:00 UTC — gaming stats + деплой
+│   └── update-stats.yml      # Cron: пн 01:00 UTC — GitHub stats + деплой
 ├── package.json
 ├── package-lock.json
 ├── CNAME
@@ -150,16 +160,19 @@ git push origin gpages
 npm run deploy
 ```
 
+> **Важно:** перед деплоем удалить директорию `build/` если она содержит `.git` (артефакт предыдущего деплоя через `gh-pages`). Node.js 18 LTS обязателен — `react-scripts` 5 несовместим с Node 25+.
+
 ***
 
 ### CI/CD
 
-| Workflow | Расписание | Действие |
-|----------|-----------|---------|
-| `update-blog.yml` | Пн 06:00 UTC | Парсинг TG-канала → обновление `tg-posts.json` → деплой |
-| `update-stats.yml` | Пн 01:00 UTC | GitHub API → обновление stars/forks → деплой |
+| Workflow | Расписание | Секреты | Действие |
+|----------|-----------|---------|---------|
+| `update-blog.yml` | Ежедн. 06:00 UTC | — | Парсинг TG-канала → `tg-posts.json` + кеш `public/img/blog/` → деплой |
+| `update-interests.yml` | Пн 07:00 UTC | `STRATEGE_COOKIE` | Stratege.ru + Xbox → `gaming.json` + кеш обложек → деплой |
+| `update-stats.yml` | Пн 01:00 UTC | — | GitHub API → stars/forks → деплой |
 
-Оба workflow запускаются вручную через `workflow_dispatch`.
+Все workflow запускаются вручную через `workflow_dispatch`.
 
 ***
 
@@ -172,3 +185,5 @@ npm run deploy
 ***
 
 Copyright (c) 2026 Elijah S Shmakov
+
+![logo](public/img/logotype/logotypemd.jpg)
