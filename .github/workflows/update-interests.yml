@@ -2,7 +2,7 @@ name: Update Interests
 
 on:
   schedule:
-    - cron: '0 7 * * *'   # каждый день в 07:00 UTC
+    - cron: '0 7 * * 1'   # каждый понедельник в 07:00 UTC
   workflow_dispatch:        # ручной запуск
 
 permissions:
@@ -25,19 +25,19 @@ jobs:
           node-version: '18'
           cache: 'npm'
 
-      - name: Fetch gaming stats
+      - name: Fetch gaming stats + update trophy photos
         run: node scripts/update-gaming.js
         env:
           STRATEGE_COOKIE: ${{ secrets.STRATEGE_COOKIE }}
 
-      - name: Commit if data changed
+      - name: Commit photos + data if changed
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add src/data/gaming.json public/img/gaming/psn/ public/img/gaming/xbox/
           git diff --cached --quiet \
             && echo "Nothing to commit." \
-            || git commit -m "chore: update gaming stats [skip ci]"
+            || git commit -m "chore: update gaming stats + photos [skip ci]"
 
       - name: Push updated data
         run: git push origin gpages

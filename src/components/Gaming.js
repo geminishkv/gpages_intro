@@ -1,11 +1,9 @@
-import { useState } from 'react';
 import '../styles/Gaming.css';
 import DATA from '../data/gaming.json';
 
-const PLATINUM_INITIAL = 17;
-const XBOX_INITIAL     = 17;
+const GRID_LIMIT = 18;
 
-/* ─── Icons ─── */
+/* ─── Platform icons ─── */
 function PsnIcon() {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -22,39 +20,68 @@ function XboxIcon({ size = 20 }) {
   );
 }
 
-const TROPHY_PATH = "M7 4V2H17V4H21V7C21 9.21 19.47 11.07 17.41 11.5C16.78 13.19 15.44 14.54 13.77 15.17L13 20H16V22H8V20H11L10.23 15.17C8.56 14.54 7.22 13.19 6.59 11.5C4.53 11.07 3 9.21 3 7V4H7ZM5 6V7C5 8.1 5.67 9.03 6.61 9.42C6.1 8.72 5.73 7.91 5.53 7H5V6ZM18.47 9.42C19.33 9.03 20 8.1 20 7V6H18.47C18.27 6.91 17.9 7.72 17.39 8.42C17.5 8.76 17.57 9.09 17.57 9.42H18.47Z";
+/* ─── PSN level star icon ─── */
+function PsnLevelIcon({ size = 15 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 2l2.09 6.26H21l-5.47 3.97 2.09 6.26L12 14.52l-5.62 4.07 2.09-6.26L3 8.26h6.91z"/>
+    </svg>
+  );
+}
 
+/* ─── Xbox stat icons ─── */
+function GamerscoreIcon({ size = 18 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-12.5L13.62 12H18l-3.5 2.54 1.34 4.12L12 16.1l-3.84 2.56 1.34-4.12L6 12h4.38z"/>
+    </svg>
+  );
+}
+
+function AchievementsIcon({ size = 18 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94A5.01 5.01 0 0 0 11 15.9V18H7v2h10v-2h-4v-2.1a5.01 5.01 0 0 0 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z"/>
+    </svg>
+  );
+}
+
+function GamesPlayedIcon({ size = 18 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H9v2H7v-2H5v-2h2V9h2v2h2v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5S14.67 12 15.5 12s1.5.67 1.5 1.5S16.33 15 15.5 15zm3-3c-.83 0-1.5-.67-1.5-1.5S17.67 9 18.5 9s1.5.67 1.5 1.5S19.33 12 18.5 12z"/>
+    </svg>
+  );
+}
+
+function CompletionIcon({ size = 18 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+    </svg>
+  );
+}
+
+/* ─── Small trophy icon for "last platinum" row ─── */
 function TrophyIcon({ size = 14 }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d={TROPHY_PATH} />
+      <path d="M7 4V2H17V4H21V7C21 9.21 19.47 11.07 17.41 11.5C16.78 13.19 15.44 14.54 13.77 15.17L13 20H16V22H8V20H11L10.23 15.17C8.56 14.54 7.22 13.19 6.59 11.5C4.53 11.07 3 9.21 3 7V4H7ZM5 6V7C5 8.1 5.67 9.03 6.61 9.42C6.1 8.72 5.73 7.91 5.53 7H5V6ZM18.47 9.42C19.33 9.03 20 8.1 20 7V6H18.47C18.27 6.91 17.9 7.72 17.39 8.42C17.5 8.76 17.57 9.09 17.57 9.42H18.47Z"/>
     </svg>
   );
 }
 
 export default function Gaming() {
-  const [platExpanded, setPlatExpanded] = useState(false);
-  const [xboxExpanded, setXboxExpanded] = useState(false);
   const { psn, xbox, platinums = [], xboxGames = [] } = DATA;
 
-  // Xbox: all games for the grid, cover-only for count display
-  const xboxAll = xboxGames;
-
-  const visiblePlatinums = platExpanded ? platinums : platinums.slice(0, PLATINUM_INITIAL);
-  const visibleXbox      = xboxExpanded ? xboxAll   : xboxAll.slice(0, XBOX_INITIAL);
-
   const hasPlatinumWall = platinums.length > 0;
-  const hasXboxGames    = xboxAll.length > 0;
+  const hasXboxGames    = xboxGames.length > 0;
   const hasXboxStats    = (xbox.gamerscore ?? 0) > 0;
 
-  // Last platinum earned (first in array = most recent from stratege)
   const lastPlatinum = platinums[0]?.title ?? null;
-
-  // Last Xbox game played (first in array = most recently played)
   const lastXboxGame = xbox.lastGame ?? xboxGames[0]?.title ?? null;
 
-  // Xbox average completion %
-  const xboxWithPct = xboxAll.filter(g => g.pct > 0);
+  const xboxWithPct = xboxGames.filter(g => g.pct > 0);
   const xboxAvgPct  = xboxWithPct.length > 0
     ? Math.round(xboxWithPct.reduce((s, g) => s + g.pct, 0) / xboxWithPct.length)
     : null;
@@ -62,60 +89,64 @@ export default function Gaming() {
   return (
     <section className="gaming">
 
-      {/* ── Header ── */}
       <div className="gaming__header">
         <span className="gaming__label">Interests</span>
       </div>
 
-      {/* ── Platform cards row (equal height via shared grid) ── */}
+      {/* ── Platform cards row ── */}
       <div className="gaming__cards-row">
 
         {/* PSN card */}
         <div className="gaming__platform-card">
           <div className="platform-card__head">
-            <span className="platform-card__icon platform-card__icon--psn">
-              <PsnIcon />
-            </span>
+            <span className="platform-card__icon platform-card__icon--psn"><PsnIcon /></span>
             <span className="platform-card__id">{psn.id}</span>
             <span className="platform-card__platform-label">PlayStation</span>
           </div>
 
-          <div className="platform-card__level-row">
-            <span className="platform-card__level-icon">
-              <TrophyIcon size={14} />
-            </span>
-            <span className="platform-card__level-num">{psn.level}</span>
-            <div className="platform-card__bar-wrap">
-              <div
-                className="platform-card__bar"
-                style={{ width: `${psn.levelPercent || 0}%` }}
-              />
+          <div className="platform-card__xbox-stats">
+            <div className="xbox-stat">
+              <span className="xbox-stat__icon" style={{ color: '#d4a520' }}><PsnLevelIcon size={18} /></span>
+              <span className="xbox-stat__text">
+                <span className="xbox-stat__value">{psn.level}</span>
+                <span className="xbox-stat__label">Level</span>
+              </span>
             </div>
-            {psn.levelPercent > 0 && (
-              <span className="platform-card__level-pct">{psn.levelPercent}%</span>
-            )}
-          </div>
-
-          <div className="platform-card__trophies">
-            <span className="trophy-badge trophy-badge--platinum">
-              <TrophyIcon />
-              {psn.platinum}
-            </span>
-            <span className="trophy-badge trophy-badge--gold">
-              <TrophyIcon />
-              {psn.gold}
-            </span>
-            <span className="trophy-badge trophy-badge--silver">
-              <TrophyIcon />
-              {psn.silver}
-            </span>
-            <span className="trophy-badge trophy-badge--bronze">
-              <TrophyIcon />
-              {psn.bronze}
-            </span>
-            <span className="trophy-badge trophy-badge--total">
-              {psn.total.toLocaleString('ru-RU')}
-            </span>
+            <div className="xbox-stat">
+              <span className="xbox-stat__icon" style={{ color: '#c9a0dc' }}><TrophyIcon size={18} /></span>
+              <span className="xbox-stat__text">
+                <span className="xbox-stat__value">{psn.platinum}</span>
+                <span className="xbox-stat__label">Platinum</span>
+              </span>
+            </div>
+            <div className="xbox-stat">
+              <span className="xbox-stat__icon" style={{ color: '#d4a520' }}><TrophyIcon size={18} /></span>
+              <span className="xbox-stat__text">
+                <span className="xbox-stat__value">{psn.gold}</span>
+                <span className="xbox-stat__label">Gold</span>
+              </span>
+            </div>
+            <div className="xbox-stat">
+              <span className="xbox-stat__icon" style={{ color: '#94a3b8' }}><TrophyIcon size={18} /></span>
+              <span className="xbox-stat__text">
+                <span className="xbox-stat__value">{psn.silver}</span>
+                <span className="xbox-stat__label">Silver</span>
+              </span>
+            </div>
+            <div className="xbox-stat">
+              <span className="xbox-stat__icon" style={{ color: '#b46e3c' }}><TrophyIcon size={18} /></span>
+              <span className="xbox-stat__text">
+                <span className="xbox-stat__value">{psn.bronze}</span>
+                <span className="xbox-stat__label">Bronze</span>
+              </span>
+            </div>
+            <div className="xbox-stat">
+              <span className="xbox-stat__icon" style={{ color: '#555' }}><TrophyIcon size={18} /></span>
+              <span className="xbox-stat__text">
+                <span className="xbox-stat__value">{psn.total.toLocaleString('ru-RU')}</span>
+                <span className="xbox-stat__label">Total</span>
+              </span>
+            </div>
           </div>
 
           {lastPlatinum && (
@@ -130,9 +161,7 @@ export default function Gaming() {
         {/* Xbox card */}
         <div className="gaming__platform-card">
           <div className="platform-card__head">
-            <span className="platform-card__icon platform-card__icon--xbox">
-              <XboxIcon />
-            </span>
+            <span className="platform-card__icon platform-card__icon--xbox"><XboxIcon /></span>
             <span className="platform-card__id">{xbox.id}</span>
             <span className="platform-card__platform-label">Xbox</span>
           </div>
@@ -141,25 +170,37 @@ export default function Gaming() {
             <>
               <div className="platform-card__xbox-stats">
                 <div className="xbox-stat">
-                  <span className="xbox-stat__value">{xbox.gamerscore.toLocaleString('ru-RU')}</span>
-                  <span className="xbox-stat__label">Gamerscore</span>
+                  <span className="xbox-stat__icon"><GamerscoreIcon size={18} /></span>
+                  <span className="xbox-stat__text">
+                    <span className="xbox-stat__value">{xbox.gamerscore.toLocaleString('ru-RU')}</span>
+                    <span className="xbox-stat__label">Gamerscore</span>
+                  </span>
                 </div>
                 {xbox.games > 0 && (
                   <div className="xbox-stat">
-                    <span className="xbox-stat__value">{xbox.games}</span>
-                    <span className="xbox-stat__label">Games</span>
+                    <span className="xbox-stat__icon"><GamesPlayedIcon size={18} /></span>
+                    <span className="xbox-stat__text">
+                      <span className="xbox-stat__value">{xbox.games}</span>
+                      <span className="xbox-stat__label">Games</span>
+                    </span>
                   </div>
                 )}
                 {xboxAvgPct !== null && (
                   <div className="xbox-stat">
-                    <span className="xbox-stat__value">{xboxAvgPct}%</span>
-                    <span className="xbox-stat__label">Avg. completion</span>
+                    <span className="xbox-stat__icon"><CompletionIcon size={18} /></span>
+                    <span className="xbox-stat__text">
+                      <span className="xbox-stat__value">{xboxAvgPct}%</span>
+                      <span className="xbox-stat__label">Avg. completion</span>
+                    </span>
                   </div>
                 )}
                 {xbox.achievements > 0 && (
                   <div className="xbox-stat">
-                    <span className="xbox-stat__value">{xbox.achievements.toLocaleString('ru-RU')}</span>
-                    <span className="xbox-stat__label">Achievements</span>
+                    <span className="xbox-stat__icon"><AchievementsIcon size={18} /></span>
+                    <span className="xbox-stat__text">
+                      <span className="xbox-stat__value">{xbox.achievements.toLocaleString('ru-RU')}</span>
+                      <span className="xbox-stat__label">Achievements</span>
+                    </span>
                   </div>
                 )}
               </div>
@@ -178,10 +219,10 @@ export default function Gaming() {
 
       </div>
 
-      {/* ── Game grids row (two aligned columns) ── */}
+      {/* ── Game grids — same layout for both ── */}
       <div className="gaming__columns">
 
-        {/* PSN platinums */}
+        {/* PSN Platinum Wall */}
         <div className="gaming__col">
           {hasPlatinumWall && (
             <>
@@ -190,63 +231,49 @@ export default function Gaming() {
                 <span className="gaming__wall-count">{psn.platinum ?? platinums.length} trophies</span>
               </div>
               <div className="gaming__mini-grid">
-                {visiblePlatinums.map((p, i) => (
+                {platinums.slice(0, GRID_LIMIT).map((p, i) => (
                   <div
                     key={i}
-                    className={`platinum-item${!p.image ? ' platinum-item--no-img' : ''}`}
+                    className={`platinum-item${!p.image ? ' platinum-item--empty' : ''}`}
                     data-tooltip={p.title}
                   >
-                    {p.image ? (
-                      <img src={p.image} alt={p.title} loading="lazy" />
-                    ) : (
-                      <span className="platinum-item__fallback">
-                        <TrophyIcon size={22} />
-                      </span>
-                    )}
+                    {p.image
+                      ? <img src={p.image} alt={p.title} loading="lazy" />
+                      : <span className="platinum-item__fallback"><TrophyIcon size={22} /></span>
+                    }
                   </div>
                 ))}
-                {!platExpanded && platinums.length > PLATINUM_INITIAL && (
-                  <button className="gaming__show-more" onClick={() => setPlatExpanded(true)}>
-                    +{platinums.length - PLATINUM_INITIAL}
-                  </button>
-                )}
               </div>
             </>
           )}
         </div>
 
-        {/* Xbox games */}
+        {/* Xbox Game History */}
         <div className="gaming__col">
           {hasXboxGames && (
             <>
               <div className="gaming__wall-header">
                 <span className="gaming__wall-label">Game History</span>
-                <span className="gaming__wall-count">{xbox.games ?? xboxAll.length} games</span>
+                <span className="gaming__wall-count">{xbox.games ?? xboxGames.length} games</span>
               </div>
               <div className="gaming__mini-grid">
-                {visibleXbox.map((g, i) => {
+                {xboxGames.slice(0, GRID_LIMIT).map((g, i) => {
                   const tooltip = g.maxScore
                     ? `${g.title} · ${g.gameScore}/${g.maxScore}G`
                     : g.title;
                   return (
                     <div
                       key={i}
-                      className={`platinum-item platinum-item--xbox${!g.image ? ' platinum-item--no-img' : ''}`}
+                      className={`platinum-item${!g.image ? ' platinum-item--empty' : ''}`}
                       data-tooltip={tooltip}
                     >
-                      {g.image ? (
-                        <img src={g.image} alt={g.title} loading="lazy" />
-                      ) : (
-                        <span className="platinum-item__fallback"><XboxIcon size={18} /></span>
-                      )}
+                      {g.image
+                        ? <img src={g.image} alt={g.title} loading="lazy" />
+                        : <span className="platinum-item__fallback"><XboxIcon size={18} /></span>
+                      }
                     </div>
                   );
                 })}
-                {!xboxExpanded && xboxAll.length > XBOX_INITIAL && (
-                  <button className="gaming__show-more" onClick={() => setXboxExpanded(true)}>
-                    +{xboxAll.length - XBOX_INITIAL}
-                  </button>
-                )}
               </div>
             </>
           )}

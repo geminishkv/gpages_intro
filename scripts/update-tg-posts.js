@@ -138,7 +138,7 @@ function parsePosts(html) {
 
     const post = {
       id:   postNum,
-      text: text.slice(0, 1200),
+      text,
       date,
       url:  `https://t.me/${CHANNEL}/${postNum}`,
       views,

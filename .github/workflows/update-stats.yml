@@ -2,7 +2,7 @@ name: Update GitHub Stats
 
 on:
   schedule:
-    - cron: '0 1 * * 1'   # каждый понедельник в 01:00 UTC
+    - cron: '0 7 * * 1'   # каждый понедельник в 07:00 UTC
   workflow_dispatch:        # ручной запуск при необходимости
 
 permissions:

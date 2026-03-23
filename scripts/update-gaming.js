@@ -163,12 +163,31 @@ function parseStrategeGames(html) {
     const srcUrl  = m[1].replace(/TROP000[^.]*\.PNG/i, 'TROP000_w100h100.PNG');
     const npwrId  = m[2];  // e.g. NPWR38489_00
     const title   = decodeEntities(m[3].replace(/\s*-\s*получен:.*$/i, '').trim());
+    // Detect platform from nearest preceding href (e.g. /ps5/games/... or /ps4/games/...)
+    const before  = section.slice(Math.max(0, m.index - 300), m.index);
+    const hrefM   = before.match(/href="\/([^/"]+)\/games\//);
+    const platform = hrefM ? hrefM[1] : 'unknown';  // 'ps5', 'ps4', 'ps3', etc.
     if (title && !games.find(g => g.npwrId === npwrId)) {
-      games.push({ title, npwrId, srcUrl });
+      games.push({ title, npwrId, srcUrl, platform });
     }
   }
 
   return games;
+}
+
+// ── Remove orphan images not in current game list ─────────────────
+
+function cleanupOrphanImages(dir, validBaseNames) {
+  if (!fs.existsSync(dir)) return;
+  let removed = 0;
+  for (const file of fs.readdirSync(dir)) {
+    const base = path.parse(file).name;
+    if (!validBaseNames.has(base)) {
+      fs.unlinkSync(path.join(dir, file));
+      removed++;
+    }
+  }
+  if (removed > 0) console.log(`  🗑 Removed ${removed} orphan image(s) from ${path.basename(dir)}/`);
 }
 
 // ── Download PSN trophy images locally ────────────────────────────
@@ -189,15 +208,19 @@ function downloadPsnImages(games, cookie) {
     ];
     try {
       execFileSync('curl', args, { timeout: 20000 });
-      // Verify it's not a placeholder (placeholder is ~36KB, real icons are <20KB)
       const size = fs.statSync(localFile).size;
-      if (size > 20000) {
-        fs.unlinkSync(localFile);  // discard placeholder
+      if (size === 0) {
+        fs.unlinkSync(localFile);
+        console.log(`    ✗ ${game.npwrId} — empty response`);
+      } else if (size > 34000) {
+        fs.unlinkSync(localFile);  // discard placeholder (~36KB)
+        console.log(`    ✗ ${game.npwrId} — placeholder (${Math.round(size/1024)}KB)`);
       } else {
         downloaded++;
       }
-    } catch {
+    } catch (e) {
       try { fs.unlinkSync(localFile); } catch { /* ignore */ }
+      console.log(`    ✗ ${game.npwrId} — curl error: ${e.message}`);
     }
   }
 
@@ -213,6 +236,7 @@ function mapToLocalPaths(games) {
     return { title, image };  // include all — component handles null-image fallback
   });
 }
+
 
 // ── Stratege.ru profile stats parser ──────────────────────────────
 
@@ -252,16 +276,17 @@ function slugify(title) {
 
 function downloadXboxImages(games) {
   fs.mkdirSync(IMG_DIR_XBOX, { recursive: true });
-  let downloaded = 0, skipped = 0;
+  let downloaded = 0;
   for (const game of games) {
     if (!game.image) continue;
-    const slug      = slugify(game.title);
-    const localFile = path.join(IMG_DIR_XBOX, `${slug}.jpg`);
+    const slug = slugify(game.title);
+    const ext  = game.image.match(/\.(jpe?g|png|webp)/i)?.[1] ?? 'jpg';
+    const localFile = path.join(IMG_DIR_XBOX, `${slug}.${ext}`);
     try {
       execFileSync('curl', ['-s', '--max-time', '15', '-L', '-o', localFile, game.image], { timeout: 20000 });
       const size = fs.statSync(localFile).size;
       if (size > 500) {
-        game.localImage = `/img/gaming/xbox/${slug}.jpg`;
+        game.localImage = `/img/gaming/xbox/${slug}.${ext}`;
         downloaded++;
       } else {
         fs.unlinkSync(localFile);
@@ -270,7 +295,7 @@ function downloadXboxImages(games) {
       try { fs.unlinkSync(localFile); } catch { /* ignore */ }
     }
   }
-  console.log(`  ✓ Downloaded ${downloaded} new Xbox covers, ${skipped} already cached`);
+  console.log(`  ✓ Downloaded ${downloaded} Xbox covers`);
 }
 
 // ── Xbox parsers ───────────────────────────────────────────────────
@@ -312,7 +337,7 @@ function parseXboxGames(html) {
 // ── Main ──────────────────────────────────────────────────────────
 
 async function main() {
-  let existing = { psn: {}, xbox: {}, platinums: [], xboxGames: [] };
+  let existing = { psn: {}, xbox: {}, platinums: [], xboxGames: [], psnGames: [] };
   try { existing = JSON.parse(fs.readFileSync(OUTPUT, 'utf8')); } catch { /* use defaults */ }
 
   const psn     = { id: PSN_ID,  ...existing.psn  };
@@ -360,13 +385,14 @@ async function main() {
     }
 
     // Paginate AJAX to collect any remaining platinums
-    // Try both type=current (in-progress) and type=comp (completed) to maximize coverage
-    for (const gameType of ['current', 'comp']) {
+    // Try multiple type/sort combos to maximize coverage
+    for (const [gameType, sortVal] of [['current', 0], ['comp', 0], ['current', 1], ['comp', 1]]) {
       let page = 0;
       let emptyStreak = 0;
       const prevTotalBefore = allParsed.size;
       while (page < 20) {
-        const ajaxParams = `ajax_mode=profile_all_loader&action=all_page&firmware=1&uid=${STRATEGE_UID}&sort=0&type=${gameType}&compare=&page=${page}`;
+        const offset = page * 20;
+        const ajaxParams = `ajax_mode=profile_all_loader&action=all_page&firmware=1&uid=${STRATEGE_UID}&sort=${sortVal}&type=${gameType}&compare=&page=${page}&start=${offset}&offset=${offset}`;
         const { status: sA, body: bA } = curlFetch(ajaxUrl, {
           referer: profilePageUrl,
           cookie:  STRATEGE_COOKIE,
@@ -383,10 +409,10 @@ async function main() {
         const fromAjax = parseStrategeGames(bA);
         fromAjax.forEach(g => allParsed.set(g.npwrId, g));
         const newFound = allParsed.size - prevSize;
-        console.log(`  AJAX [${gameType}] page ${page}: ${fromAjax.length} found, ${newFound} new (total unique: ${allParsed.size})`);
+        console.log(`  AJAX [${gameType}/sort${sortVal}] page ${page}: ${fromAjax.length} found, ${newFound} new (total unique: ${allParsed.size})`);
 
         // If no stats yet, try to parse from AJAX response
-        if ((!psn.platinum || psn.platinum === 0) && page === 0 && gameType === 'current') {
+        if ((!psn.platinum || psn.platinum === 0) && page === 0 && gameType === 'current' && sortVal === 0) {
           const stats = parseStrategeStats(bA);
           if (stats.platinum > 0 || stats.total > 0) {
             Object.assign(psn, stats);
@@ -402,20 +428,25 @@ async function main() {
         }
         page++;
       }
-      console.log(`  AJAX [${gameType}]: added ${allParsed.size - prevTotalBefore} platinums`);
+      console.log(`  AJAX [${gameType}/sort${sortVal}]: added ${allParsed.size - prevTotalBefore} platinums`);
     }
-
-    try { fs.unlinkSync(jarPath); } catch { /* ignore */ }
 
     if (allParsed.size > 0) {
       const parsed = Array.from(allParsed.values());
-      console.log(`  ✓ ${parsed.length} total unique platinums — downloading images…`);
-      downloadPsnImages(parsed, STRATEGE_COOKIE);
-      platinums = mapToLocalPaths(parsed);
-      console.log(`  ✓ ${platinums.length} platinums mapped`);
+      // Keep PS4 + PS5 only (skip PS3, PSVita, etc.)
+      const filtered = parsed.filter(g => g.platform === 'ps5' || g.platform === 'ps4');
+      const platforms = [...new Set(parsed.map(g => g.platform))];
+      console.log(`  ✓ ${parsed.length} total unique (${platforms.join(', ')}) — keeping ${filtered.length} PS4+PS5 — downloading images…`);
+      downloadPsnImages(filtered, STRATEGE_COOKIE);
+      platinums = mapToLocalPaths(filtered);
+      // Remove PSN images for games no longer in the list
+      cleanupOrphanImages(IMG_DIR, new Set(filtered.map(g => g.npwrId)));
+      console.log(`  ✓ ${platinums.length} PS4+PS5 platinums mapped`);
     } else {
       console.log('  ⚠ No platinums found — keeping existing');
     }
+
+    try { fs.unlinkSync(jarPath); } catch { /* ignore */ }
   } else {
     console.log('STRATEGE_COOKIE not set — skipping PSN games from stratege.ru');
   }
@@ -462,6 +493,8 @@ async function main() {
           return true;
         });
         downloadXboxImages(uniqueGames);
+        // Remove Xbox images for games no longer in the list
+        cleanupOrphanImages(IMG_DIR_XBOX, new Set(uniqueGames.map(g => slugify(g.title))));
         xboxGames = uniqueGames.map(({ title, localImage, gameScore, maxScore, pct }) => ({
           title, image: localImage || null, gameScore, maxScore, pct,
         }));

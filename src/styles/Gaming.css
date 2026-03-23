@@ -148,57 +148,39 @@
   text-align: right;
 }
 
-/* ── Trophy badges ── */
-.platform-card__trophies {
+/* ── Trophy row (icon + count per type) ── */
+.platform-card__trophy-row {
   display: flex;
+  align-items: flex-end;
+  gap: 14px;
+}
+
+.trophy-total {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #3a3a3a;
+  padding-bottom: 4px;
+  letter-spacing: -0.01em;
+  min-width: 3ch;
+}
+
+.trophy-type {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
+  gap: 4px;
 }
 
-.trophy-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 0.78rem;
-  font-weight: 600;
-  padding: 3px 10px;
-  border-radius: 3px;
-  letter-spacing: 0.02em;
+.trophy-type__count {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
 }
 
-.trophy-badge--platinum {
-  background: rgba(170, 130, 200, 0.12);
-  color: #c9a0dc;
-  border: 1px solid rgba(170, 130, 200, 0.2);
-}
-
-.trophy-badge--gold {
-  background: rgba(212, 165, 32, 0.12);
-  color: #d4a520;
-  border: 1px solid rgba(212, 165, 32, 0.2);
-}
-
-.trophy-badge--silver {
-  background: rgba(160, 160, 175, 0.1);
-  color: #a0a0af;
-  border: 1px solid rgba(160, 160, 175, 0.18);
-}
-
-.trophy-badge--bronze {
-  background: rgba(180, 110, 60, 0.12);
-  color: #b46e3c;
-  border: 1px solid rgba(180, 110, 60, 0.2);
-}
-
-.trophy-badge--total {
-  color: #444444;
-  font-size: 0.7rem;
-  padding: 0;
-  background: none;
-  border: none;
-  margin-left: 4px;
-}
+.trophy-type__count--platinum { color: #c9a0dc; }
+.trophy-type__count--gold     { color: #d4a520; }
+.trophy-type__count--silver   { color: #94a3b8; }
+.trophy-type__count--bronze   { color: #b46e3c; }
 
 /* ── Last platinum ── */
 .platform-card__last-plat {
@@ -241,23 +223,40 @@
 
 .xbox-stat {
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.xbox-stat__icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: #107c10;
+  opacity: 0.75;
+}
+
+.xbox-stat__text {
+  display: flex;
   flex-direction: column;
   gap: 4px;
 }
 
 .xbox-stat__value {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   font-weight: 700;
   color: #ffffff;
   letter-spacing: -0.02em;
+  line-height: 1.1;
 }
 
 .xbox-stat__label {
-  font-size: 0.62rem;
+  font-size: 0.6rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: #333333;
+  line-height: 1.1;
 }
 
 .platform-card__no-data {
