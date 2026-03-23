@@ -28,14 +28,18 @@ jobs:
       - name: Fetch latest Telegram posts
         run: node scripts/update-tg-posts.js
 
+      - name: Fetch latest Instagram posts
+        run: node scripts/update-instagram.js
+
       - name: Commit if data changed
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add src/data/tg-posts.json public/img/blog/
+          git add src/data/tg-posts.json public/img/blog/ \
+                  src/data/instagram.json public/img/instagram/
           git diff --cached --quiet \
             && echo "Nothing to commit." \
-            || git commit -m "chore: update blog posts [skip ci]"
+            || git commit -m "chore: update blog + instagram posts [skip ci]"
 
       - name: Push updated posts
         run: git push origin gpages

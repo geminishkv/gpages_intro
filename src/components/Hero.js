@@ -2,7 +2,7 @@ import '../styles/Hero.css';
 import '../styles/Mac.css';
 import {
   MAC_IMG, WIN_IMG, UWU_IMG,
-  LIDER_IMG, LANIT_IMG, BMSTU_IMG, MPFI_IMG, RBPO_IMG,
+  LIDER_IMG, LANIT_IMG, BMSTU_IMG, MPFI_IMG, RBPO_IMG, INSECA_IMG,
   TAGLINE_TEXT,
 } from '../constants';
 
@@ -27,24 +27,26 @@ export default function Hero({
             <img src={LIDER_IMG} alt="" aria-hidden="true" className="hero__badge hero__badge--dup" />
             <img src={LANIT_IMG} alt="" aria-hidden="true" className="hero__badge hero__badge--invert hero__badge--dup" />
             <img src={BMSTU_IMG} alt="" aria-hidden="true" className="hero__badge hero__badge--dup" />
-            <img src={MPFI_IMG}  alt="" aria-hidden="true" className="hero__badge hero__badge--invert hero__badge--dup" />
-            <img src={RBPO_IMG}  alt="" aria-hidden="true" className="hero__badge hero__badge--invert hero__badge--dup" />
+            <img src={MPFI_IMG}   alt="" aria-hidden="true" className="hero__badge hero__badge--invert hero__badge--dup" />
+            <img src={INSECA_IMG} alt="" aria-hidden="true" className="hero__badge hero__badge--invert hero__badge--dup" />
+            <img src={RBPO_IMG}   alt="" aria-hidden="true" className="hero__badge hero__badge--invert hero__badge--dup" />
             {/* оригиналы */}
-            <img src={LIDER_IMG} alt="FinDevSecOps Лидер" className="hero__badge" />
-            <img src={LANIT_IMG} alt="ЛАНИТ"              className="hero__badge hero__badge--invert" />
-            <img src={BMSTU_IMG} alt="МГТУ им. Баумана"   className="hero__badge" />
-            <img src={MPFI_IMG}  alt="МФТИ"               className="hero__badge hero__badge--invert" />
-            <img src={RBPO_IMG}  alt="РБПО.РФ"            className="hero__badge hero__badge--invert" />
+            <img src={LIDER_IMG}  alt="FinDevSecOps Лидер" className="hero__badge" />
+            <img src={LANIT_IMG}  alt="ЛАНИТ"              className="hero__badge hero__badge--invert" />
+            <img src={BMSTU_IMG}  alt="МГТУ им. Баумана"   className="hero__badge" />
+            <img src={MPFI_IMG}   alt="МФТИ"               className="hero__badge hero__badge--invert" />
+            <img src={INSECA_IMG} alt="Inseca.tech"        className="hero__badge hero__badge--invert" />
+            <img src={RBPO_IMG}   alt="РБПО.РФ"            className="hero__badge hero__badge--invert" />
           </div>
         </div>
 
-        <div ref={socialsRef} className="hero__socials" style={{ opacity: 0 }}>
+        <div ref={socialsRef} className="hero__socials" style={{ opacity: 1 }}>
 
           {/* Профили */}
           <div className="social-group">
-            <span className="social-group__label">Профили</span>
+            <span className="social-group__label">Packages</span>
             <div className="social-group__btns">
-              <a href="https://github.com/geminishkv?tab=packages" target="_blank" rel="noreferrer" className="social-btn">Packages</a>
+              <a href="https://github.com/geminishkv?tab=packages" target="_blank" rel="noreferrer" className="social-btn">GitHub</a>
               <a href="https://hub.docker.com/u/geminishkvdev"     target="_blank" rel="noreferrer" className="social-btn">Docker Hub</a>
               <a href="https://pypi.org/user/geminishkv"           target="_blank" rel="noreferrer" className="social-btn">PyPI</a>
             </div>
@@ -55,7 +57,10 @@ export default function Hero({
             <span className="social-group__label">Контент</span>
             <div className="social-group__btns">
               <a href="https://t.me/shmakovis_appsec" target="_blank" rel="noreferrer" className="social-btn social-btn--content">Blog</a>
-              <a href="https://course.geminishkv.tech/" target="_blank" rel="noreferrer" className="social-btn social-btn--content">Course →</a>
+              <a href="https://course.geminishkv.tech/" target="_blank" rel="noreferrer" className="social-btn social-btn--content">AppSec Course →</a>
+              <a href="https://inseca.tech/security-champion-training" target="_blank" rel="noreferrer" className="social-btn social-btn--content">Security Champion Training</a>
+              <a href="https://clck.ru/3SiMPc" target="_blank" rel="noreferrer" className="social-btn social-btn--content">56939-2024 Map→</a>
+              <a href="https://findevsecops.github.io/oss_toolchainmap/" target="_blank" rel="noreferrer" className="social-btn social-btn--content">OSS Toolchain Map</a>
             </div>
           </div>
 
@@ -65,8 +70,8 @@ export default function Hero({
             <div className="social-group__btns">
               <a href="https://t.me/geminishkv"     target="_blank" rel="noreferrer" className="social-btn social-btn--outline">Telegram</a>
               <a href="https://www.linkedin.com/in/geminishkvdev/" target="_blank" rel="noreferrer" className="social-btn social-btn--outline">LINKEDIN</a>
+              <a href="https://www.instagram.com/geminishkv" target="_blank" rel="noreferrer" className="social-btn social-btn--outline">INST</a>
               <a href="mailto:shmakovis@inbox.ru"   target="_blank" rel="noreferrer" className="social-btn social-btn--outline">Email</a>
-              <a href="https://www.instagram.com/geminishkv" target="_blank" rel="noreferrer" className="social-btn social-btn--outline">INSTAGRAM</a>
             </div>
           </div>
 

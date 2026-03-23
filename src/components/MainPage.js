@@ -11,6 +11,8 @@ import Projects   from './Projects';
 import Gaming     from './Gaming';
 import Footer     from './Footer';
 import AboutModal from './AboutModal';
+import NoticeBar  from './NoticeBar';
+import Videos     from './Videos';
 
 export default function MainPage({ isVisible }) {
   const [animDone, setAnimDone] = useState(false);
@@ -41,22 +43,26 @@ export default function MainPage({ isVisible }) {
       <div className="section-reveal" ref={refs.projectsRef}>
         <Projects isVisible={animDone} />
       </div>
+      <div className="section-reveal" ref={refs.videosRef}>
+        <Videos />
+      </div>
       <div className="section-reveal" id="blog" ref={refs.blogRef}>
         <Blog />
       </div>
       <div className="section-reveal" id="experience" ref={refs.experienceRef}>
         <Experience />
       </div>
-      <div className="section-reveal" id="tools" ref={refs.toolsRef}>
+      <div className="section-reveal" id="skillset" ref={refs.toolsRef}>
         <Tools />
       </div>
-      <div className="section-reveal" ref={refs.gamingRef}>
+      <div className="section-reveal" id="interests" ref={refs.gamingRef}>
         <Gaming />
       </div>
       <div className="section-reveal" ref={refs.footerRef}>
         <Footer />
       </div>
       <AboutModal isOpen={aboutOpen} onClose={() => setAboutOpen(false)} />
+      <NoticeBar />
     </div>
   );
 }

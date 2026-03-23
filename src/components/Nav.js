@@ -43,7 +43,8 @@ export default function Nav({ navRef, onAboutOpen }) {
           <a href="https://hh.ru/resume/af4cc9ceff086141d00039ed1f4b4a6c35706f" target="_blank" rel="noreferrer">RESUME</a>
           <a href="#blog">BLOG</a>
           <a href="#experience">EXPERIENCE</a>
-          <a href="#tools">TOOLS</a>
+          <a href="#skillset">SKILLSET</a>
+          <a href="#interests">INTERESTS</a>
           <a href="https://my.idot.vip/geminishkv" target="_blank" rel="noreferrer">NFC CARD</a>
         </div>
 
@@ -63,9 +64,10 @@ export default function Nav({ navRef, onAboutOpen }) {
         <div className="nav__mobile-overlay">
           <button className="nav__mobile-close" onClick={close} aria-label="Close menu">✕</button>
           <button className="nav__link-btn" onClick={() => { onAboutOpen(); close(); }}>ABOUT</button>
-          <a href="#blog"      onClick={close}>BLOG</a>
+          <a href="#blog"       onClick={close}>BLOG</a>
           <a href="#experience" onClick={close}>EXPERIENCE</a>
-          <a href="#tools"     onClick={close}>TOOLS</a>
+          <a href="#skillset"   onClick={close}>SKILLSET</a>
+          <a href="#interests"  onClick={close}>INTERESTS</a>
           <a href="https://my.idot.vip/geminishkv" target="_blank" rel="noreferrer" className="nav__link--secondary" onClick={close}>NFC CARD</a>
         </div>,
         document.body

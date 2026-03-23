@@ -21,6 +21,7 @@ export function useMainAnimation(isVisible, onAllDone) {
 
   const statsRef      = useRef(null);
   const projectsRef   = useRef(null);
+  const videosRef     = useRef(null);
   const blogRef       = useRef(null);
   const experienceRef = useRef(null);
   const toolsRef      = useRef(null);
@@ -113,6 +114,7 @@ export function useMainAnimation(isVisible, onAllDone) {
                         const sectionEls = [
                           statsRef.current,
                           projectsRef.current,
+                          videosRef.current,
                           blogRef.current,
                           experienceRef.current,
                           toolsRef.current,
@@ -201,7 +203,7 @@ export function useMainAnimation(isVisible, onAllDone) {
       setStatsActive(true);
       if (onAllDone) onAllDone();
       const allSections = [
-        statsRef, projectsRef, blogRef, experienceRef, toolsRef, gamingRef, footerRef,
+        statsRef, projectsRef, videosRef, blogRef, experienceRef, toolsRef, gamingRef, footerRef,
       ];
       allSections.forEach(r => {
         if (!r.current) return;
@@ -242,7 +244,7 @@ export function useMainAnimation(isVisible, onAllDone) {
     blinkerRef, whiteBoxRef, containerBoxRef,
     windowImgRef, uwuRef, workTextRef, progressWrapRef, progressBarRef,
     titleRef, subtitleRef, taglineRef, socialsRef, liderRef,
-    statsRef, projectsRef, blogRef, experienceRef, toolsRef, gamingRef, footerRef,
+    statsRef, projectsRef, videosRef, blogRef, experienceRef, toolsRef, gamingRef, footerRef,
     statsActive,
   };
 }
