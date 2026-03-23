@@ -4,7 +4,8 @@ import '../styles/Blog.css';
 import DATA from '../data/tg-posts.json';
 
 const CHANNEL_URL = 'https://t.me/shmakovis_appsec';
-const MOBILE_BP   = 576;
+const MOBILE_BP        = 576;
+const MOBILE_INITIAL   = 3;
 const posts       = DATA.posts  ?? [];
 const subscribers = DATA.subscribers ?? 0;
 
@@ -124,15 +125,19 @@ function BlogModal({ post, onClose }) {
 
 function BlogCard({ post, onClick }) {
   const views = formatViews(post.views);
+  const [imgBroken, setImgBroken] = useState(false);
 
   return (
     <div className="blog-card" role="button" tabIndex={0} onClick={onClick}
       onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') onClick(); }}>
-      {post.image && (
-        <div
+      {post.image && !imgBroken && (
+        <img
           className="blog-card__cover"
-          style={{ backgroundImage: `url(${post.image})` }}
+          src={post.image}
+          alt=""
           aria-hidden="true"
+          loading="lazy"
+          onError={() => setImgBroken(true)}
         />
       )}
 
@@ -183,7 +188,7 @@ export default function Blog() {
     return () => mq.removeEventListener('change', handler);
   }, []);
 
-  const visible = (isMobile && !expanded) ? posts.slice(0, 1) : posts;
+  const visible = (isMobile && !expanded) ? posts.slice(0, MOBILE_INITIAL) : posts;
 
   if (!posts.length) return null;
 
@@ -226,9 +231,9 @@ export default function Blog() {
         </a>
       </div>
 
-      {isMobile && !expanded && posts.length > 1 && (
+      {isMobile && !expanded && posts.length > MOBILE_INITIAL && (
         <button className="blog__show-more" onClick={() => setExpanded(true)}>
-          Показать ещё {posts.length - 1} {posts.length - 1 === 1 ? 'пост' : 'поста'} ↓
+          Показать ещё {posts.length - MOBILE_INITIAL} ↓
         </button>
       )}
 

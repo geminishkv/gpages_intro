@@ -2,51 +2,128 @@
   "subscribers": 354,
   "posts": [
     {
+      "id": "265",
+      "text": "🛠 Security SBOM generator with vulnerability chechup\n\nСалют,\nСегодня хочу поделиться тулой, которую покрутил на выхах. Эта тула помогает быстро и в более удобном виде собирать SBOM для проекта, это будет особенно полезно для сертификации по ФСТЭК России, включая контроля твоего supply-chain. \n\nТула построена так, что бы ручками не ковыряться в зависимостях, а получать нормальную структурированную картину по составу софта. то есть понятная карта компонентов, версий и метаданных, которая дальше помогает с аудитом, рисками supply chain и проверкой уязвимостей по каждому компоненту.\n\nИменно такой подход хорошо ложится на практики, где SBOM генерится автоматически из репозитория или сборочного артефакта, а потом используется дальше в пайплайнах и системах контроля.\n\nКак работает?\n\n• Генерирует SBOM по проекту в одном из стандартных форматов, чтобы его можно было дальше отдавать в другие инструменты или хранить как артефакт\n• Помогает привести результат к более удобному виду, чтобы SBOM не был просто «сырой простынёй», а нормально читался\n• Подходит для автоматизации в CI/CD, как постоянная часть supply-chain процесса\n• Может использоваться как стартовая точка для дальнейшего анализа за",
+      "date": "2026-03-23",
+      "url": "https://t.me/shmakovis_appsec/265",
+      "views": 69,
+      "tags": [
+        "appsec",
+        "devsecops",
+        "specialty",
+        "toolchain",
+        "techsolution",
+        "paper",
+        "sbom"
+      ],
+      "image": "/img/blog/265.jpg"
+    },
+    {
       "id": "264",
       "text": "When Local AI Becomes an Attack Vector: A Deep Dive into LLM Infrastructure Security\n\nOriginal text by Charles Senges\n\nThe article “Deep dive into the deployment of an on-premise low-privileged LLM server” by Synacktiv examines how organizations deploy internal Large Language Model (LLM) servers and analyzes the security implications of running such systems inside corporate infrastructure. The researchers study a real deployment where an open-source LLM is hosted on-premise…\n\nhttps://core-jmp.org/2026/03/when-local-ai-becomes-an-attack-vector-a-deep-dive-into-llm-infrastructure-security/",
       "date": "2026-03-20",
       "url": "https://t.me/shmakovis_appsec/264",
-      "views": 64,
+      "views": 82,
       "tags": [],
-      "image": "https://cdn4.telesco.pe/file/K26GYDE9iR-CA5Cb5gyNtA0GLA0QQWJlAodpXj61CIdAvbRBmyDDineqyMBPI6rU0lR3AhqsfG3gyMoo58sgxq02bsQTXeCSnMvbJS1OxMb4Nn3Z8AfXczAQW8pTxeWnzzyQOp6z4a0AuQEnBI410B2NfN1MiiaFqb1ldDU36QyG2LXU6mB12tFCSRyZz9CPO96pfP75zN8N23mcvAk0Kcnf-DENMrBIIdMU5K1n4c5RL3p0qE8oaDaIs4UBxcNWd3b_atJzkjQu7oxLr5Sj-5X1QaFEXsKSNZbIuQ_tCF1EQT__gwOWTtW8b3Ls6xiMAhytJXG-GsJALgl29eORYw.jpg"
+      "image": "/img/blog/264.jpg"
     },
     {
       "id": "263",
       "text": "Иногда кажется, что именно так и происходит 🙃\n\n#lol",
       "date": "2026-03-20",
       "url": "https://t.me/shmakovis_appsec/263",
-      "views": 84,
+      "views": 95,
       "tags": [
         "lol"
       ],
-      "image": "https://cdn4.telesco.pe/file/iwonxG7PDvBVRqa9klRItc9BVP0kcyZyr6P4bhk89qgsyD6mDGw71yqBpzQ0E8vgVnVGEhUs6NY88E5sbnRh547O9yHSF10ou-agoKQkNWRjjlVhp1a6fp35rQ-Esw1k5LGT9dx2DMWk5fdv72QwuqCs0LPk3VLuGzDs9KfRJ00vzKxWAViunGe1z3xrNESPWzY5QiH-PSll7QzFXRUOCM4L1Eetp2mPUX-4mV27mXtQ4a4_-VhmtYjqZCdvbyaXOTusVyRGgAeVZ32Wvd_j-qYc2yFE4sX0YuCYlKK45MJI3C---50rjRJbtuweDJ_YxtwCH4zTithWRPLcSecirw.jpg"
+      "image": "/img/blog/263.jpg"
     },
     {
       "id": "262",
       "text": "🤔 InfoSec Reco СУБД\n\nСалют,\nДумаю сегодня классно будет посмотреть, вместе, на то как лучше подойти к защищенности БД, брокеру очередей для записи в БД и, конечно, частично к frontend части при взаимодействии с БД.\n\nМои реко строятся на базе опыта и того, что я чаще всего замечаю, надеюсь, для твоей практики, это будет полезно и ты сможешь более глубоко и сразу смотреть в правильном направлении, - потому что это важно при анализе и не важно аналитики ты или инженер, главное понимать архитектуру и как это построено. В некоторых пунктах отмечу, что плохо и думаю ты поймешь почему.\n\nРеляционные СУБД\n\n• Плохая практика: выдавать приложению  db_owner,  sysadmin или доступ на всю схему без ограничений\n• Чувствительные данные хранить так, чтобы прямой доступ к базовым таблицам был ограничен: использовать views, stored procedures или сервисный слой\n• Размещать СУБД в отдельном сетевом сегменте и запрещать прямой доступ из внешних и полупубличных зон\n• Плохая практика: использовать plaintext-подключения или отключать проверку сертификата\n• Включать аудит критичных операций: чтение, изменение, удаление, DDL-изменения и административные действия\n• Строки подключения, ключи и пароли хранить т",
       "date": "2026-03-20",
       "url": "https://t.me/shmakovis_appsec/262",
-      "views": 92,
+      "views": 105,
       "tags": [
         "reco",
         "devsecops",
         "appsec",
         "specialty"
       ],
-      "image": "https://cdn4.telesco.pe/file/WC5VvXgjkGAVMvGWOW_rD_pBm7iehgAKnEfXjoUBqNnCEpgVSyqdyhvtQ04FX687HGs7kKLu9oXjX960eMuNt8eZMo96h45Yn_26Wdnt359orKlZu5vj7CloeEICVMx_O_-iGwJJj-Olwsc9WITwFQ5AyeymGw2aLndTimKexEltVaVm_tJszmSEEL9__iKawArqzYR5tSCeWFwkDsBrqUOzYJkudDSudZ1kjRVua_JcSGnPdJlViGOOREck-11ie74u-Ve28j0sDFnV3r4nEMpdHSNNaHnUWNhpGTYUJRNpJIS20zdfX7jPPqBY6GBAqlhiFD4to80gVeMccJwSsA.jpg"
+      "image": "/img/blog/262.jpg"
     },
     {
       "id": "261",
       "text": "🏆 geminishkv.tech\n\nUwU, короче сделал тут сайтик для себя, хочу поделиться с тобой, считаю получилось особенно прикольно с глитчем, адаптивка отдельно доставила. \n\ngeminishkv.tech - чекай, но конечно простенько, но эффекто для портфолио 🙃\n\n#paper #appsec #devsecops",
       "date": "2026-03-19",
       "url": "https://t.me/shmakovis_appsec/261",
-      "views": 101,
+      "views": 112,
       "tags": [
         "paper",
         "appsec",
         "devsecops"
       ],
-      "image": "https://cdn4.telesco.pe/file/Br6B85nuRMGowp-VPLkUjfV9SMduoIttb7in_iS-tuKkoQr2DyckVaeXvkb43G1tb-Gm9tlEMhF0YpRUGfKtvqDN7tu8yaDQoXGCEiJg7thRjJVkyKNtRbb76QFithzSjJybdYgq9GrND9UrvdHDe6kf04LdfOMrFhrzWlkyHWSTixWyRUB23fM5fCoQ7mRznLOQTK5cfwVPp_4Afu_HvDq01fNdT94s8SmrmAQCw9JID5a8PWKskF8ygEU1aqCrcUpsYG1e6KPowy-uJDd-8Cz3P8-vp5tu9Vnscee5q78AEVFQo8x-P1G1aVZDgMITh82j-9gX6ZcI4iIDd1ktpg.jpg"
+      "image": "/img/blog/261.jpg"
+    },
+    {
+      "id": "260",
+      "text": "🏆 Испытания ФСТЭК России ГОСТ 71207\n\nЯ как то ранее писал про эти испытания тут, что мы в ЛАНИТ с моими ребятами получили грамоту на нашу компанию за вклад, который внесли, а теперь подьехала очень приятная история, еще одна. Люблю когда так мотивирует, согласись, приятно же?\n\nОчень рад с тобой делиться таким 🙏\n\n#appsec #devsecop #specialty #toolchain #sast #conf #meetup #compliance #gost #paper",
+      "date": "2026-03-19",
+      "url": "https://t.me/shmakovis_appsec/260",
+      "views": 121,
+      "tags": [
+        "appsec",
+        "devsecop",
+        "specialty",
+        "toolchain",
+        "sast",
+        "conf",
+        "meetup",
+        "compliance",
+        "gost",
+        "paper"
+      ],
+      "image": "/img/blog/260.jpg"
+    },
+    {
+      "id": "259",
+      "text": "🛠 Карта DevSecOps Toolchain\n\nСалют,\nХорошие новости, я как то рассказывал про карту инструментов тут.\n\nНаконец то ее залили в релизе 2.0.1 в репозиторий нашего сообщества findevsecops.ru, почекай.\n\nСейчас будет буст самой карты инструментов и ты можешь поучаствовать с нами в развитии этого дела, я планирую еще дорабатывать репу и развивать, так как это оч классная штука для твоего роста и отраслевого контроля тулов, которые помогают в достижении целей безопасной разработки ПО. \n\nСам репозиторий у нас с тобой вот тут для сообщества, а мой корневой, который прям родительский тут - его качаем как dev.\n\nЗахотел поделиться с тобой этой инфой, потому что это очень классно для нас с тобой 😉\n\nВсем спасибо\n\n#appsec #toolchain #devsecops #specialty #techdolution",
+      "date": "2026-03-19",
+      "url": "https://t.me/shmakovis_appsec/259",
+      "views": 143,
+      "tags": [
+        "appsec",
+        "toolchain",
+        "devsecops",
+        "specialty",
+        "techdolution"
+      ],
+      "image": "/img/blog/259.jpg"
+    },
+    {
+      "id": "258",
+      "text": "🏆 Информационная безопасность на всех этапах жизненного цикла разработки ПО\n\nСалюты, напомню, что стартует, совсем скоро курс по МФТИ, поделюсь расписанием вот тут.\nА пока ты можешь покачаться на лабках, которые скоро получат новый релиз и будут также обкатываться на МФТИ.\nПочекай лабки тут.\n\n—————————————————————\n🗓 Сроки обучения:\n23 марта – 05 мая  2026 г.\n\n⏰ Время занятий:\n18:00 – 19:30 / 20:30 / 21:30\n—————————————————————\n\n🔰 НЕДЕЛЯ 1 | Основы ИБ и защиты информации ИС\n\n• 23.03 (Пн) | Вводная лекция | 1 ак.ч. | 18:00-18:45 | Zoom\n• 24.03 (Вт) | Лекция 1 и 2 | 4 ак.ч. | 18:00-21:30 | Zoom\n• 26.03 (Чт) | ПР 1 и Лекция 3 | 2 ак.ч. | 18:00-19:30 | Zoom\n\n🔰НЕДЕЛЯ 2 | Обследование ИС, анализ уязвимостей и угроз\n\n• 31.03 (Вт) | Лекция 4 | 2 ак.ч. | 18:00-19:30 | Zoom\n• 02.04 (Чт) | Лекция 5 и ПР 2 | 2 ак.ч. | 18:00-19:30 | Zoom\n\n🔰НЕДЕЛЯ 3 | Формирование и реализация требований по ИБ к ИС\n• 07.04 (Вт) | Лекция 6 и 7 | 4 ак.ч. | 18:00-21:30 | Zoom\n• 09.04 (Чт) | Лекция 8 и ПР 3 | 2 ак.ч. | 18:00-19:30 | Zoom\n\n—————————————————————\n⬅️ НЕДЕЛЯ 4 | Shift-Left: от анализа до требований ИБ\n\n• 15.04 (Ср) | Лекция 9 и ПР 4 | 3 ак.ч. | 18:00-20:30 |  Zoom\n• 17.04 (Пт) | Лекция 10 и 11 | 3 ак",
+      "date": "2026-03-18",
+      "url": "https://t.me/shmakovis_appsec/258",
+      "views": 141,
+      "tags": [
+        "course",
+        "devsecops",
+        "appsec",
+        "toolchain"
+      ],
+      "image": "/img/blog/258.jpg"
+    },
+    {
+      "id": "255",
+      "text": "Яндекс хорошие номера подобрал 😅🙃\n\n#lol",
+      "date": "2026-03-17",
+      "url": "https://t.me/shmakovis_appsec/255",
+      "views": 155,
+      "tags": [
+        "lol"
+      ],
+      "image": "/img/blog/255.jpg"
     }
   ]
 }

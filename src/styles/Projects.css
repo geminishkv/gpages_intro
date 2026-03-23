@@ -44,7 +44,7 @@
 /* ── Grid ── */
 .projects__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 14px;
 }
 
@@ -160,6 +160,9 @@
 @media (max-width: 900px) {
   .projects {
     padding: 32px 24px 48px;
+  }
+  .projects__grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 

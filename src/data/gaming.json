@@ -13,8 +13,9 @@
   "xbox": {
     "id": "geminishkv",
     "gamerscore": 16212,
-    "achievements": 0,
-    "games": 30
+    "achievements": 759,
+    "games": 30,
+    "lastGame": "The Thaumaturge"
   },
   "platinums": [
     {
@@ -26,8 +27,16 @@
       "image": "/img/gaming/psn/NPWR50656_00.png"
     },
     {
+      "title": "The Walking Dead: The Telltale Definitive Series",
+      "image": null
+    },
+    {
       "title": "INDIKA",
       "image": "/img/gaming/psn/NPWR37986_00.png"
+    },
+    {
+      "title": "Mafia: The Old Country",
+      "image": null
     },
     {
       "title": "Star Wars Jedi: Survivor",
@@ -38,8 +47,24 @@
       "image": "/img/gaming/psn/NPWR39969_00.png"
     },
     {
+      "title": "Indiana Jones and the Great Circle",
+      "image": null
+    },
+    {
+      "title": "Final Fantasy XVI",
+      "image": null
+    },
+    {
+      "title": "It Takes Two",
+      "image": null
+    },
+    {
       "title": "Life is Strange Remastered Collection",
       "image": "/img/gaming/psn/NPWR22563_00.png"
+    },
+    {
+      "title": "Syberia: The World Before",
+      "image": null
     },
     {
       "title": "The Last of Us Part II Remastered",
@@ -70,6 +95,18 @@
       "image": "/img/gaming/psn/NPWR22392_00.png"
     },
     {
+      "title": "Assassin's Creed Odyssey",
+      "image": null
+    },
+    {
+      "title": "Marvel’s Spider-Man 2",
+      "image": null
+    },
+    {
+      "title": "Warhammer: Chaosbane",
+      "image": null
+    },
+    {
       "title": "Life is Strange: True Colors",
       "image": "/img/gaming/psn/NPWR21937_00.png"
     },
@@ -80,6 +117,14 @@
     {
       "title": "Marvel’s Guardians of the Galaxy",
       "image": "/img/gaming/psn/NPWR21586_00.png"
+    },
+    {
+      "title": "Ghost of Tsushima: Director's Cut",
+      "image": null
+    },
+    {
+      "title": "Sherlock Holmes: Chapter One",
+      "image": null
     },
     {
       "title": "Destiny 2",
@@ -98,6 +143,10 @@
       "image": "/img/gaming/psn/NPWR22896_00.png"
     },
     {
+      "title": "It Takes Two",
+      "image": null
+    },
+    {
       "title": "Marvel’s Guardians of the Galaxy",
       "image": "/img/gaming/psn/NPWR21583_00.png"
     },
@@ -114,12 +163,20 @@
       "image": "/img/gaming/psn/NPWR15493_00.png"
     },
     {
+      "title": "Assassin's Creed: Valhalla",
+      "image": null
+    },
+    {
       "title": "Need For Speed Heat",
       "image": "/img/gaming/psn/NPWR18041_00.png"
     },
     {
       "title": "Vampyr",
       "image": "/img/gaming/psn/NPWR09862_00.png"
+    },
+    {
+      "title": "Ghost of Tsushima",
+      "image": null
     },
     {
       "title": "Fallout 4",
@@ -170,8 +227,16 @@
       "image": "/img/gaming/psn/NPWR11401_00.png"
     },
     {
+      "title": "Titan Quest",
+      "image": null
+    },
+    {
       "title": "The Walking Dead: The Final Season",
       "image": "/img/gaming/psn/NPWR15482_00.png"
+    },
+    {
+      "title": "Naruto to Boruto: Shinobi Striker",
+      "image": null
     },
     {
       "title": "The Witcher 3: Wild Hunt - Game of the Year Edition",
@@ -186,6 +251,10 @@
       "image": "/img/gaming/psn/NPWR13872_00.png"
     },
     {
+      "title": "Syberia 3",
+      "image": null
+    },
+    {
       "title": "A Way Out",
       "image": "/img/gaming/psn/NPWR13087_00.png"
     }
@@ -193,142 +262,212 @@
   "xboxGames": [
     {
       "title": "The Thaumaturge",
-      "image": "",
+      "image": null,
       "gameScore": 0,
       "maxScore": 0,
       "pct": 0
     },
     {
       "title": "The Witcher 2: Assassins of Kings",
-      "image": "https://images-eds-ssl.xboxlive.com/image?url=z951ykn43p4FqWbbFvR2Ec.8vbDhj8G2Xe7JngaTToBAInhxUS6pI0HjtmvshPyKQclNuwHgADHBb3jxQyJRRHgeAsWeo2lpW65ekRQkia9ImM0uOAmqqr79r39LeHPch6W1inS7JYuuUiqyPJ3jjg--",
+      "image": "/img/gaming/xbox/the-witcher-2-assassins-of-kings.jpg",
       "gameScore": 0,
       "maxScore": 0,
       "pct": 0
     },
     {
       "title": "The Darkness II",
-      "image": "http://store-images.s-microsoft.com/image/apps.51915.65749786814923168.a6bc7691-4449-44ac-a7cd-18b5195a3439.e08a35d7-b3ed-4dcd-91d4-95afc622ece3",
+      "image": "/img/gaming/xbox/the-darkness-ii.jpg",
       "gameScore": 60,
       "maxScore": 1000,
       "pct": 6
     },
     {
       "title": "Dante's Inferno™",
-      "image": "http://store-images.s-microsoft.com/image/apps.59862.65125427675965946.9a11f22d-d015-4e5d-8fe2-d22c387be19c.a1cc8ea8-ff18-4a8d-894f-f248dccc2f30",
+      "image": "/img/gaming/xbox/dante-s-inferno.jpg",
       "gameScore": 730,
       "maxScore": 1290,
       "pct": 57
     },
     {
       "title": "Darker Skies",
-      "image": "http://store-images.s-microsoft.com/image/apps.19042.13635272736036610.a474eedd-dcc5-4d5a-b8d6-fa77e3d9e401.64977c87-231b-4349-aa99-b6d32b720670",
+      "image": "/img/gaming/xbox/darker-skies.jpg",
       "gameScore": 0,
       "maxScore": 1000,
       "pct": 0
     },
     {
       "title": "Beast Quest",
-      "image": "http://store-images.s-microsoft.com/image/apps.52246.68960086420894023.f9c4d649-d7b7-405e-8663-eff19156a7a3.72f65c8f-6078-4a6e-b8e6-da89b53af440",
+      "image": "/img/gaming/xbox/beast-quest.jpg",
       "gameScore": 0,
       "maxScore": 1000,
       "pct": 0
     },
     {
       "title": "BlazBlue Entropy Effect X",
-      "image": "http://store-images.s-microsoft.com/image/apps.54735.14044995170568579.398a4178-785a-4833-beda-b8cdc0eafa1b.6edfd0b3-fe2c-42ff-86cc-e75fcd6dc558",
+      "image": "/img/gaming/xbox/blazblue-entropy-effect-x.jpg",
       "gameScore": 25,
       "maxScore": 1000,
       "pct": 2
     },
     {
       "title": "The Saboteur",
-      "image": "https://images-eds-ssl.xboxlive.com/image?url=z951ykn43p4FqWbbFvR2Ec.8vbDhj8G2Xe7JngaTToBAInhxUS6pI0HjtmvshPyKMdCIHj_6kxhU0Jj5Iy5oVWGxFP4hclFbGyFR6oiFrNisNPBAVwuU6ILGHBeAb4cN03fXRQpoQK25YYDM8ujjUg--",
+      "image": "/img/gaming/xbox/the-saboteur.jpg",
       "gameScore": 0,
       "maxScore": 0,
       "pct": 0
     },
     {
       "title": "Army of Two™",
-      "image": "http://store-images.s-microsoft.com/image/apps.48538.64930031463159708.b90cc927-ab67-44df-b1bd-cff328823c5a.d309b67d-a983-4ecf-9815-8fd028dc6afe",
+      "image": "/img/gaming/xbox/army-of-two.jpg",
       "gameScore": 0,
       "maxScore": 1250,
       "pct": 0
     },
     {
       "title": "Dead Space™ 3",
-      "image": "http://store-images.s-microsoft.com/image/apps.39570.67829326247190973.f408c3de-64e7-4778-a833-d62cbf7f0fd1.31166067-609c-4c95-acf2-a7ad6ae00a5a",
+      "image": "/img/gaming/xbox/dead-space-3.jpg",
       "gameScore": 0,
       "maxScore": 1250,
       "pct": 0
     },
     {
       "title": "Assassin's Creed",
-      "image": "https://images-eds-ssl.xboxlive.com/image?url=z951ykn43p4FqWbbFvR2Ec.8vbDhj8G2Xe7JngaTToBAInhxUS6pI0HjtmvshPyKuOJaNG8PkjDbg8DbaPKHNWjbqcxNIbvfUH.7wNuAuR9ogmMUsV4qunZIBllKt4HQ88YnEdrWyJAzpdrSb6M9VA--",
+      "image": "/img/gaming/xbox/assassin-s-creed.jpg",
       "gameScore": 0,
       "maxScore": 0,
       "pct": 0
     },
     {
       "title": "ROUTINE",
-      "image": "http://store-images.s-microsoft.com/image/apps.39714.14172841759095673.813a49ea-ac20-4aed-8857-f3ba4b7e19a8.0afa4b40-088d-493b-a842-60d3d3a42b5b",
+      "image": "/img/gaming/xbox/routine.jpg",
       "gameScore": 25,
       "maxScore": 1000,
       "pct": 2
     },
     {
       "title": "Ashen",
-      "image": "http://store-images.s-microsoft.com/image/apps.28012.67644652336133489.b3703282-21c5-4da4-9f47-ba53b33b37b5.61c1ab76-69e6-4c79-a2ca-8372956933ed",
+      "image": "/img/gaming/xbox/ashen.jpg",
       "gameScore": 17,
       "maxScore": 1137,
       "pct": 1
     },
     {
       "title": "Remember Me",
-      "image": "https://images-eds-ssl.xboxlive.com/image?url=z951ykn43p4FqWbbFvR2Ec.8vbDhj8G2Xe7JngaTToBAInhxUS6pI0HjtmvshPyKhL.xQ5rZOe5YLCdUVMgSf4ygTdvAZldGrjgRiT.66wJlKHizjVQBBoHKMHvRavKORqm.DmGu4D6m6nHeTTbk8Q--",
+      "image": "/img/gaming/xbox/remember-me.jpg",
       "gameScore": 0,
       "maxScore": 0,
       "pct": 0
     },
     {
       "title": "Dragon Age™ 2",
-      "image": "http://store-images.s-microsoft.com/image/apps.16302.66622812769222919.f72813e2-a2c0-4178-94a9-276818a15412.eb363356-ff5f-4a8b-b0c1-4621d8691793",
+      "image": "/img/gaming/xbox/dragon-age-2.jpg",
       "gameScore": 0,
       "maxScore": 1370,
       "pct": 0
     },
     {
       "title": "Dead Space™ 2",
-      "image": "http://store-images.s-microsoft.com/image/apps.42163.65552910726292335.3086e865-b330-4e23-8a9d-f940d5cff913.098d6790-15fa-4c65-8107-02a626f6befb",
+      "image": "/img/gaming/xbox/dead-space-2.jpg",
       "gameScore": 0,
       "maxScore": 1250,
       "pct": 0
     },
     {
       "title": "Dead Space 2",
-      "image": "https://images-eds-ssl.xboxlive.com/image?url=z951ykn43p4FqWbbFvR2Ec.8vbDhj8G2Xe7JngaTToBAInhxUS6pI0HjtmvshPyKUd1QMuNy_mJFN8pep.0FDMsWpACKyDsjAzQB0woIjnL67ecSjkHFlGpWhpFgOCRKrkiZwLRdLQBGJTFROjab9A--",
+      "image": "/img/gaming/xbox/dead-space-2.jpg",
       "gameScore": 0,
       "maxScore": 0,
       "pct": 0
     },
     {
       "title": "Dead Space 3",
-      "image": "https://images-eds-ssl.xboxlive.com/image?url=z951ykn43p4FqWbbFvR2Ec.8vbDhj8G2Xe7JngaTToBAInhxUS6pI0HjtmvshPyKYyKSdbjsW.EvrAvtWjiF7mW5GzZN4C6DvBfBBPlf_TK9IKZweLqWBVSauFXjJvWJjhNkmJMcLZllMwsLvZxU8g--",
+      "image": "/img/gaming/xbox/dead-space-3.jpg",
       "gameScore": 0,
       "maxScore": 0,
       "pct": 0
     },
     {
       "title": "Hitman: Blood Money",
-      "image": "http://store-images.s-microsoft.com/image/apps.10138.67247074758851891.441d63e5-40a5-4169-8010-dad2b742bb23.47d44445-af26-4894-b012-f996a04b4186",
+      "image": "/img/gaming/xbox/hitman-blood-money.jpg",
       "gameScore": 0,
       "maxScore": 1000,
       "pct": 0
     },
     {
       "title": "FINAL FANTASY XIII",
-      "image": "http://store-images.s-microsoft.com/image/apps.41827.70676919449757472.77ceeffc-b978-4fbd-aa7d-869575f6123d.7a0d59d1-7aa3-46c0-b7e1-b48da5ac2e3d",
+      "image": "/img/gaming/xbox/final-fantasy-xiii.jpg",
       "gameScore": 0,
       "maxScore": 1000,
+      "pct": 0
+    },
+    {
+      "title": "Kingdom Come: Deliverance",
+      "image": "/img/gaming/xbox/kingdom-come-deliverance.jpg",
+      "gameScore": 0,
+      "maxScore": 2080,
+      "pct": 0
+    },
+    {
+      "title": "Insurgency: Sandstorm (Windows)",
+      "image": "/img/gaming/xbox/insurgency-sandstorm-windows.jpg",
+      "gameScore": 0,
+      "maxScore": 1000,
+      "pct": 0
+    },
+    {
+      "title": "AI Limit",
+      "image": null,
+      "gameScore": 0,
+      "maxScore": 0,
+      "pct": 0
+    },
+    {
+      "title": "Battlefield™ 6",
+      "image": null,
+      "gameScore": 0,
+      "maxScore": 0,
+      "pct": 0
+    },
+    {
+      "title": "Marvel's Guardians of the Galaxy",
+      "image": "/img/gaming/xbox/marvel-s-guardians-of-the-galaxy.jpg",
+      "gameScore": 60,
+      "maxScore": 1000,
+      "pct": 6
+    },
+    {
+      "title": "Legacy of Kain™ Soul Reaver 1&2 Remastered",
+      "image": null,
+      "gameScore": 0,
+      "maxScore": 0,
+      "pct": 0
+    },
+    {
+      "title": "Brutal Legend",
+      "image": "/img/gaming/xbox/brutal-legend.jpg",
+      "gameScore": 0,
+      "maxScore": 0,
+      "pct": 0
+    },
+    {
+      "title": "KILLER IS DEAD",
+      "image": "/img/gaming/xbox/killer-is-dead.jpg",
+      "gameScore": 30,
+      "maxScore": 1000,
+      "pct": 3
+    },
+    {
+      "title": "The Council",
+      "image": null,
+      "gameScore": 0,
+      "maxScore": 0,
+      "pct": 0
+    },
+    {
+      "title": "Stronghold Crusader: Definitive Edition",
+      "image": null,
+      "gameScore": 0,
+      "maxScore": 0,
       "pct": 0
     }
   ]

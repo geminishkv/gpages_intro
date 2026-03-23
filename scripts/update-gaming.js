@@ -179,7 +179,6 @@ function downloadPsnImages(games, cookie) {
 
   for (const game of games) {
     const localFile = path.join(IMG_DIR, `${game.npwrId}.png`);
-    if (fs.existsSync(localFile)) { skipped++; continue; }
 
     const args = [
       '-s', '--max-time', '15',
@@ -258,11 +257,6 @@ function downloadXboxImages(games) {
     if (!game.image) continue;
     const slug      = slugify(game.title);
     const localFile = path.join(IMG_DIR_XBOX, `${slug}.jpg`);
-    if (fs.existsSync(localFile)) {
-      game.localImage = `/img/gaming/xbox/${slug}.jpg`;
-      skipped++;
-      continue;
-    }
     try {
       execFileSync('curl', ['-s', '--max-time', '15', '-L', '-o', localFile, game.image], { timeout: 20000 });
       const size = fs.statSync(localFile).size;
@@ -286,7 +280,9 @@ function parseXboxStats(html) {
   const gamerscore = gsM ? parseInt(gsM[1].replace(/,/g,''), 10) : 0;
   const glM = html.match(/Games Played[\s\S]{0,80}?(\d+)/i);
   const games = glM ? parseInt(glM[1], 10) : 0;
-  return { gamerscore, games };
+  const achM = html.match(/(?:Total\s+)?Achievements?[\s\S]{0,80}?([\d,]+)/i);
+  const achievements = achM ? parseInt(achM[1].replace(/,/g,''), 10) : 0;
+  return { gamerscore, games, achievements };
 }
 
 function parseXboxGames(html) {
@@ -324,55 +320,101 @@ async function main() {
   let platinums = existing.platinums ?? [];
   let xboxGames = existing.xboxGames ?? [];
 
-  const profilePageUrl = `https://stratege.ru/playstation/users/${STRATEGE_USER}/games`;
-  const ajaxUrl        = 'https://stratege.ru/ajax_loader/users_profile_fw';
-  const ajaxParams     = `ajax_mode=profile_all_loader&action=all_page&firmware=1&uid=${STRATEGE_UID}&sort=0&type=current&compare=&page=0`;
+  const profilePageUrl  = `https://stratege.ru/playstation/users/${STRATEGE_USER}/games`;
+  const profileRootUrl  = `https://stratege.ru/playstation/users/${STRATEGE_USER}/`;
+  const ajaxUrl         = 'https://stratege.ru/ajax_loader/users_profile_fw';
 
-  /* ── 1. PSN: stratege.ru AJAX (requires STRATEGE_COOKIE) ── */
+  /* ── 1. PSN: stratege.ru (requires STRATEGE_COOKIE) ── */
   if (STRATEGE_COOKIE) {
     console.log('Fetching PSN data from stratege.ru…');
 
     // Step 1: load the profile page to acquire Drupal session cookie
-    const { jarPath } = curlFetch(profilePageUrl, { cookie: STRATEGE_COOKIE });
+    const { body: bProfile, jarPath } = curlFetch(profilePageUrl, { cookie: STRATEGE_COOKIE });
 
-    // Step 2: POST AJAX request with both user cookie and jar session
-    const { status: sA, body: bA } = curlFetch(ajaxUrl, {
-      referer: profilePageUrl,
+    // Try to parse platinum wall from the profile root page first
+    const { body: bRoot } = curlFetch(profileRootUrl, {
       cookie:  STRATEGE_COOKIE,
-      post:    ajaxParams,
       jar:     jarPath,
     });
 
-    console.log(`  HTTP ${sA}, body length ${bA.length}`);
+    const allParsed = new Map(); // npwrId → game object, deduplicated
 
-    if (sA === 200 && bA.length > 500 && !bA.includes('Ошибка построения') && !bA.includes('__CF$cv$params')) {
-      // Debug dump
-      const dumpPath = path.join(os.tmpdir(), 'stratege_response.html');
-      fs.writeFileSync(dumpPath, bA, 'utf8');
-      console.log(`  Debug: response saved to ${dumpPath}`);
+    // Parse from root profile page (platinum wall is usually here)
+    if (bRoot.length > 500 && !bRoot.includes('__CF$cv$params')) {
+      const fromRoot = parseStrategeGames(bRoot);
+      fromRoot.forEach(g => allParsed.set(g.npwrId, g));
+      console.log(`  Profile root page: ${fromRoot.length} platinums`);
+    }
 
-      const parsed = parseStrategeGames(bA);
-      if (parsed.length > 0) {
-        console.log(`  ✓ ${parsed.length} PSN games parsed — downloading images…`);
-        downloadPsnImages(parsed, STRATEGE_COOKIE);
-        platinums = mapToLocalPaths(parsed);
-        console.log(`  ✓ ${platinums.length} games with local images`);
-      } else {
-        console.log('  ⚠ Games parsed: 0 — check response structure');
-        console.log('  Response preview:', bA.slice(0, 800).replace(/\n/g, ' '));
-      }
+    // Parse from games page
+    if (bProfile.length > 500 && !bProfile.includes('__CF$cv$params')) {
+      const fromProfile = parseStrategeGames(bProfile);
+      fromProfile.forEach(g => allParsed.set(g.npwrId, g));
+      console.log(`  Games page: ${fromProfile.length} platinums`);
 
-      // Parse stats if present in response
-      const stats = parseStrategeStats(bA);
+      const stats = parseStrategeStats(bProfile);
       if (stats.platinum > 0 || stats.total > 0) {
         Object.assign(psn, stats);
         console.log(`  ✓ Stats: L${psn.level} 🏆${psn.platinum} 🥇${psn.gold} 🥈${psn.silver} 🥉${psn.bronze}`);
       }
+    }
 
-      try { fs.unlinkSync(jarPath); } catch { /* ignore */ }
+    // Paginate AJAX to collect any remaining platinums
+    // Try both type=current (in-progress) and type=comp (completed) to maximize coverage
+    for (const gameType of ['current', 'comp']) {
+      let page = 0;
+      let emptyStreak = 0;
+      const prevTotalBefore = allParsed.size;
+      while (page < 20) {
+        const ajaxParams = `ajax_mode=profile_all_loader&action=all_page&firmware=1&uid=${STRATEGE_UID}&sort=0&type=${gameType}&compare=&page=${page}`;
+        const { status: sA, body: bA } = curlFetch(ajaxUrl, {
+          referer: profilePageUrl,
+          cookie:  STRATEGE_COOKIE,
+          post:    ajaxParams,
+          jar:     jarPath,
+        });
+
+        if (sA !== 200 || bA.length < 200 || bA.includes('__CF$cv$params') || bA.includes('Ошибка построения')) {
+          console.log(`  AJAX [${gameType}] page ${page}: HTTP ${sA} or error — stopping`);
+          break;
+        }
+
+        const prevSize = allParsed.size;
+        const fromAjax = parseStrategeGames(bA);
+        fromAjax.forEach(g => allParsed.set(g.npwrId, g));
+        const newFound = allParsed.size - prevSize;
+        console.log(`  AJAX [${gameType}] page ${page}: ${fromAjax.length} found, ${newFound} new (total unique: ${allParsed.size})`);
+
+        // If no stats yet, try to parse from AJAX response
+        if ((!psn.platinum || psn.platinum === 0) && page === 0 && gameType === 'current') {
+          const stats = parseStrategeStats(bA);
+          if (stats.platinum > 0 || stats.total > 0) {
+            Object.assign(psn, stats);
+          }
+        }
+
+        // Stop after 2 consecutive pages with no new platinums
+        if (newFound === 0) {
+          emptyStreak++;
+          if (emptyStreak >= 2) break;
+        } else {
+          emptyStreak = 0;
+        }
+        page++;
+      }
+      console.log(`  AJAX [${gameType}]: added ${allParsed.size - prevTotalBefore} platinums`);
+    }
+
+    try { fs.unlinkSync(jarPath); } catch { /* ignore */ }
+
+    if (allParsed.size > 0) {
+      const parsed = Array.from(allParsed.values());
+      console.log(`  ✓ ${parsed.length} total unique platinums — downloading images…`);
+      downloadPsnImages(parsed, STRATEGE_COOKIE);
+      platinums = mapToLocalPaths(parsed);
+      console.log(`  ✓ ${platinums.length} platinums mapped`);
     } else {
-      console.log(`  ⚠ AJAX failed (${sA}) — keeping existing`);
-      if (bA.length < 1000) console.log('  Response:', bA.slice(0, 300));
+      console.log('  ⚠ No platinums found — keeping existing');
     }
   } else {
     console.log('STRATEGE_COOKIE not set — skipping PSN games from stratege.ru');
@@ -405,17 +447,25 @@ async function main() {
     if (s3 === 200 && b3.length > 1000) {
       const stats = parseXboxStats(b3);
       if (stats.gamerscore > 0 || stats.games > 0) {
-        xbox.gamerscore = stats.gamerscore;
-        xbox.games      = stats.games;
-        console.log(`  ✓ Gamerscore: ${xbox.gamerscore.toLocaleString()}, Games: ${xbox.games}`);
+        xbox.gamerscore   = stats.gamerscore;
+        xbox.games        = stats.games;
+        if (stats.achievements > 0) xbox.achievements = stats.achievements;
+        console.log(`  ✓ Gamerscore: ${xbox.gamerscore.toLocaleString()}, Games: ${xbox.games}, Achievements: ${xbox.achievements ?? 0}`);
       }
       const games = parseXboxGames(b3);
       if (games.length > 0) {
-        downloadXboxImages(games);
-        xboxGames = games.map(({ title, localImage, gameScore, maxScore, pct }) => ({
+        // Deduplicate by title (keep first occurrence = most recently played)
+        const seenTitles = new Set();
+        const uniqueGames = games.filter(g => {
+          if (seenTitles.has(g.title)) return false;
+          seenTitles.add(g.title);
+          return true;
+        });
+        downloadXboxImages(uniqueGames);
+        xboxGames = uniqueGames.map(({ title, localImage, gameScore, maxScore, pct }) => ({
           title, image: localImage || null, gameScore, maxScore, pct,
         }));
-        console.log(`  ✓ ${games.length} Xbox games found, ${xboxGames.filter(g => g.image).length} with covers`);
+        console.log(`  ✓ ${uniqueGames.length} Xbox games (${games.length - uniqueGames.length} dupes removed), ${xboxGames.filter(g => g.image).length} with covers`);
       } else {
         console.log('  ⚠ No Xbox games parsed');
       }
@@ -423,6 +473,10 @@ async function main() {
       console.log(`  ⚠ HTTP ${s3} — keeping existing`);
     }
   } catch (e) { console.log(`  ✗ ${e.message} — keeping existing`); }
+
+  if (xboxGames.length > 0) {
+    xbox.lastGame = xboxGames[0].title;
+  }
 
   const output = { psn, xbox, platinums, xboxGames };
   fs.mkdirSync(path.dirname(OUTPUT), { recursive: true });

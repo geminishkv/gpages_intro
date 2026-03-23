@@ -2,7 +2,7 @@ name: Update Interests
 
 on:
   schedule:
-    - cron: '0 7 * * 1'   # каждый понедельник в 07:00 UTC
+    - cron: '0 7 * * *'   # каждый день в 07:00 UTC
   workflow_dispatch:        # ручной запуск
 
 permissions:

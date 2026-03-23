@@ -195,9 +195,13 @@
   .nav {
     padding: 20px 24px;
     position: fixed;
+    top: 0;
     left: 0;
     right: 0;
-    z-index: 50;
+    width: 100%;
+    max-width: 100%;
+    background-color: #0a0a0a;
+    z-index: 100;
   }
 
   .nav__logo-img { height: 36px; width: 36px; }

@@ -50,6 +50,9 @@ export default function Gaming() {
   // Last platinum earned (first in array = most recent from stratege)
   const lastPlatinum = platinums[0]?.title ?? null;
 
+  // Last Xbox game played (first in array = most recently played)
+  const lastXboxGame = xbox.lastGame ?? xboxGames[0]?.title ?? null;
+
   // Xbox average completion %
   const xboxWithPct = xboxAll.filter(g => g.pct > 0);
   const xboxAvgPct  = xboxWithPct.length > 0
@@ -153,7 +156,20 @@ export default function Gaming() {
                     <span className="xbox-stat__label">Avg. completion</span>
                   </div>
                 )}
+                {xbox.achievements > 0 && (
+                  <div className="xbox-stat">
+                    <span className="xbox-stat__value">{xbox.achievements.toLocaleString('ru-RU')}</span>
+                    <span className="xbox-stat__label">Achievements</span>
+                  </div>
+                )}
               </div>
+              {lastXboxGame && (
+                <div className="platform-card__last-plat">
+                  <XboxIcon size={11} />
+                  <span className="platform-card__last-plat-label">Last played:</span>
+                  <span className="platform-card__last-plat-title">{lastXboxGame}</span>
+                </div>
+              )}
             </>
           ) : (
             <p className="platform-card__no-data">Stats loading via CI…</p>
@@ -171,7 +187,7 @@ export default function Gaming() {
             <>
               <div className="gaming__wall-header">
                 <span className="gaming__wall-label">Platinum Wall</span>
-                <span className="gaming__wall-count">{platinums.length} trophies</span>
+                <span className="gaming__wall-count">{psn.platinum ?? platinums.length} trophies</span>
               </div>
               <div className="gaming__mini-grid">
                 {visiblePlatinums.map((p, i) => (
@@ -205,7 +221,7 @@ export default function Gaming() {
             <>
               <div className="gaming__wall-header">
                 <span className="gaming__wall-label">Game History</span>
-                <span className="gaming__wall-count">{xboxAll.length} games</span>
+                <span className="gaming__wall-count">{xbox.games ?? xboxAll.length} games</span>
               </div>
               <div className="gaming__mini-grid">
                 {visibleXbox.map((g, i) => {

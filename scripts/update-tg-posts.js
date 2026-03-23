@@ -6,7 +6,7 @@ const fs    = require('fs');
 const path  = require('path');
 
 const CHANNEL     = 'shmakovis_appsec';
-const POSTS_COUNT = 4;
+const POSTS_COUNT = 9;
 const OUTPUT      = path.join(__dirname, '../src/data/tg-posts.json');
 const IMG_DIR     = path.join(__dirname, '../public/img/blog');
 
