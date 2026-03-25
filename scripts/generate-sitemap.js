@@ -8,16 +8,30 @@ const BASE_URL   = 'https://geminishkv.tech';
 const today      = new Date().toISOString().slice(0, 10);
 const INDEX_HTML = path.join(__dirname, '..', 'public', 'index.html');
 const SITEMAP    = path.join(__dirname, '..', 'public', 'sitemap.xml');
+const DATA_FILE  = path.join(__dirname, '..', 'src', 'data', 'tg-posts.json');
 
-// Только реальные URL — hash-якоря (#blog, #experience и т.д.)
-// Google и Yandex не индексируют fragment URLs
 const urls = [
   { loc: `${BASE_URL}/`, changefreq: 'weekly', priority: '1.0' },
 ];
 
+// Добавляем URL для каждого поста блога
+if (fs.existsSync(DATA_FILE)) {
+  const data  = JSON.parse(fs.readFileSync(DATA_FILE, 'utf8'));
+  const posts = data.posts ?? [];
+  for (const post of posts) {
+    urls.push({
+      loc: `${BASE_URL}/blog/${post.id}/`,
+      changefreq: 'monthly',
+      priority: '0.7',
+      lastmod: post.date ?? today,
+    });
+  }
+  console.log(`[sitemap] ${posts.length} blog posts added`);
+}
+
 const urlEntries = urls.map(u => `  <url>
     <loc>${u.loc}</loc>
-    <lastmod>${today}</lastmod>
+    <lastmod>${u.lastmod ?? today}</lastmod>
     <changefreq>${u.changefreq}</changefreq>
     <priority>${u.priority}</priority>
     <xhtml:link rel="alternate" hreflang="ru"        href="${u.loc}"/>
@@ -32,7 +46,7 @@ ${urlEntries}
 `;
 
 fs.writeFileSync(SITEMAP, xml, 'utf8');
-console.log(`[sitemap] written → ${SITEMAP}  (lastmod: ${today})`);
+console.log(`[sitemap] written → ${SITEMAP}  (lastmod: ${today}, total: ${urls.length} URLs)`);
 
 // Обновляем dateModified в JSON-LD ProfilePage в index.html
 if (fs.existsSync(INDEX_HTML)) {

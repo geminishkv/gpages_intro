@@ -22,7 +22,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
           cache: 'npm'
 
       - name: Fetch latest Telegram posts
@@ -53,10 +53,11 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Generate static blog pages
+        run: node scripts/generate-blog-pages.js
+
       - name: Deploy to gh-pages
         run: |
           git remote set-url origin \
             https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-          npx gh-pages -d build \
-            --user "github-actions[bot] <github-actions[bot]@users.noreply.github.com>" \
-            --message "deploy: update blog posts [skip ci]"
+          node scripts/deploy.js

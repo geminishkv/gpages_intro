@@ -12,7 +12,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "sitemap": "node scripts/generate-sitemap.js",
-    "predeploy": "npm run sitemap && npm run build",
+    "blog": "node scripts/generate-blog-pages.js",
+    "predeploy": "npm run sitemap && npm run build && npm run blog",
     "deploy": "node scripts/deploy.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

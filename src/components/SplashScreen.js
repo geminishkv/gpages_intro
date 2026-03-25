@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import '../styles/SplashScreen.css';
 
 const IMG        = process.env.PUBLIC_URL + '/img/splash/pretitle.png';
-const SHOW_MS    = 1600;
+const SHOW_MS    = 2400;
 const GLITCH_MS  = 1400;
 const FADE_MS    = 200;
 const RESHOW_MS  = 15 * 60 * 1000; // 15 минут

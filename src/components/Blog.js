@@ -3,9 +3,10 @@ import { createPortal } from 'react-dom';
 import '../styles/Blog.css';
 import DATA from '../data/tg-posts.json';
 
-const CHANNEL_URL = 'https://t.me/shmakovis_appsec';
+const CHANNEL_URL      = 'https://t.me/shmakovis_appsec';
 const MOBILE_BP        = 576;
 const MOBILE_INITIAL   = 3;
+const DESKTOP_INITIAL  = 14;
 const posts       = DATA.posts  ?? [];
 const subscribers = DATA.subscribers ?? 0;
 
@@ -82,7 +83,7 @@ function BlogModal({ post, onClose }) {
         <button className="blog-modal__close" onClick={onClose} aria-label="Закрыть">✕</button>
 
         {post.image && (
-          <img src={post.image} alt="" className="blog-modal__cover" loading="lazy" />
+          <img src={post.image} alt={post.text?.split('\n').find(l => l.trim()) ?? ''} className="blog-modal__cover" loading="lazy" />
         )}
 
         <div className="blog-modal__body">
@@ -128,8 +129,8 @@ function BlogCard({ post, onClick }) {
   const [imgBroken, setImgBroken] = useState(false);
 
   return (
-    <div className="blog-card" role="button" tabIndex={0} onClick={onClick}
-      onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') onClick(); }}>
+    <a href={`/blog/${post.id}/`} className="blog-card" tabIndex={0}
+      onClick={e => { e.preventDefault(); onClick(); }}>
       {post.image && !imgBroken && (
         <img
           className="blog-card__cover"
@@ -163,7 +164,7 @@ function BlogCard({ post, onClick }) {
 
         <span className="blog-card__read">Читать →</span>
       </div>
-    </div>
+    </a>
   );
 }
 
@@ -188,7 +189,8 @@ export default function Blog() {
     return () => mq.removeEventListener('change', handler);
   }, []);
 
-  const visible = (isMobile && !expanded) ? posts.slice(0, MOBILE_INITIAL) : posts;
+  const initial = isMobile ? MOBILE_INITIAL : DESKTOP_INITIAL;
+  const visible = expanded ? posts : posts.slice(0, initial);
 
   if (!posts.length) return null;
 
@@ -231,9 +233,9 @@ export default function Blog() {
         </a>
       </div>
 
-      {isMobile && !expanded && posts.length > MOBILE_INITIAL && (
+      {!expanded && posts.length > initial && (
         <button className="blog__show-more" onClick={() => setExpanded(true)}>
-          Показать ещё {posts.length - MOBILE_INITIAL} ↓
+          Показать ещё {posts.length - initial} ↓
         </button>
       )}
 
