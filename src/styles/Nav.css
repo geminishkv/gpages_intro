@@ -35,6 +35,13 @@
   text-transform: lowercase;
 }
 
+/* ── Right group (links + lang + burger) ── */
+.nav__right {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 2vw, 32px);
+}
+
 .nav__links {
   display: flex;
   gap: clamp(16px, 2.5vw, 36px);
@@ -96,6 +103,41 @@
 
 .nav__link--secondary:hover {
   color: #666666 !important;
+}
+
+/* ── Language toggle ── */
+.nav__lang {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav__lang-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: #555555;
+  transition: color 0.2s;
+  padding: 2px 0;
+  line-height: 1;
+}
+
+.nav__lang-btn--active {
+  color: #D51A1A;
+}
+
+.nav__lang-btn:hover {
+  color: #ffffff;
+}
+
+.nav__lang-sep {
+  font-size: 0.7rem;
+  color: #333333;
+  pointer-events: none;
 }
 
 /* ── Burger button ── */
@@ -190,6 +232,20 @@
   color: #D51A1A;
 }
 
+/* Lang toggle inside overlay */
+.nav__lang--overlay {
+  gap: 10px;
+}
+
+.nav__lang--overlay .nav__lang-btn {
+  font-size: 1rem;
+  letter-spacing: 0.12em;
+}
+
+.nav__lang--overlay .nav__lang-sep {
+  font-size: 0.9rem;
+}
+
 /* ── Responsive ── */
 @media (max-width: 900px) {
   .nav {
@@ -210,6 +266,7 @@
 
 @media (max-width: 768px) {
   .nav { padding: 18px 24px; }
+  .nav__right { gap: 12px; }
   .nav__burger { display: flex; }
   .nav__links  { display: none; }
 
