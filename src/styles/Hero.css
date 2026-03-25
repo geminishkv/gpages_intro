@@ -66,7 +66,7 @@
 /* ── Badges ── */
 .hero__badges-outer {
   overflow: hidden;
-  max-width: clamp(400px, 38vw, 700px);
+  max-width: clamp(400px, 40vw, 700px);
   margin-top: 12px;
 }
 
@@ -219,7 +219,7 @@
 /* ── Мобила ── */
 @media (max-width: 768px) {
   .hero__badges-outer {
-    max-width: calc(3 * 80px + 2 * 12px);
+    max-width: calc(4 * 80px + 2 * 12px);
   }
   .hero__badge        { width: 80px; height: 110px; }
   .hero__badges-track { gap: 12px; }
@@ -230,7 +230,7 @@
   .hero__subtitle { font-size: 1.8rem; }
 
   .hero__badges-outer {
-    max-width: calc(3 * 70px + 2 * 10px);
+    max-width: calc(4 * 70px + 2 * 10px);
   }
   .hero__badge        { width: 70px; height: 96px; }
   .hero__badges-track { gap: 10px; }
