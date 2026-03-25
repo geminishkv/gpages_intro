@@ -42,5 +42,10 @@
     overflow: visible;
     -webkit-overflow-scrolling: touch;
     padding-top: 76px;
+    /* iOS Safari: opacity-transition на родителе делает position:fixed детей
+       фиксированными относительно него, а не вьюпорта — nav начинает скроллиться.
+       Убираем opacity-анимацию, оставляем только мгновенную задержку visibility. */
+    opacity: 1;
+    transition: visibility 0s linear 0.3s;
   }
 }

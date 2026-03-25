@@ -140,6 +140,7 @@ export function useMainAnimation(isVisible, onAllDone) {
                                 easing: 'easeOutExpo',
                                 complete: () => {
                                   entry.target.style.willChange = 'auto';
+                                  entry.target.style.transform = 'none';
                                 },
                               });
                             });

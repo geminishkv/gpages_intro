@@ -5,7 +5,7 @@
   padding: 24px 60px;
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 100;
   background: #0a0a0a;
   max-width: 1900px;
   width: 100%;

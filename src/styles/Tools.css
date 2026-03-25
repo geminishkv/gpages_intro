@@ -62,7 +62,7 @@
 
 .tools__domain-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(6, 1fr);
   border-top: 1px solid #141414;
   border-right: 1px solid #141414;
 }
@@ -186,12 +186,13 @@
 @media (max-width: 900px) {
   .tools { padding: 40px 24px; }
   .tools__grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .tools__domain-grid { grid-template-columns: repeat(4, 1fr); }
 }
 
 @media (max-width: 576px) {
   .tools__grid { grid-template-columns: 1fr 1fr; }
   .tools__show-more { grid-column: 1 / -1; }
-  .tools__domain-grid { grid-template-columns: 1fr; }
+  .tools__domain-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 420px) {
