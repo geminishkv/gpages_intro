@@ -57,9 +57,9 @@ export default function Hero({
             <span className="social-group__label">Контент</span>
             <div className="social-group__btns">
               <a href="https://t.me/shmakovis_appsec" target="_blank" rel="noreferrer" className="social-btn social-btn--content">Blog</a>
-              <a href="https://course.geminishkv.tech/" target="_blank" rel="noreferrer" className="social-btn social-btn--content">AppSec Course →</a>
+              <a href="https://course.geminishkv.tech/" target="_blank" rel="noreferrer" className="social-btn social-btn--content">AppSec Course</a>
               <a href="https://inseca.tech/security-champion-training" target="_blank" rel="noreferrer" className="social-btn social-btn--content">Security Champion Training</a>
-              <a href="https://clck.ru/3SiMPc" target="_blank" rel="noreferrer" className="social-btn social-btn--content">56939-2024 Map→</a>
+              <a href="https://clck.ru/3SiMPc" target="_blank" rel="noreferrer" className="social-btn social-btn--content">56939-2024 Map</a>
               <a href="https://findevsecops.github.io/oss_toolchainmap/" target="_blank" rel="noreferrer" className="social-btn social-btn--content">OSS Toolchain Map</a>
             </div>
           </div>

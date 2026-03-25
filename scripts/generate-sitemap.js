@@ -4,39 +4,20 @@
 const fs   = require('fs');
 const path = require('path');
 
-const BASE_URL = 'https://geminishkv.tech';
-const today    = new Date().toISOString().slice(0, 10);
+const BASE_URL   = 'https://geminishkv.tech';
+const today      = new Date().toISOString().slice(0, 10);
+const INDEX_HTML = path.join(__dirname, '..', 'public', 'index.html');
+const SITEMAP    = path.join(__dirname, '..', 'public', 'sitemap.xml');
 
+// Только реальные URL — hash-якоря (#blog, #experience и т.д.)
+// Google и Yandex не индексируют fragment URLs
 const urls = [
-  {
-    loc:        `${BASE_URL}/`,
-    lastmod:    today,
-    changefreq: 'weekly',
-    priority:   '1.0',
-  },
-  {
-    loc:        `${BASE_URL}/#blog`,
-    lastmod:    today,
-    changefreq: 'weekly',
-    priority:   '0.8',
-  },
-  {
-    loc:        `${BASE_URL}/#experience`,
-    lastmod:    today,
-    changefreq: 'monthly',
-    priority:   '0.9',
-  },
-  {
-    loc:        `${BASE_URL}/#tools`,
-    lastmod:    today,
-    changefreq: 'monthly',
-    priority:   '0.7',
-  },
+  { loc: `${BASE_URL}/`, changefreq: 'weekly', priority: '1.0' },
 ];
 
 const urlEntries = urls.map(u => `  <url>
     <loc>${u.loc}</loc>
-    <lastmod>${u.lastmod}</lastmod>
+    <lastmod>${today}</lastmod>
     <changefreq>${u.changefreq}</changefreq>
     <priority>${u.priority}</priority>
     <xhtml:link rel="alternate" hreflang="ru"        href="${u.loc}"/>
@@ -50,6 +31,18 @@ ${urlEntries}
 </urlset>
 `;
 
-const dest = path.join(__dirname, '..', 'public', 'sitemap.xml');
-fs.writeFileSync(dest, xml, 'utf8');
-console.log(`[sitemap] written → ${dest}  (lastmod: ${today})`);
+fs.writeFileSync(SITEMAP, xml, 'utf8');
+console.log(`[sitemap] written → ${SITEMAP}  (lastmod: ${today})`);
+
+// Обновляем dateModified в JSON-LD ProfilePage в index.html
+if (fs.existsSync(INDEX_HTML)) {
+  const html    = fs.readFileSync(INDEX_HTML, 'utf8');
+  const updated = html.replace(
+    /"dateModified":\s*"\d{4}-\d{2}-\d{2}"/,
+    `"dateModified": "${today}"`
+  );
+  if (updated !== html) {
+    fs.writeFileSync(INDEX_HTML, updated, 'utf8');
+    console.log(`[sitemap] dateModified → ${today}`);
+  }
+}
