@@ -37,13 +37,13 @@ export default function MainPage({ isVisible }) {
         progressWrapRef={refs.progressWrapRef}
         progressBarRef={refs.progressBarRef}
       />
-      <div className="section-reveal" ref={refs.statsRef}>
+      <div className="section-reveal" id="stats" ref={refs.statsRef}>
         <Stats active={refs.statsActive} />
       </div>
-      <div className="section-reveal" ref={refs.projectsRef}>
+      <div className="section-reveal" id="projects" ref={refs.projectsRef}>
         <Projects isVisible={animDone} />
       </div>
-      <div className="section-reveal" ref={refs.videosRef}>
+      <div className="section-reveal" id="videos" ref={refs.videosRef}>
         <Videos />
       </div>
       <div className="section-reveal" id="blog" ref={refs.blogRef}>
