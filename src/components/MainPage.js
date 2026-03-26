@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import '../styles/MainPage.css';
 import { useMainAnimation } from '../hooks/useMainAnimation';
 import Nav        from './Nav';
@@ -19,8 +19,23 @@ export default function MainPage({ isVisible }) {
   const refs = useMainAnimation(isVisible, () => setAnimDone(true));
   const [aboutOpen, setAboutOpen] = useState(false);
 
+  // Block body scroll on mobile during animation; unblock when done
+  useEffect(() => {
+    if (isVisible && !animDone) {
+      document.body.style.overflow = 'hidden';
+      document.body.style.touchAction = 'none';
+    } else {
+      document.body.style.overflow = '';
+      document.body.style.touchAction = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+      document.body.style.touchAction = '';
+    };
+  }, [isVisible, animDone]);
+
   return (
-    <div className={`main-page${isVisible ? ' main-page--visible' : ''}`}>
+    <div className={`main-page${isVisible ? ' main-page--visible' : ''}${animDone ? ' main-page--scrollable' : ''}`}>
       <Nav navRef={refs.navRef} onAboutOpen={() => setAboutOpen(true)} />
       <Hero
         titleRef={refs.titleRef}
@@ -62,7 +77,7 @@ export default function MainPage({ isVisible }) {
         <Footer />
       </div>
       <AboutModal isOpen={aboutOpen} onClose={() => setAboutOpen(false)} />
-      <NoticeBar />
+      <NoticeBar animDone={animDone} />
     </div>
   );
 }

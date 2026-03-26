@@ -9,6 +9,10 @@
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.5s ease 0.3s, visibility 0.5s ease 0.3s;
+  overflow: hidden;
+}
+
+.main-page--scrollable {
   overflow: auto;
   scroll-behavior: smooth;
 }
@@ -47,5 +51,10 @@
        Убираем opacity-анимацию, оставляем только мгновенную задержку visibility. */
     opacity: 1;
     transition: visibility 0s linear 0.3s;
+  }
+
+  .main-page--scrollable {
+    overflow: visible;
+    scroll-behavior: auto;
   }
 }

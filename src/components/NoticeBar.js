@@ -4,19 +4,20 @@ import { useLang } from '../context/LangContext';
 
 const SESSION_KEY = 'notice_dismissed';
 
-export default function NoticeBar() {
+export default function NoticeBar({ animDone }) {
   const [visible, setVisible] = useState(false);
   const { t } = useLang();
   const n = t.notice;
 
+  // Show notice only after the entry animation completes
   useEffect(() => {
+    if (!animDone) return;
     try {
-      if (!sessionStorage.getItem(SESSION_KEY)) {
-        const timer = setTimeout(() => setVisible(true), 1200);
-        return () => clearTimeout(timer);
-      }
+      if (sessionStorage.getItem(SESSION_KEY)) return;
+      const timer = setTimeout(() => setVisible(true), 600);
+      return () => clearTimeout(timer);
     } catch { /* ignore */ }
-  }, []);
+  }, [animDone]);
 
   function dismiss() {
     setVisible(false);
