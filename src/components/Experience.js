@@ -1,7 +1,9 @@
 import '../styles/Experience.css';
-import { EXPERIENCE } from '../constants';
+import { useLang } from '../context/LangContext';
 
 export default function Experience() {
+  const { t } = useLang();
+  const EXPERIENCE = t.experience;
   return (
     <section className="experience">
       <div className="experience__header">

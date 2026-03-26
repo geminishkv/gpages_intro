@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import '../styles/Blog.css';
 import DATA from '../data/tg-posts.json';
+import { useLang } from '../context/LangContext';
 
 const CHANNEL_URL      = 'https://t.me/shmakovis_appsec';
 const MOBILE_BP        = 576;
@@ -12,14 +13,6 @@ const subscribers = DATA.subscribers ?? 0;
 
 /* ─────────────────── helpers ─────────────────── */
 
-function pluralRu(n, one, few, many) {
-  const mod10  = n % 10;
-  const mod100 = n % 100;
-  if (mod100 >= 11 && mod100 <= 19) return `${n} ${many}`;
-  if (mod10 === 1)                   return `${n} ${one}`;
-  if (mod10 >= 2 && mod10 <= 4)     return `${n} ${few}`;
-  return `${n} ${many}`;
-}
 
 function formatViews(n) {
   if (!n) return null;
@@ -27,9 +20,9 @@ function formatViews(n) {
   return String(n);
 }
 
-function formatDate(iso) {
+function formatDate(iso, locale) {
   if (!iso) return '';
-  return new Date(iso).toLocaleDateString('ru-RU', {
+  return new Date(iso).toLocaleDateString(locale, {
     day: 'numeric', month: 'short', year: 'numeric',
   });
 }
@@ -55,7 +48,7 @@ function EyeIcon() {
 
 /* ─────────────────── modal ─────────────────── */
 
-function BlogModal({ post, onClose }) {
+function BlogModal({ post, onClose, locale, openTelegramLabel }) {
   useEffect(() => {
     const onKey = (e) => { if (e.key === 'Escape') onClose(); };
     document.addEventListener('keydown', onKey);
@@ -80,7 +73,7 @@ function BlogModal({ post, onClose }) {
         aria-modal="true"
         onClick={e => e.stopPropagation()}
       >
-        <button className="blog-modal__close" onClick={onClose} aria-label="Закрыть">✕</button>
+        <button className="blog-modal__close" onClick={onClose} aria-label="Close">✕</button>
 
         {post.image && (
           <img src={post.image} alt={post.text?.split('\n').find(l => l.trim()) ?? ''} className="blog-modal__cover" loading="lazy" />
@@ -88,7 +81,7 @@ function BlogModal({ post, onClose }) {
 
         <div className="blog-modal__body">
           <div className="blog-modal__meta">
-            <span className="blog-modal__date">{formatDate(post.date)}</span>
+            <span className="blog-modal__date">{formatDate(post.date, locale)}</span>
             {views && (
               <span className="blog-modal__views">
                 <EyeIcon />{views}
@@ -113,7 +106,7 @@ function BlogModal({ post, onClose }) {
             className="blog-modal__open"
           >
             <TgIcon size={15} />
-            Открыть в Telegram
+            {openTelegramLabel}
           </a>
         </div>
       </div>
@@ -124,7 +117,7 @@ function BlogModal({ post, onClose }) {
 
 /* ─────────────────── card ─────────────────── */
 
-function BlogCard({ post, onClick }) {
+function BlogCard({ post, onClick, locale, readBtn }) {
   const views = formatViews(post.views);
   const [imgBroken, setImgBroken] = useState(false);
 
@@ -144,7 +137,7 @@ function BlogCard({ post, onClick }) {
 
       <div className="blog-card__inner">
         <div className="blog-card__meta">
-          <span className="blog-card__date">{formatDate(post.date)}</span>
+          <span className="blog-card__date">{formatDate(post.date, locale)}</span>
           {views && (
             <span className="blog-card__views">
               <EyeIcon />{views}
@@ -162,7 +155,7 @@ function BlogCard({ post, onClick }) {
           </div>
         )}
 
-        <span className="blog-card__read">Читать →</span>
+        <span className="blog-card__read">{readBtn}</span>
       </div>
     </a>
   );
@@ -173,6 +166,9 @@ function BlogCard({ post, onClick }) {
 export default function Blog() {
   const [selected, setSelected] = useState(null);
   const close = useCallback(() => setSelected(null), []);
+  const { t } = useLang();
+  const { locale } = t;
+  const b = t.blog;
 
   const [isMobile, setIsMobile] = useState(
     () => typeof window !== 'undefined' && window.innerWidth <= MOBILE_BP,
@@ -202,7 +198,7 @@ export default function Blog() {
           <span className="blog__label">Blog</span>
           {subscribers > 0 && (
             <span className="blog__subs">
-              {pluralRu(subscribers, 'подписчик', 'подписчика', 'подписчиков')}
+              {b.subscribersFmt(subscribers)}
             </span>
           )}
         </div>
@@ -214,7 +210,7 @@ export default function Blog() {
       {/* Grid */}
       <div className="blog__grid">
         {visible.map(p => (
-          <BlogCard key={p.id} post={p} onClick={() => setSelected(p)} />
+          <BlogCard key={p.id} post={p} onClick={() => setSelected(p)} locale={locale} readBtn={b.readBtn} />
         ))}
 
         {/* CTA block */}
@@ -226,21 +222,19 @@ export default function Blog() {
         >
           <TgIcon size={28} />
           <span className="blog-cta__title">AppSECT.A.</span>
-          <span className="blog-cta__sub">
-            Авторский канал про AppSec и DevSecOps
-          </span>
-          <span className="blog-cta__btn">Подписаться →</span>
+          <span className="blog-cta__sub">{b.ctaSub}</span>
+          <span className="blog-cta__btn">{b.subscribeBtn}</span>
         </a>
       </div>
 
       {!expanded && posts.length > initial && (
         <button className="blog__show-more" onClick={() => setExpanded(true)}>
-          Показать ещё {posts.length - initial} ↓
+          {b.showMore(posts.length - initial)}
         </button>
       )}
 
       {/* Modal */}
-      {selected && <BlogModal post={selected} onClose={close} />}
+      {selected && <BlogModal post={selected} onClose={close} locale={locale} openTelegramLabel={b.openTelegram} />}
     </section>
   );
 }

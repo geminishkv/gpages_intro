@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import '../styles/Tools.css';
-import { DOMAINS, CERTS } from '../constants';
+import { DOMAINS } from '../constants';
+import { useLang } from '../context/LangContext';
 
 const TOOL_GROUPS = [
   { label: 'SAST',      items: ['Semgrep', 'SonarQube', 'Checkov', 'Bandit', 'BlackDuck', 'Fortify'] },
@@ -19,6 +20,8 @@ const CERTS_INITIAL  = 4;
 export default function Tools() {
   const [stackExpanded, setStackExpanded] = useState(false);
   const [certsExpanded, setCertsExpanded] = useState(false);
+  const { t } = useLang();
+  const CERTS = t.certs;
 
   const visibleGroups = stackExpanded ? TOOL_GROUPS : TOOL_GROUPS.slice(0, STACK_INITIAL);
   const visibleCerts  = certsExpanded ? CERTS       : CERTS.slice(0, CERTS_INITIAL);

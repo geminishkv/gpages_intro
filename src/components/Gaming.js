@@ -1,6 +1,7 @@
 import '../styles/Gaming.css';
 import DATA    from '../data/gaming.json';
 import IG_DATA from '../data/instagram.json';
+import { useLang } from '../context/LangContext';
 
 const GRID_LIMIT = 18;
 const IG_LIMIT   = 8;
@@ -82,6 +83,7 @@ function InstagramIcon({ size = 18 }) {
 }
 
 export default function Gaming() {
+  const { t } = useLang();
   const { psn, xbox, platinums = [], xboxGames = [] } = DATA;
   const igPosts = IG_DATA.posts ?? [];
 
@@ -122,11 +124,11 @@ export default function Gaming() {
                 <div className="ig-card__inner">
                   {p.timestamp > 0 && (
                     <span className="ig-card__date">
-                      {new Date(p.timestamp).toLocaleDateString('ru-RU', { day: 'numeric', month: 'short', year: 'numeric' })}
+                      {new Date(p.timestamp).toLocaleDateString(t.locale, { day: 'numeric', month: 'short', year: 'numeric' })}
                     </span>
                   )}
                   {p.caption && <p className="ig-card__caption">{p.caption}</p>}
-                  <span className="ig-card__read">Смотреть →</span>
+                  <span className="ig-card__read">{t.gaming.igRead}</span>
                 </div>
               </a>
             ))}
@@ -140,8 +142,8 @@ export default function Gaming() {
             >
               <InstagramIcon size={28} />
               <span className="ig-cta__title">@geminishkv</span>
-              <span className="ig-cta__sub">Личный профиль</span>
-              <span className="ig-cta__btn">Перейти →</span>
+              <span className="ig-cta__sub">{t.gaming.igPersonalProfile}</span>
+              <span className="ig-cta__btn">{t.gaming.igGo}</span>
             </a>
           </div>
         </div>
@@ -198,7 +200,7 @@ export default function Gaming() {
             <div className="xbox-stat">
               <span className="xbox-stat__icon" style={{ color: '#555' }}><TrophyIcon size={18} /></span>
               <span className="xbox-stat__text">
-                <span className="xbox-stat__value">{psn.total.toLocaleString('ru-RU')}</span>
+                <span className="xbox-stat__value">{psn.total.toLocaleString(t.locale)}</span>
                 <span className="xbox-stat__label">Total</span>
               </span>
             </div>
@@ -227,7 +229,7 @@ export default function Gaming() {
                 <div className="xbox-stat">
                   <span className="xbox-stat__icon"><GamerscoreIcon size={18} /></span>
                   <span className="xbox-stat__text">
-                    <span className="xbox-stat__value">{xbox.gamerscore.toLocaleString('ru-RU')}</span>
+                    <span className="xbox-stat__value">{xbox.gamerscore.toLocaleString(t.locale)}</span>
                     <span className="xbox-stat__label">Gamerscore</span>
                   </span>
                 </div>
@@ -253,7 +255,7 @@ export default function Gaming() {
                   <div className="xbox-stat">
                     <span className="xbox-stat__icon"><AchievementsIcon size={18} /></span>
                     <span className="xbox-stat__text">
-                      <span className="xbox-stat__value">{xbox.achievements.toLocaleString('ru-RU')}</span>
+                      <span className="xbox-stat__value">{xbox.achievements.toLocaleString(t.locale)}</span>
                       <span className="xbox-stat__label">Achievements</span>
                     </span>
                   </div>

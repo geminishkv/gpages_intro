@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import '../styles/Projects.css';
-import { PROJECTS } from '../constants';
+import { useLang } from '../context/LangContext';
 
 const PROJECTS_INITIAL = 3;
 
@@ -22,6 +22,8 @@ function ForkIcon() {
 
 export default function Projects({ isVisible }) {
   const [expanded, setExpanded] = useState(false);
+  const { t } = useLang();
+  const PROJECTS = t.projects;
 
   const visible = expanded ? PROJECTS : PROJECTS.slice(0, PROJECTS_INITIAL);
 

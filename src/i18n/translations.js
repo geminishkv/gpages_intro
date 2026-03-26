@@ -172,6 +172,7 @@ export const translations = {
       igRead: 'Смотреть →',
       igPersonalProfile: 'Личный профиль',
       igGo: 'Перейти →',
+      watchBtn: 'Смотреть →',
     },
 
     blog: {
@@ -374,6 +375,7 @@ export const translations = {
       igRead: 'View →',
       igPersonalProfile: 'Personal profile',
       igGo: 'Visit →',
+      watchBtn: 'Watch →',
     },
 
     blog: {

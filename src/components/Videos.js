@@ -1,20 +1,5 @@
 import '../styles/Videos.css';
-
-const VIDEOS = [
-  {
-    label: 'Podcast',
-    title: 'Подкаст по безопасной разработке',
-    url:   'https://www.youtube.com/watch?v=LifFzjdvGTc',
-    thumb: process.env.PUBLIC_URL + '/img/yt_preroll/LifFzjdvGTc.jpg',
-  },
-  {
-    label:     'Interview',
-    title:     'Интервью с ассоциацией BISA по безопасной разработке ПО',
-    url:       'https://youtu.be/sPGhWWaWUdE',
-    thumb:     process.env.PUBLIC_URL + '/img/yt_preroll/sPGhWWaWUdE.jpg',
-    thumbZoom: true,
-  },
-];
+import { useLang } from '../context/LangContext';
 
 function PlayIcon() {
   return (
@@ -26,15 +11,18 @@ function PlayIcon() {
 }
 
 export default function Videos() {
+  const { t } = useLang();
+  const videos = t.videos;
+
   return (
     <section className="videos">
       <div className="videos__header">
         <span className="videos__label">YouTube</span>
       </div>
       <div className="videos__grid">
-        {VIDEOS.map((v) => (
+        {videos.map((v) => (
           <a
-            key={v.id}
+            key={v.url}
             href={v.url}
             target="_blank"
             rel="noreferrer"
@@ -58,7 +46,7 @@ export default function Videos() {
             </div>
 
             <div className="video-card__footer">
-              <span className="video-card__btn">Смотреть →</span>
+              <span className="video-card__btn">{t.gaming.watchBtn}</span>
             </div>
           </a>
         ))}

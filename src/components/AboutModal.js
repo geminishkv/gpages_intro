@@ -2,81 +2,74 @@ import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import '../styles/AboutModal.css';
 import { AVATAR_IMG } from '../constants';
+import { useLang } from '../context/LangContext';
 
-const TABS = ['Профиль', 'Достижения'];
-
-function TabProfile() {
+function TabProfile({ p }) {
   return (
     <div className="about-tab-content">
       <p className="about-meta">
-        Москва, Россия
+        {p.location}
         <span className="about-meta__dot">·</span>
-        Открыт к релокации и командировкам
+        {p.relocation}
       </p>
 
       <div className="about-info">
         <div className="about-info__item">
-          <span className="about-info__label">Желаемые роли</span>
-          <span className="about-info__value">
-            DevSecOps Team Lead · AppSec Team Lead · Руководитель ОИБ · CTO
-          </span>
+          <span className="about-info__label">{p.rolesLabel}</span>
+          <span className="about-info__value">{p.rolesValue}</span>
         </div>
         <div className="about-info__item">
-          <span className="about-info__label">Занятость</span>
-          <span className="about-info__value">Полная или проектная</span>
+          <span className="about-info__label">{p.employmentLabel}</span>
+          <span className="about-info__value">{p.employmentValue}</span>
         </div>
         <div className="about-info__item">
-          <span className="about-info__label">Формат работы</span>
-          <span className="about-info__value">Гибридный или удалённый</span>
+          <span className="about-info__label">{p.formatLabel}</span>
+          <span className="about-info__value">{p.formatValue}</span>
         </div>
         <div className="about-info__item">
-          <span className="about-info__label">Языки</span>
-          <span className="about-info__value">Русский (родной) · Английский (Intermediate)</span>
+          <span className="about-info__label">{p.languagesLabel}</span>
+          <span className="about-info__value">{p.languagesValue}</span>
         </div>
       </div>
 
       <div className="about-section">
-        <div className="about-section__title">Профессиональное резюме</div>
+        <div className="about-section__title">{p.summaryTitle}</div>
         <ul className="about-section__list">
-          <li>Руководитель с опытом построения функции безопасности приложений с нуля в enterprise и fintech среде (банкинг, крипто)</li>
-          <li>Проектирует и внедряет Secure SDLC: интеграция SAST, SCA, DAST, сканирования контейнеров и секретов в CI/CD, программы Security Champions, риск-ориентированное устранение уязвимостей</li>
-          <li>Сильный бэкграунд в управлении рисками ИБ и комплаенсе (PCI DSS, КИИ, финтех-стандарты), доказанный баланс между безопасностью и скоростью выхода на рынок</li>
+          {p.summary.map((item, i) => <li key={i}>{item}</li>)}
         </ul>
       </div>
     </div>
   );
 }
 
-
-function TabAchievements() {
+function TabAchievements({ a }) {
   return (
     <div className="about-tab-content">
       <div className="about-section">
-        <div className="about-section__title">Достижения</div>
+        <div className="about-section__title">{a.title}</div>
         <ul className="about-section__list">
-          <li>Получил благодарственное письмо от В. Селина за значительный вклад в AppSec (SAST) в рамках сертификации ФСТЭК России по ГОСТ 71207</li>
-          <li>Лидер сообщества FinDevSecOps для российского финтех-рынка</li>
-          <li>Организатор первого DevSecOps-хакатона в России — продолжение серии в 2026 году</li>
-          <li>
-            Преподаватель безопасной разработки ПО и ИБ в ведущих технических вузах:
-            <ul className="about-section__sublist">
-              <li>МГТУ им. Н.Э. Баумана</li>
-              <li>Московский физико-технический институт (МФТИ)</li>
-            </ul>
-          </li>
-          <li>Автор статей и докладов по DevSecOps, безопасной разработке и практическому AppSec</li>
+          {a.items.map((item, i) => (
+            <li key={i}>
+              {item.text}
+              {item.sub && (
+                <ul className="about-section__sublist">
+                  {item.sub.map((s, j) => <li key={j}>{s}</li>)}
+                </ul>
+              )}
+            </li>
+          ))}
         </ul>
       </div>
-
     </div>
   );
 }
-
 
 export default function AboutModal({ isOpen, onClose }) {
   const [tab, setTab]   = useState(0);
   const modalRef        = useRef(null);
   const bodyRef         = useRef(null);
+  const { t }           = useLang();
+  const { tabs, closeLabel, profile, achievements } = t.about;
 
   /* закрытие по Escape */
   useEffect(() => {
@@ -111,9 +104,7 @@ export default function AboutModal({ isOpen, onClose }) {
 
   /* сброс состояния при закрытии */
   useEffect(() => {
-    if (!isOpen) {
-      setTab(0);
-    }
+    if (!isOpen) setTab(0);
   }, [isOpen]);
 
   /* сброс скролла при смене таба */
@@ -138,28 +129,28 @@ export default function AboutModal({ isOpen, onClose }) {
               <span className="about-modal__role">AppSec &amp; DevSecOps Lead</span>
             </div>
           </div>
-          <button className="about-modal__close" onClick={onClose} aria-label="Закрыть">✕</button>
+          <button className="about-modal__close" onClick={onClose} aria-label={closeLabel}>✕</button>
         </div>
 
         {/* ── Tabs ── */}
         <div className="about-tabs" role="tablist">
-          {TABS.map((t, i) => (
+          {tabs.map((label, i) => (
             <button
-              key={t}
+              key={label}
               role="tab"
               aria-selected={tab === i}
               className={`about-tab${tab === i ? ' about-tab--active' : ''}`}
               onClick={() => handleTabChange(i)}
             >
-              {t}
+              {label}
             </button>
           ))}
         </div>
 
         {/* ── Body ── */}
         <div className="about-modal__body" ref={bodyRef} role="tabpanel">
-          {tab === 0 && <TabProfile />}
-          {tab === 1 && <TabAchievements />}
+          {tab === 0 && <TabProfile p={profile} />}
+          {tab === 1 && <TabAchievements a={achievements} />}
         </div>
 
       </div>

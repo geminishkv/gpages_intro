@@ -5,12 +5,15 @@ import {
   LIDER_IMG, LANIT_IMG, BMSTU_IMG, MPFI_IMG, RBPO_IMG, INSECA_IMG,
   TAGLINE_TEXT,
 } from '../constants';
+import { useLang } from '../context/LangContext';
 
 export default function Hero({
   titleRef, subtitleRef, taglineRef, socialsRef, liderRef,
   blinkerRef, whiteBoxRef, containerBoxRef, windowImgRef, uwuRef, workTextRef,
   progressWrapRef, progressBarRef,
 }) {
+  const { t } = useLang();
+
   return (
     <div className="hero">
       {/* Left — text */}
@@ -54,7 +57,7 @@ export default function Hero({
 
           {/* Контент */}
           <div className="social-group">
-            <span className="social-group__label">Контент</span>
+            <span className="social-group__label">{t.hero.contentLabel}</span>
             <div className="social-group__btns">
               <a href="https://t.me/shmakovis_appsec" target="_blank" rel="noreferrer" className="social-btn social-btn--content">Blog</a>
               <a href="https://course.geminishkv.tech/" target="_blank" rel="noreferrer" className="social-btn social-btn--content">AppSec Course</a>
@@ -66,7 +69,7 @@ export default function Hero({
 
           {/* Контакты */}
           <div className="social-group">
-            <span className="social-group__label">Контакты</span>
+            <span className="social-group__label">{t.hero.contactsLabel}</span>
             <div className="social-group__btns">
               <a href="https://t.me/geminishkv"     target="_blank" rel="noreferrer" className="social-btn social-btn--outline">Telegram</a>
               <a href="https://www.linkedin.com/in/geminishkvdev/" target="_blank" rel="noreferrer" className="social-btn social-btn--outline">LINKEDIN</a>

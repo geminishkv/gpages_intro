@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import '../styles/Stats.css';
-import { STATS } from '../constants';
+import { useLang } from '../context/LangContext';
 
 function Counter({ value, suffix, label, active }) {
   const [display, setDisplay] = useState(0);
@@ -31,9 +31,10 @@ function Counter({ value, suffix, label, active }) {
 }
 
 export default function Stats({ active }) {
+  const { t } = useLang();
   return (
     <div className="stats">
-      {STATS.map((s) => (
+      {t.stats.map((s) => (
         <Counter key={s.label} value={s.value} suffix={s.suffix} label={s.label} active={active} />
       ))}
     </div>
