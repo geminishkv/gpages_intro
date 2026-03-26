@@ -19,18 +19,24 @@ export default function MainPage({ isVisible }) {
   const refs = useMainAnimation(isVisible, () => setAnimDone(true));
   const [aboutOpen, setAboutOpen] = useState(false);
 
-  // Block body scroll on mobile during animation; unblock when done
+  // iOS-safe scroll lock during animation (overflow:hidden breaks position:fixed on iOS Safari)
   useEffect(() => {
     if (isVisible && !animDone) {
+      document.body.style.position = 'fixed';
+      document.body.style.top = '0';
+      document.body.style.width = '100%';
       document.body.style.overflow = 'hidden';
-      document.body.style.touchAction = 'none';
     } else {
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
       document.body.style.overflow = '';
-      document.body.style.touchAction = '';
     }
     return () => {
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
       document.body.style.overflow = '';
-      document.body.style.touchAction = '';
     };
   }, [isVisible, animDone]);
 

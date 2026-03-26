@@ -32,3 +32,6 @@ User-agent: Twitterbot
 Allow: /
 
 Sitemap: https://geminishkv.tech/sitemap.xml
+
+# Yandex: canonical host
+Host: https://geminishkv.tech

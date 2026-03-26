@@ -196,6 +196,7 @@ export default function Blog() {
       <div className="blog__header">
         <div className="blog__header-left">
           <span className="blog__label">Blog</span>
+          {b.langNote && <span className="blog__lang-note">{b.langNote}</span>}
           {subscribers > 0 && (
             <span className="blog__subs">
               {b.subscribersFmt(subscribers)}

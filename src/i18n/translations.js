@@ -176,6 +176,7 @@ export const translations = {
     },
 
     blog: {
+      langNote: '',
       readBtn: 'Читать →',
       openTelegram: 'Открыть в Telegram',
       ctaSub: 'Авторский канал про AppSec и DevSecOps',
@@ -379,6 +380,7 @@ export const translations = {
     },
 
     blog: {
+      langNote: 'Posts are in Russian',
       readBtn: 'Read →',
       openTelegram: 'Open in Telegram',
       ctaSub: 'AppSec and DevSecOps channel',

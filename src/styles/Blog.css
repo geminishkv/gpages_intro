@@ -24,6 +24,12 @@
   gap: 12px;
 }
 
+.blog__lang-note {
+  font-size: 0.7rem;
+  color: #444444;
+  letter-spacing: 0.06em;
+}
+
 .blog__label {
   font-size: 0.85rem;
   font-weight: 700;

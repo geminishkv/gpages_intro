@@ -14,6 +14,21 @@
     <meta name="googlebot"   content="index, follow" />
     <meta name="yandex"      content="index, follow" />
     <link rel="canonical"    href="https://geminishkv.tech/" />
+
+    <!-- ── Language alternates (bilingual SPA: RU / EN, same URL) ── -->
+    <link rel="alternate" hreflang="ru"        href="https://geminishkv.tech/" />
+    <link rel="alternate" hreflang="en"        href="https://geminishkv.tech/" />
+    <link rel="alternate" hreflang="x-default" href="https://geminishkv.tech/" />
+
+    <!-- ── Sitemap (explicit link for crawlers) ── -->
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+
+    <!-- ── Geo / Region (Yandex region hint: Moscow) ── -->
+    <meta name="geo.region"    content="RU-MOW" />
+    <meta name="geo.placename" content="Москва, Россия" />
+    <meta name="geo.position"  content="55.7558;37.6173" />
+    <meta name="ICBM"          content="55.7558, 37.6173" />
+
     <meta name="theme-color"              content="#0a0a0a" />
     <meta name="msapplication-TileColor"  content="#0a0a0a" />
 
@@ -139,9 +154,9 @@
         "url": "https://geminishkv.tech/",
         "name": "Илья Шмаков — AppSec & DevSecOps | geminishkv",
         "description": "Персональный сайт Ильи Станиславовича Шмакова — AppSec Team Lead, DevSecOps-эксперта. Опыт работы, open-source проекты, блог, сертификации.",
-        "inLanguage": "ru",
+        "inLanguage": ["ru", "en"],
         "mainEntity": { "@id": "https://geminishkv.tech/#person" },
-        "dateModified": "2026-03-25",
+        "dateModified": "2026-03-26",
         "hasPart": [
           {
             "@type": "WebPageElement",
@@ -201,7 +216,7 @@
         "url": "https://geminishkv.tech/",
         "name": "geminishkv.tech",
         "description": "Персональный сайт Ильи Шмакова — AppSec & DevSecOps",
-        "inLanguage": "ru",
+        "inLanguage": ["ru", "en"],
         "author": { "@id": "https://geminishkv.tech/#person" }
       }
     ]
