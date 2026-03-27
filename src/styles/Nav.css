@@ -254,10 +254,10 @@
   font-size: 0.9rem;
 }
 
-/* ── Responsive ── */
+/* ── Tablet + mobile: бургер вместо ссылок ── */
 @media (max-width: 900px) {
   .nav {
-    padding: 20px 24px;
+    padding: 18px 24px;
     position: fixed;
     top: 0;
     left: 0;
@@ -270,11 +270,8 @@
 
   .nav__logo-img { height: 36px; width: 36px; }
   .nav__brand    { font-size: 1.2rem; }
-}
 
-@media (max-width: 768px) {
-  .nav { padding: 18px 24px; }
-  .nav__right { gap: 12px; }
+  .nav__right  { gap: 12px; }
   .nav__burger { display: flex; }
   .nav__links  { display: none; }
 

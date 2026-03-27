@@ -100,6 +100,7 @@ export default function Nav({ navRef, onAboutOpen }) {
         <div className="nav__mobile-overlay">
           <button className="nav__mobile-close" onClick={close} aria-label="Close menu">✕</button>
           <button className="nav__link-btn" onClick={() => { onAboutOpen(); close(); }}>ABOUT</button>
+          <a href="https://hh.ru/resume/af4cc9ceff086141d00039ed1f4b4a6c35706f" target="_blank" rel="noreferrer" onClick={close}>RESUME</a>
           <a href="#blog"       onClick={close}>BLOG</a>
           <a href="#experience" onClick={close}>EXPERIENCE</a>
           <a href="#skillset"   onClick={close}>SKILLSET</a>
