@@ -10,29 +10,19 @@ const INDEX_HTML = path.join(__dirname, '..', 'public', 'index.html');
 const SITEMAP    = path.join(__dirname, '..', 'public', 'sitemap.xml');
 const DATA_FILE  = path.join(__dirname, '..', 'src', 'data', 'tg-posts.json');
 
-function urlEntry(loc, lastmod, changefreq, priority, hreflang) {
-  const links = Object.entries(hreflang)
-    .map(([lang, href]) => `    <xhtml:link rel="alternate" hreflang="${lang}" href="${href}"/>`)
-    .join('\n');
+function urlEntry(loc, lastmod, changefreq, priority) {
   return `  <url>
     <loc>${loc}</loc>
     <lastmod>${lastmod}</lastmod>
     <changefreq>${changefreq}</changefreq>
     <priority>${priority}</priority>
-${links}
   </url>`;
 }
 
 const entries = [];
 
-// Homepage — same URL for both languages
-entries.push(urlEntry(
-  `${BASE_URL}/`,
-  today,
-  'weekly',
-  '1.0',
-  { ru: `${BASE_URL}/`, en: `${BASE_URL}/`, 'x-default': `${BASE_URL}/` },
-));
+// Homepage
+entries.push(urlEntry(`${BASE_URL}/`, today, 'weekly', '1.0'));
 
 // Blog posts
 if (fs.existsSync(DATA_FILE)) {
@@ -45,20 +35,10 @@ if (fs.existsSync(DATA_FILE)) {
     const lastmod = post.date ?? today;
     const hasEn  = Boolean(post.text_en);
 
-    // Russian page
-    entries.push(urlEntry(ruLoc, lastmod, 'monthly', '0.7', {
-      ru:          ruLoc,
-      en:          hasEn ? enLoc : ruLoc,
-      'x-default': ruLoc,
-    }));
+    entries.push(urlEntry(ruLoc, lastmod, 'monthly', '0.7'));
 
-    // English page (only when translation exists)
     if (hasEn) {
-      entries.push(urlEntry(enLoc, lastmod, 'monthly', '0.6', {
-        ru:          ruLoc,
-        en:          enLoc,
-        'x-default': ruLoc,
-      }));
+      entries.push(urlEntry(enLoc, lastmod, 'monthly', '0.6'));
     }
   }
 
@@ -68,8 +48,7 @@ if (fs.existsSync(DATA_FILE)) {
 }
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${entries.join('\n')}
 </urlset>
 `;
