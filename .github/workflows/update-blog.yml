@@ -53,6 +53,8 @@ jobs:
 
       - name: Build
         run: npm run build
+        env:
+          REACT_APP_YM_ID: ${{ secrets.YM_ID }}
 
       - name: Generate static blog pages
         run: node scripts/generate-blog-pages.js

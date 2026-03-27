@@ -50,6 +50,8 @@ jobs:
 
       - name: Build
         run: npm run build
+        env:
+          REACT_APP_YM_ID: ${{ secrets.YM_ID }}
 
       - name: Deploy to gh-pages
         run: |
