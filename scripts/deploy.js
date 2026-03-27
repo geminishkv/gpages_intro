@@ -9,7 +9,7 @@
  * force-pushes to the gh-pages branch of the upstream remote.
  */
 
-const { execSync } = require('child_process');
+const { execSync, execFileSync } = require('child_process');
 const fs   = require('fs');
 const path = require('path');
 
@@ -47,7 +47,7 @@ run(
   '-c user.email="github-actions[bot]@users.noreply.github.com" ' +
   'commit -m "deploy"'
 );
-run(`git remote add origin ${remote}`);
+execFileSync('git', ['remote', 'add', 'origin', remote], { stdio: 'inherit', cwd: buildDir });
 run('git push --force origin gh-pages');
 
 // Clean up
