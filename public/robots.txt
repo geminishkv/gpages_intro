@@ -16,6 +16,9 @@ User-agent: YandexBot
 Allow: /
 Crawl-delay: 5
 
+User-agent: YandexImages
+Allow: /img/
+
 User-agent: Bingbot
 Allow: /
 

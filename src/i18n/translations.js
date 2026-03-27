@@ -380,7 +380,7 @@ export const translations = {
     },
 
     blog: {
-      langNote: 'Posts are in Russian',
+      langNote: '',
       readBtn: 'Read →',
       openTelegram: 'Open in Telegram',
       ctaSub: 'AppSec and DevSecOps channel',

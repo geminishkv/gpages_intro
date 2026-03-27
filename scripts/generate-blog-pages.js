@@ -45,9 +45,9 @@ function truncate(text, max = 160) {
   return s.length > max ? s.slice(0, max - 1) + '…' : s;
 }
 
-function formatDate(iso) {
+function formatDate(iso, locale) {
   if (!iso) return '';
-  return new Date(iso).toLocaleDateString('ru-RU', {
+  return new Date(iso).toLocaleDateString(locale, {
     day: 'numeric', month: 'long', year: 'numeric',
   });
 }
@@ -59,13 +59,26 @@ function formatViews(n) {
 
 /* ── template ── */
 
-function renderPost(post) {
-  const title       = extractTitle(post.text);
-  const description = truncate(post.text);
-  const pageUrl     = `${BASE_URL}/blog/${post.id}/`;
-  const imageUrl    = post.image ? `${BASE_URL}${post.image}` : `${BASE_URL}/img/hero/avatar.jpg`;
-  const dateStr     = formatDate(post.date);
-  const views       = formatViews(post.views);
+function renderPost(post, lang = 'ru') {
+  const isEn       = lang === 'en';
+  const text       = (isEn && post.text_en) ? post.text_en : post.text;
+  const locale     = isEn ? 'en-US' : 'ru-RU';
+  const title      = extractTitle(text);
+  const description = truncate(text);
+  const ruUrl      = `${BASE_URL}/blog/${post.id}/`;
+  const enUrl      = `${BASE_URL}/blog/en/${post.id}/`;
+  const pageUrl    = isEn ? enUrl : ruUrl;
+  const imageUrl   = post.image ? `${BASE_URL}${post.image}` : `${BASE_URL}/img/hero/avatar.jpg`;
+  const dateStr    = formatDate(post.date, locale);
+  const views      = formatViews(post.views);
+
+  const backLabel     = isEn ? '← All posts'          : '← Все посты';
+  const tgLabel       = isEn ? 'Open in Telegram'      : 'Открыть в Telegram';
+  const homeLabel     = isEn ? 'Home'                  : 'Главная';
+  const blogLabel     = isEn ? 'Blog'                  : 'Блог';
+  const authorName    = isEn ? 'Ilya Shmakov'           : 'Илья Шмаков';
+  const authorFull    = isEn ? 'Ilya Stanislavovich Shmakov' : 'Илья Станиславович Шмаков';
+  const footerYear    = '© 2025';
 
   const tagsHtml = post.tags?.length
     ? post.tags.map(t => `<span class="tag">#${escapeHtml(t)}</span>`).join('')
@@ -79,8 +92,8 @@ function renderPost(post) {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Главная', item: BASE_URL + '/' },
-      { '@type': 'ListItem', position: 2, name: 'Блог',    item: BASE_URL + '/#blog' },
+      { '@type': 'ListItem', position: 1, name: homeLabel, item: BASE_URL + '/' },
+      { '@type': 'ListItem', position: 2, name: blogLabel, item: BASE_URL + '/#blog' },
       { '@type': 'ListItem', position: 3, name: title,     item: pageUrl },
     ],
   });
@@ -95,17 +108,17 @@ function renderPost(post) {
     datePublished: post.date,
     dateModified: post.date,
     image: imageUrl,
-    inLanguage: 'ru',
+    inLanguage: lang,
     keywords: post.tags?.join(', '),
     author: {
       '@type': 'Person',
       '@id': `${BASE_URL}/#person`,
-      name: 'Илья Станиславович Шмаков',
+      name: authorFull,
       url: BASE_URL,
     },
     publisher: {
       '@type': 'Person',
-      name: 'Илья Шмаков',
+      name: authorName,
       url: BASE_URL,
     },
     mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
@@ -118,17 +131,20 @@ function renderPost(post) {
   }, null, 2);
 
   return `<!DOCTYPE html>
-<html lang="ru">
+<html lang="${lang}">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>${escapeHtml(title)} — geminishkv</title>
   <meta name="description" content="${escapeHtml(description)}" />
-  <meta name="author"      content="Илья Станиславович Шмаков" />
+  <meta name="author"      content="${authorFull}" />
   <meta name="robots"      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <meta name="theme-color" content="#0a0a0a" />
   ${post.tags?.length ? `<meta name="keywords" content="${escapeHtml(post.tags.join(', '))}" />` : ''}
   <link rel="canonical"    href="${pageUrl}" />
+  <link rel="alternate" hreflang="ru"        href="${ruUrl}" />
+  <link rel="alternate" hreflang="en"        href="${enUrl}" />
+  <link rel="alternate" hreflang="x-default" href="${ruUrl}" />
 
   <meta property="og:type"        content="article" />
   <meta property="og:url"         content="${pageUrl}" />
@@ -136,9 +152,10 @@ function renderPost(post) {
   <meta property="og:description" content="${escapeHtml(description)}" />
   <meta property="og:image"       content="${imageUrl}" />
   <meta property="og:image:alt"   content="${escapeHtml(title)}" />
-  <meta property="og:locale"      content="ru_RU" />
+  <meta property="og:locale"      content="${isEn ? 'en_US' : 'ru_RU'}" />
+  <meta property="og:locale:alternate" content="${isEn ? 'ru_RU' : 'en_US'}" />
   <meta property="og:site_name"   content="geminishkv" />
-  <meta property="article:author"         content="Илья Шмаков" />
+  <meta property="article:author"         content="${authorName}" />
   <meta property="article:published_time" content="${post.date}" />
 ${articleTagsMeta}
 
@@ -288,7 +305,7 @@ ${breadcrumbJsonLd}
         <img src="/img/hero/logo2.png" alt="geminishkv" />
         geminishkv
       </a>
-      <a href="/#blog" class="nav__back">← Все посты</a>
+      <a href="/#blog" class="nav__back">${backLabel}</a>
     </nav>
 
     ${post.image ? `<div class="cover"><img src="${post.image}" alt="${escapeHtml(title)}" loading="eager" /></div>` : ''}
@@ -300,21 +317,21 @@ ${breadcrumbJsonLd}
       </div>
 
       <div class="content">
-        ${textToHtml(post.text)}
+        ${textToHtml(text)}
       </div>
 
       ${tagsHtml ? `<div class="tags">${tagsHtml}</div>` : ''}
 
       <a href="${post.url}" target="_blank" rel="noreferrer" class="tg-link">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
-        Открыть в Telegram
+        ${tgLabel}
       </a>
     </article>
 
     <div class="divider"></div>
 
     <footer class="footer">
-      <p>© 2025 <a href="/">geminishkv.tech</a> · <a href="https://t.me/shmakovis_appsec" target="_blank" rel="noreferrer">@shmakovis_appsec</a></p>
+      <p>${footerYear} <a href="/">geminishkv.tech</a> · <a href="https://t.me/shmakovis_appsec" target="_blank" rel="noreferrer">@shmakovis_appsec</a></p>
     </footer>
   </div>
 </body>
@@ -324,12 +341,23 @@ ${breadcrumbJsonLd}
 /* ── generate ── */
 
 let generated = 0;
+let generatedEn = 0;
 for (const post of posts) {
-  const dir = path.join(BUILD_DIR, 'blog', String(post.id));
-  fs.mkdirSync(dir, { recursive: true });
-  fs.writeFileSync(path.join(dir, 'index.html'), renderPost(post), 'utf8');
+  // Russian page
+  const ruDir = path.join(BUILD_DIR, 'blog', String(post.id));
+  fs.mkdirSync(ruDir, { recursive: true });
+  fs.writeFileSync(path.join(ruDir, 'index.html'), renderPost(post, 'ru'), 'utf8');
   console.log(`[blog] → /blog/${post.id}/`);
   generated++;
+
+  // English page (only when translation is available)
+  if (post.text_en) {
+    const enDir = path.join(BUILD_DIR, 'blog', 'en', String(post.id));
+    fs.mkdirSync(enDir, { recursive: true });
+    fs.writeFileSync(path.join(enDir, 'index.html'), renderPost(post, 'en'), 'utf8');
+    console.log(`[blog] → /blog/en/${post.id}/`);
+    generatedEn++;
+  }
 }
 
-console.log(`[blog] done — ${generated} pages generated`);
+console.log(`[blog] done — ${generated} RU pages, ${generatedEn} EN pages generated`);

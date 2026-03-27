@@ -55,6 +55,56 @@ function stripTags(html) {
     .replace(/<[^>]+>/g, '');
 }
 
+function sleep(ms) {
+  return new Promise(r => setTimeout(r, ms));
+}
+
+async function translateChunk(chunk) {
+  const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=ru&tl=en&dt=t&q=${encodeURIComponent(chunk)}`;
+  try {
+    const raw  = await fetchPage(url);
+    const json = JSON.parse(raw);
+    if (!Array.isArray(json[0])) return null;
+    return json[0].map(c => c[0]).join('').trim() || null;
+  } catch {
+    return null;
+  }
+}
+
+async function translateText(text) {
+  const MAX = 900; // safe URL length budget per chunk
+
+  if (encodeURIComponent(text).length <= MAX) {
+    return translateChunk(text);
+  }
+
+  // Split by paragraphs, batch into safe-size chunks
+  const paragraphs = text.split('\n');
+  const chunks = [];
+  let cur = '';
+
+  for (const para of paragraphs) {
+    const candidate = cur ? `${cur}\n${para}` : para;
+    if (encodeURIComponent(candidate).length > MAX && cur) {
+      chunks.push(cur);
+      cur = para;
+    } else {
+      cur = candidate;
+    }
+  }
+  if (cur) chunks.push(cur);
+
+  const parts = [];
+  for (let i = 0; i < chunks.length; i++) {
+    if (i > 0) await sleep(300);
+    const translated = await translateChunk(chunks[i]);
+    if (!translated) return null;
+    parts.push(translated);
+  }
+
+  return parts.join('\n');
+}
+
 function parseHashtags(html) {
   const tags = [];
   const re   = /href="[^"]*%23([^"&]+)"/g;
@@ -184,6 +234,33 @@ async function main() {
       console.log(`  ✓ image ${post.id}.${ext}`);
     } else {
       console.warn(`  ✗ image ${post.id} — keeping CDN url`);
+    }
+  }
+
+  // Load cached translations to avoid re-translating unchanged posts
+  let existingById = {};
+  if (fs.existsSync(OUTPUT)) {
+    try {
+      const existing = JSON.parse(fs.readFileSync(OUTPUT, 'utf8'));
+      for (const p of (existing.posts ?? [])) existingById[p.id] = p;
+    } catch { /* ignore */ }
+  }
+
+  console.log('Translating posts to English…');
+  for (const post of posts) {
+    const cached = existingById[post.id];
+    if (cached?.text_en && cached.text === post.text) {
+      post.text_en = cached.text_en;
+      console.log(`  ↩ cached #${post.id}`);
+    } else {
+      await sleep(500);
+      const translated = await translateText(post.text);
+      if (translated) {
+        post.text_en = translated;
+        console.log(`  ✓ translated #${post.id}`);
+      } else {
+        console.warn(`  ✗ translation failed #${post.id}`);
+      }
     }
   }
 

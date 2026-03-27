@@ -48,7 +48,8 @@ function EyeIcon() {
 
 /* ─────────────────── modal ─────────────────── */
 
-function BlogModal({ post, onClose, locale, openTelegramLabel }) {
+function BlogModal({ post, onClose, locale, openTelegramLabel, lang }) {
+  const displayText = (lang === 'en' && post.text_en) ? post.text_en : post.text;
   useEffect(() => {
     const onKey = (e) => { if (e.key === 'Escape') onClose(); };
     document.addEventListener('keydown', onKey);
@@ -76,7 +77,7 @@ function BlogModal({ post, onClose, locale, openTelegramLabel }) {
         <button className="blog-modal__close" onClick={onClose} aria-label="Close">✕</button>
 
         {post.image && (
-          <img src={post.image} alt={post.text?.split('\n').find(l => l.trim()) ?? ''} className="blog-modal__cover" loading="lazy" />
+          <img src={post.image} alt={displayText?.split('\n').find(l => l.trim()) ?? ''} className="blog-modal__cover" loading="lazy" />
         )}
 
         <div className="blog-modal__body">
@@ -89,7 +90,7 @@ function BlogModal({ post, onClose, locale, openTelegramLabel }) {
             )}
           </div>
 
-          <p className="blog-modal__text">{post.text}</p>
+          <p className="blog-modal__text">{displayText}</p>
 
           {post.tags?.length > 0 && (
             <div className="blog-modal__tags">
@@ -117,7 +118,8 @@ function BlogModal({ post, onClose, locale, openTelegramLabel }) {
 
 /* ─────────────────── card ─────────────────── */
 
-function BlogCard({ post, onClick, locale, readBtn }) {
+function BlogCard({ post, onClick, locale, readBtn, lang }) {
+  const displayText = (lang === 'en' && post.text_en) ? post.text_en : post.text;
   const views = formatViews(post.views);
   const [imgBroken, setImgBroken] = useState(false);
 
@@ -145,7 +147,7 @@ function BlogCard({ post, onClick, locale, readBtn }) {
           )}
         </div>
 
-        <p className="blog-card__text">{post.text}</p>
+        <p className="blog-card__text">{displayText}</p>
 
         {post.tags?.length > 0 && (
           <div className="blog-card__tags">
@@ -166,7 +168,7 @@ function BlogCard({ post, onClick, locale, readBtn }) {
 export default function Blog() {
   const [selected, setSelected] = useState(null);
   const close = useCallback(() => setSelected(null), []);
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const { locale } = t;
   const b = t.blog;
 
@@ -211,7 +213,7 @@ export default function Blog() {
       {/* Grid */}
       <div className="blog__grid">
         {visible.map(p => (
-          <BlogCard key={p.id} post={p} onClick={() => setSelected(p)} locale={locale} readBtn={b.readBtn} />
+          <BlogCard key={p.id} post={p} onClick={() => setSelected(p)} locale={locale} readBtn={b.readBtn} lang={lang} />
         ))}
 
         {/* CTA block */}
@@ -235,7 +237,7 @@ export default function Blog() {
       )}
 
       {/* Modal */}
-      {selected && <BlogModal post={selected} onClose={close} locale={locale} openTelegramLabel={b.openTelegram} />}
+      {selected && <BlogModal post={selected} onClose={close} locale={locale} openTelegramLabel={b.openTelegram} lang={lang} />}
     </section>
   );
 }

@@ -56,8 +56,8 @@
 }
 
 .about-modal__avatar {
-  width: 96px;
-  height: 96px;
+  width: 144px;
+  height: 144px;
   border-radius: 50%;
   object-fit: cover;
   border: 1px solid #333333;
@@ -343,7 +343,7 @@
 
 @media (max-width: 600px) {
   .about-modal__header  { padding: 16px 20px; }
-  .about-modal__avatar  { width: 64px; height: 64px; }
+  .about-modal__avatar  { width: 96px; height: 96px; }
   .about-tab-content    { padding: 20px 20px 32px; }
   .about-tabs           { padding: 0 20px; overflow-x: auto; }
   .about-tab            { padding: 12px 14px; font-size: 0.78rem; white-space: nowrap; }
