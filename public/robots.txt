@@ -1,40 +1,87 @@
+# ── Global ──
 User-agent: *
 Allow: /
-Crawl-delay: 5
+Crawl-delay: 3
 
+# ── Google ──
 User-agent: Googlebot
 Allow: /
+Crawl-delay: 2
 
 User-agent: Googlebot-Image
 Allow: /img/
 
-User-agent: Yandex
-Allow: /
-Crawl-delay: 5
-
+# ── Yandex: main crawler ──
 User-agent: YandexBot
 Allow: /
-Crawl-delay: 5
+Crawl-delay: 3
+# Ignore UTM and tracking params — prevents duplicate URLs in index
+Clean-param: utm_source&utm_medium&utm_campaign&utm_term&utm_content&ref&from&source /
 
+# Favicon bot — explicitly allowed after favicon.ico fix
+User-agent: YandexFavicons
+Allow: /favicon.ico
+Allow: /img/hero/logo2.png
+Disallow: /
+
+# Image bot — restricted to /img/ only, no page crawl
 User-agent: YandexImages
 Allow: /img/
+Disallow: /
 
+# Media bot — same as images
+User-agent: YandexMedia
+Allow: /img/
+Disallow: /
+
+# Accessibility checker — allow full crawl
+User-agent: YandexAccessibilityBot
+Allow: /
+
+# Analytics & ads bots — not useful for organic, block to save crawl budget
+User-agent: YandexMetrika
+Disallow: /
+
+User-agent: YandexDirect
+Disallow: /
+
+# ── Bing ──
 User-agent: Bingbot
 Allow: /
+Crawl-delay: 3
 
-User-agent: DuckDuckBot
-Allow: /
-
-User-agent: Baiduspider
+# ── Social preview bots ──
+User-agent: Twitterbot
 Allow: /
 
 User-agent: facebot
 Allow: /
 
-User-agent: Twitterbot
+User-agent: LinkedInBot
 Allow: /
 
-Sitemap: https://geminishkv.tech/sitemap.xml
+User-agent: TelegramBot
+Allow: /
 
-# Yandex: canonical host
+User-agent: DuckDuckBot
+Allow: /
+
+# ── Block scrapers (save crawl budget) ──
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: Baiduspider
+Disallow: /
+
+# ── Canonical host + Sitemap ──
 Host: geminishkv.tech
+Sitemap: https://geminishkv.tech/sitemap.xml
