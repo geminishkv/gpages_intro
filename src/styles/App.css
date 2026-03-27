@@ -25,15 +25,16 @@ body {
 
 /* ── Mobile: разблокируем всю цепочку overflow ── */
 @media (max-width: 900px) {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 76px; /* offset fixed nav for anchor links */
+  }
+
   html, body, #root {
     height: auto;
     min-height: 100%;
     overflow: visible;
     overflow-x: hidden;
-  }
-
-  body {
-    -webkit-overflow-scrolling: touch;
   }
 
   .app {
@@ -43,4 +44,8 @@ body {
     overflow: visible;
     overflow-x: hidden;
   }
+}
+
+@media (max-width: 900px) and (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
 }

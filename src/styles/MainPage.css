@@ -44,7 +44,6 @@
     height: auto;
     min-height: 100vh;
     overflow: visible;
-    -webkit-overflow-scrolling: touch;
     padding-top: 76px;
     /* iOS Safari: opacity-transition на родителе делает position:fixed детей
        фиксированными относительно него, а не вьюпорта — nav начинает скроллиться.
@@ -55,6 +54,5 @@
 
   .main-page--scrollable {
     overflow: visible;
-    scroll-behavior: auto;
   }
 }
