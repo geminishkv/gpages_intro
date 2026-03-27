@@ -21,7 +21,6 @@ Clean-param: utm_source&utm_medium&utm_campaign&utm_term&utm_content&ref&from&so
 # Favicon bot — explicitly allowed after favicon.ico fix
 User-agent: YandexFavicons
 Allow: /favicon.ico
-Allow: /img/hero/logo2.png
 Disallow: /
 
 # Image bot — restricted to /img/ only, no page crawl
