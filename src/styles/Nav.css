@@ -254,7 +254,7 @@
   font-size: 0.9rem;
 }
 
-/* ── Tablet + mobile: бургер вместо ссылок ── */
+/* ── Compact nav: fixed position at ≤900px ── */
 @media (max-width: 900px) {
   .nav {
     padding: 18px 24px;
@@ -270,7 +270,10 @@
 
   .nav__logo-img { height: 36px; width: 36px; }
   .nav__brand    { font-size: 1.2rem; }
+}
 
+/* ── Burger replaces links at ≤1050px ── */
+@media (max-width: 1050px) {
   .nav__right  { gap: 12px; }
   .nav__burger { display: flex; }
   .nav__links  { display: none; }
