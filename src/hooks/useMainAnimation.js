@@ -104,9 +104,9 @@ export function useMainAnimation(isVisible, onAllDone) {
                     easing: 'easeOutExpo',
                     complete: () => {
                       setTimeout(() => {
-                        liderRef.current.classList.add('hero__badges-track--scrolling');
-
                         if (!liderRef.current) return;
+
+                        liderRef.current.classList.add('hero__badges-track--scrolling');
 
                         // ── Sections via IntersectionObserver ──
                         if (onAllDone) onAllDone();
@@ -200,6 +200,10 @@ export function useMainAnimation(isVisible, onAllDone) {
       navRef.current.style.opacity    = '1';
       navRef.current.style.transform  = 'none';
       socialsRef.current.style.opacity = '1';
+      const reducedGroups = socialsRef.current?.querySelectorAll('.social-group');
+      if (reducedGroups) {
+        reducedGroups.forEach(g => { g.style.opacity = '1'; g.style.transform = 'none'; });
+      }
       liderRef.current.classList.add('hero__badges-track--scrolling');
       setStatsActive(true);
       if (onAllDone) onAllDone();
