@@ -1,3 +1,28 @@
+/* ── Brand tokens (source: Figma / Брендирование) ── */
+:root {
+  /* Colors */
+  --color-bg:        #0a0a0a;   /* site dark (Figma uses #1A1919) */
+  --color-bg-figma:  #1A1919;   /* exact Figma background */
+  --color-red:       #D51A1A;
+  --color-red-vivid: #E23535;
+  --color-gold:      #F9B361;
+  --color-white:     #ffffff;
+  --color-grey-text: #1A1919;
+  --color-grey-mid:  #AEAEB2;
+  --color-grey-light:#FCFCFC;
+
+  /* Brand gradients (from Figma logo_black component set) */
+  --gradient-brand:      linear-gradient(179deg, #1A1919 33%, #D51A1A 74%, #F9B361 100%);
+  --gradient-black-red:  linear-gradient(179deg, #1A1919 33%, #D51A1A 74%, #F9B361 100%);
+  --gradient-black-gold: linear-gradient(179deg, #1A1919 27%, #F9B361 100%);
+  --gradient-red-gold:   linear-gradient(90deg,  #D51A1A 0%,  #F9B361 100%);
+  --gradient-hero-bg:    linear-gradient(125deg, #1A1919 0%,  #D51A1A 100%);
+
+  /* Typography */
+  --font-display: 'Unbounded', 'Roboto', sans-serif;
+  --font-body:    'Roboto', sans-serif;
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -10,10 +35,11 @@ html, body, #root {
 }
 
 body {
-  background: #0a0a0a;
-  font-family: 'Montserrat', sans-serif;
-  color: #ffffff;
+  background: var(--color-bg);
+  font-family: var(--font-body);
+  color: var(--color-white);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .app {

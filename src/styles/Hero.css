@@ -10,6 +10,29 @@
   align-self: center;
 }
 
+/* ── Right — BrandColumn + Mac in one flex slot ── */
+.hero__right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 1.4vw, 28px);
+  min-width: 0;
+  overflow: visible;
+}
+
+/* hero__mac больше не flex:1 — размер берёт из mac-wrap */
+.hero__right .hero__mac {
+  flex: 1;
+  min-width: 0;
+}
+
+@media (max-width: 900px) {
+  .hero__right {
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
 /* ── Left — text ── */
 .hero__text {
   flex: 1;
@@ -19,7 +42,8 @@
 }
 
 .hero__title {
-  font-size: clamp(3rem, 6.5vw, 8rem);
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5.5vw, 7rem);
   font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 1;
@@ -48,12 +72,13 @@
 }
 
 .hero__subtitle {
-  font-size: clamp(2rem, 4.5vw, 5.5rem);
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3.8vw, 4.8rem);
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1;
   min-height: 1.1em;
-  color: #D51A1A;
+  color: var(--color-red);
 }
 
 .hero__tagline {
@@ -162,14 +187,14 @@
   text-decoration: none;
   border-radius: 2px;
   transition: background 0.2s, color 0.2s, border-color 0.2s;
-  background: #D51A1A;
+  background: var(--color-red);
   color: #ffffff;
-  border: 2px solid #D51A1A;
+  border: 2px solid var(--color-red);
 }
 
 .social-btn:hover {
-  background: #e03000;
-  border-color: #e03000;
+  background: var(--color-red-vivid);
+  border-color: var(--color-red-vivid);
 }
 
 .social-btn:active {
@@ -178,11 +203,11 @@
 
 .social-btn--outline {
   background: transparent;
-  color: #D51A1A;
+  color: var(--color-red);
 }
 
 .social-btn--outline:hover {
-  background: #D51A1A;
+  background: var(--color-red);
   color: #ffffff;
 }
 

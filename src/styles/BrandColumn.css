@@ -1,0 +1,129 @@
+/* ══════════════════════════════════════════════════════════════════
+   BrandColumn — точные пропорции Figma (Group 6 + Pill, node 6158)
+
+   Figma source (px, все относительно --bc-unit = circle = 124.8px):
+     Circle 1:       124.8  →  1.000 × unit
+     gap:             11.24  →  0.090 × unit
+     Diamond bbox:   164.18  →  1.316 × unit   (square side = 0.930 × unit)
+     gap:             10.82  →  0.087 × unit
+     Circle 2:       124.8   →  1.000 × unit
+     ─ shapes total:  3.493 × unit
+     gap shapes→pill:  23.0  →  0.184 × unit
+     Pill width:       87.0  →  0.697 × unit
+     Pill height:     443.0  →  3.550 × unit   (aspect-ratio 87:443)
+     ─ column total: (3.493 + 0.184 + 3.550) × unit = 7.227 × unit
+
+   Mac: 332×454px → ratio 1.368
+   mac-wrap = clamp(360px, 32vw, 620px)
+   mac height = mac-wrap × 1.368
+
+   Calibration: column height = mac height
+     unit × 7.227 = mac-wrap × 1.368
+     unit = mac-wrap × 0.1893
+     unit = clamp(360×0.1893, 32vw×0.1893, 620×0.1893)
+          = clamp(68.1px, 6.06vw, 117.4px)
+   ══════════════════════════════════════════════════════════════════ */
+
+.brand-col {
+  --bc-unit: clamp(68px, 6.06vw, 117px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(var(--bc-unit) * 0.184);
+  flex-shrink: 0;
+  height: auto; /* content determines height = mac height */
+}
+
+/* ── Shapes group (tight gaps = Figma) ── */
+.brand-col__shapes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(var(--bc-unit) * 0.089);
+  flex-shrink: 0;
+}
+
+/* ── Circles ── */
+.brand-col__circle {
+  width: var(--bc-unit);
+  height: var(--bc-unit);
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.brand-col__circle--gradient {
+  background: #1A1919;
+}
+
+.brand-col__logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.brand-col__circle--outline {
+  background: #FCFCFC;
+  border: max(1px, calc(var(--bc-unit) * 0.018)) solid #E23535;
+  overflow: visible;
+}
+
+/* ── Diamond ── */
+.brand-col__diamond-wrap {
+  /* bounding box of rotated square = 1.316 × unit */
+  width: calc(var(--bc-unit) * 1.316);
+  height: calc(var(--bc-unit) * 1.316);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.brand-col__diamond {
+  /* square side before rotation = 0.930 × unit */
+  width: calc(var(--bc-unit) * 0.930);
+  height: calc(var(--bc-unit) * 0.930);
+  background: linear-gradient(179deg, #1A1919 33%, #D51A1A 74%, #F9B361 100%);
+  transform: rotate(45deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ── Numbers ── */
+.brand-col__num {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: calc(var(--bc-unit) * 0.42);
+  line-height: 1;
+  color: #FCFCFC;
+  transform: rotate(-45deg);
+  display: block;
+}
+
+.brand-col__num--dark {
+  color: #1A1919;
+  transform: none;
+}
+
+/* ── Pill exact Figma proportions when inside brand-col ── */
+/* width = 0.697 × unit, aspect-ratio = 87:443 → height = 3.55 × unit */
+.brand-col .spm-pill {
+  width: calc(var(--bc-unit) * 0.697);
+  height: calc(var(--bc-unit) * 3.550);
+  min-height: unset;
+  max-height: unset;
+  flex: none;
+}
+
+/* ── Hide on small viewports ── */
+/* 1200px: brand-col makes mac too tight */
+@media (max-width: 1200px) {
+  .brand-col { display: none; }
+}

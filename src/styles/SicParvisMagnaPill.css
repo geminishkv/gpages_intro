@@ -1,0 +1,51 @@
+/* ── Sic Parvis Magna pill ──────────────────────────────────────────
+   Figma node 6158:864
+   Pill: 87w × 443h, bg #FCFCFC, borderRadius 50.16px
+   Text: "Sic Parvis Magna", Roboto 700, fontSize 50px,
+         lineHeight 0.8707em, letterSpacing 0 (no transform in Figma)
+
+   Font-size calibration for CSS vertical text:
+     "Sic Parvis Magna" = 15 chars, avg advance ~0.55em (mixed case)
+     total text height ≈ 15 × 0.55 × font-size = 8.25 × font-size
+     pill height = unit × 3.550
+     fit with 88% fill: font-size = unit × 3.550 × 0.88 / 8.25 = unit × 0.379
+     → use unit × 0.34 (safe, with padding)
+   ──────────────────────────────────────────────────────────────────── */
+
+.spm-pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #FCFCFC;
+  border-radius: 999px;
+  flex-shrink: 0;
+  user-select: none;
+  overflow: hidden;
+
+  /* Standalone defaults */
+  width: clamp(44px, 4vw, 68px);
+  min-height: clamp(120px, 14vw, 220px);
+}
+
+.spm-pill__text {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: var(--font-body);
+  font-weight: 700;
+
+  /* Figma: no letter-spacing, no text-transform, mixed case */
+  /* font-size = unit × 0.34 — fits full "Sic Parvis Magna" in pill */
+  font-size: calc(var(--bc-unit, 68px) * 0.34);
+  line-height: 0.87em;
+  letter-spacing: 0;
+  white-space: nowrap;
+
+  background: linear-gradient(to bottom, #1A1919 0%, #D51A1A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@media (max-width: 900px) {
+  .spm-pill { display: none; }
+}

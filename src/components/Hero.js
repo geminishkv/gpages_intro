@@ -1,5 +1,6 @@
 import '../styles/Hero.css';
 import '../styles/Mac.css';
+import BrandColumn from './BrandColumn';
 import {
   MAC_IMG, WIN_IMG, UWU_IMG,
   LIDER_IMG, LANIT_IMG, BMSTU_IMG, MPFI_IMG, RBPO_IMG, INSECA_IMG,
@@ -81,8 +82,11 @@ export default function Hero({
         </div>
       </div>
 
-      {/* Right — Mac mockup */}
-      <div className="hero__mac">
+      {/* Right — BrandColumn + Mac share one flex slot */}
+      <div className="hero__right">
+        <BrandColumn />
+
+        <div className="hero__mac">
         <div className="mac-wrap">
           <img src={MAC_IMG} alt="Mac" className="mac-body" />
           <div className="mac-screen">
@@ -110,6 +114,8 @@ export default function Hero({
           </div>
         </div>
       </div>
+
+      </div>{/* hero__right */}
     </div>
   );
 }

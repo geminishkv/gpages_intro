@@ -81,7 +81,7 @@
   top: 13%;
   left: 5.5%;
   z-index: 3;
-  font-family: 'Montserrat', monospace;
+  font-family: var(--font-body);
   font-size: clamp(0.6rem, 1.2vw, 1.5rem);
   font-weight: 900;
   letter-spacing: 0.1em;
@@ -104,7 +104,7 @@
 }
 
 .mac-loading-text {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-body);
   font-size: 0.75rem;
   color: #D51A1A;
   letter-spacing: 0.08em;
