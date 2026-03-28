@@ -35,7 +35,7 @@
 | i18n | LangContext (RU/EN) — localStorage, без сторонних библиотек |
 | Деплой | `scripts/deploy.js` (git) → GitHub Pages, ветка `gh-pages` |
 | Домен | geminishkv.tech (reg.ru + GitHub Pages custom domain) |
-| SEO | JSON-LD Person/BlogPosting/ProfilePage/WebSite, OG, Twitter Card, hreflang RU/EN, sitemap.xml, robots.txt (Yandex Clean-param), статические страницы блога |
+| SEO | JSON-LD Person/BlogPosting/ProfilePage/WebSite, OG, Twitter Card, hreflang RU/EN + xhtml:link в sitemap, sitemap.xml, RSS-фиды (RU + EN), llms.txt (AI-краулеры), LCP preload, apple-touch-icon, robots.txt (Yandex Clean-param), статические страницы блога |
 | CI/CD | GitHub Actions — блог + Instagram (пн 07:00 UTC), gaming (пн 07:00 UTC), stats (пн 01:00 UTC) |
 
 ***
@@ -44,7 +44,7 @@
 
 - **SplashScreen** — экран загрузки с глитч-анимацией (clip-path + RGB-каналы + scanlines)
 - **Mac mockup** — покадровая анимация сборки ретро-Mac через anime.js timeline, прогресс-бар "Initializing"
-- **Typewriter** — пошаговый набор заголовка по символам (DOS-стиль)
+- **Typewriter** — пошаговый набор заголовка по символам (DOS-стиль); текст присутствует в HTML для краулеров
 - **Badges marquee** — бесконечный скролл логотипов достижений
 - **NoticeBar** — анонс-баннер с авто-показом (задержка 1.2с после splash), dismissable на сессию
 - **Stats** — 5 ключевых метрик с анимацией count-up через IntersectionObserver
@@ -52,7 +52,7 @@
 - **Blog** — превью 14 постов из Telegram-канала `shmakovis_appsec`; обложки кешируются локально; перевод RU→EN через Google Translate API с чанкингом и кешированием; статические SEO-страницы `/blog/{id}/` (RU) и `/blog/en/{id}/` (EN)
 - **Videos** — YouTube-карточки с превью: подкаст по безопасной разработке, интервью BISA
 - **Experience** — 6 мест работы в виде карточек с логотипами компаний
-- **Tools** — Tech Stack по категориям, Domains, Certifications (16 сертификатов)
+- **Tools** — Tech Stack по категориям, Domains, Certifications (23+ сертификата)
 - **Gaming** — PSN и Xbox статистика: уровень, трофеи, platinum wall (90 платин), game history; обновляется через CI
 - **About modal** — полноэкранный попап с резюме, навыками, инструментами и достижениями
 - **Nav** — якорные ссылки (Blog, Experience, Tools), бургер-меню с portal-рендерингом, glass-эффект при скролле (`backdrop-filter`)
@@ -81,9 +81,12 @@ gpages/
 │   ├── CNAME                 # Кастомный домен GitHub Pages
 │   ├── 404.html              # SPA fallback для GitHub Pages
 │   ├── favicon.ico           # Многоразмерный ICO (16/32/48/64/128/256px), из logo2.png
-│   ├── index.html            # SEO-шаблон: JSON-LD Person/ProfilePage/WebSite, OG, Twitter Card, geo, Yandex
+│   ├── index.html            # SEO-шаблон: JSON-LD Person/ProfilePage/WebSite, OG, Twitter Card, geo, Yandex, LCP preload, RSS links
+│   ├── llms.txt              # Описание для AI-краулеров (ChatGPT, Perplexity, Gemini и др.)
 │   ├── robots.txt            # Yandex Clean-param, YandexImages/Favicons, блокировка scrapers
-│   ├── sitemap.xml           # RU + EN страницы блога с hreflang; auto-update при CI
+│   ├── rss.xml               # RSS-фид блога (RU); auto-update при CI
+│   ├── rss-en.xml            # RSS-фид блога (EN); auto-update при CI
+│   ├── sitemap.xml           # RU + EN страницы блога с xhtml:link hreflang; auto-update при CI
 │   └── yandex_*.html         # Подтверждение Яндекс.Вебмастер
 ├── src/
 │   ├── components/
@@ -91,7 +94,7 @@ gpages/
 │   │   ├── MainPage.js       # Корневой layout, iOS scroll lock во время анимации
 │   │   ├── Nav.js            # Навбар + burger menu (portal) + .nav--scrolled glass effect
 │   │   ├── NoticeBar.js      # Анонс-баннер (sessionStorage dismiss)
-│   │   ├── Hero.js           # Главный блок: Mac + badges + typewriter
+│   │   ├── Hero.js           # Главный блок: Mac + badges + typewriter; H1 в HTML для SEO
 │   │   ├── Stats.js          # 5 метрик с count-up анимацией
 │   │   ├── Projects.js       # Open-Source карточки GitHub
 │   │   ├── Blog.js           # Превью постов Telegram + модалка; text/text_en по lang
@@ -134,13 +137,14 @@ gpages/
 │   ├── update-instagram.js   # Парсинг Instagram → instagram.json + кеш изображений
 │   ├── update-gaming.js      # Stratege.ru + Xbox API → gaming.json + кеш обложек
 │   ├── update-stats.js       # GitHub API → stars/forks в constants/index.js
-│   ├── generate-sitemap.js   # public/sitemap.xml (RU + EN URLs, hreflang); обновляет dateModified в index.html
+│   ├── generate-sitemap.js   # public/sitemap.xml (RU + EN URLs, xhtml:link hreflang); обновляет dateModified в index.html
+│   ├── generate-rss.js       # public/rss.xml (RU) + public/rss-en.xml (EN); запускается перед билдом
 │   ├── generate-blog-pages.js # Статические SEO-страницы build/blog/{id}/ (RU) и build/blog/en/{id}/ (EN)
 │   └── deploy.js             # Кастомный деплой в gh-pages (замена несовместимого gh-pages пакета)
 ├── .github/workflows/
-│   ├── update-blog.yml       # Cron пн 07:00 UTC: TG (RU+EN перевод) + Instagram + sitemap.xml + index.html → коммит gpages → build → generate-blog-pages → деплой gh-pages
-│   ├── update-interests.yml  # Cron пн 07:00 UTC: gaming stats → деплой
-│   └── update-stats.yml      # Cron пн 01:00 UTC: GitHub stats → деплой
+│   ├── update-blog.yml       # Cron пн 07:00 UTC: TG (RU+EN) + Instagram → sitemap + RSS → коммит gpages → build → generate-blog-pages → деплой gh-pages
+│   ├── update-interests.yml  # Cron пн 07:00 UTC: gaming stats → sitemap + RSS → деплой
+│   └── update-stats.yml      # Cron пн 01:00 UTC: GitHub stats → sitemap + RSS → деплой
 ├── package.json
 ├── package-lock.json
 ├── CNAME
@@ -171,6 +175,7 @@ node scripts/update-instagram.js   # Instagram посты
 node scripts/update-gaming.js      # PSN/Xbox статистика
 node scripts/update-stats.js       # GitHub stars/forks
 node scripts/generate-sitemap.js   # sitemap.xml + dateModified в index.html
+node scripts/generate-rss.js       # rss.xml (RU) + rss-en.xml (EN)
 ```
 
 ***
@@ -178,11 +183,12 @@ node scripts/generate-sitemap.js   # sitemap.xml + dateModified в index.html
 ### Деплой на GitHub Pages
 
 ```bash
-# Полный цикл: sitemap → build → статические страницы блога → деплой
+# Полный цикл: sitemap → rss → build → статические страницы блога → деплой
 npm run predeploy && npm run deploy
 
 # Или по шагам
-node scripts/generate-sitemap.js     # public/sitemap.xml (RU + EN URLs)
+node scripts/generate-sitemap.js     # public/sitemap.xml (RU + EN URLs + hreflang)
+node scripts/generate-rss.js         # public/rss.xml + public/rss-en.xml
 npm run build                        # React → build/
 node scripts/generate-blog-pages.js  # build/blog/{id}/ и build/blog/en/{id}/
 node scripts/deploy.js               # → ветка gh-pages
@@ -194,9 +200,9 @@ node scripts/deploy.js               # → ветка gh-pages
 
 | Workflow | Расписание | Секреты | Действие |
 |----------|-----------|---------|---------|
-| `update-blog.yml` | Пн 07:00 UTC | — | TG → `tg-posts.json` (RU + EN перевод) + Instagram → `sitemap.xml` + `index.html` → коммит `gpages` → build → `generate-blog-pages.js` → деплой `gh-pages` |
-| `update-interests.yml` | Пн 07:00 UTC | `STRATEGE_COOKIE` | Stratege.ru + Xbox → `gaming.json` + кеш обложек → деплой |
-| `update-stats.yml` | Пн 01:00 UTC | — | GitHub API → stars/forks → деплой |
+| `update-blog.yml` | Пн 07:00 UTC | — | TG → `tg-posts.json` (RU + EN) + Instagram → `sitemap.xml` + `rss.xml` + `rss-en.xml` + `index.html` → коммит `gpages` → build → `generate-blog-pages.js` → деплой `gh-pages` |
+| `update-interests.yml` | Пн 07:00 UTC | `STRATEGE_COOKIE` | Stratege.ru + Xbox → `gaming.json` + кеш обложек → `sitemap.xml` + `rss.xml` → деплой |
+| `update-stats.yml` | Пн 01:00 UTC | — | GitHub API → stars/forks → `sitemap.xml` + `rss.xml` → деплой |
 
 Все workflow запускаются вручную через `workflow_dispatch`.
 
@@ -206,11 +212,13 @@ node scripts/deploy.js               # → ветка gh-pages
 
 | Компонент | Описание |
 |-----------|---------|
-| `public/index.html` | JSON-LD Person / ProfilePage / WebSite, Open Graph, Twitter Card, `geo.*` мета-теги (RU-MOW), Яндекс.Вебмастер верификация, canonical, hreflang RU/EN |
-| `public/sitemap.xml` | Главная + до 14 RU-страниц блога + до 14 EN-страниц блога; hreflang cross-linking; `lastmod` обновляется при каждом CI-запуске |
+| `public/index.html` | JSON-LD Person / ProfilePage / WebSite / BreadcrumbList, Open Graph (`og:type=website`), Twitter Card (`summary`), `geo.*` мета-теги (RU-MOW), Яндекс.Вебмастер верификация, canonical, hreflang RU/EN, LCP preload аватара, apple-touch-icon, preconnect Yandex Metrika |
+| `public/sitemap.xml` | Главная + до 14 RU-страниц блога + до 14 EN-страниц блога; `xhtml:link` hreflang cross-linking на каждый URL; `lastmod` обновляется при каждом CI-запуске |
+| `public/rss.xml` / `rss-en.xml` | RSS 2.0 фиды блога (RU и EN); atom:link self-ref, enclosure с обложкой поста; обновляются при каждом CI-запуске |
+| `public/llms.txt` | Описание персоны и ключевых достижений для AI-краулеров (ChatGPT, Perplexity, Gemini, Copilot) |
 | `public/robots.txt` | `YandexBot` с `Clean-param` (UTM/tracking params); `YandexImages`/`YandexMedia` только `/img/`; `YandexFavicons` явно разрешён; `YandexMetrika`/`YandexDirect` заблокированы; SemrushBot/AhrefsBot/MJ12bot/DotBot/Baiduspider заблокированы; `Host: geminishkv.tech` |
 | `public/favicon.ico` | Многоразмерный ICO (16/32/48/64/128/256px), сгенерирован ImageMagick из `logo2.png` |
-| `generate-blog-pages.js` | Статические HTML с JSON-LD BlogPosting + BreadcrumbList, OG/Twitter Card, hreflang RU↔EN, `lang` attr, форматирование даты по локали |
+| `generate-blog-pages.js` | Статические HTML с JSON-LD BlogPosting (`publisher: Organization`) + BreadcrumbList, OG/Twitter Card, hreflang RU↔EN, `lang` attr, форматирование даты по локали, динамический год в футере |
 
 ***
 
