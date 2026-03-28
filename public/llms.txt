@@ -4,9 +4,19 @@
 
 ## About
 
-Ilya Shmakov (Илья Станиславович Шмаков, geminishkv, shmakovis) is an Application Security and DevSecOps professional based in Moscow, Russia. 8+ years in information security. Current role: AppSec Team Lead at LANIT (since December 2024).
+Ilya Shmakov (Илья Станиславович Шмаков, geminishkv, shmakovis) — AppSec Team Lead at LANIT, leader of the FinDevSecOps community for the Russian fintech market, organizer of the first DevSecOps hackathon in Russia, and lecturer at Bauman MSTU and MIPT. Based in Moscow, Russia. 8+ years in information security across 6 companies.
 
-Key areas of expertise: Secure SDLC, SAST, DAST, SCA, SBOM, Threat Modeling, PCI DSS, КИИ/ФСТЭК compliance, API Security, Mobile AppSec, fintech security, Security Champion programs.
+Known for: building AppSec functions from scratch in enterprise and fintech (banking, crypto), implementing Secure SDLC pipelines, and community leadership in the Russian DevSecOps ecosystem.
+
+## Key Achievements
+
+- Received a letter of commendation from V. Selin for significant contribution to AppSec (SAST) as part of FSTEC Russia certification under GOST 71207 (ГОСТ 71207).
+- Founder and leader of the FinDevSecOps community for the Russian fintech market (сообщество FinDevSecOps).
+- Organizer of the first DevSecOps hackathon in Russia; series continues in 2026.
+- Lecturer on secure software development and information security at two leading Russian technical universities: Bauman Moscow State Technical University (МГТУ им. Баумана) and Moscow Institute of Physics and Technology (МФТИ).
+- Author of articles and talks on DevSecOps, secure development, and practical AppSec.
+- 23+ professional certifications including DASA DevOps Practitioner, DASA DevOps Product Owner, Scrum Master, and specialized AppSec/DevSecOps courses.
+- 6 companies across fintech, crypto, retail, and enterprise — including Rosbank/TBank (Deputy Head of IS), EMCD Tech (CISO), LANIT (AppSec Team Lead).
 
 Founder and leader of the FinDevSecOps community for the Russian fintech market. Organizer of the first DevSecOps hackathon in Russia. Lecturer at Bauman Moscow State Technical University (МГТУ им. Баумана) and Moscow Institute of Physics and Technology (МФТИ).
 
