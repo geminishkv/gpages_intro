@@ -1,0 +1,30 @@
+# geminishkv.tech — Ilya Shmakov (Илья Шмаков)
+
+> Personal website of Ilya Stanislavovich Shmakov — AppSec Team Lead, DevSecOps expert.
+
+## About
+
+Ilya Shmakov (Илья Станиславович Шмаков, geminishkv, shmakovis) is an Application Security and DevSecOps professional based in Moscow, Russia. 8+ years in information security. Current role: AppSec Team Lead at LANIT (since December 2024).
+
+Key areas of expertise: Secure SDLC, SAST, DAST, SCA, SBOM, Threat Modeling, PCI DSS, КИИ/ФСТЭК compliance, API Security, Mobile AppSec, fintech security, Security Champion programs.
+
+Founder and leader of the FinDevSecOps community for the Russian fintech market. Organizer of the first DevSecOps hackathon in Russia. Lecturer at Bauman Moscow State Technical University (МГТУ им. Баумана) and Moscow Institute of Physics and Technology (МФТИ).
+
+## Content
+
+- Blog (Telegram channel): https://t.me/shmakovis_appsec — AppSec & DevSecOps publications in Russian and English
+- AppSec Course: https://course.geminishkv.tech/
+- Security Champion Training: https://inseca.tech/security-champion-training
+- OSS Toolchain Map: https://findevsecops.github.io/oss_toolchainmap/
+
+## Open-Source Projects
+
+All projects available at https://github.com/geminishkv and https://github.com/AppSecTA.
+Published packages: https://pypi.org/user/geminishkv, https://hub.docker.com/u/geminishkvdev
+
+## Contact
+
+- Telegram: https://t.me/geminishkv
+- LinkedIn: https://www.linkedin.com/in/geminishkvdev/
+- Email: shmakovis@inbox.ru
+- GitHub: https://github.com/geminishkv

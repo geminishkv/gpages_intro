@@ -10,19 +10,28 @@ const INDEX_HTML = path.join(__dirname, '..', 'public', 'index.html');
 const SITEMAP    = path.join(__dirname, '..', 'public', 'sitemap.xml');
 const DATA_FILE  = path.join(__dirname, '..', 'src', 'data', 'tg-posts.json');
 
-function urlEntry(loc, lastmod, changefreq, priority) {
+function xhtmlLink(rel, hreflang, href) {
+  return `    <xhtml:link rel="${rel}" hreflang="${hreflang}" href="${href}"/>`;
+}
+
+function urlEntry(loc, lastmod, changefreq, priority, hreflangLinks = []) {
+  const links = hreflangLinks.length ? '\n' + hreflangLinks.join('\n') : '';
   return `  <url>
     <loc>${loc}</loc>
     <lastmod>${lastmod}</lastmod>
     <changefreq>${changefreq}</changefreq>
-    <priority>${priority}</priority>
+    <priority>${priority}</priority>${links}
   </url>`;
 }
 
 const entries = [];
 
-// Homepage
-entries.push(urlEntry(`${BASE_URL}/`, today, 'weekly', '1.0'));
+// Homepage — RU and EN point to the same URL (SPA i18n)
+entries.push(urlEntry(`${BASE_URL}/`, today, 'weekly', '1.0', [
+  xhtmlLink('alternate', 'ru', `${BASE_URL}/`),
+  xhtmlLink('alternate', 'en', `${BASE_URL}/`),
+  xhtmlLink('alternate', 'x-default', `${BASE_URL}/`),
+]));
 
 // Blog posts
 if (fs.existsSync(DATA_FILE)) {
@@ -35,10 +44,22 @@ if (fs.existsSync(DATA_FILE)) {
     const lastmod = post.date ?? today;
     const hasEn  = Boolean(post.text_en);
 
-    entries.push(urlEntry(ruLoc, lastmod, 'monthly', '0.7'));
+    const ruLinks = hasEn
+      ? [
+          xhtmlLink('alternate', 'ru', ruLoc),
+          xhtmlLink('alternate', 'en', enLoc),
+          xhtmlLink('alternate', 'x-default', ruLoc),
+        ]
+      : [];
+
+    entries.push(urlEntry(ruLoc, lastmod, 'monthly', '0.7', ruLinks));
 
     if (hasEn) {
-      entries.push(urlEntry(enLoc, lastmod, 'monthly', '0.6'));
+      entries.push(urlEntry(enLoc, lastmod, 'monthly', '0.6', [
+        xhtmlLink('alternate', 'ru', ruLoc),
+        xhtmlLink('alternate', 'en', enLoc),
+        xhtmlLink('alternate', 'x-default', ruLoc),
+      ]));
     }
   }
 
@@ -48,7 +69,8 @@ if (fs.existsSync(DATA_FILE)) {
 }
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${entries.join('\n')}
 </urlset>
 `;

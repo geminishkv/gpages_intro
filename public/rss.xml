@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>geminishkv — AppSec &amp; DevSecOps Блог (RU)</title>
+    <link>https://geminishkv.tech/</link>
+    <atom:link href="https://geminishkv.tech/rss.xml" rel="self" type="application/rss+xml"/>
+    <description>Блог по AppSec &amp; DevSecOps — Илья Шмаков (geminishkv)</description>
+    <language>ru-RU</language>
+    <lastBuildDate>Sat, 28 Mar 2026 14:24:12 GMT</lastBuildDate>
+    <managingEditor>shmakovis@inbox.ru (Илья Шмаков)</managingEditor>
+    <image>
+      <url>https://geminishkv.tech/img/hero/avatar.jpg</url>
+      <title>geminishkv — AppSec &amp; DevSecOps Блог (RU)</title>
+      <link>https://geminishkv.tech/</link>
+    </image>
+    <item>
+      <title>Я тут побаловался с минцифры сертификатами ИТ-компетенций, решил попробовать пройти их тесты, которые так хвалят на hh и тд, в итоге: прикольно, но ничего особенного, пусть полежит тут</title>
+      <link>https://geminishkv.tech/blog/273/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/273/</guid>
+      <pubDate>Wed, 25 Mar 2026 00:00:00 GMT</pubDate>
+      <description>Я тут побаловался с минцифры сертификатами ИТ-компетенций, решил попробовать пройти их тесты, которые так хвалят на hh и тд, в итоге: прикольно, но ничего особенного, пусть полежит тут 🙃 Думаю, что сделаю еще парочкку, для массы, также есть там прикольные вопросы конечно, но мал</description>
+      <enclosure url="https://geminishkv.tech/img/blog/273.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>I.N.V.E.S.T. как пилюля от боли недопонимания</title>
+      <link>https://geminishkv.tech/blog/272/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/272/</guid>
+      <pubDate>Wed, 25 Mar 2026 00:00:00 GMT</pubDate>
+      <description>🤔 I.N.V.E.S.T. как пилюля от боли недопонимания Сегодня хочу еще немного затронуть проектное управление, давай поговорим с тобой про I.N.V.E.S.T. принцип. I.N.V.E.S.T. используется как фильтр для задач, чтобы не тащить в текущий спринт «все подряд». По сути это: Independent, Neg</description>
+      <enclosure url="https://geminishkv.tech/img/blog/272.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>geminishkv.tech</title>
+      <link>https://geminishkv.tech/blog/270/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/270/</guid>
+      <pubDate>Wed, 25 Mar 2026 00:00:00 GMT</pubDate>
+      <description>🏆 geminishkv.tech Салют,  UwU, я тут раньше похвастался своим geminishkv.tech и сейчас его доработал, оставлю пока в таком виде, но для тебя вывел специально единые линки контента и классный адаптив (нравится анимация как работает). Так вот, я добавил: • линки контента • линки н</description>
+      <enclosure url="https://geminishkv.tech/img/blog/270.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>AppSec Labs to pump yourself up Release v.1.5.0</title>
+      <link>https://geminishkv.tech/blog/269/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/269/</guid>
+      <pubDate>Tue, 24 Mar 2026 00:00:00 GMT</pubDate>
+      <description>🛠🏆 AppSec Labs to pump yourself up Release v.1.5.0 Салюты, Разместил линк тут - course.geminishkv.tech Интересный апдейт для тебя про который хотел бы рассказать про лабки, которые делал ранее. Да, именно те лабки, которые покажут тебе основные команды инструментов, как работат</description>
+      <enclosure url="https://geminishkv.tech/img/blog/269.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Security SBOM generator with vulnerability chechup</title>
+      <link>https://geminishkv.tech/blog/265/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/265/</guid>
+      <pubDate>Mon, 23 Mar 2026 00:00:00 GMT</pubDate>
+      <description>🛠 Security SBOM generator with vulnerability chechup Салют, Сегодня хочу поделиться тулой, которую покрутил на выхах. Эта тула помогает быстро и в более удобном виде собирать SBOM для проекта, это будет особенно полезно для сертификации по ФСТЭК России, включая контроля твоего s</description>
+      <enclosure url="https://geminishkv.tech/img/blog/265.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>When Local AI Becomes an Attack Vector: A Deep Dive into LLM Infrastructure Security</title>
+      <link>https://geminishkv.tech/blog/264/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/264/</guid>
+      <pubDate>Fri, 20 Mar 2026 00:00:00 GMT</pubDate>
+      <description>When Local AI Becomes an Attack Vector: A Deep Dive into LLM Infrastructure Security Original text by Charles Senges The article “Deep dive into the deployment of an on-premise low-privileged LLM server” by Synacktiv examines how organizations deploy internal Large Language Model</description>
+      <enclosure url="https://geminishkv.tech/img/blog/264.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Иногда кажется, что именно так и происходит</title>
+      <link>https://geminishkv.tech/blog/263/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/263/</guid>
+      <pubDate>Fri, 20 Mar 2026 00:00:00 GMT</pubDate>
+      <description>Иногда кажется, что именно так и происходит 🙃 #lol</description>
+      <enclosure url="https://geminishkv.tech/img/blog/263.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>InfoSec Reco СУБД</title>
+      <link>https://geminishkv.tech/blog/262/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/262/</guid>
+      <pubDate>Fri, 20 Mar 2026 00:00:00 GMT</pubDate>
+      <description>🤔 InfoSec Reco СУБД Салют, Думаю сегодня классно будет посмотреть, вместе, на то как лучше подойти к защищенности БД, брокеру очередей для записи в БД и, конечно, частично к frontend части при взаимодействии с БД. Мои реко строятся на базе опыта и того, что я чаще всего замечаю,</description>
+      <enclosure url="https://geminishkv.tech/img/blog/262.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>geminishkv.tech</title>
+      <link>https://geminishkv.tech/blog/261/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/261/</guid>
+      <pubDate>Thu, 19 Mar 2026 00:00:00 GMT</pubDate>
+      <description>🏆 geminishkv.tech UwU, короче сделал тут сайтик для себя, хочу поделиться с тобой, считаю получилось особенно прикольно с глитчем, адаптивка отдельно доставила.  geminishkv.tech - чекай, но конечно простенько, но эффекто для портфолио 🙃 #paper #appsec #devsecops</description>
+      <enclosure url="https://geminishkv.tech/img/blog/261.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Испытания ФСТЭК России ГОСТ 71207</title>
+      <link>https://geminishkv.tech/blog/260/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/260/</guid>
+      <pubDate>Thu, 19 Mar 2026 00:00:00 GMT</pubDate>
+      <description>🏆 Испытания ФСТЭК России ГОСТ 71207 Я как то ранее писал про эти испытания тут, что мы в ЛАНИТ с моими ребятами получили грамоту на нашу компанию за вклад, который внесли, а теперь подьехала очень приятная история, еще одна. Люблю когда так мотивирует, согласись, приятно же? Оче</description>
+      <enclosure url="https://geminishkv.tech/img/blog/260.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Карта DevSecOps Toolchain</title>
+      <link>https://geminishkv.tech/blog/259/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/259/</guid>
+      <pubDate>Thu, 19 Mar 2026 00:00:00 GMT</pubDate>
+      <description>🛠 Карта DevSecOps Toolchain Салют, Хорошие новости, я как то рассказывал про карту инструментов тут. Наконец то ее залили в релизе 2.0.1 в репозиторий нашего сообщества findevsecops.ru, почекай. Сейчас будет буст самой карты инструментов и ты можешь поучаствовать с нами в развит</description>
+      <enclosure url="https://geminishkv.tech/img/blog/259.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Информационная безопасность на всех этапах жизненного цикла разработки ПО</title>
+      <link>https://geminishkv.tech/blog/258/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/258/</guid>
+      <pubDate>Wed, 18 Mar 2026 00:00:00 GMT</pubDate>
+      <description>🏆 Информационная безопасность на всех этапах жизненного цикла разработки ПО Салюты, напомню, что стартует, совсем скоро курс по МФТИ, поделюсь расписанием вот тут. А пока ты можешь покачаться на лабках, которые скоро получат новый релиз и будут также обкатываться на МФТИ. Почека</description>
+      <enclosure url="https://geminishkv.tech/img/blog/258.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Яндекс хорошие номера подобрал</title>
+      <link>https://geminishkv.tech/blog/255/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/255/</guid>
+      <pubDate>Tue, 17 Mar 2026 00:00:00 GMT</pubDate>
+      <description>Яндекс хорошие номера подобрал 😅🙃 #lol</description>
+      <enclosure url="https://geminishkv.tech/img/blog/255.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>WSO2 InfoSec Reco</title>
+      <link>https://geminishkv.tech/blog/254/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/254/</guid>
+      <pubDate>Tue, 17 Mar 2026 00:00:00 GMT</pubDate>
+      <description>🤔 WSO2 InfoSec Reco Салют, давай в догонку, с тобой, ко вчерашнему посту, посмотрим на требования ИБ, которые помогут нам при интеграциях.  Эти требования позволят снизить риски связанные с киберпреступлениями, утечками, не соответствия Compliance. Требования рассматриваем ближе</description>
+      <enclosure url="https://geminishkv.tech/img/blog/254.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+  </channel>
+</rss>

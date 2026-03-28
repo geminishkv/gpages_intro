@@ -19,8 +19,9 @@ export default function MainPage({ isVisible }) {
   const refs = useMainAnimation(isVisible, () => setAnimDone(true));
   const [aboutOpen, setAboutOpen] = useState(false);
 
-  // iOS-safe scroll lock during animation (overflow:hidden breaks position:fixed on iOS Safari)
+  // Scroll lock during animation — desktop only (mobile can scroll freely)
   useEffect(() => {
+    if (window.matchMedia('(max-width: 900px)').matches) return;
     if (isVisible && !animDone) {
       document.body.style.position = 'fixed';
       document.body.style.top = '0';

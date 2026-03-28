@@ -25,6 +25,10 @@
     <!-- ── Sitemap (explicit link for crawlers) ── -->
     <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
 
+    <!-- ── RSS feeds ── -->
+    <link rel="alternate" type="application/rss+xml" title="geminishkv — AppSec &amp; DevSecOps (RU)" href="/rss.xml" />
+    <link rel="alternate" type="application/rss+xml" title="geminishkv — AppSec &amp; DevSecOps (EN)" href="/rss-en.xml" />
+
     <!-- ── Geo / Region (Yandex region hint: Moscow) ── -->
     <meta name="geo.region"    content="RU-MOW" />
     <meta name="geo.placename" content="Москва, Россия" />
@@ -34,8 +38,11 @@
     <meta name="theme-color"              content="#0a0a0a" />
     <meta name="msapplication-TileColor"  content="#0a0a0a" />
 
+    <!-- ── LCP preload ── -->
+    <link rel="preload" as="image" href="/img/hero/avatar.jpg" />
+
     <!-- ── Open Graph (Telegram / VK / LinkedIn / Facebook) ── -->
-    <meta property="og:type"        content="profile" />
+    <meta property="og:type"        content="website" />
     <meta property="og:url"         content="https://geminishkv.tech/" />
     <meta property="og:title"       content="Илья Шмаков — AppSec &amp; DevSecOps" />
     <meta property="og:description" content="8+ лет в ИБ. AppSec Team Lead в LANIT. Эксперт по Secure SDLC, SAST/DAST/SCA, fintech. Лидер FinDevSecOps. Автор Telegram-канала shmakovis_appsec." />
@@ -53,7 +60,7 @@
     <meta property="profile:username"   content="geminishkv" />
 
     <!-- ── Twitter Card ── -->
-    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:card"        content="summary" />
     <meta name="twitter:site"        content="@geminishkv" />
     <meta name="twitter:creator"     content="@geminishkv" />
     <meta name="twitter:title"       content="Илья Шмаков — AppSec &amp; DevSecOps" />
@@ -158,7 +165,7 @@
         "description": "Personal website of Ilya Stanislavovich Shmakov — AppSec Team Lead, DevSecOps expert. Work experience, open-source projects, blog, certifications.",
         "inLanguage": ["ru", "en"],
         "mainEntity": { "@id": "https://geminishkv.tech/#person" },
-        "dateModified": "2026-03-27",
+        "dateModified": "2026-03-28",
         "hasPart": [
           {
             "@type": "WebPageElement",
@@ -269,6 +276,7 @@
 
     <!-- ── Favicons ── -->
     <link rel="icon" type="image/x-icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/img/hero/logo2.png" />
 
     <!-- ── Analytics (Plausible) ── -->
     <script defer data-domain="geminishkv.tech" src="https://plausible.io/js/script.js"></script>
@@ -297,6 +305,7 @@
     <!-- ── Fonts ── -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://mc.yandex.ru" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&family=Unbounded:wght@700;900&display=swap" rel="stylesheet" />
   </head>
   <body>

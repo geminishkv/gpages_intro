@@ -15,13 +15,19 @@ export default function Nav({ navRef, onAboutOpen }) {
     const nav = navRef?.current;
     if (!nav) return;
     const mainPage = nav.closest('.main-page');
-    const scrollTarget = mainPage || window;
     const onScroll = () => {
-      const top = mainPage ? mainPage.scrollTop : window.scrollY;
+      const top = Math.max(
+        mainPage ? mainPage.scrollTop : 0,
+        window.scrollY
+      );
       nav.classList.toggle('nav--scrolled', top > 10);
     };
-    scrollTarget.addEventListener('scroll', onScroll, { passive: true });
-    return () => scrollTarget.removeEventListener('scroll', onScroll);
+    if (mainPage) mainPage.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => {
+      if (mainPage) mainPage.removeEventListener('scroll', onScroll);
+      window.removeEventListener('scroll', onScroll);
+    };
   }, [navRef]);
 
   // Блокируем скролл — iOS Safari требует position:fixed на body

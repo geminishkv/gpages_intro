@@ -93,6 +93,7 @@
   overflow: hidden;
   max-width: clamp(400px, 40vw, 700px);
   margin-top: 12px;
+  transform: translateZ(0);
 }
 
 .hero__badges-track {
@@ -102,6 +103,7 @@
   width: max-content;
   /* начальная позиция: оригиналы (правая половина трека) в зоне видимости */
   transform: translateX(-50%);
+  will-change: transform;
 }
 
 .hero__badge {

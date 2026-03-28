@@ -21,6 +21,7 @@
   flex-shrink: 0;
   user-select: none;
   overflow: hidden;
+  padding: 12px 0;
 
   /* Standalone defaults */
   width: clamp(44px, 4vw, 68px);
@@ -36,7 +37,7 @@
   /* Figma: no letter-spacing, no text-transform, mixed case */
   /* font-size = unit × 0.34 — fits full "Sic Parvis Magna" in pill */
   font-size: calc(var(--bc-unit, 68px) * 0.34);
-  line-height: 0.87em;
+  line-height: 1.1em;
   letter-spacing: 0;
   white-space: nowrap;
 

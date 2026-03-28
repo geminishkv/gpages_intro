@@ -78,7 +78,7 @@ function renderPost(post, lang = 'ru') {
   const blogLabel     = isEn ? 'Blog'                  : 'Блог';
   const authorName    = isEn ? 'Ilya Shmakov'           : 'Илья Шмаков';
   const authorFull    = isEn ? 'Ilya Stanislavovich Shmakov' : 'Илья Станиславович Шмаков';
-  const footerYear    = '© 2025';
+  const footerYear    = `© ${new Date().getFullYear()}`;
 
   const tagsHtml = post.tags?.length
     ? post.tags.map(t => `<span class="tag">#${escapeHtml(t)}</span>`).join('')
@@ -117,8 +117,8 @@ function renderPost(post, lang = 'ru') {
       url: BASE_URL,
     },
     publisher: {
-      '@type': 'Person',
-      name: authorName,
+      '@type': 'Organization',
+      name: 'geminishkv',
       url: BASE_URL,
     },
     mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },

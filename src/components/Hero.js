@@ -4,7 +4,7 @@ import BrandColumn from './BrandColumn';
 import {
   MAC_IMG, WIN_IMG, UWU_IMG,
   LIDER_IMG, LANIT_IMG, BMSTU_IMG, MPFI_IMG, RBPO_IMG, INSECA_IMG,
-  TAGLINE_TEXT,
+  TAGLINE_TEXT, TITLE_TEXT,
 } from '../constants';
 import { useLang } from '../context/LangContext';
 
@@ -19,7 +19,7 @@ export default function Hero({
     <div className="hero">
       {/* Left — text */}
       <div className="hero__text">
-        <h1 ref={titleRef} className="hero__title" />
+        <h1 ref={titleRef} className="hero__title">{TITLE_TEXT}</h1>
         <h2 ref={subtitleRef} className="hero__subtitle" style={{ opacity: 0 }} />
         <p ref={taglineRef} className="hero__tagline" style={{ opacity: 0 }}>
           {TAGLINE_TEXT}

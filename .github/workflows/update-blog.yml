@@ -46,16 +46,20 @@ jobs:
       - name: Generate sitemap
         run: node scripts/generate-sitemap.js
 
+      - name: Generate RSS feeds
+        run: node scripts/generate-rss.js
+
       - name: Commit if data changed
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add src/data/tg-posts.json public/img/blog/ \
                   src/data/instagram.json public/img/instagram/ \
-                  public/sitemap.xml public/index.html
+                  public/sitemap.xml public/index.html \
+                  public/rss.xml public/rss-en.xml
           git diff --cached --quiet \
             && echo "Nothing to commit." \
-            || git commit -m "chore: update blog + instagram + sitemap [skip ci]"
+            || git commit -m "chore: update blog + instagram + sitemap + rss [skip ci]"
 
       - name: Push updated posts
         run: git push origin gpages
