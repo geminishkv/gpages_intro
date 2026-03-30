@@ -36,15 +36,15 @@
 | Деплой | `scripts/deploy.js` (git) → GitHub Pages, ветка `gh-pages` |
 | Домен | geminishkv.tech (reg.ru + GitHub Pages custom domain) |
 | SEO | JSON-LD Person/BlogPosting/ProfilePage/WebSite, OG, Twitter Card, hreflang RU/EN + xhtml:link в sitemap, sitemap.xml, RSS-фиды (RU + EN), llms.txt (AI-краулеры), LCP preload, apple-touch-icon, robots.txt (Yandex Clean-param), статические страницы блога |
-| CI/CD | GitHub Actions — блог + Instagram (пн 07:00 UTC), gaming (пн 07:00 UTC), stats (пн 01:00 UTC) |
+| CI/CD | GitHub Actions — единый `weekly-update.yml` (пн 07:00 UTC): блог + Instagram + gaming + stats |
 
 ***
 
 ### Функциональность
 
 - **SplashScreen** — экран загрузки с глитч-анимацией (clip-path + RGB-каналы + scanlines)
-- **Mac mockup** — покадровая анимация сборки ретро-Mac через anime.js timeline, прогресс-бар "Initializing"
-- **Typewriter** — пошаговый набор заголовка по символам (DOS-стиль); текст присутствует в HTML для краулеров
+- **Mac mockup** — анимация сборки ретро-Mac через CSS keyframes + `.mac--play` триггер, прогресс-бар "Initializing"
+- **Typewriter** — пошаговый набор заголовка по символам (DOS-стиль)
 - **Badges marquee** — бесконечный скролл логотипов достижений
 - **NoticeBar** — анонс-баннер с авто-показом (задержка 1.2с после splash), dismissable на сессию
 - **Stats** — 5 ключевых метрик с анимацией count-up через IntersectionObserver
@@ -107,7 +107,7 @@ gpages/
 │   ├── context/
 │   │   └── LangContext.js    # RU/EN переключатель (localStorage, default: ru)
 │   ├── hooks/
-│   │   └── useMainAnimation.js  # Вся логика anime.js + IntersectionObserver
+│   │   └── useMainAnimation.js  # Mac CSS-триггер + typewriter + IntersectionObserver
 │   ├── i18n/
 │   │   └── translations.js   # Строки UI на RU и EN
 │   ├── constants/
@@ -142,9 +142,7 @@ gpages/
 │   ├── generate-blog-pages.js # Статические SEO-страницы build/blog/{id}/ (RU) и build/blog/en/{id}/ (EN)
 │   └── deploy.js             # Кастомный деплой в gh-pages (замена несовместимого gh-pages пакета)
 ├── .github/workflows/
-│   ├── update-blog.yml       # Cron пн 07:00 UTC: TG (RU+EN) + Instagram → sitemap + RSS → коммит gpages → build → generate-blog-pages → деплой gh-pages
-│   ├── update-interests.yml  # Cron пн 07:00 UTC: gaming stats → sitemap + RSS → деплой
-│   └── update-stats.yml      # Cron пн 01:00 UTC: GitHub stats → sitemap + RSS → деплой
+│   └── weekly-update.yml     # Cron пн 07:00 UTC: TG + Instagram + gaming + stats → sitemap + RSS → коммит gpages → build → blog-pages → деплой gh-pages
 ├── package.json
 ├── package-lock.json
 ├── CNAME
@@ -200,11 +198,9 @@ node scripts/deploy.js               # → ветка gh-pages
 
 | Workflow | Расписание | Секреты | Действие |
 |----------|-----------|---------|---------|
-| `update-blog.yml` | Пн 07:00 UTC | — | TG → `tg-posts.json` (RU + EN) + Instagram → `sitemap.xml` + `rss.xml` + `rss-en.xml` + `index.html` → коммит `gpages` → build → `generate-blog-pages.js` → деплой `gh-pages` |
-| `update-interests.yml` | Пн 07:00 UTC | `STRATEGE_COOKIE` | Stratege.ru + Xbox → `gaming.json` + кеш обложек → `sitemap.xml` + `rss.xml` → деплой |
-| `update-stats.yml` | Пн 01:00 UTC | — | GitHub API → stars/forks → `sitemap.xml` + `rss.xml` → деплой |
+| `weekly-update.yml` | Пн 07:00 UTC | `STRATEGE_COOKIE`, `YM_ID` | TG + Instagram + gaming + stats → `sitemap.xml` + `rss.xml` → коммит `gpages` → build → `generate-blog-pages.js` → деплой `gh-pages` |
 
-Все workflow запускаются вручную через `workflow_dispatch`.
+Запускается вручную через `workflow_dispatch`.
 
 ***
 
