@@ -122,8 +122,42 @@
   flex: none;
 }
 
-/* ── Hide on small viewports ── */
-/* 1200px: brand-col makes mac too tight */
+/* ── Horizontal layout below mac at ≤1200px ── */
 @media (max-width: 1200px) {
-  .brand-col { display: none; }
+  .brand-col {
+    --bc-unit: clamp(40px, 4.5vw, 54px);
+    flex-direction: row;
+    align-items: center;
+    width: clamp(360px, 32vw, 620px);
+    gap: calc(var(--bc-unit) * 0.184);
+  }
+
+  .brand-col__shapes {
+    flex-direction: row;
+  }
+
+  /* pill: горизонтальный, заполняет оставшееся место */
+  .brand-col .spm-pill {
+    display: flex;
+    flex: 1;
+    width: unset;
+    height: var(--bc-unit);
+    min-height: unset;
+    max-height: unset;
+    padding: 0 clamp(10px, 1.5vw, 20px);
+  }
+
+  .brand-col .spm-pill__text {
+    writing-mode: horizontal-tb;
+    transform: none;
+    font-size: clamp(0.7rem, calc(var(--bc-unit) * 0.36), 1rem);
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 900px) {
+  .brand-col {
+    width: 100%;
+    max-width: 380px;
+  }
 }

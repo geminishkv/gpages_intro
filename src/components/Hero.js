@@ -4,7 +4,7 @@ import BrandColumn from './BrandColumn';
 import {
   MAC_IMG, WIN_IMG, UWU_IMG,
   LIDER_IMG, LANIT_IMG, BMSTU_IMG, MPFI_IMG, RBPO_IMG, INSECA_IMG,
-  TAGLINE_TEXT, TITLE_TEXT,
+  TAGLINE_TEXT,
 } from '../constants';
 import { useLang } from '../context/LangContext';
 
@@ -19,7 +19,7 @@ export default function Hero({
     <div className="hero">
       {/* Left — text */}
       <div className="hero__text">
-        <h1 ref={titleRef} className="hero__title">{TITLE_TEXT}</h1>
+        <h1 ref={titleRef} className="hero__title" />
         <h2 ref={subtitleRef} className="hero__subtitle" style={{ opacity: 0 }} />
         <p ref={taglineRef} className="hero__tagline" style={{ opacity: 0 }}>
           {TAGLINE_TEXT}
@@ -90,17 +90,15 @@ export default function Hero({
         <div className="mac-wrap">
           <img src={MAC_IMG} alt="Mac" className="mac-body" />
           <div className="mac-screen">
-            <div ref={blinkerRef} className="blinker" style={{ opacity: 0 }} />
-            <div ref={whiteBoxRef}     className="mac-white-box"     style={{ opacity: 0, width: 0, height: 0 }} />
-            <div ref={containerBoxRef} className="mac-container-box" style={{ opacity: 0, width: 0, height: 0 }} />
-            <img ref={windowImgRef} src={WIN_IMG} alt="" className="mac-window-img"
-                 style={{ opacity: 0, width: 0, height: 0 }} />
-            <img ref={uwuRef} src={UWU_IMG} alt="" className="mac-window-img mac-uwu"
-                 style={{ opacity: 0 }} />
-            <div ref={workTextRef} className="mac-work-text" style={{ opacity: 0 }}>
+            <div ref={blinkerRef} className="blinker" />
+            <div ref={whiteBoxRef}     className="mac-white-box" />
+            <div ref={containerBoxRef} className="mac-container-box" />
+            <img ref={windowImgRef} src={WIN_IMG} alt="" className="mac-window-img" />
+            <img ref={uwuRef} src={UWU_IMG} alt="" className="mac-window-img mac-uwu" />
+            <div ref={workTextRef} className="mac-work-text">
               Work harder,&nbsp;<br />comrade
             </div>
-            <div ref={progressWrapRef} className="mac-progress" style={{ opacity: 0 }}>
+            <div ref={progressWrapRef} className="mac-progress">
               <p className="mac-loading-text">
                 Initializing
                 <span className="dot dot-1">.</span>
@@ -108,7 +106,7 @@ export default function Hero({
                 <span className="dot dot-3">.</span>
               </p>
               <div className="mac-progress-track">
-                <div ref={progressBarRef} className="mac-progress-bar" style={{ width: '0%' }} />
+                <div ref={progressBarRef} className="mac-progress-bar" />
               </div>
             </div>
           </div>
