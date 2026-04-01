@@ -90,3 +90,18 @@ if (fs.existsSync(INDEX_HTML)) {
     console.log(`[sitemap] dateModified → ${today}`);
   }
 }
+
+// Ping search engines about updated sitemap
+const sitemapUrl = encodeURIComponent(`${BASE_URL}/sitemap.xml`);
+const pings = [
+  `https://webmaster.yandex.ru/ping?sitemap=${sitemapUrl}`,
+];
+
+for (const url of pings) {
+  const mod = url.startsWith('https') ? require('https') : require('http');
+  mod.get(url, (res) => {
+    console.log(`[sitemap] ping ${new URL(url).hostname} → ${res.statusCode}`);
+  }).on('error', (err) => {
+    console.warn(`[sitemap] ping ${new URL(url).hostname} failed: ${err.message}`);
+  });
+}

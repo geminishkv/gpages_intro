@@ -1,0 +1,75 @@
+name: Update Blog Posts
+
+on:
+  schedule:
+    - cron: '0 7 * * 1'   # каждый понедельник в 07:00 UTC
+  workflow_dispatch:        # ручной запуск
+
+permissions:
+  contents: write
+  actions: none
+  checks: none
+  deployments: none
+  issues: none
+  packages: none
+  pull-requests: none
+  security-events: none
+  statuses: none
+
+jobs:
+  update-and-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout source (gpages branch)
+        uses: actions/checkout@v4
+        with:
+          ref: gpages
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --prefer-offline
+
+      - name: Fetch latest Telegram posts
+        run: node scripts/update-tg-posts.js
+
+      - name: Fetch latest Instagram posts
+        run: node scripts/update-instagram.js
+
+      - name: Generate sitemap
+        run: node scripts/generate-sitemap.js
+
+      - name: Commit if data changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/data/tg-posts.json public/img/blog/ \
+                  src/data/instagram.json public/img/instagram/ \
+                  public/sitemap.xml public/index.html
+          git diff --cached --quiet \
+            && echo "Nothing to commit." \
+            || git commit -m "chore: update blog + instagram + sitemap [skip ci]"
+
+      - name: Push updated posts
+        run: git push origin gpages
+
+      - name: Build
+        run: npm run build
+        env:
+          REACT_APP_YM_ID: ${{ secrets.YM_ID }}
+
+      - name: Generate static blog pages
+        run: node scripts/generate-blog-pages.js
+
+      - name: Deploy to gh-pages
+        run: |
+          git remote set-url origin \
+            https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          node scripts/deploy.js
