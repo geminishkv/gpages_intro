@@ -7,7 +7,7 @@ import GlitchLabel from './GlitchLabel';
 const CHANNEL_URL    = 'https://t.me/shmakovis_appsec';
 const MOBILE_BP      = 576;
 const MOBILE_INITIAL = 3;
-const DESKTOP_INITIAL = 6;
+const DESKTOP_INITIAL = 14;
 const posts       = DATA.posts  ?? [];
 const subscribers = DATA.subscribers ?? 0;
 
@@ -130,11 +130,6 @@ export default function Blog() {
         </a>
       </div>
 
-      {posts.length > initial && (
-        <a href="/blog/" className="blog__show-more">
-          {b.showMore(posts.length - initial)} →
-        </a>
-      )}
     </section>
   );
 }

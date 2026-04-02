@@ -164,6 +164,15 @@ async function main() {
 
   fs.mkdirSync(IMG_DIR, { recursive: true });
 
+  // Collect old image IDs to clean up later
+  const oldIds = new Set();
+  if (fs.existsSync(OUTPUT)) {
+    try {
+      const old = JSON.parse(fs.readFileSync(OUTPUT, 'utf8'));
+      for (const p of (old.posts ?? [])) oldIds.add(p.id);
+    } catch { /* ignore */ }
+  }
+
   const posts = [];
   for (let i = 0; i < raw.length; i++) {
     const p      = raw[i];
@@ -195,7 +204,9 @@ async function main() {
     });
   }
 
-  cleanupOrphanImages(IMG_DIR, new Set(posts.map(p => p.id)));
+  // Remove ALL images not in the new set (old + orphan)
+  const newIds = new Set(posts.map(p => p.id));
+  cleanupOrphanImages(IMG_DIR, newIds);
 
   fs.mkdirSync(path.dirname(OUTPUT), { recursive: true });
   fs.writeFileSync(OUTPUT, JSON.stringify({ posts }, null, 2) + '\n', 'utf8');

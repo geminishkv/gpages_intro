@@ -69,6 +69,7 @@ export default function Hero({
             <span className="social-group__label">{t.hero.contentLabel}</span>
             <div className="social-group__btns">
               <a href="https://t.me/shmakovis_appsec" target="_blank" rel="noreferrer" className="content-btn"><i /><span>AppSecTA</span></a>
+              <a href="https://geminishkv.tech/blog/" target="_blank" rel="noreferrer" className="content-btn"><i /><span>Blog</span></a>
               <a href="https://course.geminishkv.tech/" target="_blank" rel="noreferrer" className="content-btn"><i /><span>AppSec Course</span></a>
               <a href="https://inseca.tech/security-champion-training" target="_blank" rel="noreferrer" className="content-btn"><i /><span>Security Champion Training</span></a>
               <a href="https://kiberbez-tech.ru" target="_blank" rel="noreferrer" className="content-btn"><i /><span>MIPT DevSecOps Course</span></a>

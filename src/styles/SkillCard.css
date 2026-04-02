@@ -166,6 +166,11 @@
   padding: 14px;
 }
 
+.skill-grid__more--full {
+  width: 100%;
+  margin-top: 14px;
+}
+
 .skill-grid__more:hover {
   border-color: var(--color-red-a50, rgba(213, 26, 26, 0.5));
   box-shadow: var(--shadow-red-sm, 0 0 12px rgba(213, 26, 26, 0.1));

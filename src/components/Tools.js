@@ -26,7 +26,7 @@ const DOMAIN_ITEMS = [
   ['Payment Systems Security', 70], ['Mobile AppSec', 65], ['GRC', 50],
 ];
 
-const STACK_INITIAL = 4;
+const STACK_INITIAL = 2;
 const CERTS_INITIAL = 4;
 
 function SkillRow({ name, percent }) {
@@ -87,15 +87,10 @@ export default function Tools() {
           {visibleGroups.slice(2).map(({ label, items }) => (
             <SkillCard key={label} title={label} items={items} />
           ))}
-          {!stackExpanded && TOOL_GROUPS.length > STACK_INITIAL && (
-            <button className="skill-grid__more" onClick={() => setStackExpanded(true)}>
-              +{TOOL_GROUPS.length - STACK_INITIAL} categories ↓
-            </button>
-          )}
         </div>
       )}
-      {visibleGroups.length <= 2 && !stackExpanded && TOOL_GROUPS.length > STACK_INITIAL && (
-        <button className="skill-grid__more" style={{ marginTop: 16 }} onClick={() => setStackExpanded(true)}>
+      {!stackExpanded && TOOL_GROUPS.length > STACK_INITIAL && (
+        <button className="skill-grid__more skill-grid__more--full" onClick={() => setStackExpanded(true)}>
           +{TOOL_GROUPS.length - STACK_INITIAL} categories ↓
         </button>
       )}
