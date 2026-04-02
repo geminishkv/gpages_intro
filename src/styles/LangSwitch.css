@@ -1,0 +1,145 @@
+/* ── Language toggle switch (brand-styled) ── */
+
+.lang-switch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+}
+
+.lang-switch__outer {
+  height: 100%;
+  background: var(--surface-card, #111111);
+  width: 82px;
+  border-radius: 165px;
+  box-shadow:
+    inset 0px 3px 6px 0px rgba(0, 0, 0, 0.4),
+    0px 2px 4px -1px rgba(213, 26, 26, 0.08);
+  border: 1px solid var(--border-default, #1a1a1a);
+  padding: 4px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+}
+
+.lang-switch__input {
+  opacity: 0;
+  appearance: none;
+  position: absolute;
+  pointer-events: none;
+}
+
+/* ── Track with labels ── */
+.lang-switch__track {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+/* ── Sliding knob ── */
+.lang-switch__knob {
+  height: 28px;
+  width: 28px;
+  background: linear-gradient(
+    180deg,
+    var(--color-red, #D51A1A) 0%,
+    #a01414 100%
+  );
+  border-radius: 50%;
+  box-shadow:
+    inset 0px 2px 3px 0px rgba(255, 255, 255, 0.15),
+    0px 2px 8px 0px rgba(213, 26, 26, 0.35);
+  position: absolute;
+  left: 0;
+  transition: left var(--duration-slow, 0.3s) cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 2;
+}
+
+.lang-switch__input:checked ~ .lang-switch__track .lang-switch__knob {
+  left: calc(100% - 28px);
+}
+
+/* ── Labels ── */
+.lang-switch__label {
+  flex: 1;
+  text-align: center;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-tertiary, #555555);
+  transition: color var(--duration-normal, 0.2s);
+  position: relative;
+  z-index: 1;
+  pointer-events: none;
+  line-height: 1;
+}
+
+.lang-switch__label--active {
+  color: var(--color-white, #ffffff);
+}
+
+/* ── Indicator dot ── */
+.lang-switch__indicator {
+  height: 6px;
+  width: 6px;
+  border-radius: 50%;
+  background: var(--color-gold, #F9B361);
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity var(--duration-normal, 0.2s);
+}
+
+.lang-switch__label--active .lang-switch__indicator {
+  opacity: 1;
+}
+
+/* ── Hover ── */
+.lang-switch__outer:hover {
+  border-color: rgba(213, 26, 26, 0.25);
+  box-shadow:
+    inset 0px 3px 6px 0px rgba(0, 0, 0, 0.4),
+    0px 0px 12px rgba(213, 26, 26, 0.1);
+}
+
+/* ── Focus ── */
+.lang-switch__input:focus-visible ~ .lang-switch__track .lang-switch__knob {
+  outline: 2px solid var(--color-red, #D51A1A);
+  outline-offset: 2px;
+}
+
+/* ── Mobile overlay variant ── */
+.lang-switch--overlay {
+  height: 44px;
+}
+
+.lang-switch--overlay .lang-switch__outer {
+  width: 100px;
+  height: 100%;
+  padding: 5px;
+}
+
+.lang-switch--overlay .lang-switch__knob {
+  height: 34px;
+  width: 34px;
+}
+
+.lang-switch--overlay .lang-switch__input:checked ~ .lang-switch__track .lang-switch__knob {
+  left: calc(100% - 34px);
+}
+
+.lang-switch--overlay .lang-switch__label {
+  font-size: 0.72rem;
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .lang-switch__knob {
+    transition: none;
+  }
+}

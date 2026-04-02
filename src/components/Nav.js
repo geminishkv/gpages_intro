@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import '../styles/Nav.css';
+import '../styles/LangSwitch.css';
 import { LOGO_IMG } from '../constants';
 import { useLang } from '../context/LangContext';
 
@@ -51,18 +52,30 @@ export default function Nav({ navRef, onAboutOpen }) {
     };
   }, [menuOpen]);
 
-  function LangToggle({ className = '' }) {
+  function LangToggle({ overlay = false }) {
+    const isEn = lang === 'en';
     return (
-      <div className={`nav__lang${className ? ` ${className}` : ''}`}>
-        <button
-          className={`nav__lang-btn${lang === 'ru' ? ' nav__lang-btn--active' : ''}`}
-          onClick={() => setLang('ru')}
-        >RU</button>
-        <span className="nav__lang-sep">·</span>
-        <button
-          className={`nav__lang-btn${lang === 'en' ? ' nav__lang-btn--active' : ''}`}
-          onClick={() => setLang('en')}
-        >EN</button>
+      <div className={`lang-switch${overlay ? ' lang-switch--overlay' : ''}`}>
+        <label className="lang-switch__outer">
+          <input
+            className="lang-switch__input"
+            type="checkbox"
+            checked={isEn}
+            onChange={() => setLang(isEn ? 'ru' : 'en')}
+            aria-label="Toggle language"
+          />
+          <div className="lang-switch__track">
+            <span className={`lang-switch__label${!isEn ? ' lang-switch__label--active' : ''}`}>
+              RU
+              <span className="lang-switch__indicator" />
+            </span>
+            <span className={`lang-switch__label${isEn ? ' lang-switch__label--active' : ''}`}>
+              EN
+              <span className="lang-switch__indicator" />
+            </span>
+            <span className="lang-switch__knob" />
+          </div>
+        </label>
       </div>
     );
   }
@@ -112,7 +125,7 @@ export default function Nav({ navRef, onAboutOpen }) {
           <a href="#skillset"   onClick={close}>SKILLSET</a>
           <a href="#interests"  onClick={close}>INTERESTS</a>
           <a href="https://my.idot.vip/geminishkv" target="_blank" rel="noreferrer" className="nav__link--secondary" onClick={close}>NFC CARD</a>
-          <LangToggle className="nav__lang--overlay" />
+          <LangToggle overlay />
         </div>,
         document.body
       )}
