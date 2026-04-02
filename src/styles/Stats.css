@@ -1,7 +1,8 @@
 .stats {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  border-top: 1px solid var(--border-subtle, #141414);
+  border-top: 2px solid;
+  border-image: linear-gradient(to right, #D51A1A 0%, rgba(213, 26, 26, 0.15) 60%, transparent 100%) 1;
   border-bottom: 1px solid var(--border-subtle, #141414);
   max-width: 1900px;
   width: 100%;

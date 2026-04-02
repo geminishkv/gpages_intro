@@ -4,7 +4,8 @@
 
 .blog {
   padding: clamp(32px, 4vw, 60px) clamp(40px, 5vw, 120px) clamp(48px, 5vw, 80px);
-  border-top: 1px solid #161616;
+  border-top: 2px solid;
+  border-image: linear-gradient(to right, #D51A1A 0%, rgba(213, 26, 26, 0.15) 60%, transparent 100%) 1;
   max-width: 1900px;
   width: 100%;
   align-self: center;
@@ -151,13 +152,17 @@
   gap: 10px;
   padding: 28px 24px;
   background: var(--surface-secondary, #0d0d0d);
-  border: 1px solid rgba(213, 26, 26, 0.2);
+  border: 2px solid transparent;
+  background-image: linear-gradient(var(--surface-secondary, #0d0d0d), var(--surface-secondary, #0d0d0d)), linear-gradient(135deg, #D51A1A, #F9B361);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
   border-radius: 4px;
   text-decoration: none;
   text-align: center;
   color: var(--text-secondary, #888888);
   transition: border-color 0.25s, box-shadow 0.25s;
   min-height: 200px;
+  animation: cta-glow 3s ease-in-out infinite;
 }
 
 .blog-cta:hover {
@@ -194,6 +199,16 @@
 }
 
 .blog-cta:hover .blog-cta__btn { letter-spacing: 0.14em; }
+
+/* ── CTA glow animation ── */
+@keyframes cta-glow {
+  0%, 100% { box-shadow: 0 0 12px rgba(213, 26, 26, 0.35), 0 0 30px rgba(213, 26, 26, 0.1); }
+  50% { box-shadow: 0 0 16px rgba(249, 179, 97, 0.4), 0 0 40px rgba(249, 179, 97, 0.12); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blog-cta { animation: none; }
+}
 
 /* ── Show more → links to /blog/ ── */
 .blog__show-more {

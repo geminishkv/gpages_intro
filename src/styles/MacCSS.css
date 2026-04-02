@@ -1,0 +1,131 @@
+/* ── Holographic Floating Monitor ── */
+
+.mac-css {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 12px;
+  padding: 2px;
+  background: linear-gradient(135deg, var(--color-red, #D51A1A), var(--color-gold, #F9B361));
+  animation: monitor-glow 3s ease-in-out infinite;
+}
+
+@keyframes monitor-glow {
+  0%, 100% {
+    box-shadow:
+      0 0 20px rgba(213, 26, 26, 0.4),
+      0 0 50px rgba(213, 26, 26, 0.15);
+  }
+  50% {
+    box-shadow:
+      0 0 25px rgba(249, 179, 97, 0.5),
+      0 0 60px rgba(249, 179, 97, 0.2);
+  }
+}
+
+/* ── Monitor body (dark frame) ── */
+.mac-css__monitor {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: var(--surface-primary, #0a0a0a);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ── Monitor top bar ── */
+.mac-css__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 14px;
+  background: var(--surface-card, #111111);
+  border-bottom: 1px solid var(--border-default, #1a1a1a);
+  flex-shrink: 0;
+}
+
+.mac-css__bar-logo {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.mac-css__bar-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.mac-css__bar-title {
+  font-size: 0.5rem;
+  font-weight: var(--font-bold, 700);
+  color: var(--text-muted, #333333);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.mac-css__bar-dots {
+  display: flex;
+  gap: 4px;
+}
+
+.mac-css__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.mac-css__dot--r { background: #ff605c; }
+.mac-css__dot--y { background: #ffbd44; }
+.mac-css__dot--g { background: #00ca4e; }
+
+/* ── Screen area ── */
+.mac-css__screen {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface-primary, #0a0a0a);
+}
+
+/* ── Bottom chin ── */
+.mac-css__chin {
+  height: 6px;
+  background: linear-gradient(
+    90deg,
+    var(--border-default, #1a1a1a) 0%,
+    var(--border-strong, #2a2a2a) 50%,
+    var(--border-default, #1a1a1a) 100%
+  );
+  flex-shrink: 0;
+}
+
+/* ── Inner pulse ── */
+.mac-css__monitor::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  pointer-events: none;
+  z-index: 2;
+  animation: monitor-inner-pulse 3s ease-in-out infinite;
+}
+
+@keyframes monitor-inner-pulse {
+  0%, 100% { box-shadow: inset 0 0 20px rgba(213, 26, 26, 0.04); }
+  50%      { box-shadow: inset 0 0 30px rgba(249, 179, 97, 0.06); }
+}
+
+@media (max-width: 900px) {
+  .mac-css { aspect-ratio: 16 / 10; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mac-css { animation: none; }
+  .mac-css__monitor::after { animation: none; }
+}

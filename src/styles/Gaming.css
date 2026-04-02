@@ -1,6 +1,7 @@
 .gaming {
   padding: clamp(40px, 4vw, 64px) clamp(40px, 5vw, 120px);
-  border-top: 1px solid #161616;
+  border-top: 2px solid;
+  border-image: linear-gradient(to right, #D51A1A 0%, rgba(213, 26, 26, 0.15) 60%, transparent 100%) 1;
   max-width: 1900px;
   width: 100%;
   align-self: center;
@@ -126,13 +127,17 @@
   gap: 10px;
   padding: 28px 24px;
   background: var(--surface-secondary, #0d0d0d);
-  border: 1px solid rgba(213, 26, 26, 0.2);
+  border: 2px solid transparent;
+  background-image: linear-gradient(var(--surface-secondary, #0d0d0d), var(--surface-secondary, #0d0d0d)), linear-gradient(135deg, #D51A1A, #F9B361);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
   border-radius: var(--radius-md, 4px);
   text-decoration: none;
   text-align: center;
   color: var(--text-secondary, #888888);
   transition: border-color 0.25s, box-shadow 0.25s;
   min-height: 200px;
+  animation: ig-cta-glow 3s ease-in-out infinite;
 }
 
 .ig-cta:hover {
@@ -170,6 +175,16 @@
 
 .ig-cta:hover .ig-cta__btn { letter-spacing: 0.14em; }
 
+/* ── IG CTA glow animation ── */
+@keyframes ig-cta-glow {
+  0%, 100% { box-shadow: 0 0 12px rgba(213, 26, 26, 0.35), 0 0 30px rgba(213, 26, 26, 0.1); }
+  50% { box-shadow: 0 0 16px rgba(249, 179, 97, 0.4), 0 0 40px rgba(249, 179, 97, 0.12); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ig-cta { animation: none; }
+}
+
 /* ── Platform cards ── */
 .gaming__platform-card {
   background: var(--surface-secondary, #0d0d0d);
@@ -179,11 +194,12 @@
   display: flex;
   flex-direction: column;
   gap: 18px;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .gaming__platform-card:hover {
-  border-color: rgba(213, 26, 26, 0.25);
+  border-color: var(--border-strong, #2a2a2a);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
 }
 
 /* ── Platform head ── */

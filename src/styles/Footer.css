@@ -3,7 +3,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 14px clamp(40px, 5vw, 120px);
-  border-top: 1px solid var(--border-subtle, #141414);
+  border-top: 2px solid;
+  border-image: linear-gradient(to right, #D51A1A 0%, rgba(213, 26, 26, 0.15) 60%, transparent 100%) 1;
   max-width: 1900px;
   width: 100%;
   align-self: center;

@@ -53,6 +53,22 @@
   border-color: var(--color-red, #D51A1A);
 }
 
+/* ── Domains card glow ── */
+.skill-card--wide {
+  border: 2px solid transparent;
+  background-image:
+    linear-gradient(var(--surface-primary, #0a0a0a), var(--surface-primary, #0a0a0a)),
+    linear-gradient(135deg, #D51A1A, #F9B361);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  animation: domains-glow 3s ease-in-out infinite;
+}
+
+@keyframes domains-glow {
+  0%, 100% { box-shadow: 0 0 12px rgba(213, 26, 26, 0.35), 0 0 30px rgba(213, 26, 26, 0.1); }
+  50%      { box-shadow: 0 0 16px rgba(249, 179, 97, 0.4), 0 0 40px rgba(249, 179, 97, 0.12); }
+}
+
 .skill-card__header {
   background: var(--surface-card, #111111);
   padding: 10px 16px;

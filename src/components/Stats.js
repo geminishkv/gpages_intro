@@ -5,9 +5,16 @@ import { useLang } from '../context/LangContext';
 function Counter({ value, suffix, label, active }) {
   const [display, setDisplay] = useState(0);
   const frameRef = useRef(null);
+  const hasRun = useRef(false);
 
   useEffect(() => {
     if (!active) return;
+    if (hasRun.current) {
+      // Language switched after animation — show final value immediately
+      setDisplay(value);
+      return;
+    }
+    hasRun.current = true;
     const duration = Math.max(1200, value * 120);
     const start    = performance.now();
     let prev = -1;
@@ -39,8 +46,8 @@ export default function Stats({ active }) {
   const { t } = useLang();
   return (
     <div className="stats">
-      {t.stats.map((s) => (
-        <Counter key={s.label} value={s.value} suffix={s.suffix} label={s.label} active={active} />
+      {t.stats.map((s, i) => (
+        <Counter key={i} value={s.value} suffix={s.suffix} label={s.label} active={active} />
       ))}
     </div>
   );

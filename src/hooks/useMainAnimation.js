@@ -2,6 +2,8 @@ import { useEffect, useRef, useCallback, useState } from 'react';
 import anime from 'animejs/lib/anime.js';
 import { TITLE_TEXT, SUBTITLE_TEXT } from '../constants';
 
+const GLITCH_CHARS = '#@$%^&!?<>{}[]|/\\~*+=_';
+
 export function useMainAnimation(isVisible, onAllDone) {
   const navRef          = useRef(null);
   const observerRef     = useRef(null);
@@ -41,7 +43,7 @@ export function useMainAnimation(isVisible, onAllDone) {
       return c;
     }
 
-    const GLITCH_CHARS = '#@$%^&!?<>{}[]|/\\~*+=_';
+    // GLITCH_CHARS defined at module level
 
     function typeString(el, text, interval, onDone) {
       const cursor = makeCursor();
@@ -186,6 +188,61 @@ export function useMainAnimation(isVisible, onAllDone) {
   /* ── step 2: mac animation (CSS-driven) ── */
   const animateMac = useCallback(() => {
     windowImgRef.current?.closest('.mac-screen')?.classList.add('mac--play');
+
+    // Type "Work harder, comrade" in terminal style at ~4500ms
+    setTimeout(() => {
+      const el = workTextRef.current;
+      if (!el) return;
+      el.style.opacity = '1';
+      el.innerHTML = '';
+
+      const cmds = [
+        { prompt: '>>> ', text: 'from appsec import mindset', color: '#0f0' },
+        { prompt: '>>> ', text: 'print("Work harder, comrade")', color: '#0f0' },
+        { prompt: '', text: 'Work harder, comrade', color: '#D51A1A' },
+        { prompt: '>>> ', text: 'portfolio.load()', color: '#0f0' },
+      ];
+      let cmdIdx = 0;
+      const speed = 35;
+
+      function typeCmd() {
+        if (cmdIdx >= cmds.length) return;
+        const cmd = cmds[cmdIdx];
+
+        // Prompt
+        if (cmd.prompt) {
+          const promptSpan = document.createElement('span');
+          promptSpan.textContent = cmd.prompt;
+          promptSpan.style.color = '#0f0';
+          el.appendChild(promptSpan);
+        }
+
+        // Type text character by character
+        const chars = cmd.text.split('');
+        let i = 0;
+
+        function typeChar() {
+          if (i >= chars.length) {
+            el.appendChild(document.createElement('br'));
+            cmdIdx++;
+            setTimeout(typeCmd, 200);
+            return;
+          }
+          const span = document.createElement('span');
+          span.style.color = cmd.color;
+          span.textContent = GLITCH_CHARS[Math.floor(Math.random() * GLITCH_CHARS.length)];
+          el.appendChild(span);
+          setTimeout(() => {
+            span.textContent = chars[i];
+            i++;
+            setTimeout(typeChar, speed);
+          }, speed);
+        }
+        typeChar();
+      }
+      typeCmd();
+    }, 4500);
+
     // brandCol starts after Mac progress ends (~4950ms)
     setTimeout(() => {
       brandColRef.current?.classList.add('brand-col--animate');

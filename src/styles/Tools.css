@@ -1,6 +1,7 @@
 .tools {
   padding: clamp(40px, 4vw, 64px) clamp(40px, 5vw, 120px);
-  border-top: 1px solid var(--border-subtle, #141414);
+  border-top: 2px solid;
+  border-image: linear-gradient(to right, #D51A1A 0%, rgba(213, 26, 26, 0.15) 60%, transparent 100%) 1;
   max-width: 1900px;
   width: 100%;
   align-self: center;
@@ -63,7 +64,8 @@
 .tools__domain-grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  border-top: 1px solid var(--border-subtle, #141414);
+  border-top: 2px solid;
+  border-image: linear-gradient(to right, #D51A1A 0%, rgba(213, 26, 26, 0.15) 60%, transparent 100%) 1;
   border-right: 1px solid var(--border-subtle, #141414);
 }
 

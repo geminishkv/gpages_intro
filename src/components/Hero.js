@@ -1,5 +1,6 @@
 import '../styles/Hero.css';
 import '../styles/Mac.css';
+import '../styles/MacCSS.css';
 import '../styles/SocialIcons.css';
 import '../styles/ContentBtn.css';
 import '../styles/PackageBtn.css';
@@ -7,7 +8,7 @@ import '../styles/ContactBtn.css';
 import '../styles/DownloadBtn.css';
 import BrandColumn from './BrandColumn';
 import {
-  MAC_IMG, UWU_IMG,
+  UWU_IMG,
   LIDER_IMG, LANIT_IMG, BMSTU_IMG, MPFI_IMG, RBPO_IMG, INSECA_IMG,
   TAGLINE_TEXT,
 } from '../constants';
@@ -162,42 +163,40 @@ export default function Hero({
 
         <div className="hero__mac">
         <div className="mac-wrap">
-          <img src={MAC_IMG} alt="Mac" className="mac-body" />
-          <div className="mac-screen">
-            <div ref={blinkerRef} className="blinker" />
-            <div ref={whiteBoxRef}     className="mac-white-box" />
-            <div ref={containerBoxRef} className="mac-container-box" />
-            <div ref={windowImgRef} className="mac-window-img mac-terminal">
-              <div className="mac-terminal__header">
-                <div className="mac-terminal__btns">
-                  <span className="mac-terminal__btn mac-terminal__btn--close" />
-                  <span className="mac-terminal__btn mac-terminal__btn--min" />
-                  <span className="mac-terminal__btn mac-terminal__btn--max" />
+          <div className="mac-css">
+            <div className="mac-css__monitor">
+              <div className="mac-css__bar">
+                <div className="mac-css__bar-dots">
+                  <span className="mac-css__dot mac-css__dot--r" />
+                  <span className="mac-css__dot mac-css__dot--y" />
+                  <span className="mac-css__dot mac-css__dot--g" />
                 </div>
-                <span className="mac-terminal__title">geminishkv — zsh</span>
+                <span className="mac-css__bar-title">geminishkv</span>
+                <div className="mac-css__bar-logo">
+                  <img src="/img/logotype/logo_white.svg" alt="" />
+                </div>
               </div>
-              <div className="mac-terminal__body">
-                <span className="mac-terminal__prompt">$</span>
-                <span className="mac-terminal__text">loading portfolio</span>
-                <span className="mac-terminal__dot" id="tdot1">.</span>
-                <span className="mac-terminal__dot" id="tdot2">.</span>
-                <span className="mac-terminal__dot" id="tdot3">.</span>
+              <div className="mac-css__screen mac-screen">
+                <div ref={blinkerRef} className="blinker" />
+                <div ref={whiteBoxRef}     className="mac-white-box" />
+                <div ref={containerBoxRef} className="mac-container-box" />
+                <div ref={windowImgRef} className="mac-window-img mac-terminal">
+                  <div ref={workTextRef} className="mac-work-text" />
+                </div>
+                <img ref={uwuRef} src={UWU_IMG} alt="" className="mac-window-img mac-uwu" />
+                <div ref={progressWrapRef} className="mac-progress">
+                  <p className="mac-loading-text">
+                    Initializing
+                    <span className="dot dot-1">.</span>
+                    <span className="dot dot-2">.</span>
+                    <span className="dot dot-3">.</span>
+                  </p>
+                  <div className="mac-progress-track">
+                    <div ref={progressBarRef} className="mac-progress-bar" />
+                  </div>
+                </div>
               </div>
-            </div>
-            <img ref={uwuRef} src={UWU_IMG} alt="" className="mac-window-img mac-uwu" />
-            <div ref={workTextRef} className="mac-work-text">
-              Work harder,&nbsp;<br />comrade
-            </div>
-            <div ref={progressWrapRef} className="mac-progress">
-              <p className="mac-loading-text">
-                Initializing
-                <span className="dot dot-1">.</span>
-                <span className="dot dot-2">.</span>
-                <span className="dot dot-3">.</span>
-              </p>
-              <div className="mac-progress-track">
-                <div ref={progressBarRef} className="mac-progress-bar" />
-              </div>
+              <div className="mac-css__chin" />
             </div>
           </div>
         </div>

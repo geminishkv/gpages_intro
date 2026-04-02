@@ -11,23 +11,11 @@
   width: clamp(360px, 32vw, 620px);
 }
 
-.mac-body {
-  width: 100%;
-  display: block;
-}
-
-/* Внутренняя область экрана mac_ns.png */
+/* Screen is now .mac-css__screen in MacCSS.css — keep only animation overrides */
 .mac-screen {
-  position: absolute;
-  top: 4%;
-  left: 7%;
-  width: 86%;
-  height: 54%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--surface-card, #111111);
-  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 /* ── Initial hidden states ── */
@@ -165,18 +153,20 @@
 }
 
 .mac-work-text {
-  position: absolute;
-  top: 13%;
-  left: 5.5%;
+  position: relative;
   z-index: 3;
-  font-family: var(--font-body);
-  font-size: clamp(0.6rem, 1.2vw, 1.5rem);
-  font-weight: 900;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #D51A1A;
-  line-height: 1.3;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: clamp(0.45rem, 0.9vw, 0.72rem);
+  font-weight: var(--font-bold, 700);
+  letter-spacing: 0.02em;
+  color: #0f0;
+  line-height: 1.5;
+  text-align: left;
+  width: 92%;
+  padding: 6px 8px;
   opacity: 0;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .mac-progress {
@@ -308,9 +298,9 @@
   animation: mac-in-img 300ms ease 4300ms both;
 }
 
-/* t=4500ms: "Work harder" text */
+/* t=4500ms: "Work harder" — typed via JS */
 .mac--play .mac-work-text {
-  animation: mac-in-fade 400ms ease 4500ms both;
+  opacity: 1;
 }
 
 /* ── Responsive ── */
@@ -322,7 +312,20 @@
     align-items: center;
   }
   .mac-wrap { width: 100%; max-width: 380px; }
-  .mac-work-text { font-size: clamp(0.85rem, 3.5vw, 1.1rem); }
+  .mac-work-text {
+    font-size: 0.5rem;
+    line-height: 1.4;
+    padding: 4px 6px;
+    width: 55%;
+  }
+}
+
+@media (max-width: 576px) {
+  .mac-work-text {
+    font-size: 0.42rem;
+    width: 52%;
+    padding: 3px 5px;
+  }
 }
 
 /* ── Reduced motion ── */
