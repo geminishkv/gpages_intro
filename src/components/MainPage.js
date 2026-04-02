@@ -23,23 +23,26 @@ export default function MainPage({ isVisible }) {
   // Scroll lock during animation — desktop only (mobile can scroll freely)
   useEffect(() => {
     if (window.matchMedia('(max-width: 900px)').matches) return;
-    if (isVisible && !animDone) {
-      document.body.style.position = 'fixed';
-      document.body.style.top = '0';
-      document.body.style.width = '100%';
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.width = '';
-      document.body.style.overflow = '';
-    }
-    return () => {
+
+    const unlock = () => {
       document.body.style.position = '';
       document.body.style.top = '';
       document.body.style.width = '';
       document.body.style.overflow = '';
     };
+
+    if (isVisible && !animDone) {
+      document.body.style.position = 'fixed';
+      document.body.style.top = '0';
+      document.body.style.width = '100%';
+      document.body.style.overflow = 'hidden';
+      // Fallback: unlock after 10s even if animation chain hangs
+      const safety = setTimeout(unlock, 10000);
+      return () => { clearTimeout(safety); unlock(); };
+    } else {
+      unlock();
+    }
+    return unlock;
   }, [isVisible, animDone]);
 
   return (

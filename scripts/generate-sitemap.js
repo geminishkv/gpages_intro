@@ -9,63 +9,76 @@ const today      = new Date().toISOString().slice(0, 10);
 const INDEX_HTML = path.join(__dirname, '..', 'public', 'index.html');
 const SITEMAP    = path.join(__dirname, '..', 'public', 'sitemap.xml');
 const DATA_FILE  = path.join(__dirname, '..', 'src', 'data', 'tg-posts.json');
+const PER_PAGE   = 15;
 
-function xhtmlLink(rel, hreflang, href) {
-  return `    <xhtml:link rel="${rel}" hreflang="${hreflang}" href="${href}"/>`;
+function xlink(hreflang, href) {
+  return `    <xhtml:link rel="alternate" hreflang="${hreflang}" href="${href}"/>`;
 }
 
-function urlEntry(loc, lastmod, changefreq, priority, hreflangLinks = []) {
-  const links = hreflangLinks.length ? '\n' + hreflangLinks.join('\n') : '';
+function url(loc, lastmod, changefreq, priority, links = []) {
+  const x = links.length ? '\n' + links.join('\n') : '';
   return `  <url>
     <loc>${loc}</loc>
     <lastmod>${lastmod}</lastmod>
     <changefreq>${changefreq}</changefreq>
-    <priority>${priority}</priority>${links}
+    <priority>${priority}</priority>${x}
   </url>`;
 }
 
 const entries = [];
 
-// Homepage — RU and EN point to the same URL (SPA i18n)
-entries.push(urlEntry(`${BASE_URL}/`, today, 'weekly', '1.0', [
-  xhtmlLink('alternate', 'ru', `${BASE_URL}/`),
-  xhtmlLink('alternate', 'en', `${BASE_URL}/`),
-  xhtmlLink('alternate', 'x-default', `${BASE_URL}/`),
+// ── Homepage (SPA i18n — same URL both langs)
+entries.push(url(`${BASE_URL}/`, today, 'weekly', '1.0', [
+  xlink('ru', `${BASE_URL}/`),
+  xlink('en', `${BASE_URL}/`),
+  xlink('x-default', `${BASE_URL}/`),
 ]));
 
-// Blog posts
+// ── Privacy
+entries.push(url(`${BASE_URL}/privacy/`, today, 'yearly', '0.3'));
+
+// ── Blog
 if (fs.existsSync(DATA_FILE)) {
   const data  = JSON.parse(fs.readFileSync(DATA_FILE, 'utf8'));
   const posts = data.posts ?? [];
+  const totalPages = Math.ceil(posts.length / PER_PAGE);
 
+  // Blog index pages (paginated)
+  for (let p = 1; p <= totalPages; p++) {
+    const ruLoc = p === 1 ? `${BASE_URL}/blog/` : `${BASE_URL}/blog/page/${p}/`;
+    const enLoc = p === 1 ? `${BASE_URL}/blog/en/` : `${BASE_URL}/blog/en/page/${p}/`;
+
+    entries.push(url(ruLoc, today, 'weekly', '0.8', [
+      xlink('ru', ruLoc), xlink('en', enLoc), xlink('x-default', ruLoc),
+    ]));
+    entries.push(url(enLoc, today, 'weekly', '0.7', [
+      xlink('ru', ruLoc), xlink('en', enLoc), xlink('x-default', ruLoc),
+    ]));
+  }
+
+  // Individual blog posts
   for (const post of posts) {
     const ruLoc  = `${BASE_URL}/blog/${post.id}/`;
     const enLoc  = `${BASE_URL}/blog/en/${post.id}/`;
     const lastmod = post.date ?? today;
     const hasEn  = Boolean(post.text_en);
 
-    const ruLinks = hasEn
-      ? [
-          xhtmlLink('alternate', 'ru', ruLoc),
-          xhtmlLink('alternate', 'en', enLoc),
-          xhtmlLink('alternate', 'x-default', ruLoc),
-        ]
-      : [];
+    const links = hasEn
+      ? [xlink('ru', ruLoc), xlink('en', enLoc), xlink('x-default', ruLoc)]
+      : [xlink('ru', ruLoc), xlink('x-default', ruLoc)];
 
-    entries.push(urlEntry(ruLoc, lastmod, 'monthly', '0.7', ruLinks));
+    entries.push(url(ruLoc, lastmod, 'monthly', '0.6', links));
 
     if (hasEn) {
-      entries.push(urlEntry(enLoc, lastmod, 'monthly', '0.6', [
-        xhtmlLink('alternate', 'ru', ruLoc),
-        xhtmlLink('alternate', 'en', enLoc),
-        xhtmlLink('alternate', 'x-default', ruLoc),
+      entries.push(url(enLoc, lastmod, 'monthly', '0.5', [
+        xlink('ru', ruLoc), xlink('en', enLoc), xlink('x-default', ruLoc),
       ]));
     }
   }
 
   const ruCount = posts.length;
   const enCount = posts.filter(p => p.text_en).length;
-  console.log(`[sitemap] ${ruCount} RU + ${enCount} EN blog pages added`);
+  console.log(`[sitemap] blog: ${ruCount} RU + ${enCount} EN posts, ${totalPages * 2} index pages`);
 }
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -76,7 +89,7 @@ ${entries.join('\n')}
 `;
 
 fs.writeFileSync(SITEMAP, xml, 'utf8');
-console.log(`[sitemap] written → ${SITEMAP}  (lastmod: ${today}, total: ${entries.length} URLs)`);
+console.log(`[sitemap] ${entries.length} URLs → ${SITEMAP}`);
 
 // Update dateModified in JSON-LD ProfilePage in index.html
 if (fs.existsSync(INDEX_HTML)) {
@@ -91,17 +104,9 @@ if (fs.existsSync(INDEX_HTML)) {
   }
 }
 
-// Ping search engines about updated sitemap
+// Ping Yandex
 const sitemapUrl = encodeURIComponent(`${BASE_URL}/sitemap.xml`);
-const pings = [
+require('https').get(
   `https://webmaster.yandex.ru/ping?sitemap=${sitemapUrl}`,
-];
-
-for (const url of pings) {
-  const mod = url.startsWith('https') ? require('https') : require('http');
-  mod.get(url, (res) => {
-    console.log(`[sitemap] ping ${new URL(url).hostname} → ${res.statusCode}`);
-  }).on('error', (err) => {
-    console.warn(`[sitemap] ping ${new URL(url).hostname} failed: ${err.message}`);
-  });
-}
+  res => console.log(`[sitemap] ping Yandex → ${res.statusCode}`),
+).on('error', err => console.warn(`[sitemap] ping failed: ${err.message}`));

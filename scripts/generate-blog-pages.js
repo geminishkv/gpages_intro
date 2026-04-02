@@ -120,17 +120,29 @@ function renderPost(post, lang) {
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>${esc(title)} \u2014 geminishkv</title>
   <meta name="description" content="${esc(desc)}" />
+  <meta name="author" content="${isEn ? 'Ilya Shmakov' : '\u0418\u043b\u044c\u044f \u0428\u043c\u0430\u043a\u043e\u0432'}" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
   <meta name="theme-color" content="#0a0a0a" />
   <link rel="canonical" href="${pageUrl}" />
   <link rel="alternate" hreflang="ru" href="${ruUrl}" />
   <link rel="alternate" hreflang="en" href="${enUrl}" />
+  <link rel="alternate" hreflang="x-default" href="${ruUrl}" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="${pageUrl}" />
-  <meta property="og:title" content="${esc(title)}" />
+  <meta property="og:title" content="${esc(title)} \u2014 geminishkv" />
   <meta property="og:description" content="${esc(desc)}" />
   <meta property="og:image" content="${imageUrl}" />
+  <meta property="og:image:alt" content="${esc(title)}" />
   <meta property="og:locale" content="${isEn ? 'en_US' : 'ru_RU'}" />
+  <meta property="og:locale:alternate" content="${isEn ? 'ru_RU' : 'en_US'}" />
+  <meta property="og:site_name" content="geminishkv" />
+  <meta property="article:published_time" content="${post.date}" />
+  <meta property="article:author" content="${isEn ? 'Ilya Shmakov' : '\u0418\u043b\u044c\u044f \u0428\u043c\u0430\u043a\u043e\u0432'}" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@geminishkv" />
+  <meta name="twitter:title" content="${esc(title)}" />
+  <meta name="twitter:description" content="${esc(desc)}" />
+  <meta name="twitter:image" content="${imageUrl}" />
   <script type="application/ld+json">${jsonLd}</script>
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -245,12 +257,24 @@ function renderIndex(lang, pagePosts, pageNum, totalPages) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>${pageTitle}</title>
-  <meta name="description" content="${esc(sub)}" />
+  <meta name="description" content="${esc(sub)} \u2014 ${posts.length} ${isEn ? 'posts' : '\u043f\u043e\u0441\u0442\u043e\u0432'}" />
+  <meta name="author" content="${isEn ? 'Ilya Shmakov' : '\u0418\u043b\u044c\u044f \u0428\u043c\u0430\u043a\u043e\u0432'}" />
+  <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#0a0a0a" />
-  <link rel="canonical" href="${BASE_URL}/blog/" />
+  <link rel="canonical" href="${BASE_URL}${prefix}/" />
+  <link rel="alternate" hreflang="ru" href="${BASE_URL}/blog/" />
+  <link rel="alternate" hreflang="en" href="${BASE_URL}/blog/en/" />
+  <link rel="alternate" hreflang="x-default" href="${BASE_URL}/blog/" />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="${BASE_URL}${prefix}/" />
   <meta property="og:title" content="${heading} \u2014 geminishkv" />
+  <meta property="og:description" content="${esc(sub)}" />
   <meta property="og:image" content="${BASE_URL}/img/hero/avatar.jpg" />
+  <meta property="og:locale" content="${isEn ? 'en_US' : 'ru_RU'}" />
+  <meta property="og:site_name" content="geminishkv" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@geminishkv" />
+  <meta name="twitter:title" content="${heading} \u2014 geminishkv" />
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
