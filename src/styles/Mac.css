@@ -67,7 +67,6 @@
   opacity: 0;
   width: 0;
   height: 0;
-  overflow: hidden;
 }
 
 /* ── Terminal inside Mac screen ── */
@@ -76,6 +75,22 @@
   flex-direction: column;
   background: #000;
   font-family: 'Courier New', Courier, monospace;
+  border-radius: var(--radius-md, 4px);
+  overflow: hidden;
+  animation: mac-terminal-glow 3s ease-in-out infinite;
+}
+
+@keyframes mac-terminal-glow {
+  0%, 100% {
+    box-shadow:
+      0 0 15px rgba(213, 26, 26, 0.5),
+      0 0 40px rgba(213, 26, 26, 0.2);
+  }
+  50% {
+    box-shadow:
+      0 0 20px rgba(249, 179, 97, 0.6),
+      0 0 50px rgba(249, 179, 97, 0.25);
+  }
 }
 
 .mac-terminal__header {
@@ -313,6 +328,8 @@
 /* ── Reduced motion ── */
 
 @media (prefers-reduced-motion: reduce) {
+  .mac-terminal { animation: none; }
+  .mac-terminal__dot { animation: none; opacity: 1; }
   .dot { animation: none; opacity: 1; }
 
   .mac--play .blinker {
