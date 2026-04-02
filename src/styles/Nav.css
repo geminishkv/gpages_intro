@@ -5,7 +5,7 @@
   padding: 24px 60px;
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: var(--z-sticky, 100);
   background: var(--color-bg);
   max-width: 1900px;
   width: 100%;
@@ -117,7 +117,7 @@
 .nav__lang {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: var(--space-1, 4px);
 }
 
 .nav__lang-btn {
@@ -157,7 +157,7 @@
   border: none;
   cursor: pointer;
   padding: 6px;
-  z-index: 1200;
+  z-index: var(--z-burger, 1200);
   position: relative;
 }
 
@@ -200,7 +200,7 @@
   position: fixed;
   inset: 0;
   background: rgba(10, 10, 10, 0.97);
-  z-index: 1100;
+  z-index: var(--z-nav-mobile, 1100);
 }
 
 .nav__mobile-close {
@@ -213,7 +213,7 @@
   font-size: 1.4rem;
   color: #888888;
   line-height: 1;
-  padding: 4px;
+  padding: var(--space-1, 4px);
   transition: color 0.2s;
 }
 
@@ -265,7 +265,7 @@
     width: 100%;
     max-width: 100%;
     background-color: var(--color-bg);
-    z-index: 100;
+    z-index: var(--z-sticky, 100);
   }
 
   .nav__logo-img { height: 36px; width: 36px; }
@@ -274,7 +274,7 @@
 
 /* ── Burger replaces links at ≤1050px ── */
 @media (max-width: 1050px) {
-  .nav__right  { gap: 12px; }
+  .nav__right  { gap: var(--space-3, 12px); }
   .nav__burger { display: flex; }
   .nav__links  { display: none; }
 

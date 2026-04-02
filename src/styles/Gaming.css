@@ -66,7 +66,7 @@
   align-items: center;
   gap: 6px;
   font-size: 0.72rem;
-  color: #555555;
+  color: var(--text-tertiary, #555555);
   text-decoration: none;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -96,26 +96,17 @@
   flex-shrink: 0;
 }
 
-/* .ig-card__inner duplicates .card-base__inner — can migrate in JSX */
-.ig-card__inner {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 18px 20px 16px;
-  flex: 1;
-}
-
 .ig-card__date {
   font-size: 0.63rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #3a3a3a;
+  color: var(--text-muted, #333333);
 }
 
 .ig-card__caption {
   font-size: 0.79rem;
-  color: #777777;
+  color: var(--text-light, #777777);
   line-height: 1.65;
   flex: 1;
   margin: 0;
@@ -126,18 +117,6 @@
   overflow: hidden;
 }
 
-/* .ig-card__read is equivalent to .card-base__cta — can migrate in JSX */
-.ig-card__read {
-  font-size: 0.68rem;
-  color: #3a3a3a;
-  letter-spacing: 0.06em;
-  transition: color 0.2s;
-  margin-top: 2px;
-}
-
-.ig-card:hover .ig-card__read,
-.ig-card:focus-visible .ig-card__read { color: #D51A1A; }
-
 /* ── Instagram CTA block ── */
 .ig-cta {
   display: flex;
@@ -146,12 +125,12 @@
   justify-content: center;
   gap: 10px;
   padding: 28px 24px;
-  background: #0d0d0d;
+  background: var(--surface-secondary, #0d0d0d);
   border: 1px solid rgba(213, 26, 26, 0.2);
-  border-radius: 4px;
+  border-radius: var(--radius-md, 4px);
   text-decoration: none;
   text-align: center;
-  color: #888888;
+  color: var(--text-secondary, #888888);
   transition: border-color 0.25s, box-shadow 0.25s;
   min-height: 200px;
 }
@@ -159,7 +138,7 @@
 .ig-cta:hover {
   border-color: rgba(213, 26, 26, 0.5);
   box-shadow: 0 0 32px rgba(213, 26, 26, 0.08);
-  color: #aaaaaa;
+  color: var(--text-pale, #aaaaaa);
 }
 
 .ig-cta svg { color: #D51A1A; opacity: 0.7; transition: opacity 0.2s; }
@@ -174,7 +153,7 @@
 
 .ig-cta__sub {
   font-size: 0.73rem;
-  color: #555555;
+  color: var(--text-tertiary, #555555);
   line-height: 1.5;
   max-width: 200px;
 }
@@ -193,9 +172,9 @@
 
 /* ── Platform cards ── */
 .gaming__platform-card {
-  background: #0d0d0d;
-  border: 1px solid #1a1a1a;
-  border-radius: 6px;
+  background: var(--surface-secondary, #0d0d0d);
+  border: 1px solid var(--border-default, #1a1a1a);
+  border-radius: var(--radius-lg, 6px);
   padding: 24px 28px;
   display: flex;
   flex-direction: column;
@@ -217,7 +196,7 @@
 .platform-card__icon {
   width: 32px;
   height: 32px;
-  border-radius: 6px;
+  border-radius: var(--radius-lg, 6px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -237,7 +216,7 @@
 .platform-card__id {
   font-size: 0.9rem;
   font-weight: 700;
-  color: #cccccc;
+  color: var(--text-bright, #cccccc);
   letter-spacing: 0.02em;
 }
 
@@ -246,7 +225,7 @@
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #333333;
+  color: var(--text-muted, #333333);
   margin-left: auto;
 }
 
@@ -276,7 +255,7 @@
   flex: 1;
   min-width: 0;
   height: 3px;
-  background: #1a1a1a;
+  background: var(--border-default, #1a1a1a);
   border-radius: 2px;
   overflow: hidden;
 }
@@ -290,7 +269,7 @@
 
 .platform-card__level-pct {
   font-size: 0.65rem;
-  color: #444444;
+  color: var(--text-muted, #333333);
   letter-spacing: 0.06em;
   min-width: 3ch;
   text-align: right;
@@ -306,7 +285,7 @@
 .trophy-total {
   font-size: 1.1rem;
   font-weight: 700;
-  color: #3a3a3a;
+  color: var(--text-muted, #333333);
   padding-bottom: 4px;
   letter-spacing: -0.01em;
   min-width: 3ch;
@@ -347,14 +326,14 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #333333;
+  color: var(--text-muted, #333333);
   white-space: nowrap;
   flex-shrink: 0;
 }
 
 .platform-card__last-plat-title {
   font-size: 0.72rem;
-  color: #777777;
+  color: var(--text-light, #777777);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -403,13 +382,13 @@
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #333333;
+  color: var(--text-muted, #333333);
   line-height: 1.1;
 }
 
 .platform-card__no-data {
   font-size: 0.72rem;
-  color: #2a2a2a;
+  color: var(--border-strong, #2a2a2a);
   letter-spacing: 0.04em;
   margin: 0;
 }
@@ -430,7 +409,7 @@
 
 .gaming__wall-count {
   font-size: 0.65rem;
-  color: #333333;
+  color: var(--text-muted, #333333);
   letter-spacing: 0.06em;
 }
 
@@ -444,17 +423,17 @@
 .platinum-item {
   position: relative;
   aspect-ratio: 1;
-  border-radius: 4px;
+  border-radius: var(--radius-md, 4px);
   overflow: visible;
-  background: #111111;
-  border: 1px solid #1a1a1a;
+  background: var(--surface-card, #111111);
+  border: 1px solid var(--border-default, #1a1a1a);
   transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
   cursor: default;
 }
 
 .platinum-item > img,
 .platinum-item > .platinum-item__fallback {
-  border-radius: 3px;
+  border-radius: var(--radius-sm, 3px);
   overflow: hidden;
   display: block;
   width: 100%;
@@ -468,20 +447,20 @@
   bottom: calc(100% + 7px);
   left: 50%;
   transform: translateX(-50%) translateY(4px);
-  background: #1c1c1c;
-  border: 1px solid #333;
-  color: #cccccc;
+  background: var(--surface-elevated, #1c1c1c);
+  border: 1px solid var(--text-muted, #333333);
+  color: var(--text-bright, #cccccc);
   font-size: 0.6rem;
   line-height: 1.4;
   letter-spacing: 0.02em;
   white-space: normal;
   text-align: center;
   padding: 5px 8px;
-  border-radius: 3px;
+  border-radius: var(--radius-sm, 3px);
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.15s, transform 0.15s;
-  z-index: 20;
+  z-index: var(--z-tooltip, 20);
   width: max-content;
   max-width: 160px;
 }
@@ -504,7 +483,7 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  border-radius: 3px;
+  border-radius: var(--radius-sm, 3px);
 }
 
 /* ── Xbox cover fallback (no image) ── */
@@ -512,7 +491,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #0d0d0d;
+  background: var(--surface-secondary, #0d0d0d);
 }
 
 .platinum-item__fallback {
@@ -525,10 +504,10 @@
 
 /* ── Show more ── */
 .gaming__show-more {
-  background: #0d0d0d;
+  background: var(--surface-secondary, #0d0d0d);
   border: 1px solid rgba(213, 26, 26, 0.2);
-  border-radius: 4px;
-  color: #888888;
+  border-radius: var(--radius-md, 4px);
+  color: var(--text-secondary, #888888);
   font-size: 0.72rem;
   font-family: inherit;
   letter-spacing: 0.08em;

@@ -28,7 +28,7 @@
   margin: 0 auto;
   display: flex;
   align-items: flex-start;
-  gap: 24px;
+  gap: var(--space-6, 24px);
 }
 
 .notice-bar__body {
@@ -103,7 +103,7 @@
   .notice-bar__body {
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
-    padding: 12px 16px 8px;
+    padding: var(--space-3, 12px) var(--space-4, 16px) var(--space-2, 8px);
     flex: 1;
     min-height: 0;
   }

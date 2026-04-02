@@ -121,14 +121,14 @@ export default function Gaming() {
                 {p.image && (
                   <img src={p.image} alt="" className="ig-card__cover" loading="lazy" />
                 )}
-                <div className="ig-card__inner">
+                <div className="card-base__inner">
                   {p.timestamp > 0 && (
                     <span className="ig-card__date">
                       {new Date(p.timestamp).toLocaleDateString(t.locale, { day: 'numeric', month: 'short', year: 'numeric' })}
                     </span>
                   )}
                   {p.caption && <p className="ig-card__caption">{p.caption}</p>}
-                  <span className="ig-card__read">{t.gaming.igRead}</span>
+                  <span className="card-base__cta">{t.gaming.igRead}</span>
                 </div>
               </a>
             ))}

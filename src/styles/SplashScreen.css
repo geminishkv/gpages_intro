@@ -2,7 +2,7 @@
 .splash {
   position: fixed;
   inset: 0;
-  z-index: 1000;
+  z-index: var(--z-splash, 1000);
   background: #ffffff;
   display: flex;
   align-items: center;
@@ -45,25 +45,25 @@
 }
 
 .splash-layer--red {
-  z-index: 1001;
+  z-index: calc(var(--z-splash, 1000) + 1);
   filter: hue-rotate(330deg) saturate(8) brightness(0.9);
   animation: glitch-red 1.4s steps(1) forwards;
 }
 
 .splash-layer--cyan {
-  z-index: 1002;
+  z-index: calc(var(--z-splash, 1000) + 2);
   filter: hue-rotate(160deg) saturate(8) brightness(0.9);
   animation: glitch-cyan 1.4s steps(1) forwards;
 }
 
 .splash-layer--flash {
-  z-index: 1003;
+  z-index: calc(var(--z-splash, 1000) + 3);
   background: #ffffff;
   animation: glitch-flash 1.4s steps(1) forwards;
 }
 
 .splash-layer--scanlines {
-  z-index: 1004;
+  z-index: calc(var(--z-splash, 1000) + 4);
   background: repeating-linear-gradient(
     0deg,
     transparent 0px, transparent 2px,

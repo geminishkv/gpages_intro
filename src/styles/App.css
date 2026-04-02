@@ -33,6 +33,10 @@
   --text-muted:         #333333;
   --text-tertiary:      #555555;
   --text-secondary:     #888888;
+  --text-soft:          #666666;
+  --text-light:         #777777;
+  --text-pale:          #aaaaaa;
+  --text-bright:        #cccccc;
 
   /* ── Spacing (4px grid) ── */
   --space-1:  4px;
@@ -52,6 +56,19 @@
   --text-lg:    1rem;
   --text-xl:    1.2rem;
   --text-2xl:   1.4rem;
+  --text-3xl:   1.8rem;
+  --text-xxs:   0.55rem;
+
+  /* ── Line-height ── */
+  --leading-none:    1;
+  --leading-tight:   1.3;
+  --leading-normal:  1.5;
+  --leading-relaxed: 1.65;
+
+  /* ── Font-weight ── */
+  --font-semibold: 600;
+  --font-bold:     700;
+  --font-black:    900;
 
   /* ── Border-radius ── */
   --radius-sm:   3px;
@@ -103,6 +120,14 @@ body {
   overflow: hidden;
   position: relative;
 }
+
+/* ── Breakpoints (reference — not custom properties, CSS doesn't support them in @media)
+   bp-xl:  1200px   desktop → tablet landscape
+   bp-lg:  900px    tablet → mobile (PRIMARY, 48% of all queries)
+   bp-md:  768px    tablet portrait
+   bp-sm:  576px    mobile
+   bp-xs:  420px    small phones
+   ── */
 
 /* ── Mobile: разблокируем всю цепочку overflow ── */
 @media (max-width: 900px) {

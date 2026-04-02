@@ -88,7 +88,7 @@
   /* square side before rotation = 0.930 × unit */
   width: calc(var(--bc-unit) * 0.930);
   height: calc(var(--bc-unit) * 0.930);
-  background: linear-gradient(179deg, #1A1919 33%, #D51A1A 74%, #F9B361 100%);
+  background: var(--gradient-brand);
   transform: rotate(45deg);
   display: flex;
   align-items: center;

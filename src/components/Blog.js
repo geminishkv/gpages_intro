@@ -137,7 +137,7 @@ function BlogCard({ post, onClick, locale, readBtn, lang }) {
         />
       )}
 
-      <div className="blog-card__inner">
+      <div className="card-base__inner">
         <div className="blog-card__meta">
           <span className="blog-card__date">{formatDate(post.date, locale)}</span>
           {views && (
@@ -157,7 +157,7 @@ function BlogCard({ post, onClick, locale, readBtn, lang }) {
           </div>
         )}
 
-        <span className="blog-card__read">{readBtn}</span>
+        <span className="card-base__cta">{readBtn}</span>
       </div>
     </a>
   );
