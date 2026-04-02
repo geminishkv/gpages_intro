@@ -41,24 +41,44 @@ export function useMainAnimation(isVisible, onAllDone) {
       return c;
     }
 
+    const GLITCH_CHARS = '#@$%^&!?<>{}[]|/\\~*+=_';
+
     function typeString(el, text, interval, onDone) {
       const cursor = makeCursor();
       el.innerHTML = '';
       el.appendChild(cursor);
       const chars = text.split('');
       let i = 0;
-      const timer = setInterval(() => {
+      const glitchCount = 3;
+      const glitchSpeed = Math.max(30, Math.floor(interval / (glitchCount + 1)));
+
+      function typeNext() {
         if (i >= chars.length) {
-          clearInterval(timer);
           setTimeout(() => { cursor.remove(); onDone(); }, 350);
           return;
         }
+
         const span = document.createElement('span');
         span.className = 'letter';
-        span.textContent = chars[i];
+        span.style.color = 'var(--color-red, #D51A1A)';
         el.insertBefore(span, cursor);
-        i++;
-      }, interval);
+
+        let g = 0;
+        const glitchTimer = setInterval(() => {
+          if (g < glitchCount) {
+            span.textContent = GLITCH_CHARS[Math.floor(Math.random() * GLITCH_CHARS.length)];
+            g++;
+          } else {
+            clearInterval(glitchTimer);
+            span.textContent = chars[i];
+            span.style.color = '';
+            i++;
+            setTimeout(typeNext, glitchSpeed);
+          }
+        }, glitchSpeed);
+      }
+
+      typeNext();
     }
 
     // ── Title ──
