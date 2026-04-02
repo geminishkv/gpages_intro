@@ -23,7 +23,7 @@
 
 .projects__label {
   font-size: 0.85rem;
-  font-weight: 700;
+  font-weight: var(--font-bold, 700);
   color: #ffffff;
   letter-spacing: 0.04em;
 }
@@ -63,7 +63,7 @@
 
 .project-card__name {
   font-size: 0.82rem;
-  font-weight: 700;
+  font-weight: var(--font-bold, 700);
   color: #D51A1A;
   font-family: 'Courier New', Courier, monospace;
   word-break: break-all;
@@ -82,7 +82,7 @@
 .project-card__desc {
   font-size: 0.78rem;
   color: var(--text-light, #777777);
-  line-height: 1.6;
+  line-height: var(--leading-relaxed, 1.65);
   flex: 1;
 }
 

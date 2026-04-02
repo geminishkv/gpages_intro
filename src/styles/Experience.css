@@ -16,7 +16,7 @@
 
 .experience__label {
   font-size: 0.85rem;
-  font-weight: 700;
+  font-weight: var(--font-bold, 700);
   color: #ffffff;
   letter-spacing: 0.04em;
 }
@@ -136,7 +136,7 @@
 
 .exp-card__company {
   font-size: 0.85rem;
-  font-weight: 700;
+  font-weight: var(--font-bold, 700);
   color: var(--text-soft, #666666);
   text-decoration: none;
   letter-spacing: 0.02em;
@@ -156,7 +156,7 @@
   font-size: 0.72rem;
   color: var(--text-muted, #333333);
   letter-spacing: 0.01em;
-  line-height: 1.3;
+  line-height: var(--leading-tight, 1.3);
   transition: color 0.2s;
 }
 
@@ -164,8 +164,8 @@
 .exp-card--current .exp-card__role { color: var(--text-soft, #666666); }
 
 .exp-card__period {
-  font-size: 0.65rem;
-  font-weight: 700;
+  font-size: var(--text-xs, 0.62rem);
+  font-weight: var(--font-bold, 700);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: #2e2e2e;
@@ -180,8 +180,8 @@
   position: absolute;
   top: 14px;
   right: 14px;
-  font-size: 0.55rem;
-  font-weight: 700;
+  font-size: var(--text-xxs, 0.55rem);
+  font-weight: var(--font-bold, 700);
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: #D51A1A;

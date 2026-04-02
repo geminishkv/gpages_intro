@@ -32,7 +32,7 @@
 
 .blog__label {
   font-size: 0.85rem;
-  font-weight: 700;
+  font-weight: var(--font-bold, 700);
   color: #ffffff;
   letter-spacing: 0.04em;
 }
@@ -89,8 +89,8 @@
 }
 
 .blog-card__date {
-  font-size: 0.63rem;
-  font-weight: 700;
+  font-size: var(--text-xs, 0.62rem);
+  font-weight: var(--font-bold, 700);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text-muted, #333333);
@@ -100,15 +100,15 @@
   display: flex;
   align-items: center;
   gap: 4px;
-  font-size: 0.63rem;
+  font-size: var(--text-xs, 0.62rem);
   color: var(--text-muted, #333333);
   margin-left: auto;
 }
 
 .blog-card__text {
-  font-size: 0.79rem;
+  font-size: 0.78rem;
   color: var(--text-light, #777777);
-  line-height: 1.65;
+  line-height: var(--leading-relaxed, 1.65);
   flex: 1;
   white-space: pre-line;
   display: -webkit-box;
@@ -171,7 +171,7 @@
 
 .blog-cta__title {
   font-size: 0.9rem;
-  font-weight: 700;
+  font-weight: var(--font-bold, 700);
   color: #ffffff;
   letter-spacing: 0.04em;
 }
@@ -179,13 +179,13 @@
 .blog-cta__sub {
   font-size: 0.73rem;
   color: var(--text-tertiary, #555555);
-  line-height: 1.5;
+  line-height: var(--leading-normal, 1.5);
   max-width: 200px;
 }
 
 .blog-cta__btn {
   font-size: 0.7rem;
-  font-weight: 700;
+  font-weight: var(--font-bold, 700);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: #D51A1A;
@@ -278,8 +278,8 @@
 }
 
 .blog-modal__date {
-  font-size: 0.65rem;
-  font-weight: 700;
+  font-size: var(--text-xs, 0.62rem);
+  font-weight: var(--font-bold, 700);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text-muted, #333333);
@@ -289,7 +289,7 @@
   display: flex;
   align-items: center;
   gap: 5px;
-  font-size: 0.65rem;
+  font-size: var(--text-xs, 0.62rem);
   color: var(--text-muted, #333333);
   margin-left: auto;
 }
@@ -297,7 +297,7 @@
 .blog-modal__text {
   font-size: 0.85rem;
   color: var(--text-pale, #aaaaaa);
-  line-height: 1.75;
+  line-height: var(--leading-relaxed, 1.65);
   white-space: pre-line;
 }
 
@@ -318,7 +318,7 @@
   border-radius: var(--radius-sm, 3px);
   color: #D51A1A;
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: var(--font-bold, 700);
   letter-spacing: 0.06em;
   text-decoration: none;
   transition: background 0.2s, border-color 0.2s;

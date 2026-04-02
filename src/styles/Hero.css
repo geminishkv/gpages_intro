@@ -171,8 +171,8 @@
 }
 
 .social-group__label {
-  font-size: 0.6rem;
-  font-weight: 700;
+  font-size: var(--text-xs, 0.62rem);
+  font-weight: var(--font-bold, 700);
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: #444444;
@@ -190,7 +190,7 @@
   justify-content: center;
   padding: clamp(10px, 0.9vh, 16px) clamp(20px, 2vw, 36px);
   font-size: clamp(0.72rem, 0.75vw, 0.95rem);
-  font-weight: 700;
+  font-weight: var(--font-bold, 700);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   text-decoration: none;

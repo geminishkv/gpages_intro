@@ -15,7 +15,7 @@
 
 .videos__label {
   font-size: 0.85rem;
-  font-weight: 700;
+  font-weight: var(--font-bold, 700);
   color: #ffffff;
   letter-spacing: 0.04em;
 }
@@ -98,8 +98,8 @@
 }
 
 .video-card__label {
-  font-size: 0.6rem;
-  font-weight: 700;
+  font-size: var(--text-xs, 0.62rem);
+  font-weight: var(--font-bold, 700);
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: #D51A1A;
@@ -107,9 +107,9 @@
 
 .video-card__title {
   font-size: 0.85rem;
-  font-weight: 600;
+  font-weight: var(--font-semibold, 600);
   color: #cccccc;
-  line-height: 1.55;
+  line-height: var(--leading-relaxed, 1.65);
   margin: 0;
   transition: color 0.2s;
 }
@@ -126,7 +126,7 @@
 .video-card__btn {
   display: inline-block;
   font-size: 0.65rem;
-  font-weight: 700;
+  font-weight: var(--font-bold, 700);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #D51A1A;
