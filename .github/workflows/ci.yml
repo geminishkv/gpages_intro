@@ -40,7 +40,7 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci --prefer-offline
+        run: npm install
 
       - name: Lint
         run: npx eslint src/ --max-warnings 0 || true
@@ -71,7 +71,7 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci --prefer-offline
+        run: npm install
 
       # ── Data fetching ──
       - name: Fetch Telegram posts
