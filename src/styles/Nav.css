@@ -148,11 +148,9 @@
   pointer-events: none;
 }
 
-/* ── Burger button ── */
+/* ── Burger button (SVG animated) ── */
 .nav__burger {
   display: none;
-  flex-direction: column;
-  gap: 5px;
   background: none;
   border: none;
   cursor: pointer;
@@ -161,33 +159,52 @@
   position: relative;
 }
 
-.nav__burger span {
+.nav__burger svg {
+  height: 2.2em;
   display: block;
-  height: 2px;
-  border-radius: 1px;
-  background: #888888;
-  transition: transform 0.3s ease, opacity 0.3s ease, background 0.2s, width 0.3s ease;
+  transition: transform 900ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* bars-staggered: full / short-indented / full */
-.nav__burger span:nth-child(1) { width: 22px; }
-.nav__burger span:nth-child(2) { width: 15px; margin-left: 7px; }
-.nav__burger span:nth-child(3) { width: 22px; }
-
-.nav__burger:hover span { background: var(--color-red); }
-
-/* open → X */
-.nav__burger--open span:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-  background: var(--color-red);
+.nav__burger-line {
+  fill: none;
+  stroke: var(--text-secondary, #888888);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 3;
+  transition:
+    stroke-dasharray 900ms cubic-bezier(0.4, 0, 0.2, 1),
+    stroke-dashoffset 900ms cubic-bezier(0.4, 0, 0.2, 1),
+    stroke 0.3s;
 }
-.nav__burger--open span:nth-child(2) {
-  opacity: 0;
-  transform: scaleX(0);
+
+.nav__burger-line--top {
+  stroke-dasharray: 12 63;
 }
-.nav__burger--open span:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
-  background: var(--color-red);
+
+.nav__burger:hover .nav__burger-line {
+  stroke: var(--color-red, #D51A1A);
+}
+
+/* open → morph to X */
+.nav__burger--open svg {
+  transform: rotate(-45deg);
+}
+
+.nav__burger--open .nav__burger-line {
+  stroke: var(--color-red, #D51A1A);
+}
+
+.nav__burger--open .nav__burger-line--top {
+  stroke-dasharray: 20 300;
+  stroke-dashoffset: -32.42;
+}
+
+/* close button inside overlay */
+.nav__burger--close {
+  display: block;
+  position: absolute;
+  top: 20px;
+  right: 24px;
 }
 
 /* ── Mobile overlay (portal, rendered in document.body) ── */
@@ -201,6 +218,16 @@
   inset: 0;
   background: rgba(10, 10, 10, 0.97);
   z-index: var(--z-nav-mobile, 1100);
+  animation: overlayIn 0.8s ease both;
+}
+
+@keyframes overlayIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav__mobile-overlay { animation: none; }
 }
 
 .nav__mobile-close {
@@ -275,19 +302,8 @@
 /* ── Burger replaces links at ≤1050px ── */
 @media (max-width: 1050px) {
   .nav__right  { gap: var(--space-3, 12px); }
-  .nav__burger { display: flex; }
+  .nav__burger { display: block; }
   .nav__links  { display: none; }
 
-  /* Бургер крупнее */
-  .nav__burger span:nth-child(1) { width: 30px; }
-  .nav__burger span:nth-child(2) { width: 20px; margin-left: 10px; }
-  .nav__burger span:nth-child(3) { width: 30px; }
-  .nav__burger span              { height: 2.5px; }
-
-  /* X при открытии */
-  .nav__burger--open span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
-  .nav__burger--open span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
-
-  /* Кнопка закрытия в оверлее */
-  .nav__mobile-close { font-size: 1.8rem; top: 22px; right: 24px; }
+  .nav__burger svg { height: 2.6em; }
 }

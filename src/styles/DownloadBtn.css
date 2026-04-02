@@ -1,0 +1,195 @@
+/* ── Download/open button (brand-styled) ── */
+
+.dl-btn {
+  background-color: transparent;
+  border: 2px solid var(--color-red, #D51A1A);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  padding: 4px 16px 4px 4px;
+  position: relative;
+  text-decoration: none;
+  height: 45px;
+  box-sizing: border-box;
+}
+
+.dl-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--color-white, #fff);
+  width: 8px;
+  height: 8px;
+  transition: all 0.4s ease;
+  border-radius: 100%;
+  margin: auto;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.dl-btn__title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  font-family: inherit;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-white, #fff);
+  transition: all 0.4s ease;
+  white-space: nowrap;
+}
+
+.dl-btn__title--done {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  visibility: hidden;
+}
+
+.dl-btn__circle {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  background-color: var(--color-red, #D51A1A);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.4s ease;
+  position: relative;
+  box-shadow: 0 0 0 0 rgba(213, 26, 26, 0.4);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.dl-btn__icon {
+  color: var(--color-white, #fff);
+  width: 22px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.4s ease;
+}
+
+.dl-btn__square {
+  aspect-ratio: 1;
+  width: 12px;
+  border-radius: 2px;
+  background-color: var(--color-white, #fff);
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.4s ease;
+}
+
+.dl-btn__circle::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: #a01414;
+  width: 100%;
+  height: 0;
+  transition: all 0.4s ease;
+}
+
+/* ── Active state ── */
+.dl-btn--active {
+  width: 47px;
+  padding: 4px;
+  gap: 0;
+  animation: dl-installed 0.4s ease 3.5s forwards;
+}
+
+.dl-btn--active::before {
+  animation: dl-rotate 3s ease-in-out 0.4s forwards;
+}
+
+.dl-btn--active .dl-btn__circle {
+  animation:
+    dl-pulse 1s forwards,
+    dl-circle-hide 0.2s ease 3.5s forwards;
+  rotate: 180deg;
+}
+
+.dl-btn--active .dl-btn__circle::before {
+  animation: dl-installing 3s ease-in-out forwards;
+}
+
+.dl-btn--active .dl-btn__icon {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.dl-btn--active .dl-btn__square {
+  opacity: 1;
+  visibility: visible;
+}
+
+.dl-btn--active .dl-btn__title {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.dl-btn--active .dl-btn__title--done {
+  animation: dl-show-done 0.4s ease 3.5s forwards;
+}
+
+/* ── Keyframes ── */
+@keyframes dl-pulse {
+  0%   { scale: 0.95; box-shadow: 0 0 0 0 rgba(213, 26, 26, 0.6); }
+  70%  { scale: 1;    box-shadow: 0 0 0 14px rgba(213, 26, 26, 0); }
+  100% { scale: 0.95; box-shadow: 0 0 0 0 rgba(213, 26, 26, 0); }
+}
+
+@keyframes dl-installing {
+  from { height: 0; }
+  to   { height: 100%; }
+}
+
+@keyframes dl-rotate {
+  0%   { transform: rotate(-90deg) translate(20px) rotate(0);    opacity: 1; visibility: visible; }
+  99%  { transform: rotate(270deg) translate(20px) rotate(270deg); opacity: 1; visibility: visible; }
+  100% { opacity: 0; visibility: hidden; }
+}
+
+@keyframes dl-installed {
+  100% { width: fit-content; padding: 4px 16px 4px 4px; border-color: var(--color-gold, #F9B361); }
+}
+
+@keyframes dl-circle-hide {
+  100% { opacity: 0; visibility: hidden; }
+}
+
+@keyframes dl-show-done {
+  100% { opacity: 1; visibility: visible; right: 45px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dl-btn,
+  .dl-btn::before,
+  .dl-btn__circle,
+  .dl-btn__icon,
+  .dl-btn__square,
+  .dl-btn__title {
+    transition: none;
+  }
+
+  .dl-btn--active,
+  .dl-btn--active::before,
+  .dl-btn--active .dl-btn__circle,
+  .dl-btn--active .dl-btn__circle::before,
+  .dl-btn--active .dl-btn__title--done {
+    animation: none;
+  }
+}

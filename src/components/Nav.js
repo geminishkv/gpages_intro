@@ -107,9 +107,10 @@ export default function Nav({ navRef, onAboutOpen }) {
             onClick={() => setMenuOpen(o => !o)}
             aria-label="Toggle menu"
           >
-            <span />
-            <span />
-            <span />
+            <svg viewBox="0 0 32 32">
+              <path className="nav__burger-line nav__burger-line--top" d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22" />
+              <path className="nav__burger-line" d="M7 16 27 16" />
+            </svg>
           </button>
         </div>
       </nav>
@@ -117,7 +118,13 @@ export default function Nav({ navRef, onAboutOpen }) {
       {/* Portal — outside nav to avoid transform stacking context bug */}
       {menuOpen && createPortal(
         <div className="nav__mobile-overlay">
-          <button className="nav__mobile-close" onClick={close} aria-label="Close menu">✕</button>
+          <button className="nav__burger nav__burger--open nav__burger--close" onClick={close} aria-label="Close menu">
+            <svg viewBox="0 0 32 32">
+              <path className="nav__burger-line nav__burger-line--top" d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22" />
+              <path className="nav__burger-line" d="M7 16 27 16" />
+            </svg>
+          </button>
+          <LangToggle overlay />
           <button className="nav__link-btn" onClick={() => { onAboutOpen(); close(); }}>ABOUT</button>
           <a href="https://hh.ru/resume/af4cc9ceff086141d00039ed1f4b4a6c35706f" target="_blank" rel="noreferrer" onClick={close}>RESUME</a>
           <a href="#blog"       onClick={close}>BLOG</a>
@@ -125,7 +132,6 @@ export default function Nav({ navRef, onAboutOpen }) {
           <a href="#skillset"   onClick={close}>SKILLSET</a>
           <a href="#interests"  onClick={close}>INTERESTS</a>
           <a href="https://my.idot.vip/geminishkv" target="_blank" rel="noreferrer" className="nav__link--secondary" onClick={close}>NFC CARD</a>
-          <LangToggle overlay />
         </div>,
         document.body
       )}
