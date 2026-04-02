@@ -18,6 +18,7 @@ export function useMainAnimation(isVisible, onAllDone) {
   const taglineRef      = useRef(null);
   const socialsRef      = useRef(null);
   const liderRef        = useRef(null);
+  const brandColRef     = useRef(null);
 
   const statsRef      = useRef(null);
   const projectsRef   = useRef(null);
@@ -165,6 +166,10 @@ export function useMainAnimation(isVisible, onAllDone) {
   /* ── step 2: mac animation (CSS-driven) ── */
   const animateMac = useCallback(() => {
     windowImgRef.current?.closest('.mac-screen')?.classList.add('mac--play');
+    // brandCol starts after Mac progress ends (~4950ms)
+    setTimeout(() => {
+      brandColRef.current?.classList.add('brand-col--animate');
+    }, 4950);
     // animateText starts after CSS animations complete (~4900ms total)
     setTimeout(animateText, 4950);
   }, [animateText]);
@@ -195,6 +200,7 @@ export function useMainAnimation(isVisible, onAllDone) {
         r.current.style.willChange = 'auto';
       });
       // Show mac content and set hero text directly (no typewriter)
+      brandColRef.current?.classList.add('brand-col--animate');
       windowImgRef.current?.closest('.mac-screen')?.classList.add('mac--play');
       if (titleRef.current) titleRef.current.textContent = TITLE_TEXT;
       if (subtitleRef.current) {
@@ -234,7 +240,7 @@ export function useMainAnimation(isVisible, onAllDone) {
     navRef,
     blinkerRef, whiteBoxRef, containerBoxRef,
     windowImgRef, uwuRef, workTextRef, progressWrapRef, progressBarRef,
-    titleRef, subtitleRef, taglineRef, socialsRef, liderRef,
+    titleRef, subtitleRef, taglineRef, socialsRef, liderRef, brandColRef,
     statsRef, projectsRef, videosRef, blogRef, experienceRef, toolsRef, gamingRef, footerRef,
     statsActive,
   };

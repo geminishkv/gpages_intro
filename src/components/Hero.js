@@ -17,7 +17,7 @@ import { useLang } from '../context/LangContext';
 export default function Hero({
   titleRef, subtitleRef, taglineRef, socialsRef, liderRef,
   blinkerRef, whiteBoxRef, containerBoxRef, windowImgRef, uwuRef, workTextRef,
-  progressWrapRef, progressBarRef,
+  progressWrapRef, progressBarRef, brandColRef,
 }) {
   const [dlActive, setDlActive] = useState(false);
   const [dlOss, setDlOss] = useState(false);
@@ -157,7 +157,7 @@ export default function Hero({
 
       {/* Right — BrandColumn + Mac share one flex slot */}
       <div className="hero__right">
-        <BrandColumn />
+        <BrandColumn ref={brandColRef} />
 
         <div className="hero__mac">
         <div className="mac-wrap">

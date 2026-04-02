@@ -58,6 +58,7 @@ export default function MainPage({ isVisible }) {
         workTextRef={refs.workTextRef}
         progressWrapRef={refs.progressWrapRef}
         progressBarRef={refs.progressBarRef}
+        brandColRef={refs.brandColRef}
       />
       <div className="section-reveal" id="stats" ref={refs.statsRef}>
         <Stats active={refs.statsActive} />
