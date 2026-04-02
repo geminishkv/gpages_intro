@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import '../styles/Nav.css';
 import '../styles/LangSwitch.css';
+import '../styles/LogoGlow.css';
 import { LOGO_IMG } from '../constants';
 import { useLang } from '../context/LangContext';
 
@@ -84,7 +85,13 @@ export default function Nav({ navRef, onAboutOpen }) {
     <>
       <nav ref={navRef} className="nav" style={{ opacity: 0 }}>
         <div className="nav__logo">
-          <img src={LOGO_IMG} alt="logo" className="nav__logo-img" />
+          <div className="logo-glow logo-glow--nav">
+            <span className="logo-glow__blur logo-glow__blur--1" />
+            <span className="logo-glow__blur logo-glow__blur--2" />
+            <div className="logo-glow__inner">
+              <img src={LOGO_IMG} alt="logo" />
+            </div>
+          </div>
           <span className="nav__brand">geminishkv</span>
         </div>
 

@@ -1,0 +1,108 @@
+/* ── Logo glow ring effect ── */
+
+.logo-glow {
+  position: relative;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Rotating gradient ring */
+.logo-glow::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background-image: linear-gradient(
+    var(--color-red, #D51A1A),
+    var(--color-gold, #F9B361),
+    var(--color-red, #D51A1A)
+  );
+  animation: logo-ring-rotate 2.4s linear infinite;
+  z-index: 0;
+}
+
+/* Blur layers for glow */
+.logo-glow__blur {
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background-image: linear-gradient(
+    var(--color-red, #D51A1A),
+    var(--color-gold, #F9B361),
+    var(--color-red, #D51A1A)
+  );
+  animation: logo-ring-rotate 2.4s linear infinite;
+  z-index: 0;
+}
+
+.logo-glow__blur--1 { filter: blur(4px); }
+.logo-glow__blur--2 { filter: blur(10px); opacity: 0.6; }
+
+/* Inner mask — dark circle that reveals logo */
+.logo-glow__inner {
+  position: relative;
+  border-radius: 50%;
+  z-index: 1;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Nav variant (small) ── */
+.logo-glow--nav {
+  width: 32px;
+  height: 32px;
+}
+
+.logo-glow--nav .logo-glow__inner {
+  width: 26px;
+  height: 26px;
+  background: var(--color-bg, #0a0a0a);
+}
+
+.logo-glow--nav .logo-glow__inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  mix-blend-mode: screen;
+}
+
+/* ── BrandColumn variant (uses --bc-unit) ── */
+.logo-glow--brand {
+  width: var(--bc-unit);
+  height: var(--bc-unit);
+}
+
+.logo-glow--brand::before,
+.logo-glow--brand .logo-glow__blur {
+  inset: calc(var(--bc-unit) * -0.04);
+}
+
+.logo-glow--brand .logo-glow__inner {
+  width: calc(var(--bc-unit) * 0.88);
+  height: calc(var(--bc-unit) * 0.88);
+  background: #1A1919;
+}
+
+.logo-glow--brand .logo-glow__inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@keyframes logo-ring-rotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-glow::before,
+  .logo-glow__blur {
+    animation: none;
+  }
+}

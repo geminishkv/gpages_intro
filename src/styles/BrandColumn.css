@@ -58,6 +58,7 @@
 
 .brand-col__circle--gradient {
   background: #1A1919;
+  overflow: visible;
 }
 
 .brand-col__logo-img {

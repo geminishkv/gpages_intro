@@ -1,5 +1,6 @@
 import { forwardRef } from 'react';
 import '../styles/BrandColumn.css';
+import '../styles/LogoGlow.css';
 import SicParvisMagnaPill from './SicParvisMagnaPill';
 
 const BrandColumn = forwardRef(function BrandColumn(_, ref) {
@@ -7,12 +8,16 @@ const BrandColumn = forwardRef(function BrandColumn(_, ref) {
     <div ref={ref} className="brand-col" aria-hidden="true">
 
       <div className="brand-col__shapes">
-        <div className="brand-col__circle brand-col__circle--gradient">
-          <img
-            src="/img/logotype/symbol_gradient_black_red.png"
-            alt=""
-            className="brand-col__logo-img"
-          />
+        <div className="brand-col__circle brand-col__circle--gradient logo-glow logo-glow--brand">
+          <span className="logo-glow__blur logo-glow__blur--1" />
+          <span className="logo-glow__blur logo-glow__blur--2" />
+          <div className="logo-glow__inner">
+            <img
+              src="/img/logotype/logo_white.svg"
+              alt=""
+              className="brand-col__logo-img"
+            />
+          </div>
         </div>
 
         <div className="brand-col__diamond-wrap">
