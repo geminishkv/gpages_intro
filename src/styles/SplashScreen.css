@@ -245,3 +245,18 @@
   0%, 7%, 22%, 43%, 59%, 78%, 95%, 100% { opacity: 0; }
   2%, 13%, 31%, 53%, 68%, 87%           { opacity: 1; }
 }
+
+/* ── Accessibility: disable glitch for motion-sensitive users ── */
+@media (prefers-reduced-motion: reduce) {
+  .splash--glitch {
+    animation: none;
+  }
+
+  .splash-layer--red,
+  .splash-layer--cyan,
+  .splash-layer--flash,
+  .splash-layer--scanlines {
+    animation: none;
+    opacity: 0;
+  }
+}

@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 14px clamp(40px, 5vw, 120px);
-  border-top: 1px solid #161616;
+  border-top: 1px solid var(--border-subtle, #141414);
   max-width: 1900px;
   width: 100%;
   align-self: center;
@@ -11,13 +11,13 @@
 
 .footer__copy {
   font-size: 0.72rem;
-  color: #333333;
+  color: var(--text-muted, #333333);
   letter-spacing: 0.06em;
 }
 
 .footer__tagline {
   font-size: 0.68rem;
-  color: #2a2a2a;
+  color: var(--border-strong, #2a2a2a);
   letter-spacing: 0.16em;
   text-transform: uppercase;
   font-style: italic;
@@ -35,4 +35,9 @@
   .footer__tagline {
     text-align: center;
   }
+}
+
+/* ── Print ── */
+@media print {
+  .footer { display: none; }
 }

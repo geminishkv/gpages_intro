@@ -89,8 +89,6 @@ report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 # Build output
 build/
 
-# Claude artifacts & notes
-.claude/
 
 # ENV
 .env

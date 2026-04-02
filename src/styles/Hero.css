@@ -223,7 +223,7 @@
 .social-btn--content {
   background: transparent;
   color: #666666;
-  border-color: #333333;
+  border-color: var(--text-muted, #333333);
 }
 
 .social-btn--content:hover {

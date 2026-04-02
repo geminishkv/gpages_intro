@@ -48,7 +48,7 @@ export default function Projects({ isVisible }) {
             href={p.url}
             target="_blank"
             rel="noreferrer"
-            className="project-card"
+            className="card-base project-card"
           >
             <div className="project-card__top">
               <span className="project-card__name">{p.name}</span>

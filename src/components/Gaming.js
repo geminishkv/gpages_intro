@@ -116,7 +116,7 @@ export default function Gaming() {
                 href={p.url}
                 target="_blank"
                 rel="noreferrer"
-                className="ig-card"
+                className="card-base ig-card"
               >
                 {p.image && (
                   <img src={p.image} alt="" className="ig-card__cover" loading="lazy" />

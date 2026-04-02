@@ -49,25 +49,10 @@
 }
 
 /* ── Card ── */
+/* extends .card-base (applied in JSX: className="card-base project-card") */
 .project-card {
-  display: flex;
-  flex-direction: column;
   gap: 10px;
   padding: 20px;
-  background: #111111;
-  border: 1px solid #1e1e1e;
-  border-radius: 4px;
-  text-decoration: none;
-  transition: border-color 0.2s ease, transform 0.2s ease;
-}
-
-.project-card:hover {
-  border-color: #D51A1A;
-  transform: translateY(-2px);
-}
-
-.project-card:active {
-  transform: translateY(0);
 }
 
 .project-card__top {

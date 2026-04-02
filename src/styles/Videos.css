@@ -29,21 +29,9 @@
 }
 
 /* ── Card ── */
+/* extends .card-base.card-base--elevated (applied in JSX: className="card-base card-base--elevated video-card") */
 .video-card {
-  display: flex;
-  flex-direction: column;
-  text-decoration: none;
-  border-radius: 6px;
-  overflow: hidden;
-  border: 1px solid #1a1a1a;
-  background: #0d0d0d;
-  transition: border-color 0.25s, transform 0.2s, box-shadow 0.25s;
-}
-
-.video-card:hover {
-  border-color: rgba(213, 26, 26, 0.4);
-  transform: translateY(-2px);
-  box-shadow: 0 0 32px rgba(213, 26, 26, 0.08);
+  /* all base styles provided by .card-base + .card-base--elevated */
 }
 
 /* ── Thumbnail ── */

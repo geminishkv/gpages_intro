@@ -124,7 +124,7 @@ function BlogCard({ post, onClick, locale, readBtn, lang }) {
   const [imgBroken, setImgBroken] = useState(false);
 
   return (
-    <a href={`/blog/${post.id}/`} className="blog-card" tabIndex={0}
+    <a href={`/blog/${post.id}/`} className="card-base blog-card" tabIndex={0}
       onClick={e => { e.preventDefault(); onClick(); }}>
       {post.image && !imgBroken && (
         <img

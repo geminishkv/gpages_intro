@@ -26,7 +26,7 @@ export default function Videos() {
             href={v.url}
             target="_blank"
             rel="noreferrer"
-            className="video-card"
+            className="card-base card-base--elevated video-card"
           >
             <div className="video-card__thumb-wrap">
               <img

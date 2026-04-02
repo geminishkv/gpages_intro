@@ -1,0 +1,61 @@
+/* ── Shared card foundation ── */
+.card-base {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface-card, #111111);
+  border: 1px solid var(--border-default, #1a1a1a);
+  border-radius: var(--radius-md, 4px);
+  overflow: hidden;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color var(--duration-normal, 0.2s) var(--ease-default, ease),
+              transform var(--duration-normal, 0.2s) var(--ease-default, ease);
+  outline: none;
+}
+
+.card-base:hover,
+.card-base:focus-visible {
+  border-color: var(--color-red, #D51A1A);
+  transform: translateY(-2px);
+}
+
+.card-base:active {
+  transform: translateY(0);
+}
+
+/* ── Variant: elevated (darker bg, larger radius, box-shadow on hover) ── */
+.card-base--elevated {
+  background: var(--surface-secondary, #0d0d0d);
+  border-radius: var(--radius-lg, 6px);
+  transition: border-color 0.25s var(--ease-default, ease),
+              transform var(--duration-normal, 0.2s) var(--ease-default, ease),
+              box-shadow 0.25s var(--ease-default, ease);
+}
+
+.card-base--elevated:hover,
+.card-base--elevated:focus-visible {
+  border-color: rgba(213, 26, 26, 0.4);
+  box-shadow: 0 0 32px rgba(213, 26, 26, 0.08);
+}
+
+/* ── Card inner padding ── */
+.card-base__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 18px 20px 16px;
+  flex: 1;
+}
+
+/* ── Shared "read more" / CTA text ── */
+.card-base__cta {
+  font-size: 0.68rem;
+  color: var(--text-muted, #3a3a3a);
+  letter-spacing: 0.06em;
+  transition: color var(--duration-normal, 0.2s);
+}
+
+.card-base:hover .card-base__cta,
+.card-base:focus-visible .card-base__cta {
+  color: var(--color-red, #D51A1A);
+}

@@ -1,6 +1,6 @@
 .tools {
   padding: clamp(40px, 4vw, 64px) clamp(40px, 5vw, 120px);
-  border-top: 1px solid #161616;
+  border-top: 1px solid var(--border-subtle, #141414);
   max-width: 1900px;
   width: 100%;
   align-self: center;
@@ -26,15 +26,15 @@
 
 .tools__count {
   font-size: 0.65rem;
-  color: #333333;
+  color: var(--text-muted, #333333);
   letter-spacing: 0.06em;
 }
 
 .tools__show-more {
-  background: #0d0d0d;
+  background: var(--surface-secondary, #0d0d0d);
   border: 1px solid rgba(213, 26, 26, 0.2);
-  border-radius: 4px;
-  color: #888888;
+  border-radius: var(--radius-md, 4px);
+  color: var(--text-secondary, #888888);
   font-size: 0.72rem;
   font-family: inherit;
   letter-spacing: 0.08em;
@@ -63,8 +63,8 @@
 .tools__domain-grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  border-top: 1px solid #141414;
-  border-right: 1px solid #141414;
+  border-top: 1px solid var(--border-subtle, #141414);
+  border-right: 1px solid var(--border-subtle, #141414);
 }
 
 .domain-item {
@@ -72,8 +72,8 @@
   align-items: baseline;
   gap: 12px;
   padding: 11px 12px;
-  border-bottom: 1px solid #141414;
-  border-left: 1px solid #141414;
+  border-bottom: 1px solid var(--border-subtle, #141414);
+  border-left: 1px solid var(--border-subtle, #141414);
   transition: background 0.15s;
 }
 
@@ -108,13 +108,13 @@
   flex-direction: column;
   gap: 3px;
   padding: 12px 14px;
-  border: 1px solid #1a1a1a;
-  border-radius: 4px;
-  background: #0d0d0d;
+  border: 1px solid var(--border-default, #1a1a1a);
+  border-radius: var(--radius-md, 4px);
+  background: var(--surface-secondary, #0d0d0d);
   transition: border-color 0.2s;
 }
 
-.cert-card:hover { border-color: #2a2a2a; }
+.cert-card:hover { border-color: var(--border-strong, #2a2a2a); }
 
 .cert-card__area {
   font-size: 0.62rem;
@@ -139,9 +139,9 @@
 
 /* ── Group card ── */
 .tool-group {
-  background: #111111;
-  border: 1px solid #1a1a1a;
-  border-radius: 4px;
+  background: var(--surface-card, #111111);
+  border: 1px solid var(--border-default, #1a1a1a);
+  border-radius: var(--radius-md, 4px);
   padding: 16px 18px;
   display: flex;
   flex-direction: column;
@@ -149,7 +149,7 @@
   transition: border-color 0.2s;
 }
 
-.tool-group:hover { border-color: #2a2a2a; }
+.tool-group:hover { border-color: var(--border-strong, #2a2a2a); }
 
 .tool-group__label {
   font-size: 0.68rem;
@@ -178,7 +178,7 @@
 }
 
 .tool-chip:hover {
-  border-color: #333333;
+  border-color: var(--text-muted, #333333);
   color: #aaaaaa;
 }
 

@@ -82,26 +82,10 @@
 }
 
 /* ── Instagram card ── */
+/* extends .card-base (applied in JSX: className="card-base ig-card") */
 .ig-card {
-  display: flex;
-  flex-direction: column;
-  background: #111111;
-  border: 1px solid #1e1e1e;
-  border-radius: 4px;
-  overflow: hidden;
-  text-decoration: none;
-  cursor: pointer;
-  transition: border-color 0.2s ease, transform 0.2s ease;
-  outline: none;
+  /* all base styles provided by .card-base */
 }
-
-.ig-card:hover,
-.ig-card:focus-visible {
-  border-color: #D51A1A;
-  transform: translateY(-2px);
-}
-
-.ig-card:active { transform: translateY(0); }
 
 .ig-card__cover {
   width: 100%;
@@ -112,6 +96,7 @@
   flex-shrink: 0;
 }
 
+/* .ig-card__inner duplicates .card-base__inner — can migrate in JSX */
 .ig-card__inner {
   display: flex;
   flex-direction: column;
@@ -141,6 +126,7 @@
   overflow: hidden;
 }
 
+/* .ig-card__read is equivalent to .card-base__cta — can migrate in JSX */
 .ig-card__read {
   font-size: 0.68rem;
   color: #3a3a3a;

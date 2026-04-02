@@ -68,27 +68,10 @@
 }
 
 /* ── Card ── */
+/* extends .card-base (applied in JSX: className="card-base blog-card") */
 .blog-card {
-  display: flex;
-  flex-direction: column;
-  background: #111111;
-  border: 1px solid #1e1e1e;
-  border-radius: 4px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: border-color 0.2s ease, transform 0.2s ease;
-  outline: none;
-  text-decoration: none;
   color: inherit;
 }
-
-.blog-card:hover,
-.blog-card:focus-visible {
-  border-color: #D51A1A;
-  transform: translateY(-2px);
-}
-
-.blog-card:active { transform: translateY(0); }
 
 .blog-card__cover {
   width: 100%;
@@ -99,6 +82,7 @@
   flex-shrink: 0;
 }
 
+/* .blog-card__inner duplicates .card-base__inner — can migrate in JSX */
 .blog-card__inner {
   display: flex;
   flex-direction: column;
@@ -149,6 +133,7 @@
   gap: 5px;
 }
 
+/* .blog-card__read is equivalent to .card-base__cta — can migrate in JSX */
 .blog-card__read {
   font-size: 0.68rem;
   color: #3a3a3a;

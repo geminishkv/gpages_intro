@@ -1,6 +1,6 @@
 .experience {
   padding: clamp(40px, 4vw, 64px) clamp(40px, 5vw, 120px);
-  border-top: 1px solid #161616;
+  border-top: 1px solid var(--border-subtle, #141414);
   max-width: 1900px;
   width: 100%;
   align-self: center;
@@ -31,9 +31,9 @@
 /* ── Card ── */
 .exp-card {
   position: relative;
-  background: #0d0d0d;
-  border: 1px solid #1a1a1a;
-  border-radius: 6px;
+  background: var(--surface-secondary, #0d0d0d);
+  border: 1px solid var(--border-default, #1a1a1a);
+  border-radius: var(--radius-lg, 6px);
   padding: 28px 24px 22px;
   display: flex;
   flex-direction: column;
@@ -43,7 +43,7 @@
 }
 
 .exp-card:hover {
-  border-color: #2a2a2a;
+  border-color: var(--border-strong, #2a2a2a);
   box-shadow: 0 4px 24px rgba(0,0,0,0.4);
 }
 
@@ -147,7 +147,7 @@
 .exp-card--current .exp-card__company { color: #cccccc; }
 
 .exp-card__slash {
-  color: #2a2a2a;
+  color: var(--border-strong, #2a2a2a);
   font-size: 0.85rem;
   margin: 0 4px;
 }
