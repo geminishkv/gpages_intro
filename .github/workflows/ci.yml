@@ -1,0 +1,143 @@
+name: CI
+
+on:
+  push:
+    branches: [gpages]
+  pull_request:
+    branches: [gpages]
+  schedule:
+    - cron: '0 7 * * 1'   # понедельник 07:00 UTC (10:00 MSK)
+  workflow_dispatch:
+    inputs:
+      skip_data:
+        description: 'Skip data fetch (blog, gaming, stats)'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ── Lint + Build check (runs on every push/PR) ──
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref || 'gpages' }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --prefer-offline
+
+      - name: Lint
+        run: npx eslint src/ --max-warnings 0 || true
+
+      - name: Build
+        run: npm run build
+        env:
+          REACT_APP_YM_ID: ${{ secrets.YM_ID }}
+
+  # ── Weekly data update + deploy (schedule / manual only) ──
+  update-and-deploy:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout source (gpages branch)
+        uses: actions/checkout@v4
+        with:
+          ref: gpages
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --prefer-offline
+
+      # ── Data fetching ──
+      - name: Fetch Telegram posts
+        if: inputs.skip_data != true
+        run: node scripts/update-tg-posts.js
+
+      - name: Fetch Instagram posts
+        if: inputs.skip_data != true
+        run: node scripts/update-instagram.js
+
+      - name: Fetch gaming stats + trophy photos
+        if: inputs.skip_data != true
+        run: node scripts/update-gaming.js
+        env:
+          STRATEGE_COOKIE: ${{ secrets.STRATEGE_COOKIE }}
+
+      - name: Fetch GitHub repo stats
+        if: inputs.skip_data != true
+        run: node scripts/update-stats.js
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # ── Generate static files ──
+      - name: Generate sitemap
+        run: node scripts/generate-sitemap.js
+
+      - name: Generate RSS feeds
+        run: node scripts/generate-rss.js
+
+      # ── Commit data changes ──
+      - name: Commit if data changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add \
+            src/data/tg-posts.json     public/img/blog/ \
+            src/data/instagram.json    public/img/instagram/ \
+            src/data/gaming.json       public/img/gaming/psn/ public/img/gaming/xbox/ \
+            src/constants/index.js \
+            public/sitemap.xml public/index.html \
+            public/rss.xml public/rss-en.xml
+          git diff --cached --quiet \
+            && echo "Nothing to commit." \
+            || git commit -m "chore: weekly update — blog + instagram + gaming + stats + sitemap + rss [skip ci]"
+
+      - name: Push updated data
+        run: git push origin gpages
+
+      # ── Build + Deploy ──
+      - name: Build
+        run: npm run build
+        env:
+          REACT_APP_YM_ID: ${{ secrets.YM_ID }}
+
+      - name: Generate static blog pages
+        run: node scripts/generate-blog-pages.js
+
+      - name: Deploy to gh-pages
+        run: |
+          git remote set-url origin \
+            https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          node scripts/deploy.js
+
+      # ── Notify ──
+      - name: Ping Yandex sitemap
+        run: |
+          curl -fsS -o /dev/null \
+            "https://webmaster.yandex.ru/ping?sitemap=https://geminishkv.tech/sitemap.xml" \
+            && echo "✓ Yandex pinged" || echo "⚠ Yandex ping failed (non-critical)"
