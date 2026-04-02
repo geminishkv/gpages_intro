@@ -104,7 +104,7 @@ export default function Gaming() {
     <section className="gaming">
 
       <div className="gaming__header">
-        <GlitchLabel text="Interests" className="gaming__label" />
+        <GlitchLabel text={t.sections.interests} className="gaming__label" />
       </div>
 
       {/* ── Instagram ── */}
@@ -285,7 +285,7 @@ export default function Gaming() {
           {hasPlatinumWall && (
             <>
               <div className="gaming__wall-header">
-                <span className="gaming__wall-label">Platinum Wall</span>
+                <span className="gaming__wall-label">{t.sections.platinumWall}</span>
                 <span className="gaming__wall-count">{psn.platinum ?? platinums.length} trophies</span>
               </div>
               <div className="gaming__mini-grid">
@@ -311,7 +311,7 @@ export default function Gaming() {
           {hasXboxGames && (
             <>
               <div className="gaming__wall-header">
-                <span className="gaming__wall-label">Game History</span>
+                <span className="gaming__wall-label">{t.sections.gameHistory}</span>
                 <span className="gaming__wall-count">{xbox.games ?? xboxGames.length} games</span>
               </div>
               <div className="gaming__mini-grid">

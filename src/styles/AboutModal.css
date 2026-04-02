@@ -197,6 +197,29 @@
 }
 
 /* ── Section ── */
+.about-resume-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  font-size: 0.75rem;
+  font-weight: var(--font-bold, 700);
+  font-family: inherit;
+  letter-spacing: 0.06em;
+  color: var(--color-white, #fff);
+  background: transparent;
+  border: 1px solid rgba(213, 26, 26, 0.35);
+  border-radius: var(--radius-md, 4px);
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s;
+  margin-bottom: 24px;
+}
+
+.about-resume-btn:hover {
+  background: rgba(213, 26, 26, 0.1);
+  border-color: rgba(213, 26, 26, 0.6);
+}
+
 .about-section {
   margin-bottom: 32px;
 }

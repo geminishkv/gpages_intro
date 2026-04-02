@@ -52,17 +52,20 @@
 
 .nav__links {
   display: flex;
-  gap: clamp(16px, 2.5vw, 36px);
+  align-items: center;
+  gap: clamp(12px, 1.8vw, 28px);
 }
 
-.nav__links a {
-  font-size: 0.85rem;
+.nav__links a,
+.nav__links .nav__link-btn {
+  font-size: 0.75rem;
   color: var(--color-red);
   text-decoration: none;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   transition: color 0.2s;
   position: relative;
+  white-space: nowrap;
 }
 
 .nav__links a::after {

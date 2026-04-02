@@ -8,13 +8,18 @@ function Counter({ value, suffix, label, active }) {
 
   useEffect(() => {
     if (!active) return;
-    const duration = 1200;
+    const duration = Math.max(1200, value * 120);
     const start    = performance.now();
+    let prev = -1;
 
     const tick = (now) => {
       const progress = Math.min((now - start) / duration, 1);
       const eased    = 1 - Math.pow(1 - progress, 3);
-      setDisplay(Math.round(eased * value));
+      const next     = Math.round(eased * value);
+      if (next !== prev) {
+        prev = next;
+        setDisplay(next);
+      }
       if (progress < 1) frameRef.current = requestAnimationFrame(tick);
     };
 

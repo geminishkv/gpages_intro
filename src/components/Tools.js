@@ -1,22 +1,58 @@
 import { useState } from 'react';
 import '../styles/Tools.css';
+import '../styles/SkillCard.css';
 import { DOMAINS } from '../constants';
 import { useLang } from '../context/LangContext';
 import GlitchLabel from './GlitchLabel';
 
+/* items sorted max→min by percent */
 const TOOL_GROUPS = [
-  { label: 'SAST',      items: ['Semgrep', 'SonarQube', 'Checkov', 'Bandit', 'BlackDuck', 'Fortify'] },
-  { label: 'SCA',       items: ['Dependency-Check', 'Grype', 'Trivy', 'Syft', 'Cycode', 'Clair'] },
-  { label: 'DAST',      items: ['Acunetix', 'Nuclei', 'Burp Suite', 'AutoSwagger', 'Checkmarx'] },
-  { label: 'Secrets',   items: ['HashiCorp Vault', 'Gitleaks', 'OPA', 'Bitwarden', 'Keycloak'] },
-  { label: 'Container', items: ['Trivy', 'Harbor', 'Falco', 'Cosign', 'Prisma', 'Cilium', 'Quay'] },
-  { label: 'Mobile',    items: ['Frida', 'MobSF', 'QARK'] },
-  { label: 'SBOM',      items: ['cdxgen', 'RetireJS', 'Sonatype'] },
-  { label: 'DevOps',    items: ['Docker', 'Kubernetes', 'Helm', 'GitLab CI/CD', 'Jenkins', 'WSO2'] },
+  { label: 'SAST',      items: [['Semgrep',95], ['SonarQube',95], ['Checkov',95], ['Bandit',80], ['BlackDuck',70]] },
+  { label: 'SCA',       items: [['Dependency-Check',95], ['Trivy',95], ['Syft',85], ['Grype',80], ['Clair',75]] },
+  { label: 'DAST',      items: [['AutoSwagger',90], ['Nuclei',80], ['Burp Suite',80], ['Checkmarx',60], ['Acunetix',40]] },
+  { label: 'Secrets',   items: [['HashiCorp Vault',95], ['Gitleaks',95], ['Bitwarden',95], ['Keycloak',80], ['OPA',65]] },
+  { label: 'Container', items: [['Trivy',95], ['Harbor',95], ['Cosign',95], ['Cilium',80], ['Falco',70]] },
+  { label: 'Mobile',    items: [['MobSF',85], ['APKTool',70], ['Frida',65], ['Objection',60], ['QARK',45]] },
+  { label: 'SBOM',      items: [['cdxgen',95], ['RetireJS',95], ['Syft',85], ['Sonatype',70]] },
+  { label: 'DevOps',    items: [['Docker',95], ['GitLab CI/CD',95], ['Jenkins',95], ['Helm',90], ['Kubernetes',65]] },
 ];
 
-const STACK_INITIAL  = 3;
-const CERTS_INITIAL  = 4;
+/* domains sorted max→min */
+const DOMAIN_ITEMS = [
+  ['Application Security', 95], ['DevSecOps', 95], ['Secure SDLC', 95],
+  ['Supply Chain Security', 90], ['Vulnerability Management', 85],
+  ['Architecture Security Review', 80], ['DevOps', 80],
+  ['Threat Modeling', 75], ['API Security', 75],
+  ['Payment Systems Security', 70], ['Mobile AppSec', 65], ['GRC', 50],
+];
+
+const STACK_INITIAL = 4;
+const CERTS_INITIAL = 4;
+
+function SkillRow({ name, percent }) {
+  return (
+    <div className="skill-row">
+      <span className="skill-row__name">{name}</span>
+      <div className="skill-row__bar">
+        <div className="skill-row__fill" style={{ width: `${percent}%` }} />
+      </div>
+      <span className="skill-row__pct">{percent}%</span>
+    </div>
+  );
+}
+
+function SkillCard({ title, items, className = '' }) {
+  return (
+    <div className={`skill-card${className ? ` ${className}` : ''}`}>
+      <div className="skill-card__header">{title}</div>
+      <div className="skill-card__body">
+        {items.map(([name, pct]) => (
+          <SkillRow key={name} name={name} percent={pct} />
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function Tools() {
   const [stackExpanded, setStackExpanded] = useState(false);
@@ -30,47 +66,43 @@ export default function Tools() {
   return (
     <section className="tools">
 
-      {/* ── Domains ── */}
-      <div className="tools__domains">
-        <div className="tools__header">
-          <GlitchLabel text="Domains" className="tools__label" />
-        </div>
-        <div className="tools__domain-grid">
-          {DOMAINS.map((d, i) => (
-            <div key={d} className="domain-item">
-              <span className="domain-item__num">{String(i + 1).padStart(2, '0')}</span>
-              <span className="domain-item__name">{d}</span>
-            </div>
+      {/* ── Domains (2/4) + Tech Stack first 2 (1/4 + 1/4) ── */}
+      <div className="tools__header">
+        <GlitchLabel text={t.sections.domains} className="tools__label" />
+        <span className="tools__sep">·</span>
+        <GlitchLabel text={t.sections.techStack} className="tools__label" />
+      </div>
+      <div className="skill-layout">
+        <SkillCard title={t.sections.domains} items={DOMAIN_ITEMS} className="skill-card--wide" />
+        <div className="skill-layout__right">
+          {visibleGroups.slice(0, 2).map(({ label, items }) => (
+            <SkillCard key={label} title={label} items={items} />
           ))}
         </div>
       </div>
 
-      {/* ── Tech Stack ── */}
-      <div className="tools__header tools__header--stack">
-        <GlitchLabel text="Tech Stack" className="tools__label" />
-        <span className="tools__count">{TOOL_GROUPS.length} categories</span>
-      </div>
-      <div className="tools__grid">
-        {visibleGroups.map(({ label, items }) => (
-          <div key={label} className="tool-group">
-            <span className="tool-group__label">{label}</span>
-            <div className="tool-group__chips">
-              {items.map(item => (
-                <span key={item} className="tool-chip">{item}</span>
-              ))}
-            </div>
-          </div>
-        ))}
-        {!stackExpanded && TOOL_GROUPS.length > STACK_INITIAL && (
-          <button className="tools__show-more" onClick={() => setStackExpanded(true)}>
-            Show {TOOL_GROUPS.length - STACK_INITIAL} more categories ↓
-          </button>
-        )}
-      </div>
+      {/* ── Remaining Tech Stack ── */}
+      {visibleGroups.length > 2 && (
+        <div className="skill-grid">
+          {visibleGroups.slice(2).map(({ label, items }) => (
+            <SkillCard key={label} title={label} items={items} />
+          ))}
+          {!stackExpanded && TOOL_GROUPS.length > STACK_INITIAL && (
+            <button className="skill-grid__more" onClick={() => setStackExpanded(true)}>
+              +{TOOL_GROUPS.length - STACK_INITIAL} categories ↓
+            </button>
+          )}
+        </div>
+      )}
+      {visibleGroups.length <= 2 && !stackExpanded && TOOL_GROUPS.length > STACK_INITIAL && (
+        <button className="skill-grid__more" style={{ marginTop: 16 }} onClick={() => setStackExpanded(true)}>
+          +{TOOL_GROUPS.length - STACK_INITIAL} categories ↓
+        </button>
+      )}
 
       {/* ── Certifications ── */}
       <div className="tools__header tools__header--stack">
-        <GlitchLabel text="Certifications" className="tools__label" />
+        <GlitchLabel text={t.sections.certifications} className="tools__label" />
         <span className="tools__count">{CERTS.length} total</span>
       </div>
       <div className="tools__certs-grid">

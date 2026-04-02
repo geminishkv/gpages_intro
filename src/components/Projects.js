@@ -31,7 +31,7 @@ export default function Projects({ isVisible }) {
   return (
     <section className={`projects${isVisible ? ' projects--visible' : ''}`}>
       <div className="projects__header">
-        <GlitchLabel text="Open-Source Projects" className="projects__label" />
+        <GlitchLabel text={t.sections.projects} className="projects__label" />
         <a
           href="https://github.com/geminishkv"
           target="_blank"

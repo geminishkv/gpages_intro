@@ -198,7 +198,7 @@ export default function Blog() {
       {/* Header */}
       <div className="blog__header">
         <div className="blog__header-left">
-          <GlitchLabel text="Blog" className="blog__label" />
+          <GlitchLabel text={t.sections.blog} className="blog__label" />
           {b.langNote && <span className="blog__lang-note">{b.langNote}</span>}
           {subscribers > 0 && (
             <span className="blog__subs">

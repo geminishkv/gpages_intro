@@ -92,7 +92,7 @@ export default function Hero({
                   </svg>
                   <span className="dl-btn__square" />
                 </span>
-                <span className="dl-btn__title">OSS Map</span>
+                <span className="dl-btn__title">OSS Toolchain Map</span>
                 <span className="dl-btn__title dl-btn__title--done">Open</span>
               </span>
               <span
@@ -115,7 +115,7 @@ export default function Hero({
                   </svg>
                   <span className="dl-btn__square" />
                 </span>
-                <span className="dl-btn__title">56939-2024 Map</span>
+                <span className="dl-btn__title">56939-2024 Process Map</span>
                 <span className="dl-btn__title dl-btn__title--done">Open</span>
               </span>
             </div>

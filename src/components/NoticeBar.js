@@ -32,6 +32,7 @@ export default function NoticeBar({ animDone }) {
           <div className="notice-bar__text">
             {n.paragraphs.map((p, i) => <p key={i}>{p}</p>)}
           </div>
+          <div className="notice-bar__disclaimer">{n.disclaimer}</div>
         </div>
         <button className="notice-bar__close" onClick={dismiss}>{n.dismiss}</button>
       </div>

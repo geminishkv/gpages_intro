@@ -8,7 +8,8 @@ import { useLang } from '../context/LangContext';
 
 export default function Nav({ navRef, onAboutOpen }) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const { lang, setLang } = useLang();
+  const { lang, setLang, t } = useLang();
+  const n = t.nav;
 
   const close = () => setMenuOpen(false);
 
@@ -98,13 +99,13 @@ export default function Nav({ navRef, onAboutOpen }) {
         {/* Desktop right side: links + lang toggle */}
         <div className="nav__right">
           <div className="nav__links">
-            <button className="nav__link-btn" onClick={onAboutOpen}>ABOUT</button>
-            <a href="https://hh.ru/resume/af4cc9ceff086141d00039ed1f4b4a6c35706f" target="_blank" rel="noreferrer">RESUME</a>
-            <a href="#blog">BLOG</a>
-            <a href="#experience">EXPERIENCE</a>
-            <a href="#skillset">SKILLSET</a>
-            <a href="#interests">INTERESTS</a>
-            <a href="https://my.idot.vip/geminishkv" target="_blank" rel="noreferrer">NFC CARD</a>
+            <button className="nav__link-btn" onClick={onAboutOpen}>{n.about}</button>
+            <a href="/blog/">{n.blog}</a>
+            <a href="#experience">{n.experience}</a>
+            <a href="#skillset">{n.skillset}</a>
+            <a href="#interests">{n.interests}</a>
+            <a href="https://my.idot.vip/geminishkv" target="_blank" rel="noreferrer">{n.nfcCard}</a>
+            <a href="/privacy/" className="nav__link--secondary">{n.privacy}</a>
           </div>
 
           <LangToggle />
@@ -132,13 +133,13 @@ export default function Nav({ navRef, onAboutOpen }) {
             </svg>
           </button>
           <LangToggle overlay />
-          <button className="nav__link-btn" onClick={() => { onAboutOpen(); close(); }}>ABOUT</button>
-          <a href="https://hh.ru/resume/af4cc9ceff086141d00039ed1f4b4a6c35706f" target="_blank" rel="noreferrer" onClick={close}>RESUME</a>
-          <a href="#blog"       onClick={close}>BLOG</a>
-          <a href="#experience" onClick={close}>EXPERIENCE</a>
-          <a href="#skillset"   onClick={close}>SKILLSET</a>
-          <a href="#interests"  onClick={close}>INTERESTS</a>
-          <a href="https://my.idot.vip/geminishkv" target="_blank" rel="noreferrer" className="nav__link--secondary" onClick={close}>NFC CARD</a>
+          <button className="nav__link-btn" onClick={() => { onAboutOpen(); close(); }}>{n.about}</button>
+          <a href="/blog/"      onClick={close}>{n.blog}</a>
+          <a href="#experience" onClick={close}>{n.experience}</a>
+          <a href="#skillset"   onClick={close}>{n.skillset}</a>
+          <a href="#interests"  onClick={close}>{n.interests}</a>
+          <a href="https://my.idot.vip/geminishkv" target="_blank" rel="noreferrer" className="nav__link--secondary" onClick={close}>{n.nfcCard}</a>
+          <a href="/privacy/" className="nav__link--secondary" onClick={close}>{n.privacy}</a>
         </div>,
         document.body
       )}

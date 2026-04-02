@@ -13,6 +13,7 @@ import Footer     from './Footer';
 import AboutModal from './AboutModal';
 import NoticeBar  from './NoticeBar';
 import Videos     from './Videos';
+import CookieBanner from './CookieBanner';
 
 export default function MainPage({ isVisible }) {
   const [animDone, setAnimDone] = useState(false);
@@ -86,6 +87,7 @@ export default function MainPage({ isVisible }) {
       </div>
       <AboutModal isOpen={aboutOpen} onClose={() => setAboutOpen(false)} />
       <NoticeBar animDone={animDone} />
+      <CookieBanner animDone={animDone} />
     </div>
   );
 }

@@ -8,7 +8,7 @@ export default function Experience() {
   return (
     <section className="experience">
       <div className="experience__header">
-        <GlitchLabel text="Experience" className="experience__label" />
+        <GlitchLabel text={t.sections.experience} className="experience__label" />
       </div>
 
       <div className="experience__grid">
