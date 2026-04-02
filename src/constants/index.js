@@ -1,5 +1,5 @@
 export const MAC_IMG   = process.env.PUBLIC_URL + '/img/hero/mac_ns.png';
-export const LOGO_IMG  = process.env.PUBLIC_URL + '/img/logotype/logo_black.svg';
+export const LOGO_IMG  = process.env.PUBLIC_URL + '/img/logotype/logo_white.svg';
 export const WIN_IMG   = process.env.PUBLIC_URL + '/img/hero/window3.png';
 export const UWU_IMG   = process.env.PUBLIC_URL + '/img/hero/uwu.png';
 export const AVATAR_IMG = process.env.PUBLIC_URL + '/img/hero/avatar.jpg';

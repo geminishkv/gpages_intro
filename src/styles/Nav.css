@@ -116,41 +116,6 @@
   color: var(--text-tertiary, #666666);
 }
 
-/* ── Language toggle ── */
-.nav__lang {
-  display: flex;
-  align-items: center;
-  gap: var(--space-1, 4px);
-}
-
-.nav__lang-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-family: inherit;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  color: #555555;
-  transition: color 0.2s;
-  padding: 2px 0;
-  line-height: 1;
-}
-
-.nav__lang-btn--active {
-  color: var(--color-red);
-}
-
-.nav__lang-btn:hover {
-  color: #ffffff;
-}
-
-.nav__lang-sep {
-  font-size: 0.7rem;
-  color: #333333;
-  pointer-events: none;
-}
-
 /* ── Burger button (SVG animated) ── */
 .nav__burger {
   display: none;
@@ -233,22 +198,6 @@
   .nav__mobile-overlay { animation: none; }
 }
 
-.nav__mobile-close {
-  position: absolute;
-  top: 20px;
-  right: 24px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1.4rem;
-  color: #888888;
-  line-height: 1;
-  padding: var(--space-1, 4px);
-  transition: color 0.2s;
-}
-
-.nav__mobile-close:hover { color: var(--color-red); }
-
 .nav__mobile-overlay a,
 .nav__mobile-overlay .nav__link-btn {
   font-size: 1.2rem;
@@ -268,20 +217,6 @@
 .nav__mobile-overlay a:hover,
 .nav__mobile-overlay .nav__link-btn:hover {
   color: var(--color-red);
-}
-
-/* Lang toggle inside overlay */
-.nav__lang--overlay {
-  gap: 10px;
-}
-
-.nav__lang--overlay .nav__lang-btn {
-  font-size: 1rem;
-  letter-spacing: 0.12em;
-}
-
-.nav__lang--overlay .nav__lang-sep {
-  font-size: 0.9rem;
 }
 
 /* ── Compact nav: fixed position at ≤900px ── */

@@ -93,6 +93,21 @@
   --duration-fast:   0.15s;
   --duration-normal: 0.2s;
   --duration-slow:   0.3s;
+
+  /* ── Shadows ── */
+  --shadow-red-sm:  0 0 12px rgba(213, 26, 26, 0.1);
+  --shadow-red-md:  0 0 24px rgba(213, 26, 26, 0.15);
+  --shadow-red-lg:  0 0 32px rgba(213, 26, 26, 0.08);
+  --shadow-dark-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+  --shadow-dark-md: 0 4px 16px rgba(0, 0, 0, 0.3);
+
+  /* ── Red alpha ── */
+  --color-red-a08: rgba(213, 26, 26, 0.08);
+  --color-red-a15: rgba(213, 26, 26, 0.15);
+  --color-red-a20: rgba(213, 26, 26, 0.2);
+  --color-red-a25: rgba(213, 26, 26, 0.25);
+  --color-red-a35: rgba(213, 26, 26, 0.35);
+  --color-red-a50: rgba(213, 26, 26, 0.5);
 }
 
 *, *::before, *::after {

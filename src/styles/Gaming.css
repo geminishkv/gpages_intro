@@ -539,7 +539,6 @@
 /* Small tablet — stack platform cards, keep game grids side-by-side */
 @media (max-width: 768px) {
   .gaming__cards-row { grid-template-columns: 1fr; }
-  .trophy-badge { font-size: 0.74rem; padding: 3px 8px; }
 }
 
 /* Mobile */
@@ -559,5 +558,4 @@
 /* Very small phones */
 @media (max-width: 380px) {
   .gaming__mini-grid { grid-template-columns: repeat(auto-fill, minmax(52px, 1fr)); gap: 5px; }
-  .trophy-badge { font-size: 0.7rem; padding: 2px 6px; }
 }

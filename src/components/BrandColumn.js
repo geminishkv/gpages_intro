@@ -13,7 +13,7 @@ const BrandColumn = forwardRef(function BrandColumn(_, ref) {
           <span className="logo-glow__blur logo-glow__blur--2" />
           <div className="logo-glow__inner">
             <img
-              src="/img/logotype/logo_white.svg"
+              src="/img/logotype/logo_black.svg"
               alt=""
               className="brand-col__logo-img"
             />
