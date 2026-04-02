@@ -1,45 +1,3 @@
-/* ── Skill card with glow wrapper ── */
-
-.skill-card-wrap {
-  position: relative;
-  border-radius: var(--radius-lg, 6px);
-  padding: 2px;
-  background: var(--border-default, #1a1a1a);
-  transition: transform 0.4s, box-shadow 0.4s;
-}
-
-.skill-card-wrap:hover {
-  transform: scale(1.02);
-  box-shadow: var(--shadow-red-md, 0 0 24px rgba(213, 26, 26, 0.15));
-}
-
-/* Rotating glow border — sits behind card via wrapper padding */
-.skill-card-wrap::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: var(--radius-lg, 6px);
-  background: conic-gradient(
-    from 0deg,
-    transparent 0%,
-    var(--color-red, #D51A1A) 15%,
-    var(--color-gold, #F9B361) 30%,
-    transparent 50%
-  );
-  opacity: 0;
-  transition: opacity 0.4s;
-}
-
-.skill-card-wrap:hover::before {
-  opacity: 1;
-  animation: skill-glow-rotate 2.5s linear infinite;
-}
-
-@keyframes skill-glow-rotate {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
-
 /* ── Card ── */
 .skill-card {
   background: var(--surface-primary, #0a0a0a);
@@ -205,6 +163,5 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .skill-card-wrap::before { animation: none; }
-  .skill-card-wrap { transition: none; }
+  .skill-card--wide { animation: none; }
 }

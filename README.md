@@ -14,8 +14,8 @@
 
 **Что делает:**
 
-* **SplashScreen** — глитч-анимация (clip-path + RGB-каналы + scanlines)
-* **Mac mockup** — CSS keyframes сборка ретро-Mac с терминалом и прогресс-баром
+* **SplashScreen** — Canvas2D shader (brand red→gold) + SVG pretitle
+* **Holographic Monitor** — CSS floating monitor с glow + Python typewriter
 * **Typewriter** — DOS-стиль набор заголовка с glitch-эффектом по символам
 * **Blog** — 175 постов из Telegram с переводом RU→EN, пагинация, статические SEO-страницы
 * **Gaming** — PSN/Xbox статистика: уровень, трофеи, platinum wall (90+)
@@ -45,8 +45,8 @@
 
 ### Функциональность
 
-* **SplashScreen** — экран загрузки с глитч-анимацией (clip-path + RGB-каналы + scanlines), reshow раз в 30 мин
-* **Mac mockup** — анимация сборки ретро-Mac: CSS terminal → прогресс-бар → контент
+* **SplashScreen** — Canvas2D shader (бренд-цвета red→gold) + SVG pretitle, reshow раз в 30 мин
+* **Holographic Monitor** — CSS floating monitor с glow-рамкой: blinker → progress bar → Python typewriter → UwU
 * **Typewriter** — glitch-эффект: рандомные символы перед каждой буквой, DOS-стиль
 * **BrandColumn** — каскадная анимация: materialize → diamond rotate → pulse ring → slide-up (синхронизация с Mac)
 * **GlitchLabel** — заголовки секций печатаются с glitch при скролле (IntersectionObserver)
@@ -158,13 +158,12 @@ gpages/
 │   │   ├── blog/             # Обложки постов Telegram (175 файлов)
 │   │   ├── companies/        # Логотипы работодателей
 │   │   ├── gaming/psn/ xbox/ # Обложки трофеев и игр
-│   │   ├── hero/             # Mac mockup, аватар
+│   │   ├── hero/             # UwU, аватар
 │   │   ├── instagram/        # Кеш обложек Instagram
 │   │   ├── logotype/         # SVG логотипы (logo_black, logo_white, symbol_2_black)
 │   │   ├── splash/           # Заставка сплеш-экрана
 │   │   └── yt_preroll/       # Превью YouTube-видео
 │   ├── privacy/index.html    # Политика конфиденциальности
-│   ├── blog/index.html       # Dev-заглушка (на проде → generate-blog-pages.js)
 │   ├── 404.html              # SPA fallback + дино-раннер
 │   ├── index.html            # SEO: JSON-LD, OG, 72+ meta tags
 │   ├── sitemap.xml           # 375 URL с hreflang
@@ -173,12 +172,12 @@ gpages/
 │   └── robots.txt            # Yandex + scrapers block
 ├── src/
 │   ├── components/
-│   │   ├── SplashScreen.js   # Глитч-анимация (30 мин reshow)
+│   │   ├── SplashScreen.js   # Shader canvas + pretitle SVG (30 мин reshow)
 │   │   ├── MainPage.js       # Корневой layout, scroll lock
 │   │   ├── Nav.js            # SVG бургер морфинг, LangSwitch, i18n
 │   │   ├── NoticeBar.js      # Уведомление + дисклеймер Meta/LinkedIn
 │   │   ├── CookieBanner.js   # Cookie consent (30 мин reshow)
-│   │   ├── Hero.js           # Mac terminal + typewriter + badges + кнопки
+│   │   ├── Hero.js           # Holographic monitor + Python typewriter + badges + кнопки
 │   │   ├── GlitchLabel.js    # Glitch typewriter для заголовков секций
 │   │   ├── BrandColumn.js    # Каскадная анимация (forwardRef)
 │   │   ├── Stats.js          # Count-up (requestAnimationFrame)
@@ -212,6 +211,8 @@ gpages/
 │       ├── LogoGlow.css      # Rotating gradient ring
 │       ├── GlitchLabel.css   # Typewriter cursor
 │       ├── CookieBanner.css  # Cookie consent card
+│       ├── MacCSS.css        # Holographic floating monitor
+│       ├── SplashScreen.css  # Shader splash screen
 │       └── [Component].css   # Nav, Hero, Mac, Blog, etc.
 ├── scripts/
 │   ├── update-tg-posts.js    # Telegram scraper (--all для полного)

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import '../styles/Tools.css';
 import '../styles/SkillCard.css';
-import { DOMAINS } from '../constants';
 import { useLang } from '../context/LangContext';
 import GlitchLabel from './GlitchLabel';
 

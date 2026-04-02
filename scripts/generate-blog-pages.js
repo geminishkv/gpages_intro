@@ -120,10 +120,13 @@ function renderPost(post, lang) {
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>${esc(title)} \u2014 geminishkv</title>
   <meta name="description" content="${esc(desc)}" />
+  <meta name="keywords" content="${post.tags?.length ? post.tags.map(t => esc(t)).join(', ') + ', ' : ''}appsec, devsecops, geminishkv" />
   <meta name="author" content="${isEn ? 'Ilya Shmakov' : '\u0418\u043b\u044c\u044f \u0428\u043c\u0430\u043a\u043e\u0432'}" />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
   <meta name="theme-color" content="#0a0a0a" />
   <link rel="canonical" href="${pageUrl}" />
+  <link rel="sitemap" href="/sitemap.xml" />
+  <link rel="alternate" type="application/rss+xml" title="geminishkv blog" href="${isEn ? '/rss-en.xml' : '/rss.xml'}" />
   <link rel="alternate" hreflang="ru" href="${ruUrl}" />
   <link rel="alternate" hreflang="en" href="${enUrl}" />
   <link rel="alternate" hreflang="x-default" href="${ruUrl}" />
@@ -259,9 +262,12 @@ function renderIndex(lang, pagePosts, pageNum, totalPages) {
   <title>${pageTitle}</title>
   <meta name="description" content="${esc(sub)} \u2014 ${posts.length} ${isEn ? 'posts' : '\u043f\u043e\u0441\u0442\u043e\u0432'}" />
   <meta name="author" content="${isEn ? 'Ilya Shmakov' : '\u0418\u043b\u044c\u044f \u0428\u043c\u0430\u043a\u043e\u0432'}" />
+  <meta name="keywords" content="appsec blog, devsecops blog, application security, geminishkv, безопасность приложений, блог по ИБ" />
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#0a0a0a" />
   <link rel="canonical" href="${BASE_URL}${prefix}/" />
+  <link rel="sitemap" href="/sitemap.xml" />
+  <link rel="alternate" type="application/rss+xml" title="geminishkv blog" href="${isEn ? '/rss-en.xml' : '/rss.xml'}" />
   <link rel="alternate" hreflang="ru" href="${BASE_URL}/blog/" />
   <link rel="alternate" hreflang="en" href="${BASE_URL}/blog/en/" />
   <link rel="alternate" hreflang="x-default" href="${BASE_URL}/blog/" />

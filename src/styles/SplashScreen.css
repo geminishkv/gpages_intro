@@ -1,13 +1,13 @@
-/* ── Основной экран (весь браузер) ── */
+/* ── Splash screen ── */
 .splash {
   position: fixed;
   inset: 0;
   z-index: var(--z-splash, 1000);
-  background: #ffffff;
+  background: #000;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.4s ease;
   opacity: 1;
 }
 
@@ -16,247 +16,27 @@
   pointer-events: none;
 }
 
+/* Shader fills entire splash */
+.splash__shader {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Logo centered on top of shader */
 .splash__img {
-  max-width: 80vw;
-  max-height: 80vh;
+  position: relative;
+  z-index: 1;
+  max-width: 60vw;
+  max-height: 50vh;
   width: auto;
   height: auto;
   object-fit: contain;
   display: block;
 }
 
-/* Глитч на весь экран: clip-path + translateX рвёт окно целиком */
-.splash--glitch {
-  animation: glitch-base 1.4s steps(1) forwards;
-}
-
-/* ════════════════════════════════════
-   Оверлеи — фиксированные слои ВНЕ .splash
-   не обрезаются его clip-path
-   ════════════════════════════════════ */
-.splash-layer {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-}
-
-.splash-layer--red {
-  z-index: calc(var(--z-splash, 1000) + 1);
-  filter: hue-rotate(330deg) saturate(8) brightness(0.9);
-  animation: glitch-red 1.4s steps(1) forwards;
-}
-
-.splash-layer--cyan {
-  z-index: calc(var(--z-splash, 1000) + 2);
-  filter: hue-rotate(160deg) saturate(8) brightness(0.9);
-  animation: glitch-cyan 1.4s steps(1) forwards;
-}
-
-.splash-layer--flash {
-  z-index: calc(var(--z-splash, 1000) + 3);
-  background: #ffffff;
-  animation: glitch-flash 1.4s steps(1) forwards;
-}
-
-.splash-layer--scanlines {
-  z-index: calc(var(--z-splash, 1000) + 4);
-  background: repeating-linear-gradient(
-    0deg,
-    transparent 0px, transparent 2px,
-    rgba(0, 0, 0, 0.1) 2px, rgba(0, 0, 0, 0.1) 4px
-  );
-  animation: glitch-scanlines 1.4s steps(1) forwards;
-}
-
-/* ════════════════════════════════════
-   BASE — весь экран рвётся полосами
-   ════════════════════════════════════ */
-@keyframes glitch-base {
-  0%    { transform: none; clip-path: none; filter: none; }
-
-  /* burst 1 */
-  2%    { clip-path: polygon(0 0,   100% 0,   100% 30%, 0 30%); transform: translateX(-55px) skewX(-12deg); filter: none; }
-  3%    { clip-path: polygon(0 30%, 100% 30%, 100% 65%, 0 65%); transform: translateX(60px)  skewX(8deg);   filter: hue-rotate(90deg); }
-  4%    { clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%); transform: translateX(-40px); filter: none; }
-  5%    { clip-path: polygon(0 0,   100% 0,   100% 50%, 0 50%); transform: translateX(45px) skewX(6deg); filter: brightness(0); }
-  6%    { clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%); transform: translateX(-50px) skewX(-6deg); filter: none; }
-  7%    { clip-path: none; transform: none; filter: none; }
-
-  8%    { clip-path: none; transform: none; filter: none; }
-
-  /* burst 2 */
-  13%   { clip-path: polygon(0 0,   100% 0,   100% 22%, 0 22%); transform: translateX(70px) skewX(-15deg); }
-  14%   { clip-path: polygon(0 22%, 100% 22%, 100% 55%, 0 55%); transform: translateX(-65px) skewX(10deg);  filter: hue-rotate(180deg) brightness(1.8); }
-  15%   { clip-path: polygon(0 55%, 100% 55%, 100% 80%, 0 80%); transform: translateX(55px); filter: none; }
-  16%   { clip-path: polygon(0 80%, 100% 80%, 100% 100%, 0 100%); transform: translateX(-45px) skewX(-8deg); filter: invert(0.8); }
-  18%   { clip-path: polygon(0 0,   100% 0,   100% 40%, 0 40%); transform: translateX(-70px); filter: none; }
-  19%   { clip-path: polygon(0 40%, 100% 40%, 100% 100%, 0 100%); transform: translateX(75px) skewX(12deg); }
-  20%   { clip-path: none; transform: translateX(-20px); filter: none; }
-  22%   { clip-path: none; transform: none; filter: none; }
-
-  23%   { transform: none; filter: none; clip-path: none; }
-
-  /* burst 3 — ГЛАВНЫЙ РАЗРЫВ */
-  31%   { clip-path: polygon(0 0,   100% 0,   100% 18%, 0 18%); transform: translateX(-80px) skewX(-18deg); filter: hue-rotate(90deg) saturate(5); }
-  32%   { clip-path: polygon(0 18%, 100% 18%, 100% 42%, 0 42%); transform: translateX(90px)  skewX(14deg);  filter: brightness(0); }
-  33%   { clip-path: polygon(0 42%, 100% 42%, 100% 68%, 0 68%); transform: translateX(-75px); filter: hue-rotate(270deg) brightness(2); }
-  34%   { clip-path: polygon(0 68%, 100% 68%, 100% 100%, 0 100%); transform: translateX(65px) skewX(-10deg); filter: none; }
-  35%   { clip-path: polygon(0 0,   100% 0,   100% 55%, 0 55%); transform: translateX(85px) skewX(16deg);   filter: invert(1); }
-  36%   { clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%); transform: translateX(-90px) skewX(-14deg); filter: none; }
-  37%   { clip-path: polygon(0 10%, 100% 10%, 100% 35%, 0 35%); transform: translateX(70px); filter: brightness(0) hue-rotate(180deg); }
-  38%   { clip-path: polygon(0 35%, 100% 35%, 100% 75%, 0 75%); transform: translateX(-60px) skewX(8deg); filter: none; }
-  39%   { clip-path: polygon(0 75%, 100% 75%, 100% 100%, 0 100%); transform: translateX(50px); }
-  40%   { clip-path: none; transform: translateX(-15px); filter: none; }
-  42%   { clip-path: none; transform: none; filter: none; }
-
-  43%   { transform: none; filter: none; clip-path: none; }
-
-  /* burst 4 */
-  53%   { clip-path: polygon(0 0,   100% 0,   100% 45%, 0 45%); transform: translateX(-60px) skewX(-10deg); filter: hue-rotate(200deg); }
-  54%   { clip-path: polygon(0 45%, 100% 45%, 100% 100%, 0 100%); transform: translateX(65px) skewX(10deg);  filter: none; }
-  55%   { clip-path: polygon(0 25%, 100% 25%, 100% 60%, 0 60%); transform: translateX(-55px); filter: brightness(0); }
-  57%   { clip-path: none; transform: translateX(20px); filter: none; }
-  59%   { clip-path: none; transform: none; filter: none; }
-
-  60%   { transform: none; filter: none; clip-path: none; }
-
-  /* burst 5 */
-  68%   { clip-path: polygon(0 0,   100% 0,   100% 35%, 0 35%); transform: translateX(75px) skewX(-14deg); filter: hue-rotate(90deg) brightness(1.6); }
-  69%   { clip-path: polygon(0 35%, 100% 35%, 100% 70%, 0 70%); transform: translateX(-70px) skewX(12deg);  filter: none; }
-  70%   { clip-path: polygon(0 70%, 100% 70%, 100% 100%, 0 100%); transform: translateX(55px);  filter: invert(0.9); }
-  71%   { clip-path: polygon(0 0,   100% 0,   100% 50%, 0 50%); transform: translateX(-65px) skewX(-16deg); filter: none; }
-  73%   { clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%); transform: translateX(80px) skewX(10deg); }
-  74%   { clip-path: polygon(0 15%, 100% 15%, 100% 45%, 0 45%); transform: translateX(-50px); filter: brightness(0); }
-  76%   { clip-path: none; transform: translateX(25px); filter: none; }
-  78%   { clip-path: none; transform: none; filter: none; }
-
-  80%   { transform: none; filter: none; clip-path: none; }
-
-  /* burst 6 */
-  87%   { clip-path: polygon(0 0,   100% 0,   100% 40%, 0 40%); transform: translateX(-70px) skewX(-12deg); filter: hue-rotate(270deg) saturate(4); }
-  88%   { clip-path: polygon(0 40%, 100% 40%, 100% 100%, 0 100%); transform: translateX(75px); filter: none; }
-  89%   { clip-path: polygon(0 20%, 100% 20%, 100% 65%, 0 65%); transform: translateX(-55px) skewX(10deg); filter: brightness(0); }
-  91%   { clip-path: none; transform: translateX(30px); filter: none; }
-  93%   { clip-path: none; transform: translateX(-10px); }
-  95%   { transform: none; filter: none; clip-path: none; }
-  100%  { transform: none; filter: none; clip-path: none; }
-}
-
-/* ════════════════════════════════════
-   RED layer — полосы вправо
-   ════════════════════════════════════ */
-@keyframes glitch-red {
-  0%, 1%   { opacity: 0; }
-  2%        { opacity: 1; clip-path: polygon(0 30%, 100% 30%, 100% 65%, 0 65%); transform: translateX(70px); }
-  3%        { clip-path: polygon(0 0,   100% 0,   100% 30%, 0 30%);            transform: translateX(80px) skewX(-8deg); }
-  4%        { clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);           transform: translateX(60px); }
-  7%        { opacity: 0; transform: translateX(0); }
-  12%       { opacity: 0; }
-  13%       { opacity: 1; clip-path: polygon(0 22%, 100% 22%, 100% 55%, 0 55%); transform: translateX(85px) skewX(-10deg); }
-  14%       { clip-path: polygon(0 80%, 100% 80%, 100% 100%, 0 100%);           transform: translateX(90px); }
-  16%       { clip-path: polygon(0 0,   100% 0,   100% 22%, 0 22%);             transform: translateX(75px) skewX(8deg); }
-  18%       { clip-path: polygon(0 55%, 100% 55%, 100% 80%, 0 80%);             transform: translateX(65px); }
-  22%       { opacity: 0; transform: translateX(0); }
-  30%       { opacity: 0; }
-  31%       { opacity: 1; clip-path: polygon(0 18%, 100% 18%, 100% 42%, 0 42%); transform: translateX(100px) skewX(-12deg); }
-  32%       { clip-path: polygon(0 68%, 100% 68%, 100% 100%, 0 100%);           transform: translateX(95px) skewX(10deg); }
-  33%       { clip-path: polygon(0 0,   100% 0,   100% 18%, 0 18%);             transform: translateX(105px); }
-  35%       { clip-path: polygon(0 42%, 100% 42%, 100% 68%, 0 68%);             transform: translateX(85px) skewX(-8deg); }
-  37%       { clip-path: polygon(0 10%, 100% 10%, 100% 35%, 0 35%);             transform: translateX(110px); }
-  39%       { clip-path: polygon(0 75%, 100% 75%, 100% 100%, 0 100%);           transform: translateX(70px); }
-  42%       { opacity: 0; transform: translateX(0); }
-  52%       { opacity: 0; }
-  53%       { opacity: 1; clip-path: polygon(0 0,   100% 0,   100% 45%, 0 45%); transform: translateX(80px) skewX(-10deg); }
-  55%       { clip-path: polygon(0 45%, 100% 45%, 100% 100%, 0 100%);           transform: translateX(75px); }
-  59%       { opacity: 0; transform: translateX(0); }
-  67%       { opacity: 0; }
-  68%       { opacity: 1; clip-path: polygon(0 35%, 100% 35%, 100% 70%, 0 70%); transform: translateX(90px) skewX(-12deg); }
-  69%       { clip-path: polygon(0 0,   100% 0,   100% 35%, 0 35%);             transform: translateX(85px); }
-  71%       { clip-path: polygon(0 70%, 100% 70%, 100% 100%, 0 100%);           transform: translateX(95px) skewX(8deg); }
-  74%       { clip-path: polygon(0 15%, 100% 15%, 100% 50%, 0 50%);             transform: translateX(70px); }
-  78%       { opacity: 0; transform: translateX(0); }
-  86%       { opacity: 0; }
-  87%       { opacity: 1; clip-path: polygon(0 0,   100% 0,   100% 40%, 0 40%); transform: translateX(85px) skewX(-10deg); }
-  88%       { clip-path: polygon(0 40%, 100% 40%, 100% 100%, 0 100%);           transform: translateX(90px); }
-  91%       { clip-path: polygon(0 20%, 100% 20%, 100% 65%, 0 65%);             transform: translateX(75px); }
-  95%       { opacity: 0; transform: translateX(0); }
-  100%      { opacity: 0; }
-}
-
-/* ════════════════════════════════════
-   CYAN layer — полосы влево
-   ════════════════════════════════════ */
-@keyframes glitch-cyan {
-  0%, 1%   { opacity: 0; }
-  2%        { opacity: 1; clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%); transform: translateX(-70px); }
-  3%        { clip-path: polygon(0 30%, 100% 30%, 100% 65%, 0 65%);               transform: translateX(-80px) skewX(8deg); }
-  4%        { clip-path: polygon(0 0,   100% 0,   100% 30%, 0 30%);               transform: translateX(-60px); }
-  7%        { opacity: 0; transform: translateX(0); }
-  12%       { opacity: 0; }
-  13%       { opacity: 1; clip-path: polygon(0 55%, 100% 55%, 100% 80%, 0 80%);   transform: translateX(-85px) skewX(10deg); }
-  14%       { clip-path: polygon(0 0,   100% 0,   100% 22%, 0 22%);               transform: translateX(-90px); }
-  16%       { clip-path: polygon(0 22%, 100% 22%, 100% 55%, 0 55%);               transform: translateX(-75px) skewX(-8deg); }
-  18%       { clip-path: polygon(0 80%, 100% 80%, 100% 100%, 0 100%);             transform: translateX(-65px); }
-  22%       { opacity: 0; transform: translateX(0); }
-  30%       { opacity: 0; }
-  31%       { opacity: 1; clip-path: polygon(0 42%, 100% 42%, 100% 68%, 0 68%);   transform: translateX(-100px) skewX(12deg); }
-  32%       { clip-path: polygon(0 0,   100% 0,   100% 18%, 0 18%);               transform: translateX(-95px) skewX(-10deg); }
-  33%       { clip-path: polygon(0 68%, 100% 68%, 100% 100%, 0 100%);             transform: translateX(-105px); }
-  35%       { clip-path: polygon(0 18%, 100% 18%, 100% 42%, 0 42%);               transform: translateX(-85px) skewX(8deg); }
-  37%       { clip-path: polygon(0 35%, 100% 35%, 100% 75%, 0 75%);               transform: translateX(-110px); }
-  39%       { clip-path: polygon(0 10%, 100% 10%, 100% 35%, 0 35%);               transform: translateX(-70px); }
-  42%       { opacity: 0; transform: translateX(0); }
-  52%       { opacity: 0; }
-  53%       { opacity: 1; clip-path: polygon(0 45%, 100% 45%, 100% 100%, 0 100%); transform: translateX(-80px) skewX(10deg); }
-  55%       { clip-path: polygon(0 0,   100% 0,   100% 45%, 0 45%);               transform: translateX(-75px); }
-  59%       { opacity: 0; transform: translateX(0); }
-  67%       { opacity: 0; }
-  68%       { opacity: 1; clip-path: polygon(0 70%, 100% 70%, 100% 100%, 0 100%); transform: translateX(-90px) skewX(12deg); }
-  69%       { clip-path: polygon(0 35%, 100% 35%, 100% 70%, 0 70%);               transform: translateX(-85px); }
-  71%       { clip-path: polygon(0 0,   100% 0,   100% 35%, 0 35%);               transform: translateX(-95px) skewX(-8deg); }
-  74%       { clip-path: polygon(0 50%, 100% 50%, 100% 85%, 0 85%);               transform: translateX(-70px); }
-  78%       { opacity: 0; transform: translateX(0); }
-  86%       { opacity: 0; }
-  87%       { opacity: 1; clip-path: polygon(0 40%, 100% 40%, 100% 100%, 0 100%); transform: translateX(-85px) skewX(10deg); }
-  88%       { clip-path: polygon(0 0,   100% 0,   100% 40%, 0 40%);               transform: translateX(-90px); }
-  91%       { clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);             transform: translateX(-75px); }
-  95%       { opacity: 0; transform: translateX(0); }
-  100%      { opacity: 0; }
-}
-
-/* ════════════════════════════════════
-   FLASH + SCANLINES
-   ════════════════════════════════════ */
-@keyframes glitch-flash {
-  0%, 6%, 12%, 23%, 30%, 43%, 52%, 60%, 67%, 80%, 86%, 96%, 100% { opacity: 0; }
-  5%   { opacity: 0.85; }
-  19%  { opacity: 0.80; }
-  36%  { opacity: 0.95; }
-  55%  { opacity: 0.75; }
-  73%  { opacity: 0.80; }
-  90%  { opacity: 0.70; }
-}
-
-@keyframes glitch-scanlines {
-  0%, 7%, 22%, 43%, 59%, 78%, 95%, 100% { opacity: 0; }
-  2%, 13%, 31%, 53%, 68%, 87%           { opacity: 1; }
-}
-
-/* ── Accessibility: disable glitch for motion-sensitive users ── */
 @media (prefers-reduced-motion: reduce) {
-  .splash--glitch {
-    animation: none;
-  }
-
-  .splash-layer--red,
-  .splash-layer--cyan,
-  .splash-layer--flash,
-  .splash-layer--scanlines {
-    animation: none;
-    opacity: 0;
-  }
+  .splash { transition: none; }
 }
