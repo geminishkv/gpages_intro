@@ -1,95 +1,23 @@
+<!-- DEV STUB — remove after blog is finalized -->
 <!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Блог — geminishkv</title>
-  <meta name="description" content="Блог по AppSec & DevSecOps — Илья Шмаков." />
-  <meta name="theme-color" content="#0a0a0a" />
-  <link rel="canonical" href="https://geminishkv.tech/blog/" />
-  <link rel="icon" type="image/png" href="/img/hero/logo2.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
-
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://geminishkv.tech/blog/" />
-  <meta property="og:title" content="Блог — geminishkv" />
-  <meta property="og:description" content="AppSec & DevSecOps блог" />
-  <meta property="og:image" content="https://geminishkv.tech/img/hero/avatar.jpg" />
-
+  <title>Блог — geminishkv (dev)</title>
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --bg: #0a0a0a; --border: #1a1a1a;
-      --text: #e8e8e8; --muted: #888888; --accent: #D51A1A; --gold: #F9B361;
-    }
-    html, body { background: var(--bg); color: var(--text); font-family: 'Roboto', system-ui, sans-serif; min-height: 100dvh; display: flex; align-items: center; justify-content: center; }
-    a { color: inherit; text-decoration: none; }
-
-    .page { max-width: 480px; width: 100%; padding: 0 24px; text-align: center; }
-
-    h1 {
-      font-family: 'Unbounded', sans-serif;
-      font-size: clamp(48px, 12vw, 80px);
-      font-weight: 700;
-      line-height: 1;
-      background: linear-gradient(135deg, var(--accent), var(--gold));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 16px;
-    }
-
-    .title { font-family: 'Unbounded', sans-serif; font-size: 20px; font-weight: 600; color: #fff; margin-bottom: 12px; }
-    .desc { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 40px; }
-
-    .actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-
-    .btn {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 11px 22px; border-radius: 6px;
-      font-family: 'Unbounded', sans-serif; font-size: 13px; font-weight: 600;
-      letter-spacing: 0.02em; transition: background .2s, border-color .2s, color .2s;
-      text-decoration: none;
-    }
-    .btn--primary { background: rgba(204,34,0,.15); border: 1px solid rgba(204,34,0,.35); color: #fff; }
-    .btn--primary:hover { background: rgba(204,34,0,.25); border-color: rgba(204,34,0,.6); }
-    .btn--ghost { background: transparent; border: 1px solid rgba(255,255,255,.12); color: var(--muted); }
-    .btn--ghost:hover { border-color: var(--gold); color: var(--gold); }
-
-    .divider { height: 1px; background: linear-gradient(to right, var(--accent), rgba(204,34,0,.15), transparent); margin: 48px 0 24px; }
-    .footer { font-size: 12px; color: var(--muted); }
-    .footer a { color: var(--accent); transition: color .2s; text-decoration: none; }
-    .footer a:hover { color: var(--gold); }
-
-    @media (max-width: 600px) {
-      .page { padding: 0 16px; }
-      .title { font-size: 17px; }
-      .desc { font-size: 13px; margin-bottom: 28px; }
-      .actions { flex-direction: column; gap: 10px; }
-      .btn { width: 100%; justify-content: center; }
-    }
+    body { background: #0a0a0a; color: #e8e8e8; font-family: system-ui; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; }
+    .msg { text-align: center; }
+    .msg h1 { color: #D51A1A; font-size: 2rem; }
+    .msg p { color: #888; margin: 12px 0; }
+    .msg a { color: #F9B361; }
   </style>
 </head>
 <body>
-  <div class="page">
-    <h1>Blog</h1>
-    <p class="title">Скоро здесь будет блог</p>
-    <p class="desc">Материалы по AppSec & DevSecOps.<br />Пока посты доступны в Telegram-канале.</p>
-
-    <div class="actions">
-      <a href="https://t.me/shmakovis_appsec" target="_blank" rel="noreferrer" class="btn btn--primary">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
-        Telegram-канал
-      </a>
-      <a href="/" class="btn btn--ghost">На главную</a>
-    </div>
-
-    <div class="divider"></div>
-    <footer class="footer">
-      <p>© 2026 <a href="/">geminishkv.tech</a></p>
-    </footer>
+  <div class="msg">
+    <h1>Blog (dev stub)</h1>
+    <p>Эта страница — заглушка для dev-сервера.<br/>На проде генерируется из <code>generate-blog-pages.js</code></p>
+    <p><a href="/">← На главную</a></p>
   </div>
 </body>
 </html>

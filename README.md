@@ -94,6 +94,7 @@ git clone -b gpages https://github.com/geminishkv/gpages_intro.git
 cd gpages
 npm install
 npm start        # http://localhost:3000
+npx serve build -l 4000
 ```
 
 Обновление данных вручную:

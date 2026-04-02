@@ -2,7 +2,16 @@ import { useState, useEffect } from 'react';
 import '../styles/CookieBanner.css';
 import { useLang } from '../context/LangContext';
 
-const STORAGE_KEY = 'cookie_consent';
+const TS_KEY      = 'cookie_ts';
+const RESHOW_MS   = 30 * 60 * 1000; // 30 минут
+
+function shouldShow() {
+  try {
+    const ts = localStorage.getItem(TS_KEY);
+    if (!ts) return true;
+    return Date.now() - Number(ts) > RESHOW_MS;
+  } catch { return true; }
+}
 
 export default function CookieBanner({ animDone }) {
   const [visible, setVisible] = useState(false);
@@ -11,21 +20,14 @@ export default function CookieBanner({ animDone }) {
 
   useEffect(() => {
     if (!animDone) return;
-    try {
-      if (localStorage.getItem(STORAGE_KEY)) return;
-      const timer = setTimeout(() => setVisible(true), 1800);
-      return () => clearTimeout(timer);
-    } catch { /* ignore */ }
+    if (!shouldShow()) return;
+    const timer = setTimeout(() => setVisible(true), 1800);
+    return () => clearTimeout(timer);
   }, [animDone]);
 
-  function accept() {
+  function dismiss() {
     setVisible(false);
-    try { localStorage.setItem(STORAGE_KEY, 'accepted'); } catch { /* ignore */ }
-  }
-
-  function decline() {
-    setVisible(false);
-    try { localStorage.setItem(STORAGE_KEY, 'declined'); } catch { /* ignore */ }
+    try { localStorage.setItem(TS_KEY, String(Date.now())); } catch { /* ignore */ }
   }
 
   if (!visible) return null;
@@ -48,8 +50,8 @@ export default function CookieBanner({ animDone }) {
         <a href="/privacy/">{c.policyLink}</a>.
       </p>
       <div className="cookie-banner__actions">
-        <button className="cookie-banner__btn cookie-banner__btn--accept" onClick={accept}>{c.accept}</button>
-        <button className="cookie-banner__btn cookie-banner__btn--decline" onClick={decline}>{c.decline}</button>
+        <button className="cookie-banner__btn cookie-banner__btn--accept" onClick={dismiss}>{c.accept}</button>
+        <button className="cookie-banner__btn cookie-banner__btn--decline" onClick={dismiss}>{c.decline}</button>
       </div>
     </div>
   );

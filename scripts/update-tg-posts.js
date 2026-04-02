@@ -6,144 +6,115 @@ const fs    = require('fs');
 const path  = require('path');
 
 const CHANNEL     = 'shmakovis_appsec';
-const POSTS_COUNT = 14;
 const OUTPUT      = path.join(__dirname, '../src/data/tg-posts.json');
 const IMG_DIR     = path.join(__dirname, '../public/img/blog');
+
+/* ── fetch helpers ── */
 
 function fetchPage(url) {
   return new Promise((resolve, reject) => {
     const parsed = new URL(url);
-    const req = https.request(
-      {
-        hostname: parsed.hostname,
-        path:     parsed.pathname + parsed.search,
-        method:   'GET',
-        headers: {
-          'User-Agent': 'Mozilla/5.0 (compatible; gpages-blog-updater/1.0)',
-          Accept:       'text/html,application/xhtml+xml',
-        },
-      },
-      (res) => {
-        if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
-          fetchPage(res.headers.location).then(resolve).catch(reject);
-          return;
-        }
-        let data = '';
-        res.on('data', c => { data += c; });
-        res.on('end', () => resolve(data));
-      },
-    );
-    req.on('error', reject);
-    req.end();
+    https.get({
+      hostname: parsed.hostname,
+      path:     parsed.pathname + parsed.search,
+      headers:  { 'User-Agent': 'Mozilla/5.0' },
+    }, res => {
+      if (res.statusCode === 301 || res.statusCode === 302) {
+        return fetchPage(res.headers.location).then(resolve).catch(reject);
+      }
+      const chunks = [];
+      res.on('data', c => chunks.push(c));
+      res.on('end', () => resolve(Buffer.concat(chunks).toString()));
+      res.on('error', reject);
+    }).on('error', reject);
   });
 }
 
-function decodeEntities(str) {
-  return str
-    .replace(/&amp;/g,  '&')
-    .replace(/&lt;/g,   '<')
-    .replace(/&gt;/g,   '>')
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g,  "'")
-    .replace(/&nbsp;/g, ' ')
-    .replace(/&#(\d+);/g, (_, n) => String.fromCharCode(Number(n)));
-}
+function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
-function stripTags(html) {
-  return html
-    .replace(/<br\s*\/?>/gi, '\n')
-    .replace(/<[^>]+>/g, '');
-}
+/* ── translation ── */
 
-function sleep(ms) {
-  return new Promise(r => setTimeout(r, ms));
-}
-
-async function translateChunk(chunk) {
-  const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=ru&tl=en&dt=t&q=${encodeURIComponent(chunk)}`;
-  try {
-    const raw  = await fetchPage(url);
-    const json = JSON.parse(raw);
-    if (!Array.isArray(json[0])) return null;
-    return json[0].map(c => c[0]).join('').trim() || null;
-  } catch {
-    return null;
-  }
+function translateChunk(text) {
+  return new Promise(resolve => {
+    const encoded = encodeURIComponent(text);
+    const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=ru&tl=en&dt=t&q=${encoded}`;
+    https.get(url, { headers: { 'User-Agent': 'Mozilla/5.0' } }, res => {
+      const chunks = [];
+      res.on('data', c => chunks.push(c));
+      res.on('end', () => {
+        try {
+          const body = JSON.parse(Buffer.concat(chunks).toString());
+          resolve(body[0].map(s => s[0]).join(''));
+        } catch { resolve(null); }
+      });
+      res.on('error', () => resolve(null));
+    }).on('error', () => resolve(null));
+  });
 }
 
 async function translateText(text) {
-  const MAX = 900; // safe URL length budget per chunk
-
-  if (encodeURIComponent(text).length <= MAX) {
-    return translateChunk(text);
-  }
-
-  // Split by paragraphs, batch into safe-size chunks
   const paragraphs = text.split('\n');
-  const chunks = [];
-  let cur = '';
-
-  for (const para of paragraphs) {
-    const candidate = cur ? `${cur}\n${para}` : para;
-    if (encodeURIComponent(candidate).length > MAX && cur) {
-      chunks.push(cur);
-      cur = para;
+  let batch = '', result = [];
+  for (const line of paragraphs) {
+    const next = batch ? batch + '\n' + line : line;
+    if (encodeURIComponent(next).length > 900 && batch) {
+      const t = await translateChunk(batch);
+      if (!t) return null;
+      result.push(t);
+      batch = line;
+      await sleep(300);
     } else {
-      cur = candidate;
+      batch = next;
     }
   }
-  if (cur) chunks.push(cur);
-
-  const parts = [];
-  for (let i = 0; i < chunks.length; i++) {
-    if (i > 0) await sleep(300);
-    const translated = await translateChunk(chunks[i]);
-    if (!translated) return null;
-    parts.push(translated);
+  if (batch) {
+    const t = await translateChunk(batch);
+    if (!t) return null;
+    result.push(t);
   }
-
-  return parts.join('\n');
+  return result.join('\n');
 }
 
-function parseHashtags(html) {
-  const tags = [];
-  const re   = /href="[^"]*%23([^"&]+)"/g;
-  let m;
-  while ((m = re.exec(html)) !== null) {
-    try { tags.push(decodeURIComponent(m[1]).toLowerCase()); } catch { /* skip */ }
-  }
-  return [...new Set(tags)];
-}
+/* ── image download ── */
 
 function downloadImage(url, dest) {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     const parsed = new URL(url);
-    const req = https.request(
-      {
-        hostname: parsed.hostname,
-        path:     parsed.pathname + parsed.search,
-        method:   'GET',
-        headers:  { 'User-Agent': 'Mozilla/5.0 (compatible; gpages-blog-updater/1.0)' },
-      },
-      (res) => {
-        if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
-          downloadImage(res.headers.location, dest).then(resolve);
-          return;
-        }
-        if (res.statusCode !== 200) { resolve(false); return; }
-        const chunks = [];
-        res.on('data', c => chunks.push(c));
-        res.on('end', () => {
-          try {
-            fs.writeFileSync(dest, Buffer.concat(chunks));
-            resolve(true);
-          } catch { resolve(false); }
-        });
-      },
-    );
+    const req = https.get({
+      hostname: parsed.hostname,
+      path: parsed.pathname + parsed.search,
+      headers: { 'User-Agent': 'Mozilla/5.0' },
+    }, res => {
+      if (res.statusCode === 301 || res.statusCode === 302) {
+        downloadImage(res.headers.location, dest).then(resolve);
+        return;
+      }
+      if (res.statusCode !== 200) { resolve(false); return; }
+      const chunks = [];
+      res.on('data', c => chunks.push(c));
+      res.on('end', () => {
+        try { fs.writeFileSync(dest, Buffer.concat(chunks)); resolve(true); }
+        catch { resolve(false); }
+      });
+    });
     req.on('error', () => resolve(false));
     req.end();
   });
+}
+
+/* ── HTML parsing ── */
+
+function stripTags(html) {
+  return html.replace(/<br\s*\/?>/gi, '\n').replace(/<[^>]+>/g, '');
+}
+
+function decodeEntities(text) {
+  return text.replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"').replace(/&#39;/g,"'").replace(/&nbsp;/g,' ');
+}
+
+function parseHashtags(html) {
+  const raw = [...html.matchAll(/href="[^"]*\?q=%23([^"]+)"/g)].map(m => decodeURIComponent(m[1]).toLowerCase());
+  return [...new Set(raw)];
 }
 
 function parseSubscribers(html) {
@@ -152,12 +123,10 @@ function parseSubscribers(html) {
 }
 
 function parsePosts(html) {
-  const posts    = [];
+  const posts = [];
   const segments = html.split('data-post="');
-
   for (let i = 1; i < segments.length; i++) {
     const seg = segments[i];
-
     const idMatch = seg.match(/^([^"]+)"/);
     if (!idMatch) continue;
     const postNum = idMatch[1].split('/')[1];
@@ -167,13 +136,9 @@ function parsePosts(html) {
     const date = dateMatch ? dateMatch[1].slice(0, 10) : null;
 
     const viewsMatch = seg.match(/message_views">([\d\u00a0\s]+)/);
-    const views = viewsMatch
-      ? parseInt(viewsMatch[1].replace(/[\u00a0\s]/g, ''), 10) || 0
-      : 0;
+    const views = viewsMatch ? parseInt(viewsMatch[1].replace(/[\u00a0\s]/g, ''), 10) || 0 : 0;
 
-    const textMatch = seg.match(
-      /class="tgme_widget_message_text[^"]*"[^>]*>([\s\S]*?)<\/div>/,
-    );
+    const textMatch = seg.match(/class="tgme_widget_message_text[^"]*"[^>]*>([\s\S]*?)<\/div>/);
     if (!textMatch) continue;
 
     const rawHtml = textMatch[1];
@@ -182,53 +147,97 @@ function parsePosts(html) {
     const text    = decodeEntities(rawText).replace(/\n{3,}/g, '\n\n').trim();
     if (!text) continue;
 
-    const imgMatch = seg.match(
-      /photo_wrap[^>]+style="[^"]*background-image:url\('([^']+)'\)/,
-    );
+    const imgMatch = seg.match(/photo_wrap[^>]+style="[^"]*background-image:url\('([^']+)'\)/);
 
-    const post = {
-      id:   postNum,
-      text,
-      date,
-      url:  `https://t.me/${CHANNEL}/${postNum}`,
-      views,
-      tags,
-    };
+    const post = { id: postNum, text, date, url: `https://t.me/${CHANNEL}/${postNum}`, views, tags };
     if (imgMatch) post.image = imgMatch[1];
-
     posts.push(post);
   }
-
-  return posts.slice(-POSTS_COUNT).reverse();
+  return posts;
 }
 
-async function main() {
-  const url = `https://t.me/s/${CHANNEL}`;
-  console.log(`Fetching ${url}…`);
+function getMinId(posts) {
+  let min = Infinity;
+  for (const p of posts) { const n = parseInt(p.id, 10); if (n < min) min = n; }
+  return min;
+}
 
-  let html;
-  try {
-    html = await fetchPage(url);
-  } catch (e) {
-    console.error(`✗ Fetch failed: ${e.message}`);
-    process.exit(1);
+/* ── main ── */
+
+async function main() {
+  const fullScrape = process.argv.includes('--all');
+  const baseUrl = `https://t.me/s/${CHANNEL}`;
+
+  console.log(`Fetching ${baseUrl}${fullScrape ? ' (full scrape with pagination)' : ''}…`);
+
+  let allPosts = [];
+  let subscribers = 0;
+  let url = baseUrl;
+  let page = 1;
+
+  while (true) {
+    let html;
+    try { html = await fetchPage(url); } catch (e) {
+      console.error(`✗ Fetch failed: ${e.message}`);
+      break;
+    }
+
+    if (page === 1) subscribers = parseSubscribers(html);
+    const pagePosts = parsePosts(html);
+    console.log(`  page ${page}: ${pagePosts.length} posts`);
+
+    if (pagePosts.length === 0) break;
+    allPosts.push(...pagePosts);
+
+    if (!fullScrape) break; // only latest page for weekly updates
+
+    const minId = getMinId(pagePosts);
+    if (minId <= 1) break;
+
+    url = `${baseUrl}?before=${minId}`;
+    page++;
+    await sleep(500);
   }
 
-  const posts       = parsePosts(html);
-  const subscribers = parseSubscribers(html);
+  // Deduplicate by id, newest first
+  const byId = new Map();
+  for (const p of allPosts) byId.set(p.id, p);
+
+  // Merge with existing data (keep translations, images)
+  let existingById = {};
+  if (fs.existsSync(OUTPUT)) {
+    try {
+      const existing = JSON.parse(fs.readFileSync(OUTPUT, 'utf8'));
+      for (const p of (existing.posts ?? [])) {
+        existingById[p.id] = p;
+        // Keep old posts that weren't in this scrape (pagination didn't reach them)
+        if (!byId.has(p.id)) byId.set(p.id, p);
+      }
+    } catch { /* ignore */ }
+  }
+
+  // Sort newest first
+  const posts = [...byId.values()].sort((a, b) => parseInt(b.id, 10) - parseInt(a.id, 10));
 
   if (posts.length === 0) {
-    console.error('✗ No posts parsed — keeping existing file.');
+    console.error('✗ No posts — keeping existing file.');
     process.exit(0);
   }
 
-  // Download post images locally so CDN URLs don't expire
+  // Download images
   fs.mkdirSync(IMG_DIR, { recursive: true });
   for (const post of posts) {
+    // Skip if already has local image
+    if (post.image && post.image.startsWith('/img/')) continue;
     if (!post.image) continue;
+
     const ext  = post.image.match(/\.(jpe?g|png|webp)/i)?.[1] ?? 'jpg';
     const dest = path.join(IMG_DIR, `${post.id}.${ext}`);
-    const ok   = await downloadImage(post.image, dest);
+    if (fs.existsSync(dest)) {
+      post.image = `/img/blog/${post.id}.${ext}`;
+      continue;
+    }
+    const ok = await downloadImage(post.image, dest);
     if (ok) {
       post.image = `/img/blog/${post.id}.${ext}`;
       console.log(`  ✓ image ${post.id}.${ext}`);
@@ -237,30 +246,23 @@ async function main() {
     }
   }
 
-  // Load cached translations to avoid re-translating unchanged posts
-  let existingById = {};
-  if (fs.existsSync(OUTPUT)) {
-    try {
-      const existing = JSON.parse(fs.readFileSync(OUTPUT, 'utf8'));
-      for (const p of (existing.posts ?? [])) existingById[p.id] = p;
-    } catch { /* ignore */ }
-  }
-
+  // Translate missing
   console.log('Translating posts to English…');
   for (const post of posts) {
     const cached = existingById[post.id];
+    if (post.text_en) { continue; } // already translated (from merge)
     if (cached?.text_en && cached.text === post.text) {
       post.text_en = cached.text_en;
       console.log(`  ↩ cached #${post.id}`);
+      continue;
+    }
+    await sleep(500);
+    const translated = await translateText(post.text);
+    if (translated) {
+      post.text_en = translated;
+      console.log(`  ✓ translated #${post.id}`);
     } else {
-      await sleep(500);
-      const translated = await translateText(post.text);
-      if (translated) {
-        post.text_en = translated;
-        console.log(`  ✓ translated #${post.id}`);
-      } else {
-        console.warn(`  ✗ translation failed #${post.id}`);
-      }
+      console.warn(`  ✗ translation failed #${post.id}`);
     }
   }
 
@@ -271,7 +273,7 @@ async function main() {
   console.log(`✓ ${subscribers} subscribers, ${posts.length} posts → ${OUTPUT}`);
   posts.forEach(p =>
     console.log(
-      `  [${p.date}] #${p.id} 👁${p.views} [${p.tags.join(',')}]${p.image ? ' 🖼' : ''}: ` +
+      `  [${p.date}] #${p.id} 👁${p.views} [${p.tags?.join(',') || ''}]${p.image ? ' 🖼' : ''}: ` +
       p.text.slice(0, 60).replace(/\n/g, ' ') + '…',
     ),
   );

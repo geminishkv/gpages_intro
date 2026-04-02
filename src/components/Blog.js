@@ -1,19 +1,15 @@
-import { useState, useEffect, useCallback } from 'react';
-import { createPortal } from 'react-dom';
+import { useState, useEffect } from 'react';
 import '../styles/Blog.css';
 import DATA from '../data/tg-posts.json';
 import { useLang } from '../context/LangContext';
 import GlitchLabel from './GlitchLabel';
 
-const CHANNEL_URL      = 'https://t.me/shmakovis_appsec';
-const MOBILE_BP        = 576;
-const MOBILE_INITIAL   = 3;
-const DESKTOP_INITIAL  = 14;
+const CHANNEL_URL    = 'https://t.me/shmakovis_appsec';
+const MOBILE_BP      = 576;
+const MOBILE_INITIAL = 3;
+const DESKTOP_INITIAL = 6;
 const posts       = DATA.posts  ?? [];
 const subscribers = DATA.subscribers ?? 0;
-
-/* ─────────────────── helpers ─────────────────── */
-
 
 function formatViews(n) {
   if (!n) return null;
@@ -27,8 +23,6 @@ function formatDate(iso, locale) {
     day: 'numeric', month: 'short', year: 'numeric',
   });
 }
-
-/* ─────────────────── icons ─────────────────── */
 
 function TgIcon({ size = 14 }) {
   return (
@@ -47,86 +41,16 @@ function EyeIcon() {
   );
 }
 
-/* ─────────────────── modal ─────────────────── */
+/* ── Card — links to /blog/{id}/ ── */
 
-function BlogModal({ post, onClose, locale, openTelegramLabel, lang }) {
-  const displayText = (lang === 'en' && post.text_en) ? post.text_en : post.text;
-  useEffect(() => {
-    const onKey = (e) => { if (e.key === 'Escape') onClose(); };
-    document.addEventListener('keydown', onKey);
-
-    // Lock scroll on .main-page (not body — it's inside a fixed overflow:auto container)
-    const mainPage = document.querySelector('.main-page');
-    if (mainPage) mainPage.style.overflow = 'hidden';
-
-    return () => {
-      document.removeEventListener('keydown', onKey);
-      if (mainPage) mainPage.style.overflow = '';
-    };
-  }, [onClose]);
-
-  const views = formatViews(post.views);
-
-  return createPortal(
-    <div className="blog-modal-backdrop" onClick={onClose}>
-      <div
-        className="blog-modal"
-        role="dialog"
-        aria-modal="true"
-        onClick={e => e.stopPropagation()}
-      >
-        <button className="blog-modal__close" onClick={onClose} aria-label="Close">✕</button>
-
-        {post.image && (
-          <img src={post.image} alt={displayText?.split('\n').find(l => l.trim()) ?? ''} className="blog-modal__cover" loading="lazy" />
-        )}
-
-        <div className="blog-modal__body">
-          <div className="blog-modal__meta">
-            <span className="blog-modal__date">{formatDate(post.date, locale)}</span>
-            {views && (
-              <span className="blog-modal__views">
-                <EyeIcon />{views}
-              </span>
-            )}
-          </div>
-
-          <p className="blog-modal__text">{displayText}</p>
-
-          {post.tags?.length > 0 && (
-            <div className="blog-modal__tags">
-              {post.tags.slice(0, 6).map(t => (
-                <span key={t} className="blog-tag">#{t}</span>
-              ))}
-            </div>
-          )}
-
-          <a
-            href={post.url}
-            target="_blank"
-            rel="noreferrer"
-            className="blog-modal__open"
-          >
-            <TgIcon size={15} />
-            {openTelegramLabel}
-          </a>
-        </div>
-      </div>
-    </div>,
-    document.body,
-  );
-}
-
-/* ─────────────────── card ─────────────────── */
-
-function BlogCard({ post, onClick, locale, readBtn, lang }) {
+function BlogCard({ post, locale, readBtn, lang }) {
   const displayText = (lang === 'en' && post.text_en) ? post.text_en : post.text;
   const views = formatViews(post.views);
   const [imgBroken, setImgBroken] = useState(false);
+  const href = lang === 'en' ? `/blog/en/${post.id}/` : `/blog/${post.id}/`;
 
   return (
-    <a href={`/blog/${post.id}/`} className="card-base blog-card" tabIndex={0}
-      onClick={e => { e.preventDefault(); onClick(); }}>
+    <a href={href} className="card-base blog-card">
       {post.image && !imgBroken && (
         <img
           className="blog-card__cover"
@@ -137,19 +61,12 @@ function BlogCard({ post, onClick, locale, readBtn, lang }) {
           onError={() => setImgBroken(true)}
         />
       )}
-
       <div className="card-base__inner">
         <div className="blog-card__meta">
           <span className="blog-card__date">{formatDate(post.date, locale)}</span>
-          {views && (
-            <span className="blog-card__views">
-              <EyeIcon />{views}
-            </span>
-          )}
+          {views && <span className="blog-card__views"><EyeIcon />{views}</span>}
         </div>
-
         <p className="blog-card__text">{displayText}</p>
-
         {post.tags?.length > 0 && (
           <div className="blog-card__tags">
             {post.tags.slice(0, 4).map(t => (
@@ -157,18 +74,15 @@ function BlogCard({ post, onClick, locale, readBtn, lang }) {
             ))}
           </div>
         )}
-
         <span className="card-base__cta">{readBtn}</span>
       </div>
     </a>
   );
 }
 
-/* ─────────────────── section ─────────────────── */
+/* ── Section ── */
 
 export default function Blog() {
-  const [selected, setSelected] = useState(null);
-  const close = useCallback(() => setSelected(null), []);
   const { t, lang } = useLang();
   const { locale } = t;
   const b = t.blog;
@@ -176,34 +90,26 @@ export default function Blog() {
   const [isMobile, setIsMobile] = useState(
     () => typeof window !== 'undefined' && window.innerWidth <= MOBILE_BP,
   );
-  const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
     const mq = window.matchMedia(`(max-width: ${MOBILE_BP}px)`);
-    const handler = (e) => {
-      setIsMobile(e.matches);
-      if (!e.matches) setExpanded(false);
-    };
+    const handler = (e) => setIsMobile(e.matches);
     mq.addEventListener('change', handler);
     return () => mq.removeEventListener('change', handler);
   }, []);
 
   const initial = isMobile ? MOBILE_INITIAL : DESKTOP_INITIAL;
-  const visible = expanded ? posts : posts.slice(0, initial);
+  const visible = posts.slice(0, initial);
 
   if (!posts.length) return null;
 
   return (
     <section className="blog">
-      {/* Header */}
       <div className="blog__header">
         <div className="blog__header-left">
           <GlitchLabel text={t.sections.blog} className="blog__label" />
-          {b.langNote && <span className="blog__lang-note">{b.langNote}</span>}
           {subscribers > 0 && (
-            <span className="blog__subs">
-              {b.subscribersFmt(subscribers)}
-            </span>
+            <span className="blog__subs">{b.subscribersFmt(subscribers)}</span>
           )}
         </div>
         <a href={CHANNEL_URL} target="_blank" rel="noreferrer" className="blog__channel-link">
@@ -211,19 +117,12 @@ export default function Blog() {
         </a>
       </div>
 
-      {/* Grid */}
       <div className="blog__grid">
         {visible.map(p => (
-          <BlogCard key={p.id} post={p} onClick={() => setSelected(p)} locale={locale} readBtn={b.readBtn} lang={lang} />
+          <BlogCard key={p.id} post={p} locale={locale} readBtn={b.readBtn} lang={lang} />
         ))}
 
-        {/* CTA block */}
-        <a
-          href={CHANNEL_URL}
-          target="_blank"
-          rel="noreferrer"
-          className="blog-cta"
-        >
+        <a href={CHANNEL_URL} target="_blank" rel="noreferrer" className="blog-cta">
           <TgIcon size={28} />
           <span className="blog-cta__title">AppSECT.A.</span>
           <span className="blog-cta__sub">{b.ctaSub}</span>
@@ -231,14 +130,11 @@ export default function Blog() {
         </a>
       </div>
 
-      {!expanded && posts.length > initial && (
-        <button className="blog__show-more" onClick={() => setExpanded(true)}>
-          {b.showMore(posts.length - initial)}
-        </button>
+      {posts.length > initial && (
+        <a href="/blog/" className="blog__show-more">
+          {b.showMore(posts.length - initial)} →
+        </a>
       )}
-
-      {/* Modal */}
-      {selected && <BlogModal post={selected} onClose={close} locale={locale} openTelegramLabel={b.openTelegram} lang={lang} />}
     </section>
   );
 }
