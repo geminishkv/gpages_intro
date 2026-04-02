@@ -7,7 +7,7 @@ import '../styles/ContactBtn.css';
 import '../styles/DownloadBtn.css';
 import BrandColumn from './BrandColumn';
 import {
-  MAC_IMG, WIN_IMG, UWU_IMG,
+  MAC_IMG, UWU_IMG,
   LIDER_IMG, LANIT_IMG, BMSTU_IMG, MPFI_IMG, RBPO_IMG, INSECA_IMG,
   TAGLINE_TEXT,
 } from '../constants';
@@ -167,7 +167,23 @@ export default function Hero({
             <div ref={blinkerRef} className="blinker" />
             <div ref={whiteBoxRef}     className="mac-white-box" />
             <div ref={containerBoxRef} className="mac-container-box" />
-            <img ref={windowImgRef} src={WIN_IMG} alt="" className="mac-window-img" />
+            <div ref={windowImgRef} className="mac-window-img mac-terminal">
+              <div className="mac-terminal__header">
+                <div className="mac-terminal__btns">
+                  <span className="mac-terminal__btn mac-terminal__btn--close" />
+                  <span className="mac-terminal__btn mac-terminal__btn--min" />
+                  <span className="mac-terminal__btn mac-terminal__btn--max" />
+                </div>
+                <span className="mac-terminal__title">geminishkv — zsh</span>
+              </div>
+              <div className="mac-terminal__body">
+                <span className="mac-terminal__prompt">$</span>
+                <span className="mac-terminal__text">loading portfolio</span>
+                <span className="mac-terminal__dot" id="tdot1">.</span>
+                <span className="mac-terminal__dot" id="tdot2">.</span>
+                <span className="mac-terminal__dot" id="tdot3">.</span>
+              </div>
+            </div>
             <img ref={uwuRef} src={UWU_IMG} alt="" className="mac-window-img mac-uwu" />
             <div ref={workTextRef} className="mac-work-text">
               Work harder,&nbsp;<br />comrade

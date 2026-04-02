@@ -63,11 +63,85 @@
 
 .mac-window-img {
   position: absolute;
-  object-fit: cover;
   border-radius: var(--radius-md, 4px);
   opacity: 0;
   width: 0;
   height: 0;
+  overflow: hidden;
+}
+
+/* ── Terminal inside Mac screen ── */
+.mac-terminal {
+  display: flex;
+  flex-direction: column;
+  background: #000;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.mac-terminal__header {
+  background: var(--surface-card, #111111);
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 20px;
+}
+
+.mac-terminal__btns {
+  display: flex;
+  gap: 4px;
+}
+
+.mac-terminal__btn {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.mac-terminal__btn--close { background: #ff605c; }
+.mac-terminal__btn--min   { background: #ffbd44; }
+.mac-terminal__btn--max   { background: #00ca4e; }
+
+.mac-terminal__title {
+  flex: 1;
+  text-align: center;
+  font-size: 0.45rem;
+  color: var(--text-secondary, #888888);
+  letter-spacing: 0.04em;
+}
+
+.mac-terminal__body {
+  padding: 8px 10px;
+  font-size: 0.5rem;
+  color: #0f0;
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.mac-terminal__prompt {
+  color: var(--color-red, #D51A1A);
+  font-weight: 700;
+}
+
+.mac-terminal__text {
+  color: #0f0;
+}
+
+.mac-terminal__dot {
+  color: #0f0;
+  opacity: 0;
+  animation: mac-tdot 1.5s infinite;
+}
+
+#tdot1 { animation-delay: 0.5s; }
+#tdot2 { animation-delay: 0.6s; }
+#tdot3 { animation-delay: 0.7s; }
+
+@keyframes mac-tdot {
+  0%, 100% { opacity: 0; }
+  50%      { opacity: 1; }
 }
 
 .mac-uwu {
