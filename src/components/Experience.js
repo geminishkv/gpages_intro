@@ -1,5 +1,6 @@
 import '../styles/Experience.css';
 import { useLang } from '../context/LangContext';
+import GlitchLabel from './GlitchLabel';
 
 export default function Experience() {
   const { t } = useLang();
@@ -7,7 +8,7 @@ export default function Experience() {
   return (
     <section className="experience">
       <div className="experience__header">
-        <span className="experience__label">Experience</span>
+        <GlitchLabel text="Experience" className="experience__label" />
       </div>
 
       <div className="experience__grid">

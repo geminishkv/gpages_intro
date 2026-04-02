@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './styles/App.css';
 import './styles/CardBase.css';
+import './styles/GlitchLabel.css';
 import { LangProvider } from './context/LangContext';
 import SplashScreen from './components/SplashScreen';
 import MainPage     from './components/MainPage';

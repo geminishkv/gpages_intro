@@ -2,6 +2,7 @@ import { useState } from 'react';
 import '../styles/Tools.css';
 import { DOMAINS } from '../constants';
 import { useLang } from '../context/LangContext';
+import GlitchLabel from './GlitchLabel';
 
 const TOOL_GROUPS = [
   { label: 'SAST',      items: ['Semgrep', 'SonarQube', 'Checkov', 'Bandit', 'BlackDuck', 'Fortify'] },
@@ -32,7 +33,7 @@ export default function Tools() {
       {/* ── Domains ── */}
       <div className="tools__domains">
         <div className="tools__header">
-          <span className="tools__label">Domains</span>
+          <GlitchLabel text="Domains" className="tools__label" />
         </div>
         <div className="tools__domain-grid">
           {DOMAINS.map((d, i) => (
@@ -46,7 +47,7 @@ export default function Tools() {
 
       {/* ── Tech Stack ── */}
       <div className="tools__header tools__header--stack">
-        <span className="tools__label">Tech Stack</span>
+        <GlitchLabel text="Tech Stack" className="tools__label" />
         <span className="tools__count">{TOOL_GROUPS.length} categories</span>
       </div>
       <div className="tools__grid">
@@ -69,7 +70,7 @@ export default function Tools() {
 
       {/* ── Certifications ── */}
       <div className="tools__header tools__header--stack">
-        <span className="tools__label">Certifications</span>
+        <GlitchLabel text="Certifications" className="tools__label" />
         <span className="tools__count">{CERTS.length} total</span>
       </div>
       <div className="tools__certs-grid">

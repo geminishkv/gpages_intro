@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import '../styles/Projects.css';
 import { useLang } from '../context/LangContext';
+import GlitchLabel from './GlitchLabel';
 
 const PROJECTS_INITIAL = 3;
 
@@ -30,7 +31,7 @@ export default function Projects({ isVisible }) {
   return (
     <section className={`projects${isVisible ? ' projects--visible' : ''}`}>
       <div className="projects__header">
-        <span className="projects__label">Open-Source Projects</span>
+        <GlitchLabel text="Open-Source Projects" className="projects__label" />
         <a
           href="https://github.com/geminishkv"
           target="_blank"

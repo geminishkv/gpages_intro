@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import '../styles/Blog.css';
 import DATA from '../data/tg-posts.json';
 import { useLang } from '../context/LangContext';
+import GlitchLabel from './GlitchLabel';
 
 const CHANNEL_URL      = 'https://t.me/shmakovis_appsec';
 const MOBILE_BP        = 576;
@@ -197,7 +198,7 @@ export default function Blog() {
       {/* Header */}
       <div className="blog__header">
         <div className="blog__header-left">
-          <span className="blog__label">Blog</span>
+          <GlitchLabel text="Blog" className="blog__label" />
           {b.langNote && <span className="blog__lang-note">{b.langNote}</span>}
           {subscribers > 0 && (
             <span className="blog__subs">

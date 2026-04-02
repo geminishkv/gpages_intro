@@ -1,5 +1,6 @@
 import '../styles/Videos.css';
 import { useLang } from '../context/LangContext';
+import GlitchLabel from './GlitchLabel';
 
 function PlayIcon() {
   return (
@@ -17,7 +18,7 @@ export default function Videos() {
   return (
     <section className="videos">
       <div className="videos__header">
-        <span className="videos__label">YouTube</span>
+        <GlitchLabel text="YouTube" className="videos__label" />
       </div>
       <div className="videos__grid">
         {videos.map((v) => (

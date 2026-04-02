@@ -2,6 +2,7 @@ import '../styles/Gaming.css';
 import DATA    from '../data/gaming.json';
 import IG_DATA from '../data/instagram.json';
 import { useLang } from '../context/LangContext';
+import GlitchLabel from './GlitchLabel';
 
 const GRID_LIMIT = 18;
 const IG_LIMIT   = 8;
@@ -103,7 +104,7 @@ export default function Gaming() {
     <section className="gaming">
 
       <div className="gaming__header">
-        <span className="gaming__label">Interests</span>
+        <GlitchLabel text="Interests" className="gaming__label" />
       </div>
 
       {/* ── Instagram ── */}

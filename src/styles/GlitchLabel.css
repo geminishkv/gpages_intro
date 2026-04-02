@@ -1,0 +1,15 @@
+/* ── Glitch typewriter label ── */
+
+.glitch-cursor {
+  color: var(--color-red, #D51A1A);
+  animation: glitch-blink 0.6s step-end infinite;
+}
+
+@keyframes glitch-blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glitch-cursor { animation: none; }
+}
