@@ -75,8 +75,9 @@ export default function Hero({
                 onClick={() => {
                   if (!dlOss) {
                     setDlOss(true);
+                    const w = window.open('about:blank', '_blank');
                     setTimeout(() => {
-                      window.open('https://findevsecops.github.io/oss_toolchainmap/pdf_table/tools-map.pdf', '_blank');
+                      if (w) w.location.href = 'https://findevsecops.github.io/oss_toolchainmap/pdf_table/tools-map.pdf';
                       setTimeout(() => setDlOss(false), 600);
                     }, 3900);
                   }
@@ -98,8 +99,9 @@ export default function Hero({
                 onClick={() => {
                   if (!dlActive) {
                     setDlActive(true);
+                    const w = window.open('about:blank', '_blank');
                     setTimeout(() => {
-                      window.open('https://storage.yandexcloud.net/aft-tilda/%D0%A2%D0%B8%D0%BF%D0%BE%D0%B2%D0%BE%D0%B9%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%20%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D0%B9%20%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B8%20%D0%B4%D0%BB%D1%8F%20%D1%84%D0%B8%D0%BD%D1%82%D0%B5%D1%85%D0%B0.pdf', '_blank');
+                      if (w) w.location.href = 'https://storage.yandexcloud.net/aft-tilda/%D0%A2%D0%B8%D0%BF%D0%BE%D0%B2%D0%BE%D0%B9%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%20%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D0%B9%20%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B8%20%D0%B4%D0%BB%D1%8F%20%D1%84%D0%B8%D0%BD%D1%82%D0%B5%D1%85%D0%B0.pdf';
                       setTimeout(() => setDlActive(false), 600);
                     }, 3900);
                   }
