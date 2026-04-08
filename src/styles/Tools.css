@@ -1,7 +1,7 @@
 .tools {
   padding: clamp(40px, 4vw, 64px) clamp(40px, 5vw, 120px);
   border-top: 2px solid;
-  border-image: linear-gradient(to right, #D51A1A 0%, rgba(213, 26, 26, 0.15) 60%, transparent 100%) 1;
+  border-image: linear-gradient(to right, #D51A1A 0%, var(--color-red-a15) 60%, transparent 100%) 1;
   max-width: 1900px;
   width: 100%;
   align-self: center;
@@ -33,7 +33,7 @@
 
 .tools__show-more {
   background: var(--surface-secondary, #0d0d0d);
-  border: 1px solid rgba(213, 26, 26, 0.2);
+  border: 1px solid var(--color-red-a20);
   border-radius: var(--radius-md, 4px);
   color: var(--text-secondary, #888888);
   font-size: 0.72rem;
@@ -51,52 +51,11 @@
 }
 
 .tools__show-more:hover {
-  border-color: rgba(213, 26, 26, 0.5);
-  box-shadow: 0 0 32px rgba(213, 26, 26, 0.08);
+  border-color: var(--color-red-a50);
+  box-shadow: 0 0 32px var(--color-red-a08);
   color: #D51A1A;
 }
 
-/* ── Domains ── */
-.tools__domains {
-  margin-bottom: 0;
-}
-
-.tools__domain-grid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  border-top: 2px solid;
-  border-image: linear-gradient(to right, #D51A1A 0%, rgba(213, 26, 26, 0.15) 60%, transparent 100%) 1;
-  border-right: 1px solid var(--border-subtle, #141414);
-}
-
-.domain-item {
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
-  padding: 11px 12px;
-  border-bottom: 1px solid var(--border-subtle, #141414);
-  border-left: 1px solid var(--border-subtle, #141414);
-  transition: background 0.15s;
-}
-
-.domain-item__num {
-  font-size: var(--text-xxs, 0.55rem);
-  font-weight: var(--font-bold, 700);
-  letter-spacing: 0.1em;
-  color: #D51A1A;
-  min-width: 18px;
-  flex-shrink: 0;
-}
-
-.domain-item__name {
-  font-size: 0.8rem;
-  color: #666666;
-  letter-spacing: 0.01em;
-  line-height: var(--leading-tight, 1.3);
-  transition: color 0.15s;
-}
-
-.domain-item:hover .domain-item__name { color: #cccccc; }
 
 /* ── Certs ── */
 .tools__certs-grid {
@@ -188,13 +147,11 @@
 @media (max-width: 900px) {
   .tools { padding: 40px 24px; }
   .tools__grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
-  .tools__domain-grid { grid-template-columns: repeat(4, 1fr); }
 }
 
 @media (max-width: 576px) {
   .tools__grid { grid-template-columns: 1fr 1fr; }
   .tools__show-more { grid-column: 1 / -1; }
-  .tools__domain-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 420px) {

@@ -102,12 +102,43 @@
   --shadow-dark-md: 0 4px 16px rgba(0, 0, 0, 0.3);
 
   /* ── Red alpha ── */
+  --color-red-a06: rgba(213, 26, 26, 0.06);
   --color-red-a08: rgba(213, 26, 26, 0.08);
+  --color-red-a10: rgba(213, 26, 26, 0.1);
+  --color-red-a12: rgba(213, 26, 26, 0.12);
   --color-red-a15: rgba(213, 26, 26, 0.15);
   --color-red-a20: rgba(213, 26, 26, 0.2);
   --color-red-a25: rgba(213, 26, 26, 0.25);
+  --color-red-a30: rgba(213, 26, 26, 0.3);
   --color-red-a35: rgba(213, 26, 26, 0.35);
+  --color-red-a40: rgba(213, 26, 26, 0.4);
   --color-red-a50: rgba(213, 26, 26, 0.5);
+  --color-red-a60: rgba(213, 26, 26, 0.6);
+
+  /* ── Gold alpha ── */
+  --color-gold-a06: rgba(249, 179, 97, 0.06);
+  --color-gold-a12: rgba(249, 179, 97, 0.12);
+  --color-gold-a15: rgba(249, 179, 97, 0.15);
+  --color-gold-a20: rgba(249, 179, 97, 0.2);
+  --color-gold-a25: rgba(249, 179, 97, 0.25);
+  --color-gold-a40: rgba(249, 179, 97, 0.4);
+  --color-gold-a50: rgba(249, 179, 97, 0.5);
+  --color-gold-a60: rgba(249, 179, 97, 0.6);
+
+  /* ── Black alpha ── */
+  --color-black-a20: rgba(0, 0, 0, 0.2);
+  --color-black-a30: rgba(0, 0, 0, 0.3);
+  --color-black-a40: rgba(0, 0, 0, 0.4);
+  --color-black-a50: rgba(0, 0, 0, 0.5);
+  --color-black-a80: rgba(0, 0, 0, 0.8);
+
+  /* ── White alpha ── */
+  --color-white-a05: rgba(255, 255, 255, 0.05);
+  --color-white-a55: rgba(255, 255, 255, 0.55);
+
+  /* ── Nav background ── */
+  --nav-bg:       rgba(10, 10, 10, 0.82);
+  --nav-bg-solid: rgba(10, 10, 10, 0.97);
 }
 
 *, *::before, *::after {
@@ -136,12 +167,12 @@ body {
   position: relative;
 }
 
-/* ── Breakpoints (reference — not custom properties, CSS doesn't support them in @media)
+/* ── Breakpoints (5 steps — CSS can't use custom props in @media)
    bp-xl:  1200px   desktop → tablet landscape
-   bp-lg:  900px    tablet → mobile (PRIMARY, 48% of all queries)
+   bp-lg:  900px    tablet → mobile (PRIMARY)
    bp-md:  768px    tablet portrait
    bp-sm:  576px    mobile
-   bp-xs:  420px    small phones
+   bp-xs:  420px    small phones (only Tools)
    ── */
 
 /* ── Mobile: разблокируем всю цепочку overflow ── */

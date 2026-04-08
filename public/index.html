@@ -35,6 +35,24 @@
     <meta name="geo.position"  content="55.7558;37.6173" />
     <meta name="ICBM"          content="55.7558, 37.6173" />
 
+    <!-- ── Security headers (meta) ── -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options"        content="DENY" />
+    <meta http-equiv="Referrer-Policy"        content="strict-origin-when-cross-origin" />
+    <meta http-equiv="Permissions-Policy"     content="camera=(), microphone=(), geolocation=(), payment=()" />
+    <meta http-equiv="Content-Security-Policy" content="
+      default-src 'self';
+      script-src  'self' 'unsafe-inline' https://plausible.io https://mc.yandex.ru;
+      style-src   'self' 'unsafe-inline' https://fonts.googleapis.com;
+      font-src    'self' https://fonts.gstatic.com;
+      img-src     'self' data: https://mc.yandex.ru https://stratege.ru;
+      connect-src 'self' https://plausible.io https://mc.yandex.ru;
+      frame-src   'none';
+      object-src  'none';
+      base-uri    'self';
+      form-action 'self';
+    " />
+
     <meta name="theme-color"              content="#0a0a0a" />
     <meta name="msapplication-TileColor"  content="#0a0a0a" />
 
@@ -169,7 +187,7 @@
         "description": "Personal website of Ilya Shmakov (geminishkv) — AppSec Team Lead at LANIT, FinDevSecOps community leader, organizer of the first DevSecOps hackathon in Russia, lecturer at Bauman MSTU and MIPT.",
         "inLanguage": ["ru", "en"],
         "mainEntity": { "@id": "https://geminishkv.tech/#person" },
-        "dateModified": "2026-04-02",
+        "dateModified": "2026-04-08",
         "hasPart": [
           {
             "@type": "WebPageElement",

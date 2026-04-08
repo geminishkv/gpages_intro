@@ -34,8 +34,8 @@
 
 .card-base--elevated:hover,
 .card-base--elevated:focus-visible {
-  border-color: rgba(213, 26, 26, 0.4);
-  box-shadow: 0 0 32px rgba(213, 26, 26, 0.08);
+  border-color: var(--color-red-a40);
+  box-shadow: 0 0 32px var(--color-red-a08);
 }
 
 /* ── Card inner padding ── */

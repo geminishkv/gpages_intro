@@ -3,7 +3,7 @@
   position: fixed;
   inset: 0;
   z-index: var(--z-overlay, 500);
-  background: rgba(0, 0, 0, 0.8);
+  background: var(--color-black-a80);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -208,7 +208,7 @@
   letter-spacing: 0.06em;
   color: var(--color-white, #fff);
   background: transparent;
-  border: 1px solid rgba(213, 26, 26, 0.35);
+  border: 1px solid var(--color-red-a35);
   border-radius: var(--radius-md, 4px);
   text-decoration: none;
   transition: background 0.2s, border-color 0.2s;
@@ -216,8 +216,8 @@
 }
 
 .about-resume-btn:hover {
-  background: rgba(213, 26, 26, 0.1);
-  border-color: rgba(213, 26, 26, 0.6);
+  background: var(--color-red-a10);
+  border-color: var(--color-red-a60);
 }
 
 .about-section {
@@ -278,83 +278,6 @@
   color: var(--text-tertiary, #555555);
 }
 
-/* ── Tool groups ── */
-.about-toolgroup {
-  display: flex;
-  gap: 14px;
-  margin-bottom: 14px;
-  align-items: flex-start;
-}
-
-.about-toolgroup__label {
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-tertiary, #555555);
-  white-space: nowrap;
-  min-width: 150px;
-  padding-top: 4px;
-}
-
-/* ── Chips ── */
-.about-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
-}
-
-.about-chip {
-  display: inline-block;
-  padding: 4px 10px;
-  border: 1px solid #252525;
-  border-radius: 2px;
-  font-size: 0.8rem;
-  color: var(--text-secondary, #888888);
-  background: #161616;
-  letter-spacing: 0.02em;
-  transition: border-color 0.2s, color 0.2s;
-}
-
-.about-chip:hover {
-  border-color: #3a3a3a;
-  color: #bbbbbb;
-}
-
-/* ── Certificates ── */
-.about-certs-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 12px;
-}
-
-.about-cert {
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-  padding: 16px 18px;
-  background: var(--border-subtle, #141414);
-  border: 1px solid var(--border-default, #1a1a1a);
-  border-radius: var(--radius-md, 4px);
-  transition: border-color 0.2s;
-}
-
-.about-cert:hover { border-color: var(--border-strong, #2a2a2a); }
-
-.about-cert__area {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #D51A1A;
-}
-
-.about-cert__title {
-  font-size: 0.92rem;
-  color: #cccccc;
-  line-height: 1.45;
-}
-
 /* ── Responsive ── */
 @media (max-width: 900px) {
   .about-overlay { top: 76px; }
@@ -364,16 +287,13 @@
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 576px) {
   .about-modal__header  { padding: 16px 20px; }
   .about-modal__avatar  { width: 96px; height: 96px; }
   .about-tab-content    { padding: 20px 20px 32px; }
   .about-tabs           { padding: 0 20px; overflow-x: auto; }
   .about-tab            { padding: 12px 14px; font-size: 0.78rem; white-space: nowrap; }
   .about-info           { grid-template-columns: 1fr; }
-  .about-toolgroup      { flex-direction: column; gap: 6px; }
-  .about-toolgroup__label { min-width: unset; }
-  .about-certs-grid     { grid-template-columns: 1fr; }
 }
 
 @media print {

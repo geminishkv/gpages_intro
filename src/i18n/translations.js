@@ -114,10 +114,10 @@ export const translations = {
         url: 'https://github.com/geminishkv/course_labs',
       },
       {
-        name: 'sbom_genformatter',
+        name: 'sbom_genform',
         desc: 'CLI-инструмент для генерации и форматирования SBOM (CycloneDX / SPDX) с интеграцией в CI/CD-пайплайны.',
         lang: 'Python', langColor: '#3572A5', stars: 4, forks: 0,
-        url: 'https://github.com/geminishkv/sbom_genformatter',
+        url: 'https://github.com/geminishkv/sbom_genform',
       },
       {
         name: 'semgrep_java_custom_ruleset',
@@ -346,10 +346,10 @@ export const translations = {
         url: 'https://github.com/geminishkv/course_labs',
       },
       {
-        name: 'sbom_genformatter',
+        name: 'sbom_genform',
         desc: 'CLI tool for generating and formatting SBOM (CycloneDX / SPDX) with CI/CD pipeline integration.',
         lang: 'Python', langColor: '#3572A5', stars: 4, forks: 0,
-        url: 'https://github.com/geminishkv/sbom_genformatter',
+        url: 'https://github.com/geminishkv/sbom_genform',
       },
       {
         name: 'semgrep_java_custom_ruleset',

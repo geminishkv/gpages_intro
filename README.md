@@ -17,9 +17,10 @@
 * **SplashScreen** — Canvas2D shader (brand red→gold) + SVG pretitle
 * **Holographic Monitor** — CSS floating monitor с glow + Python typewriter
 * **Typewriter** — DOS-стиль набор заголовка с glitch-эффектом по символам
-* **Blog** — 175 постов из Telegram с переводом RU→EN, пагинация, статические SEO-страницы
+* **Blog** — 182 поста из Telegram с переводом RU→EN, пагинация, статические SEO-страницы
 * **Gaming** — PSN/Xbox статистика: уровень, трофеи, platinum wall (90+)
-* **SEO** — JSON-LD, OG, Twitter Card, sitemap (375 URL), RSS (RU+EN), llms.txt, hreflang
+* **SEO** — JSON-LD, OG, Twitter Card, sitemap (390 URL), RSS (RU+EN), llms.txt, hreflang
+* **Security** — CSP, X-Frame-Options, Referrer-Policy, Permissions-Policy
 * **Privacy** — политика конфиденциальности (ФЗ-152), cookie-баннер, дисклеймер Meta/LinkedIn
 
 Сайт: **[geminishkv.tech](https://geminishkv.tech)**
@@ -34,12 +35,13 @@
 |------|-----------|
 | UI-фреймворк | React 18 (CRA) |
 | Анимации | anime.js 3.2.2 + IntersectionObserver + CSS keyframes |
-| Стили | CSS Design System (72 токена, custom properties, clamp, clip-path) |
+| Стили | CSS Design System (90+ токенов, custom properties, clamp, clip-path) |
 | i18n | LangContext (RU/EN) — localStorage, без сторонних библиотек |
 | Деплой | `scripts/deploy.js` (git) → GitHub Pages, ветка `gh-pages` |
 | Домен | geminishkv.tech (reg.ru + GitHub Pages custom domain) |
-| SEO | JSON-LD, OG, Twitter Card, hreflang, sitemap.xml (375 URL), RSS, llms.txt |
-| CI/CD | GitHub Actions — единый `ci.yml`: lint + build на push, weekly update + deploy по cron |
+| SEO | JSON-LD, OG, Twitter Card, hreflang, sitemap.xml (390 URL), RSS, llms.txt |
+| Security | CSP meta-tag, X-Frame-Options, Referrer-Policy, Permissions-Policy |
+| CI/CD | GitHub Actions — `ci.yml`: lint + audit + build на push, weekly update + deploy по cron |
 
 ***
 
@@ -51,19 +53,19 @@
 * **BrandColumn** — каскадная анимация: materialize → diamond rotate → pulse ring → slide-up (синхронизация с Mac)
 * **GlitchLabel** — заголовки секций печатаются с glitch при скролле (IntersectionObserver)
 * **Badges marquee** — бесконечный скролл логотипов достижений
-* **NoticeBar** — правовое уведомление + дисклеймер Meta/LinkedIn (ФЗ, решение суда)
+* **NoticeBar** — правовое уведомление + дисклеймер Meta/LinkedIn (ФЗ, решение суда), reshow раз в 15 мин
 * **CookieBanner** — cookie-consent (ФЗ-152), reshow раз в 30 мин
 * **Stats** — 5 ключевых метрик с анимацией count-up через requestAnimationFrame
 * **Projects** — карточки GitHub-репозиториев (stars, forks, язык)
-* **Blog** — 175 постов из Telegram `shmakovis_appsec`; превью 14 последних на главной; `/blog/` с пагинацией по 15; статические SEO-страницы `/blog/{id}/` (RU) и `/blog/en/{id}/` (EN); переключатель RU/EN
+* **Blog** — 182 поста из Telegram `shmakovis_appsec`; превью 14 последних на главной; `/blog/` с пагинацией по 15; статические SEO-страницы `/blog/{id}/` (RU) и `/blog/en/{id}/` (EN); переключатель RU/EN
 * **Videos** — YouTube-карточки: подкаст по безопасной разработке, интервью BISA
 * **Experience** — 6 мест работы в виде карточек с логотипами
-* **Tools** — Domains (skill-карточки с progress bar) + Tech Stack (8 категорий) + Certifications
+* **Tools** — Tech Stack (8 категорий) + Certifications + Domains (skill-карточки)
 * **Gaming** — PSN и Xbox статистика: уровень, трофеи, platinum wall (90+), Instagram, game history
 * **About modal** — попап с резюме (ссылка на hh.ru), навыками, достижениями; focus trap
 * **Nav** — i18n (RU/EN), SVG бургер с морфингом, LangSwitch toggle, glass-эффект при скролле
 * **Кнопки** — PackageBtn (hacker glitch), ContentBtn (cyber border), ContactBtn (pill + status dot), DownloadBtn (progress animation), SocialIcons (slide-in SVG)
-* **Responsive** — адаптив (≤576px, ≤900px, десктоп); `scroll-behavior: smooth`
+* **Responsive** — 5 breakpoints (1200/900/768/576/420px); `scroll-behavior: smooth`
 * **prefers-reduced-motion** — все анимации отключаются по системной настройке
 * **404** — дино-раннер в стиле Chrome, стилизован под бренд
 * **Privacy** — `/privacy/` статическая страница (ФЗ-152, cookie, права пользователя)
@@ -72,7 +74,7 @@
 
 ### Design System
 
-72 CSS-токена в `:root` (App.css):
+90+ CSS-токенов в `:root` (App.css):
 
 | Категория | Токенов | Примеры |
 |-----------|---------|---------|
@@ -83,8 +85,23 @@
 | Radius | 4 | `--radius-sm` (3px) → `--radius-full` (999px) |
 | Z-index | 9 | `--z-sticky` (100) → `--z-notice` (9000) |
 | Shadows | 5 | `--shadow-red-sm/md/lg`, `--shadow-dark-sm/md` |
-| Red alpha | 6 | `--color-red-a08` → `--color-red-a50` |
+| Red alpha | 12 | `--color-red-a06` → `--color-red-a60` |
+| Gold alpha | 8 | `--color-gold-a06` → `--color-gold-a60` |
+| Black/White alpha | 7 | `--color-black-a20` → `--color-black-a80`, `--color-white-a*` |
+| Nav backgrounds | 2 | `--nav-bg`, `--nav-bg-solid` |
 | Transitions | 5 | `--duration-fast` (0.15s), `--ease-spring` |
+
+***
+
+### Security
+
+| Заголовок | Значение |
+|-----------|---------|
+| Content-Security-Policy | `default-src 'self'`; script/style/font/img/connect whitelisted |
+| X-Content-Type-Options | `nosniff` |
+| X-Frame-Options | `DENY` |
+| Referrer-Policy | `strict-origin-when-cross-origin` |
+| Permissions-Policy | `camera=(), microphone=(), geolocation=(), payment=()` |
 
 ***
 
@@ -92,12 +109,14 @@
 
 | Workflow | Триггер | Секреты | Действие |
 |----------|---------|---------|----------|
-| `ci.yml` — **build** | push / PR → `gpages` | `YM_ID` | `npm ci` → `eslint` → `npm run build` |
-| `ci.yml` — **update-and-deploy** | cron Пн 07:00 UTC / manual | `STRATEGE_COOKIE`, `YM_ID` | TG (incremental merge) + Instagram + gaming + stats → sitemap + RSS → коммит → build → blog pages → deploy gh-pages → ping Yandex |
+| `ci.yml` — **build** | push / PR → `gpages` | `YM_ID` | `npm install` → `eslint` → `npm audit` → `npm run build` |
+| `ci.yml` — **update-and-deploy** | cron Пн 07:00 UTC / manual | `STRATEGE_COOKIE`, `YM_ID` | TG + Instagram + gaming + stats → sitemap + RSS → коммит → build → blog pages → deploy gh-pages → ping Yandex |
 
 Ручной запуск: `workflow_dispatch` с опцией `skip_data`.
 
 Полный скрейп всех постов: `node scripts/update-tg-posts.js --all`
+
+Hardening: pinned action SHA, least-privilege permissions (`contents: read` по умолчанию, `write` только для deploy).
 
 ***
 
@@ -106,7 +125,7 @@
 | Компонент | Описание |
 |-----------|---------|
 | `index.html` | JSON-LD Person / ProfilePage / WebSite / BreadcrumbList, OG, Twitter Card, geo, Яндекс.Вебмастер, canonical, hreflang RU/EN, LCP preload, 120+ keywords |
-| `sitemap.xml` | 375 URL: главная + privacy + 24 индексных блога (пагинация) + 175 RU + 174 EN постов; hreflang cross-links |
+| `sitemap.xml` | 390 URL: главная + privacy + индексные страницы блога + 182 RU + EN постов; hreflang cross-links |
 | `rss.xml` / `rss-en.xml` | RSS 2.0 фиды блога (RU и EN); atom:link, enclosure |
 | `llms.txt` | Описание для AI-краулеров (ChatGPT, Perplexity, Gemini, Copilot) |
 | `robots.txt` | Yandex Clean-param, блокировка scrapers (SemrushBot, AhrefsBot, MJ12bot) |
@@ -119,7 +138,7 @@
 
 ```bash
 git clone -b gpages https://github.com/geminishkv/gpages_intro.git
-cd gpages
+cd gpages_intro
 npm install
 npm start                  # React dev → http://localhost:3000
 npm run build && node scripts/generate-blog-pages.js
@@ -134,7 +153,7 @@ node scripts/update-tg-posts.js --all  # ВСЕ посты (пагинация, 
 node scripts/update-instagram.js       # Instagram посты
 node scripts/update-gaming.js          # PSN/Xbox статистика
 node scripts/update-stats.js           # GitHub stars/forks
-node scripts/generate-sitemap.js       # sitemap.xml (375 URL)
+node scripts/generate-sitemap.js       # sitemap.xml (390 URL)
 node scripts/generate-rss.js           # rss.xml (RU) + rss-en.xml (EN)
 ```
 
@@ -155,18 +174,18 @@ gpages/
 ├── public/
 │   ├── img/
 │   │   ├── badges/           # Логотипы достижений (marquee)
-│   │   ├── blog/             # Обложки постов Telegram (175 файлов)
+│   │   ├── blog/             # Обложки постов Telegram
 │   │   ├── companies/        # Логотипы работодателей
 │   │   ├── gaming/psn/ xbox/ # Обложки трофеев и игр
 │   │   ├── hero/             # UwU, аватар
 │   │   ├── instagram/        # Кеш обложек Instagram
-│   │   ├── logotype/         # SVG логотипы (logo_black, logo_white, symbol_2_black)
+│   │   ├── logotype/         # SVG логотипы
 │   │   ├── splash/           # Заставка сплеш-экрана
 │   │   └── yt_preroll/       # Превью YouTube-видео
 │   ├── privacy/index.html    # Политика конфиденциальности
 │   ├── 404.html              # SPA fallback + дино-раннер
-│   ├── index.html            # SEO: JSON-LD, OG, 72+ meta tags
-│   ├── sitemap.xml           # 375 URL с hreflang
+│   ├── index.html            # SEO: JSON-LD, OG, CSP, 72+ meta tags
+│   ├── sitemap.xml           # 390 URL с hreflang
 │   ├── rss.xml / rss-en.xml  # RSS-фиды
 │   ├── llms.txt              # AI-краулеры
 │   └── robots.txt            # Yandex + scrapers block
@@ -175,9 +194,9 @@ gpages/
 │   │   ├── SplashScreen.js   # Shader canvas + pretitle SVG (30 мин reshow)
 │   │   ├── MainPage.js       # Корневой layout, scroll lock
 │   │   ├── Nav.js            # SVG бургер морфинг, LangSwitch, i18n
-│   │   ├── NoticeBar.js      # Уведомление + дисклеймер Meta/LinkedIn
+│   │   ├── NoticeBar.js      # Уведомление (15 мин reshow)
 │   │   ├── CookieBanner.js   # Cookie consent (30 мин reshow)
-│   │   ├── Hero.js           # Holographic monitor + Python typewriter + badges + кнопки
+│   │   ├── Hero.js           # Holographic monitor + typewriter + badges + кнопки
 │   │   ├── GlitchLabel.js    # Glitch typewriter для заголовков секций
 │   │   ├── BrandColumn.js    # Каскадная анимация (forwardRef)
 │   │   ├── Stats.js          # Count-up (requestAnimationFrame)
@@ -185,7 +204,7 @@ gpages/
 │   │   ├── Blog.js           # 14 последних постов → /blog/{id}/
 │   │   ├── Videos.js         # YouTube cards
 │   │   ├── Experience.js     # Карточки опыта
-│   │   ├── Tools.js          # SkillCard: Domains + Tech Stack + Certs
+│   │   ├── Tools.js          # Domains + Tech Stack + Certs
 │   │   ├── Gaming.js         # PSN + Xbox + Instagram + platinum wall
 │   │   ├── Footer.js
 │   │   ├── SicParvisMagnaPill.js
@@ -195,19 +214,15 @@ gpages/
 │   ├── i18n/translations.js  # RU/EN + nav + sections
 │   ├── constants/index.js
 │   ├── data/
-│   │   ├── tg-posts.json     # 175 постов Telegram (CI incremental)
+│   │   ├── tg-posts.json     # 182 поста Telegram (CI incremental)
 │   │   ├── instagram.json    # Instagram (CI)
 │   │   └── gaming.json       # PSN/Xbox (CI)
 │   └── styles/
-│       ├── App.css           # 72 design tokens (:root)
+│       ├── App.css           # 90+ design tokens (:root)
+│       ├── Buttons.css       # ContactBtn + ContentBtn + PackageBtn + DownloadBtn + SocialIcons
 │       ├── CardBase.css      # Общий фундамент карточек
 │       ├── SkillCard.css     # Domains + Tech Stack progress bars
 │       ├── LangSwitch.css    # Toggle RU/EN
-│       ├── SocialIcons.css   # LinkedIn/Instagram SVG icons
-│       ├── ContactBtn.css    # Telegram/Email pill buttons
-│       ├── ContentBtn.css    # Cyber border buttons
-│       ├── PackageBtn.css    # Hacker glitch buttons
-│       ├── DownloadBtn.css   # Download progress animation
 │       ├── LogoGlow.css      # Rotating gradient ring
 │       ├── GlitchLabel.css   # Typewriter cursor
 │       ├── CookieBanner.css  # Cookie consent card
@@ -219,7 +234,7 @@ gpages/
 │   ├── update-instagram.js   # Instagram + cleanup orphans
 │   ├── update-gaming.js      # PSN (stratege.ru) + Xbox
 │   ├── update-stats.js       # GitHub API
-│   ├── generate-sitemap.js   # 375 URL + hreflang + ping Yandex
+│   ├── generate-sitemap.js   # 390 URL + hreflang + ping Yandex
 │   ├── generate-rss.js       # RSS RU + EN
 │   ├── generate-blog-pages.js # Index (пагинация) + post pages (RU+EN)
 │   └── deploy.js             # gh-pages (Node 25 compatible)

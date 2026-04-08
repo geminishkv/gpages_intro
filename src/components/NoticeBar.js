@@ -2,26 +2,32 @@ import { useState, useEffect } from 'react';
 import '../styles/NoticeBar.css';
 import { useLang } from '../context/LangContext';
 
-const SESSION_KEY = 'notice_dismissed';
+const TS_KEY    = 'notice_ts';
+const RESHOW_MS = 15 * 60 * 1000; // 15 минут
+
+function shouldShow() {
+  try {
+    const ts = localStorage.getItem(TS_KEY);
+    if (!ts) return true;
+    return Date.now() - Number(ts) > RESHOW_MS;
+  } catch { return true; }
+}
 
 export default function NoticeBar({ animDone }) {
   const [visible, setVisible] = useState(false);
   const { t } = useLang();
   const n = t.notice;
 
-  // Show notice only after the entry animation completes
   useEffect(() => {
     if (!animDone) return;
-    try {
-      if (sessionStorage.getItem(SESSION_KEY)) return;
-      const timer = setTimeout(() => setVisible(true), 600);
-      return () => clearTimeout(timer);
-    } catch { /* ignore */ }
+    if (!shouldShow()) return;
+    const timer = setTimeout(() => setVisible(true), 600);
+    return () => clearTimeout(timer);
   }, [animDone]);
 
   function dismiss() {
     setVisible(false);
-    try { sessionStorage.setItem(SESSION_KEY, '1'); } catch { /* ignore */ }
+    try { localStorage.setItem(TS_KEY, String(Date.now())); } catch { /* ignore */ }
   }
 
   return (

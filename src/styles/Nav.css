@@ -14,10 +14,10 @@
 }
 
 .nav--scrolled {
-  background: rgba(10, 10, 10, 0.82);
+  background: var(--nav-bg);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05), 0 4px 32px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 1px 0 var(--color-white-a05), 0 4px 32px var(--color-black-a50);
 }
 
 .nav__logo {
@@ -54,7 +54,7 @@
   display: inline-flex;
   align-items: center;
   border-radius: 25px;
-  background: rgba(0, 0, 0, 0.4);
+  background: var(--color-black-a40);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   padding: 0 6px;
@@ -90,7 +90,7 @@
 .nav__links a:hover::before,
 .nav__links .nav__link-btn:hover::before {
   background: linear-gradient(to bottom, var(--color-red, #D51A1A), #a01414);
-  box-shadow: 0 3px 16px rgba(213, 26, 26, 0.4);
+  box-shadow: 0 3px 16px var(--color-red-a40);
   transform: scale(1.15);
 }
 
@@ -112,7 +112,7 @@
 
 .nav__links a.nav__link--secondary:hover::before {
   background: linear-gradient(to bottom, var(--text-muted, #333333), #222);
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 3px 12px var(--color-black-a40);
 }
 
 .nav__links a.nav__link--secondary:hover {
@@ -187,7 +187,7 @@
   gap: 40px;
   position: fixed;
   inset: 0;
-  background: rgba(10, 10, 10, 0.97);
+  background: var(--nav-bg-solid);
   z-index: var(--z-nav-mobile, 1100);
   animation: overlayIn 0.8s ease both;
 }
@@ -222,7 +222,7 @@
   color: var(--color-red);
 }
 
-/* ── Compact nav: fixed position at ≤900px ── */
+/* ── Compact nav + burger at ≤900px ── */
 @media (max-width: 900px) {
   .nav {
     padding: 18px 24px;
@@ -238,13 +238,9 @@
 
   .nav__logo-img { height: 36px; width: 36px; }
   .nav__brand    { font-size: 1.2rem; }
-}
-
-/* ── Burger replaces links at ≤1050px ── */
-@media (max-width: 1050px) {
-  .nav__right  { gap: var(--space-3, 12px); }
-  .nav__burger { display: block; }
-  .nav__links  { display: none; }
+  .nav__right    { gap: var(--space-3, 12px); }
+  .nav__burger   { display: block; }
+  .nav__links    { display: none; }
 
   .nav__burger svg { height: 2.6em; }
 }

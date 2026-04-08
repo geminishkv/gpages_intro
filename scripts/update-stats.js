@@ -9,7 +9,7 @@ const OWNER = 'geminishkv';
 const REPOS = [
   'oss_toolchainmap',
   'course_labs',
-  'sbom_genformatter',
+  'sbom_genform',
   'semgrep_java_custom_ruleset',
   'geoip-tool',
 ];

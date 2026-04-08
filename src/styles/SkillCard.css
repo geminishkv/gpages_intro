@@ -23,8 +23,8 @@
 }
 
 @keyframes domains-glow {
-  0%, 100% { box-shadow: 0 0 12px rgba(213, 26, 26, 0.35), 0 0 30px rgba(213, 26, 26, 0.1); }
-  50%      { box-shadow: 0 0 16px rgba(249, 179, 97, 0.4), 0 0 40px rgba(249, 179, 97, 0.12); }
+  0%, 100% { box-shadow: 0 0 12px var(--color-red-a35), 0 0 30px var(--color-red-a10); }
+  50%      { box-shadow: 0 0 16px var(--color-gold-a40), 0 0 40px var(--color-gold-a12); }
 }
 
 .skill-card__header {
@@ -147,7 +147,7 @@
 
 .skill-grid__more:hover {
   border-color: var(--color-red-a50, rgba(213, 26, 26, 0.5));
-  box-shadow: var(--shadow-red-sm, 0 0 12px rgba(213, 26, 26, 0.1));
+  box-shadow: var(--shadow-red-sm, 0 0 12px var(--color-red-a10));
   color: var(--color-red, #D51A1A);
 }
 

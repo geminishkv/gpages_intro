@@ -8,13 +8,76 @@
     <atom:link href="https://geminishkv.tech/rss.xml" rel="self" type="application/rss+xml"/>
     <description>Блог по AppSec &amp; DevSecOps — Илья Шмаков (geminishkv)</description>
     <language>ru-RU</language>
-    <lastBuildDate>Thu, 02 Apr 2026 16:01:00 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 08 Apr 2026 23:25:08 GMT</lastBuildDate>
     <managingEditor>shmakovis@inbox.ru (Илья Шмаков)</managingEditor>
     <image>
       <url>https://geminishkv.tech/img/hero/avatar.jpg</url>
       <title>geminishkv — AppSec &amp; DevSecOps Блог (RU)</title>
       <link>https://geminishkv.tech/</link>
     </image>
+    <item>
+      <title>Зачем AppSec для бизнеса?</title>
+      <link>https://geminishkv.tech/blog/306/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/306/</guid>
+      <pubDate>Wed, 08 Apr 2026 00:00:00 GMT</pubDate>
+      <description>🤔 Зачем AppSec для бизнеса? Салют,  Снова по больному, когда есть недопонимание зачем вообще ИБешечка и почему мы вообще существуем. Давай посмотрим, как можно по другому обьяснить и донести такую мысль до ключевого человека о принятии решения. Вот какой вариант я могу предложит</description>
+      <enclosure url="https://geminishkv.tech/img/blog/306.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Как Cursor вайпнул ПК подписчика</title>
+      <link>https://geminishkv.tech/blog/305/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/305/</guid>
+      <pubDate>Wed, 08 Apr 2026 00:00:00 GMT</pubDate>
+      <description>Как Cursor вайпнул ПК подписчика Подписчик поделился историей. Ситуация довольно банальная: чел попросил Cursor удалить дубликаты статей в диссертации, а тот сгенерировал команду с ошибкой экранирования кавычек. Моделька использовал обратный слеш, забыв, что в Windows &amp;#092; это </description>
+      <enclosure url="https://geminishkv.tech/img/hero/avatar.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>#lol</title>
+      <link>https://geminishkv.tech/blog/304/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/304/</guid>
+      <pubDate>Tue, 07 Apr 2026 00:00:00 GMT</pubDate>
+      <description>#lol</description>
+      <enclosure url="https://geminishkv.tech/img/blog/304.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Салют, проблема вайба, а я орнул</title>
+      <link>https://geminishkv.tech/blog/303/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/303/</guid>
+      <pubDate>Tue, 07 Apr 2026 00:00:00 GMT</pubDate>
+      <description>Салют, проблема вайба, а я орнул #lol</description>
+      <enclosure url="https://geminishkv.tech/img/blog/303.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Linux Commands Mindmap</title>
+      <link>https://geminishkv.tech/blog/302/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/302/</guid>
+      <pubDate>Mon, 06 Apr 2026 00:00:00 GMT</pubDate>
+      <description>🤔 Linux Commands Mindmap Салюты,  Сегодня хочу поделиться материалом по базовым, но рабочим Linux‑командам для инженеров, которые постоянно копаются в серверах, контейнерах и пайплайнах. Эту карту собрали из реально нужных команд в бое: от навигации по файловой системе до работы</description>
+      <enclosure url="https://geminishkv.tech/img/blog/302.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>geminishkv.tech</title>
+      <link>https://geminishkv.tech/blog/296/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/296/</guid>
+      <pubDate>Fri, 03 Apr 2026 00:00:00 GMT</pubDate>
+      <description>🏆 geminishkv.tech Салют, UwU (кайфую от этого 😁), короче я тут прям капитально допилил и зарелизил прям полноценный и очень крутой CPA с ключевыми фишками по стекам, прям стоит обратить внимание на него, а с тобой делюсь сразу первым, покликай - там интересно 🤔 Контент визуалк</description>
+      <enclosure url="https://geminishkv.tech/img/blog/296.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Добавляю визуальную картинку</title>
+      <link>https://geminishkv.tech/blog/289/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/289/</guid>
+      <pubDate>Thu, 02 Apr 2026 00:00:00 GMT</pubDate>
+      <description>Добавляю визуальную картинку 🤔</description>
+      <enclosure url="https://geminishkv.tech/img/blog/289.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
     <item>
       <title>AppSec Labs to pump yourself Release v.2.0.0</title>
       <link>https://geminishkv.tech/blog/288/</link>

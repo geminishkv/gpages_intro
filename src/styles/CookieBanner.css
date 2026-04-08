@@ -17,8 +17,8 @@
   gap: 12px;
   overflow: hidden;
   box-shadow:
-    0 2px 20px rgba(0, 0, 0, 0.3),
-    0 0 0 1px rgba(213, 26, 26, 0.06);
+    0 2px 20px var(--color-black-a30),
+    0 0 0 1px var(--color-red-a06);
   animation: cookie-slide-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
@@ -78,26 +78,26 @@
 .cookie-banner__btn--accept {
   background: var(--color-red, #D51A1A);
   color: var(--color-white, #fff);
-  box-shadow: 0 4px 6px -1px rgba(213, 26, 26, 0.3),
-              0 2px 4px -1px rgba(213, 26, 26, 0.2);
+  box-shadow: 0 4px 6px -1px var(--color-red-a30),
+              0 2px 4px -1px var(--color-red-a20);
 }
 
 .cookie-banner__btn--accept:hover {
   background: var(--color-red-vivid, #E23535);
-  box-shadow: 0 10px 15px -3px rgba(213, 26, 26, 0.3),
-              0 4px 6px -2px rgba(213, 26, 26, 0.2);
+  box-shadow: 0 10px 15px -3px var(--color-red-a30),
+              0 4px 6px -2px var(--color-red-a20);
 }
 
 .cookie-banner__btn--decline {
   background: var(--border-strong, #2a2a2a);
   color: var(--text-secondary, #888888);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 6px -1px var(--color-black-a20);
   cursor: default;
 }
 
 .cookie-banner__btn--decline:hover {
   background: var(--text-muted, #333333);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 15px -3px var(--color-black-a30);
 }
 
 @keyframes cookie-slide-in {

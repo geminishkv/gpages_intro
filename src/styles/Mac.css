@@ -71,13 +71,13 @@
 @keyframes mac-terminal-glow {
   0%, 100% {
     box-shadow:
-      0 0 15px rgba(213, 26, 26, 0.5),
-      0 0 40px rgba(213, 26, 26, 0.2);
+      0 0 15px var(--color-red-a50),
+      0 0 40px var(--color-red-a20);
   }
   50% {
     box-shadow:
-      0 0 20px rgba(249, 179, 97, 0.6),
-      0 0 50px rgba(249, 179, 97, 0.25);
+      0 0 20px var(--color-gold-a60),
+      0 0 50px var(--color-gold-a25);
   }
 }
 

@@ -5,7 +5,7 @@
 .blog {
   padding: clamp(32px, 4vw, 60px) clamp(40px, 5vw, 120px) clamp(48px, 5vw, 80px);
   border-top: 2px solid;
-  border-image: linear-gradient(to right, #D51A1A 0%, rgba(213, 26, 26, 0.15) 60%, transparent 100%) 1;
+  border-image: linear-gradient(to right, #D51A1A 0%, var(--color-red-a15) 60%, transparent 100%) 1;
   max-width: 1900px;
   width: 100%;
   align-self: center;
@@ -25,11 +25,6 @@
   gap: 12px;
 }
 
-.blog__lang-note {
-  font-size: 0.7rem;
-  color: var(--text-muted, #333333);
-  letter-spacing: 0.06em;
-}
 
 .blog__label {
   font-size: 0.85rem;
@@ -141,7 +136,7 @@
 .blog-tag--sm { font-size: 0.6rem; }
 
 .blog-card:hover .blog-tag,
-.blog-card:focus-visible .blog-tag { color: #D51A1A; border-color: rgba(213,26,26,0.25); }
+.blog-card:focus-visible .blog-tag { color: #D51A1A; border-color: var(--color-red-a25); }
 
 /* ── CTA block ── */
 .blog-cta {
@@ -166,8 +161,8 @@
 }
 
 .blog-cta:hover {
-  border-color: rgba(213, 26, 26, 0.5);
-  box-shadow: 0 0 32px rgba(213, 26, 26, 0.08);
+  border-color: var(--color-red-a50);
+  box-shadow: 0 0 32px var(--color-red-a08);
   color: var(--text-pale, #aaaaaa);
 }
 
@@ -202,38 +197,12 @@
 
 /* ── CTA glow animation ── */
 @keyframes cta-glow {
-  0%, 100% { box-shadow: 0 0 12px rgba(213, 26, 26, 0.35), 0 0 30px rgba(213, 26, 26, 0.1); }
-  50% { box-shadow: 0 0 16px rgba(249, 179, 97, 0.4), 0 0 40px rgba(249, 179, 97, 0.12); }
+  0%, 100% { box-shadow: 0 0 12px var(--color-red-a35), 0 0 30px var(--color-red-a10); }
+  50% { box-shadow: 0 0 16px var(--color-gold-a40), 0 0 40px var(--color-gold-a12); }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .blog-cta { animation: none; }
-}
-
-/* ── Show more → links to /blog/ ── */
-.blog__show-more {
-  margin-top: 14px;
-  background: var(--surface-secondary, #0d0d0d);
-  border: 1px solid rgba(213, 26, 26, 0.2);
-  border-radius: 4px;
-  color: var(--text-secondary, #888888);
-  font-size: 0.72rem;
-  font-family: inherit;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 12px 18px;
-  cursor: pointer;
-  transition: border-color 0.25s, box-shadow 0.25s, color 0.2s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-}
-
-.blog__show-more:hover {
-  border-color: rgba(213, 26, 26, 0.5);
-  box-shadow: 0 0 32px rgba(213, 26, 26, 0.08);
-  color: #D51A1A;
 }
 
 /* ── Responsive ── */
@@ -243,6 +212,4 @@
 
 @media (max-width: 576px) {
   .blog__grid { grid-template-columns: 1fr; }
-  .blog-modal-backdrop { padding: 12px; align-items: flex-end; }
-  .blog-modal { max-height: 90vh; border-radius: 6px 6px 0 0; }
 }

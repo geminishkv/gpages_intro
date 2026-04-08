@@ -93,6 +93,8 @@ build/
 .playwright-mcp/
 .sixth/
 .claude/
+skills-lock.json
+.markdownlint.json
 
 # ENV
 .env

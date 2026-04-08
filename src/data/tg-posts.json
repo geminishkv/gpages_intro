@@ -1,12 +1,102 @@
 {
-  "subscribers": 361,
+  "subscribers": 359,
   "posts": [
+    {
+      "id": "306",
+      "text": "🤔 Зачем AppSec для бизнеса?\n\nСалют, \nСнова по больному, когда есть недопонимание зачем вообще ИБешечка и почему мы вообще существуем.\nДавай посмотрим, как можно по другому обьяснить и донести такую мысль до ключевого человека о принятии решения.\nВот какой вариант я могу предложить исходя из своего профиля и что обычно внедряю, когда говорю об этом на конференциях или в целом делюсь с тобой.\n\n1. Что это и зачем нужно?\n\nМы строим систему, при которой каждая поставка кода в прод проверяется на безопасность автоматически. Сейчас у вас код уходит в продакшн без проверки ИБ, или проверка происходит хаотично — раз в квартал, перед аудитом, после инцидента и т.д. Это как пожарная проверка раз в год вместо пожарной сигнализации и вслучае воспламенения возникают риски которые приходится решать в моменте времени.\n\n2. Что конкретно получается? \n\nАвтоматический pipeline, который на каждый commit проверяет код статически (SAST), проверяет зависимости (SCA), сканирует контейнеры, ищет секреты в коде. А также ручное DAST-тестирование web-приложений и API. А также процесс управления найденных уязвимостей — не просто «вот вам PDF-отчёт на 200 страниц», а маршрутизация задач в Jira на конкретных разработчиков с приоритетами и сроками.\n\n3. Почему мы вообще это делаем? \n\nСнижение реального риска инцидента, компрометации, утечки и т.д. Стоимость инцидента против стоимости предотвращения — разница в десятки раз.\n\n4. Почему не может кто-то другой?\n\nСамое простое в этом ответе: нет компетенций в данной области, направления и возможностей правильно строить сразу, а не обучаться в процессе и тратить на это неимоверные косты, иначе бы не было вакансий в поиске для данных позиций. (обычно это работает там, где реально строится все с нуля)\n\nНапример, купить лицензию на инструмент типа Checkmarx, PT Application Inspector, Solar appScreener и делать самим разработчикам ручками, где инструмент без экспертизы — это как МРТ-аппарат без врача. Именно поэтому нужен человек, который настроит правила под ваш стек, отфильтрует ложные срабатывания (достигают более 70% от общих сработок), приоритизирует по реальному риску для бизнеса, встроит в pipeline и т.д. Просто купить сканер и запустить — получите отчёт на 500 страниц, с которым никто не знает что делать и как это решается, плюс что бы получить отчет придется повозиться с настройкой, даже если будет интеграция и настройка от вендора/ интегратора - это дополнительные косты, которые во много раз дороже обойдутся\n\nНо мы внутри уже знаем инфраструктуру, процессы, контуры, Gitlab, Nexus. Мы не тратим 2 месяца на погружение. Плюс мы не просто сканируем и отдаём отчёт — мы строим процесс, который работает после нашего ухода. Автоматизация остаётся у вас, pipeline остаётся у вас, команда обучается и начинает реально работать с этим руками, а не просто бездумно выполняет очередные требования, которые не заточены под их стек.\n\n5. Что получает в итоге заказчик?\n\n• Полностью развёрнутая и настроенная инфраструктура ИБ-тестирования\n• Результаты комплексного анализа защищённости\n• Работающий автоматизированный pipeline ИБ в CI/CD с Quality Gate\n• Процесс управления уязвимостями через ASOC/ ASPM и Jira\n• Управление секретами (Vault)\n• Процесс обработки инцидентов ИБ\n• Аналитические отчёты с оценкой рисков, триажем и рекомендациями\n• Документация: UML pipeline, технический мануал, рекомендации\n• Обученная команда — через совместную работу, консультации и отработку ложно позитивных срабатываний уязвимостей\n• Готовый фундамент для дальнейшего повышения зрелости DevSecOps\n\nПС: ну и накидывай сверху от своего кейса, но явно ты, как и я, периодами уже замучался отвечать на такие вопросы и какой то шаблон тебе пригодится\n\nППС: а скоро тронем еще маркетинг и немного воронки для AppSec, ну да - тут приходится тоже как то с этим работать и как бы только так прокачиваешься 🙃\n\n#devsecops #appsec #paper #reco #pmi #humanres",
+      "date": "2026-04-08",
+      "url": "https://t.me/shmakovis_appsec/306",
+      "views": 55,
+      "tags": [
+        "devsecops",
+        "appsec",
+        "paper",
+        "reco",
+        "pmi",
+        "humanres"
+      ],
+      "image": "/img/blog/306.jpg",
+      "text_en": "🤔 Why AppSec for business?\n\nSalute, \nAgain, it’s painful when there is a misunderstanding about why IBeshechka exists and why we even exist.\nLet's see how we can explain and convey this idea differently to the key person about making a decision.\nHere is what option I can offer based on my profile and what I usually implement when I talk about it at conferences or generally share with you.\n1. What is it and why is it needed?\nWe are building a system in which every code delivered to production is automatically checked for security. Now your code goes into production without IS verification, or verification occurs chaotically - once a quarter, before an audit, after an incident, etc. It’s like a fire inspection once a year instead of a fire alarm, and in the event of a fire, risks arise that have to be addressed at the same time.\n2. What exactly happens?\nAn automatic pipeline that checks the code statically for each commit (SAST), checks dependencies (SCA), scans containers, and looks for secrets in the code. As well as manual DAST testing of web applications and APIs. And also the process of managing found vulnerabilities - not just “here’s a 200-page PDF report,” but routing tasks in Jira to specific developers with priorities and deadlines.\n3. Why are we even doing this?\nReducing the real risk of an incident, compromise, leak, etc. The cost of an incident versus the cost of prevention is a tenfold difference.\n4. Why can't someone else?\nThe simplest thing in this answer: there are no competencies in this area, no direction and no opportunity to build correctly right away, rather than learning in the process and spending incredible amounts on it, otherwise there would be no vacancies in the search for these positions. (usually this works where everything is actually built from scratch)\nFor example, buy a license for a tool like Checkmarx, PT Application Inspector, Solar appScreener and do it manually for the developers themselves, where a tool without expertise is like an MRI machine without a doctor. That is why you need a person who will customize the rules for your stack, filter out false positives (they reach more than 70% of total positives), prioritize them according to the real risk for the business, integrate them into the pipeline, etc. Just buy a scanner and run it - you’ll get a 500-page report that no one knows what to do with or how to solve it, plus to get the report you’ll have to tinker with the setup, even if there is integration and setup from the vendor/integrator - these are additional costs that will cost many times more\nBut internally we already know the infrastructure, processes, circuits, Gitlab, Nexus. We don't spend 2 months diving. Plus, we don’t just scan and report - we build a process that works after we leave. Automation remains with you, the pipeline remains with you, the team learns and begins to actually work with it with their hands, and not just mindlessly fulfill the next requirements that are not tailored to their stack.\n5. What does the customer get as a result?\n\n• Fully deployed and configured information security testing infrastructure\n• Results of a comprehensive security analysis\n• Working automated information security pipeline in CI/CD with Quality Gate\n• Vulnerability management process via ASOC/ASPM and Jira\n• Secrets management (Vault)\n• Information security incident processing process\n• Analytical reports with risk assessment, triage and recommendations\n• Documentation: UML pipeline, technical manual, recommendations\n• Trained team - through collaboration, consultation and testing of false positives for vulnerabilities\n• Ready foundation to further increase DevSecOps maturity\nPS: well, just throw it on top from your case, but obviously you, like me, are already tired of answering such questions from time to time and some kind of template will be useful to you\nPPP: and soon we’ll also touch on marketing and a little funnel for AppSec, well, yes - here you also have to work with it somehow and how to upgrade yourself 🙃\n\n#devsecops #appsec #paper #reco #pmi #humanres"
+    },
+    {
+      "id": "305",
+      "text": "Как Cursor вайпнул ПК подписчика\n\nПодписчик поделился историей. Ситуация довольно банальная: чел попросил Cursor удалить дубликаты статей в диссертации, а тот сгенерировал команду с ошибкой экранирования кавычек. Моделька использовал обратный слеш, забыв, что в Windows &#092; это разделитель путей, а не escape-символ. Этот слеш отделился от пути и превратился в указание удалить корень диска C и rmdir /s /q начал сносить всё подряд, включая системные папки. Бекапов не было, но так как файлы при удалении не затирались, большинство удалось восстановить, хоть осадочек и остался.\n\nМораль довольно простая – не запускайте агентов с полным доступом там, где они могут нанести непоправимый вред. Подойдёт что угодно – Docker, Mac Mini, какой-то Raspberry Pi, виртуалка в облаке, главное чтобы не на основной машине. Злые языки могут даже сказать что не стоит сидеть на винде (по крайней мере без WSL). Ну и бекапы стоить хранить в недоступных для детей агентов месте.\n\nА какой у вас был наибольший косяк агента?\n\n@ai_newz",
+      "date": "2026-04-08",
+      "url": "https://t.me/shmakovis_appsec/305",
+      "views": 91,
+      "tags": [],
+      "text_en": "How Cursor wiped a subscriber's PC\nA subscriber shared a story. The situation is quite trivial: a person asked Cursor to remove duplicate articles in his dissertation, and Cursor generated a command with a quote escaping error. The model used a backslash, forgetting that in Windows \\ is a path separator, not an escape character. This slash separated from the path and turned into an instruction to delete the root of drive C and rmdir /s /q began to demolish everything, including system folders. There were no backups, but since the files were not overwritten when deleted, most were restored, although a residue remained.\nThe moral is quite simple - do not run agents with full access where they can cause irreparable harm. Anything will do - Docker, Mac Mini, some kind of Raspberry Pi, virtual machine in the cloud, the main thing is not on the main machine. Evil tongues may even say that you should not use Windows (at least without WSL). Well, backups should be stored in a place inaccessible to children of agents.\nWhat was your biggest agent failure?\n\n@ai_newz"
+    },
+    {
+      "id": "304",
+      "text": "#lol",
+      "date": "2026-04-07",
+      "url": "https://t.me/shmakovis_appsec/304",
+      "views": 108,
+      "tags": [
+        "lol"
+      ],
+      "image": "/img/blog/304.jpg",
+      "text_en": "#lol"
+    },
+    {
+      "id": "303",
+      "text": "Салют, проблема вайба, а я орнул\n\n#lol",
+      "date": "2026-04-07",
+      "url": "https://t.me/shmakovis_appsec/303",
+      "views": 124,
+      "tags": [
+        "lol"
+      ],
+      "image": "/img/blog/303.jpg",
+      "text_en": "Salute, vibe problem, and I yelled\n\n#lol"
+    },
+    {
+      "id": "302",
+      "text": "🤔 Linux Commands Mindmap\n\nСалюты, \nСегодня хочу поделиться материалом по базовым, но рабочим Linux‑командам для инженеров, которые постоянно копаются в серверах, контейнерах и пайплайнах.\n\nЭту карту собрали из реально нужных команд в бое: от навигации по файловой системе до работы с процессами и сетью. Каждую ветку можно раскрывать и быстро вспоминать синтаксис, не лезя в гугл или ИИ.\n\nЧто ты найдешь внутри?\n\n• Базовые операции с файлами и директориями:\n\n— ls  — показать список файлов и каталогов в текущей директории\n— cd  — сменить текущую директорию\n— cp  — копировать файлы или директории\n— mv  — переместить или переименовать файл/директорию\n— rm  — удалить файл или директорию (с  -r )\n— find  — искать файлы и директории по имени, размеру, времени и т.д.\n— grep  — искать строки по шаблону в файлах или выводе других команд\n\n• Управление процессами и ресурсами:\n\n— ps  — показать список процессов (по пользователю, PID и т.п.)\n— top  — интерактивный монитор процессов и нагрузки\n— htop  — более удобный/ цветной вариант top\n— kill  — отправить сигнал процессу (обычно для завершения)\n— nice  — запустить процесс с заданным приоритетом\n— df  — показать использование дисков (разделов)\n— du  — показать, сколько места занимает каталог/ файл\n\n• Работа с сетью:\n\n— ip  — управление сетевыми интерфейсами, адресами и маршрутами\n— ss  — показать активные сокеты/ подключения (новее netstat)\n— netstat  — старый, но до сих пор встречающийся просмотр соединений и маршрутов\n— curl  — отправить HTTP(S)/прочие запросы, скачать или отправить данные\n— wget  — скачать файлы по HTTP/ HTTPS/ FTP\n— ping  — проверить доступность хоста и задержку\n— traceroute  — показать путь пакетов до удалённого хоста по маршрутизаторам\n\n• Права и пользователи:\n\n— chmod  — изменить права доступа к файлу/ директории\n— chown  — изменить владельца и/ или группу файла\n— sudo  — выполнить команду с повышенными правами (обычно от root)\n— useradd  — создать нового пользователя в системе\n— groupadd  — создать новую группу\n\n• Логи и диагностика:\n\n— journalctl  — просматривать логи systemd‑журнала (службы, ядро, системные события)\n— tail  — показать последние строки файла (часто с  -f  для «подписки» на лог)\n— less  — постранично просматривать длинные файлы с прокруткой\n— dmesg  — вывести сообщения ядра (полезно для диагностики железа, драйверов)\n\nКак использовать?\n\n• Добавлять свои сниппеты и типовые комбинации команд\n• Использовать как onboarding‑материал для новых инженеров и джунов\n• Привязать к задачам DevSecOps: чек‑листы для разборов, расследований, хардненинга и т.п.\n\n#appsec #devsecops #specialty #paper #term",
+      "date": "2026-04-06",
+      "url": "https://t.me/shmakovis_appsec/302",
+      "views": 112,
+      "tags": [
+        "appsec",
+        "devsecops",
+        "specialty",
+        "paper",
+        "term"
+      ],
+      "image": "/img/blog/302.jpg"
+    },
+    {
+      "id": "296",
+      "text": "🏆 geminishkv.tech\n\nСалют,\nUwU (кайфую от этого 😁), короче я тут прям капитально допилил и зарелизил прям полноценный и очень крутой CPA с ключевыми фишками по стекам, прям стоит обратить внимание на него, а с тобой делюсь сразу первым, покликай - там интересно 🤔\n\nКонтент визуалки сразу примапил, доволен, а также имеется английская версия и в том числе контент блога туда же мапится, это оч хорошо \n\nСпасибо за поддержку, обнял-приподнял родной(ая) 🫶 ну и я поделился частью своих интересов, в последующем буду добавлять контент, но это уже совсем другая история\n\nSic Parvis Magna\n\nЖди обновления контента по тулам, там хорошо идет \n\nПС: а когда ты зайдешь на сайт, тебя ждет не глитч анимания, а уже намного эффектнее и приятнее canvas стилизация \n\n#specialty #paper #appsec #devsecops",
+      "date": "2026-04-03",
+      "url": "https://t.me/shmakovis_appsec/296",
+      "views": 141,
+      "tags": [
+        "specialty",
+        "paper",
+        "appsec",
+        "devsecops"
+      ],
+      "image": "/img/blog/296.jpg",
+      "text_en": "🏆 geminishkv.tech\n\nSalute,\nUwU (I get a kick out of this 😁), in short, I’ve just completely completed and released a full-fledged and very cool CPA with key chips on stacks, it’s really worth paying attention to it, and I’m sharing it with you first, call me - it’s interesting 🤔\nI immediately downloaded the content of the visual, I’m happy, and there is also an English version, including the blog content, which is mapped there too, that’s very good\nThank you for your support, I hugged and lifted my family 🫶 well, I shared some of my interests, I will add content in the future, but that’s a completely different story\nSic Parvis Magna\n\nWait for content updates on the tools, it's going well there \n\nPS: when you go to the site, what awaits you is not an animation glitch, but a much more impressive and pleasant canvas stylization\n#specialty #paper #appsec #devsecops"
+    },
+    {
+      "id": "289",
+      "text": "Добавляю визуальную картинку 🤔",
+      "date": "2026-04-02",
+      "url": "https://t.me/shmakovis_appsec/289",
+      "views": 145,
+      "tags": [],
+      "image": "/img/blog/289.jpg",
+      "text_en": "I’m adding a visual picture 🤔"
+    },
     {
       "id": "288",
       "text": "🛠 AppSec Labs to pump yourself Release v.2.0.0\n\nСалют, я снова с апдейтом по лабам, но в этот раз, это прям классная подвижка вперед и развитие для нас обоих.\n\nСмотри, что прикольное добавил:\n• Подготовка рабочего окружения\n• Настройка Git, GPG и GitHub CLI\n• Руководство по оформлению отчётов Gistup\n• Синтаксис, типы данных и паттерны для DevSecOps по yaml\n• Troubleshooting\n\nОбновил и сделал стилизацию:\n• Лицензии ПО\n• Application Security Toolchain\n• Приложение\n\nСейчас прокачиваю лабы, пока обновил первые три с кросс-линками и совсем скоро буду дозаливать, в следующий раз релизну новые лабы 🫶\n\nДизайн и UI/UX\n\n• Полная переработка дизайн-системы: создан tokens.css с CSS custom properties (цвета, типографика, spacing, радиусы, transitions)\n• Устранен render-blocking\n• Переработан адаптив: hero-section, lab-cards, TG-виджет, sidebar, таблицы\n• TG-виджет: на мобилке скрыт embed, оставлена компактная карточка канала\n• Переработана 404-страница: бренд-шрифты (Unbounded + Roboto), SVG-логотип как фон, адаптив через clamp()\n• Добавлен repo-stats.js: звёзды, форки и версия релиза в хедере через GitHub API с кэшированием в localStorage\n• Оптимизация CSS\n• Добавлена анимация логотипа в hero banner\n\nКонтент и материалы\n\n• Страница лицензий (licenses.md): 19 → 41 лицензия, разделение по 7 категориям (Permissive, Weak/Strong Copyleft, Network Copyleft, Public Domain, Creative Commons, Source-Available)\n• Страница AppSec Toolchain (appsec_tt.md): 22 → 29 карточек, разделение по 8 секциям (добавлены MAST, API Security, Fuzzing, IaC Security, KSPM, VDP, WAF, LLM Security)\n• Приложение (APPENDIX.md): 8 → 16 карточек с контекстом для слушателей (Nmap, SAST, SCA, DAST, CIS Benchmark, Secret Detection, GitHub Actions, Risk Analysis)\n• Создана страница Troubleshooting: ~20 карточек с решениями по Git, Linux, Docker, SAST/SCA, DAST, CI/CD, Python\n• Создан YAML Cheatsheet: синтаксис, типы данных, многострочные строки, якоря, подводные камни, примеры для GitHub Actions/Docker Compose/Semgrep\n\nStay tuned&#33; 🙃\n\n#appsec #devsecops #roadmap #specialty #toolchain #techsolution #gost #paper #course #reco #sast #sca #dast #sbom #containersecurity #secrets #riskanalys #techsolution",
       "date": "2026-04-02",
       "url": "https://t.me/shmakovis_appsec/288",
-      "views": 49,
+      "views": 191,
       "tags": [
         "appsec",
         "devsecops",
@@ -34,7 +124,7 @@
       "text": "Мемное начало апреля\n\n#lol",
       "date": "2026-04-01",
       "url": "https://t.me/shmakovis_appsec/287",
-      "views": 106,
+      "views": 146,
       "tags": [
         "lol"
       ],

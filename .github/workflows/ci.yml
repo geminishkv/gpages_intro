@@ -1,3 +1,4 @@
+---
 name: CI
 
 on:
@@ -14,27 +15,28 @@ on:
         type: boolean
         default: false
 
+# ── Least-privilege permissions ──
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  # ── Lint + Build check (runs on every push/PR) ──
+  # ── 1. Lint + Build check (runs on every push/PR) ──
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11  # v4.1.1
         with:
           ref: ${{ github.head_ref || 'gpages' }}
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8  # v4.0.2
         with:
           node-version: '22'
           cache: 'npm'
@@ -42,30 +44,36 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Lint
+      - name: Lint JS
         run: npx eslint src/ --max-warnings 0 || true
+
+      - name: Audit dependencies
+        run: npm audit --audit-level=high || true
 
       - name: Build
         run: npm run build
         env:
           REACT_APP_YM_ID: ${{ secrets.YM_ID }}
 
-  # ── Weekly data update + deploy (schedule / manual only) ──
+  # ── 2. Weekly data update → PR + deploy (schedule / manual only) ──
   update-and-deploy:
     if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
     needs: build
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    permissions:
+      contents: write
+      pull-requests: write
 
     steps:
       - name: Checkout source (gpages branch)
-        uses: actions/checkout@v4
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11  # v4.1.1
         with:
           ref: gpages
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8  # v4.0.2
         with:
           node-version: '22'
           cache: 'npm'
@@ -101,8 +109,10 @@ jobs:
       - name: Generate RSS feeds
         run: node scripts/generate-rss.js
 
-      # ── Commit data changes ──
-      - name: Commit if data changed
+      # ── Commit data to PR branch ──
+      - name: Commit and create PR if data changed
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -113,14 +123,32 @@ jobs:
             src/constants/index.js \
             public/sitemap.xml public/index.html \
             public/rss.xml public/rss-en.xml
-          git diff --cached --quiet \
-            && echo "Nothing to commit." \
-            || git commit -m "chore: weekly update — blog + instagram + gaming + stats + sitemap + rss [skip ci]"
 
-      - name: Push updated data
-        run: git push origin gpages
+          if git diff --cached --quiet; then
+            echo "Nothing to commit."
+          else
+            BRANCH="ci/weekly-update-$(date +%Y%m%d)"
+            git checkout -b "$BRANCH"
+            git commit -m "chore: weekly update — blog + instagram + gaming + stats + sitemap + rss"
+            git push origin "$BRANCH" --force
 
-      # ── Build + Deploy ──
+            # Create or update PR
+            EXISTING_PR=$(gh pr list --head "$BRANCH" --json number --jq '.[0].number' 2>/dev/null || true)
+            if [ -n "$EXISTING_PR" ] && [ "$EXISTING_PR" != "null" ]; then
+              echo "PR #$EXISTING_PR already exists, updated branch."
+            else
+              gh pr create \
+                --title "chore: weekly data update $(date +%Y-%m-%d)" \
+                --body "Automated weekly update: blog, instagram, gaming, stats, sitemap, RSS." \
+                --base gpages \
+                --head "$BRANCH"
+            fi
+
+            # Switch back to gpages for deploy
+            git checkout gpages
+          fi
+
+      # ── Build + Deploy (always, even without data changes) ──
       - name: Build
         run: npm run build
         env:

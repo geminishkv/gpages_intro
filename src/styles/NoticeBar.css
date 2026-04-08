@@ -79,9 +79,9 @@
 }
 
 .notice-bar__close:hover {
-  border-color: rgba(213, 26, 26, 0.4);
+  border-color: var(--color-red-a40);
   color: var(--text-secondary, #888888);
-  box-shadow: 0 4px 10px rgba(213, 26, 26, 0.15);
+  box-shadow: 0 4px 10px var(--color-red-a15);
 }
 
 .notice-bar__disclaimer {
@@ -93,7 +93,7 @@
   margin-top: 8px;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 576px) {
   .notice-bar {
     padding: 0;
     max-height: 20vh;

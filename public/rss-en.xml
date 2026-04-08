@@ -8,13 +8,67 @@
     <atom:link href="https://geminishkv.tech/rss-en.xml" rel="self" type="application/rss+xml"/>
     <description>AppSec &amp; DevSecOps blog by Ilya Shmakov (geminishkv)</description>
     <language>en-US</language>
-    <lastBuildDate>Thu, 02 Apr 2026 16:01:00 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 08 Apr 2026 23:25:08 GMT</lastBuildDate>
     <managingEditor>shmakovis@inbox.ru (Ilya Shmakov)</managingEditor>
     <image>
       <url>https://geminishkv.tech/img/hero/avatar.jpg</url>
       <title>geminishkv — AppSec &amp; DevSecOps Blog (EN)</title>
       <link>https://geminishkv.tech/</link>
     </image>
+    <item>
+      <title>Why AppSec for business?</title>
+      <link>https://geminishkv.tech/blog/en/306/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/306/</guid>
+      <pubDate>Wed, 08 Apr 2026 00:00:00 GMT</pubDate>
+      <description>🤔 Why AppSec for business? Salute,  Again, it’s painful when there is a misunderstanding about why IBeshechka exists and why we even exist. Let&apos;s see how we can explain and convey this idea differently to the key person about making a decision. Here is what option I can offer ba</description>
+      <enclosure url="https://geminishkv.tech/img/blog/306.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>How Cursor wiped a subscriber&apos;s PC</title>
+      <link>https://geminishkv.tech/blog/en/305/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/305/</guid>
+      <pubDate>Wed, 08 Apr 2026 00:00:00 GMT</pubDate>
+      <description>How Cursor wiped a subscriber&apos;s PC A subscriber shared a story. The situation is quite trivial: a person asked Cursor to remove duplicate articles in his dissertation, and Cursor generated a command with a quote escaping error. The model used a backslash, forgetting that in Windo</description>
+      <enclosure url="https://geminishkv.tech/img/hero/avatar.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>#lol</title>
+      <link>https://geminishkv.tech/blog/en/304/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/304/</guid>
+      <pubDate>Tue, 07 Apr 2026 00:00:00 GMT</pubDate>
+      <description>#lol</description>
+      <enclosure url="https://geminishkv.tech/img/blog/304.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>Salute, vibe problem, and I yelled</title>
+      <link>https://geminishkv.tech/blog/en/303/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/303/</guid>
+      <pubDate>Tue, 07 Apr 2026 00:00:00 GMT</pubDate>
+      <description>Salute, vibe problem, and I yelled #lol</description>
+      <enclosure url="https://geminishkv.tech/img/blog/303.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>geminishkv.tech</title>
+      <link>https://geminishkv.tech/blog/en/296/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/296/</guid>
+      <pubDate>Fri, 03 Apr 2026 00:00:00 GMT</pubDate>
+      <description>🏆 geminishkv.tech Salute, UwU (I get a kick out of this 😁), in short, I’ve just completely completed and released a full-fledged and very cool CPA with key chips on stacks, it’s really worth paying attention to it, and I’m sharing it with you first, call me - it’s interesting �</description>
+      <enclosure url="https://geminishkv.tech/img/blog/296.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>I’m adding a visual picture</title>
+      <link>https://geminishkv.tech/blog/en/289/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/289/</guid>
+      <pubDate>Thu, 02 Apr 2026 00:00:00 GMT</pubDate>
+      <description>I’m adding a visual picture 🤔</description>
+      <enclosure url="https://geminishkv.tech/img/blog/289.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
     <item>
       <title>AppSec Labs to pump yourself Release v.2.0.0</title>
       <link>https://geminishkv.tech/blog/en/288/</link>
