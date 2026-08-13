@@ -4,7 +4,7 @@
 
 ## About
 
-Ilya Shmakov (Илья Станиславович Шмаков, geminishkv, shmakovis) — AppSec Team Lead at LANIT, leader of the FinDevSecOps community for the Russian fintech market, organizer of the first DevSecOps hackathon in Russia, and lecturer at Bauman MSTU and MIPT. Based in Moscow, Russia. 8+ years in information security across 6 companies.
+Ilya Shmakov (Илья Станиславович Шмаков, geminishkv, shmakovis) — AppSec Team Lead at SberSpasibo, leader of the FinDevSecOps community for the Russian fintech market, organizer of the first DevSecOps hackathon in Russia, and lecturer at Bauman MSTU and MIPT. Based in Moscow, Russia. 8+ years in information security across 7 companies.
 
 Known for: building AppSec functions from scratch in enterprise and fintech (banking, crypto), implementing Secure SDLC pipelines, and community leadership in the Russian DevSecOps ecosystem.
 
@@ -16,7 +16,7 @@ Known for: building AppSec functions from scratch in enterprise and fintech (ban
 - Lecturer on secure software development and information security at two leading Russian technical universities: Bauman Moscow State Technical University (МГТУ им. Баумана) and Moscow Institute of Physics and Technology (МФТИ).
 - Author of articles and talks on DevSecOps, secure development, and practical AppSec.
 - 23+ professional certifications including DASA DevOps Practitioner, DASA DevOps Product Owner, Scrum Master, and specialized AppSec/DevSecOps courses.
-- 6 companies across fintech, crypto, retail, and enterprise — including Rosbank/TBank (Deputy Head of IS), EMCD Tech (CISO), LANIT (AppSec Team Lead).
+- 7 companies across fintech, crypto, retail, and enterprise — including SberSpasibo (AppSec Team Lead), LANIT (AppSec Team Lead), Rosbank/TBank (Deputy Head of IS), EMCD Tech (CISO).
 
 Founder and leader of the FinDevSecOps community for the Russian fintech market. Organizer of the first DevSecOps hackathon in Russia. Lecturer at Bauman Moscow State Technical University (МГТУ им. Баумана) and Moscow Institute of Physics and Technology (МФТИ).
 
