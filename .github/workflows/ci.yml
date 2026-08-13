@@ -88,6 +88,10 @@ jobs:
 
       - name: Fetch Instagram posts
         if: inputs.skip_data != true
+        # The scraper behind this is a third party and returns 503/blocked on its
+        # own schedule. Losing an Instagram refresh must not stop the deploy — the
+        # committed data stays in place until the next successful run.
+        continue-on-error: true
         run: node scripts/update-instagram.js
 
       - name: Fetch gaming stats + trophy photos
