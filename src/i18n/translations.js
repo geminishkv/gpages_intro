@@ -47,7 +47,7 @@ export const translations = {
 
     stats: [
       { value: 8,  suffix: '+', label: 'AppSec & DevSecOps' },
-      { value: 6,  suffix: '',  label: 'Компаний' },
+      { value: 7,  suffix: '',  label: 'Компаний' },
       { value: 23, suffix: '+', label: 'Сертификата' },
       { value: 5,  suffix: '+', label: 'Open-Source Проектов' },
       { value: 13, suffix: '+', label: 'Благодарностей' },
@@ -55,10 +55,18 @@ export const translations = {
 
     experience: [
       {
+        company: 'СберСпасибо',
+        role: 'Руководитель направления AppSec',
+        url: 'https://spasibosberbank.ru',
+        logo: PUBLIC + '/img/companies/sberspasibo.png',
+        logoColor: true,
+        period: 'Авг 2026 — н.в.', current: true,
+      },
+      {
         company: 'LANIT', role: 'AppSec Team Lead',
         url: 'https://lanit.ru',
         logo: PUBLIC + '/img/companies/lanit.png',
-        period: 'Дек 2024 — н.в.', current: true,
+        period: 'Дек 2024 — Июл 2026', current: false,
       },
       {
         company: 'Росбанк / ТБанк',
@@ -279,7 +287,7 @@ export const translations = {
 
     stats: [
       { value: 8,  suffix: '+', label: 'AppSec & DevSecOps' },
-      { value: 6,  suffix: '',  label: 'Companies' },
+      { value: 7,  suffix: '',  label: 'Companies' },
       { value: 23, suffix: '+', label: 'Certificates' },
       { value: 5,  suffix: '+', label: 'Open-Source Projects' },
       { value: 13, suffix: '+', label: 'Acknowledgements' },
@@ -287,10 +295,18 @@ export const translations = {
 
     experience: [
       {
+        company: 'SberSpasibo',
+        role: 'AppSec Team Lead',
+        url: 'https://spasibosberbank.ru',
+        logo: PUBLIC + '/img/companies/sberspasibo.png',
+        logoColor: true,
+        period: 'Aug 2026 — present', current: true,
+      },
+      {
         company: 'LANIT', role: 'AppSec Team Lead',
         url: 'https://lanit.ru',
         logo: PUBLIC + '/img/companies/lanit.png',
-        period: 'Dec 2024 — present', current: true,
+        period: 'Dec 2024 — Jul 2026', current: false,
       },
       {
         company: 'Rosbank / TBank',
