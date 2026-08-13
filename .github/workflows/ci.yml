@@ -96,6 +96,9 @@ jobs:
 
       - name: Fetch gaming stats + trophy photos
         if: inputs.skip_data != true
+        # Same reasoning as the Instagram step: an external site being down or
+        # rejecting the session must not cost us the deploy.
+        continue-on-error: true
         run: node scripts/update-gaming.js
         env:
           STRATEGE_COOKIE: ${{ secrets.STRATEGE_COOKIE }}
@@ -115,6 +118,10 @@ jobs:
 
       # ── Commit data to PR branch ──
       - name: Commit and create PR if data changed
+        # Opening the data PR needs "Actions can create pull requests", which is
+        # deliberately off on this repository. Refreshed data simply waits for the
+        # next manual pass rather than blocking the deploy that follows.
+        continue-on-error: true
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
