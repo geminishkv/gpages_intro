@@ -5,7 +5,7 @@ import '../styles/Buttons.css';
 import BrandColumn from './BrandColumn';
 import {
   UWU_IMG,
-  LIDER_IMG, LANIT_IMG, BMSTU_IMG, MPFI_IMG, RBPO_IMG, INSECA_IMG,
+  LIDER_IMG, SBERSPASIBO_IMG, BMSTU_IMG, MPFI_IMG, RBPO_IMG, INSECA_IMG,
   TAGLINE_TEXT,
 } from '../constants';
 import { useState } from 'react';
@@ -34,14 +34,14 @@ export default function Hero({
           <div ref={liderRef} className="hero__badges-track">
             {/* дубли — для бесшовного скролла */}
             <img src={LIDER_IMG} alt="" aria-hidden="true" className="hero__badge hero__badge--dup" />
-            <img src={LANIT_IMG} alt="" aria-hidden="true" className="hero__badge hero__badge--invert hero__badge--dup" />
+            <img src={SBERSPASIBO_IMG} alt="" aria-hidden="true" className="hero__badge hero__badge--invert hero__badge--dup" />
             <img src={BMSTU_IMG} alt="" aria-hidden="true" className="hero__badge hero__badge--dup" />
             <img src={MPFI_IMG}   alt="" aria-hidden="true" className="hero__badge hero__badge--invert hero__badge--dup" />
             <img src={INSECA_IMG} alt="" aria-hidden="true" className="hero__badge hero__badge--invert hero__badge--dup" />
             <img src={RBPO_IMG}   alt="" aria-hidden="true" className="hero__badge hero__badge--invert hero__badge--dup" />
             {/* оригиналы */}
             <img src={LIDER_IMG}  alt="FinDevSecOps Лидер" className="hero__badge" />
-            <img src={LANIT_IMG}  alt="ЛАНИТ"              className="hero__badge hero__badge--invert" />
+            <img src={SBERSPASIBO_IMG} alt="СберСпасибо"   className="hero__badge hero__badge--invert" />
             <img src={BMSTU_IMG}  alt="МГТУ им. Баумана"   className="hero__badge" />
             <img src={MPFI_IMG}   alt="МФТИ"               className="hero__badge hero__badge--invert" />
             <img src={INSECA_IMG} alt="Inseca.tech"        className="hero__badge hero__badge--invert" />
