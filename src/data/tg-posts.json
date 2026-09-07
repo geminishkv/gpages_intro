@@ -2,6 +2,585 @@
   "subscribers": 359,
   "posts": [
     {
+      "id": "361",
+      "text": "Мирного неба 🙏\nВечная память",
+      "date": "2026-05-09",
+      "url": "https://t.me/shmakovis_appsec/361",
+      "views": 85,
+      "tags": [],
+      "image": "/img/blog/361.jpg",
+      "text_en": "Peaceful sky 🙏\nEternal memory"
+    },
+    {
+      "id": "360",
+      "text": "Не могу не отметить Alma Linux. 👍👏\n\n@avleonovlive",
+      "date": "2026-05-08",
+      "url": "https://t.me/shmakovis_appsec/360",
+      "views": 101,
+      "tags": [],
+      "image": "/img/blog/360.jpg",
+      "text_en": "I can't help but mention Alma Linux. 👍👏\n\n@avleonovlive"
+    },
+    {
+      "id": "359",
+      "text": "Обнял-приподнял 🫶",
+      "date": "2026-05-08",
+      "url": "https://t.me/shmakovis_appsec/359",
+      "views": 105,
+      "tags": [],
+      "image": "/img/blog/359.jpg",
+      "text_en": "Hugged and lifted 🫶"
+    },
+    {
+      "id": "356",
+      "text": "У, мы теперь тоже своего рода гардианы. \n\nИсточник\n\n#lol",
+      "date": "2026-05-07",
+      "url": "https://t.me/shmakovis_appsec/356",
+      "views": 127,
+      "tags": [
+        "lol"
+      ],
+      "image": "/img/blog/356.jpg",
+      "text_en": "Uh, we are now also a kind of guardians. \n\nSource\n\n#lol"
+    },
+    {
+      "id": "355",
+      "text": "Профессиональная деформация она такая 🙃 (вспомни фильм)\n\n#lol",
+      "date": "2026-05-07",
+      "url": "https://t.me/shmakovis_appsec/355",
+      "views": 122,
+      "tags": [
+        "lol"
+      ],
+      "image": "/img/blog/355.jpg",
+      "text_en": "She's such a professional deformation 🙃 (remember the movie)\n\n#lol"
+    },
+    {
+      "id": "354",
+      "text": "Салют,\nСегодня просто расслабься, ты заслуживаешь кайфового дня 🫶",
+      "date": "2026-05-07",
+      "url": "https://t.me/shmakovis_appsec/354",
+      "views": 131,
+      "tags": [],
+      "image": "/img/blog/354.jpg",
+      "text_en": "Salute,\nToday just relax, you deserve a great day 🫶"
+    },
+    {
+      "id": "353",
+      "text": "Салюты,\nНемного приятного с отпуска 🫶🙏",
+      "date": "2026-05-06",
+      "url": "https://t.me/shmakovis_appsec/353",
+      "views": 133,
+      "tags": [],
+      "text_en": "Fireworks,\nA little something pleasant from vacation 🫶🙏"
+    },
+    {
+      "id": "352",
+      "text": "Google Chrome крадёт 4 ГБ на вашем диске: в новых обновлениях браузер незаметно устанавливает локальную ИИ-модель Gemini Nano на компьютер.\n\nМожно попробовать отключить встроенный ИИ и удалить соответствующий файл:\n• Введите chrome://flags в адресной строке;\n• Найдите пункт Enables optimization guide on device и выключите его;\n• Затем перейдите в AppData/Local/Google/Chrome/User Data/OptGuideOnDeviceModel/ и удалите файл weights.bin.\n\nНо имейте в виду — после обновления браузер может снова всё это скачать.\n\n🕹КиберТопор — Подписаться",
+      "date": "2026-05-05",
+      "url": "https://t.me/shmakovis_appsec/352",
+      "views": 133,
+      "tags": [],
+      "image": "/img/blog/352.jpg",
+      "text_en": "Google Chrome steals 4 GB of your disk space: in new updates, the browser quietly installs a local Gemini Nano AI model on your computer.\nYou can try disabling the built-in AI and deleting the corresponding file:\n• Enter chrome://flags in the address bar;\n• Find the Enables optimization guide on device item and turn it off;\n• Then go to AppData/Local/Google/Chrome/User Data/OptGuideOnDeviceModel/ and delete the weights.bin file.\n\nBut keep in mind that after the update the browser can download all this again.\n\n🕹CyberAxe - Subscribe"
+    },
+    {
+      "id": "351",
+      "text": "Салюты,\nЯ тут немного решил, что следует отдохнуть правильно 🙃 поделюсь с тобой родной(ая)\n\nС праздничками, надеюсь тебе также кайф 🫶",
+      "date": "2026-05-05",
+      "url": "https://t.me/shmakovis_appsec/351",
+      "views": 137,
+      "tags": [],
+      "text_en": "Fireworks,\nI decided a little that I should rest properly 🙃 I’ll share with you dear\n\nHappy holidays, I hope you enjoy it too 🫶"
+    },
+    {
+      "id": "350",
+      "text": "&#036;13,7 млн испарились за ночь: что взлом Grinex говорит о реальной безопасности криптобирж\n\n15 апреля 2026 года криптобиржа Grinex встала колом. Около 1 млрд рублей вывели в неизвестном направлении. Площадка публично обвинила «западные спецслужбы» — и не предоставила ни единого индикатора компрометации. Ни хеша, ни IP, ни CVE. Ничего.\n\nДля любого Threat Intelligence-аналитика это красный флаг: громкая атрибуция без технических деталей означает, что реальный вектор компрометации либо не исследовали, либо результаты слишком неудобны.\n\n🔍 Контекст делает картину ещё интереснее. Grinex — фактический наследник санкционированной Garantex. После того как OFAC заморозил активы Garantex в марте 2025-го, средства клиентов перетекли на Grinex через рублёвый стейблкоин A7A5, который обработал десятки миллиардов долларов за год. Санкционное давление нарастало волнами — OFAC, Великобритания, ЕС, блокировка на Uniswap. И на этом фоне — кибератака. Совпадение? Возможно. Но паттерн показательный.\n\n⚙️ Что мы знаем о вероятных техниках? Если разложить атаку по MITRE ATT&CK, типовая kill chain для криптобирж в 2026 году выглядит так:\n\n• T1078 Valid Accounts — компрометация ключей подписи транзакций через фишинг оператора или инсайдера. По статистике TRM Labs, это главный вектор финансовых киберинцидентов прямо сейчас\n• T1190 Exploit Public-Facing Application — API биржи, особенно если кодовую базу унаследовали от предшественника без полного аудита\n• T1657 Financial Theft — прямая кража с hot wallet, не ransomware, не шифрование, а вывод средств on-chain\n\nОбратите внимание: Grinex не опубликовала postmortem. А T1070 (очистка логов) — стандартная практика атакующих, которая объясняет, почему IOC так и не появились.\n\n📊 И это лишь один инцидент на фоне масштабной картины. За 2025 год в открытый доступ попали более 767 млн записей персональных данных российских пользователей. Q1 2026 продолжил тренд — десятки миллионов строк на андеграундных форумах и в Telegram. Оборотные штрафы за утечки перестали быть теорией, а supply chain атаки начали бить по самим инструментам защиты.\n\nЧто с этим делать SOC-аналитику? Как минимум — мониторить аномальные вызовы к signing-сервисам, отслеживать нетипичные объёмы транзакций с hot wallet и проверять целостность CI/CD-пайплайнов.\n\nВ полной статье — детальный маппинг TTPs по MITRE ATT&CK, хронология от Garantex до Grinex и готовый detection-чеклист для SOC. Разбираем всё.\n\nhttps://codeby.net/threads/utechka-dannykh-kriptobirzhi-v-rossii-2026-vzlom-grinex-na-13-7-mln-razbor-ttps-i-detection-cheklist-dlya-soc.92947/",
+      "date": "2026-05-05",
+      "url": "https://t.me/shmakovis_appsec/350",
+      "views": 138,
+      "tags": [],
+      "image": "/img/blog/350.jpg",
+      "text_en": "$13.7 million evaporated overnight: what the Grinex hack says about the real security of crypto exchanges\nOn April 15, 2026, the Grinex crypto exchange staked its stake. About 1 billion rubles were withdrawn to an unknown direction. The platform publicly blamed “Western intelligence agencies” - and did not provide a single indicator of compromise. No hash, no IP, no CVE. Nothing.\nFor any Threat Intelligence analyst, this is a red flag: a loud attribution without technical details means that the real vector of compromise was either not investigated, or the results are too inconvenient.\n🔍 Context makes the picture even more interesting. Grinex is the actual heir of the sanctioned Garantex. After OFAC froze Garantex's assets in March 2025, client funds flowed to Grinex through the A7A5 ruble stablecoin, which processed tens of billions of dollars in a year. Sanctions pressure grew in waves - OFAC, UK, EU, blocking on Uniswap. And against this background - a cyber attack. Coincidence? Maybe. But the pattern is indicative.\n⚙️ What do we know about probable techniques? If we break down the attack according to MITER ATT&CK, a typical kill chain for crypto exchanges in 2026 looks like this:\n• T1078 Valid Accounts - compromise of transaction signature keys through operator or insider phishing. According to TRM Labs statistics, this is the main vector of financial cyber incidents right now\n• T1190 Exploit Public-Facing Application - exchange API, especially if the code base was inherited from its predecessor without a full audit\n• T1657 Financial Theft - direct theft from hot wallet, not ransomware, not encryption, but on-chain withdrawal of funds\nPlease note: Grinex has not published postmortem. And T1070 (clearing logs) is a standard attacker practice, which explains why IOCs never appeared.\n📊 And this is just one incident against the background of a large-scale picture. In 2025, more than 767 million records of personal data of Russian users were made publicly available. Q1 2026 continued the trend - tens of millions of lines on underground forums and Telegram. Turnover fines for leaks have ceased to be a theory, and supply chain attacks have begun to hit the security tools themselves.\nWhat should a SOC analyst do about this? At a minimum, monitor abnormal calls to signing services, track atypical transaction volumes from hot wallets, and check the integrity of CI/CD pipelines.\nThe full article contains a detailed mapping of TTPs according to MITER ATT&CK, a chronology from Garantex to Grinex and a ready-made detection checklist for SOC. Let's sort it all out.\n\nhttps://codeby.net/threads/utechka-dannykh-kriptobirzhi-v-rossii-2026-vzlom-grinex-na-13-7-mln-razbor-ttps-i-detection-cheklist-dlya-soc.92947/"
+    },
+    {
+      "id": "349",
+      "text": "Салюты, \nНа заметочку",
+      "date": "2026-05-05",
+      "url": "https://t.me/shmakovis_appsec/349",
+      "views": 126,
+      "tags": [],
+      "text_en": "Fireworks, \nJust a note"
+    },
+    {
+      "id": "348",
+      "text": "Салюты, \nС праздником 🫶",
+      "date": "2026-05-01",
+      "url": "https://t.me/shmakovis_appsec/348",
+      "views": 173,
+      "tags": [],
+      "image": "/img/blog/348.jpg",
+      "text_en": "Fireworks, \nHappy holiday 🫶"
+    },
+    {
+      "id": "347",
+      "text": "Ну и инженерное на сегодня 🤣\n\n#lol",
+      "date": "2026-04-30",
+      "url": "https://t.me/shmakovis_appsec/347",
+      "views": 261,
+      "tags": [
+        "lol"
+      ],
+      "image": "/img/blog/347.jpg",
+      "text_en": "Well, engineering for today 🤣\n\n#lol"
+    },
+    {
+      "id": "346",
+      "text": "Как то жизненно про «безопасную безопасность» когда наболело 😅🤣\n\n#lol",
+      "date": "2026-04-30",
+      "url": "https://t.me/shmakovis_appsec/346",
+      "views": 210,
+      "tags": [
+        "lol"
+      ],
+      "image": "/img/blog/346.jpg",
+      "text_en": "It’s so vital about “safe safety” when you’re sick 😅🤣\n\n#lol"
+    },
+    {
+      "id": "345",
+      "text": "Салют,\nА интересно, в итоге то подогнали курс?\n\n#lol",
+      "date": "2026-04-30",
+      "url": "https://t.me/shmakovis_appsec/345",
+      "views": 196,
+      "tags": [
+        "lol"
+      ],
+      "image": "/img/blog/345.jpg",
+      "text_en": "Salute,\nI wonder if they adjusted the course in the end?\n\n#lol"
+    },
+    {
+      "id": "344",
+      "text": "Салюты,\nРодной(ая), как я могу не поделиться с тобой этим классным моментом, обожаю, когда любимые мной коллеги отмечают такое, ну приятно же 🫶🙏\n\n#course #appsec #devsecops #specialty #paper",
+      "date": "2026-04-29",
+      "url": "https://t.me/shmakovis_appsec/344",
+      "views": 191,
+      "tags": [
+        "course",
+        "appsec",
+        "devsecops",
+        "specialty",
+        "paper"
+      ],
+      "image": "/img/blog/344.jpg",
+      "text_en": "Fireworks,\nDear, how can I not share this cool moment with you, I love it when my beloved colleagues celebrate this, it’s nice 🫶🙏\n\n#course #appsec #devsecops #specialty #paper"
+    },
+    {
+      "id": "343",
+      "text": "Помянем, особенно отпускных 😅🤣",
+      "date": "2026-04-28",
+      "url": "https://t.me/shmakovis_appsec/343",
+      "views": 197,
+      "tags": [],
+      "image": "/img/blog/343.jpg",
+      "text_en": "Let's remember, especially vacation pay 😅🤣"
+    },
+    {
+      "id": "342",
+      "text": "Кстати, в тему поста, вот тут, еще в бородатом 2021-2022 типовое смотрели 🙃",
+      "date": "2026-04-24",
+      "url": "https://t.me/shmakovis_appsec/342",
+      "views": 281,
+      "tags": [],
+      "text_en": "By the way, on the topic of the post, here, back in the bearded 2021-2022 we looked at the typical one 🙃"
+    },
+    {
+      "id": "341",
+      "text": "🙃 Атака на Grinex\n\nОх, смотри, тут ко мне пришли и попросили мое видение по данной атаке и я хотел бы с тобой самым первым поделиться мыслями, но сначала давай справку закину:\n\nВедущая крипторублевая биржа Grinex, обеспечивающая расчеты между российскими бизнесами и гражданами в цифровых активах, подверглась масштабной кибератаке с признаками участия зарубежных спецслужб. \n\nВ результате взлома похищены средства российских пользователей на сумму более 1 млрд рублей. Цифровые следы и характер атаки свидетельствуют о беспрецедентном уровне ресурсов и технологий, доступных исключительно структурам недружественных государств. \n\nВ связи с атакой биржа Grinex вынуждена приостановить работу. Вся доступная информация передана в правоохранительные органы. По месту нахождения инфраструктуры подано заявление для возбуждения уголовного дела.\n\nКрасивое\n\nАтаки на финансовую инфраструктуру являются наиболее распространенными с целью получения двойной выгоды как от самой атаки, так и от владельцев бизнеса. Такие типы атак под группировки готовятся профессиональными людьми, которые либо разочаровались в профессии и знают как действует бизнес, либо преследовали исследовательские цели изначально, но далее это переросло в группы с ресурсами, где багбаунти программы уже не в состоянии удовлетворять запросы. \n\nОбычно исследователи выкладывают эксплойты после неудачной попытки договориться с владельцем бизнеса, но на базе практики все чаще, когда утечки попадают напрямую в сеть и продаются группам атакующих, поэтому у них есть доступ к 0‑day уязвимостям, высокому уровню операционной безопасности и возможности длительное время оставаться незамеченными в инфраструктуре жертвы. \n\nИнцидент с Grinex хорошо показывает тенденцию описанную выше, где по сообщениям самого бизнеса, атака привела к выводу порядка 1 млрд рублей (около 13 млн долларов) с десятков криптокошельков, а затем средства были быстро конвертированы и разведены по другим адресам в TRON и Ethereum (альткоины). Это требует как серьёзной технической подготовки, так и заранее отстроенной инфраструктуры для отмывания средств. \n\nВ таком формате всегда не получается правильно реализовать механизм AML и какие то kill-switch механизмы, которые бы позволили контролировать эти потоки, потому что владельцы обычно считают себя в безопасности до инцидента.\n\nПоинты\n\n- Жёсткое управление ключами и кошельками: аппаратные HSM, мультиподписные схемы (multisig и желательно использование схем 3/5 подписи), разделение горячих кошельков, строгие процедуры вывода средств. Это не столько снижает вероятность взлома, сколько ограничивает возможный ущерб при компрометации отдельного узла или аккаунта, естественно подразумевая, что ноды хранения должны быть распределенными\n- Важно воспринимать атаки на инфраструктуру не только как технический, но и как геополитический фактор. Если бизнес работает с чувствительными категориями клиентов, обходит санкционные ограничения или является частью критической финансовой экосистемы, то уровень потенциального противника нужно автоматически поднимать до учета всех возможных атакующих и учитывать заинтересованность не только с целью мошенничества\n- Segregation of duties и ролевые модели доступа. Один человек не должен иметь возможность и инициировать крупную операцию, и согласовать её, и технически провести. Это касается как финансовых транзакций, так и управления кошельками, ключами, конфигурациями боевых систем\n\nИтого: \n\nCреди крупных финансовых организаций и наиболее зрелых криптоплатформ такие меры уже стали де‑факто стандартом. Но если смотреть на рынок в целом, особенно на быстро растущие сервисы, часть игроков ограничивается базовым набором средств защиты, не успевая перестроить архитектуру и процессы под новый уровень угроз. Именно в этом “разрыве зрелости” и возникают подобные инциденты. Аналогично учитываем модели зрелости на базе нехватки компетенций\n\n#paper #specialty #reco #кулуарка #podster",
+      "date": "2026-04-24",
+      "url": "https://t.me/shmakovis_appsec/341",
+      "views": 231,
+      "tags": [
+        "paper",
+        "specialty",
+        "reco",
+        "кулуарка",
+        "podster"
+      ],
+      "image": "/img/blog/341.jpg",
+      "text_en": "🙃 Attack on Greenex\nOh, look, they came to me and asked for my vision on this attack, and I would like to be the first to share my thoughts with you, but first let me send you a certificate:\nThe leading crypto-ruble exchange Grinex, which provides settlements between Russian businesses and citizens in digital assets, was subjected to a large-scale cyber attack with signs of the participation of foreign intelligence services.\nAs a result of the hack, funds of Russian users worth more than 1 billion rubles were stolen. The digital footprints and nature of the attack indicate an unprecedented level of resources and technology available exclusively to the structures of unfriendly states.\nDue to the attack, the Grinex exchange is forced to suspend operations. All available information has been transferred to law enforcement agencies. An application to initiate a criminal case has been filed at the location of the infrastructure.\nBeautiful\nAttacks on financial infrastructure are the most common, with the aim of obtaining double benefits from both the attack itself and the business owners. These types of attacks against groups are prepared by professional people who are either disillusioned with the profession and know how business operates, or who initially pursued research goals, but then it grew into groups with resources where bug bounty programs are no longer able to satisfy requests.\nTypically, researchers release exploits after an unsuccessful attempt to negotiate with a business owner, but based on practice, it is increasingly common for leaks to go directly into the network and be sold to attack groups, so they have access to 0-day vulnerabilities, a high level of operational security and the ability to remain undetected in the victim’s infrastructure for a long time.\nThe incident with Grinex clearly illustrates the trend described above, where, according to the business itself, the attack led to the withdrawal of about 1 billion rubles (about $13 million) from dozens of crypto wallets, and then the funds were quickly converted and transferred to other addresses in TRON and Ethereum (altcoins). This requires both serious technical training and a pre-built infrastructure for money laundering.\nIn this format, it is always impossible to correctly implement the AML mechanism and some kind of kill-switch mechanisms that would allow controlling these flows, because the owners usually consider themselves safe before an incident occurs.\nPoints\n- Strict management of keys and wallets: hardware HSM, multi-signature schemes (multisig and preferably the use of 3/5 signature schemes), separation of hot wallets, strict withdrawal procedures. This not only reduces the likelihood of hacking, but rather limits the possible damage when a single node or account is compromised, naturally implying that storage nodes should be distributed\n- It is important to perceive attacks on infrastructure not only as a technical, but also as a geopolitical factor. If a business works with sensitive categories of clients, bypasses sanctions restrictions or is part of a critical financial ecosystem, then the level of a potential adversary should be automatically raised to take into account all possible attackers and take into account interests not only for the purpose of fraud\n- Segregation of duties and role models of access. One person should not be able to initiate a major operation, coordinate it, and carry it out technically. This applies to both financial transactions and the management of wallets, keys, and combat system configurations\nTotal:\nAmong large financial institutions and the most mature crypto platforms, such measures have already become a de facto standard. But if you look at the market as a whole, especially at rapidly growing services, some players are limited to a basic set of protection tools, not having time to rebuild the architecture and processes to meet the new level of threats. It is in this “maturity gap” that such incidents arise. Similarly, we take into account maturity models based on the lack of competencies\n#paper #specialty #reco #backstage #podster"
+    },
+    {
+      "id": "340",
+      "text": "🤔 Segregation-of-Duties как контроль привилегированного пользователя\n\nСалют,\nЧасто упоминаю этот механизм, думаю, что стоит сделать ссылку на ее описание, но перед тем как говорить про нее, надо договориться о том, что это такое?\n\nРолевая модель доступа — это когда мы управляем не правами конкретных людей, а ролями, привязанными к задачам и зонам их ответственности, где под каждую роль чётко определено: что можно, а что нельзя\n\nТо есть суть в том, что Role‑Based Access Control (RBAC) опирается на два принципа: наименьшие привилегии, то есть каждый получает только то, что нужно для работы и segregation of duties — разделение конфликтующих полномочий между разными ролями, чтобы один и тот же человек не мог сам себе создать доступ, провести операцию и её согласовать\n\nБаза\n\nSegregation-of-Duties используется в разделении конфликтующих полномочий между разными ролями, чтобы один человек не мог сам себе придумать доступ, провести операцию и её же согласовать\n\nОтмечу, что формально и общему принципу требований ИБ, сам SoD есть почти везде: ИБ‑политики, у аудиторов, в ISO 27001. На практике это нередко выглядит так: «у нас один админ всё делает, но он хороший». Контроль есть на бумаге, но не в процессах. \n\nОснова SoD в том, чтобы ни один человек не мог в одиночку провернуть всю чувствительную операцию: от создания до утверждения и изменения правил, - фактически просто реализация несанкционнированного доступа и повышения привелегий, где дальше можно бомбить инфра и сам бизнес\n\nКонфликтующие истории (пример)\n\n• Тот, кто заводит контрагента, не проводит по нему платежи\n• Тот, кто выдаёт доступы, не утверждает свои же заявки\n• Тот, кто меняет правила сетевой безопасности, не согласовывает их в одиночку\n• Разработчик не ходит напрямую в продуктивную БД и т.д.\n\nЧто делать?\n\n• Вместе с бизнесом описываем роли и ключевые процессы\n• Ищем точки, где один человек может «инициировать, согласовать и выполнить» — это и есть SoD‑конфликты\n• Оформляем всё в SoD‑матрицу: какие комбинации ролей и прав запрещены\n• Заводим эти правила в IAM и сервисы доступа, чтобы система просто не давала собрать «токсичный» набор привилегий\n• Регулярно прогоняем отчёты по SoD‑нарушениям и чистим исключения, а не копим их годами\n\nИтого:\n\nСмысл Segregation-of-Duties в том, что бы она стала частью архитектуры. То есть нам важно уметь не просто выдавать доступы, права и разделять обязанности, а именно предотвращать конфликты, что бы равномерность покрытия правами была достигнута со всех сторон. Нам надо все-таки уметь оркестрировать и правильно разделять полномочия людей.\n\n#devsecops #pmi #humanres #term #paper",
+      "date": "2026-04-24",
+      "url": "https://t.me/shmakovis_appsec/340",
+      "views": 178,
+      "tags": [
+        "devsecops",
+        "pmi",
+        "humanres",
+        "term",
+        "paper"
+      ],
+      "image": "/img/blog/340.jpg",
+      "text_en": "🤔 Segregation-of-Duties as privileged user control\n\nSalute,\nI often mention this mechanism, I think it’s worth making a link to its description, but before we talk about it, we need to agree on what it is?\nA role-based access model is when we manage not the rights of specific people, but roles tied to tasks and areas of their responsibility, where for each role it is clearly defined: what is allowed and what is not allowed\nThat is, the point is that Role-Based Access Control (RBAC) is based on two principles: least privilege, that is, everyone receives only what is needed for work and segregation of duties - the division of conflicting powers between different roles, so that the same person cannot create access for himself, carry out an operation and coordinate it\nBase\nSegregation-of-Duties is used to separate conflicting powers between different roles, so that one person cannot come up with access, carry out an operation and approve it.\nI would like to note that formally and the general principle of information security requirements, SoD itself is present almost everywhere: information security policies, among auditors, in ISO 27001. In practice, it often looks like this: “we have one admin who does everything, but he’s a good one.” There is control on paper, but not in processes.\nThe basis of SoD is that no one person can carry out the entire sensitive operation alone: ​​from creation to approval and change of rules - in fact, simply the implementation of unauthorized access and escalation of privileges, where further you can bomb the infrastructure and the business itself\nConflicting stories (example)\n\n• The one who sets up a counterparty does not make payments on it\n• The one who issues access does not approve his own applications\n• Anyone who changes network security rules does not agree on them alone\n• The developer does not go directly to the production database, etc.\n\nWhat to do?\n• Together with the business, we describe roles and key processes\n• We are looking for points where one person can “initiate, agree and execute” - these are SoD conflicts\n• We put everything into a SoD matrix: what combinations of roles and rights are prohibited\n• We set up these rules in IAM and access services so that the system simply does not allow us to collect a “toxic” set of privileges\n• We regularly run reports on SoD violations and clear exceptions, rather than accumulating them for years\n\nTotal:\nThe point of Segregation-of-Duties is that it becomes part of the architecture. That is, it is important for us to be able to not just grant access, rights and share responsibilities, but to prevent conflicts so that uniform coverage of rights is achieved on all sides. We still need to be able to orchestrate and correctly divide the powers of people.\n#devsecops #pmi #humanres #term #paper"
+    },
+    {
+      "id": "339",
+      "text": "Срочно в Security Awaraness переквалифицируемся 😁\n\n#lol",
+      "date": "2026-04-23",
+      "url": "https://t.me/shmakovis_appsec/339",
+      "views": 151,
+      "tags": [
+        "lol"
+      ],
+      "image": "/img/blog/339.jpg",
+      "text_en": "Let’s urgently retrain in Security Awaraness 😁\n\n#lol"
+    },
+    {
+      "id": "338",
+      "text": "Салюты,\nНапоминание из детства \n\n#lol",
+      "date": "2026-04-23",
+      "url": "https://t.me/shmakovis_appsec/338",
+      "views": 147,
+      "tags": [
+        "lol"
+      ],
+      "image": "/img/blog/338.jpg",
+      "text_en": "Fireworks,\nReminder from childhood \n\n#lol"
+    },
+    {
+      "id": "337",
+      "text": "Россиянина оштрафовали за мем с КОТОМ — «Котольфом Китлером».\n\nЖитель Краснодарского края опубликовал фотку кота с особой расцветкой морды, напоминающей усы и причёску Адольфа Гитлера. Мужчина признал свою вину и ему смягчили наказание до штрафа в 1000 рублей.",
+      "date": "2026-04-21",
+      "url": "https://t.me/shmakovis_appsec/337",
+      "views": 171,
+      "tags": [],
+      "image": "/img/blog/337.jpg",
+      "text_en": "A Russian was fined for a meme with a CAT - “Kotolf Kitler”.\nA resident of the Krasnodar region published a photo of a cat with a special coloring of its face, reminiscent of the mustache and hairstyle of Adolf Hitler. The man admitted his guilt and his sentence was commuted to a fine of 1,000 rubles."
+    },
+    {
+      "id": "336",
+      "text": "Короче, в тему Артемия Лебедева, задумка была прикольная, вот с этой надписью, но с самим интерлиажем ребята чет пропустили задумку, если бы выделили \"ИИллюзий\", то было бы вообще пушечно, а так да - прикольная тема описывающая именно то, что и обсуждалось\n\nНу как есть 🙃",
+      "date": "2026-04-21",
+      "url": "https://t.me/shmakovis_appsec/336",
+      "views": 188,
+      "tags": [],
+      "image": "/img/blog/336.jpg",
+      "text_en": "In short, on the topic of Artemy Lebedev, the idea was cool, with this inscription, but with the leading itself the guys even missed the idea, if they had singled out “IIllusions”, it would have been a total mess, but yes - a cool topic describing exactly what was discussed\nWell, as it is 🙃"
+    },
+    {
+      "id": "335",
+      "text": "Ну и сам контент 🤔",
+      "date": "2026-04-21",
+      "url": "https://t.me/shmakovis_appsec/335",
+      "views": 182,
+      "tags": [],
+      "text_en": "Well, the content itself 🤔"
+    },
+    {
+      "id": "334",
+      "text": "🏆 Security UP: премия за DevSecOps «по-взрослому»\n\nСалюты,\nЗабегался, замотался, но наконец то переварил, давай разберем, что же было на митапе.\n\nАссоциация ФинТех, ГК «Солар» и сообщество FinDevSecOps подвели итоги первой премии «Security UP: Безопасность начинается с кода». Награждали компании, которые не просто «ставят сканеры», а реально встроили безопасную разработку в процессы за 2024–2025 годы. Вот тут почитай инфоповод, а я пока дам кратко выжимку.\n\nВ жюри — 15 человек из топовых игроков рынка: Банк России, Яндекс (SourceCraft), МТС, Альфа‑Банк, Московская биржа, ЛАНИТ, ВСК, Т1, «Базальт СПО», Swordfish Security и др. То есть не «формальная комиссия», а люди, которые сами строят AppSec/DevSecOps у себя.\n\nМы собрали около 40 заявок, из них только самые подходящие дошли до защиты. Оценивали по нескольким критериям: зрелость DevSecOps‑подхода, техническая глубина, измеримый эффект для бизнеса и возможность масштабирования практик на другие команды и отрасли. Над этими проектами работало 70+ AppSec‑инженеров.\n\nКто победил?\n\n• «Фундамент безопасности: DevSecOps‑революция» — Почта России. Ну если серьозно, тут ребята ушли от своего текущего состояния, потому что большая программа трансформации разработки: единая нормативка, роль ответственных за безопасность ПО, охват DevSecOps‑подходом всего жизненного цикла сотен сервисов и миллионов строк кода\n• «Страховой щит: зрелые практики безопасности в страховом бизнесе» — Росгосстрах: DevSecOps‑платформа и модель управления безопасностью релизов\n• «Региональный импульс: развитие DevSecOps в регионах» — Центр ИБ Московской области: внедрение практик безопасной разработки в госорганах Подмосковья с упором на масштабируемость подхода для других регионов\n• «Открытые горизонты: Open Source в безопасности ПО» — Инфосистемы Джет: open‑source фреймворки для безопасности сред контейнеризации и DevSecOps‑процессов, выложенные в открытый доступ, плюс спецприз «Знак качества АФТ» за методологию\n• «Архитекторы безопасности: интеграция DevSecOps» — Faberlic: Security‑by‑Design в разработке, как проект по внедрению безопасной архитектуры и процессов на уровне компании\n• «Технологический прорыв: новые горизонты безопасности ПО» — СберТех: Система непрерывного мониторинга и устранения уязвимостей в продуктах, рассчитанная на масштабирование внутри финсектора.\n• «Новые герои безопасной разработки» — Т Плюс: трансформация AppSec в крупной частной энергетической компании, как автоматизация и повышение эффективности процессов безопасной разработки\n\nПосмотри видосики, они какие то залипательные 😁\n\n#meetup #paper #appsec #devsecops #specialty #toolchain #conf #compliance #gost",
+      "date": "2026-04-21",
+      "url": "https://t.me/shmakovis_appsec/334",
+      "views": 179,
+      "tags": [
+        "meetup",
+        "paper",
+        "appsec",
+        "devsecops",
+        "specialty",
+        "toolchain",
+        "conf",
+        "compliance",
+        "gost"
+      ],
+      "image": "/img/blog/334.jpg",
+      "text_en": "🏆 Security UP: award for DevSecOps “in an adult way”\n\nFireworks,\nI ran around, got overwhelmed, but finally got over it, let’s figure out what happened at the meetup.\nThe FinTech Association, Solar Group and the FinDevSecOps community summed up the results of the first “Security UP: Security Starts with Code” award. The awards were given to companies that did not just “install scanners,” but actually integrated secure development into their processes in 2024–2025. Read the informational guide here, and for now I’ll give a brief summary.\nThe jury consists of 15 people from the top market players: Bank of Russia, Yandex (SourceCraft), MTS, Alfa-Bank, Moscow Exchange, LANIT, VSK, T1, Basalt SPO, Swordfish Security, etc. That is, not a “formal commission”, but people who build AppSec/DevSecOps themselves.\nWe collected about 40 applications, of which only the most suitable ones reached the defense. They were assessed based on several criteria: maturity of the DevSecOps approach, technical depth, measurable business impact, and the ability to scale practices to other teams and industries. 70+ AppSec engineers worked on these projects.\nWho won?\n• “Security foundation: DevSecOps revolution” - Russian Post. Well, seriously, the guys here have moved away from their current state, because there is a large development transformation program: a unified standard, the role of those responsible for software security, DevSecOps coverage of the entire life cycle of hundreds of services and millions of lines of code\n• “Insurance Shield: mature security practices in the insurance business” - Rosgosstrakh: DevSecOps platform and release security management model\n• “Regional impulse: development of DevSecOps in the regions” - Information Security Center of the Moscow Region: implementation of secure development practices in government agencies in the Moscow region with an emphasis on the scalability of the approach for other regions\n• “Open Horizons: Open Source in Software Security” - Jet Information Systems: open‑source frameworks for the security of containerization environments and DevSecOps‑processes, made publicly available, plus a special prize “AFT Quality Mark” for the methodology\n• “Security Architects: DevSecOps Integration” - Faberlic: Security-by-Design in development, as a project to introduce secure architecture and processes at the company level\n• “Technological breakthrough: new horizons for software security” - SberTech: A system for continuous monitoring and elimination of vulnerabilities in products, designed for scaling within the financial sector.\n• “New heroes of secure development” - T Plus: transformation of AppSec in a large private energy company, how to automate and increase the efficiency of secure development processes\nWatch the videos, they are kind of sticky 😁\n\n#meetup #paper #appsec #devsecops #specialty #toolchain #conf #compliance #gost"
+    },
+    {
+      "id": "333",
+      "text": "🚧 GitHub releases - попал под «железный зановес»?\n\nС казахстанских IP не качаются бинарники из GitHub Releases. Сам github.com открывается, страницы листаются, а ссылки /releases/download/* виснут или рвутся. Через VPN - скачивается нормально.\n\nПроверил на свежем релизе:\nhttps://github.com/r3nzsec/irflow-timeline/releases/download/v1.0.5/IRFlow.Timeline-1.0.5-universal-mac.zip\n\nПопросил коллег из разных городов и провайдеров РК - картина одинаковая.\n\n🔍 Технически это выглядит как точечная DPI-блокировка поддомена objects.githubusercontent.com (Azure Blob CDN, куда редиректят все релизы) по SNI. Сам github.com на Fastly - живой, для видимости. В той же РФ ровно такое поведение ловят с 2024 года…\n\nТак то побоку, но ломает установку тулз через go install / pip с VCS, скачивание бинарей. \n\nСнова \"технические работы у оператора\" или уже тестируем новую итерацию железного занавеса? Если у кого-то в РК качается без VPN - напишите, соберу статистику по провайдерам.\n\n#network #infosec #kazakhstan #github",
+      "date": "2026-04-20",
+      "url": "https://t.me/shmakovis_appsec/333",
+      "views": 170,
+      "tags": [
+        "network",
+        "infosec",
+        "kazakhstan",
+        "github"
+      ],
+      "image": "/img/blog/333.jpg",
+      "text_en": "🚧 GitHub releases - fell under the “iron curtain”?\nBinaries from GitHub Releases are not downloaded from Kazakhstani IPs. github.com itself opens, the pages are flipped, and the /releases/download/* links hang or break. Via VPN it downloads normally.\nI checked it on the latest release:\nhttps://github.com/r3nzsec/irflow-timeline/releases/download/v1.0.5/IRFlow.Timeline-1.0.5-universal-mac.zip\n\nI asked colleagues from different cities and providers of the Republic of Kazakhstan - the picture is the same.\n🔍 Technically, this looks like spot DPI blocking of the subdomain objects.githubusercontent.com (Azure Blob CDN, where all releases are redirected) via SNI. github.com itself on Fastly is live, for visibility. In the same Russian Federation, exactly this kind of behavior has been caught since 2024...\nThis is the case, but it breaks the installation of tools via go install / pip with VCS, downloading binaries.\n“Operator technical work” again or are we already testing a new iteration of the Iron Curtain? If someone in the Republic of Kazakhstan is able to download without a VPN, write, I will collect statistics on providers.\n#network #infosec #kazakhstan #github"
+    },
+    {
+      "id": "332",
+      "text": "Нормально, чеб нет",
+      "date": "2026-04-20",
+      "url": "https://t.me/shmakovis_appsec/332",
+      "views": 158,
+      "tags": [],
+      "text_en": "It's normal, why not"
+    },
+    {
+      "id": "331",
+      "text": "Ну в целом в ИБ как то так сейчас \n\n#lol",
+      "date": "2026-04-20",
+      "url": "https://t.me/shmakovis_appsec/331",
+      "views": 231,
+      "tags": [
+        "lol"
+      ],
+      "image": "/img/blog/331.jpg",
+      "text_en": "Well, in general, it’s like this in information security now \n\n#lol"
+    },
+    {
+      "id": "330",
+      "text": "А пока я готовлю материалы по вчерашнему митапу, хочу поделиться приятностью и милотой от коллег 😅🫡🙃\n\n#meetup #paper #appsec #devsecops #specialty #toolchain #conf #compliance #gost",
+      "date": "2026-04-17",
+      "url": "https://t.me/shmakovis_appsec/330",
+      "views": 216,
+      "tags": [
+        "meetup",
+        "paper",
+        "appsec",
+        "devsecops",
+        "specialty",
+        "toolchain",
+        "conf",
+        "compliance",
+        "gost"
+      ],
+      "image": "/img/blog/330.jpg",
+      "text_en": "In the meantime, I’m preparing materials for yesterday’s meetup, I want to share the pleasantness and cuteness from my colleagues 😅🫡🙃\n\n#meetup #paper #appsec #devsecops #specialty #toolchain #conf #compliance #gost"
+    },
+    {
+      "id": "329",
+      "text": "Фреймворки DAF и JCSF победили в премии Security UP: «Безопасность начинается с кода»&#33;\n\nПривет, друзья&#33; Спешим похвастаться: наши фреймворки оценили на премии Security UP: «Безопасность начинается с кода», организованной ГК \"Солар\", Ассоциацией ФинТех и сообществом FinDevSecOps:\n🦴Фреймворк оценки зрелости безопасности контейнерной инфраструктуры Jet Container Security Framework (JCSF) победил в номинации «Открытые горизонты: Open Source в безопасности ПО»\n🦴Фреймворк оценки зрелости процессов безопасной разработки DevSecOps Assessment Framework (DAF) получил знак качества Ассоциации ФинТех.\n\nМы очень рады, что наш вклад в open source оценили столь уважаемые эксперты в области DevSecOps&#33; Это очень вдохновляет нас и, надеемся, вас тоже на развитие безопасной разработки и DevSecOps в наших компаниях и во всем мире. Make DevSecOps great again&#33;",
+      "date": "2026-04-17",
+      "url": "https://t.me/shmakovis_appsec/329",
+      "views": 151,
+      "tags": [],
+      "image": "/img/blog/329.jpg",
+      "text_en": "The DAF and JCSF frameworks won the Security UP award: “Security starts with the code”!\nHello friends! We hasten to boast: our frameworks were appreciated at the Security UP award: “Security begins with code”, organized by Solar Group, the FinTech Association and the FinDevSecOps community:\n🦴The Jet Container Security Framework (JCSF) framework for assessing the security maturity of container infrastructure won the “Open Horizons: Open Source in Software Security” category\n🦴The framework for assessing the maturity of secure development processes DevSecOps Assessment Framework (DAF) received the quality mark of the FinTech Association.\nWe are very pleased that our contribution to open source was appreciated by such respected experts in the field of DevSecOps! This greatly inspires us and, we hope, you too, to develop secure development and DevSecOps in our companies and around the world. Make DevSecOps great again!"
+    },
+    {
+      "id": "328",
+      "text": "⚡️ AppSec врывается в топ: код – новая линия обороны&#33; ⚡️\n\n\"Солар\", Ассоциация Финтех и сообщество FinDevSecOps подвели итоги премии “Security UP: Безопасность начинается с кода”. И знаете что? Похоже, до всех дошло: теперь безопасность кода – это не просто модное слово, а реальная экономия времени и денег.\n\nТут дело не только в compliance, хотя регуляторы внимательно следят. Просто уязвимости в проде бьют по бюджету так, что мало не покажется. Поэтому фокус смещается на превентивные меры – компании вшивают безопасность в код ещё на этапе разработки.\n\nПо делу:\n\nОколо 40 проектов от ритейла и энергетики до страховых компаний и госструктур. Показательно, что тема важна для всех.\nКто судил: Эксперты из Банка России, Яндекса, Ланита, Мосбиржи, MWS Cloud. Ребята, понимающие в вопросе.\nСколько сэкономили: По данным “Солара”, проекты с серьёзным подходом к AppSec сэкономили более 10 млрд рублей, предотвратив гораздо больше проблем. Это вам не шутки&#33;\n\nПобедители (лучшие в своём деле):\n\n* “Почта России”: За комплексный подход к созданию масштабируемой DevSecOps-инфраструктуры. \n* “Росгосстрах”: За создание платформы управления безопасностью релизов\n* “Инфосистемы Джет”: За инициативы в области Open Source решений для безопасности контейнеризации и вклад в развитие open-source фреймворка. Open Source — это карма +10. \n* ГКУ МО «Центр информационной безопасности Московской области»: за значительный прогресс в развитии DevSecOps в регионах\n* Faberlic: за внедрение принципов Security-by-Design при разработке ПО. \n* СберТех: за систему непрерывного мониторинга уязвимостей\n* Т Плюс: победитель в номинации “Новые герои безопасной разработки” за проект по трансформации AppSec.\n\nЧто ещё интересно: победители смогут протестировать ИИ-плагин в составе Solar appScreener. Искусственный интеллект в мире AppSec – это перспективно. Будем наблюдать за развитием.\n\nВ сухом остатке: DevSecOps – это не просто тренд. Это эффективный способ снизить риски и сохранить деньги. Учитесь, внедряйте, будьте в курсе, и да пребудет с вами безопасный код&#33; 🛡️",
+      "date": "2026-04-17",
+      "url": "https://t.me/shmakovis_appsec/328",
+      "views": 129,
+      "tags": [],
+      "text_en": "⚡️ AppSec breaks into the top: code is the new line of defense! ⚡️\nSolar, the Fintech Association and the FinDevSecOps community summed up the results of the “Security UP: Security starts with code” award. And guess what? It seems that everyone has realized: now code security is not just a buzzword, but a real saving of time and money.\nThis is not just a matter of compliance, although regulators are closely monitoring. It’s just that vulnerabilities in the product hit the budget so much that it won’t seem enough. Therefore, the focus is shifting to preventive measures - companies build security into the code at the development stage.\nOn the case:\n\nAbout 40 projects from retail and energy to insurance companies and government agencies. It is significant that the topic is important to everyone.\nWho judged: Experts from the Bank of Russia, Yandex, Lanit, Moscow Exchange, MWS Cloud. Guys who understand the issue.\nHow much did they save: According to Solar, projects with a serious approach to AppSec saved more than 10 billion rubles, preventing many more problems. This is no joke!\nWinners (best in their field):\n\n* Russian Post: For an integrated approach to creating a scalable DevSecOps infrastructure.\n* “Rosgosstrakh”: For creating a release security management platform\n* “Jet Infosystems”: For initiatives in the field of Open Source solutions for containerization security and contribution to the development of the open-source framework. Open Source is karma +10.\n* GKU MO \"Information Security Center of the Moscow Region\": for significant progress in the development of DevSecOps in the regions\n* Faberlic: for implementing Security-by-Design principles in software development.\n* SberTech: for the system of continuous monitoring of vulnerabilities\n* T Plus: winner in the “New Heroes of Secure Development” category for the AppSec transformation project.\nWhat’s also interesting: the winners will be able to test the AI ​​plugin as part of the Solar appScreener. Artificial intelligence in the world of AppSec is promising. We will watch the development.\nThe bottom line: DevSecOps is not just a trend. This is an effective way to reduce risks and save money. Learn, implement, stay informed, and may secure code be with you! 🛡️"
+    },
+    {
+      "id": "327",
+      "text": "Уууу, еще дополнения",
+      "date": "2026-04-17",
+      "url": "https://t.me/shmakovis_appsec/327",
+      "views": 141,
+      "tags": [],
+      "text_en": "Oooh, more additions"
+    },
+    {
+      "id": "326",
+      "text": "•  При переходе в сервисы Яндекса с включенным VPN пользователи видят страницу-заглушку, которая не позволяет перейти в сервис. Если посмотреть код данной страницы, то можно найти отсылку к роману-антиутопии Д. Оруэлла \"1984\". Такие вот забавные пасхалки...\n\n•  Кстати, хочу напомнить, что книгу Оруэлла \"1984\" можно бесплатно скачать в нашей группе, ну или читать онлайн.\n\n#Оруэлл",
+      "date": "2026-04-17",
+      "url": "https://t.me/shmakovis_appsec/326",
+      "views": 144,
+      "tags": [
+        "оруэлл"
+      ],
+      "image": "/img/blog/326.jpg",
+      "text_en": "• When going to Yandex services with VPN enabled, users see a stub page that does not allow them to go to the service. If you look at the code of this page, you can find a reference to D. Orwell's dystopian novel \"1984\". These are some funny Easter eggs...\n• By the way, I would like to remind you that Orwell’s book “1984” can be downloaded for free in our group, or read online.\n\n#Orwell"
+    },
+    {
+      "id": "325",
+      "text": "Красивое 🙃",
+      "date": "2026-04-17",
+      "url": "https://t.me/shmakovis_appsec/325",
+      "views": 132,
+      "tags": [],
+      "text_en": "Beautiful 🙃"
+    },
+    {
+      "id": "320",
+      "text": "#Солар и Ассоциация ФинТех назвали победителей премии по безопасной разработке.\n\nАссоциация ФинТех, группа компания «Солар» и сообщество FinDevSecOps при участии 15 экспертов из крупнейших российских ИТ- и ИБ-компаний определили победителей премии «Security UP: Безопасность начинается с кода».\n\n🗣️ Руководитель управления развития технологий Ассоциации ФинТех Олег Моргун: Сейчас тема безопасной разработки выходит на первый план: такой подход позволяет компаниям эффективно противостоять любым угрозам и успешно решать задачи по достижению технологического суверенитета. Номинированные на премию проекты разнообразны по контексту: от создания ИТ-системы и внедрения процессов безопасной разработки до фреймворка по её построению. Одни проекты реализованы для единственного заказчика, другие компании создали сервис, доступный внешним участникам. Уверен, что победители премии станут хорошим примером для отрасли и зададут тренд на использование лучших DevSecOps-практик, а также вдохновят участников рынка на новые амбициозные проекты.\n\nПобедители премии «Security UP: Безопасность начинается с кода»:\n\n✅ «Фундамент безопасности: DevSecOps-революция» − «Почта России»\n✅ «Страховой щит: зрелые практики безопасности в страховом бизнесе» − страховая компания «Росгосстрах»\n✅ «Региональный импульс: развитие DevSecOps в регионах» − ГКУ МО «Центр информационной безопасности Московской области»\n✅ «Открытые горизонты: Open Source в безопасности ПО» − системный интегратор «Инфосистемы Джет» \n✅ «Архитекторы безопасности: интеграция DevSecOps» −\nкомпания Faberlic/Эксперт\n✅ «Технологический прорыв: новые горизонты\nбезопасности ПО» − СберТех\n✅ Победителем в номинации «Новые герои безопасной\nразработки» стала крупнейшая российская частная энергетическая\nкомпания «Т Плюс»\n✅ В специальной номинации «Знак качества АФТ» победила компания «Инфосистемы Джет». \n\nПремию в номинации «Знак качества АФТ» вручила Татьяна Билык, директор технологических проектов Ассоциации ФинТех. Она подчеркнула: «Коллеги провели большую работу по анализу существующих методологий и нормативной базы – свели все в единый фреймворк и выложили в открытый доступ (open source). Их решение полностью соответствует целям сообщества FinDevSecOps».\n\nВ состав членов жюри премии вошли 15 экспертов в сфере кибербезопасности и безопасной разработки из крупных организаций ИТ- и финансового сектора. В их числе: Максим Кожокарь, начальник Управления прикладных платформ Департамента информационных технологий, Банк России, Денис Макрушин, директор по продуктам безопасной разработки SourceCraft, Яндекс, Виктор Бобыльков, директор по кибербезопасности MTS Web Services, Илья Шмаков, руководитель направления AppSec ЛАНИТ. \n\nПроекты участников премии также получили экспертную оценку со стороны Дмитрия Кузнецова, директора безопасности цифровых решений Альфа-Банка, Сергея Демидова, заместителя председателя правления по ИБ «Московской биржи», Степана Дудника, руководителя центра развития платформенных решений Страхового Дома ВСК.  Лучшие проекты по безопасной разработке также определили Татьяна Билык, директор технологических проектов Ассоциации ФинТех, Владимир Высоцкий и Антон Прокофьев, руководители по развитию бизнеса и операционной поддержке ПО Solar appScreener ГК «Солар», Федор Герасимов, эксперт по безопасной разработке ИТ-холдинга Т1, Равиль Зулькарнаев, руководитель отдела безопасной разработки ИТ-холдинга Т1, Анастасия Доронина, специалист по взаимодействию с сообществом РБПО компании «Базальт СПО», Юрий Шабалин, старший директор по развитию ИИ-технологий ГК Swordfish Security, Александр Гадай, руководитель службы консалтинга  Swordfish Security.",
+      "date": "2026-04-17",
+      "url": "https://t.me/shmakovis_appsec/320",
+      "views": 152,
+      "tags": [
+        "солар"
+      ],
+      "image": "/img/blog/320.jpg",
+      "text_en": "#Solar and the FinTech Association announced the winners of the secure development award.\nThe FinTech Association, the Solar group and the FinDevSecOps community, with the participation of 15 experts from the largest Russian IT and information security companies, determined the winners of the “Security UP: Security Starts with Code” award.\n🗣️ Oleg Morgun, Head of the Technology Development Department of the FinTech Association: Now the topic of secure development comes to the fore: this approach allows companies to effectively counter any threats and successfully solve problems to achieve technological sovereignty. The projects nominated for the award are diverse in context: from the creation of an IT system and the implementation of secure development processes to the framework for its construction. Some projects were implemented for a single customer, while other companies created a service available to external participants. I am confident that the award winners will become a good example for the industry and will set a trend for the use of the best DevSecOps practices, as well as inspire market participants to new ambitious projects.\nWinners of the “Security UP: Security Starts with Code” award:\n\n✅ “Security foundation: DevSecOps revolution” - “Russian Post”\n✅ “Insurance shield: mature safety practices in the insurance business” - Rosgosstrakh insurance company\n✅ “Regional impulse: development of DevSecOps in the regions” - State Public Institution of the Moscow Region Information Security Center of the Moscow Region\n✅ “Open Horizons: Open Source in Software Security” - system integrator of Jet Infosystems \n✅ “Security Architects: DevSecOps Integration” −\nFaberlic/Expert company\n✅ “Technological breakthrough: new horizons\nsoftware security\" - SberTech\n✅ Winner in the category “New heroes of safe\ndevelopment\" has become the largest Russian private energy company\ncompany \"T Plus\"\n✅ Jet Infosystems won the special category “AFL Quality Mark”.\nThe award in the category “AFT Quality Mark” was presented by Tatyana Bilyk, director of technological projects of the FinTech Association. She emphasized: “Colleagues did a lot of work analyzing existing methodologies and regulatory frameworks - they brought everything into a single framework and made it publicly available (open source). Their solution is fully aligned with the goals of the FinDevSecOps community.”\nThe award jury included 15 experts in the field of cybersecurity and secure development from large organizations in the IT and financial sectors. Among them: Maxim Kozhokar, head of the Application Platforms Department of the Information Technology Department, Bank of Russia, Denis Makrushin, director of secure development products at SourceCraft, Yandex, Viktor Bobylkov, director of cybersecurity at MTS Web Services, Ilya Shmakov, head of AppSec at LANIT.\nThe projects of the award participants also received expert assessment from Dmitry Kuznetsov, director of security of digital solutions at Alfa-Bank, Sergei Demidov, deputy chairman of the board for information security at the Moscow Exchange, Stepan Dudnik, head of the center for the development of platform solutions at VSK Insurance House.  The best secure development projects were also identified by Tatyana Bilyk, director of technological projects of the FinTech Association, Vladimir Vysotsky and Anton Prokofiev, heads of business development and operational support for Solar appScreener software of the Solar Group of Companies, Fedor Gerasimov, expert in secure development of the T1 IT holding, Ravil Zulkarnaev, head of the secure development department of the T1 IT holding, Anastasia Doronina, interaction specialist with the RBPO community of the Basalt SPO company, Yuri Shabalin, senior director for development of AI technologies at Swordfish Security Group, Alexander Gadai, head of the consulting service at Swordfish Security."
+    },
+    {
+      "id": "319",
+      "text": "Немножко новостей, от меня постик будет чуть попозже, пока наслаждаемся инфо от @fintechassociation",
+      "date": "2026-04-17",
+      "url": "https://t.me/shmakovis_appsec/319",
+      "views": 86,
+      "tags": [],
+      "text_en": "A little news, there will be a post from me a little later, while we are enjoying the information from @fintechassociation"
+    },
+    {
+      "id": "318",
+      "text": "Когда у тебя плохой день, просто вспомни, что где-то есть человек, который сейчас работает на твоей старой работе\n\n#meme",
+      "date": "2026-04-17",
+      "url": "https://t.me/shmakovis_appsec/318",
+      "views": 93,
+      "tags": [
+        "meme"
+      ],
+      "text_en": "When you're having a bad day, just remember that somewhere there is a person who now works at your old job.\n\n#meme"
+    },
+    {
+      "id": "317",
+      "text": "I likely that 😅🤣",
+      "date": "2026-04-17",
+      "url": "https://t.me/shmakovis_appsec/317",
+      "views": 92,
+      "tags": [],
+      "text_en": "I'm likely that 😅🤣"
+    },
+    {
+      "id": "316",
+      "text": "Салюты,\nНа базе, скоро будет классная инфа по мероприятию, мы готовимся и совсем скоро будет очень комфортная история для всех 🫶\n\nВместо бейджей у нас новомодные браслеты 😅\n\n#meetup #appsec #devsecops",
+      "date": "2026-04-16",
+      "url": "https://t.me/shmakovis_appsec/316",
+      "views": 109,
+      "tags": [
+        "meetup",
+        "appsec",
+        "devsecops"
+      ],
+      "image": "/img/blog/316.jpg",
+      "text_en": "Fireworks,\nAt the base, there will soon be cool information about the event, we are preparing and very soon there will be a very comfortable story for everyone 🫶\nInstead of badges we have newfangled bracelets 😅\n\n#meetup #appsec #devsecops"
+    },
+    {
+      "id": "315",
+      "text": "🏆 SecurityUp: Безопасность начинается с кода\n\nСалюты,\nВ этот четверг пройдет мероприятие по премии \"Безопасность начинается с кода\".  Место: Кинотеатр \"Иллюзион\" Котельническая набережная 1/15 (Таганская, Китай Город). \n\nВот тут писал инфо об этом, можешь почитать и освежить в памяти. \n\nВ программе будет награждение, выступления заслуженных и принятых спикеров в сообществе по кибербезопасности.\n\nМы уже отобрали победителей по номинациям и я думаю вам они понравятся, которые были по своему интересны, а также те, которые показывают, что ребята только начали развиваться и могут двигаться в правильном направлении дальше.\n\nНоминации:\n\n• Фундамент безопасности: DevSecOps-революция в банках\n• Страховой щит: зрелые практики безопасности в страховом бизнесе\n• Региональный импульс: развитие DevSecOps в регионах\n• Открытые горизонты: Open Source в безопасности ПО\n• Архитекторы безопасности: интеграция DevSecOps\n• Технологический прорыв: новые горизонты безопасности ПО\n• Новые герои безопасной разработки\n\nТакже в этот день у нас будет пресс-брифинг \"Безопасная разработка без ИИллюзий: что реально работает в бизнесе?\". Модератор: Александр Митяев, главный редактор онлайн-медиа о кибербезопасности «Киберболоид»\n\nСпикеры:\n\n• Виктор Бобыльков, директор по кибербезопасности MTS Web Services\n• Сергей Демидов, заместитель председателя правления по ИБ ПАО «Московская биржа»\n• Татьяна Билык, директор технологических проектов Ассоциации ФинТех\n• Владимир Высоцкий, руководитель отдела по развитию бизнеса ПО Solar appScreener\n• Федор Герасимов, DevSecOps Tech Lead, IT-Холдинг Т1\n• Илья Шмаков, AppSec Teamlead ЛАНИТ\n\nТак что велком, я буду рад тебя там видеть и мы сможем пообщаться лично 🫶\n\n#appsec #devsecops #specialty #toolchain #reserch #pmcases #techsolution #compliance #gost #meetup #кулуарка",
+      "date": "2026-04-15",
+      "url": "https://t.me/shmakovis_appsec/315",
+      "views": 118,
+      "tags": [
+        "appsec",
+        "devsecops",
+        "specialty",
+        "toolchain",
+        "reserch",
+        "pmcases",
+        "techsolution",
+        "compliance",
+        "gost",
+        "meetup",
+        "кулуарка"
+      ],
+      "image": "/img/blog/315.jpg",
+      "text_en": "🏆 SecurityUp: Security starts with code\n\nFireworks,\nThis Thursday there will be an event for the \"Security Starts with Code\" award.  Location: Cinema \"Illusion\" Kotelnicheskaya embankment 1/15 (Taganskaya, Kitay Gorod).\nI wrote information about this here, you can read it and refresh your memory.\nThe program will include awards, distinguished and accepted speakers in the cybersecurity community.\nWe have already selected the winners in the nominations and I think you will like them, which were interesting in their own way, as well as those that show that the guys have just begun to develop and can move forward in the right direction.\nNominations:\n\n• Security foundation: DevSecOps revolution in banks\n• Insurance Shield: Mature Security Practices in the Insurance Business\n• Regional impulse: development of DevSecOps in the regions\n• Open Horizons: Open Source in software security\n• Security Architects: DevSecOps Integration\n• Technological breakthrough: new horizons for software security\n• New heroes of safe development\nAlso on this day we will have a press briefing “Safe development without illusions: what really works in business?” Moderator: Alexander Mityaev, editor-in-chief of the online media about cybersecurity “Cyberboloid”\nSpeakers:\n\n• Victor Bobylkov, director of cybersecurity at MTS Web Services\n• Sergey Demidov, Deputy Chairman of the Board for Information Security at Moscow Exchange PJSC\n• Tatyana Bilyk, director of technological projects of the FinTech Association\n• Vladimir Vysotsky, head of business development department for Solar appScreener software\n• Fedor Gerasimov, DevSecOps Tech Lead, IT-Holding T1\n• Ilya Shmakov, AppSec Teamlead LANIT\n\nSo welcome, I’ll be glad to see you there and we can talk in person 🫶\n#appsec #devsecops #specialty #toolchain #reserch #pmcases #techsolution #compliance #gost #meetup #backstage"
+    },
+    {
+      "id": "314",
+      "text": "🛠 Безопасные HTTP‑заголовки\n\nТак, давай посмотрим на основу, которую нужно знать и понимать, а именно заголовки безопасности. Запомним, что это инструкции браузеру, как обращаться с контентом сайта. Настраиваются на сервере или в конфиге фреймворка и закрывают целые классы атак: XSS, clickjacking, MITM, data leakage. Без них даже чистый и аккуратный фронтенд остаётся уязвимым к базовым эксплойтам.\n\nКлючевые заголовки и что они делают:\n\n• Content-Security-Policy (CSP) — говорит браузеру, откуда можно грузить скрипты, стили, картинки, фреймы. Обрезает inline-JS и сторонние ресурсы, которые ты не контролируешь\n• Strict-Transport-Security (HSTS) — запрещает браузеру заходить на сайт по HTTP, только HTTPS. После первого посещения браузер сам редиректит на HTTPS, даже если пользователь набрал http\n• X-Frame-Options — запрещает встраивать страницу в <iframe> с чужих доменов. Защита от clickjacking. Устаревший, но всё ещё нужен для браузеров, которые поддерживаются на также устаревших девайсах. Используется в паре с CSP frame-ancestors\n• X-Content-Type-Options — запрещает браузеру угадывать MIME-тип файла самостоятельно, так как без этого заголовка браузер может исполнить .jpg какJavaScript\n• Referrer-Policy — контролирует, сколько информации о текущем URL уходит в заголовке Referer при переходе. Важно для страниц с токенами в URL или чувствительными путями\n• Permissions-Policy — разрешает или запрещает доступ к API браузера (камера, микрофон, геолокация, fullscreen и т.д.) для самой страницы и для iframe\n\n/etc/nginx/conf.d/security-headers.conf\n\nserver {\n    add_header Strict-Transport-Security \"max-age=31536000; includeSubDomains; preload\" always;\n    add_header X-Frame-Options \"DENY\" always;\n    add_header X-Content-Type-Options \"nosniff\" always;\n    add_header Referrer-Policy \"strict-origin-when-cross-origin\" always;\n    add_header Permissions-Policy \"camera=(), microphone=(), geolocation=(), payment=()\" always;\n\n    # CSP — стартовая строгая политика\n    add_header Content-Security-Policy \"\n        default-src 'self';\n        script-src 'self';\n        style-src 'self' 'unsafe-inline';\n        img-src 'self'  https:;\n        font-src 'self';\n        connect-src 'self';\n        frame-ancestors 'none';\n        base-uri 'self';\n        form-action 'self';\n    \" always;\n}\n\nПроверить заголовки и через онлайн\n\n# Через curl — смотрим headers ответа\ncurl -I https://example.com\n\n# Подробнее — только security-relevant headers\ncurl -s -D - https://example.com -o /dev/null | grep -iE &#092;\n  \"strict-transport|content-security|x-frame|x-content-type|referrer|permissions\"\n\nИтого:\n\n• Следует начинать с Content-Security-Policy-Report-Only — заголовок логирует нарушения, но ещё не блокирует. Смотришь логи и убираешь фолсы\n• frame-ancestors 'none'  в CSP полностью заменяет X-Frame-Options: DENY\n• Не ставить max-age у HSTS ниже одного года — иначе толку мало. preload добавляет сайт в браузерный preload list, после чего HTTPS будет обязательным ещё до первого запроса\n• Permissions-Policy — прописывать явно, даже если запрещаешь всё: camera=(), microphone=(), payment=()\n\n#appsec #reco #toolchain #paper #term",
+      "date": "2026-04-14",
+      "url": "https://t.me/shmakovis_appsec/314",
+      "views": 110,
+      "tags": [
+        "appsec",
+        "reco",
+        "toolchain",
+        "paper",
+        "term"
+      ],
+      "image": "/img/blog/314.jpg",
+      "text_en": "🛠 Secure HTTP headers\nSo, let's look at the basics that you need to know and understand, namely security headers. Remember that these are instructions to the browser on how to handle the site's content. They are configured on the server or in the framework config and cover entire classes of attacks: XSS, clickjacking, MITM, data leakage. Without them, even a clean and tidy frontend remains vulnerable to basic exploits.\nKey headings and what they do:\n• Content-Security-Policy (CSP) - tells the browser where scripts, styles, images, frames can be loaded from. Trims inline-JS and third-party resources that you do not control\n• Strict-Transport-Security (HSTS) - prevents the browser from accessing the site via HTTP, only HTTPS. After the first visit, the browser itself redirects to HTTPS, even if the user typed http\n• X-Frame-Options - prohibits embedding a page into an <iframe> from foreign domains. Clickjacking protection. Outdated, but still needed for browsers that are supported on also outdated devices. Used in conjunction with CSP frame-ancestors\n• X-Content-Type-Options - prevents the browser from guessing the MIME type of the file on its own, since without this header the browser can execute the .jpg as JavaScript\n• Referrer-Policy - controls how much information about the current URL is left in the Referer header during a transition. Important for pages with tokens in the URL or sensitive paths\n• Permissions-Policy - allows or denies access to the browser API (camera, microphone, geolocation, fullscreen, etc.) for the page itself and for the iframe\n\n/etc/nginx/conf.d/security-headers.conf\n\nserver {\n    add_header Strict-Transport-Security \"max-age=31536000; includeSubDomains; preload\" always;\n    add_header X-Frame-Options \"DENY\" always;\nadd_header X-Content-Type-Options \"nosniff\" always;\n    add_header Referrer-Policy \"strict-origin-when-cross-origin\" always;\n    add_header Permissions-Policy \"camera=(), microphone=(), geolocation=(), payment=()\" always;\n\n    # CSP - starting strict policy\n    add_header Content-Security-Policy \"\n        default-src 'self';\n        script-src 'self';\n        style-src 'self' 'unsafe-inline';\n        img-src 'self' https:;\n        font-src 'self';\n        connect-src 'self';\nframe-ancestors 'none';\n        base-uri 'self';\n        form-action 'self';\n    \"always;\n}\n\nCheck headlines and online\n\n# Via curl - look at the headers of the response\ncurl -I https://example.com\n\n# More details - only security-relevant headers\ncurl -s -D - https://example.com -o /dev/null | grep -iE\\\n\"strict-transport|content-security|x-frame|x-content-type|referrer|permissions\"\n\nTotal:\n\n• You should start with Content-Security-Policy-Report-Only - the header logs violations, but does not block yet. Look at the logs and remove errors\n• frame-ancestors 'none' in CSP completely replaces X-Frame-Options: DENY\n• Do not set the max-age for HSTS below one year - otherwise it will be of little use. preload adds the site to the browser preload list, after which HTTPS will be required even before the first request\n• Permissions-Policy - set explicitly, even if you prohibit everything: camera=(), microphone=(), payment=()\n\n#appsec #reco #toolchain #paper #term"
+    },
+    {
+      "id": "313",
+      "text": "Что это был за 😄😄😄 и как он стал рекламой онлайн-казино\n\nВ пятницу тысячи (не преувеличиваем) каналов поделились сообщением, которое начиналось с красной надписи черновик: — а точнее, с трех эмодзи, которые ее и составляли. После нее каналы, в том числе крупных и известных брендов, соревновались в юморе: кто интереснее подаст свой черновик. Мы — в том числе. \n\nНа первый взгляд — безобидный флешмоб. На деле — тысячи каналов бесплатно прорекламировали онлайн-казино, сами того не подозревая. Рассказываем, как это получилось.\n\n1️⃣ Когда вы создаете пак эмодзи в Telegram, его можно назвать как угодно. Предположим, «Котики». Вы добавляете туда прикольные картинки с котятами, делитесь с друзьями, потом это подхватывают каналы — и вот ваши котики везде.\n\nНо у владельца эмодзи-пака есть возможность переименовать его в любой момент. То есть, например, когда он уже установлен у тысяч пользователей и им продолжают делиться, название может внезапно измениться на «Котики — не очень, песики — огонь». При этом короткое имя (ссылка на добавление пака) остается тем же.\n\n2️⃣ В пятницу так и произошло. Пак из трех эмодзи изначально назывался просто «ЧЕРНОВИК», его начали активно распространять по каналам — копировать и вставлять, не подозревая о планируемом скаме.\n\nСпустя время он был переименован в «ЧЕРНОВИК [упоминание канала] (ПОДПИШИСЬ)». Упоминаемый канал принадлежит некому «социальному казино» (как они сами себя называют), которое якобы бесплатно раздает деньги, но на самом деле через различные шаги уводит на платформу стандартного онлайн-казино. За несколько дней этот канал собрал несколько тысяч подписчиков. Всего за счет трех эмодзи.\n\n3️⃣ Некоторые каналы (и мы, спасибо читателям) обратили на это внимание и заменили паки на собственные. Наш мы так и назвали — «безопасный» (кстати, его установили себе около 20 пользователей, а сколько установили оригинальный — загадка). Другие каналы, узнав об этом, удалили публикации или эмодзи в них.\n\n4️⃣ Чего не произошло, а могло бы. Помимо того, что у паков можно обновлять названия — в них можно менять и сами эмодзи, а также добавлять новые. На примере котиков из начала объяснения — заменить их всех на песиков 🐈 —> 🐕 (сильно не переживайте, в уже размещенных эмодзи котики останутся, изменения будут только в новых публикациях). А дальше у кого на что хватит фантазии — вплоть до размещения фишингового QR-кода, состоящего из эмодзи.\n\n💡 Такие механики — наглядный пример того, как даже без взлома можно использовать доверие аудитории в своих целях. Поэтому перед публикацией любого хайпового контента стоит оценивать риски, даже если на первый взгляд все выглядит безобидно (для себя тоже выводы сделали).\n\n@Positive_Technologies",
+      "date": "2026-04-14",
+      "url": "https://t.me/shmakovis_appsec/313",
+      "views": 84,
+      "tags": [],
+      "image": "/img/blog/313.jpg",
+      "text_en": "What was this 😄😄😄 and how did it become an advertisement for online casinos\nOn Friday, thousands (we are not exaggerating) of channels shared a message that began with the red inscription draft: - or rather, with the three emoji that made it up. After it, channels, including large and well-known brands, competed in humor: who would present their draft more interestingly. We are included.\nAt first glance, it looks like a harmless flash mob. In fact, thousands of channels advertised online casinos for free, without even knowing it. We'll tell you how it happened.\n1️⃣ When you create an emoji pack in Telegram, you can call it whatever you want. Let's say \"Cats\". You add funny pictures with kittens there, share with friends, then channels pick it up - and now your cats are everywhere.\nBut the owner of the emoji pack has the opportunity to rename it at any time. That is, for example, when it is already installed by thousands of users and continues to be shared, the name may suddenly change to “Cats are not very good, dogs are fire.” In this case, the short name (link to add the pack) remains the same.\n2️⃣ This is what happened on Friday. The pack of three emoji was initially called simply “DRAFT”; they began to actively distribute it through channels - copying and pasting, unaware of the planned scam.\nAfter a while, it was renamed “DRAFT [channel mention] (SUBSCRIBE).” The mentioned channel belongs to a certain “social casino” (as they call themselves), which supposedly gives out money for free, but in fact, through various steps, leads to the platform of a standard online casino. Within a few days, this channel collected several thousand subscribers. With just three emoji.\n3️⃣ Some channels (and we, thanks to the readers) paid attention to this and replaced the packs with our own. We called ours “safe” (by the way, about 20 users installed it, but how many installed the original one is a mystery). Other channels, having learned about this, deleted posts or emoji in them.\n4️⃣ What didn’t happen, but could have. In addition to the fact that the names of the packs can be updated, the emoji themselves can be changed in them, as well as new ones can be added. Using the example of cats from the beginning of the explanation, replace them all with doggies 🐈 —> 🐕 (don’t worry too much, cats will remain in the emoji already posted, changes will only be made in new publications). And then whoever has enough imagination will go as far as posting a phishing QR code consisting of emojis.\n💡 Such mechanics are a clear example of how, even without hacking, you can use the trust of your audience for your own purposes. Therefore, before publishing any hype content, it is worth assessing the risks, even if at first glance everything looks harmless (we also drew conclusions for ourselves).\n@Positive_Technologies"
+    },
+    {
+      "id": "312",
+      "text": "Ой ай, ну чтож, было и было",
+      "date": "2026-04-14",
+      "url": "https://t.me/shmakovis_appsec/312",
+      "views": 95,
+      "tags": [],
+      "text_en": "Oh oh, well, it was and it was"
+    },
+    {
+      "id": "311",
+      "text": "🛠 XSSNow\n\nСалюты,\nДавай посмотрим на XSSNow, что позволит тебе немного автоматизировать себя и упростить жизнь вокруг себя\n\nЭто генератор контекстных XSS-payloads и использует уже составленную базу, сам ресурс заточен под реальные сценарии эксплуатации. В отличие от простых XSS-листов, здесь payloads разбиты по типу инъекции, контексту и применимости к конкретным защитам. Заметь, что это именно community-driven, который открыт для добавления нагрузок. Generator | GitHub\n\nФункционально\n\n• Коллекция из сотен payload по типам атак: DOM‑based, reflected, stored, CSP‑bypass, WAF‑bypass\n• Генератор строит нагрузки под конкретный контекст инъекции — HTML-тег, атрибут, inline-JS, URL-параметр, event-handler, JSON\n• Поддержка кодировок и трансформаций для обхода фильтров: URL-encoding, HTML-entities, обфускация\n• Встроенные техники обхода WAF и CSP, где payloads обновляются под живые движки и реальные защиты\n\nПримеры\n\n<&#33;-- HTML-тег, нет WAF -->\n<script>alert(document.cookie)</script>\n\n<&#33;-- Атрибут value, двойные кавычки закрыты -->\n\"onmouseover=\"alert(1)\n\n<&#33;— href-атрибут -->\njavascript:alert(document.domain)\n\n<&#33;-- inline-JS, строка в одинарных кавычках -->\n';alert(document.cookie)//\n\n<&#33;-- WAF блокирует <script> и alert() -->\n<img src=x onerror=confirm`1`>\n<svg/onload=eval(atob('YWxlcnQoMSk='))>\n<details open ontoggle=alert(1)>\n\n<&#33;-- CSP блокирует inline-скрипты, но разрешает nonce -->\n<script nonce=\"УГАДАННЫЙ_NONCE\">alert(1)</script>\n\n<&#33;-- DOM-based, где параметр попадает в innerHTML -->\n#<img src=1 onerror=alert(1)>\n\nИтого: поможет тебе прокачаться в offensivesec — упрощение подбора рабочего payload под контекст, а также проверка своих фильтров — прогнать набор bypass-нагрузок и найти паттерны, которые всё ещё проходят. По сути это также качает наглядно и ты понимаешь, почему universal <script>alert(1) не работает в большинстве prod-кейсов, да и почему контекст решает всё\n\nТолько в рамках исследовательских целей и использования на основании тестов и обучения на своих стендах, лабораторных работ, а также с письменным разрешением (bug bounty scope, договор)\n\n#toolchain #appsec #reco #techsolution #dast #paper",
+      "date": "2026-04-14",
+      "url": "https://t.me/shmakovis_appsec/311",
+      "views": 98,
+      "tags": [
+        "toolchain",
+        "appsec",
+        "reco",
+        "techsolution",
+        "dast",
+        "paper"
+      ],
+      "image": "/img/blog/311.jpg",
+      "text_en": "🛠XSSNow\n\nFireworks,\nLet's look at XSSNow, which will allow you to automate yourself a little and simplify your life around you\nThis is a generator of contextual XSS payloads and uses an already compiled database; the resource itself is tailored to real-life exploitation scenarios. Unlike simple XSS sheets, payloads here are broken down by injection type, context, and applicability to specific protections. Note that this is community-driven, which is open to adding loads. Generator | GitHub\nFunctionally\n\n• Collection of hundreds of payloads by attack type: DOM‑based, reflected, stored, CSP‑bypass, WAF‑bypass\n• The generator builds loads for a specific injection context - HTML tag, attribute, inline-JS, URL parameter, event-handler, JSON\n• Support for encodings and transformations to bypass filters: URL-encoding, HTML-entities, obfuscation\n• Built-in techniques for bypassing WAF and CSP, where payloads are updated for live engines and real protections\n\nExamples\n\n<!-- HTML tag, no WAF -->\n<script>alert(document.cookie)</script>\n\n<!-- Value attribute, closed double quotes -->\n\"onmouseover=\"alert(1)\n\n<!— href attribute -->\njavascript:alert(document.domain)\n\n<!-- inline-JS, single-quoted string -->\n';alert(document.cookie)//\n\n<!-- WAF blocks <script> and alert() -->\n<img src=x onerror=confirm`1`>\n<svg/onload=eval(atob('YWxlcnQoMSk='))>\n<details open ontoggle=alert(1)>\n\n<!-- CSP blocks inline scripts, but allows nonce -->\n<script nonce=\"GUESSED_NONCE\">alert(1)</script>\n\n<!-- DOM-based, where the parameter ends up in innerHTML -->\n#<img src=1 onerror=alert(1)>\nTotal: it will help you improve in offensivesec - simplifying the selection of a working payload for the context, as well as checking your filters - running a set of bypass loads and finding patterns that are still passing. In fact, this also shows clearly and you understand why universal <script>alert(1) does not work in most prod-cases, and why context is everything\nOnly within the framework of research purposes and use based on tests and training at their stands, laboratory work, as well as with written permission (bug bounty scope, agreement)\n#toolchain #appsec #reco #techsolution #dast #paper"
+    },
+    {
+      "id": "310",
+      "text": "С праздником родной(ая)&#33;\n\nХристос Воскресе",
+      "date": "2026-04-12",
+      "url": "https://t.me/shmakovis_appsec/310",
+      "views": 84,
+      "tags": [],
+      "image": "/img/blog/310.jpg",
+      "text_en": "Happy holiday, dear!\n\nChrist is Risen"
+    },
+    {
+      "id": "309",
+      "text": "🛠 Clair для Docker и OCI\n\nСалют, \nДавай сегодня поговорим про open-source движок для анализа Docker/ OCI-образов на уязвимости. \n\nИнструмент написан на Golang и разбирает образ послойно, то есть он извлекает список установленных пакетов и сравнивает их с CVE-базами без запуска контейнера. Clair может работать в комбинированном режиме (combo) — все три сервиса в одном процессе, что удобно для тестирования, либо в распределенном режиме для масштабирования в production\n\nРазработан командой Quay под лицензией Apache 2.0. Форматы отчётов: CLI, SARIF, Quay-native JSON. Работает с Ubuntu, Debian, RHEL, Suse, Oracle, Alpine, AWS Linux, VMWare Photon, Python и другими\n\nФункциональность\n\n• Индексация - получает манифест образа, извлекает слои, сканирует их содержимое и формирует промежуточный отчет\n• Сопоставляет данные из промежуточного отчета с базой известных уязвимостей и возвращает реальные уязвимости\n• При обнаружении новых сработок определяет, какие из ранее проиндексированных образов они затрагивают, и отправляет уведомления согласно настройкам\n\nФишки\n\n• Анализирует образы статически — контейнер запускать не нужно, всё на уровне манифеста и слоёв\n• Поддерживает базы уязвимостей: NVD, Alpine SecDB, RHEL, Ubuntu, Debian, Oracle и другие\n• Режим Notifier — при появлении новой CVE для уже проверенного образа отправит вебхук, без повторного сканирования\n• SARIF для GitHub Security, GitLab SAST Code Scanning\n• JSON для DefectDojo, Jira, Quay Registry\n• Масштабируется горизонтально: Indexer / Matcher / Notifier разносятся по отдельным инстансам под нагрузку\n• Встроен в Red Hat Quay как основной движок сканирования образов в registry (про Red Hat понятно, но переиспользуемый)\n\nКоманды\n\n# Установить clairctl\ngo install github.com/quay/clair/v4/cmd/clairctl@latest\n\n# Сканировать публичный образ\nclairctl report --host http://localhost:6060 ubuntu:focal\n\n# Сканировать с конфигом (если включён PSK-auth)\nclairctl report &#092;\n  --config ./config/clair.yaml &#092;\n  --host http://localhost:6060 &#092;\n  nginx:1.25\n\n# Проверка\ndocker compose up -d\ncurl http://localhost:6061/healthz\n\n# Проверка API Indexer\ncurl http://localhost:8080/indexer/api/v1/index_stat\n\n# Пример вывода:\n# ubuntu:focal found libpcre3 2:8.39-12build1 CVE-2017-11164\n# ubuntu:focal found libc6 2.31-0ubuntu9 CVE-2016-10228\n# ubuntu:focal found libgcrypt20 1.8.5-5ubuntu1 CVE-2019-12904\n\nПример конфига clair.yaml\n\n# config/clair.yaml\nhttp_listen_addr: \":6060\"\nintrospection_addr: \":6061\"\nlog_level: debug\n\nindexer:\n  connstring: \"host=clair-db port=5432 user=clair dbname=clair sslmode=disable\"\n  migrations: true\n\nmatcher:\n  connstring: \"host=clair-db port=5432 user=clair dbname=clair sslmode=disable\"\n  migrations: true\n\nnotifier:\n  connstring: \"host=clair-db port=5432 user=clair dbname=clair sslmode=disable\"\n  migrations: true\n  webhook:\n    target: \"https://your-service/clair-webhook\"\n    callback: \"http://clair:6060/notifier/api/v1/notifications\"\n\nКеширование CVE для оптимизации\n\n# Отдельный workflow — обновляет базу раз в сутки\nname: Update Clair DB\non:\n  schedule:\n    - cron: '0 5 * * *'\n\njobs:\n  update-db:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Generate vulnerability DB\n        uses: quay/clair-action@main\n        with:\n          db-file: matcher.db\n          mode: update\n\n      - name: Cache DB\n        uses: actions/cache@v3\n        with:\n          path: matcher.db\n          key: clair-matcher-db\n\n# В основном CI используем закэшированную базу:\n# - name: Grab cached DB\n#   uses: actions/cache@v3\n#   with:\n#     path: matcher.db\n#     key: clair-matcher-db\n\nИтого\n\nClair заходит, если уже есть Quay или нужен движок, который можно встроить в registry и CI одновременно, а именно - сканирует при push, держит базу актуальной и алертит при новых CVE без повторных прогонов. \n\nЕсли хочется потыкать в связке с другими инструментами — смотри в сторону связки Clair + DefectDojo + SecScore для полноценного Security Gate.\n\n#toolchain #containersecurity #appsec",
+      "date": "2026-04-10",
+      "url": "https://t.me/shmakovis_appsec/309",
+      "views": 102,
+      "tags": [
+        "toolchain",
+        "containersecurity",
+        "appsec"
+      ],
+      "image": "/img/blog/309.jpg",
+      "text_en": "🛠 Clair for Docker and OCI\n\nSalute, \nLet's talk today about an open-source engine for analyzing Docker/OCI images for vulnerabilities.\nThe tool is written in Golang and parses the image layer by layer, that is, it extracts a list of installed packages and compares them with CVE databases without running a container. Clair can work in combined mode (combo) - all three services in one process, which is convenient for testing, or in distributed mode for scaling in production\nDeveloped by the Quay team under the Apache 2.0 license. Report formats: CLI, SARIF, Quay-native JSON. Works with Ubuntu, Debian, RHEL, Suse, Oracle, Alpine, AWS Linux, VMWare Photon, Python and more\n\nFunctionality\n• Indexing - receives the image manifest, extracts layers, scans their contents and generates an intermediate report\n• Compares data from the interim report with the database of known vulnerabilities and returns real vulnerabilities\n• When new detections are detected, it determines which of the previously indexed images they affect and sends notifications according to the settings\n\nChips\n• Analyzes images statically - no need to run the container, everything is at the manifest and layer level\n• Supports vulnerability databases: NVD, Alpine SecDB, RHEL, Ubuntu, Debian, Oracle and others\n• Notifier mode - when a new CVE appears for an already verified image, it will send a webhook, without rescanning\n• SARIF for GitHub Security, GitLab SAST Code Scanning\n• JSON for DefectDojo, Jira, Quay Registry\n• Scales horizontally: Indexer / Matcher / Notifier are distributed across separate instances for load\n• Built into Red Hat Quay as the main engine for scanning images in the registry (Red Hat is understandable, but reused)\n\nTeams\n\n# Set clairctl\ngo install github.com/quay/clair/v4/cmd/clairctl@latest\n# Scan public image\nclairctl report --host http://localhost:6060 ubuntu:focal\n\n# Scan with config (if PSK-auth is enabled)\nclairctl report\\\n  --config ./config/clair.yaml \\\n  --host http://localhost:6060 \\\n  nginx:1.25\n\n# Check\ndocker compose up -d\ncurl http://localhost:6061/healthz\n\n# API Indexer check\ncurl http://localhost:8080/indexer/api/v1/index_stat\n\n# Example output:\n# ubuntu:focal found libpcre3 2:8.39-12build1 CVE-2017-11164\n# ubuntu:focal found libc6 2.31-0ubuntu9 CVE-2016-10228\n# ubuntu:focal found libgcrypt20 1.8.5-5ubuntu1 CVE-2019-12904\n\nExample clair.yaml config\n\n# config/clair.yaml\nhttp_listen_addr: \":6060\"\nintrospection_addr: \":6061\"\nlog_level: debug\n\nindexer:\n  connstring: \"host=clair-db port=5432 user=clair dbname=clair sslmode=disable\"\n  migrations: true\n\nmatcher:\nconnstring: \"host=clair-db port=5432 user=clair dbname=clair sslmode=disable\"\n  migrations: true\n\nnotifier:\n  connstring: \"host=clair-db port=5432 user=clair dbname=clair sslmode=disable\"\n  migrations: true\n  webhook:\n    target: \"https://your-service/clair-webhook\"\n    callback: \"http://clair:6060/notifier/api/v1/notifications\"\n\nCVE Caching for Optimization\n\n# Separate workflow - updates the database once a day\nname: Update Clair DB\non:\n  schedule:\n    - cron: '0 5 * * *'\n\njobs:\n  update-db:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Generate vulnerability DB\n        uses: quay/clair-action@main\n        with:\n          db-file: matcher.db\n          mode: update\n\n      - name: Cache DB\n        uses: actions/cache@v3\n        with:\n          path: matcher.db\n          key: clair-matcher-db\n# Basically CI uses a cached database:\n# - name: Grab cached DB\n# uses: actions/cache@v3\n#with:\n# path: matcher.db\n# key: clair-matcher-db\n\nTotal\nClair comes in if you already have Quay or need an engine that can be built into the registry and CI at the same time, namely, it scans during push, keeps the database up-to-date and alerts for new CVEs without repeated runs.\nIf you want to try it in conjunction with other tools, look towards the Clair + DefectDojo + SecScore combination for a full-fledged Security Gate.\n\n#toolchain #containersecurity #appsec"
+    },
+    {
+      "id": "308",
+      "text": "😁😆😁 напомнить себе о том, что ты лучший(ая)",
+      "date": "2026-04-10",
+      "url": "https://t.me/shmakovis_appsec/308",
+      "views": 122,
+      "tags": [],
+      "text_en": "😁😆😁 remind yourself that you are the best"
+    },
+    {
+      "id": "307",
+      "text": "🤔 Прокачка в кибербезе\n\nСалюты, сегодня мелкий оффтоп, в стадии плана развития ребяток, пошерстился и наткнулся на вот такую штуку.\n\nРесурс с интерактивной картой карьерных путей в кибербезе, где разложены роли (SOC-аналитик, инженер по защите, исследователь, AppSec, комплаенс и др.), требования к ним и связи между ними, как думаешь удобненько? \n\nЕсли хочется в кибербез, но не знаешь как и что нужно, - она поможет без навязывания просто исследовать для себя то, что было бы наиболее приятнее.\n\nЧекни, там видно, какие навыки нужны под конкретную роль и куда из неё логично расти, а также можно использовать и как личный roadmap, и как материал для тимлида/ HR при планировании развития команды (ну если он еще послушает)\n\n#reco #roadmap #appsec #devsecops",
+      "date": "2026-04-09",
+      "url": "https://t.me/shmakovis_appsec/307",
+      "views": 141,
+      "tags": [
+        "reco",
+        "roadmap",
+        "appsec",
+        "devsecops"
+      ],
+      "image": "/img/blog/307.jpg",
+      "text_en": "🤔 Leveling up in cybersecurity\n\nFireworks, today a small off-topic, at the stage of the development plan for the guys, looked around and came across this thing.\nA resource with an interactive map of career paths in cybersecurity, where roles are laid out (SOC analyst, security engineer, researcher, AppSec, compliance, etc.), requirements for them and connections between them, do you think it’s convenient?\nIf you want to be cyber-free, but don’t know how or what you need, she will help you, without imposition, just explore for yourself what would be most pleasant.\nCheck it, you can see what skills are needed for a specific role and where it is logical to grow from it, and you can also use it as a personal roadmap and as material for the team leader/HR when planning the development of the team (well, if he still listens)\n#reco #roadmap #appsec #devsecops"
+    },
+    {
       "id": "306",
       "text": "🤔 Зачем AppSec для бизнеса?\n\nСалют, \nСнова по больному, когда есть недопонимание зачем вообще ИБешечка и почему мы вообще существуем.\nДавай посмотрим, как можно по другому обьяснить и донести такую мысль до ключевого человека о принятии решения.\nВот какой вариант я могу предложить исходя из своего профиля и что обычно внедряю, когда говорю об этом на конференциях или в целом делюсь с тобой.\n\n1. Что это и зачем нужно?\n\nМы строим систему, при которой каждая поставка кода в прод проверяется на безопасность автоматически. Сейчас у вас код уходит в продакшн без проверки ИБ, или проверка происходит хаотично — раз в квартал, перед аудитом, после инцидента и т.д. Это как пожарная проверка раз в год вместо пожарной сигнализации и вслучае воспламенения возникают риски которые приходится решать в моменте времени.\n\n2. Что конкретно получается? \n\nАвтоматический pipeline, который на каждый commit проверяет код статически (SAST), проверяет зависимости (SCA), сканирует контейнеры, ищет секреты в коде. А также ручное DAST-тестирование web-приложений и API. А также процесс управления найденных уязвимостей — не просто «вот вам PDF-отчёт на 200 страниц», а маршрутизация задач в Jira на конкретных разработчиков с приоритетами и сроками.\n\n3. Почему мы вообще это делаем? \n\nСнижение реального риска инцидента, компрометации, утечки и т.д. Стоимость инцидента против стоимости предотвращения — разница в десятки раз.\n\n4. Почему не может кто-то другой?\n\nСамое простое в этом ответе: нет компетенций в данной области, направления и возможностей правильно строить сразу, а не обучаться в процессе и тратить на это неимоверные косты, иначе бы не было вакансий в поиске для данных позиций. (обычно это работает там, где реально строится все с нуля)\n\nНапример, купить лицензию на инструмент типа Checkmarx, PT Application Inspector, Solar appScreener и делать самим разработчикам ручками, где инструмент без экспертизы — это как МРТ-аппарат без врача. Именно поэтому нужен человек, который настроит правила под ваш стек, отфильтрует ложные срабатывания (достигают более 70% от общих сработок), приоритизирует по реальному риску для бизнеса, встроит в pipeline и т.д. Просто купить сканер и запустить — получите отчёт на 500 страниц, с которым никто не знает что делать и как это решается, плюс что бы получить отчет придется повозиться с настройкой, даже если будет интеграция и настройка от вендора/ интегратора - это дополнительные косты, которые во много раз дороже обойдутся\n\nНо мы внутри уже знаем инфраструктуру, процессы, контуры, Gitlab, Nexus. Мы не тратим 2 месяца на погружение. Плюс мы не просто сканируем и отдаём отчёт — мы строим процесс, который работает после нашего ухода. Автоматизация остаётся у вас, pipeline остаётся у вас, команда обучается и начинает реально работать с этим руками, а не просто бездумно выполняет очередные требования, которые не заточены под их стек.\n\n5. Что получает в итоге заказчик?\n\n• Полностью развёрнутая и настроенная инфраструктура ИБ-тестирования\n• Результаты комплексного анализа защищённости\n• Работающий автоматизированный pipeline ИБ в CI/CD с Quality Gate\n• Процесс управления уязвимостями через ASOC/ ASPM и Jira\n• Управление секретами (Vault)\n• Процесс обработки инцидентов ИБ\n• Аналитические отчёты с оценкой рисков, триажем и рекомендациями\n• Документация: UML pipeline, технический мануал, рекомендации\n• Обученная команда — через совместную работу, консультации и отработку ложно позитивных срабатываний уязвимостей\n• Готовый фундамент для дальнейшего повышения зрелости DevSecOps\n\nПС: ну и накидывай сверху от своего кейса, но явно ты, как и я, периодами уже замучался отвечать на такие вопросы и какой то шаблон тебе пригодится\n\nППС: а скоро тронем еще маркетинг и немного воронки для AppSec, ну да - тут приходится тоже как то с этим работать и как бы только так прокачиваешься 🙃\n\n#devsecops #appsec #paper #reco #pmi #humanres",
       "date": "2026-04-08",

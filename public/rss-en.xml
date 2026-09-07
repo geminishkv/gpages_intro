@@ -8,13 +8,454 @@
     <atom:link href="https://geminishkv.tech/rss-en.xml" rel="self" type="application/rss+xml"/>
     <description>AppSec &amp; DevSecOps blog by Ilya Shmakov (geminishkv)</description>
     <language>en-US</language>
-    <lastBuildDate>Wed, 08 Apr 2026 23:52:47 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 07 Sep 2026 16:02:02 GMT</lastBuildDate>
     <managingEditor>shmakovis@inbox.ru (Ilya Shmakov)</managingEditor>
     <image>
       <url>https://geminishkv.tech/img/hero/avatar.jpg</url>
       <title>geminishkv — AppSec &amp; DevSecOps Blog (EN)</title>
       <link>https://geminishkv.tech/</link>
     </image>
+    <item>
+      <title>Peaceful sky</title>
+      <link>https://geminishkv.tech/blog/en/361/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/361/</guid>
+      <pubDate>Sat, 09 May 2026 00:00:00 GMT</pubDate>
+      <description>Peaceful sky 🙏 Eternal memory</description>
+      <enclosure url="https://geminishkv.tech/img/blog/361.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>I can&apos;t help but mention Alma Linux.</title>
+      <link>https://geminishkv.tech/blog/en/360/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/360/</guid>
+      <pubDate>Fri, 08 May 2026 00:00:00 GMT</pubDate>
+      <description>I can&apos;t help but mention Alma Linux. 👍👏 @avleonovlive</description>
+      <enclosure url="https://geminishkv.tech/img/blog/360.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>Hugged and lifted</title>
+      <link>https://geminishkv.tech/blog/en/359/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/359/</guid>
+      <pubDate>Fri, 08 May 2026 00:00:00 GMT</pubDate>
+      <description>Hugged and lifted 🫶</description>
+      <enclosure url="https://geminishkv.tech/img/blog/359.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>Uh, we are now also a kind of guardians.</title>
+      <link>https://geminishkv.tech/blog/en/356/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/356/</guid>
+      <pubDate>Thu, 07 May 2026 00:00:00 GMT</pubDate>
+      <description>Uh, we are now also a kind of guardians.  Source #lol</description>
+      <enclosure url="https://geminishkv.tech/img/blog/356.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>She&apos;s such a professional deformation  (remember the movie)</title>
+      <link>https://geminishkv.tech/blog/en/355/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/355/</guid>
+      <pubDate>Thu, 07 May 2026 00:00:00 GMT</pubDate>
+      <description>She&apos;s such a professional deformation 🙃 (remember the movie) #lol</description>
+      <enclosure url="https://geminishkv.tech/img/blog/355.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>Salute,</title>
+      <link>https://geminishkv.tech/blog/en/354/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/354/</guid>
+      <pubDate>Thu, 07 May 2026 00:00:00 GMT</pubDate>
+      <description>Salute, Today just relax, you deserve a great day 🫶</description>
+      <enclosure url="https://geminishkv.tech/img/blog/354.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>Fireworks,</title>
+      <link>https://geminishkv.tech/blog/en/353/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/353/</guid>
+      <pubDate>Wed, 06 May 2026 00:00:00 GMT</pubDate>
+      <description>Fireworks, A little something pleasant from vacation 🫶🙏</description>
+      <enclosure url="https://geminishkv.tech/img/hero/avatar.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>Google Chrome steals 4 GB of your disk space: in new updates, the browser quietly installs a local Gemini Nano AI model on your computer.</title>
+      <link>https://geminishkv.tech/blog/en/352/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/352/</guid>
+      <pubDate>Tue, 05 May 2026 00:00:00 GMT</pubDate>
+      <description>Google Chrome steals 4 GB of your disk space: in new updates, the browser quietly installs a local Gemini Nano AI model on your computer. You can try disabling the built-in AI and deleting the corresponding file: • Enter chrome://flags in the address bar; • Find the Enables optim</description>
+      <enclosure url="https://geminishkv.tech/img/blog/352.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>Fireworks,</title>
+      <link>https://geminishkv.tech/blog/en/351/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/351/</guid>
+      <pubDate>Tue, 05 May 2026 00:00:00 GMT</pubDate>
+      <description>Fireworks, I decided a little that I should rest properly 🙃 I’ll share with you dear Happy holidays, I hope you enjoy it too 🫶</description>
+      <enclosure url="https://geminishkv.tech/img/hero/avatar.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>$13.7 million evaporated overnight: what the Grinex hack says about the real security of crypto exchanges</title>
+      <link>https://geminishkv.tech/blog/en/350/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/350/</guid>
+      <pubDate>Tue, 05 May 2026 00:00:00 GMT</pubDate>
+      <description>$13.7 million evaporated overnight: what the Grinex hack says about the real security of crypto exchanges On April 15, 2026, the Grinex crypto exchange staked its stake. About 1 billion rubles were withdrawn to an unknown direction. The platform publicly blamed “Western intellige</description>
+      <enclosure url="https://geminishkv.tech/img/blog/350.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>Fireworks,</title>
+      <link>https://geminishkv.tech/blog/en/349/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/349/</guid>
+      <pubDate>Tue, 05 May 2026 00:00:00 GMT</pubDate>
+      <description>Fireworks,  Just a note</description>
+      <enclosure url="https://geminishkv.tech/img/hero/avatar.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>Fireworks,</title>
+      <link>https://geminishkv.tech/blog/en/348/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/348/</guid>
+      <pubDate>Fri, 01 May 2026 00:00:00 GMT</pubDate>
+      <description>Fireworks,  Happy holiday 🫶</description>
+      <enclosure url="https://geminishkv.tech/img/blog/348.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>Well, engineering for today</title>
+      <link>https://geminishkv.tech/blog/en/347/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/347/</guid>
+      <pubDate>Thu, 30 Apr 2026 00:00:00 GMT</pubDate>
+      <description>Well, engineering for today 🤣 #lol</description>
+      <enclosure url="https://geminishkv.tech/img/blog/347.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>It’s so vital about “safe safety” when you’re sick</title>
+      <link>https://geminishkv.tech/blog/en/346/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/346/</guid>
+      <pubDate>Thu, 30 Apr 2026 00:00:00 GMT</pubDate>
+      <description>It’s so vital about “safe safety” when you’re sick 😅🤣 #lol</description>
+      <enclosure url="https://geminishkv.tech/img/blog/346.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>Salute,</title>
+      <link>https://geminishkv.tech/blog/en/345/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/345/</guid>
+      <pubDate>Thu, 30 Apr 2026 00:00:00 GMT</pubDate>
+      <description>Salute, I wonder if they adjusted the course in the end? #lol</description>
+      <enclosure url="https://geminishkv.tech/img/blog/345.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>Fireworks,</title>
+      <link>https://geminishkv.tech/blog/en/344/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/344/</guid>
+      <pubDate>Wed, 29 Apr 2026 00:00:00 GMT</pubDate>
+      <description>Fireworks, Dear, how can I not share this cool moment with you, I love it when my beloved colleagues celebrate this, it’s nice 🫶🙏 #course #appsec #devsecops #specialty #paper</description>
+      <enclosure url="https://geminishkv.tech/img/blog/344.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>Let&apos;s remember, especially vacation pay</title>
+      <link>https://geminishkv.tech/blog/en/343/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/343/</guid>
+      <pubDate>Tue, 28 Apr 2026 00:00:00 GMT</pubDate>
+      <description>Let&apos;s remember, especially vacation pay 😅🤣</description>
+      <enclosure url="https://geminishkv.tech/img/blog/343.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>By the way, on the topic of the post, here, back in the bearded 2021-2022 we looked at the typical one</title>
+      <link>https://geminishkv.tech/blog/en/342/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/342/</guid>
+      <pubDate>Fri, 24 Apr 2026 00:00:00 GMT</pubDate>
+      <description>By the way, on the topic of the post, here, back in the bearded 2021-2022 we looked at the typical one 🙃</description>
+      <enclosure url="https://geminishkv.tech/img/hero/avatar.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>Attack on Greenex</title>
+      <link>https://geminishkv.tech/blog/en/341/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/341/</guid>
+      <pubDate>Fri, 24 Apr 2026 00:00:00 GMT</pubDate>
+      <description>🙃 Attack on Greenex Oh, look, they came to me and asked for my vision on this attack, and I would like to be the first to share my thoughts with you, but first let me send you a certificate: The leading crypto-ruble exchange Grinex, which provides settlements between Russian bus</description>
+      <enclosure url="https://geminishkv.tech/img/blog/341.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>Segregation-of-Duties as privileged user control</title>
+      <link>https://geminishkv.tech/blog/en/340/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/340/</guid>
+      <pubDate>Fri, 24 Apr 2026 00:00:00 GMT</pubDate>
+      <description>🤔 Segregation-of-Duties as privileged user control Salute, I often mention this mechanism, I think it’s worth making a link to its description, but before we talk about it, we need to agree on what it is? A role-based access model is when we manage not the rights of specific peo</description>
+      <enclosure url="https://geminishkv.tech/img/blog/340.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>Let’s urgently retrain in Security Awaraness</title>
+      <link>https://geminishkv.tech/blog/en/339/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/339/</guid>
+      <pubDate>Thu, 23 Apr 2026 00:00:00 GMT</pubDate>
+      <description>Let’s urgently retrain in Security Awaraness 😁 #lol</description>
+      <enclosure url="https://geminishkv.tech/img/blog/339.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>Fireworks,</title>
+      <link>https://geminishkv.tech/blog/en/338/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/338/</guid>
+      <pubDate>Thu, 23 Apr 2026 00:00:00 GMT</pubDate>
+      <description>Fireworks, Reminder from childhood  #lol</description>
+      <enclosure url="https://geminishkv.tech/img/blog/338.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>A Russian was fined for a meme with a CAT - “Kotolf Kitler”.</title>
+      <link>https://geminishkv.tech/blog/en/337/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/337/</guid>
+      <pubDate>Tue, 21 Apr 2026 00:00:00 GMT</pubDate>
+      <description>A Russian was fined for a meme with a CAT - “Kotolf Kitler”. A resident of the Krasnodar region published a photo of a cat with a special coloring of its face, reminiscent of the mustache and hairstyle of Adolf Hitler. The man admitted his guilt and his sentence was commuted to a</description>
+      <enclosure url="https://geminishkv.tech/img/blog/337.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>In short, on the topic of Artemy Lebedev, the idea was cool, with this inscription, but with the leading itself the guys even missed the idea, if they had singled out “IIllusions”, it would have been a total mess, but yes - a cool topic describing exactly what was discussed</title>
+      <link>https://geminishkv.tech/blog/en/336/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/336/</guid>
+      <pubDate>Tue, 21 Apr 2026 00:00:00 GMT</pubDate>
+      <description>In short, on the topic of Artemy Lebedev, the idea was cool, with this inscription, but with the leading itself the guys even missed the idea, if they had singled out “IIllusions”, it would have been a total mess, but yes - a cool topic describing exactly what was discussed Well,</description>
+      <enclosure url="https://geminishkv.tech/img/blog/336.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>Well, the content itself</title>
+      <link>https://geminishkv.tech/blog/en/335/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/335/</guid>
+      <pubDate>Tue, 21 Apr 2026 00:00:00 GMT</pubDate>
+      <description>Well, the content itself 🤔</description>
+      <enclosure url="https://geminishkv.tech/img/hero/avatar.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>Security UP: award for DevSecOps “in an adult way”</title>
+      <link>https://geminishkv.tech/blog/en/334/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/334/</guid>
+      <pubDate>Tue, 21 Apr 2026 00:00:00 GMT</pubDate>
+      <description>🏆 Security UP: award for DevSecOps “in an adult way” Fireworks, I ran around, got overwhelmed, but finally got over it, let’s figure out what happened at the meetup. The FinTech Association, Solar Group and the FinDevSecOps community summed up the results of the first “Security </description>
+      <enclosure url="https://geminishkv.tech/img/blog/334.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>GitHub releases - fell under the “iron curtain”?</title>
+      <link>https://geminishkv.tech/blog/en/333/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/333/</guid>
+      <pubDate>Mon, 20 Apr 2026 00:00:00 GMT</pubDate>
+      <description>🚧 GitHub releases - fell under the “iron curtain”? Binaries from GitHub Releases are not downloaded from Kazakhstani IPs. github.com itself opens, the pages are flipped, and the /releases/download/* links hang or break. Via VPN it downloads normally. I checked it on the latest r</description>
+      <enclosure url="https://geminishkv.tech/img/blog/333.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>It&apos;s normal, why not</title>
+      <link>https://geminishkv.tech/blog/en/332/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/332/</guid>
+      <pubDate>Mon, 20 Apr 2026 00:00:00 GMT</pubDate>
+      <description>It&apos;s normal, why not</description>
+      <enclosure url="https://geminishkv.tech/img/hero/avatar.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>Well, in general, it’s like this in information security now</title>
+      <link>https://geminishkv.tech/blog/en/331/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/331/</guid>
+      <pubDate>Mon, 20 Apr 2026 00:00:00 GMT</pubDate>
+      <description>Well, in general, it’s like this in information security now  #lol</description>
+      <enclosure url="https://geminishkv.tech/img/blog/331.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>In the meantime, I’m preparing materials for yesterday’s meetup, I want to share the pleasantness and cuteness from my colleagues</title>
+      <link>https://geminishkv.tech/blog/en/330/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/330/</guid>
+      <pubDate>Fri, 17 Apr 2026 00:00:00 GMT</pubDate>
+      <description>In the meantime, I’m preparing materials for yesterday’s meetup, I want to share the pleasantness and cuteness from my colleagues 😅🫡🙃 #meetup #paper #appsec #devsecops #specialty #toolchain #conf #compliance #gost</description>
+      <enclosure url="https://geminishkv.tech/img/blog/330.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>The DAF and JCSF frameworks won the Security UP award: “Security starts with the code”!</title>
+      <link>https://geminishkv.tech/blog/en/329/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/329/</guid>
+      <pubDate>Fri, 17 Apr 2026 00:00:00 GMT</pubDate>
+      <description>The DAF and JCSF frameworks won the Security UP award: “Security starts with the code”! Hello friends! We hasten to boast: our frameworks were appreciated at the Security UP award: “Security begins with code”, organized by Solar Group, the FinTech Association and the FinDevSecOps</description>
+      <enclosure url="https://geminishkv.tech/img/blog/329.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>️ AppSec breaks into the top: code is the new line of defense! ️</title>
+      <link>https://geminishkv.tech/blog/en/328/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/328/</guid>
+      <pubDate>Fri, 17 Apr 2026 00:00:00 GMT</pubDate>
+      <description>⚡️ AppSec breaks into the top: code is the new line of defense! ⚡️ Solar, the Fintech Association and the FinDevSecOps community summed up the results of the “Security UP: Security starts with code” award. And guess what? It seems that everyone has realized: now code security is </description>
+      <enclosure url="https://geminishkv.tech/img/hero/avatar.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>Oooh, more additions</title>
+      <link>https://geminishkv.tech/blog/en/327/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/327/</guid>
+      <pubDate>Fri, 17 Apr 2026 00:00:00 GMT</pubDate>
+      <description>Oooh, more additions</description>
+      <enclosure url="https://geminishkv.tech/img/hero/avatar.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>• When going to Yandex services with VPN enabled, users see a stub page that does not allow them to go to the service. If you look at the code of this page, you can find a reference to D. Orwell&apos;s dystopian novel &quot;1984&quot;. These are some funny Easter eggs...</title>
+      <link>https://geminishkv.tech/blog/en/326/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/326/</guid>
+      <pubDate>Fri, 17 Apr 2026 00:00:00 GMT</pubDate>
+      <description>• When going to Yandex services with VPN enabled, users see a stub page that does not allow them to go to the service. If you look at the code of this page, you can find a reference to D. Orwell&apos;s dystopian novel &quot;1984&quot;. These are some funny Easter eggs... • By the way, I would l</description>
+      <enclosure url="https://geminishkv.tech/img/blog/326.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>Beautiful</title>
+      <link>https://geminishkv.tech/blog/en/325/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/325/</guid>
+      <pubDate>Fri, 17 Apr 2026 00:00:00 GMT</pubDate>
+      <description>Beautiful 🙃</description>
+      <enclosure url="https://geminishkv.tech/img/hero/avatar.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>#Solar and the FinTech Association announced the winners of the secure development award.</title>
+      <link>https://geminishkv.tech/blog/en/320/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/320/</guid>
+      <pubDate>Fri, 17 Apr 2026 00:00:00 GMT</pubDate>
+      <description>#Solar and the FinTech Association announced the winners of the secure development award. The FinTech Association, the Solar group and the FinDevSecOps community, with the participation of 15 experts from the largest Russian IT and information security companies, determined the w</description>
+      <enclosure url="https://geminishkv.tech/img/blog/320.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>A little news, there will be a post from me a little later, while we are enjoying the information from @fintechassociation</title>
+      <link>https://geminishkv.tech/blog/en/319/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/319/</guid>
+      <pubDate>Fri, 17 Apr 2026 00:00:00 GMT</pubDate>
+      <description>A little news, there will be a post from me a little later, while we are enjoying the information from @fintechassociation</description>
+      <enclosure url="https://geminishkv.tech/img/hero/avatar.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>When you&apos;re having a bad day, just remember that somewhere there is a person who now works at your old job.</title>
+      <link>https://geminishkv.tech/blog/en/318/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/318/</guid>
+      <pubDate>Fri, 17 Apr 2026 00:00:00 GMT</pubDate>
+      <description>When you&apos;re having a bad day, just remember that somewhere there is a person who now works at your old job. #meme</description>
+      <enclosure url="https://geminishkv.tech/img/hero/avatar.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>I&apos;m likely that</title>
+      <link>https://geminishkv.tech/blog/en/317/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/317/</guid>
+      <pubDate>Fri, 17 Apr 2026 00:00:00 GMT</pubDate>
+      <description>I&apos;m likely that 😅🤣</description>
+      <enclosure url="https://geminishkv.tech/img/hero/avatar.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>Fireworks,</title>
+      <link>https://geminishkv.tech/blog/en/316/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/316/</guid>
+      <pubDate>Thu, 16 Apr 2026 00:00:00 GMT</pubDate>
+      <description>Fireworks, At the base, there will soon be cool information about the event, we are preparing and very soon there will be a very comfortable story for everyone 🫶 Instead of badges we have newfangled bracelets 😅 #meetup #appsec #devsecops</description>
+      <enclosure url="https://geminishkv.tech/img/blog/316.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>SecurityUp: Security starts with code</title>
+      <link>https://geminishkv.tech/blog/en/315/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/315/</guid>
+      <pubDate>Wed, 15 Apr 2026 00:00:00 GMT</pubDate>
+      <description>🏆 SecurityUp: Security starts with code Fireworks, This Thursday there will be an event for the &quot;Security Starts with Code&quot; award.  Location: Cinema &quot;Illusion&quot; Kotelnicheskaya embankment 1/15 (Taganskaya, Kitay Gorod). I wrote information about this here, you can read it and ref</description>
+      <enclosure url="https://geminishkv.tech/img/blog/315.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>Secure HTTP headers</title>
+      <link>https://geminishkv.tech/blog/en/314/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/314/</guid>
+      <pubDate>Tue, 14 Apr 2026 00:00:00 GMT</pubDate>
+      <description>🛠 Secure HTTP headers So, let&apos;s look at the basics that you need to know and understand, namely security headers. Remember that these are instructions to the browser on how to handle the site&apos;s content. They are configured on the server or in the framework config and cover entir</description>
+      <enclosure url="https://geminishkv.tech/img/blog/314.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>What was this  and how did it become an advertisement for online casinos</title>
+      <link>https://geminishkv.tech/blog/en/313/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/313/</guid>
+      <pubDate>Tue, 14 Apr 2026 00:00:00 GMT</pubDate>
+      <description>What was this 😄😄😄 and how did it become an advertisement for online casinos On Friday, thousands (we are not exaggerating) of channels shared a message that began with the red inscription draft: - or rather, with the three emoji that made it up. After it, channels, including l</description>
+      <enclosure url="https://geminishkv.tech/img/blog/313.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>Oh oh, well, it was and it was</title>
+      <link>https://geminishkv.tech/blog/en/312/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/312/</guid>
+      <pubDate>Tue, 14 Apr 2026 00:00:00 GMT</pubDate>
+      <description>Oh oh, well, it was and it was</description>
+      <enclosure url="https://geminishkv.tech/img/hero/avatar.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>XSSNow</title>
+      <link>https://geminishkv.tech/blog/en/311/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/311/</guid>
+      <pubDate>Tue, 14 Apr 2026 00:00:00 GMT</pubDate>
+      <description>🛠XSSNow Fireworks, Let&apos;s look at XSSNow, which will allow you to automate yourself a little and simplify your life around you This is a generator of contextual XSS payloads and uses an already compiled database; the resource itself is tailored to real-life exploitation scenarios</description>
+      <enclosure url="https://geminishkv.tech/img/blog/311.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>Happy holiday, dear!</title>
+      <link>https://geminishkv.tech/blog/en/310/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/310/</guid>
+      <pubDate>Sun, 12 Apr 2026 00:00:00 GMT</pubDate>
+      <description>Happy holiday, dear! Christ is Risen</description>
+      <enclosure url="https://geminishkv.tech/img/blog/310.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>Clair for Docker and OCI</title>
+      <link>https://geminishkv.tech/blog/en/309/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/309/</guid>
+      <pubDate>Fri, 10 Apr 2026 00:00:00 GMT</pubDate>
+      <description>🛠 Clair for Docker and OCI Salute,  Let&apos;s talk today about an open-source engine for analyzing Docker/OCI images for vulnerabilities. The tool is written in Golang and parses the image layer by layer, that is, it extracts a list of installed packages and compares them with CVE d</description>
+      <enclosure url="https://geminishkv.tech/img/blog/309.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>remind yourself that you are the best</title>
+      <link>https://geminishkv.tech/blog/en/308/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/308/</guid>
+      <pubDate>Fri, 10 Apr 2026 00:00:00 GMT</pubDate>
+      <description>😁😆😁 remind yourself that you are the best</description>
+      <enclosure url="https://geminishkv.tech/img/hero/avatar.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>Leveling up in cybersecurity</title>
+      <link>https://geminishkv.tech/blog/en/307/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/307/</guid>
+      <pubDate>Thu, 09 Apr 2026 00:00:00 GMT</pubDate>
+      <description>🤔 Leveling up in cybersecurity Fireworks, today a small off-topic, at the stage of the development plan for the guys, looked around and came across this thing. A resource with an interactive map of career paths in cybersecurity, where roles are laid out (SOC analyst, security en</description>
+      <enclosure url="https://geminishkv.tech/img/blog/307.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
     <item>
       <title>Why AppSec for business?</title>
       <link>https://geminishkv.tech/blog/en/306/</link>

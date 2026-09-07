@@ -12,10 +12,10 @@
   },
   "xbox": {
     "id": "geminishkv",
-    "gamerscore": 16212,
+    "gamerscore": 18746,
     "achievements": 759,
     "games": 30,
-    "lastGame": "The Thaumaturge"
+    "lastGame": "Solo Leveling: ARISE OVERDRIVE"
   },
   "platinums": [
     {
@@ -93,11 +93,74 @@
   ],
   "xboxGames": [
     {
-      "title": "The Thaumaturge",
+      "title": "Solo Leveling: ARISE OVERDRIVE",
+      "image": "/img/gaming/xbox/solo-leveling-arise-overdrive.jpg",
+      "gameScore": 799,
+      "maxScore": 1000,
+      "pct": 79
+    },
+    {
+      "title": "Halo: Campaign Evolved",
+      "image": "/img/gaming/xbox/halo-campaign-evolved.jpg",
+      "gameScore": 0,
+      "maxScore": 1000,
+      "pct": 0
+    },
+    {
+      "title": "Tomb Raider: Definitive Edition",
+      "image": "/img/gaming/xbox/tomb-raider-definitive-edition.jpg",
+      "gameScore": 65,
+      "maxScore": 1000,
+      "pct": 6
+    },
+    {
+      "title": "Halo Infinite",
+      "image": "/img/gaming/xbox/halo-infinite.jpg",
+      "gameScore": 1055,
+      "maxScore": 2020,
+      "pct": 52
+    },
+    {
+      "title": "Battlefield™ 6",
       "image": null,
       "gameScore": 0,
       "maxScore": 0,
       "pct": 0
+    },
+    {
+      "title": "Castlevania: LoS 2",
+      "image": "/img/gaming/xbox/castlevania-los-2.jpg",
+      "gameScore": 0,
+      "maxScore": 1250,
+      "pct": 0
+    },
+    {
+      "title": "Battlefield 3™",
+      "image": "/img/gaming/xbox/battlefield-3.jpg",
+      "gameScore": 35,
+      "maxScore": 1600,
+      "pct": 2
+    },
+    {
+      "title": "Captain Blood",
+      "image": "/img/gaming/xbox/captain-blood.jpg",
+      "gameScore": 0,
+      "maxScore": 1000,
+      "pct": 0
+    },
+    {
+      "title": "The Evil Within (PC)",
+      "image": "/img/gaming/xbox/the-evil-within-pc.jpg",
+      "gameScore": 0,
+      "maxScore": 1735,
+      "pct": 0
+    },
+    {
+      "title": "Cronos: The New Dawn",
+      "image": "/img/gaming/xbox/cronos-the-new-dawn.jpg",
+      "gameScore": 15,
+      "maxScore": 1000,
+      "pct": 1
     },
     {
       "title": "The Witcher 2: Assassins of Kings",
@@ -107,122 +170,24 @@
       "pct": 0
     },
     {
-      "title": "The Darkness II",
-      "image": "/img/gaming/xbox/the-darkness-ii.jpg",
-      "gameScore": 60,
-      "maxScore": 1000,
-      "pct": 6
-    },
-    {
-      "title": "Dante's Inferno™",
-      "image": "/img/gaming/xbox/dante-s-inferno.jpg",
-      "gameScore": 730,
-      "maxScore": 1290,
-      "pct": 57
-    },
-    {
-      "title": "Darker Skies",
-      "image": "/img/gaming/xbox/darker-skies.jpg",
+      "title": "VAMPYR",
+      "image": "/img/gaming/xbox/vampyr.jpg",
       "gameScore": 0,
       "maxScore": 1000,
       "pct": 0
     },
     {
-      "title": "Beast Quest",
-      "image": "/img/gaming/xbox/beast-quest.jpg",
-      "gameScore": 0,
-      "maxScore": 1000,
+      "title": "Gungrave G.O.R.E",
+      "image": "/img/gaming/xbox/gungrave-g-o-r-e.jpg",
+      "gameScore": 10,
+      "maxScore": 1045,
       "pct": 0
     },
     {
-      "title": "BlazBlue Entropy Effect X",
-      "image": "/img/gaming/xbox/blazblue-entropy-effect-x.jpg",
-      "gameScore": 25,
-      "maxScore": 1000,
-      "pct": 2
-    },
-    {
-      "title": "The Saboteur",
-      "image": "/img/gaming/xbox/the-saboteur.jpg",
+      "title": "Sleeping Dogs",
+      "image": "/img/gaming/xbox/sleeping-dogs.jpg",
       "gameScore": 0,
       "maxScore": 0,
-      "pct": 0
-    },
-    {
-      "title": "Army of Two™",
-      "image": "/img/gaming/xbox/army-of-two.jpg",
-      "gameScore": 0,
-      "maxScore": 1250,
-      "pct": 0
-    },
-    {
-      "title": "Dead Space™ 3",
-      "image": "/img/gaming/xbox/dead-space-3.jpg",
-      "gameScore": 0,
-      "maxScore": 1250,
-      "pct": 0
-    },
-    {
-      "title": "Assassin's Creed",
-      "image": "/img/gaming/xbox/assassin-s-creed.jpg",
-      "gameScore": 0,
-      "maxScore": 0,
-      "pct": 0
-    },
-    {
-      "title": "ROUTINE",
-      "image": "/img/gaming/xbox/routine.jpg",
-      "gameScore": 25,
-      "maxScore": 1000,
-      "pct": 2
-    },
-    {
-      "title": "Ashen",
-      "image": "/img/gaming/xbox/ashen.jpg",
-      "gameScore": 17,
-      "maxScore": 1137,
-      "pct": 1
-    },
-    {
-      "title": "Remember Me",
-      "image": "/img/gaming/xbox/remember-me.jpg",
-      "gameScore": 0,
-      "maxScore": 0,
-      "pct": 0
-    },
-    {
-      "title": "Dragon Age™ 2",
-      "image": "/img/gaming/xbox/dragon-age-2.jpg",
-      "gameScore": 0,
-      "maxScore": 1370,
-      "pct": 0
-    },
-    {
-      "title": "Dead Space™ 2",
-      "image": "/img/gaming/xbox/dead-space-2.jpg",
-      "gameScore": 0,
-      "maxScore": 1250,
-      "pct": 0
-    },
-    {
-      "title": "Dead Space 2",
-      "image": "/img/gaming/xbox/dead-space-2.jpg",
-      "gameScore": 0,
-      "maxScore": 0,
-      "pct": 0
-    },
-    {
-      "title": "Dead Space 3",
-      "image": "/img/gaming/xbox/dead-space-3.jpg",
-      "gameScore": 0,
-      "maxScore": 0,
-      "pct": 0
-    },
-    {
-      "title": "Hitman: Blood Money",
-      "image": "/img/gaming/xbox/hitman-blood-money.jpg",
-      "gameScore": 0,
-      "maxScore": 1000,
       "pct": 0
     },
     {
@@ -233,71 +198,106 @@
       "pct": 0
     },
     {
-      "title": "Kingdom Come: Deliverance",
-      "image": "/img/gaming/xbox/kingdom-come-deliverance.jpg",
+      "title": "Remember Me",
+      "image": "/img/gaming/xbox/remember-me.jpg",
       "gameScore": 0,
-      "maxScore": 2080,
+      "maxScore": 0,
       "pct": 0
     },
     {
-      "title": "Insurgency: Sandstorm (Windows)",
-      "image": "/img/gaming/xbox/insurgency-sandstorm-windows.jpg",
+      "title": "Star Wars: The Force Unleashed - Ultimate Sith Edition",
+      "image": "/img/gaming/xbox/star-wars-the-force-unleashed-ultimate-sith-edition.jpg",
+      "gameScore": 0,
+      "maxScore": 0,
+      "pct": 0
+    },
+    {
+      "title": "SILENT HILL f - Bonus Content",
+      "image": "/img/gaming/xbox/silent-hill-f-bonus-content.jpg",
+      "gameScore": 0,
+      "maxScore": 0,
+      "pct": 0
+    },
+    {
+      "title": "Shadow of the Tomb Raider",
+      "image": "/img/gaming/xbox/shadow-of-the-tomb-raider.jpg",
+      "gameScore": 1360,
+      "maxScore": 1690,
+      "pct": 80
+    },
+    {
+      "title": "Alice: Madness Returns",
+      "image": "/img/gaming/xbox/alice-madness-returns.jpg",
       "gameScore": 0,
       "maxScore": 1000,
       "pct": 0
     },
     {
-      "title": "AI Limit",
+      "title": "FOR HONOR",
+      "image": "/img/gaming/xbox/for-honor.jpg",
+      "gameScore": 280,
+      "maxScore": 1190,
+      "pct": 23
+    },
+    {
+      "title": "Wo Long: Fallen Dynasty",
+      "image": "/img/gaming/xbox/wo-long-fallen-dynasty.jpg",
+      "gameScore": 0,
+      "maxScore": 1585,
+      "pct": 0
+    },
+    {
+      "title": "Destiny 2",
+      "image": "/img/gaming/xbox/destiny-2.jpg",
+      "gameScore": 0,
+      "maxScore": 0,
+      "pct": 0
+    },
+    {
+      "title": "For Honor",
+      "image": "/img/gaming/xbox/for-honor.jpg",
+      "gameScore": 0,
+      "maxScore": 0,
+      "pct": 0
+    },
+    {
+      "title": "Counter-Strike 2",
       "image": null,
       "gameScore": 0,
       "maxScore": 0,
       "pct": 0
     },
     {
-      "title": "Battlefield™ 6",
-      "image": null,
+      "title": "Medal of Honor",
+      "image": "/img/gaming/xbox/medal-of-honor.jpg",
       "gameScore": 0,
       "maxScore": 0,
       "pct": 0
     },
     {
-      "title": "Marvel's Guardians of the Galaxy",
-      "image": "/img/gaming/xbox/marvel-s-guardians-of-the-galaxy.jpg",
-      "gameScore": 60,
+      "title": "The Wolf Among Us",
+      "image": "/img/gaming/xbox/the-wolf-among-us.jpg",
+      "gameScore": 0,
+      "maxScore": 0,
+      "pct": 0
+    },
+    {
+      "title": "Syndicate",
+      "image": "/img/gaming/xbox/syndicate.jpg",
+      "gameScore": 5,
       "maxScore": 1000,
-      "pct": 6
-    },
-    {
-      "title": "Legacy of Kain™ Soul Reaver 1&2 Remastered",
-      "image": null,
-      "gameScore": 0,
-      "maxScore": 0,
       "pct": 0
     },
     {
-      "title": "Brutal Legend",
-      "image": "/img/gaming/xbox/brutal-legend.jpg",
+      "title": "Prince of Persia",
+      "image": "/img/gaming/xbox/prince-of-persia.jpg",
       "gameScore": 0,
-      "maxScore": 0,
+      "maxScore": 1250,
       "pct": 0
     },
     {
-      "title": "KILLER IS DEAD",
-      "image": "/img/gaming/xbox/killer-is-dead.jpg",
-      "gameScore": 30,
-      "maxScore": 1000,
-      "pct": 3
-    },
-    {
-      "title": "The Council",
-      "image": null,
-      "gameScore": 0,
-      "maxScore": 0,
-      "pct": 0
-    },
-    {
-      "title": "Stronghold Crusader: Definitive Edition",
-      "image": null,
+      "title": "World of Warcraft",
+      "image": "/img/gaming/xbox/world-of-warcraft.jpg",
       "gameScore": 0,
       "maxScore": 0,
       "pct": 0

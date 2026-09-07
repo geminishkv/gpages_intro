@@ -8,13 +8,454 @@
     <atom:link href="https://geminishkv.tech/rss.xml" rel="self" type="application/rss+xml"/>
     <description>Блог по AppSec &amp; DevSecOps — Илья Шмаков (geminishkv)</description>
     <language>ru-RU</language>
-    <lastBuildDate>Wed, 08 Apr 2026 23:52:47 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 07 Sep 2026 16:02:02 GMT</lastBuildDate>
     <managingEditor>shmakovis@inbox.ru (Илья Шмаков)</managingEditor>
     <image>
       <url>https://geminishkv.tech/img/hero/avatar.jpg</url>
       <title>geminishkv — AppSec &amp; DevSecOps Блог (RU)</title>
       <link>https://geminishkv.tech/</link>
     </image>
+    <item>
+      <title>Мирного неба</title>
+      <link>https://geminishkv.tech/blog/361/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/361/</guid>
+      <pubDate>Sat, 09 May 2026 00:00:00 GMT</pubDate>
+      <description>Мирного неба 🙏 Вечная память</description>
+      <enclosure url="https://geminishkv.tech/img/blog/361.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Не могу не отметить Alma Linux.</title>
+      <link>https://geminishkv.tech/blog/360/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/360/</guid>
+      <pubDate>Fri, 08 May 2026 00:00:00 GMT</pubDate>
+      <description>Не могу не отметить Alma Linux. 👍👏 @avleonovlive</description>
+      <enclosure url="https://geminishkv.tech/img/blog/360.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Обнял-приподнял</title>
+      <link>https://geminishkv.tech/blog/359/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/359/</guid>
+      <pubDate>Fri, 08 May 2026 00:00:00 GMT</pubDate>
+      <description>Обнял-приподнял 🫶</description>
+      <enclosure url="https://geminishkv.tech/img/blog/359.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>У, мы теперь тоже своего рода гардианы.</title>
+      <link>https://geminishkv.tech/blog/356/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/356/</guid>
+      <pubDate>Thu, 07 May 2026 00:00:00 GMT</pubDate>
+      <description>У, мы теперь тоже своего рода гардианы.  Источник #lol</description>
+      <enclosure url="https://geminishkv.tech/img/blog/356.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Профессиональная деформация она такая  (вспомни фильм)</title>
+      <link>https://geminishkv.tech/blog/355/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/355/</guid>
+      <pubDate>Thu, 07 May 2026 00:00:00 GMT</pubDate>
+      <description>Профессиональная деформация она такая 🙃 (вспомни фильм) #lol</description>
+      <enclosure url="https://geminishkv.tech/img/blog/355.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Салют,</title>
+      <link>https://geminishkv.tech/blog/354/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/354/</guid>
+      <pubDate>Thu, 07 May 2026 00:00:00 GMT</pubDate>
+      <description>Салют, Сегодня просто расслабься, ты заслуживаешь кайфового дня 🫶</description>
+      <enclosure url="https://geminishkv.tech/img/blog/354.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Салюты,</title>
+      <link>https://geminishkv.tech/blog/353/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/353/</guid>
+      <pubDate>Wed, 06 May 2026 00:00:00 GMT</pubDate>
+      <description>Салюты, Немного приятного с отпуска 🫶🙏</description>
+      <enclosure url="https://geminishkv.tech/img/hero/avatar.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Google Chrome крадёт 4 ГБ на вашем диске: в новых обновлениях браузер незаметно устанавливает локальную ИИ-модель Gemini Nano на компьютер.</title>
+      <link>https://geminishkv.tech/blog/352/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/352/</guid>
+      <pubDate>Tue, 05 May 2026 00:00:00 GMT</pubDate>
+      <description>Google Chrome крадёт 4 ГБ на вашем диске: в новых обновлениях браузер незаметно устанавливает локальную ИИ-модель Gemini Nano на компьютер. Можно попробовать отключить встроенный ИИ и удалить соответствующий файл: • Введите chrome://flags в адресной строке; • Найдите пункт Enable</description>
+      <enclosure url="https://geminishkv.tech/img/blog/352.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Салюты,</title>
+      <link>https://geminishkv.tech/blog/351/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/351/</guid>
+      <pubDate>Tue, 05 May 2026 00:00:00 GMT</pubDate>
+      <description>Салюты, Я тут немного решил, что следует отдохнуть правильно 🙃 поделюсь с тобой родной(ая) С праздничками, надеюсь тебе также кайф 🫶</description>
+      <enclosure url="https://geminishkv.tech/img/hero/avatar.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>&amp;#036;13,7 млн испарились за ночь: что взлом Grinex говорит о реальной безопасности криптобирж</title>
+      <link>https://geminishkv.tech/blog/350/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/350/</guid>
+      <pubDate>Tue, 05 May 2026 00:00:00 GMT</pubDate>
+      <description>&amp;#036;13,7 млн испарились за ночь: что взлом Grinex говорит о реальной безопасности криптобирж 15 апреля 2026 года криптобиржа Grinex встала колом. Около 1 млрд рублей вывели в неизвестном направлении. Площадка публично обвинила «западные спецслужбы» — и не предоставила ни единог</description>
+      <enclosure url="https://geminishkv.tech/img/blog/350.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Салюты,</title>
+      <link>https://geminishkv.tech/blog/349/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/349/</guid>
+      <pubDate>Tue, 05 May 2026 00:00:00 GMT</pubDate>
+      <description>Салюты,  На заметочку</description>
+      <enclosure url="https://geminishkv.tech/img/hero/avatar.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Салюты,</title>
+      <link>https://geminishkv.tech/blog/348/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/348/</guid>
+      <pubDate>Fri, 01 May 2026 00:00:00 GMT</pubDate>
+      <description>Салюты,  С праздником 🫶</description>
+      <enclosure url="https://geminishkv.tech/img/blog/348.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Ну и инженерное на сегодня</title>
+      <link>https://geminishkv.tech/blog/347/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/347/</guid>
+      <pubDate>Thu, 30 Apr 2026 00:00:00 GMT</pubDate>
+      <description>Ну и инженерное на сегодня 🤣 #lol</description>
+      <enclosure url="https://geminishkv.tech/img/blog/347.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Как то жизненно про «безопасную безопасность» когда наболело</title>
+      <link>https://geminishkv.tech/blog/346/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/346/</guid>
+      <pubDate>Thu, 30 Apr 2026 00:00:00 GMT</pubDate>
+      <description>Как то жизненно про «безопасную безопасность» когда наболело 😅🤣 #lol</description>
+      <enclosure url="https://geminishkv.tech/img/blog/346.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Салют,</title>
+      <link>https://geminishkv.tech/blog/345/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/345/</guid>
+      <pubDate>Thu, 30 Apr 2026 00:00:00 GMT</pubDate>
+      <description>Салют, А интересно, в итоге то подогнали курс? #lol</description>
+      <enclosure url="https://geminishkv.tech/img/blog/345.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Салюты,</title>
+      <link>https://geminishkv.tech/blog/344/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/344/</guid>
+      <pubDate>Wed, 29 Apr 2026 00:00:00 GMT</pubDate>
+      <description>Салюты, Родной(ая), как я могу не поделиться с тобой этим классным моментом, обожаю, когда любимые мной коллеги отмечают такое, ну приятно же 🫶🙏 #course #appsec #devsecops #specialty #paper</description>
+      <enclosure url="https://geminishkv.tech/img/blog/344.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Помянем, особенно отпускных</title>
+      <link>https://geminishkv.tech/blog/343/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/343/</guid>
+      <pubDate>Tue, 28 Apr 2026 00:00:00 GMT</pubDate>
+      <description>Помянем, особенно отпускных 😅🤣</description>
+      <enclosure url="https://geminishkv.tech/img/blog/343.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Кстати, в тему поста, вот тут, еще в бородатом 2021-2022 типовое смотрели</title>
+      <link>https://geminishkv.tech/blog/342/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/342/</guid>
+      <pubDate>Fri, 24 Apr 2026 00:00:00 GMT</pubDate>
+      <description>Кстати, в тему поста, вот тут, еще в бородатом 2021-2022 типовое смотрели 🙃</description>
+      <enclosure url="https://geminishkv.tech/img/hero/avatar.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Атака на Grinex</title>
+      <link>https://geminishkv.tech/blog/341/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/341/</guid>
+      <pubDate>Fri, 24 Apr 2026 00:00:00 GMT</pubDate>
+      <description>🙃 Атака на Grinex Ох, смотри, тут ко мне пришли и попросили мое видение по данной атаке и я хотел бы с тобой самым первым поделиться мыслями, но сначала давай справку закину: Ведущая крипторублевая биржа Grinex, обеспечивающая расчеты между российскими бизнесами и гражданами в ц</description>
+      <enclosure url="https://geminishkv.tech/img/blog/341.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Segregation-of-Duties как контроль привилегированного пользователя</title>
+      <link>https://geminishkv.tech/blog/340/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/340/</guid>
+      <pubDate>Fri, 24 Apr 2026 00:00:00 GMT</pubDate>
+      <description>🤔 Segregation-of-Duties как контроль привилегированного пользователя Салют, Часто упоминаю этот механизм, думаю, что стоит сделать ссылку на ее описание, но перед тем как говорить про нее, надо договориться о том, что это такое? Ролевая модель доступа — это когда мы управляем не</description>
+      <enclosure url="https://geminishkv.tech/img/blog/340.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Срочно в Security Awaraness переквалифицируемся</title>
+      <link>https://geminishkv.tech/blog/339/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/339/</guid>
+      <pubDate>Thu, 23 Apr 2026 00:00:00 GMT</pubDate>
+      <description>Срочно в Security Awaraness переквалифицируемся 😁 #lol</description>
+      <enclosure url="https://geminishkv.tech/img/blog/339.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Салюты,</title>
+      <link>https://geminishkv.tech/blog/338/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/338/</guid>
+      <pubDate>Thu, 23 Apr 2026 00:00:00 GMT</pubDate>
+      <description>Салюты, Напоминание из детства  #lol</description>
+      <enclosure url="https://geminishkv.tech/img/blog/338.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Россиянина оштрафовали за мем с КОТОМ — «Котольфом Китлером».</title>
+      <link>https://geminishkv.tech/blog/337/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/337/</guid>
+      <pubDate>Tue, 21 Apr 2026 00:00:00 GMT</pubDate>
+      <description>Россиянина оштрафовали за мем с КОТОМ — «Котольфом Китлером». Житель Краснодарского края опубликовал фотку кота с особой расцветкой морды, напоминающей усы и причёску Адольфа Гитлера. Мужчина признал свою вину и ему смягчили наказание до штрафа в 1000 рублей.</description>
+      <enclosure url="https://geminishkv.tech/img/blog/337.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Короче, в тему Артемия Лебедева, задумка была прикольная, вот с этой надписью, но с самим интерлиажем ребята чет пропустили задумку, если бы выделили &quot;ИИллюзий&quot;, то было бы вообще пушечно, а так да - прикольная тема описывающая именно то, что и обсуждалось</title>
+      <link>https://geminishkv.tech/blog/336/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/336/</guid>
+      <pubDate>Tue, 21 Apr 2026 00:00:00 GMT</pubDate>
+      <description>Короче, в тему Артемия Лебедева, задумка была прикольная, вот с этой надписью, но с самим интерлиажем ребята чет пропустили задумку, если бы выделили &quot;ИИллюзий&quot;, то было бы вообще пушечно, а так да - прикольная тема описывающая именно то, что и обсуждалось Ну как есть 🙃</description>
+      <enclosure url="https://geminishkv.tech/img/blog/336.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Ну и сам контент</title>
+      <link>https://geminishkv.tech/blog/335/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/335/</guid>
+      <pubDate>Tue, 21 Apr 2026 00:00:00 GMT</pubDate>
+      <description>Ну и сам контент 🤔</description>
+      <enclosure url="https://geminishkv.tech/img/hero/avatar.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Security UP: премия за DevSecOps «по-взрослому»</title>
+      <link>https://geminishkv.tech/blog/334/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/334/</guid>
+      <pubDate>Tue, 21 Apr 2026 00:00:00 GMT</pubDate>
+      <description>🏆 Security UP: премия за DevSecOps «по-взрослому» Салюты, Забегался, замотался, но наконец то переварил, давай разберем, что же было на митапе. Ассоциация ФинТех, ГК «Солар» и сообщество FinDevSecOps подвели итоги первой премии «Security UP: Безопасность начинается с кода». Нагр</description>
+      <enclosure url="https://geminishkv.tech/img/blog/334.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>GitHub releases - попал под «железный зановес»?</title>
+      <link>https://geminishkv.tech/blog/333/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/333/</guid>
+      <pubDate>Mon, 20 Apr 2026 00:00:00 GMT</pubDate>
+      <description>🚧 GitHub releases - попал под «железный зановес»? С казахстанских IP не качаются бинарники из GitHub Releases. Сам github.com открывается, страницы листаются, а ссылки /releases/download/* виснут или рвутся. Через VPN - скачивается нормально. Проверил на свежем релизе: https://g</description>
+      <enclosure url="https://geminishkv.tech/img/blog/333.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Нормально, чеб нет</title>
+      <link>https://geminishkv.tech/blog/332/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/332/</guid>
+      <pubDate>Mon, 20 Apr 2026 00:00:00 GMT</pubDate>
+      <description>Нормально, чеб нет</description>
+      <enclosure url="https://geminishkv.tech/img/hero/avatar.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Ну в целом в ИБ как то так сейчас</title>
+      <link>https://geminishkv.tech/blog/331/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/331/</guid>
+      <pubDate>Mon, 20 Apr 2026 00:00:00 GMT</pubDate>
+      <description>Ну в целом в ИБ как то так сейчас  #lol</description>
+      <enclosure url="https://geminishkv.tech/img/blog/331.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>А пока я готовлю материалы по вчерашнему митапу, хочу поделиться приятностью и милотой от коллег</title>
+      <link>https://geminishkv.tech/blog/330/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/330/</guid>
+      <pubDate>Fri, 17 Apr 2026 00:00:00 GMT</pubDate>
+      <description>А пока я готовлю материалы по вчерашнему митапу, хочу поделиться приятностью и милотой от коллег 😅🫡🙃 #meetup #paper #appsec #devsecops #specialty #toolchain #conf #compliance #gost</description>
+      <enclosure url="https://geminishkv.tech/img/blog/330.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Фреймворки DAF и JCSF победили в премии Security UP: «Безопасность начинается с кода»&amp;#33;</title>
+      <link>https://geminishkv.tech/blog/329/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/329/</guid>
+      <pubDate>Fri, 17 Apr 2026 00:00:00 GMT</pubDate>
+      <description>Фреймворки DAF и JCSF победили в премии Security UP: «Безопасность начинается с кода»&amp;#33; Привет, друзья&amp;#33; Спешим похвастаться: наши фреймворки оценили на премии Security UP: «Безопасность начинается с кода», организованной ГК &quot;Солар&quot;, Ассоциацией ФинТех и сообществом FinDevS</description>
+      <enclosure url="https://geminishkv.tech/img/blog/329.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>️ AppSec врывается в топ: код – новая линия обороны&amp;#33; ️</title>
+      <link>https://geminishkv.tech/blog/328/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/328/</guid>
+      <pubDate>Fri, 17 Apr 2026 00:00:00 GMT</pubDate>
+      <description>⚡️ AppSec врывается в топ: код – новая линия обороны&amp;#33; ⚡️ &quot;Солар&quot;, Ассоциация Финтех и сообщество FinDevSecOps подвели итоги премии “Security UP: Безопасность начинается с кода”. И знаете что? Похоже, до всех дошло: теперь безопасность кода – это не просто модное слово, а реал</description>
+      <enclosure url="https://geminishkv.tech/img/hero/avatar.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Уууу, еще дополнения</title>
+      <link>https://geminishkv.tech/blog/327/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/327/</guid>
+      <pubDate>Fri, 17 Apr 2026 00:00:00 GMT</pubDate>
+      <description>Уууу, еще дополнения</description>
+      <enclosure url="https://geminishkv.tech/img/hero/avatar.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>•  При переходе в сервисы Яндекса с включенным VPN пользователи видят страницу-заглушку, которая не позволяет перейти в сервис. Если посмотреть код данной страницы, то можно найти отсылку к роману-антиутопии Д. Оруэлла &quot;1984&quot;. Такие вот забавные пасхалки...</title>
+      <link>https://geminishkv.tech/blog/326/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/326/</guid>
+      <pubDate>Fri, 17 Apr 2026 00:00:00 GMT</pubDate>
+      <description>•  При переходе в сервисы Яндекса с включенным VPN пользователи видят страницу-заглушку, которая не позволяет перейти в сервис. Если посмотреть код данной страницы, то можно найти отсылку к роману-антиутопии Д. Оруэлла &quot;1984&quot;. Такие вот забавные пасхалки... •  Кстати, хочу напомн</description>
+      <enclosure url="https://geminishkv.tech/img/blog/326.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Красивое</title>
+      <link>https://geminishkv.tech/blog/325/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/325/</guid>
+      <pubDate>Fri, 17 Apr 2026 00:00:00 GMT</pubDate>
+      <description>Красивое 🙃</description>
+      <enclosure url="https://geminishkv.tech/img/hero/avatar.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>#Солар и Ассоциация ФинТех назвали победителей премии по безопасной разработке.</title>
+      <link>https://geminishkv.tech/blog/320/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/320/</guid>
+      <pubDate>Fri, 17 Apr 2026 00:00:00 GMT</pubDate>
+      <description>#Солар и Ассоциация ФинТех назвали победителей премии по безопасной разработке. Ассоциация ФинТех, группа компания «Солар» и сообщество FinDevSecOps при участии 15 экспертов из крупнейших российских ИТ- и ИБ-компаний определили победителей премии «Security UP: Безопасность начина</description>
+      <enclosure url="https://geminishkv.tech/img/blog/320.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Немножко новостей, от меня постик будет чуть попозже, пока наслаждаемся инфо от @fintechassociation</title>
+      <link>https://geminishkv.tech/blog/319/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/319/</guid>
+      <pubDate>Fri, 17 Apr 2026 00:00:00 GMT</pubDate>
+      <description>Немножко новостей, от меня постик будет чуть попозже, пока наслаждаемся инфо от @fintechassociation</description>
+      <enclosure url="https://geminishkv.tech/img/hero/avatar.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Когда у тебя плохой день, просто вспомни, что где-то есть человек, который сейчас работает на твоей старой работе</title>
+      <link>https://geminishkv.tech/blog/318/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/318/</guid>
+      <pubDate>Fri, 17 Apr 2026 00:00:00 GMT</pubDate>
+      <description>Когда у тебя плохой день, просто вспомни, что где-то есть человек, который сейчас работает на твоей старой работе #meme</description>
+      <enclosure url="https://geminishkv.tech/img/hero/avatar.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>I likely that</title>
+      <link>https://geminishkv.tech/blog/317/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/317/</guid>
+      <pubDate>Fri, 17 Apr 2026 00:00:00 GMT</pubDate>
+      <description>I likely that 😅🤣</description>
+      <enclosure url="https://geminishkv.tech/img/hero/avatar.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Салюты,</title>
+      <link>https://geminishkv.tech/blog/316/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/316/</guid>
+      <pubDate>Thu, 16 Apr 2026 00:00:00 GMT</pubDate>
+      <description>Салюты, На базе, скоро будет классная инфа по мероприятию, мы готовимся и совсем скоро будет очень комфортная история для всех 🫶 Вместо бейджей у нас новомодные браслеты 😅 #meetup #appsec #devsecops</description>
+      <enclosure url="https://geminishkv.tech/img/blog/316.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>SecurityUp: Безопасность начинается с кода</title>
+      <link>https://geminishkv.tech/blog/315/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/315/</guid>
+      <pubDate>Wed, 15 Apr 2026 00:00:00 GMT</pubDate>
+      <description>🏆 SecurityUp: Безопасность начинается с кода Салюты, В этот четверг пройдет мероприятие по премии &quot;Безопасность начинается с кода&quot;.  Место: Кинотеатр &quot;Иллюзион&quot; Котельническая набережная 1/15 (Таганская, Китай Город).  Вот тут писал инфо об этом, можешь почитать и освежить в пам</description>
+      <enclosure url="https://geminishkv.tech/img/blog/315.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Безопасные HTTP‑заголовки</title>
+      <link>https://geminishkv.tech/blog/314/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/314/</guid>
+      <pubDate>Tue, 14 Apr 2026 00:00:00 GMT</pubDate>
+      <description>🛠 Безопасные HTTP‑заголовки Так, давай посмотрим на основу, которую нужно знать и понимать, а именно заголовки безопасности. Запомним, что это инструкции браузеру, как обращаться с контентом сайта. Настраиваются на сервере или в конфиге фреймворка и закрывают целые классы атак: </description>
+      <enclosure url="https://geminishkv.tech/img/blog/314.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Что это был за  и как он стал рекламой онлайн-казино</title>
+      <link>https://geminishkv.tech/blog/313/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/313/</guid>
+      <pubDate>Tue, 14 Apr 2026 00:00:00 GMT</pubDate>
+      <description>Что это был за 😄😄😄 и как он стал рекламой онлайн-казино В пятницу тысячи (не преувеличиваем) каналов поделились сообщением, которое начиналось с красной надписи черновик: — а точнее, с трех эмодзи, которые ее и составляли. После нее каналы, в том числе крупных и известных брен</description>
+      <enclosure url="https://geminishkv.tech/img/blog/313.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Ой ай, ну чтож, было и было</title>
+      <link>https://geminishkv.tech/blog/312/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/312/</guid>
+      <pubDate>Tue, 14 Apr 2026 00:00:00 GMT</pubDate>
+      <description>Ой ай, ну чтож, было и было</description>
+      <enclosure url="https://geminishkv.tech/img/hero/avatar.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>XSSNow</title>
+      <link>https://geminishkv.tech/blog/311/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/311/</guid>
+      <pubDate>Tue, 14 Apr 2026 00:00:00 GMT</pubDate>
+      <description>🛠 XSSNow Салюты, Давай посмотрим на XSSNow, что позволит тебе немного автоматизировать себя и упростить жизнь вокруг себя Это генератор контекстных XSS-payloads и использует уже составленную базу, сам ресурс заточен под реальные сценарии эксплуатации. В отличие от простых XSS-ли</description>
+      <enclosure url="https://geminishkv.tech/img/blog/311.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>С праздником родной(ая)&amp;#33;</title>
+      <link>https://geminishkv.tech/blog/310/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/310/</guid>
+      <pubDate>Sun, 12 Apr 2026 00:00:00 GMT</pubDate>
+      <description>С праздником родной(ая)&amp;#33; Христос Воскресе</description>
+      <enclosure url="https://geminishkv.tech/img/blog/310.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Clair для Docker и OCI</title>
+      <link>https://geminishkv.tech/blog/309/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/309/</guid>
+      <pubDate>Fri, 10 Apr 2026 00:00:00 GMT</pubDate>
+      <description>🛠 Clair для Docker и OCI Салют,  Давай сегодня поговорим про open-source движок для анализа Docker/ OCI-образов на уязвимости.  Инструмент написан на Golang и разбирает образ послойно, то есть он извлекает список установленных пакетов и сравнивает их с CVE-базами без запуска кон</description>
+      <enclosure url="https://geminishkv.tech/img/blog/309.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>напомнить себе о том, что ты лучший(ая)</title>
+      <link>https://geminishkv.tech/blog/308/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/308/</guid>
+      <pubDate>Fri, 10 Apr 2026 00:00:00 GMT</pubDate>
+      <description>😁😆😁 напомнить себе о том, что ты лучший(ая)</description>
+      <enclosure url="https://geminishkv.tech/img/hero/avatar.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Прокачка в кибербезе</title>
+      <link>https://geminishkv.tech/blog/307/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/307/</guid>
+      <pubDate>Thu, 09 Apr 2026 00:00:00 GMT</pubDate>
+      <description>🤔 Прокачка в кибербезе Салюты, сегодня мелкий оффтоп, в стадии плана развития ребяток, пошерстился и наткнулся на вот такую штуку. Ресурс с интерактивной картой карьерных путей в кибербезе, где разложены роли (SOC-аналитик, инженер по защите, исследователь, AppSec, комплаенс и д</description>
+      <enclosure url="https://geminishkv.tech/img/blog/307.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
     <item>
       <title>Зачем AppSec для бизнеса?</title>
       <link>https://geminishkv.tech/blog/306/</link>
