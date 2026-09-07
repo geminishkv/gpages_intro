@@ -6,6 +6,10 @@ const GLITCH_CHARS = '#@$%^&!?<>{}[]|/\\~*+=_';
 
 export function useMainAnimation(isVisible, onAllDone) {
   const navRef          = useRef(null);
+  // MainPage передаёт onAllDone inline-стрелкой; держим актуальный колбэк в ref,
+  // чтобы не включать его в deps эффекта и не перезапускать анимацию на каждом рендере.
+  const onAllDoneRef    = useRef(onAllDone);
+  useEffect(() => { onAllDoneRef.current = onAllDone; }, [onAllDone]);
   const observerRef     = useRef(null);
   const blinkerRef      = useRef(null);
   const whiteBoxRef     = useRef(null);
@@ -132,7 +136,7 @@ export function useMainAnimation(isVisible, onAllDone) {
                         liderRef.current.classList.add('hero__badges-track--scrolling');
 
                         // ── Sections via IntersectionObserver ──
-                        if (onAllDone) onAllDone();
+                        onAllDoneRef.current?.();
 
                         const sectionEls = [
                           statsRef.current,
@@ -266,7 +270,7 @@ export function useMainAnimation(isVisible, onAllDone) {
       }
       liderRef.current.classList.add('hero__badges-track--scrolling');
       setStatsActive(true);
-      if (onAllDone) onAllDone();
+      onAllDoneRef.current?.();
       const allSections = [
         statsRef, projectsRef, videosRef, blogRef, experienceRef, toolsRef, gamingRef, footerRef,
       ];

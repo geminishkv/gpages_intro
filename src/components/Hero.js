@@ -24,8 +24,10 @@ export default function Hero({
     <div className="hero">
       {/* Left — text */}
       <div className="hero__text">
+        {/* eslint-disable jsx-a11y/heading-has-content -- текст ставит useMainAnimation: typewriter или сразу при prefers-reduced-motion */}
         <h1 ref={titleRef} className="hero__title" />
         <h2 ref={subtitleRef} className="hero__subtitle" style={{ opacity: 0 }} />
+        {/* eslint-enable jsx-a11y/heading-has-content */}
         <p ref={taglineRef} className="hero__tagline" style={{ opacity: 0 }}>
           {TAGLINE_TEXT}
         </p>
