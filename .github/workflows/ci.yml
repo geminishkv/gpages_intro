@@ -66,14 +66,18 @@ jobs:
     timeout-minutes: 30
     permissions:
       contents: write
-      pull-requests: write
 
     steps:
       - name: Checkout source (gpages branch)
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11  # v4.1.1
         with:
           ref: gpages
-          token: ${{ secrets.GITHUB_TOKEN }}
+          # Deploy key с write: пуш данных в gpages идёт мимо ruleset (bypass: Deploy keys).
+          # Host key GitHub запинен явно (gh api meta --jq .ssh_keys).
+          ssh-key: ${{ secrets.DATA_PUSH_SSH_KEY }}
+          ssh-known-hosts: |
+            github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl
+            github.com ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBEmKSENjQEezOmxkZMy7opKgwFB9nkt5YRrYMjNuG5N87uRgg6CLrbo5wAdT/y6v0mKV0U2w0WZ2YB/++Tpockg=
 
       - name: Setup Node.js
         uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8  # v4.0.2
@@ -119,48 +123,13 @@ jobs:
       - name: Generate RSS feeds
         run: node scripts/generate-rss.js
 
-      # ── Commit data to PR branch ──
-      - name: Commit and create PR if data changed
-        # Opening the data PR needs "Actions can create pull requests", which is
-        # deliberately off on this repository. Refreshed data simply waits for the
-        # next manual pass rather than blocking the deploy that follows.
+      # ── Commit data straight to gpages (deploy key) ──
+      - name: Commit data to gpages
+        id: data
+        # Деплой ниже не должен зависеть от коммита данных (см. a162fa6); чтобы сбой
+        # не прошёл незамеченным, шаг "Fail if data commit failed" красит прогон после деплоя.
         continue-on-error: true
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          git config user.name  "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add \
-            src/data/tg-posts.json     public/img/blog/ \
-            src/data/instagram.json    public/img/instagram/ \
-            src/data/gaming.json       public/img/gaming/psn/ public/img/gaming/xbox/ \
-            src/constants/index.js \
-            public/sitemap.xml public/index.html \
-            public/rss.xml public/rss-en.xml
-
-          if git diff --cached --quiet; then
-            echo "Nothing to commit."
-          else
-            BRANCH="ci/weekly-update-$(date +%Y%m%d)"
-            git checkout -b "$BRANCH"
-            git commit -m "chore: weekly update — blog + instagram + gaming + stats + sitemap + rss"
-            git push origin "$BRANCH" --force
-
-            # Create or update PR
-            EXISTING_PR=$(gh pr list --head "$BRANCH" --json number --jq '.[0].number' 2>/dev/null || true)
-            if [ -n "$EXISTING_PR" ] && [ "$EXISTING_PR" != "null" ]; then
-              echo "PR #$EXISTING_PR already exists, updated branch."
-            else
-              gh pr create \
-                --title "chore: weekly data update $(date +%Y-%m-%d)" \
-                --body "Automated weekly update: blog, instagram, gaming, stats, sitemap, RSS." \
-                --base gpages \
-                --head "$BRANCH"
-            fi
-
-            # Switch back to gpages for deploy
-            git checkout gpages
-          fi
+        run: scripts/ci/commit-data.sh
 
       # ── Build + Deploy (always, even without data changes) ──
       - name: Build
@@ -183,3 +152,9 @@ jobs:
           curl -fsS -o /dev/null \
             "https://webmaster.yandex.ru/ping?sitemap=https://geminishkv.tech/sitemap.xml" \
             && echo "✓ Yandex pinged" || echo "⚠ Yandex ping failed (non-critical)"
+
+      - name: Fail if data commit failed
+        if: always() && steps.data.outcome == 'failure'
+        run: |
+          echo "::error::Commit data to gpages failed — the site was deployed, but source data was not updated. See the 'Commit data to gpages' step."
+          exit 1
