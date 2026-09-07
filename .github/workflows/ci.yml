@@ -42,13 +42,16 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Lint JS
-        run: npx eslint src/ --max-warnings 0 || true
+        run: npx eslint src/ --max-warnings 0
 
       - name: Audit dependencies
-        run: npm audit --audit-level=high || true
+        # Гейт по runtime-дереву (react, react-dom, animejs): на сайт уезжает статика,
+        # build-toolchain (react-scripts@5, devDependencies) в прод не попадает. Его находки —
+        # принятый риск, владелец geminishkv, закрывается задачей апгрейда зависимостей.
+        run: npm audit --omit=dev --audit-level=high
 
       - name: Build
         run: npm run build
@@ -79,7 +82,7 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       # ── Data fetching ──
       - name: Fetch Telegram posts
