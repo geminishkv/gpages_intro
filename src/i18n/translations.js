@@ -286,7 +286,9 @@ export const translations = {
       privacy: 'Политика конфиденциальности',
       consent: 'Изменить выбор по cookie',
     },
+    a11y: { skip: 'К содержанию' },
     nav: {
+      ariaLabel: 'Основная навигация',
       about: 'О СЕБЕ',
       blog: 'БЛОГ',
       experience: 'ОПЫТ',
@@ -568,7 +570,9 @@ export const translations = {
       privacy: 'Privacy policy',
       consent: 'Change cookie choice',
     },
+    a11y: { skip: 'Skip to content' },
     nav: {
+      ariaLabel: 'Main navigation',
       about: 'ABOUT',
       blog: 'BLOG',
       experience: 'EXPERIENCE',

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import '../styles/MainPage.css';
 import { useMainAnimation } from '../hooks/useMainAnimation';
+import { useLang } from '../context/LangContext';
 import Nav        from './Nav';
 import Hero       from './Hero';
 import Stats      from './Stats';
@@ -20,6 +21,7 @@ export default function MainPage({ isVisible }) {
   const [animDone, setAnimDone] = useState(false);
   const refs = useMainAnimation(isVisible, () => setAnimDone(true));
   const [aboutOpen, setAboutOpen] = useState(false);
+  const { t } = useLang();
 
   // Scroll lock during animation — desktop only (mobile can scroll freely)
   useEffect(() => {
@@ -48,7 +50,9 @@ export default function MainPage({ isVisible }) {
 
   return (
     <div className={`main-page${isVisible ? ' main-page--visible' : ''}${animDone ? ' main-page--scrollable' : ''}`}>
+      <a className="skip-link" href="#now">{t.a11y.skip}</a>
       <Nav navRef={refs.navRef} onAboutOpen={() => setAboutOpen(true)} />
+      <main id="content" className="main-content">
       <Hero
         titleRef={refs.titleRef}
         subtitleRef={refs.subtitleRef}
@@ -92,6 +96,7 @@ export default function MainPage({ isVisible }) {
       <div className="section-reveal" id="interests" ref={refs.interestsRef}>
         <Instagram />
       </div>
+      </main>
       <div className="section-reveal" ref={refs.footerRef}>
         <Footer />
       </div>
