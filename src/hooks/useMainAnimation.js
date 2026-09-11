@@ -273,6 +273,7 @@ export function useMainAnimation(isVisible, onAllDone) {
         reducedGroups.forEach(g => { g.style.opacity = '1'; g.style.transform = 'none'; });
       }
       liderRef.current.classList.add('hero__badges-track--scrolling');
+      liderRef.current.querySelectorAll('.hero__badge').forEach(b => { b.style.opacity = '1'; });
       setStatsActive(true);
       onAllDoneRef.current?.();
       const allSections = [

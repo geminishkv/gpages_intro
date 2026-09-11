@@ -318,7 +318,7 @@
   flex-direction: column;
   gap: 1px;
   width: 92%;
-  max-width: 62%;
+  max-width: 58%;
   padding: 0 8px 6px;
   font-family: 'Courier New', Courier, monospace;
   font-size: clamp(0.45rem, 0.9vw, 0.72rem);
@@ -352,6 +352,8 @@
   text-decoration: none;
   cursor: pointer;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .mac-cmds__ps { color: #ffffff; }
