@@ -276,6 +276,16 @@ export const translations = {
       moreCerts: (n) => `Ещё ${n} ↓`,
       moreGroups: (n) => `+${n} категории стека ↓`,
     },
+    footer: {
+      about: 'AppSec & DevSecOps. Материалы носят ознакомительный характер; площадки, ограниченные в РФ, помечены звёздочкой.',
+      sections: 'Разделы',
+      contacts: 'Контакты',
+      projects: 'Проекты',
+      resume: 'Резюме на hh.ru',
+      course: 'Курс AppSec',
+      privacy: 'Политика конфиденциальности',
+      consent: 'Изменить выбор по cookie',
+    },
     nav: {
       about: 'О СЕБЕ',
       blog: 'БЛОГ',
@@ -547,6 +557,16 @@ export const translations = {
       levels: { core: 'core — daily', strong: 'strong — regularly', work: 'working — when needed' },
       moreCerts: (n) => `${n} more ↓`,
       moreGroups: (n) => `+${n} stack categories ↓`,
+    },
+    footer: {
+      about: 'AppSec & DevSecOps. Materials are for information only; platforms restricted in Russia are marked with an asterisk.',
+      sections: 'Sections',
+      contacts: 'Contacts',
+      projects: 'Projects',
+      resume: 'Resume on hh.ru',
+      course: 'AppSec course',
+      privacy: 'Privacy policy',
+      consent: 'Change cookie choice',
     },
     nav: {
       about: 'ABOUT',

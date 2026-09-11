@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import '../styles/Tools.css';
-import '../styles/SkillCard.css';
 import { useLang } from '../context/LangContext';
 import SectionHead from './SectionHead';
 
-/* items sorted max→min by percent */
+/* Tool groups; the numbers are kept only to order the chips (they are no longer shown). */
 const TOOL_GROUPS = [
   { label: 'SAST',      items: [['Semgrep',95], ['SonarQube',95], ['Checkov',95], ['Bandit',80], ['BlackDuck',70]] },
   { label: 'SCA',       items: [['Dependency-Check',95], ['Trivy',95], ['Syft',85], ['Grype',80], ['Clair',75]] },
@@ -16,7 +15,7 @@ const TOOL_GROUPS = [
   { label: 'DevOps',    items: [['Docker',95], ['GitLab CI/CD',95], ['Jenkins',95], ['Helm',90], ['Kubernetes',65]] },
 ];
 
-/* domains sorted max→min */
+/* Domains with an honest three-step scale instead of percentages. */
 const DOMAIN_ITEMS = [
   ['Application Security', 95], ['DevSecOps', 95], ['Secure SDLC', 95],
   ['Supply Chain Security', 90], ['Vulnerability Management', 85],
@@ -25,89 +24,75 @@ const DOMAIN_ITEMS = [
   ['Payment Systems Security', 70], ['Mobile AppSec', 65], ['GRC', 50],
 ];
 
-const STACK_INITIAL = 2;
+const STACK_INITIAL = 4;
 const CERTS_INITIAL = 4;
 
-function SkillRow({ name, percent }) {
-  return (
-    <div className="skill-row">
-      <span className="skill-row__name">{name}</span>
-      <div className="skill-row__bar">
-        <div className="skill-row__fill" style={{ width: `${percent}%` }} />
-      </div>
-      <span className="skill-row__pct">{percent}%</span>
-    </div>
-  );
-}
+const levelOf = (pct) => (pct >= 90 ? 'core' : pct >= 75 ? 'strong' : 'work');
 
-function SkillCard({ title, items, className = '' }) {
-  return (
-    <div className={`skill-card${className ? ` ${className}` : ''}`}>
-      <div className="skill-card__header">{title}</div>
-      <div className="skill-card__body">
-        {items.map(([name, pct]) => (
-          <SkillRow key={name} name={name} percent={pct} />
-        ))}
-      </div>
-    </div>
-  );
+function Chip({ level, children }) {
+  return <span className={`chip chip--${level}`}>{children}</span>;
 }
 
 export default function Tools() {
   const [stackExpanded, setStackExpanded] = useState(false);
   const [certsExpanded, setCertsExpanded] = useState(false);
   const { t } = useLang();
+  const s = t.skills;
   const CERTS = t.certs;
-
   const visibleGroups = stackExpanded ? TOOL_GROUPS : TOOL_GROUPS.slice(0, STACK_INITIAL);
   const visibleCerts  = certsExpanded ? CERTS       : CERTS.slice(0, CERTS_INITIAL);
 
   return (
     <section className="tools">
-
-      {/* ── Domains (2/4) + Tech Stack first 2 (1/4 + 1/4) ── */}
       <SectionHead eyebrow={t.sectionHead.skills.eyebrow} title={t.sections.skills} sub={t.sectionHead.skills.sub} />
-      <div className="skill-layout">
-        <SkillCard title={t.sections.domains} items={DOMAIN_ITEMS} className="skill-card--wide" />
-        <div className="skill-layout__right">
-          {visibleGroups.slice(0, 2).map(({ label, items }) => (
-            <SkillCard key={label} title={label} items={items} />
-          ))}
+
+      <div className="skills">
+        <div className="skills__panel">
+          <h3 className="skills__panel-title">{t.sections.domains}<small>{DOMAIN_ITEMS.length}</small></h3>
+          <div className="chips">
+            {DOMAIN_ITEMS.map(([name, pct]) => <Chip key={name} level={levelOf(pct)}>{name}</Chip>)}
+          </div>
+          <div className="chips-legend" aria-hidden="true">
+            <span><i className="chips-legend__core" />{s.levels.core}</span>
+            <span><i className="chips-legend__strong" />{s.levels.strong}</span>
+            <span><i className="chips-legend__work" />{s.levels.work}</span>
+          </div>
+        </div>
+
+        <div className="skills__panel">
+          <h3 className="skills__panel-title">{t.sections.certifications}<small>{CERTS.length}</small></h3>
+          <div className="tools__certs-grid">
+            {visibleCerts.map((c, i) => (
+              <div key={i} className="cert-card">
+                <span className="cert-card__area">{c.area}</span>
+                <span className="cert-card__title">{c.title}</span>
+              </div>
+            ))}
+          </div>
+          {!certsExpanded && CERTS.length > CERTS_INITIAL && (
+            <button type="button" className="tools__show-more" onClick={() => setCertsExpanded(true)}>
+              {s.moreCerts(CERTS.length - CERTS_INITIAL)}
+            </button>
+          )}
         </div>
       </div>
 
-      {/* ── Remaining Tech Stack ── */}
-      {visibleGroups.length > 2 && (
-        <div className="skill-grid">
-          {visibleGroups.slice(2).map(({ label, items }) => (
-            <SkillCard key={label} title={label} items={items} />
-          ))}
-        </div>
-      )}
-      {!stackExpanded && TOOL_GROUPS.length > STACK_INITIAL && (
-        <button className="skill-grid__more skill-grid__more--full" onClick={() => setStackExpanded(true)}>
-          +{TOOL_GROUPS.length - STACK_INITIAL} categories ↓
-        </button>
-      )}
-
-      {/* ── Certifications ── */}
-      <SectionHead eyebrow={t.sectionHead.certs.eyebrow} title={t.sections.certifications}>
-        <span className="tools__count">{CERTS.length} total</span>
-      </SectionHead>
-      <div className="tools__certs-grid">
-        {visibleCerts.map((c, i) => (
-          <div key={i} className="cert-card">
-            <span className="cert-card__area">{c.area}</span>
-            <span className="cert-card__title">{c.title}</span>
+      <h3 className="skills__stack-title">{t.sections.techStack}</h3>
+      <div className="stack">
+        {visibleGroups.map(({ label, items }) => (
+          <div key={label} className="skills__panel skills__panel--stack">
+            <h3 className="skills__panel-title">{label}</h3>
+            <div className="chips">
+              {items.map(([name]) => <Chip key={name} level="tool">{name}</Chip>)}
+            </div>
           </div>
         ))}
-        {!certsExpanded && CERTS.length > CERTS_INITIAL && (
-          <button className="tools__show-more" onClick={() => setCertsExpanded(true)}>
-            Show {CERTS.length - CERTS_INITIAL} more certifications ↓
-          </button>
-        )}
       </div>
-
+      {!stackExpanded && TOOL_GROUPS.length > STACK_INITIAL && (
+        <button type="button" className="tools__show-more tools__show-more--full" onClick={() => setStackExpanded(true)}>
+          {s.moreGroups(TOOL_GROUPS.length - STACK_INITIAL)}
+        </button>
+      )}
     </section>
   );
 }
