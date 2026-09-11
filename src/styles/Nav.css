@@ -13,6 +13,21 @@
   transition: background-color 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
 }
 
+/* reading progress along the top edge (--nav-progress is set by Nav.js on scroll) */
+.nav__progress {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 2px;
+  width: calc(var(--nav-progress, 0) * 100%);
+  background: var(--gradient-red-gold);
+  transition: width 0.15s linear;
+  pointer-events: none;
+}
+
+.nav__links a.nav__link--active { color: var(--color-white, #fff); }
+.nav__links a.nav__link--active::before { background: var(--color-white-a10, rgba(255, 255, 255, 0.1)); }
+
 .nav--scrolled {
   background: var(--nav-bg);
   backdrop-filter: blur(18px);
