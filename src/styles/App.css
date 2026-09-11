@@ -231,13 +231,19 @@ body {
     min-height: 44px;
   }
 
-  .sec-head__action,
-  .blog__subs,
   .exp-card__company,
   .ata-consent__text a {
     display: inline-block;
     min-width: 44px;
     padding-block: 15px;
     margin-block: -15px;
+  }
+
+  .sec-head__action,
+  .blog__subs,
+  .blog-filter {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
   }
 }
