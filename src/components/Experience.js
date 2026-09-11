@@ -13,11 +13,11 @@ function logoClass(item) {
   return 'pipe__logo';
 }
 
-function Node({ item }) {
+function Plate({ item }) {
   const logos = item.logos ?? [{ src: item.logo, alt: item.company, url: item.url }];
   const cls = logoClass(item);
   return (
-    <div className={`pipe__node${logos.length > 1 ? ' pipe__node--pair' : ''}`}>
+    <div className={`pipe__plate${logos.length > 1 ? ' pipe__plate--pair' : ''}`}>
       {logos.map((l, j) => l.url ? (
         <a key={j} href={l.url} target="_blank" rel="noreferrer" className="pipe__logo-link" aria-label={l.alt}>
           <img src={l.src} alt="" className={cls} />
@@ -65,7 +65,8 @@ export default function Experience() {
         {stages.map((item, i) => (
           <li key={i} className={`pipe__st${item.current ? ' pipe__st--now' : ''}`}>
             <span className="pipe__year">{yearOf(item.period)}</span>
-            <Node item={item} />
+            <span className="pipe__node" aria-hidden="true" />
+            <Plate item={item} />
             <div className="pipe__body">
               <h3 className="pipe__title">
                 <Company item={item} />
