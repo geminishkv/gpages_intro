@@ -5,7 +5,7 @@ const https = require('https');
 const fs    = require('fs');
 const path  = require('path');
 
-const CHANNEL     = 'shmakovis_appsec';
+const CHANNEL     = 'appsecta';
 const OUTPUT      = path.join(__dirname, '../src/data/tg-posts.json');
 const IMG_DIR     = path.join(__dirname, '../public/img/blog');
 
@@ -227,6 +227,8 @@ async function main() {
 
   // Sort newest first
   const posts = [...byId.values()].sort((a, b) => parseInt(b.id, 10) - parseInt(a.id, 10));
+  // Post ids survive a channel rename; rebuild the links so old entries follow CHANNEL.
+  for (const p of posts) p.url = `https://t.me/${CHANNEL}/${p.id}`;
 
   if (posts.length === 0) {
     console.error('✗ No posts — keeping existing file.');

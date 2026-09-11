@@ -4,7 +4,7 @@ import DATA from '../data/tg-posts.json';
 import { useLang } from '../context/LangContext';
 import GlitchLabel from './GlitchLabel';
 
-const CHANNEL_URL    = 'https://t.me/shmakovis_appsec';
+const CHANNEL_URL    = 'https://t.me/appsecta';
 const MOBILE_BP      = 576;
 const MOBILE_INITIAL = 3;
 const DESKTOP_INITIAL = 14;
@@ -113,7 +113,7 @@ export default function Blog() {
           )}
         </div>
         <a href={CHANNEL_URL} target="_blank" rel="noreferrer" className="blog__channel-link">
-          <TgIcon />shmakovis_appsec →
+          <TgIcon />appsecta →
         </a>
       </div>
 

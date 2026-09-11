@@ -22,7 +22,7 @@ Founder and leader of the FinDevSecOps community for the Russian fintech market.
 
 ## Content
 
-- Blog (Telegram channel): https://t.me/shmakovis_appsec — AppSec & DevSecOps publications in Russian and English
+- Blog (Telegram channel): https://t.me/appsecta — AppSec & DevSecOps publications in Russian and English
 - AppSec Course: https://course.geminishkv.tech/
 - Security Champion Training: https://inseca.tech/security-champion-training
 - OSS Toolchain Map: https://findevsecops.github.io/oss_toolchainmap/

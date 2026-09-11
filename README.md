@@ -57,7 +57,7 @@
 * **CookieBanner** — cookie-consent (ФЗ-152), reshow раз в 30 мин
 * **Stats** — 5 ключевых метрик с анимацией count-up через requestAnimationFrame
 * **Projects** — карточки GitHub-репозиториев (stars, forks, язык)
-* **Blog** — 182 поста из Telegram `shmakovis_appsec`; превью 14 последних на главной; `/blog/` с пагинацией по 15; статические SEO-страницы `/blog/{id}/` (RU) и `/blog/en/{id}/` (EN); переключатель RU/EN
+* **Blog** — 182 поста из Telegram `appsecta`; превью 14 последних на главной; `/blog/` с пагинацией по 15; статические SEO-страницы `/blog/{id}/` (RU) и `/blog/en/{id}/` (EN); переключатель RU/EN
 * **Videos** — YouTube-карточки: подкаст по безопасной разработке, интервью BISA
 * **Experience** — 6 мест работы в виде карточек с логотипами
 * **Tools** — Tech Stack (8 категорий) + Certifications + Domains (skill-карточки)
