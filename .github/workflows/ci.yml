@@ -19,8 +19,11 @@ on:
 permissions:
   contents: read
 
+# The weekly job pushes a data commit to gpages with the deploy key, and that push
+# starts a new run. With one group per ref the new run cancelled the deploy that
+# spawned it, so the event name is part of the group: pushes only cancel pushes.
 concurrency:
-  group: ci-${{ github.ref }}
+  group: ci-${{ github.ref }}-${{ github.event_name }}
   cancel-in-progress: true
 
 jobs:
