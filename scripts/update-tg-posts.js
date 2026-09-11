@@ -199,6 +199,13 @@ async function main() {
     await sleep(500);
   }
 
+  // Nothing fetched: t.me/s/<channel> redirects to the plain contact page when the
+  // web preview is unavailable. Keep the committed data instead of writing zeros.
+  if (allPosts.length === 0) {
+    console.warn(`::warning::Telegram preview for @${CHANNEL} returned no posts — keeping ${OUTPUT} untouched.`);
+    process.exit(0);
+  }
+
   // Deduplicate by id, newest first
   const byId = new Map();
   for (const p of allPosts) byId.set(p.id, p);
@@ -208,6 +215,8 @@ async function main() {
   if (fs.existsSync(OUTPUT)) {
     try {
       const existing = JSON.parse(fs.readFileSync(OUTPUT, 'utf8'));
+      // The counter is missing from a redirected page; never downgrade it to 0.
+      if (!subscribers && existing.subscribers) subscribers = existing.subscribers;
       for (const p of (existing.posts ?? [])) {
         existingById[p.id] = p;
         // Keep old posts that weren't in this scrape (pagination didn't reach them)

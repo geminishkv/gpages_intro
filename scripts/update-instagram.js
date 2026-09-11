@@ -69,6 +69,15 @@ function post(urlStr, body, extraHeaders = {}) {
   });
 }
 
+// JPEG / PNG / WebP magic bytes. The scraper occasionally hands out a video URL
+// for reels; saving that as .jpg produced a 6 MB broken "image" once.
+function looksLikeImage(buf) {
+  if (buf.length < 500) return false;
+  if (buf[0] === 0xFF && buf[1] === 0xD8) return true;
+  if (buf[0] === 0x89 && buf[1] === 0x50) return true;
+  return buf.subarray(0, 4).toString() === 'RIFF' && buf.subarray(8, 12).toString() === 'WEBP';
+}
+
 function downloadImage(url, dest) {
   return new Promise((resolve) => {
     const parsed = new URL(url);
@@ -88,7 +97,9 @@ function downloadImage(url, dest) {
         const chunks = [];
         res.on('data', c => chunks.push(c));
         res.on('end', () => {
-          try { fs.writeFileSync(dest, Buffer.concat(chunks)); resolve(true); }
+          const buf = Buffer.concat(chunks);
+          if (!looksLikeImage(buf)) { resolve(false); return; }
+          try { fs.writeFileSync(dest, buf); resolve(true); }
           catch { resolve(false); }
         });
       },
@@ -178,7 +189,10 @@ async function main() {
     const p      = raw[i];
     const ts     = p.taken_at_date ? new Date(p.taken_at_date).getTime() : Date.now() - i;
     const id     = String(ts);
-    const imgUrl = p.mediaUrls?.[0]?.url ?? null;
+    // Prefer a still image; for reels fall back to a thumbnail when the API offers one.
+    const media  = Array.isArray(p.mediaUrls) ? p.mediaUrls : [];
+    const still  = media.find(m => m?.url && !/video/i.test(m.type ?? '')) ?? null;
+    const imgUrl = still?.url ?? p.thumbnail_url ?? p.thumbnailUrl ?? media[0]?.thumbnail ?? null;
     const dest   = path.join(IMG_DIR, `${id}.jpg`);
 
     let localPath = null;
