@@ -201,3 +201,42 @@ body {
 @media (max-width: 900px) and (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
+
+/* ── Touch targets ≥ 44px (WCAG 2.5.5) on coarse pointers and phone widths ──
+   Pills and buttons grow in height; inline text links extend their hit area with
+   symmetric padding/negative margin so the layout does not move. */
+@media (pointer: coarse), (max-width: 576px) {
+  .pkg-btn,
+  .content-btn,
+  .contact-btn,
+  .projects__show-more,
+  .tools__show-more,
+  .ata-consent__btn,
+  .ata-legal__close,
+  .lang-switch,
+  .nav__burger {
+    min-height: 44px;
+  }
+
+  /* doubled class: Buttons.css sets 36px later in the bundle */
+  .social-icon.social-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .exp-card__logo-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  .projects__github-link,
+  .blog__channel-link,
+  .exp-card__company,
+  .ata-consent__text a {
+    display: inline-block;
+    min-width: 44px;
+    padding-block: 15px;
+    margin-block: -15px;
+  }
+}
