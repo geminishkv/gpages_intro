@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blog — 18 — geminishkv</title>
+  <meta name="description" content="AppSec &amp; DevSecOps insights — 352 posts" />
+  <meta name="author" content="Ilya Shmakov" />
+  <meta name="keywords" content="appsec blog, devsecops blog, application security, geminishkv, безопасность приложений, блог по ИБ" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="canonical" href="https://geminishkv.tech/blog/en/" />
+  <link rel="sitemap" href="/sitemap.xml" />
+  <link rel="alternate" type="application/rss+xml" title="geminishkv blog" href="/rss-en.xml" />
+  <link rel="alternate" hreflang="ru" href="https://geminishkv.tech/blog/" />
+  <link rel="alternate" hreflang="en" href="https://geminishkv.tech/blog/en/" />
+  <link rel="alternate" hreflang="x-default" href="https://geminishkv.tech/blog/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://geminishkv.tech/blog/en/" />
+  <meta property="og:title" content="Blog — geminishkv" />
+  <meta property="og:description" content="AppSec &amp; DevSecOps insights" />
+  <meta property="og:image" content="https://geminishkv.tech/img/hero/avatar.jpg" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="geminishkv" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@geminishkv" />
+  <meta name="twitter:title" content="Blog — geminishkv" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="/fonts/fonts.css" />
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0a0a0a; --card: #111111; --border: #1a1a1a;
+  --text: #e8e8e8; --muted: #888888; --accent: #D51A1A; --gold: #F9B361;
+}
+html, body { background: var(--bg); color: var(--text); font-family: 'Roboto', system-ui, sans-serif; min-height: 100dvh; line-height: 1.7; }
+a { color: inherit; text-decoration: none; }
+
+.page { max-width: 800px; margin: 0 auto; padding: 0 24px 64px; }
+
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 24px 0 32px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+.nav__brand { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 700; color: #fff; }
+.nav__brand img { width: 28px; height: 28px; border-radius: 50%; }
+.nav__back { font-size: 12px; color: var(--muted); border: 1px solid var(--border); border-radius: 4px; padding: 6px 14px; transition: color .2s, border-color .2s; letter-spacing: 0.06em; text-transform: uppercase; }
+.nav__back:hover { color: #fff; border-color: var(--accent); }
+
+.nav__right-group { display: flex; align-items: center; gap: 10px; }
+.lang-toggle { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; color: var(--accent); border: 1px solid var(--accent); border-radius: 4px; padding: 5px 10px; transition: background .2s, color .2s; }
+.lang-toggle:hover { background: var(--accent); color: #fff; }
+
+.divider { height: 1px; background: linear-gradient(to right, var(--accent), rgba(204,34,0,.15), transparent); margin: 40px 0 20px; }
+.footer { font-size: 0.65rem; color: var(--muted); text-align: center; }
+.footer a { color: var(--accent); transition: color .2s; }
+.footer a:hover { color: var(--gold); }
+.disclaimer { font-size: 0.55rem; color: #555; text-align: center; margin-top: 12px; line-height: 1.4; }
+
+@media (max-width: 600px) { .page { padding: 0 16px 48px; } }
+
+    .page { max-width: 1900px; padding: 0 clamp(24px, 5vw, 120px) 64px; }
+    .header { margin-bottom: 32px; }
+    .header h1 { font-family: 'Unbounded', sans-serif; font-size: 1.6rem; font-weight: 700; margin-bottom: 6px; background: linear-gradient(135deg, var(--accent), var(--gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .header p { font-size: 0.8rem; color: var(--muted); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 14px; }
+    .card { display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; transition: border-color .2s, transform .2s; }
+    .card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .card__cover { width: 100%; height: 200px; object-fit: cover; }
+    .card__body { padding: 14px 16px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+    .card__meta { font-size: 0.58rem; color: var(--muted); display: flex; gap: 6px; letter-spacing: 0.06em; text-transform: uppercase; }
+    .card__title { font-size: 0.85rem; font-weight: 700; color: #fff; line-height: 1.3; }
+    .card__desc { font-size: 0.72rem; color: #aaa; line-height: 1.5; flex: 1; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .card__tags { display: flex; gap: 4px; flex-wrap: wrap; }
+    .card-tag { font-size: 0.55rem; color: var(--gold); background: rgba(249,179,97,.06); border: 1px solid rgba(249,179,97,.15); border-radius: 3px; padding: 2px 6px; }
+    .card__read { font-size: 0.62rem; color: var(--muted); letter-spacing: 0.06em; transition: color .2s; }
+    .card:hover .card__read { color: var(--accent); }
+
+    .pag { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 32px; }
+    .pag__nums { display: flex; gap: 4px; }
+    .pag__link, .pag__current { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 4px; font-size: 0.72rem; font-weight: 700; transition: background .2s, color .2s; }
+    .pag__link { color: var(--muted); border: 1px solid var(--border); }
+    .pag__link:hover { border-color: var(--accent); color: #fff; }
+    .pag__current { background: var(--accent); color: #fff; }
+    .pag__arrow { font-size: 0.68rem; font-weight: 600; color: var(--muted); border: 1px solid var(--border); border-radius: 4px; padding: 6px 14px; transition: border-color .2s, color .2s; letter-spacing: 0.04em; }
+    .pag__arrow:hover { border-color: var(--accent); color: #fff; }
+    .pag__arrow--disabled { opacity: 0.3; pointer-events: none; }
+
+    @media (max-width: 900px) { .grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); } }
+    @media (max-width: 576px) { .grid { grid-template-columns: 1fr; } .header h1 { font-size: 1.2rem; } .pag__nums { display: none; } }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="nav">
+      <a href="/" class="nav__brand"><img src="/img/logotype/logo_white.svg" alt="" />geminishkv</a>
+      <div class="nav__right-group">
+        <a href="/blog/" class="lang-toggle">RU</a>
+        <a href="/" class="nav__back">← Home</a>
+      </div>
+    </nav>
+    <div class="header">
+      <h1>Blog</h1>
+      <p>AppSec & DevSecOps insights · 352 posts</p>
+    </div>
+    <div class="grid"><a href="/blog/en/191/" class="card">
+        <img src="/img/blog/191.jpg" alt="" class="card__cover" loading="lazy" />
+        <div class="card__body">
+          <div class="card__meta"><span>January 23, 2026</span><span>· 250</span></div>
+          <h2 class="card__title">Vulnerable MCP Servers Lab</h2>
+          <p class="card__desc">🛠Vulnerable MCP Servers Lab A little stolen, but worth sharing, I think you'll like it. Follow the link with 9 labs fr…</p>
+          <div class="card__tags"><span class="card-tag">#toolchain</span><span class="card-tag">#appsec</span><span class="card-tag">#course</span></div>
+          <span class="card__read">Read →</span>
+        </div>
+      </a>
+<a href="/blog/en/190/" class="card">
+        <img src="/img/blog/190.jpg" alt="" class="card__cover" loading="lazy" />
+        <div class="card__body">
+          <div class="card__meta"><span>January 23, 2026</span><span>· 240</span></div>
+          <h2 class="card__title">Semgrep Rules OWASP A03:2024 – Injection (SQL/OS/Expression)</h2>
+          <p class="card__desc">🛠 Semgrep Rules OWASP A03:2024 – Injection (SQL/OS/Expression) Salute,  Today I want to share with you the rules for s…</p>
+          <div class="card__tags"><span class="card-tag">#toolchain</span><span class="card-tag">#sast</span><span class="card-tag">#appsec</span></div>
+          <span class="card__read">Read →</span>
+        </div>
+      </a>
+<a href="/blog/en/189/" class="card">
+        <img src="/img/blog/189.jpg" alt="" class="card__cover" loading="lazy" />
+        <div class="card__body">
+          <div class="card__meta"><span>January 22, 2026</span><span>· 215</span></div>
+          <h2 class="card__title">A little meme, vital for all of us under 22% VAT.</h2>
+          <p class="card__desc">A little meme, vital for all of us under 22% VAT. #lol</p>
+          <div class="card__tags"><span class="card-tag">#lol</span></div>
+          <span class="card__read">Read →</span>
+        </div>
+      </a>
+<a href="/blog/en/188/" class="card">
+        <img src="/img/blog/188.jpg" alt="" class="card__cover" loading="lazy" />
+        <div class="card__body">
+          <div class="card__meta"><span>January 22, 2026</span><span>· 249</span></div>
+          <h2 class="card__title">Search for vulnerabilities in software during exploitation</h2>
+          <p class="card__desc">🤔 Search for vulnerabilities in software during exploitation Today I listened to a cool webinar with Artem Khramykh fr…</p>
+          <div class="card__tags"><span class="card-tag">#reco</span><span class="card-tag">#reserch</span><span class="card-tag">#riskanalysis</span></div>
+          <span class="card__read">Read →</span>
+        </div>
+      </a>
+<a href="/blog/en/187/" class="card">
+        <img src="/img/blog/187.jpg" alt="" class="card__cover" loading="lazy" />
+        <div class="card__body">
+          <div class="card__meta"><span>January 21, 2026</span><span>· 214</span></div>
+          <h2 class="card__title">Checkov SAST profile</h2>
+          <p class="card__desc">🛠 Checkov SAST profile I started rebuilding custom profiles, and I wanted to share with you an example for checkov tha…</p>
+          <div class="card__tags"><span class="card-tag">#toolchain</span><span class="card-tag">#sast</span><span class="card-tag">#appsec</span></div>
+          <span class="card__read">Read →</span>
+        </div>
+      </a>
+<a href="/blog/en/183/" class="card">
+        <img src="/img/blog/183.jpg" alt="" class="card__cover" loading="lazy" />
+        <div class="card__body">
+          <div class="card__meta"><span>January 21, 2026</span><span>· 209</span></div>
+          <h2 class="card__title">DevSecOps Award for the Russian FinTech market</h2>
+          <p class="card__desc">🏆 DevSecOps Award for the Russian FinTech market Salute,  Today I want to start with you with an official review of th…</p>
+          <div class="card__tags"><span class="card-tag">#appsec</span><span class="card-tag">#devsecops</span><span class="card-tag">#specialty</span></div>
+          <span class="card__read">Read →</span>
+        </div>
+      </a>
+<a href="/blog/en/182/" class="card">
+        <img src="/img/blog/182.jpg" alt="" class="card__cover" loading="lazy" />
+        <div class="card__body">
+          <div class="card__meta"><span>January 19, 2026</span><span>· 222</span></div>
+          <h2 class="card__title">Checkov SAST for IAC</h2>
+          <p class="card__desc">🛠 Checkov SAST for IAC Salute,  Let's continue to look further towards instruments and today we will talk about Anton …</p>
+          <div class="card__tags"><span class="card-tag">#toolchain</span><span class="card-tag">#sast</span><span class="card-tag">#appsec</span></div>
+          <span class="card__read">Read →</span>
+        </div>
+      </a>
+<a href="/blog/en/181/" class="card">
+        
+        <div class="card__body">
+          <div class="card__meta"><span>January 19, 2026</span></div>
+          <h2 class="card__title">Channel photo updated</h2>
+          <p class="card__desc">Channel photo updated</p>
+          
+          <span class="card__read">Read →</span>
+        </div>
+      </a>
+<a href="/blog/en/180/" class="card">
+        <img src="/img/blog/180.jpg" alt="" class="card__cover" loading="lazy" />
+        <div class="card__body">
+          <div class="card__meta"><span>January 16, 2026</span><span>· 245</span></div>
+          <h2 class="card__title">Non-trivial Reco for networking and repository management</h2>
+          <p class="card__desc">🛠 Non-trivial Reco for networking and repository management Today I want to continue the previous topic and share with…</p>
+          <div class="card__tags"><span class="card-tag">#appsec</span><span class="card-tag">#devsecops</span><span class="card-tag">#reco</span></div>
+          <span class="card__read">Read →</span>
+        </div>
+      </a>
+<a href="/blog/en/179/" class="card">
+        <img src="/img/blog/179.jpg" alt="" class="card__cover" loading="lazy" />
+        <div class="card__body">
+          <div class="card__meta"><span>January 16, 2026</span><span>· 234</span></div>
+          <h2 class="card__title">Fireworks, I can’t resist, so pay attention to your profile  hello to those involved</h2>
+          <p class="card__desc">Fireworks, I can’t resist, so pay attention to your profile 😅🤣 hello to those involved #lol</p>
+          <div class="card__tags"><span class="card-tag">#lol</span></div>
+          <span class="card__read">Read →</span>
+        </div>
+      </a>
+<a href="/blog/en/178/" class="card">
+        <img src="/img/blog/178.jpg" alt="" class="card__cover" loading="lazy" />
+        <div class="card__body">
+          <div class="card__meta"><span>January 14, 2026</span><span>· 243</span></div>
+          <h2 class="card__title">Non-trivial Reco in software development</h2>
+          <p class="card__desc">🛠 Non-trivial Reco in software development Salute, Today I want to share with you the specific information security re…</p>
+          <div class="card__tags"><span class="card-tag">#appsec</span><span class="card-tag">#devsecops</span><span class="card-tag">#reco</span></div>
+          <span class="card__read">Read →</span>
+        </div>
+      </a>
+<a href="/blog/en/173/" class="card">
+        <img src="/img/blog/173.jpg" alt="" class="card__cover" loading="lazy" />
+        <div class="card__body">
+          <div class="card__meta"><span>January 13, 2026</span><span>· 272</span></div>
+          <h2 class="card__title">Benchmark InfoSec Risks</h2>
+          <p class="card__desc">🤔 Benchmark InfoSec Risks Salut, you and I once looked at a case on information security risks here, and now I think i…</p>
+          <div class="card__tags"><span class="card-tag">#devsecops</span><span class="card-tag">#pmi</span><span class="card-tag">#reco</span></div>
+          <span class="card__read">Read →</span>
+        </div>
+      </a>
+<a href="/blog/en/167/" class="card">
+        <img src="/img/blog/167.jpg" alt="" class="card__cover" loading="lazy" />
+        <div class="card__body">
+          <div class="card__meta"><span>January 12, 2026</span><span>· 242</span></div>
+          <h2 class="card__title">Netflix Security Monkey as Chaos Engineering</h2>
+          <p class="card__desc">🛠 Netflix Security Monkey as Chaos Engineering Salute, The holiday festivities are over, now it’s time for the waste d…</p>
+          <div class="card__tags"><span class="card-tag">#appsec</span><span class="card-tag">#toolchain</span><span class="card-tag">#reco</span></div>
+          <span class="card__read">Read →</span>
+        </div>
+      </a>
+<a href="/blog/en/166/" class="card">
+        
+        <div class="card__body">
+          <div class="card__meta"><span>December 31, 2025</span><span>· 298</span></div>
+          <h2 class="card__title">Dear, happy new year, thank you for being there and supporting me, I am incredibly grateful and glad to see you  happy new year, happy new happiness and may you have everything that you deserve and what you want to achieve!</h2>
+          <p class="card__desc">Dear, happy new year, thank you for being there and supporting me, I am incredibly grateful and glad to see you 🫶 happ…</p>
+          
+          <span class="card__read">Read →</span>
+        </div>
+      </a>
+<a href="/blog/en/165/" class="card">
+        <img src="/img/blog/165.jpg" alt="" class="card__cover" loading="lazy" />
+        <div class="card__body">
+          <div class="card__meta"><span>December 31, 2025</span><span>· 305</span></div>
+          <h2 class="card__title">Fireworks, dear,</h2>
+          <p class="card__desc">Fireworks, dear,  Meanwhile, New Year is coming very soon 🎄🫶🙏 Smile 😅🙃</p>
+          
+          <span class="card__read">Read →</span>
+        </div>
+      </a></div>
+    
+    <nav class="pag">
+      <a href="/blog/en/page/17/" class="pag__arrow">← Prev</a>
+      <div class="pag__nums"><a href="/blog/en/" class="pag__link">1</a><a href="/blog/en/page/2/" class="pag__link">2</a><a href="/blog/en/page/3/" class="pag__link">3</a><a href="/blog/en/page/4/" class="pag__link">4</a><a href="/blog/en/page/5/" class="pag__link">5</a><a href="/blog/en/page/6/" class="pag__link">6</a><a href="/blog/en/page/7/" class="pag__link">7</a><a href="/blog/en/page/8/" class="pag__link">8</a><a href="/blog/en/page/9/" class="pag__link">9</a><a href="/blog/en/page/10/" class="pag__link">10</a><a href="/blog/en/page/11/" class="pag__link">11</a><a href="/blog/en/page/12/" class="pag__link">12</a><a href="/blog/en/page/13/" class="pag__link">13</a><a href="/blog/en/page/14/" class="pag__link">14</a><a href="/blog/en/page/15/" class="pag__link">15</a><a href="/blog/en/page/16/" class="pag__link">16</a><a href="/blog/en/page/17/" class="pag__link">17</a><span class="pag__current">18</span><a href="/blog/en/page/19/" class="pag__link">19</a><a href="/blog/en/page/20/" class="pag__link">20</a><a href="/blog/en/page/21/" class="pag__link">21</a><a href="/blog/en/page/22/" class="pag__link">22</a><a href="/blog/en/page/23/" class="pag__link">23</a><a href="/blog/en/page/24/" class="pag__link">24</a></div>
+      <a href="/blog/en/page/19/" class="pag__arrow">Next →</a>
+    </nav>
+    <div class="divider"></div>
+    <footer class="footer">
+      <p>© 2026 <a href="/">geminishkv.tech</a></p>
+      <p class="disclaimer">Instagram* is a product of Meta Platforms Inc., banned in Russia as extremist.</p>
+    </footer>
+  </div>
+</body>
+</html>

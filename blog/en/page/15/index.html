@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blog — 15 — geminishkv</title>
+  <meta name="description" content="AppSec &amp; DevSecOps insights — 352 posts" />
+  <meta name="author" content="Ilya Shmakov" />
+  <meta name="keywords" content="appsec blog, devsecops blog, application security, geminishkv, безопасность приложений, блог по ИБ" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="canonical" href="https://geminishkv.tech/blog/en/" />
+  <link rel="sitemap" href="/sitemap.xml" />
+  <link rel="alternate" type="application/rss+xml" title="geminishkv blog" href="/rss-en.xml" />
+  <link rel="alternate" hreflang="ru" href="https://geminishkv.tech/blog/" />
+  <link rel="alternate" hreflang="en" href="https://geminishkv.tech/blog/en/" />
+  <link rel="alternate" hreflang="x-default" href="https://geminishkv.tech/blog/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://geminishkv.tech/blog/en/" />
+  <meta property="og:title" content="Blog — geminishkv" />
+  <meta property="og:description" content="AppSec &amp; DevSecOps insights" />
+  <meta property="og:image" content="https://geminishkv.tech/img/hero/avatar.jpg" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="geminishkv" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@geminishkv" />
+  <meta name="twitter:title" content="Blog — geminishkv" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="/fonts/fonts.css" />
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0a0a0a; --card: #111111; --border: #1a1a1a;
+  --text: #e8e8e8; --muted: #888888; --accent: #D51A1A; --gold: #F9B361;
+}
+html, body { background: var(--bg); color: var(--text); font-family: 'Roboto', system-ui, sans-serif; min-height: 100dvh; line-height: 1.7; }
+a { color: inherit; text-decoration: none; }
+
+.page { max-width: 800px; margin: 0 auto; padding: 0 24px 64px; }
+
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 24px 0 32px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+.nav__brand { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 700; color: #fff; }
+.nav__brand img { width: 28px; height: 28px; border-radius: 50%; }
+.nav__back { font-size: 12px; color: var(--muted); border: 1px solid var(--border); border-radius: 4px; padding: 6px 14px; transition: color .2s, border-color .2s; letter-spacing: 0.06em; text-transform: uppercase; }
+.nav__back:hover { color: #fff; border-color: var(--accent); }
+
+.nav__right-group { display: flex; align-items: center; gap: 10px; }
+.lang-toggle { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; color: var(--accent); border: 1px solid var(--accent); border-radius: 4px; padding: 5px 10px; transition: background .2s, color .2s; }
+.lang-toggle:hover { background: var(--accent); color: #fff; }
+
+.divider { height: 1px; background: linear-gradient(to right, var(--accent), rgba(204,34,0,.15), transparent); margin: 40px 0 20px; }
+.footer { font-size: 0.65rem; color: var(--muted); text-align: center; }
+.footer a { color: var(--accent); transition: color .2s; }
+.footer a:hover { color: var(--gold); }
+.disclaimer { font-size: 0.55rem; color: #555; text-align: center; margin-top: 12px; line-height: 1.4; }
+
+@media (max-width: 600px) { .page { padding: 0 16px 48px; } }
+
+    .page { max-width: 1900px; padding: 0 clamp(24px, 5vw, 120px) 64px; }
+    .header { margin-bottom: 32px; }
+    .header h1 { font-family: 'Unbounded', sans-serif; font-size: 1.6rem; font-weight: 700; margin-bottom: 6px; background: linear-gradient(135deg, var(--accent), var(--gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .header p { font-size: 0.8rem; color: var(--muted); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 14px; }
+    .card { display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; transition: border-color .2s, transform .2s; }
+    .card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .card__cover { width: 100%; height: 200px; object-fit: cover; }
+    .card__body { padding: 14px 16px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+    .card__meta { font-size: 0.58rem; color: var(--muted); display: flex; gap: 6px; letter-spacing: 0.06em; text-transform: uppercase; }
+    .card__title { font-size: 0.85rem; font-weight: 700; color: #fff; line-height: 1.3; }
+    .card__desc { font-size: 0.72rem; color: #aaa; line-height: 1.5; flex: 1; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .card__tags { display: flex; gap: 4px; flex-wrap: wrap; }
+    .card-tag { font-size: 0.55rem; color: var(--gold); background: rgba(249,179,97,.06); border: 1px solid rgba(249,179,97,.15); border-radius: 3px; padding: 2px 6px; }
+    .card__read { font-size: 0.62rem; color: var(--muted); letter-spacing: 0.06em; transition: color .2s; }
+    .card:hover .card__read { color: var(--accent); }
+
+    .pag { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 32px; }
+    .pag__nums { display: flex; gap: 4px; }
+    .pag__link, .pag__current { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 4px; font-size: 0.72rem; font-weight: 700; transition: background .2s, color .2s; }
+    .pag__link { color: var(--muted); border: 1px solid var(--border); }
+    .pag__link:hover { border-color: var(--accent); color: #fff; }
+    .pag__current { background: var(--accent); color: #fff; }
+    .pag__arrow { font-size: 0.68rem; font-weight: 600; color: var(--muted); border: 1px solid var(--border); border-radius: 4px; padding: 6px 14px; transition: border-color .2s, color .2s; letter-spacing: 0.04em; }
+    .pag__arrow:hover { border-color: var(--accent); color: #fff; }
+    .pag__arrow--disabled { opacity: 0.3; pointer-events: none; }
+
+    @media (max-width: 900px) { .grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); } }
+    @media (max-width: 576px) { .grid { grid-template-columns: 1fr; } .header h1 { font-size: 1.2rem; } .pag__nums { display: none; } }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="nav">
+      <a href="/" class="nav__brand"><img src="/img/logotype/logo_white.svg" alt="" />geminishkv</a>
+      <div class="nav__right-group">
+        <a href="/blog/" class="lang-toggle">RU</a>
+        <a href="/" class="nav__back">← Home</a>
+      </div>
+    </nav>
+    <div class="header">
+      <h1>Blog</h1>
+      <p>AppSec & DevSecOps insights · 352 posts</p>
+    </div>
+    <div class="grid"><a href="/blog/en/243/" class="card">
+        <img src="/img/blog/243.jpg" alt="" class="card__cover" loading="lazy" />
+        <div class="card__body">
+          <div class="card__meta"><span>March 4, 2026</span><span>· 262</span></div>
+          <h2 class="card__title">Hydra for target targeting</h2>
+          <p class="card__desc">🛠 Hydra for target targeting Salute, Today we’ll look at a tool that will always be at hand and you can use it to test…</p>
+          <div class="card__tags"><span class="card-tag">#appsec</span><span class="card-tag">#toolchain</span><span class="card-tag">#dast</span></div>
+          <span class="card__read">Read →</span>
+        </div>
+      </a>
+<a href="/blog/en/242/" class="card">
+        <img src="/img/blog/242.jpg" alt="" class="card__cover" loading="lazy" />
+        <div class="card__body">
+          <div class="card__meta"><span>March 3, 2026</span><span>· 241</span></div>
+          <h2 class="card__title">Okay, I like it</h2>
+          <p class="card__desc">Okay, I like it And tomorrow will be interesting #lol</p>
+          <div class="card__tags"><span class="card-tag">#lol</span></div>
+          <span class="card__read">Read →</span>
+        </div>
+      </a>
+<a href="/blog/en/241/" class="card">
+        <img src="/img/blog/241.jpg" alt="" class="card__cover" loading="lazy" />
+        <div class="card__body">
+          <div class="card__meta"><span>March 3, 2026</span><span>· 270</span></div>
+          <h2 class="card__title">Fireworks,</h2>
+          <p class="card__desc">Fireworks, Right on point, especially when I was waiting for it #lol</p>
+          <div class="card__tags"><span class="card-tag">#lol</span></div>
+          <span class="card__read">Read →</span>
+        </div>
+      </a>
+<a href="/blog/en/240/" class="card">
+        <img src="/img/blog/240.jpg" alt="" class="card__cover" loading="lazy" />
+        <div class="card__body">
+          <div class="card__meta"><span>March 2, 2026</span><span>· 252</span></div>
+          <h2 class="card__title">As if everything had already crept up, unnoticed, the end of an era ‍↕️</h2>
+          <p class="card__desc">As if everything had already crept up, unnoticed, the end of an era 🫡🙂‍↕️ #lol</p>
+          <div class="card__tags"><span class="card-tag">#lol</span></div>
+          <span class="card__read">Read →</span>
+        </div>
+      </a>
+<a href="/blog/en/239/" class="card">
+        <img src="/img/blog/239.jpg" alt="" class="card__cover" loading="lazy" />
+        <div class="card__body">
+          <div class="card__meta"><span>March 2, 2026</span><span>· 281</span></div>
+          <h2 class="card__title">Fireworks,</h2>
+          <p class="card__desc">Fireworks, Let me remind you about the award I talked about here.  Read the news from your colleagues from the AFL and …</p>
+          <div class="card__tags"><span class="card-tag">#appsec</span><span class="card-tag">#devsecops</span><span class="card-tag">#specialty</span></div>
+          <span class="card__read">Read →</span>
+        </div>
+      </a>
+<a href="/blog/en/238/" class="card">
+        <img src="/img/blog/238.jpg" alt="" class="card__cover" loading="lazy" />
+        <div class="card__body">
+          <div class="card__meta"><span>February 27, 2026</span><span>· 352</span></div>
+          <h2 class="card__title">We are moving LANIT at the pleasant invitation from colleagues from RBPO.rf</h2>
+          <p class="card__desc">We are moving LANIT at the pleasant invitation from colleagues from RBPO.rf  Beautiful 🙃 #appsec #devsecops #paper</p>
+          <div class="card__tags"><span class="card-tag">#appsec</span><span class="card-tag">#devsecops</span><span class="card-tag">#paper</span></div>
+          <span class="card__read">Read →</span>
+        </div>
+      </a>
+<a href="/blog/en/237/" class="card">
+        <img src="/img/blog/237.jpg" alt="" class="card__cover" loading="lazy" />
+        <div class="card__body">
+          <div class="card__meta"><span>February 27, 2026</span><span>· 302</span></div>
+          <h2 class="card__title">Sometimes in the heart</h2>
+          <p class="card__desc">Sometimes in the heart  #lol</p>
+          <div class="card__tags"><span class="card-tag">#lol</span></div>
+          <span class="card__read">Read →</span>
+        </div>
+      </a>
+<a href="/blog/en/236/" class="card">
+        <img src="/img/blog/236.jpg" alt="" class="card__cover" loading="lazy" />
+        <div class="card__body">
+          <div class="card__meta"><span>February 27, 2026</span><span>· 287</span></div>
+          <h2 class="card__title">Oh my god, holy cats, we need this</h2>
+          <p class="card__desc">Oh my god, holy cats, we need this 😅🤣 #lol</p>
+          <div class="card__tags"><span class="card-tag">#lol</span></div>
+          <span class="card__read">Read →</span>
+        </div>
+      </a>
+<a href="/blog/en/234/" class="card">
+        <img src="/img/blog/234.jpg" alt="" class="card__cover" loading="lazy" />
+        <div class="card__body">
+          <div class="card__meta"><span>February 26, 2026</span><span>· 275</span></div>
+          <h2 class="card__title">GeoIP‑lookup Checker</h2>
+          <p class="card__desc">🛠 GeoIP‑lookup Checker Salute, I want to share. with you a small utility that allows you to quickly view the geolocati…</p>
+          <div class="card__tags"><span class="card-tag">#appsec</span><span class="card-tag">#devsecops</span><span class="card-tag">#specialty</span></div>
+          <span class="card__read">Read →</span>
+        </div>
+      </a>
+<a href="/blog/en/233/" class="card">
+        <img src="/img/blog/233.jpg" alt="" class="card__cover" loading="lazy" />
+        <div class="card__body">
+          <div class="card__meta"><span>February 25, 2026</span><span>· 220</span></div>
+          <h2 class="card__title">Salut, while I was preparing a mini chip for my hands, I came across something that I have to share</h2>
+          <p class="card__desc">Salut, while I was preparing a mini chip for my hands, I came across something that I have to share #lol</p>
+          <div class="card__tags"><span class="card-tag">#lol</span></div>
+          <span class="card__read">Read →</span>
+        </div>
+      </a>
+<a href="/blog/en/232/" class="card">
+        <img src="/img/blog/232.jpg" alt="" class="card__cover" loading="lazy" />
+        <div class="card__body">
+          <div class="card__meta"><span>February 24, 2026</span><span>· 320</span></div>
+          <h2 class="card__title">Deepteam Confident AI as Red Team</h2>
+          <p class="card__desc">🛠Deepteam Confident AI as Red Team Let’s look at this tula again, it’s very interesting and I saw it purely by chance …</p>
+          <div class="card__tags"><span class="card-tag">#appsec</span><span class="card-tag">#devsecops</span><span class="card-tag">#techsolution</span></div>
+          <span class="card__read">Read →</span>
+        </div>
+      </a>
+<a href="/blog/en/231/" class="card">
+        <img src="/img/blog/231.jpg" alt="" class="card__cover" loading="lazy" />
+        <div class="card__body">
+          <div class="card__meta"><span>February 24, 2026</span><span>· 273</span></div>
+          <h2 class="card__title">Review of OWASP Top 10 2025 for Java</h2>
+          <p class="card__desc">🛠 Review of OWASP Top 10 2025 for Java Salute, You and I recently started looking towards OWASP TOP 10 (here) for Semg…</p>
+          <div class="card__tags"><span class="card-tag">#devsecops</span><span class="card-tag">#toolchain</span><span class="card-tag">#sast</span></div>
+          <span class="card__read">Read →</span>
+        </div>
+      </a>
+<a href="/blog/en/230/" class="card">
+        <img src="/img/blog/230.jpg" alt="" class="card__cover" loading="lazy" />
+        <div class="card__body">
+          <div class="card__meta"><span>February 23, 2026</span><span>· 331</span></div>
+          <h2 class="card__title">Dear, happy holiday, may you also stand until the end</h2>
+          <p class="card__desc">Dear, happy holiday, may you also stand until the end 🙏🫶</p>
+          
+          <span class="card__read">Read →</span>
+        </div>
+      </a>
+<a href="/blog/en/229/" class="card">
+        <img src="/img/blog/229.jpg" alt="" class="card__cover" loading="lazy" />
+        <div class="card__body">
+          <div class="card__meta"><span>February 20, 2026</span><span>· 315</span></div>
+          <h2 class="card__title">Fireworks, everyday things  (look at DMB)</h2>
+          <p class="card__desc">Fireworks, everyday things 🫡 (look at DMB) #lol</p>
+          <div class="card__tags"><span class="card-tag">#lol</span></div>
+          <span class="card__read">Read →</span>
+        </div>
+      </a>
+<a href="/blog/en/228/" class="card">
+        <img src="/img/blog/228.jpg" alt="" class="card__cover" loading="lazy" />
+        <div class="card__body">
+          <div class="card__meta"><span>February 19, 2026</span><span>· 433</span></div>
+          <h2 class="card__title">We are actively expanding our stock of sayings</h2>
+          <p class="card__desc">We are actively expanding our stock of sayings #lol</p>
+          <div class="card__tags"><span class="card-tag">#lol</span></div>
+          <span class="card__read">Read →</span>
+        </div>
+      </a></div>
+    
+    <nav class="pag">
+      <a href="/blog/en/page/14/" class="pag__arrow">← Prev</a>
+      <div class="pag__nums"><a href="/blog/en/" class="pag__link">1</a><a href="/blog/en/page/2/" class="pag__link">2</a><a href="/blog/en/page/3/" class="pag__link">3</a><a href="/blog/en/page/4/" class="pag__link">4</a><a href="/blog/en/page/5/" class="pag__link">5</a><a href="/blog/en/page/6/" class="pag__link">6</a><a href="/blog/en/page/7/" class="pag__link">7</a><a href="/blog/en/page/8/" class="pag__link">8</a><a href="/blog/en/page/9/" class="pag__link">9</a><a href="/blog/en/page/10/" class="pag__link">10</a><a href="/blog/en/page/11/" class="pag__link">11</a><a href="/blog/en/page/12/" class="pag__link">12</a><a href="/blog/en/page/13/" class="pag__link">13</a><a href="/blog/en/page/14/" class="pag__link">14</a><span class="pag__current">15</span><a href="/blog/en/page/16/" class="pag__link">16</a><a href="/blog/en/page/17/" class="pag__link">17</a><a href="/blog/en/page/18/" class="pag__link">18</a><a href="/blog/en/page/19/" class="pag__link">19</a><a href="/blog/en/page/20/" class="pag__link">20</a><a href="/blog/en/page/21/" class="pag__link">21</a><a href="/blog/en/page/22/" class="pag__link">22</a><a href="/blog/en/page/23/" class="pag__link">23</a><a href="/blog/en/page/24/" class="pag__link">24</a></div>
+      <a href="/blog/en/page/16/" class="pag__arrow">Next →</a>
+    </nav>
+    <div class="divider"></div>
+    <footer class="footer">
+      <p>© 2026 <a href="/">geminishkv.tech</a></p>
+      <p class="disclaimer">Instagram* is a product of Meta Platforms Inc., banned in Russia as extremist.</p>
+    </footer>
+  </div>
+</body>
+</html>

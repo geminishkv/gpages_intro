@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Evaluation metrics: getting STLC into AppSec correctly — geminishkv</title>
+  <meta name="description" content="🤔 Evaluation metrics: getting STLC into AppSec correctly Salute. I often show a slide with eight evaluation metrics from STLC - this is a classic of the QA wo…" />
+  <meta name="keywords" content="appsec, devsecops, reco, toolchain, paper, specialty, appsec, devsecops, geminishkv" />
+  <meta name="author" content="Ilya Shmakov" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="canonical" href="https://geminishkv.tech/blog/en/387/" />
+  <link rel="sitemap" href="/sitemap.xml" />
+  <link rel="alternate" type="application/rss+xml" title="geminishkv blog" href="/rss-en.xml" />
+  <link rel="alternate" hreflang="ru" href="https://geminishkv.tech/blog/387/" />
+  <link rel="alternate" hreflang="en" href="https://geminishkv.tech/blog/en/387/" />
+  <link rel="alternate" hreflang="x-default" href="https://geminishkv.tech/blog/387/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://geminishkv.tech/blog/en/387/" />
+  <meta property="og:title" content="Evaluation metrics: getting STLC into AppSec correctly — geminishkv" />
+  <meta property="og:description" content="🤔 Evaluation metrics: getting STLC into AppSec correctly Salute. I often show a slide with eight evaluation metrics from STLC - this is a classic of the QA wo…" />
+  <meta property="og:image" content="https://geminishkv.tech/img/blog/387.jpg" />
+  <meta property="og:image:alt" content="Evaluation metrics: getting STLC into AppSec correctly" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="ru_RU" />
+  <meta property="og:site_name" content="geminishkv" />
+  <meta property="article:published_time" content="2026-05-22" />
+  <meta property="article:author" content="Ilya Shmakov" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@geminishkv" />
+  <meta name="twitter:title" content="Evaluation metrics: getting STLC into AppSec correctly" />
+  <meta name="twitter:description" content="🤔 Evaluation metrics: getting STLC into AppSec correctly Salute. I often show a slide with eight evaluation metrics from STLC - this is a classic of the QA wo…" />
+  <meta name="twitter:image" content="https://geminishkv.tech/img/blog/387.jpg" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Evaluation metrics: getting STLC into AppSec correctly","description":"🤔 Evaluation metrics: getting STLC into AppSec correctly Salute. I often show a slide with eight evaluation metrics from STLC - this is a classic of the QA wo…","url":"https://geminishkv.tech/blog/en/387/","datePublished":"2026-05-22","dateModified":"2026-05-22","image":"https://geminishkv.tech/img/blog/387.jpg","inLanguage":"en","author":{"@type":"Person","name":"Ilya Shmakov","url":"https://geminishkv.tech"},"publisher":{"@type":"Organization","name":"geminishkv","url":"https://geminishkv.tech"}}</script>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="/fonts/fonts.css" />
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0a0a0a; --card: #111111; --border: #1a1a1a;
+  --text: #e8e8e8; --muted: #888888; --accent: #D51A1A; --gold: #F9B361;
+}
+html, body { background: var(--bg); color: var(--text); font-family: 'Roboto', system-ui, sans-serif; min-height: 100dvh; line-height: 1.7; }
+a { color: inherit; text-decoration: none; }
+
+.page { max-width: 800px; margin: 0 auto; padding: 0 24px 64px; }
+
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 24px 0 32px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+.nav__brand { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 700; color: #fff; }
+.nav__brand img { width: 28px; height: 28px; border-radius: 50%; }
+.nav__back { font-size: 12px; color: var(--muted); border: 1px solid var(--border); border-radius: 4px; padding: 6px 14px; transition: color .2s, border-color .2s; letter-spacing: 0.06em; text-transform: uppercase; }
+.nav__back:hover { color: #fff; border-color: var(--accent); }
+
+.nav__right-group { display: flex; align-items: center; gap: 10px; }
+.lang-toggle { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; color: var(--accent); border: 1px solid var(--accent); border-radius: 4px; padding: 5px 10px; transition: background .2s, color .2s; }
+.lang-toggle:hover { background: var(--accent); color: #fff; }
+
+.divider { height: 1px; background: linear-gradient(to right, var(--accent), rgba(204,34,0,.15), transparent); margin: 40px 0 20px; }
+.footer { font-size: 0.65rem; color: var(--muted); text-align: center; }
+.footer a { color: var(--accent); transition: color .2s; }
+.footer a:hover { color: var(--gold); }
+.disclaimer { font-size: 0.55rem; color: #555; text-align: center; margin-top: 12px; line-height: 1.4; }
+
+@media (max-width: 600px) { .page { padding: 0 16px 48px; } }
+
+    .cover { width: 100%; border-radius: 8px; overflow: hidden; margin-bottom: 28px; max-height: 400px; }
+    .cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .meta { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; font-size: 0.72rem; color: var(--muted); }
+    .content p { font-size: 0.85rem; line-height: 1.85; margin-bottom: 8px; }
+    .content .gap { height: 10px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 24px; }
+    .tag { font-size: 0.6rem; color: var(--gold); background: rgba(249,179,97,.06); border: 1px solid rgba(249,179,97,.15); border-radius: 3px; padding: 2px 8px; }
+    .tg-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 28px; padding: 10px 20px; background: rgba(204,34,0,.1); border: 1px solid rgba(204,34,0,.25); border-radius: 6px; color: #fff; font-size: 0.75rem; font-weight: 600; transition: background .2s; }
+    .tg-link:hover { background: rgba(204,34,0,.18); }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="nav">
+      <a href="/" class="nav__brand"><img src="/img/logotype/logo_white.svg" alt="" />geminishkv</a>
+      <div class="nav__right-group">
+        <a href="/blog/387/" class="lang-toggle">RU</a>
+        <a href="/blog/" class="nav__back">← All posts</a>
+      </div>
+    </nav>
+    <div class="cover"><img src="/img/blog/387.jpg" alt="Evaluation metrics: getting STLC into AppSec correctly" /></div>
+    <article>
+      <div class="meta"><span>May 22, 2026</span><span>·</span><span>259 views</span></div>
+      <div class="content"><p>🤔 Evaluation metrics: getting STLC into AppSec correctly</p>
+<div class="gap"></div>
+<p>Salute.</p>
+<p>I often show a slide with eight evaluation metrics from STLC - this is a classic of the QA world. At the conference, which was held, I caught an insider: the need to convey the suitability for AppSec, when we equate bugs with vulnerabilities in the code base. Therefore, I will share my thoughts with you. In general, these metrics are needed, but not directly, because they cannot be copied, they need to be redefined.</p>
+<p>First, let’s agree with you this way - the main substitution is buried here, where in STLC a defect is a bug, a test is a test case, a requirement is a functional requirement. Now the funny thing is:</p>
+<p>• A defect is a confirmed True Positive vulnerability</p>
+<p>• Test - rule/analyzer policy ruleset</p>
+<p>• Requirement - threat class CWE, ASVS control, safe development clause GOST 56939-2024</p>
+<p>Now check out the slide:</p>
+<div class="gap"></div>
+<p>• Rule strength = confirmed vulnerabilities (TP) / number of active ruleset rules</p>
+<div class="gap"></div>
+<p>- Low on ruleset, where the rules are broken or dead</p>
+<p>— Abnormally high on one rule, there is either a system defect in the code, or the rule is faulty</p>
+<p>• Percentage of threat class coverage (breadth) = CWE classes and controls actually checked by the toolchain / all relevant to the stack × 100%</p>
+<div class="gap"></div>
+<p>— &lt;60% — toxic</p>
+<p>— 60–85% — working area</p>
+<p>— &gt; 85% — mature coating</p>
+<div class="gap"></div>
+<p>• Proportion of rejected positives = (FP + accepted / risk accept) / all positives × 100%</p>
+<div class="gap"></div>
+<p>— high due to FP, then the tool fails, therefore we audit the rules</p>
+<p>— high due to accepted risk, that is, that the process is crashing, escalate</p>
+<div class="gap"></div>
+<p>• Coverage density (depth) = number of rules / number of controls (CWE / ASVS)</p>
+<p>— &lt; 1, shows that the control is formally covered</p>
+<p>— several rules with different logic (AST + taint analysis + semantic ruleset)</p>
+<p>• Vulnerability density = confirmed vulnerabilities (TP) / codebase coverage (Secure Code Review candidates)</p>
+<p>• Share of regressions of vulnerabilities (reopen rate) = vulnerabilities that returned after “elimination” / all eliminated × 100%</p>
+<div class="gap"></div>
+<p>- &gt; 15% - they fix the wrong thing and the wrong place</p>
+<p>— for each eliminated Critical/High, a rule is followed in the Quality Gate</p>
+<p>• AppSec efficiency = vulnerabilities weighted by criticality / AppSec effort (hours scan + triage). The weights are usually: Critical 10, High 5, Medium 2, Low 0.5, and it’s better to turn it into “the cost of one Critical find” = hours / Critical number.</p>
+<p>• Density of vulnerabilities after delivery = vulnerabilities found in PROD / volume of code base (about the result). If the density does not drop from release to release, we go into the team’s project management and collect evidence for them. Consider Defect Removal Efficiency for information security = found before release / (before release + after) × 100%.</p>
+<p>Total: </p>
+<div class="gap"></div>
+<p>• The breadth of coverage and depth (density of rules) should be considered in pairs - once a sprint in detail according to critical CWE, a general summary once a quarter or H</p>
+<p>• The share of rejected ones is always split into FP and accepted risk</p>
+<p>• Density of vulnerabilities and share of regressions see each release</p>
+<p>• Efficiency is calculated through the cost of Critical-finds</p>
+<p>• The main maturity KPI is Defect Removal Efficiency for information security &gt; 90%</p>
+<div class="gap"></div>
+<p>#appsec #devsecops #reco #toolchain #paper #specialty</p></div>
+      <div class="tags"><span class="tag">#appsec</span><span class="tag">#devsecops</span><span class="tag">#reco</span><span class="tag">#toolchain</span><span class="tag">#paper</span><span class="tag">#specialty</span></div>
+      <a href="https://t.me/appsecta/387" target="_blank" rel="noreferrer" class="tg-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+        Open in Telegram
+      </a>
+    </article>
+    <div class="divider"></div>
+    <footer class="footer">
+      <p>© 2026 <a href="/">geminishkv.tech</a></p>
+      <p class="disclaimer">Instagram* is a product of Meta Platforms Inc., banned in Russia as extremist.</p>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FRIDA must for Mobile AST — geminishkv</title>
+  <meta name="description" content="🛠 FRIDA must for Mobile AST Салют, Сегодня посмотрим с тобой на тулу, которая становится крайне полезной для тестирования мобильных клиентов с первых шагов. Р…" />
+  <meta name="keywords" content="toolchain, sast, appsec, reco, dast, mast, appsec, devsecops, geminishkv" />
+  <meta name="author" content="Илья Шмаков" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="canonical" href="https://geminishkv.tech/blog/246/" />
+  <link rel="sitemap" href="/sitemap.xml" />
+  <link rel="alternate" type="application/rss+xml" title="geminishkv blog" href="/rss.xml" />
+  <link rel="alternate" hreflang="ru" href="https://geminishkv.tech/blog/246/" />
+  <link rel="alternate" hreflang="en" href="https://geminishkv.tech/blog/en/246/" />
+  <link rel="alternate" hreflang="x-default" href="https://geminishkv.tech/blog/246/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://geminishkv.tech/blog/246/" />
+  <meta property="og:title" content="FRIDA must for Mobile AST — geminishkv" />
+  <meta property="og:description" content="🛠 FRIDA must for Mobile AST Салют, Сегодня посмотрим с тобой на тулу, которая становится крайне полезной для тестирования мобильных клиентов с первых шагов. Р…" />
+  <meta property="og:image" content="https://geminishkv.tech/img/blog/246.jpg" />
+  <meta property="og:image:alt" content="FRIDA must for Mobile AST" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:site_name" content="geminishkv" />
+  <meta property="article:published_time" content="2026-03-06" />
+  <meta property="article:author" content="Илья Шмаков" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@geminishkv" />
+  <meta name="twitter:title" content="FRIDA must for Mobile AST" />
+  <meta name="twitter:description" content="🛠 FRIDA must for Mobile AST Салют, Сегодня посмотрим с тобой на тулу, которая становится крайне полезной для тестирования мобильных клиентов с первых шагов. Р…" />
+  <meta name="twitter:image" content="https://geminishkv.tech/img/blog/246.jpg" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"FRIDA must for Mobile AST","description":"🛠 FRIDA must for Mobile AST Салют, Сегодня посмотрим с тобой на тулу, которая становится крайне полезной для тестирования мобильных клиентов с первых шагов. Р…","url":"https://geminishkv.tech/blog/246/","datePublished":"2026-03-06","dateModified":"2026-03-06","image":"https://geminishkv.tech/img/blog/246.jpg","inLanguage":"ru","author":{"@type":"Person","name":"Илья Шмаков","url":"https://geminishkv.tech"},"publisher":{"@type":"Organization","name":"geminishkv","url":"https://geminishkv.tech"}}</script>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="/fonts/fonts.css" />
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0a0a0a; --card: #111111; --border: #1a1a1a;
+  --text: #e8e8e8; --muted: #888888; --accent: #D51A1A; --gold: #F9B361;
+}
+html, body { background: var(--bg); color: var(--text); font-family: 'Roboto', system-ui, sans-serif; min-height: 100dvh; line-height: 1.7; }
+a { color: inherit; text-decoration: none; }
+
+.page { max-width: 800px; margin: 0 auto; padding: 0 24px 64px; }
+
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 24px 0 32px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+.nav__brand { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 700; color: #fff; }
+.nav__brand img { width: 28px; height: 28px; border-radius: 50%; }
+.nav__back { font-size: 12px; color: var(--muted); border: 1px solid var(--border); border-radius: 4px; padding: 6px 14px; transition: color .2s, border-color .2s; letter-spacing: 0.06em; text-transform: uppercase; }
+.nav__back:hover { color: #fff; border-color: var(--accent); }
+
+.nav__right-group { display: flex; align-items: center; gap: 10px; }
+.lang-toggle { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; color: var(--accent); border: 1px solid var(--accent); border-radius: 4px; padding: 5px 10px; transition: background .2s, color .2s; }
+.lang-toggle:hover { background: var(--accent); color: #fff; }
+
+.divider { height: 1px; background: linear-gradient(to right, var(--accent), rgba(204,34,0,.15), transparent); margin: 40px 0 20px; }
+.footer { font-size: 0.65rem; color: var(--muted); text-align: center; }
+.footer a { color: var(--accent); transition: color .2s; }
+.footer a:hover { color: var(--gold); }
+.disclaimer { font-size: 0.55rem; color: #555; text-align: center; margin-top: 12px; line-height: 1.4; }
+
+@media (max-width: 600px) { .page { padding: 0 16px 48px; } }
+
+    .cover { width: 100%; border-radius: 8px; overflow: hidden; margin-bottom: 28px; max-height: 400px; }
+    .cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .meta { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; font-size: 0.72rem; color: var(--muted); }
+    .content p { font-size: 0.85rem; line-height: 1.85; margin-bottom: 8px; }
+    .content .gap { height: 10px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 24px; }
+    .tag { font-size: 0.6rem; color: var(--gold); background: rgba(249,179,97,.06); border: 1px solid rgba(249,179,97,.15); border-radius: 3px; padding: 2px 8px; }
+    .tg-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 28px; padding: 10px 20px; background: rgba(204,34,0,.1); border: 1px solid rgba(204,34,0,.25); border-radius: 6px; color: #fff; font-size: 0.75rem; font-weight: 600; transition: background .2s; }
+    .tg-link:hover { background: rgba(204,34,0,.18); }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="nav">
+      <a href="/" class="nav__brand"><img src="/img/logotype/logo_white.svg" alt="" />geminishkv</a>
+      <div class="nav__right-group">
+        <a href="/blog/en/246/" class="lang-toggle">EN</a>
+        <a href="/blog/" class="nav__back">← Все посты</a>
+      </div>
+    </nav>
+    <div class="cover"><img src="/img/blog/246.jpg" alt="FRIDA must for Mobile AST" /></div>
+    <article>
+      <div class="meta"><span>6 марта 2026 г.</span><span>·</span><span>280 views</span></div>
+      <div class="content"><p>🛠 FRIDA must for Mobile AST</p>
+<div class="gap"></div>
+<p>Салют,</p>
+<p>Сегодня посмотрим с тобой на тулу, которая становится крайне полезной для тестирования мобильных клиентов с первых шагов. Рекомендую сразу смотреть в ее сторону, потому что она поможет тебе правильно выстраивать понимание анализа защищенности мобильного приложения. </p>
+<div class="gap"></div>
+<p>Frida — это динамический инструмент для перехвата вызовов в процессах и последующего инжектирования. Работает в связке клиент (CLI/ Python/ Node.js) и рантайм внутри процесса целевого приложения. Также используют Frida Gadget как встроенную библиотеку. </p>
+<div class="gap"></div>
+<p>Помогает</p>
+<div class="gap"></div>
+<p>• перехватывать и модифицировать вызовы функций хуками</p>
+<p>• изменять аргументы и выводы результатов</p>
+<p>• воздействовать на память процесса в рантайме</p>
+<p>• обходить клиентские проверки (root/ jailbreak detect, SSL pinning, лицензирование)</p>
+<p>• делать живой динамический анализ без исходников и перекомпиляции</p>
+<div class="gap"></div>
+<p>Команды</p>
+<div class="gap"></div>
+<p>&amp;#036; frida-ps -U       # процессы на USB‑устройстве</p>
+<p>&amp;#036; frida-ps -ai      # приложения с иконками (mobile)</p>
+<div class="gap"></div>
+<p>&amp;#036; frida-trace -U -i &quot;com.example.app.auth.LoginManager.validateCredentials&quot; com.example.app # android трассировка без написания JS</p>
+<p>&amp;#036; frida-trace -i &quot;SSL_*&quot; -f /usr/bin/curl # трассировка всех функций SSL_* в нативном бинарнике</p>
+<p>&amp;#036; frida-trace -i &quot;fopen&quot; -p &lt;PID&gt; # трассировка всеx вызовов fopen в текущем процессе</p>
+<div class="gap"></div>
+<p>Пример</p>
+<div class="gap"></div>
+<p>&amp;#036; frida -U -f -n com.example.app -l script.js # загрузить JS‑скрипт attach по имени пакета через USB</p>
+<div class="gap"></div>
+<p>Java.perform(function () {</p>
+<p>  var LoginManager = Java.use(&quot;com.example.app.auth.LoginManager&quot;);</p>
+<div class="gap"></div>
+<p>  // Перехватываем метод validateCredentials(String user, String pass)</p>
+<p>  LoginManager.validateCredentials.implementation = function (user, pass) {</p>
+<p>    console.log(&quot;[*] validateCredentials called&quot;);</p>
+<p>    console.log(&quot;    user:&quot;, user);</p>
+<p>    console.log(&quot;    pass:&quot;, pass);</p>
+<div class="gap"></div>
+<p>    // Можно менять параметры</p>
+<p>    // user = &quot;test@example.com&quot;;</p>
+<p>    // pass = &quot;P@ssw0rd&amp;#33;&quot;;</p>
+<div class="gap"></div>
+<p>    var result = this.validateCredentials(user, pass);</p>
+<p>    console.log(&quot;    result:&quot;, result);</p>
+<p>    return result;</p>
+<p>  };</p>
+<p>});</p>
+<div class="gap"></div>
+<p>QA auto</p>
+<div class="gap"></div>
+<p>import frida, sys</p>
+<div class="gap"></div>
+<p>JS_CODE = &quot;&quot;&quot;</p>
+<p>Java.perform(function () {</p>
+<p>  var Cls = Java.use(&quot;com.example.app.auth.LoginManager&quot;);</p>
+<p>  Cls.validateCredentials.implementation = function (user, pass) {</p>
+<p>    send(&quot;validateCredentials: &quot; + user + &quot; / &quot; + pass);</p>
+<p>    return this.validateCredentials(user, pass);</p>
+<p>  };</p>
+<p>});</p>
+<p>&quot;&quot;&quot;</p>
+<div class="gap"></div>
+<p>def on_message(message, data):</p>
+<p>    print(&quot;[*] Message:&quot;, message)</p>
+<div class="gap"></div>
+<p>device = frida.get_usb_device()</p>
+<p>pid = device.spawn([&quot;com.example.app&quot;])</p>
+<p>session = device.attach(pid)</p>
+<p>script = session.create_script(JS_CODE)</p>
+<p>script.on(&quot;message&quot;, on_message)</p>
+<p>script.load()</p>
+<p>device.resume(pid)</p>
+<p>sys.stdin.read()</p>
+<div class="gap"></div>
+<p>Итого: </p>
+<div class="gap"></div>
+<p>• Позволяет динамически наблюдать и изменять поведение приложений без исходников и перекомпиляции</p>
+<p>• Идеален для AppSec‑задач на уровне mobile/desktop‑клиентов, крипто‑логики, протоколов, анти‑фрод и анти‑тампер механизмов</p>
+<p>• Требует аккуратности и понимания внутренних API и платформенных особенностей</p>
+<p>• Практически незаменим в pentest’ах мобильных приложений, когда нужно обходить защиты и «заглядывать внутрь» рантайма</p>
+<div class="gap"></div>
+<p>#toolchain #sast #appsec #reco #dast #mast</p></div>
+      <div class="tags"><span class="tag">#toolchain</span><span class="tag">#sast</span><span class="tag">#appsec</span><span class="tag">#reco</span><span class="tag">#dast</span><span class="tag">#mast</span></div>
+      <a href="https://t.me/appsecta/246" target="_blank" rel="noreferrer" class="tg-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+        Открыть в Telegram
+      </a>
+    </article>
+    <div class="divider"></div>
+    <footer class="footer">
+      <p>© 2026 <a href="/">geminishkv.tech</a></p>
+      <p class="disclaimer">Instagram* — продукт компании Meta Platforms Inc., деятельность которой запрещена на территории РФ как экстремистская.</p>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>S.T.R.I.D.E. как рабочее решение моделирования и контроля угроз ИБ — geminishkv</title>
+  <meta name="description" content="🤔 S.T.R.I.D.E. как рабочее решение моделирования и контроля угроз ИБ Салюты, Давай сегодня посмотрим на шесть классов угроз описанных в S.T.R.I.D.E. По сути э…" />
+  <meta name="keywords" content="appsec, devsecops, reco, paper, specialty, riskanalysis, appsec, devsecops, geminishkv" />
+  <meta name="author" content="Илья Шмаков" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="canonical" href="https://geminishkv.tech/blog/393/" />
+  <link rel="sitemap" href="/sitemap.xml" />
+  <link rel="alternate" type="application/rss+xml" title="geminishkv blog" href="/rss.xml" />
+  <link rel="alternate" hreflang="ru" href="https://geminishkv.tech/blog/393/" />
+  <link rel="alternate" hreflang="en" href="https://geminishkv.tech/blog/en/393/" />
+  <link rel="alternate" hreflang="x-default" href="https://geminishkv.tech/blog/393/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://geminishkv.tech/blog/393/" />
+  <meta property="og:title" content="S.T.R.I.D.E. как рабочее решение моделирования и контроля угроз ИБ — geminishkv" />
+  <meta property="og:description" content="🤔 S.T.R.I.D.E. как рабочее решение моделирования и контроля угроз ИБ Салюты, Давай сегодня посмотрим на шесть классов угроз описанных в S.T.R.I.D.E. По сути э…" />
+  <meta property="og:image" content="https://geminishkv.tech/img/blog/393.jpg" />
+  <meta property="og:image:alt" content="S.T.R.I.D.E. как рабочее решение моделирования и контроля угроз ИБ" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:site_name" content="geminishkv" />
+  <meta property="article:published_time" content="2026-05-27" />
+  <meta property="article:author" content="Илья Шмаков" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@geminishkv" />
+  <meta name="twitter:title" content="S.T.R.I.D.E. как рабочее решение моделирования и контроля угроз ИБ" />
+  <meta name="twitter:description" content="🤔 S.T.R.I.D.E. как рабочее решение моделирования и контроля угроз ИБ Салюты, Давай сегодня посмотрим на шесть классов угроз описанных в S.T.R.I.D.E. По сути э…" />
+  <meta name="twitter:image" content="https://geminishkv.tech/img/blog/393.jpg" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"S.T.R.I.D.E. как рабочее решение моделирования и контроля угроз ИБ","description":"🤔 S.T.R.I.D.E. как рабочее решение моделирования и контроля угроз ИБ Салюты, Давай сегодня посмотрим на шесть классов угроз описанных в S.T.R.I.D.E. По сути э…","url":"https://geminishkv.tech/blog/393/","datePublished":"2026-05-27","dateModified":"2026-05-27","image":"https://geminishkv.tech/img/blog/393.jpg","inLanguage":"ru","author":{"@type":"Person","name":"Илья Шмаков","url":"https://geminishkv.tech"},"publisher":{"@type":"Organization","name":"geminishkv","url":"https://geminishkv.tech"}}</script>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="/fonts/fonts.css" />
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0a0a0a; --card: #111111; --border: #1a1a1a;
+  --text: #e8e8e8; --muted: #888888; --accent: #D51A1A; --gold: #F9B361;
+}
+html, body { background: var(--bg); color: var(--text); font-family: 'Roboto', system-ui, sans-serif; min-height: 100dvh; line-height: 1.7; }
+a { color: inherit; text-decoration: none; }
+
+.page { max-width: 800px; margin: 0 auto; padding: 0 24px 64px; }
+
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 24px 0 32px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+.nav__brand { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 700; color: #fff; }
+.nav__brand img { width: 28px; height: 28px; border-radius: 50%; }
+.nav__back { font-size: 12px; color: var(--muted); border: 1px solid var(--border); border-radius: 4px; padding: 6px 14px; transition: color .2s, border-color .2s; letter-spacing: 0.06em; text-transform: uppercase; }
+.nav__back:hover { color: #fff; border-color: var(--accent); }
+
+.nav__right-group { display: flex; align-items: center; gap: 10px; }
+.lang-toggle { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; color: var(--accent); border: 1px solid var(--accent); border-radius: 4px; padding: 5px 10px; transition: background .2s, color .2s; }
+.lang-toggle:hover { background: var(--accent); color: #fff; }
+
+.divider { height: 1px; background: linear-gradient(to right, var(--accent), rgba(204,34,0,.15), transparent); margin: 40px 0 20px; }
+.footer { font-size: 0.65rem; color: var(--muted); text-align: center; }
+.footer a { color: var(--accent); transition: color .2s; }
+.footer a:hover { color: var(--gold); }
+.disclaimer { font-size: 0.55rem; color: #555; text-align: center; margin-top: 12px; line-height: 1.4; }
+
+@media (max-width: 600px) { .page { padding: 0 16px 48px; } }
+
+    .cover { width: 100%; border-radius: 8px; overflow: hidden; margin-bottom: 28px; max-height: 400px; }
+    .cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .meta { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; font-size: 0.72rem; color: var(--muted); }
+    .content p { font-size: 0.85rem; line-height: 1.85; margin-bottom: 8px; }
+    .content .gap { height: 10px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 24px; }
+    .tag { font-size: 0.6rem; color: var(--gold); background: rgba(249,179,97,.06); border: 1px solid rgba(249,179,97,.15); border-radius: 3px; padding: 2px 8px; }
+    .tg-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 28px; padding: 10px 20px; background: rgba(204,34,0,.1); border: 1px solid rgba(204,34,0,.25); border-radius: 6px; color: #fff; font-size: 0.75rem; font-weight: 600; transition: background .2s; }
+    .tg-link:hover { background: rgba(204,34,0,.18); }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="nav">
+      <a href="/" class="nav__brand"><img src="/img/logotype/logo_white.svg" alt="" />geminishkv</a>
+      <div class="nav__right-group">
+        <a href="/blog/en/393/" class="lang-toggle">EN</a>
+        <a href="/blog/" class="nav__back">← Все посты</a>
+      </div>
+    </nav>
+    <div class="cover"><img src="/img/blog/393.jpg" alt="S.T.R.I.D.E. как рабочее решение моделирования и контроля угроз ИБ" /></div>
+    <article>
+      <div class="meta"><span>27 мая 2026 г.</span><span>·</span><span>236 views</span></div>
+      <div class="content"><p>🤔 S.T.R.I.D.E. как рабочее решение моделирования и контроля угроз ИБ</p>
+<div class="gap"></div>
+<p>Салюты,</p>
+<p>Давай сегодня посмотрим на шесть классов угроз описанных в S.T.R.I.D.E. По сути это можно было увидеть во многих выступлениях, но лучше обьяснить смысл и принцип, так как без обвязки он не работает и чтобы превратить её в инструмент нужно DFD и привязка к контролям митигации. </p>
+<div class="gap"></div>
+<p>Мы же не живем в идеально иллюзорном мире и всегда приходится что-то куда то &quot;натягивать&quot;.</p>
+<div class="gap"></div>
+<p>Фундаментом является Data Flow Diagram, как threat modeling с потоками данных, границами доверия. ПО факту это будут у тебя: external entity, процессы, flow, data store, trust boundaries. После только этого ты сможешь перейти к самому S.T.R.I.D.E. Концептуально это все аналитика по принципу: </p>
+<div class="gap"></div>
+<p>• Какое свойство Паркеровской гексады нарушается? </p>
+<p>• Типовые векторы</p>
+<p>• Контроли</p>
+<p>• Митигации и оценка рисков ИБ</p>
+<div class="gap"></div>
+<p>S.T.R.I.D.E.</p>
+<div class="gap"></div>
+<p>• S — Spoofing: подмена, где нарушается подлинность субъекта</p>
+<div class="gap"></div>
+<p>Вектора:</p>
+<p>• подмена пользователя, session fixation, replay токена</p>
+<p>• подмена сервиса, как MITM, фальшивый endpoint, DNS-hijack, отсутствие mTLS между микросервисами</p>
+<p>• подмена identity в логах через X-Forwarded-User без проверки</p>
+<div class="gap"></div>
+<p>Контроли: MFA, mTLS с проверкой сертификатов, OAuth2/ OIDC с PKCE, привязка токенов, типа DPoP, mTLS-bound, WebAuthn/ FIDO2, anti-replay (nonce, timestamps, jti)</p>
+<div class="gap"></div>
+<p>• T — Tampering: фальсификация, где нарушается целостность (data flow (in transit), data store (at rest), процесс (целостность кода и конфигов))</p>
+<div class="gap"></div>
+<p>Вектора:</p>
+<p>• модификация трафика</p>
+<p>• подмена параметров запроса (IDOR через hidden fields, JWT с alg=none, манипуляции client-side state)</p>
+<p>• модификация хранимых данных в обход приложения</p>
+<p>• supply chain: подмена артефактов сборки, образов, зависимостей</p>
+<div class="gap"></div>
+<p>Контроли: TLS актуальных версий, цифровые подписи и HMAC, контроль целостности (checksums, FIM), append-only / WORM журналы, signed commits, signed images, SBOM, контроль конфигураций)</p>
+<div class="gap"></div>
+<p>• R — Repudiation (отказ от действий), где нарушается неотказуемость и подотчётность</p>
+<div class="gap"></div>
+<p>Вектора:</p>
+<p>• пользователь отрицает действие, а доказать нечем</p>
+<p>• shared/ служебные аккаунты без идентификации</p>
+<p>• админ модифицирует журналы постфактум</p>
+<p>• разработчик коммитит без подписи в общую ветку</p>
+<div class="gap"></div>
+<p>Контроли: централизованное журналирование с защитой целостности (append-only, WORM), синхронизация времени NTP, корреляция в SIEM, цифровая подпись чувствительных операций, signed commits, запрет shared accounts</p>
+<div class="gap"></div>
+<p>• I — Information Disclosure (раскрытие информации), где нарушается: конфиденциальность</p>
+<div class="gap"></div>
+<p>Вектора:</p>
+<p>• нешифрованная передача</p>
+<p>• stack trace и подробные ошибки в ответе пользователю</p>
+<p>• BOLA / IDOR — обращение к чужим объектам по перебору ID</p>
+<p>• PII (персонификация) и секреты в логах</p>
+<p>• side-channel: тайминг, размер ответа, кэш-различия</p>
+<div class="gap"></div>
+<p>Контроли: TLS, шифрование at-rest (envelope / KMS / HSM), generic-ответы об ошибках без деталей, output filtering и явные DTO, маскирование PII в логах, минимизация данных, secret management</p>
+<div class="gap"></div>
+<p>• D — Denial of Service (отказ в обслуживании), где нарушается доступность</p>
+<div class="gap"></div>
+<p>Вектора:</p>
+<p>• объёмные DDoS уровней L3/ L4</p>
+<p>• application-layer DoS: медленные запросы (slowloris), catastrophic regex backtracking, zip/XML-бомбы, billion laughs</p>
+<p>• исчерпание ресурсов: утечки памяти, connection pool, unbounded queues</p>
+<div class="gap"></div>
+<p>Контроли: rate limiting и throttling, WAF / DDoS-защита, ограничения размера, времени и глубины, circuit breakers, авто-масштабирование, бэкапы и DR, capacity planning</p>
+<div class="gap"></div>
+<p>• E — Elevation of Privilege, где нарушается: авторизация</p>
+<div class="gap"></div>
+<p>Вектора:</p>
+<p>• BOLA / BFLA: нет проверки прав на объект или функцию</p>
+<p>• вертикальная эскалация</p>
+<p>• горизонтальная эскалация</p>
+<p>• sandbox escape</p>
+<p>• JWT-tampering</p>
+<p>• RCE через десериализацию</p>
+<div class="gap"></div>
+<p>Контроли: RBAC / ABAC с deny-by-default, проверка авторизации на каждом запросе (а не один раз на входе в API-gateway), Segregation of Duties, least privilege, изоляция контейнеров (rootless, seccomp, AppArmor / SELinux), валидация входа, role-claims с клиента</p>
+<div class="gap"></div>
+<p>#appsec #devsecops #reco #paper #specialty #riskanalysis</p></div>
+      <div class="tags"><span class="tag">#appsec</span><span class="tag">#devsecops</span><span class="tag">#reco</span><span class="tag">#paper</span><span class="tag">#specialty</span><span class="tag">#riskanalysis</span></div>
+      <a href="https://t.me/appsecta/393" target="_blank" rel="noreferrer" class="tg-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+        Открыть в Telegram
+      </a>
+    </article>
+    <div class="divider"></div>
+    <footer class="footer">
+      <p>© 2026 <a href="/">geminishkv.tech</a></p>
+      <p class="disclaimer">Instagram* — продукт компании Meta Platforms Inc., деятельность которой запрещена на территории РФ как экстремистская.</p>
+    </footer>
+  </div>
+</body>
+</html>

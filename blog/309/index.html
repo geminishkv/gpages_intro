@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Clair для Docker и OCI — geminishkv</title>
+  <meta name="description" content="🛠 Clair для Docker и OCI Салют,  Давай сегодня поговорим про open-source движок для анализа Docker/ OCI-образов на уязвимости.  Инструмент написан на Golang и…" />
+  <meta name="keywords" content="toolchain, containersecurity, appsec, appsec, devsecops, geminishkv" />
+  <meta name="author" content="Илья Шмаков" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="canonical" href="https://geminishkv.tech/blog/309/" />
+  <link rel="sitemap" href="/sitemap.xml" />
+  <link rel="alternate" type="application/rss+xml" title="geminishkv blog" href="/rss.xml" />
+  <link rel="alternate" hreflang="ru" href="https://geminishkv.tech/blog/309/" />
+  <link rel="alternate" hreflang="en" href="https://geminishkv.tech/blog/en/309/" />
+  <link rel="alternate" hreflang="x-default" href="https://geminishkv.tech/blog/309/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://geminishkv.tech/blog/309/" />
+  <meta property="og:title" content="Clair для Docker и OCI — geminishkv" />
+  <meta property="og:description" content="🛠 Clair для Docker и OCI Салют,  Давай сегодня поговорим про open-source движок для анализа Docker/ OCI-образов на уязвимости.  Инструмент написан на Golang и…" />
+  <meta property="og:image" content="https://geminishkv.tech/img/blog/309.jpg" />
+  <meta property="og:image:alt" content="Clair для Docker и OCI" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:site_name" content="geminishkv" />
+  <meta property="article:published_time" content="2026-04-10" />
+  <meta property="article:author" content="Илья Шмаков" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@geminishkv" />
+  <meta name="twitter:title" content="Clair для Docker и OCI" />
+  <meta name="twitter:description" content="🛠 Clair для Docker и OCI Салют,  Давай сегодня поговорим про open-source движок для анализа Docker/ OCI-образов на уязвимости.  Инструмент написан на Golang и…" />
+  <meta name="twitter:image" content="https://geminishkv.tech/img/blog/309.jpg" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Clair для Docker и OCI","description":"🛠 Clair для Docker и OCI Салют,  Давай сегодня поговорим про open-source движок для анализа Docker/ OCI-образов на уязвимости.  Инструмент написан на Golang и…","url":"https://geminishkv.tech/blog/309/","datePublished":"2026-04-10","dateModified":"2026-04-10","image":"https://geminishkv.tech/img/blog/309.jpg","inLanguage":"ru","author":{"@type":"Person","name":"Илья Шмаков","url":"https://geminishkv.tech"},"publisher":{"@type":"Organization","name":"geminishkv","url":"https://geminishkv.tech"}}</script>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="/fonts/fonts.css" />
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0a0a0a; --card: #111111; --border: #1a1a1a;
+  --text: #e8e8e8; --muted: #888888; --accent: #D51A1A; --gold: #F9B361;
+}
+html, body { background: var(--bg); color: var(--text); font-family: 'Roboto', system-ui, sans-serif; min-height: 100dvh; line-height: 1.7; }
+a { color: inherit; text-decoration: none; }
+
+.page { max-width: 800px; margin: 0 auto; padding: 0 24px 64px; }
+
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 24px 0 32px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+.nav__brand { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 700; color: #fff; }
+.nav__brand img { width: 28px; height: 28px; border-radius: 50%; }
+.nav__back { font-size: 12px; color: var(--muted); border: 1px solid var(--border); border-radius: 4px; padding: 6px 14px; transition: color .2s, border-color .2s; letter-spacing: 0.06em; text-transform: uppercase; }
+.nav__back:hover { color: #fff; border-color: var(--accent); }
+
+.nav__right-group { display: flex; align-items: center; gap: 10px; }
+.lang-toggle { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; color: var(--accent); border: 1px solid var(--accent); border-radius: 4px; padding: 5px 10px; transition: background .2s, color .2s; }
+.lang-toggle:hover { background: var(--accent); color: #fff; }
+
+.divider { height: 1px; background: linear-gradient(to right, var(--accent), rgba(204,34,0,.15), transparent); margin: 40px 0 20px; }
+.footer { font-size: 0.65rem; color: var(--muted); text-align: center; }
+.footer a { color: var(--accent); transition: color .2s; }
+.footer a:hover { color: var(--gold); }
+.disclaimer { font-size: 0.55rem; color: #555; text-align: center; margin-top: 12px; line-height: 1.4; }
+
+@media (max-width: 600px) { .page { padding: 0 16px 48px; } }
+
+    .cover { width: 100%; border-radius: 8px; overflow: hidden; margin-bottom: 28px; max-height: 400px; }
+    .cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .meta { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; font-size: 0.72rem; color: var(--muted); }
+    .content p { font-size: 0.85rem; line-height: 1.85; margin-bottom: 8px; }
+    .content .gap { height: 10px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 24px; }
+    .tag { font-size: 0.6rem; color: var(--gold); background: rgba(249,179,97,.06); border: 1px solid rgba(249,179,97,.15); border-radius: 3px; padding: 2px 8px; }
+    .tg-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 28px; padding: 10px 20px; background: rgba(204,34,0,.1); border: 1px solid rgba(204,34,0,.25); border-radius: 6px; color: #fff; font-size: 0.75rem; font-weight: 600; transition: background .2s; }
+    .tg-link:hover { background: rgba(204,34,0,.18); }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="nav">
+      <a href="/" class="nav__brand"><img src="/img/logotype/logo_white.svg" alt="" />geminishkv</a>
+      <div class="nav__right-group">
+        <a href="/blog/en/309/" class="lang-toggle">EN</a>
+        <a href="/blog/" class="nav__back">← Все посты</a>
+      </div>
+    </nav>
+    <div class="cover"><img src="/img/blog/309.jpg" alt="Clair для Docker и OCI" /></div>
+    <article>
+      <div class="meta"><span>10 апреля 2026 г.</span><span>·</span><span>209 views</span></div>
+      <div class="content"><p>🛠 Clair для Docker и OCI</p>
+<div class="gap"></div>
+<p>Салют, </p>
+<p>Давай сегодня поговорим про open-source движок для анализа Docker/ OCI-образов на уязвимости. </p>
+<div class="gap"></div>
+<p>Инструмент написан на Golang и разбирает образ послойно, то есть он извлекает список установленных пакетов и сравнивает их с CVE-базами без запуска контейнера. Clair может работать в комбинированном режиме (combo) — все три сервиса в одном процессе, что удобно для тестирования, либо в распределенном режиме для масштабирования в production</p>
+<div class="gap"></div>
+<p>Разработан командой Quay под лицензией Apache 2.0. Форматы отчётов: CLI, SARIF, Quay-native JSON. Работает с Ubuntu, Debian, RHEL, Suse, Oracle, Alpine, AWS Linux, VMWare Photon, Python и другими</p>
+<div class="gap"></div>
+<p>Функциональность</p>
+<div class="gap"></div>
+<p>• Индексация - получает манифест образа, извлекает слои, сканирует их содержимое и формирует промежуточный отчет</p>
+<p>• Сопоставляет данные из промежуточного отчета с базой известных уязвимостей и возвращает реальные уязвимости</p>
+<p>• При обнаружении новых сработок определяет, какие из ранее проиндексированных образов они затрагивают, и отправляет уведомления согласно настройкам</p>
+<div class="gap"></div>
+<p>Фишки</p>
+<div class="gap"></div>
+<p>• Анализирует образы статически — контейнер запускать не нужно, всё на уровне манифеста и слоёв</p>
+<p>• Поддерживает базы уязвимостей: NVD, Alpine SecDB, RHEL, Ubuntu, Debian, Oracle и другие</p>
+<p>• Режим Notifier — при появлении новой CVE для уже проверенного образа отправит вебхук, без повторного сканирования</p>
+<p>• SARIF для GitHub Security, GitLab SAST Code Scanning</p>
+<p>• JSON для DefectDojo, Jira, Quay Registry</p>
+<p>• Масштабируется горизонтально: Indexer / Matcher / Notifier разносятся по отдельным инстансам под нагрузку</p>
+<p>• Встроен в Red Hat Quay как основной движок сканирования образов в registry (про Red Hat понятно, но переиспользуемый)</p>
+<div class="gap"></div>
+<p>Команды</p>
+<div class="gap"></div>
+<p># Установить clairctl</p>
+<p>go install github.com/quay/clair/v4/cmd/clairctl@latest</p>
+<div class="gap"></div>
+<p># Сканировать публичный образ</p>
+<p>clairctl report --host http://localhost:6060 ubuntu:focal</p>
+<div class="gap"></div>
+<p># Сканировать с конфигом (если включён PSK-auth)</p>
+<p>clairctl report &amp;#092;</p>
+<p>  --config ./config/clair.yaml &amp;#092;</p>
+<p>  --host http://localhost:6060 &amp;#092;</p>
+<p>  nginx:1.25</p>
+<div class="gap"></div>
+<p># Проверка</p>
+<p>docker compose up -d</p>
+<p>curl http://localhost:6061/healthz</p>
+<div class="gap"></div>
+<p># Проверка API Indexer</p>
+<p>curl http://localhost:8080/indexer/api/v1/index_stat</p>
+<div class="gap"></div>
+<p># Пример вывода:</p>
+<p># ubuntu:focal found libpcre3 2:8.39-12build1 CVE-2017-11164</p>
+<p># ubuntu:focal found libc6 2.31-0ubuntu9 CVE-2016-10228</p>
+<p># ubuntu:focal found libgcrypt20 1.8.5-5ubuntu1 CVE-2019-12904</p>
+<div class="gap"></div>
+<p>Пример конфига clair.yaml</p>
+<div class="gap"></div>
+<p># config/clair.yaml</p>
+<p>http_listen_addr: &quot;:6060&quot;</p>
+<p>introspection_addr: &quot;:6061&quot;</p>
+<p>log_level: debug</p>
+<div class="gap"></div>
+<p>indexer:</p>
+<p>  connstring: &quot;host=clair-db port=5432 user=clair dbname=clair sslmode=disable&quot;</p>
+<p>  migrations: true</p>
+<div class="gap"></div>
+<p>matcher:</p>
+<p>  connstring: &quot;host=clair-db port=5432 user=clair dbname=clair sslmode=disable&quot;</p>
+<p>  migrations: true</p>
+<div class="gap"></div>
+<p>notifier:</p>
+<p>  connstring: &quot;host=clair-db port=5432 user=clair dbname=clair sslmode=disable&quot;</p>
+<p>  migrations: true</p>
+<p>  webhook:</p>
+<p>    target: &quot;https://your-service/clair-webhook&quot;</p>
+<p>    callback: &quot;http://clair:6060/notifier/api/v1/notifications&quot;</p>
+<div class="gap"></div>
+<p>Кеширование CVE для оптимизации</p>
+<div class="gap"></div>
+<p># Отдельный workflow — обновляет базу раз в сутки</p>
+<p>name: Update Clair DB</p>
+<p>on:</p>
+<p>  schedule:</p>
+<p>    - cron: '0 5 * * *'</p>
+<div class="gap"></div>
+<p>jobs:</p>
+<p>  update-db:</p>
+<p>    runs-on: ubuntu-latest</p>
+<p>    steps:</p>
+<p>      - name: Generate vulnerability DB</p>
+<p>        uses: quay/clair-action@main</p>
+<p>        with:</p>
+<p>          db-file: matcher.db</p>
+<p>          mode: update</p>
+<div class="gap"></div>
+<p>      - name: Cache DB</p>
+<p>        uses: actions/cache@v3</p>
+<p>        with:</p>
+<p>          path: matcher.db</p>
+<p>          key: clair-matcher-db</p>
+<div class="gap"></div>
+<p># В основном CI используем закэшированную базу:</p>
+<p># - name: Grab cached DB</p>
+<p>#   uses: actions/cache@v3</p>
+<p>#   with:</p>
+<p>#     path: matcher.db</p>
+<p>#     key: clair-matcher-db</p>
+<div class="gap"></div>
+<p>Итого</p>
+<div class="gap"></div>
+<p>Clair заходит, если уже есть Quay или нужен движок, который можно встроить в registry и CI одновременно, а именно - сканирует при push, держит базу актуальной и алертит при новых CVE без повторных прогонов. </p>
+<div class="gap"></div>
+<p>Если хочется потыкать в связке с другими инструментами — смотри в сторону связки Clair + DefectDojo + SecScore для полноценного Security Gate.</p>
+<div class="gap"></div>
+<p>#toolchain #containersecurity #appsec</p></div>
+      <div class="tags"><span class="tag">#toolchain</span><span class="tag">#containersecurity</span><span class="tag">#appsec</span></div>
+      <a href="https://t.me/appsecta/309" target="_blank" rel="noreferrer" class="tg-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+        Открыть в Telegram
+      </a>
+    </article>
+    <div class="divider"></div>
+    <footer class="footer">
+      <p>© 2026 <a href="/">geminishkv.tech</a></p>
+      <p class="disclaimer">Instagram* — продукт компании Meta Platforms Inc., деятельность которой запрещена на территории РФ как экстремистская.</p>
+    </footer>
+  </div>
+</body>
+</html>

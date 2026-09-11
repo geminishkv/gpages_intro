@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nuclei: open-source DAST using YAML templates — geminishkv</title>
+  <meta name="description" content="🛠 Nuclei: open-source DAST using YAML templates Salute, Let's take a look today at dynamic testing DAST, which uses the YAML templating engine. I want to shar…" />
+  <meta name="keywords" content="toolchain, dast, appsec, devsecops, geminishkv" />
+  <meta name="author" content="Ilya Shmakov" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="canonical" href="https://geminishkv.tech/blog/en/110/" />
+  <link rel="sitemap" href="/sitemap.xml" />
+  <link rel="alternate" type="application/rss+xml" title="geminishkv blog" href="/rss-en.xml" />
+  <link rel="alternate" hreflang="ru" href="https://geminishkv.tech/blog/110/" />
+  <link rel="alternate" hreflang="en" href="https://geminishkv.tech/blog/en/110/" />
+  <link rel="alternate" hreflang="x-default" href="https://geminishkv.tech/blog/110/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://geminishkv.tech/blog/en/110/" />
+  <meta property="og:title" content="Nuclei: open-source DAST using YAML templates — geminishkv" />
+  <meta property="og:description" content="🛠 Nuclei: open-source DAST using YAML templates Salute, Let's take a look today at dynamic testing DAST, which uses the YAML templating engine. I want to shar…" />
+  <meta property="og:image" content="https://geminishkv.tech/img/blog/110.jpg" />
+  <meta property="og:image:alt" content="Nuclei: open-source DAST using YAML templates" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="ru_RU" />
+  <meta property="og:site_name" content="geminishkv" />
+  <meta property="article:published_time" content="2025-11-17" />
+  <meta property="article:author" content="Ilya Shmakov" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@geminishkv" />
+  <meta name="twitter:title" content="Nuclei: open-source DAST using YAML templates" />
+  <meta name="twitter:description" content="🛠 Nuclei: open-source DAST using YAML templates Salute, Let's take a look today at dynamic testing DAST, which uses the YAML templating engine. I want to shar…" />
+  <meta name="twitter:image" content="https://geminishkv.tech/img/blog/110.jpg" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Nuclei: open-source DAST using YAML templates","description":"🛠 Nuclei: open-source DAST using YAML templates Salute, Let's take a look today at dynamic testing DAST, which uses the YAML templating engine. I want to shar…","url":"https://geminishkv.tech/blog/en/110/","datePublished":"2025-11-17","dateModified":"2025-11-17","image":"https://geminishkv.tech/img/blog/110.jpg","inLanguage":"en","author":{"@type":"Person","name":"Ilya Shmakov","url":"https://geminishkv.tech"},"publisher":{"@type":"Organization","name":"geminishkv","url":"https://geminishkv.tech"}}</script>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="/fonts/fonts.css" />
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0a0a0a; --card: #111111; --border: #1a1a1a;
+  --text: #e8e8e8; --muted: #888888; --accent: #D51A1A; --gold: #F9B361;
+}
+html, body { background: var(--bg); color: var(--text); font-family: 'Roboto', system-ui, sans-serif; min-height: 100dvh; line-height: 1.7; }
+a { color: inherit; text-decoration: none; }
+
+.page { max-width: 800px; margin: 0 auto; padding: 0 24px 64px; }
+
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 24px 0 32px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+.nav__brand { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 700; color: #fff; }
+.nav__brand img { width: 28px; height: 28px; border-radius: 50%; }
+.nav__back { font-size: 12px; color: var(--muted); border: 1px solid var(--border); border-radius: 4px; padding: 6px 14px; transition: color .2s, border-color .2s; letter-spacing: 0.06em; text-transform: uppercase; }
+.nav__back:hover { color: #fff; border-color: var(--accent); }
+
+.nav__right-group { display: flex; align-items: center; gap: 10px; }
+.lang-toggle { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; color: var(--accent); border: 1px solid var(--accent); border-radius: 4px; padding: 5px 10px; transition: background .2s, color .2s; }
+.lang-toggle:hover { background: var(--accent); color: #fff; }
+
+.divider { height: 1px; background: linear-gradient(to right, var(--accent), rgba(204,34,0,.15), transparent); margin: 40px 0 20px; }
+.footer { font-size: 0.65rem; color: var(--muted); text-align: center; }
+.footer a { color: var(--accent); transition: color .2s; }
+.footer a:hover { color: var(--gold); }
+.disclaimer { font-size: 0.55rem; color: #555; text-align: center; margin-top: 12px; line-height: 1.4; }
+
+@media (max-width: 600px) { .page { padding: 0 16px 48px; } }
+
+    .cover { width: 100%; border-radius: 8px; overflow: hidden; margin-bottom: 28px; max-height: 400px; }
+    .cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .meta { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; font-size: 0.72rem; color: var(--muted); }
+    .content p { font-size: 0.85rem; line-height: 1.85; margin-bottom: 8px; }
+    .content .gap { height: 10px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 24px; }
+    .tag { font-size: 0.6rem; color: var(--gold); background: rgba(249,179,97,.06); border: 1px solid rgba(249,179,97,.15); border-radius: 3px; padding: 2px 8px; }
+    .tg-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 28px; padding: 10px 20px; background: rgba(204,34,0,.1); border: 1px solid rgba(204,34,0,.25); border-radius: 6px; color: #fff; font-size: 0.75rem; font-weight: 600; transition: background .2s; }
+    .tg-link:hover { background: rgba(204,34,0,.18); }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="nav">
+      <a href="/" class="nav__brand"><img src="/img/logotype/logo_white.svg" alt="" />geminishkv</a>
+      <div class="nav__right-group">
+        <a href="/blog/110/" class="lang-toggle">RU</a>
+        <a href="/blog/" class="nav__back">← All posts</a>
+      </div>
+    </nav>
+    <div class="cover"><img src="/img/blog/110.jpg" alt="Nuclei: open-source DAST using YAML templates" /></div>
+    <article>
+      <div class="meta"><span>November 17, 2025</span><span>·</span><span>194 views</span></div>
+      <div class="content"><p>🛠 Nuclei: open-source DAST using YAML templates</p>
+<div class="gap"></div>
+<p>Salute,</p>
+<p>Let's take a look today at dynamic testing DAST, which uses the YAML templating engine. I want to share with you a handy tool that is commonly used in addition to Burp Suite.</p>
+<p>Description</p>
+<p>Supports web applications, APIs, network services and cloud infrastructures. Here you can see the official repository and details on the flags used here. Supports parallel processing for bulk scanning. Works in conjunction with subfinder, httpx, naabu. Does not have its own policy settings. Quality Gate policies are managed at the pipeline level when it is invoked. MIT License.</p>
+<p>The tool has features, let's note some of them:</p>
+<div class="gap"></div>
+<p>- Templates with code/javascript protocols require a digital signature and an explicit -code flag to run</p>
+<p>- Should use -disable-unsigned-templates mode, which allows execution of only signed templates and run only in a sandboxed environment</p>
+<p>- Running unverified templates from third parties is dangerous due to the risk of introducing malicious code.</p>
+<p>- Before launching, analyze id, info, payloads and fuzzing for suspicious operations</p>
+<p>- Use the rate limit flags -rl and the number of parallel requests -c</p>
+<p>Application</p>
+<div class="gap"></div>
+<p>nuclei -u https://example.ru # Single target scanning</p>
+<p>nuclei -l targets.txt # Scan the list of targets</p>
+<p>nuclei -u https://example.ru -t cves/2021/CVE-2021-12345.yaml # Running a specific template</p>
+<p>nuclei -u https://example.ru -tags jira -s critical,high # Filtering by tags and severity</p>
+<p>nuclei -u https://example.ru -as # Automatic detection of technologies</p>
+<p>subfinder -d example.ru | httpx | nuclei # Integration with exploration tools</p>
+<p>nuclei -l openapi.json -im openapi # OpenAPI scanning</p>
+<p>nuclei -t template_with_code.yaml -code -c 50 -rl 100 # Safely run templates with code</p>
+<p>docker run projectdiscovery/nuclei:latest -u https://example.ru # Run scanning from docker</p>
+<div class="gap"></div>
+<p>GitLab CI</p>
+<div class="gap"></div>
+<p>security_scan:</p>
+<p>  stage: test</p>
+<p>  image: golang:latest</p>
+<p>  before_script:</p>
+<p>    - go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest</p>
+<p>  script:</p>
+<p>- nuclei -u $URL -t /templates -json -o nuclei-report.json</p>
+<p>  artifacts:</p>
+<p>    paths:</p>
+<p>      -nuclei-report.json</p>
+<div class="gap"></div>
+<p>Jenkins</p>
+<div class="gap"></div>
+<p>stages {</p>
+<p>        stage('Security Scan') {</p>
+<p>            steps {</p>
+<p>                sh '''</p>
+<p>                    # Installation Nuclei</p>
+<p>                    go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest</p>
+<p># Start scan</p>
+<p>                    $HOME/go/bin/nuclei -u $URL -t $NUCLEI_TEMPLATES -json -o nuclei-report.json</p>
+<p>                '''</p>
+<p>            }</p>
+<p>        }</p>
+<p>    }</p>
+<div class="gap"></div>
+<p>    post {</p>
+<p>        always {</p>
+<p>            archiveArtifacts artifacts: 'nuclei-report.json', fingerprint: true</p>
+<p>        }</p>
+<p>    }</p>
+<p>}</p>
+<p>Overall: the tool is useful to use, but requires additional preparation, which will allow you to stumble upon problem areas where you will see your potential for growth. Note that:</p>
+<p>- The environment should be used with the URL being tested = 'https://example.com' and the NUCLEI_TEMPLATES used = '/templates'</p>
+<p>- Has a huge database of current templates and a low level of false positives</p>
+<p>- Supports multiple protocols (HTTP, TCP, DNS, SSL)</p>
+<p>- Has risks of executing malicious patterns due to lack of experience</p>
+<p>- Has a subsequent potential DoS effect on production systems</p>
+<p>- Expertise required to write your own templates</p>
+<p>- In addition to the web, it also tests APIs, cloud infrastructure (AWS S3, Azure, etc.), network devices, including third-party providers</p>
+<div class="gap"></div>
+<p>#toolchain #dast</p></div>
+      <div class="tags"><span class="tag">#toolchain</span><span class="tag">#dast</span></div>
+      <a href="https://t.me/appsecta/110" target="_blank" rel="noreferrer" class="tg-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+        Open in Telegram
+      </a>
+    </article>
+    <div class="divider"></div>
+    <footer class="footer">
+      <p>© 2026 <a href="/">geminishkv.tech</a></p>
+      <p class="disclaimer">Instagram* is a product of Meta Platforms Inc., banned in Russia as extremist.</p>
+    </footer>
+  </div>
+</body>
+</html>
