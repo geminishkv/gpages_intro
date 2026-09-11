@@ -383,6 +383,11 @@
   animation: blink 1s steps(1) infinite;
 }
 
+/* the phone terminal is too small for a command list; the burger menu covers navigation */
+@media (max-width: 576px) {
+  .mac-cmds { display: none; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .mac-cmds { transition: none; }
   .mac-cmds__cur { animation: none; }

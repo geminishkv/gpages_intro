@@ -241,8 +241,13 @@ body {
 
   .sec-head__action,
   .blog__subs,
-  .blog-filter {
+  .blog-filter,
+  .footer__col a,
+  .footer__links a,
+  .footer__logo,
+  .tools__show-more {
     min-height: 44px;
+    min-width: 44px;
     display: inline-flex;
     align-items: center;
   }
