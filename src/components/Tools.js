@@ -2,7 +2,7 @@ import { useState } from 'react';
 import '../styles/Tools.css';
 import '../styles/SkillCard.css';
 import { useLang } from '../context/LangContext';
-import GlitchLabel from './GlitchLabel';
+import SectionHead from './SectionHead';
 
 /* items sorted max→min by percent */
 const TOOL_GROUPS = [
@@ -66,11 +66,7 @@ export default function Tools() {
     <section className="tools">
 
       {/* ── Domains (2/4) + Tech Stack first 2 (1/4 + 1/4) ── */}
-      <div className="tools__header">
-        <GlitchLabel text={t.sections.domains} className="tools__label" />
-        <span className="tools__sep">·</span>
-        <GlitchLabel text={t.sections.techStack} className="tools__label" />
-      </div>
+      <SectionHead eyebrow={t.sectionHead.skills.eyebrow} title={t.sections.skills} sub={t.sectionHead.skills.sub} />
       <div className="skill-layout">
         <SkillCard title={t.sections.domains} items={DOMAIN_ITEMS} className="skill-card--wide" />
         <div className="skill-layout__right">
@@ -95,10 +91,9 @@ export default function Tools() {
       )}
 
       {/* ── Certifications ── */}
-      <div className="tools__header tools__header--stack">
-        <GlitchLabel text={t.sections.certifications} className="tools__label" />
+      <SectionHead eyebrow={t.sectionHead.certs.eyebrow} title={t.sections.certifications}>
         <span className="tools__count">{CERTS.length} total</span>
-      </div>
+      </SectionHead>
       <div className="tools__certs-grid">
         {visibleCerts.map((c, i) => (
           <div key={i} className="cert-card">

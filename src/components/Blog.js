@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import '../styles/Blog.css';
 import DATA from '../data/tg-posts.json';
 import { useLang } from '../context/LangContext';
-import GlitchLabel from './GlitchLabel';
+import SectionHead from './SectionHead';
 
 const CHANNEL_URL    = 'https://t.me/appsecta';
 const MOBILE_BP      = 576;
@@ -105,17 +105,16 @@ export default function Blog() {
 
   return (
     <section className="blog">
-      <div className="blog__header">
-        <div className="blog__header-left">
-          <GlitchLabel text={t.sections.blog} className="blog__label" />
-          {subscribers > 0 && (
-            <span className="blog__subs">{b.subscribersFmt(subscribers)}</span>
-          )}
-        </div>
-        <a href={CHANNEL_URL} target="_blank" rel="noreferrer" className="blog__channel-link">
-          <TgIcon />appsecta →
-        </a>
-      </div>
+      <SectionHead
+        eyebrow={t.sectionHead.blog.eyebrow}
+        title={t.sections.blog}
+        sub={t.sectionHead.blog.sub}
+        action={{ href: lang === 'en' ? '/blog/en/' : '/blog/', label: t.sectionHead.blog.action }}
+      >
+        {subscribers > 0 && (
+          <a href={CHANNEL_URL} target="_blank" rel="noreferrer" className="blog__subs"><TgIcon />{b.subscribersFmt(subscribers)}</a>
+        )}
+      </SectionHead>
 
       <div className="blog__grid">
         {visible.map(p => (

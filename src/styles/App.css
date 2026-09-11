@@ -21,6 +21,7 @@
   /* Typography */
   --font-display: 'Unbounded', 'Roboto', sans-serif;
   --font-body:    'Roboto', sans-serif;
+  --font-mono:    'Courier New', Courier, monospace;
 
   /* ── Surface & Borders (dark-theme grays) ── */
   --surface-primary:   #0a0a0a;
@@ -230,8 +231,8 @@ body {
     min-height: 44px;
   }
 
-  .projects__github-link,
-  .blog__channel-link,
+  .sec-head__action,
+  .blog__subs,
   .exp-card__company,
   .ata-consent__text a {
     display: inline-block;

@@ -8,6 +8,8 @@ export const MPFI_IMG  = process.env.PUBLIC_URL + '/img/badges/mpfi.png';
 export const RBPO_IMG   = process.env.PUBLIC_URL + '/img/badges/rbpo.png';
 export const INSECA_IMG = process.env.PUBLIC_URL + '/img/badges/inseca.png';
 
+export const RESUME_URL = 'https://hh.ru/resume/af4cc9ceff086141d00039ed1f4b4a6c35706f';
+
 export const TITLE_TEXT    = 'geminishkv';
 export const SUBTITLE_TEXT = 'AppSec & DevSecOps';
 export const TAGLINE_TEXT  = 'Sic Parvis Magna. Auxilio Divino';

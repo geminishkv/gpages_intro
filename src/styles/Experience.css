@@ -8,20 +8,6 @@
 }
 
 /* ── Header ── */
-.experience__header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 36px;
-}
-
-.experience__label {
-  font-size: 0.85rem;
-  font-weight: var(--font-bold, 700);
-  color: #ffffff;
-  letter-spacing: 0.04em;
-}
-
 /* ── Grid ── */
 .experience__grid {
   display: grid;

@@ -1,6 +1,6 @@
 import '../styles/Videos.css';
 import { useLang } from '../context/LangContext';
-import GlitchLabel from './GlitchLabel';
+import SectionHead from './SectionHead';
 
 function PlayIcon() {
   return (
@@ -17,9 +17,7 @@ export default function Videos() {
 
   return (
     <section className="videos">
-      <div className="videos__header">
-        <GlitchLabel text="YouTube" className="videos__label" />
-      </div>
+      <SectionHead eyebrow={t.sectionHead.videos.eyebrow} title={t.sections.videos} sub={t.sectionHead.videos.sub} />
       <div className="videos__grid">
         {videos.map((v) => (
           <a

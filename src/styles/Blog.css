@@ -12,49 +12,22 @@
 }
 
 /* ── Header ── */
-.blog__header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-
-.blog__header-left {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-
-.blog__label {
-  font-size: 0.85rem;
-  font-weight: var(--font-bold, 700);
-  color: #ffffff;
-  letter-spacing: 0.04em;
-}
-
 .blog__subs {
-  font-size: 0.68rem;
-  color: var(--text-muted, #333333);
-  letter-spacing: 0.04em;
-  padding: 2px 8px;
-  border: 1px solid var(--border-strong, #2a2a2a);
-  border-radius: 999px;
-}
-
-.blog__channel-link {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 6px;
+  align-self: flex-start;
+  font-family: var(--font-mono);
   font-size: 0.72rem;
-  color: var(--text-tertiary, #555555);
+  color: var(--text-secondary, #888888);
+  letter-spacing: 0.04em;
+  padding: 5px 12px;
+  border: 1px solid var(--border-strong, #2a2a2a);
+  border-radius: 999px;
   text-decoration: none;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  transition: color 0.2s;
+  transition: color 0.2s, border-color 0.2s;
 }
-
-.blog__channel-link:hover { color: #D51A1A; }
+.blog__subs:hover { color: #ffffff; border-color: var(--color-red, #D51A1A); }
 
 /* ── Grid ── */
 .blog__grid {

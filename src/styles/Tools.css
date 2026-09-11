@@ -7,24 +7,6 @@
   align-self: center;
 }
 
-.tools__header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.tools__header--stack {
-  margin-top: 48px;
-}
-
-.tools__label {
-  font-size: 0.85rem;
-  font-weight: var(--font-bold, 700);
-  color: #ffffff;
-  letter-spacing: 0.04em;
-}
-
 .tools__count {
   font-size: 0.65rem;
   color: var(--text-muted, #333333);

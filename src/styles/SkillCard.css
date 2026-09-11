@@ -108,11 +108,6 @@
   gap: 14px;
 }
 
-.tools__sep {
-  color: var(--text-muted, #333333);
-  margin: 0 8px;
-}
-
 /* ── Grid: 2 columns ── */
 .skill-grid {
   display: grid;

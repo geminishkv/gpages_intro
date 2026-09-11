@@ -1,15 +1,19 @@
 import '../styles/Experience.css';
 import { useLang } from '../context/LangContext';
-import GlitchLabel from './GlitchLabel';
+import SectionHead from './SectionHead';
+import { RESUME_URL } from '../constants';
 
 export default function Experience() {
   const { t } = useLang();
   const EXPERIENCE = t.experience;
   return (
     <section className="experience">
-      <div className="experience__header">
-        <GlitchLabel text={t.sections.experience} className="experience__label" />
-      </div>
+      <SectionHead
+        eyebrow={t.sectionHead.experience.eyebrow}
+        title={t.sections.experience}
+        sub={t.sectionHead.experience.sub}
+        action={{ href: RESUME_URL, label: t.sectionHead.experience.action, external: true }}
+      />
 
       <div className="experience__grid">
         {EXPERIENCE.map((item, i) => (
