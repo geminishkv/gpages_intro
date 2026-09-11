@@ -123,6 +123,7 @@ export const translations = {
         company: 'Poly Play Inc', role: 'Senior IS Specialist (Lead)',
         url: 'https://alfabravo.us/',
         logo: PUBLIC + '/img/companies/polyplay.svg',
+        logoLight: true,
         period: 'Янв 2020 — Дек 2020', current: false,
       },
       {
@@ -265,10 +266,15 @@ export const translations = {
       projects:   { eyebrow: 'open-source', sub: 'Инструменты, которые закрывают реальные дыры в процессе: карта тулчейна, SBOM, правила Semgrep, лабы курса.', action: 'GitHub' },
       videos:     { eyebrow: 'youtube', sub: 'Подкаст и интервью о безопасной разработке.' },
       blog:       { eyebrow: 'telegram · @appsecta', sub: 'Заметки о безопасной разработке, DevSecOps и жизни AppSec-лида — на русском и английском.', action: 'Все посты' },
-      experience: { eyebrow: 'опыт', sub: 'Конвейер карьеры: этапы слева направо, поток по трубе, текущий узел горит.', action: 'Резюме на hh.ru' },
+      experience: { eyebrow: 'опыт', sub: 'Конвейер карьеры: этапы слева направо, поток по трубе, текущий узел горит.', action: 'Резюме на hh.ru', now: 'сейчас' },
       skills:     { eyebrow: 'навыки', sub: 'Три уровня вместо процентов: ядро — ежедневно, сильное — регулярно, рабочее — по необходимости.' },
       certs:      { eyebrow: 'обучение' },
       interests:  { eyebrow: 'instagram*', sub: 'Три последних поста и профиль.', action: '@geminishkv' },
+    },
+    skills: {
+      levels: { core: 'ядро — ежедневно', strong: 'сильное — регулярно', work: 'рабочее — по необходимости' },
+      moreCerts: (n) => `Ещё ${n} ↓`,
+      moreGroups: (n) => `+${n} категории стека ↓`,
     },
     nav: {
       about: 'О СЕБЕ',
@@ -396,6 +402,7 @@ export const translations = {
         company: 'Poly Play Inc', role: 'Senior IS Specialist (Lead)',
         url: 'https://alfabravo.us/',
         logo: PUBLIC + '/img/companies/polyplay.svg',
+        logoLight: true,
         period: 'Jan 2020 — Dec 2020', current: false,
       },
       {
@@ -531,10 +538,15 @@ export const translations = {
       projects:   { eyebrow: 'open-source', sub: 'Tools that close real gaps in the process: a toolchain map, SBOM, Semgrep rules, course labs.', action: 'GitHub' },
       videos:     { eyebrow: 'youtube', sub: 'A podcast and an interview on secure development.' },
       blog:       { eyebrow: 'telegram · @appsecta', sub: 'Notes on secure development, DevSecOps and the life of an AppSec lead — in Russian and English.', action: 'All posts' },
-      experience: { eyebrow: 'experience', sub: 'Career as a pipeline: stages left to right, flow through the pipe, the current node lit.', action: 'Resume on hh.ru' },
+      experience: { eyebrow: 'experience', sub: 'Career as a pipeline: stages left to right, flow through the pipe, the current node lit.', action: 'Resume on hh.ru', now: 'now' },
       skills:     { eyebrow: 'skills', sub: 'Three levels instead of percentages: core — daily, strong — regularly, working — when needed.' },
       certs:      { eyebrow: 'training' },
       interests:  { eyebrow: 'instagram*', sub: 'Three latest posts and the profile.', action: '@geminishkv' },
+    },
+    skills: {
+      levels: { core: 'core — daily', strong: 'strong — regularly', work: 'working — when needed' },
+      moreCerts: (n) => `${n} more ↓`,
+      moreGroups: (n) => `+${n} stack categories ↓`,
     },
     nav: {
       about: 'ABOUT',

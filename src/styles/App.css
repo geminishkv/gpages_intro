@@ -231,7 +231,7 @@ body {
     min-height: 44px;
   }
 
-  .exp-card__company,
+  .pipe__company a,
   .ata-consent__text a {
     display: inline-block;
     min-width: 44px;
