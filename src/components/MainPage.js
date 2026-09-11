@@ -8,7 +8,7 @@ import Blog       from './Blog';
 import Experience from './Experience';
 import Tools      from './Tools';
 import Projects   from './Projects';
-import Gaming     from './Gaming';
+import Instagram  from './Instagram';
 import Footer     from './Footer';
 import AboutModal from './AboutModal';
 import NoticeBar  from './NoticeBar';
@@ -82,8 +82,8 @@ export default function MainPage({ isVisible }) {
       <div className="section-reveal" id="skillset" ref={refs.toolsRef}>
         <Tools />
       </div>
-      <div className="section-reveal" id="interests" ref={refs.gamingRef}>
-        <Gaming />
+      <div className="section-reveal" id="interests" ref={refs.interestsRef}>
+        <Instagram />
       </div>
       <div className="section-reveal" ref={refs.footerRef}>
         <Footer />

@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
     inputs:
       skip_data:
-        description: 'Skip data fetch (blog, gaming, stats)'
+        description: 'Skip data fetch (blog, instagram, stats)'
         type: boolean
         default: false
 
@@ -100,15 +100,6 @@ jobs:
         # committed data stays in place until the next successful run.
         continue-on-error: true
         run: node scripts/update-instagram.js
-
-      - name: Fetch gaming stats + trophy photos
-        if: inputs.skip_data != true
-        # Same reasoning as the Instagram step: an external site being down or
-        # rejecting the session must not cost us the deploy.
-        continue-on-error: true
-        run: node scripts/update-gaming.js
-        env:
-          STRATEGE_COOKIE: ${{ secrets.STRATEGE_COOKIE }}
 
       - name: Fetch GitHub repo stats
         if: inputs.skip_data != true

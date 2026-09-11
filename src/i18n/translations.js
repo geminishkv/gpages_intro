@@ -176,10 +176,12 @@ export const translations = {
       },
     ],
 
-    gaming: {
-      igRead: 'Смотреть →',
-      igPersonalProfile: 'Личный профиль',
-      igGo: 'Перейти →',
+    instagram: {
+      read: 'Смотреть →',
+      personalProfile: 'Личный профиль',
+      go: 'Перейти →',
+    },
+    videoCard: {
       watchBtn: 'Смотреть →',
     },
 
@@ -416,10 +418,12 @@ export const translations = {
       },
     ],
 
-    gaming: {
-      igRead: 'View →',
-      igPersonalProfile: 'Personal profile',
-      igGo: 'Visit →',
+    instagram: {
+      read: 'View →',
+      personalProfile: 'Personal profile',
+      go: 'Visit →',
+    },
+    videoCard: {
       watchBtn: 'Watch →',
     },
 

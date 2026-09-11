@@ -1,0 +1,151 @@
+/* ── Instagram section (was part of Gaming) ── */
+.instagram {
+  padding: clamp(40px, 4vw, 64px) clamp(40px, 5vw, 120px);
+  border-top: 2px solid;
+  border-image: linear-gradient(to right, #D51A1A 0%, var(--color-red-a15) 60%, transparent 100%) 1;
+  max-width: 1900px;
+  width: 100%;
+  align-self: center;
+}
+
+.instagram__header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.instagram__label {
+  font-size: 0.85rem;
+  font-weight: var(--font-bold, 700);
+  color: #ffffff;
+  letter-spacing: 0.04em;
+}
+
+/* 8 posts + the profile card = 9 items: three columns fill the grid exactly on
+   desktop; on tablets the profile card spans the last row instead of sitting alone. */
+.instagram__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+@media (min-width: 1220px) {
+  .instagram__grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 1219px) and (min-width: 577px) {
+  .ig-cta { grid-column: 1 / -1; }
+}
+
+/* ── Instagram card ── */
+/* extends .card-base (applied in JSX: className="card-base ig-card") */
+.ig-card {
+  /* all base styles provided by .card-base */
+}
+
+.ig-card__cover {
+  width: 100%;
+  height: clamp(200px, 17vw, 260px);
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  flex-shrink: 0;
+}
+
+.ig-card__date {
+  font-size: var(--text-xs, 0.62rem);
+  font-weight: var(--font-bold, 700);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted, #333333);
+}
+
+.ig-card__caption {
+  font-size: 0.78rem;
+  color: var(--text-light, #777777);
+  line-height: var(--leading-relaxed, 1.65);
+  flex: 1;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ── Instagram CTA block ── */
+.ig-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 28px 24px;
+  background: var(--surface-secondary, #0d0d0d);
+  border: 2px solid transparent;
+  background-image: linear-gradient(var(--surface-secondary, #0d0d0d), var(--surface-secondary, #0d0d0d)), linear-gradient(135deg, #D51A1A, #F9B361);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  border-radius: var(--radius-md, 4px);
+  text-decoration: none;
+  text-align: center;
+  color: var(--text-secondary, #888888);
+  transition: border-color 0.25s, box-shadow 0.25s;
+  min-height: 200px;
+  animation: ig-cta-glow 3s ease-in-out infinite;
+}
+
+.ig-cta:hover {
+  border-color: var(--color-red-a50);
+  box-shadow: 0 0 32px var(--color-red-a08);
+  color: var(--text-pale, #aaaaaa);
+}
+
+.ig-cta svg { color: #D51A1A; opacity: 0.7; transition: opacity 0.2s; }
+.ig-cta:hover svg { opacity: 1; }
+
+.ig-cta__title {
+  font-size: 0.9rem;
+  font-weight: var(--font-bold, 700);
+  color: #ffffff;
+  letter-spacing: 0.04em;
+}
+
+.ig-cta__sub {
+  font-size: 0.73rem;
+  color: var(--text-tertiary, #555555);
+  line-height: var(--leading-normal, 1.5);
+  max-width: 200px;
+}
+
+.ig-cta__btn {
+  font-size: 0.7rem;
+  font-weight: var(--font-bold, 700);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #D51A1A;
+  margin-top: 4px;
+  transition: letter-spacing 0.2s;
+}
+
+.ig-cta:hover .ig-cta__btn { letter-spacing: 0.14em; }
+
+/* ── IG CTA glow animation ── */
+@keyframes ig-cta-glow {
+  0%, 100% { box-shadow: 0 0 12px var(--color-red-a35), 0 0 30px var(--color-red-a10); }
+  50% { box-shadow: 0 0 16px var(--color-gold-a40), 0 0 40px var(--color-gold-a12); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ig-cta { animation: none; }
+}
+
+
+@media (max-width: 900px) {
+  .instagram { padding: 40px 24px; }
+}
+
+@media (max-width: 576px) {
+  .instagram { padding: 32px 16px; }
+  .instagram__grid { grid-template-columns: 1fr; }
+}

@@ -47,7 +47,7 @@ export default function Videos() {
             </div>
 
             <div className="video-card__footer">
-              <span className="video-card__btn">{t.gaming.watchBtn}</span>
+              <span className="video-card__btn">{t.videoCard.watchBtn}</span>
             </div>
           </a>
         ))}
