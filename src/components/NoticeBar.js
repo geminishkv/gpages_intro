@@ -3,7 +3,7 @@ import '../styles/NoticeBar.css';
 import { useLang } from '../context/LangContext';
 
 const TS_KEY    = 'notice_ts';
-const RESHOW_MS = 15 * 60 * 1000; // 15 минут
+const RESHOW_MS = 45 * 60 * 1000; // legal notice: shown again after 45 minutes (same as the course site)
 
 function shouldShow() {
   try {
@@ -31,16 +31,16 @@ export default function NoticeBar({ animDone }) {
   }
 
   return (
-    <div className={`notice-bar${visible ? ' notice-bar--visible' : ''}`} role="region" aria-label={n.ariaLabel}>
-      <div className="notice-bar__inner">
-        <div className="notice-bar__body">
-          <p className="notice-bar__title">{n.title}</p>
-          <div className="notice-bar__text">
+    <div className={`ata-legal${visible ? ' ata-legal--visible' : ''}`} role="region" aria-label={n.ariaLabel}>
+      <div className="ata-legal__inner">
+        <div className="ata-legal__body">
+          <p className="ata-legal__title">{n.title}</p>
+          <div className="ata-legal__text">
             {n.paragraphs.map((p, i) => <p key={i}>{p}</p>)}
           </div>
-          <div className="notice-bar__disclaimer">{n.disclaimer}</div>
+          <div className="ata-legal__disclaimer">{n.disclaimer}</div>
         </div>
-        <button className="notice-bar__close" onClick={dismiss}>{n.dismiss}</button>
+        <button className="ata-legal__close" onClick={dismiss}>{n.dismiss}</button>
       </div>
     </div>
   );

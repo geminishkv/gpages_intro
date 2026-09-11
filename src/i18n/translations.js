@@ -216,8 +216,8 @@ export const translations = {
     },
     cookie: {
       title: 'Файлы cookie',
-      text: 'Мы используем файлы cookie и сервисы аналитики для улучшения работы сайта. Продолжая использовать сайт, вы соглашаетесь с обработкой данных в соответствии с ',
-      policyLink: 'Политикой конфиденциальности',
+      text: 'Аналитика (Яндекс.Метрика и Plausible) включается только после вашего согласия. Технические cookie нужны для работы сайта. Подробнее — в документе ',
+      policyLink: 'Политика конфиденциальности',
       accept: 'Принять',
       decline: 'Отклонить',
     },
@@ -451,7 +451,7 @@ export const translations = {
     },
     cookie: {
       title: 'Cookies',
-      text: 'We use cookies and analytics to improve the website. By continuing to use the site, you agree to data processing in accordance with our ',
+      text: 'Analytics (Yandex Metrica and Plausible) run only after you accept. Technical cookies are required for the site to work. Details in our ',
       policyLink: 'Privacy Policy',
       accept: 'Accept',
       decline: 'Decline',

@@ -148,9 +148,7 @@ function renderPost(post, lang) {
   <meta name="twitter:image" content="${imageUrl}" />
   <script type="application/ld+json">${jsonLd}</script>
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/fonts/fonts.css" />
   <style>${CSS}
     .cover { width: 100%; border-radius: 8px; overflow: hidden; margin-bottom: 28px; max-height: 400px; }
     .cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -282,9 +280,7 @@ function renderIndex(lang, pagePosts, pageNum, totalPages) {
   <meta name="twitter:site" content="@geminishkv" />
   <meta name="twitter:title" content="${heading} \u2014 geminishkv" />
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/fonts/fonts.css" />
   <style>${CSS}
     .page { max-width: 1900px; padding: 0 clamp(24px, 5vw, 120px) 64px; }
     .header { margin-bottom: 32px; }
