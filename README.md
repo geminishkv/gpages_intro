@@ -18,10 +18,10 @@
 * **Holographic Monitor** — CSS floating monitor с glow + Python typewriter
 * **Typewriter** — DOS-стиль набор заголовка с glitch-эффектом по символам
 * **Blog** — 182 поста из Telegram с переводом RU→EN, пагинация, статические SEO-страницы
-* **Gaming** — PSN/Xbox статистика: уровень, трофеи, platinum wall (90+)
+* **Instagram** — превью 8 последних постов и ссылка на профиль
 * **SEO** — JSON-LD, OG, Twitter Card, sitemap (390 URL), RSS (RU+EN), llms.txt, hreflang
 * **Security** — CSP, X-Frame-Options, Referrer-Policy, Permissions-Policy
-* **Privacy** — политика конфиденциальности (ФЗ-152), cookie-баннер, дисклеймер Meta/LinkedIn
+* **Privacy** — политика конфиденциальности (ФЗ-152), баннер согласия на аналитику (Метрика и Plausible грузятся только после «Принять»), дисклеймер Meta/LinkedIn
 
 Сайт: **[geminishkv.tech](https://geminishkv.tech)**
 
@@ -61,7 +61,7 @@
 * **Videos** — YouTube-карточки: подкаст по безопасной разработке, интервью BISA
 * **Experience** — 6 мест работы в виде карточек с логотипами
 * **Tools** — Tech Stack (8 категорий) + Certifications + Domains (skill-карточки)
-* **Gaming** — PSN и Xbox статистика: уровень, трофеи, platinum wall (90+), Instagram, game history
+* **Instagram** — 8 последних постов (обложки кешируются в `public/img/instagram/`), ссылка на профиль
 * **About modal** — попап с резюме (ссылка на hh.ru), навыками, достижениями; focus trap
 * **Nav** — i18n (RU/EN), SVG бургер с морфингом, LangSwitch toggle, glass-эффект при скролле
 * **Кнопки** — PackageBtn (hacker glitch), ContentBtn (cyber border), ContactBtn (pill + status dot), DownloadBtn (progress animation), SocialIcons (slide-in SVG)
@@ -97,7 +97,7 @@
 
 | Заголовок | Значение |
 |-----------|---------|
-| Content-Security-Policy | `default-src 'self'`; script/style/font/img/connect whitelisted |
+| Content-Security-Policy | `default-src 'self'`; `script-src` без `'unsafe-inline'` (`INLINE_RUNTIME_CHUNK=false`), шрифты self-hosted (`font-src 'self'`), аналитика — только после согласия |
 | X-Content-Type-Options | `nosniff` |
 | X-Frame-Options | `DENY` |
 | Referrer-Policy | `strict-origin-when-cross-origin` |
@@ -110,7 +110,7 @@
 | Workflow | Триггер | Секреты | Действие |
 |----------|---------|---------|----------|
 | `ci.yml` — **build** | push / PR → `gpages` | `YM_ID` | `npm install` → `eslint` → `npm audit` → `npm run build` |
-| `ci.yml` — **update-and-deploy** | cron Пн 07:00 UTC / manual | `STRATEGE_COOKIE`, `YM_ID` | TG + Instagram + gaming + stats → sitemap + RSS → коммит → build → blog pages → deploy gh-pages → ping Yandex |
+| `ci.yml` — **update-and-deploy** | cron Пн 07:00 UTC / manual | `YM_ID`, `DATA_PUSH_SSH_KEY` | TG + Instagram + stats → sitemap + RSS → коммит → build → blog pages → deploy gh-pages → ping Yandex |
 
 Ручной запуск: `workflow_dispatch` с опцией `skip_data`.
 
@@ -151,7 +151,6 @@ npx serve build -l 4000   # Статика + блог → http://localhost:4000
 node scripts/update-tg-posts.js        # Последние 20 постов (incremental merge)
 node scripts/update-tg-posts.js --all  # ВСЕ посты (пагинация, разовый)
 node scripts/update-instagram.js       # Instagram посты
-node scripts/update-gaming.js          # PSN/Xbox статистика
 node scripts/update-stats.js           # GitHub stars/forks
 node scripts/generate-sitemap.js       # sitemap.xml (390 URL)
 node scripts/generate-rss.js           # rss.xml (RU) + rss-en.xml (EN)
@@ -176,13 +175,13 @@ gpages/
 │   │   ├── badges/           # Логотипы достижений (marquee)
 │   │   ├── blog/             # Обложки постов Telegram
 │   │   ├── companies/        # Логотипы работодателей
-│   │   ├── gaming/psn/ xbox/ # Обложки трофеев и игр
-│   │   ├── hero/             # UwU, аватар
+│   │   ├── hero/             # UwU (webp), аватар
 │   │   ├── instagram/        # Кеш обложек Instagram
 │   │   ├── logotype/         # SVG логотипы
 │   │   ├── splash/           # Заставка сплеш-экрана
 │   │   └── yt_preroll/       # Превью YouTube-видео
-│   ├── privacy/index.html    # Политика конфиденциальности
+│   ├── fonts/                # Roboto + Unbounded (woff2, OFL) + fonts.css
+│   ├── privacy/index.html    # Политика конфиденциальности (+ смена выбора по cookie)
 │   ├── 404.html              # SPA fallback + дино-раннер
 │   ├── index.html            # SEO: JSON-LD, OG, CSP, 72+ meta tags
 │   ├── sitemap.xml           # 390 URL с hreflang
@@ -194,8 +193,8 @@ gpages/
 │   │   ├── SplashScreen.js   # Shader canvas + pretitle SVG (30 мин reshow)
 │   │   ├── MainPage.js       # Корневой layout, scroll lock
 │   │   ├── Nav.js            # SVG бургер морфинг, LangSwitch, i18n
-│   │   ├── NoticeBar.js      # Уведомление (15 мин reshow)
-│   │   ├── CookieBanner.js   # Cookie consent (30 мин reshow)
+│   │   ├── NoticeBar.js      # Уведомление (45 мин reshow)
+│   │   ├── CookieBanner.js   # Согласие на аналитику (180 дней, /#consent — сменить выбор)
 │   │   ├── Hero.js           # Holographic monitor + typewriter + badges + кнопки
 │   │   ├── GlitchLabel.js    # Glitch typewriter для заголовков секций
 │   │   ├── BrandColumn.js    # Каскадная анимация (forwardRef)
@@ -205,18 +204,18 @@ gpages/
 │   │   ├── Videos.js         # YouTube cards
 │   │   ├── Experience.js     # Карточки опыта
 │   │   ├── Tools.js          # Domains + Tech Stack + Certs
-│   │   ├── Gaming.js         # PSN + Xbox + Instagram + platinum wall
+│   │   ├── Instagram.js      # 8 последних постов Instagram
 │   │   ├── Footer.js
 │   │   ├── SicParvisMagnaPill.js
 │   │   └── AboutModal.js     # Resume (hh.ru) + achievements
 │   ├── context/LangContext.js
+│   ├── lib/consent.js        # Хранение согласия + загрузка Plausible/Метрики
 │   ├── hooks/useMainAnimation.js
 │   ├── i18n/translations.js  # RU/EN + nav + sections
 │   ├── constants/index.js
 │   ├── data/
 │   │   ├── tg-posts.json     # 182 поста Telegram (CI incremental)
-│   │   ├── instagram.json    # Instagram (CI)
-│   │   └── gaming.json       # PSN/Xbox (CI)
+│   │   └── instagram.json    # Instagram (CI)
 │   └── styles/
 │       ├── App.css           # 90+ design tokens (:root)
 │       ├── Buttons.css       # ContactBtn + ContentBtn + PackageBtn + DownloadBtn + SocialIcons
@@ -225,14 +224,14 @@ gpages/
 │       ├── LangSwitch.css    # Toggle RU/EN
 │       ├── LogoGlow.css      # Rotating gradient ring
 │       ├── GlitchLabel.css   # Typewriter cursor
-│       ├── CookieBanner.css  # Cookie consent card
+│       ├── CookieBanner.css  # Карточка согласия (.ata-consent)
+│       ├── Instagram.css     # Сетка Instagram
 │       ├── MacCSS.css        # Holographic floating monitor
 │       ├── SplashScreen.css  # Shader splash screen
 │       └── [Component].css   # Nav, Hero, Mac, Blog, etc.
 ├── scripts/
 │   ├── update-tg-posts.js    # Telegram scraper (--all для полного)
 │   ├── update-instagram.js   # Instagram + cleanup orphans
-│   ├── update-gaming.js      # PSN (stratege.ru) + Xbox
 │   ├── update-stats.js       # GitHub API
 │   ├── generate-sitemap.js   # 390 URL + hreflang + ping Yandex
 │   ├── generate-rss.js       # RSS RU + EN
