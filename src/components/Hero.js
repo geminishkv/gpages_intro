@@ -4,7 +4,7 @@ import '../styles/MacCSS.css';
 import '../styles/Buttons.css';
 import BrandColumn from './BrandColumn';
 import {
-  UWU_IMG,
+  UWU_IMG, LOGO_IMG,
   LIDER_IMG, SBERSPASIBO_IMG, BMSTU_IMG, MPFI_IMG, RBPO_IMG, INSECA_IMG,
   TAGLINE_TEXT,
 } from '../constants';
@@ -14,7 +14,8 @@ import { useLang } from '../context/LangContext';
 export default function Hero({
   titleRef, subtitleRef, taglineRef, socialsRef, liderRef,
   blinkerRef, whiteBoxRef, containerBoxRef, windowImgRef, uwuRef, workTextRef,
-  progressWrapRef, progressBarRef, brandColRef,
+  progressWrapRef, progressBarRef, brandColRef, leadRef,
+  animDone, onAboutOpen,
 }) {
   const [dlActive, setDlActive] = useState(false);
   const [dlOss, setDlOss] = useState(false);
@@ -22,8 +23,11 @@ export default function Hero({
 
   return (
     <div className="hero">
+      <div className="hero__watermark" style={{ backgroundImage: `url(${LOGO_IMG})` }} aria-hidden="true" />
+      <div className="hero__grid" aria-hidden="true" />
       {/* Left — text */}
       <div className="hero__text">
+        <span className="hero__eyebrow">{t.hero.eyebrow}</span>
         {/* eslint-disable jsx-a11y/heading-has-content -- текст ставит useMainAnimation: typewriter или сразу при prefers-reduced-motion */}
         <h1 ref={titleRef} className="hero__title" />
         <h2 ref={subtitleRef} className="hero__subtitle" style={{ opacity: 0 }} />
@@ -31,6 +35,7 @@ export default function Hero({
         <p ref={taglineRef} className="hero__tagline" style={{ opacity: 0 }}>
           {TAGLINE_TEXT}
         </p>
+        <p ref={leadRef} className="hero__lead" style={{ opacity: 0 }}>{t.hero.lead}</p>
 
         <div className="hero__badges-outer">
           <div ref={liderRef} className="hero__badges-track">
@@ -182,6 +187,20 @@ export default function Hero({
                 <div ref={containerBoxRef} className="mac-container-box" />
                 <div ref={windowImgRef} className="mac-window-img mac-terminal">
                   <div ref={workTextRef} className="mac-work-text" />
+                  {/* Command navigation: shown once the intro is over, after the typed session */}
+                  <div className={`mac-cmds${animDone ? ' mac-cmds--on' : ''}`} aria-hidden={!animDone}>
+                    <span className="mac-cmds__hint">{t.hero.cmdsHint}</span>
+                    {t.hero.cmds.map((c) => c.action === 'about' ? (
+                      <button key={c.cmd} type="button" className="mac-cmds__line" onClick={onAboutOpen} tabIndex={animDone ? 0 : -1}>
+                        <span className="mac-cmds__ps">$ </span><span className="mac-cmds__cmd">{c.cmd}</span><span className="mac-cmds__note">→ {c.note}</span>
+                      </button>
+                    ) : (
+                      <a key={c.cmd} className="mac-cmds__line" href={c.href} tabIndex={animDone ? 0 : -1}>
+                        <span className="mac-cmds__ps">$ </span><span className="mac-cmds__cmd">{c.cmd}</span><span className="mac-cmds__note">→ {c.note}</span>
+                      </a>
+                    ))}
+                    <span className="mac-cmds__line"><span className="mac-cmds__ps">$ </span><span className="mac-cmds__cur" /></span>
+                  </div>
                 </div>
                 <img ref={uwuRef} src={UWU_IMG} alt="" className="mac-window-img mac-uwu" />
                 <div ref={progressWrapRef} className="mac-progress">

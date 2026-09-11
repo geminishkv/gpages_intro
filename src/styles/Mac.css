@@ -309,3 +309,79 @@
     opacity: 1;
   }
 }
+
+/* ── Command navigation: appears after the intro, under the typed session ── */
+.mac-cmds {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  width: 92%;
+  max-width: 62%;
+  padding: 0 8px 6px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: clamp(0.45rem, 0.9vw, 0.72rem);
+  font-weight: var(--font-bold, 700);
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  pointer-events: none;
+}
+
+.mac-cmds--on {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+.mac-cmds__hint { color: var(--text-secondary, #888888); }
+
+.mac-cmds__line {
+  display: flex;
+  align-items: baseline;
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  letter-spacing: inherit;
+  color: #ffffff;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.mac-cmds__ps { color: #ffffff; }
+
+.mac-cmds__cmd {
+  color: #ffffff;
+  border-bottom: 1px dotted rgba(255, 255, 255, 0.4);
+}
+
+.mac-cmds__line:hover .mac-cmds__cmd,
+.mac-cmds__line:focus-visible .mac-cmds__cmd {
+  color: #0f0;
+  border-bottom-color: #0f0;
+}
+
+.mac-cmds__note {
+  color: var(--text-secondary, #888888);
+  margin-left: 0.8em;
+}
+
+.mac-cmds__cur {
+  display: inline-block;
+  width: 0.55em;
+  height: 1em;
+  background: #0f0;
+  vertical-align: -0.15em;
+  animation: blink 1s steps(1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mac-cmds { transition: none; }
+  .mac-cmds__cur { animation: none; }
+}

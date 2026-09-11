@@ -7,6 +7,31 @@ export const translations = {
     hero: {
       contentLabel: 'Контент',
       contactsLabel: 'Контакты',
+      eyebrow: '// AppSec Team Lead · СберСпасибо · Москва',
+      lead: 'Строю AppSec-практику в финтехе: SSDLC, DevSecOps-конвейеры, Security Champions, риск-анализ. Преподаю в МГТУ и МФТИ, веду канал про безопасную разработку.',
+      cmdsHint: '# навигация: команды кликабельны',
+      cmds: [
+        { cmd: 'appsec whoami',              note: 'о себе',    action: 'about' },
+        { cmd: 'appsec ls projects',         note: 'проекты',   href: '#projects' },
+        { cmd: 'appsec tail blog',           note: '@appsecta', href: '#blog' },
+        { cmd: 'appsec skills --level core', note: 'навыки',    href: '#skillset' },
+      ],
+    },
+    now: {
+      label: 'Сейчас',
+      postsFmt: (n) => {
+        const mod10 = n % 10;
+        const mod100 = n % 100;
+        if (mod100 >= 11 && mod100 <= 19) return `${n} постов`;
+        if (mod10 === 1) return `${n} пост`;
+        if (mod10 >= 2 && mod10 <= 4) return `${n} поста`;
+        return `${n} постов`;
+      },
+      items: [
+        { text: 'Преподаю AppSec в МГТУ — поток 2026/27 стартовал 1 сентября', hint: 'course.geminishkv.tech', href: 'https://course.geminishkv.tech/' },
+        { text: 'Канал @appsecta — новые посты каждую неделю', channel: true, href: 'https://t.me/appsecta' },
+        { text: 'Guardconf — приглашаю на конференцию', hint: 'пост от 26 авг 2026', href: 'https://t.me/appsecta/515' },
+      ],
     },
 
     about: {
@@ -258,6 +283,24 @@ export const translations = {
     hero: {
       contentLabel: 'Content',
       contactsLabel: 'Contacts',
+      eyebrow: '// AppSec Team Lead · SberSpasibo · Moscow',
+      lead: 'I build AppSec practice in fintech: SSDLC, DevSecOps pipelines, Security Champions, risk analysis. I teach at BMSTU and MIPT and run a channel on secure development.',
+      cmdsHint: '# navigation: commands are clickable',
+      cmds: [
+        { cmd: 'appsec whoami',              note: 'about',     action: 'about' },
+        { cmd: 'appsec ls projects',         note: 'projects',  href: '#projects' },
+        { cmd: 'appsec tail blog',           note: '@appsecta', href: '#blog' },
+        { cmd: 'appsec skills --level core', note: 'skills',    href: '#skillset' },
+      ],
+    },
+    now: {
+      label: 'Now',
+      postsFmt: (n) => `${n} post${n !== 1 ? 's' : ''}`,
+      items: [
+        { text: 'Teaching AppSec at BMSTU — the 2026/27 cohort started on September 1', hint: 'course.geminishkv.tech', href: 'https://course.geminishkv.tech/' },
+        { text: '@appsecta channel — new posts every week', channel: true, href: 'https://t.me/appsecta' },
+        { text: 'Guardconf — come to the conference', hint: 'post from 26 Aug 2026', href: 'https://t.me/appsecta/515' },
+      ],
     },
 
     about: {

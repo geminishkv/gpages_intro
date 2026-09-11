@@ -22,10 +22,12 @@ export function useMainAnimation(isVisible, onAllDone) {
   const titleRef        = useRef(null);
   const subtitleRef     = useRef(null);
   const taglineRef      = useRef(null);
+  const leadRef         = useRef(null);
   const socialsRef      = useRef(null);
   const liderRef        = useRef(null);
   const brandColRef     = useRef(null);
 
+  const nowRef        = useRef(null);
   const statsRef      = useRef(null);
   const projectsRef   = useRef(null);
   const videosRef     = useRef(null);
@@ -98,9 +100,10 @@ export function useMainAnimation(isVisible, onAllDone) {
 
         // ── Tagline ──
         anime({
-          targets: taglineRef.current,
+          targets: [taglineRef.current, leadRef.current].filter(Boolean),
           opacity: [0, 1],
           translateY: [16, 0],
+          delay: anime.stagger(140),
           duration: 600,
           easing: 'easeOutExpo',
           complete: () => {
@@ -139,6 +142,7 @@ export function useMainAnimation(isVisible, onAllDone) {
                         onAllDoneRef.current?.();
 
                         const sectionEls = [
+                          nowRef.current,
                           statsRef.current,
                           projectsRef.current,
                           videosRef.current,
@@ -272,7 +276,7 @@ export function useMainAnimation(isVisible, onAllDone) {
       setStatsActive(true);
       onAllDoneRef.current?.();
       const allSections = [
-        statsRef, projectsRef, videosRef, blogRef, experienceRef, toolsRef, interestsRef, footerRef,
+        nowRef, statsRef, projectsRef, videosRef, blogRef, experienceRef, toolsRef, interestsRef, footerRef,
       ];
       allSections.forEach(r => {
         if (!r.current) return;
@@ -289,6 +293,7 @@ export function useMainAnimation(isVisible, onAllDone) {
         subtitleRef.current.textContent = SUBTITLE_TEXT;
       }
       if (taglineRef.current) taglineRef.current.style.opacity = '1';
+      if (leadRef.current) leadRef.current.style.opacity = '1';
       return;
     }
 
@@ -321,8 +326,8 @@ export function useMainAnimation(isVisible, onAllDone) {
     navRef,
     blinkerRef, whiteBoxRef, containerBoxRef,
     windowImgRef, uwuRef, workTextRef, progressWrapRef, progressBarRef,
-    titleRef, subtitleRef, taglineRef, socialsRef, liderRef, brandColRef,
-    statsRef, projectsRef, videosRef, blogRef, experienceRef, toolsRef, interestsRef, footerRef,
+    titleRef, subtitleRef, taglineRef, leadRef, socialsRef, liderRef, brandColRef,
+    nowRef, statsRef, projectsRef, videosRef, blogRef, experienceRef, toolsRef, interestsRef, footerRef,
     statsActive,
   };
 }

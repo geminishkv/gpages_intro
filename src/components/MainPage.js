@@ -4,6 +4,7 @@ import { useMainAnimation } from '../hooks/useMainAnimation';
 import Nav        from './Nav';
 import Hero       from './Hero';
 import Stats      from './Stats';
+import NowStrip   from './NowStrip';
 import Blog       from './Blog';
 import Experience from './Experience';
 import Tools      from './Tools';
@@ -63,7 +64,13 @@ export default function MainPage({ isVisible }) {
         progressWrapRef={refs.progressWrapRef}
         progressBarRef={refs.progressBarRef}
         brandColRef={refs.brandColRef}
+        leadRef={refs.leadRef}
+        animDone={animDone}
+        onAboutOpen={() => setAboutOpen(true)}
       />
+      <div className="section-reveal" id="now" ref={refs.nowRef}>
+        <NowStrip />
+      </div>
       <div className="section-reveal" id="stats" ref={refs.statsRef}>
         <Stats active={refs.statsActive} />
       </div>
