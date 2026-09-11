@@ -6,25 +6,24 @@ import { RESUME_URL } from '../constants';
 // First year in a period string ("Апр 2019 — Янв 2020" → 2019).
 const yearOf = (period) => (period.match(/\d{4}/) || [''])[0];
 
-function logoClass(item) {
-  // Company marks are dark or coloured and sit on a white node as they are;
-  // the few white marks (logoLight) get inverted.
-  if (item.logoLight) return 'pipe__logo pipe__logo--light';
-  return 'pipe__logo';
-}
-
-function Plate({ item }) {
+function Node({ item }) {
   const logos = item.logos ?? [{ src: item.logo, alt: item.company, url: item.url }];
-  const cls = logoClass(item);
+  // White marks (Poly Play, the Rosbank wordmark) need a dark disc; everything else
+  // sits on white. A logo flagged `pill` gets its own white pill inside a dark disc.
+  const dark = item.logoLight || logos.length > 1;
+  const cls = `pipe__node${dark ? ' pipe__node--dark' : ''}${logos.length > 1 ? ' pipe__node--pair' : ''}`;
   return (
-    <div className={`pipe__plate${logos.length > 1 ? ' pipe__plate--pair' : ''}`}>
-      {logos.map((l, j) => l.url ? (
-        <a key={j} href={l.url} target="_blank" rel="noreferrer" className="pipe__logo-link" aria-label={l.alt}>
-          <img src={l.src} alt="" className={cls} />
-        </a>
-      ) : (
-        <img key={j} src={l.src} alt={l.alt} className={cls} />
-      ))}
+    <div className={cls}>
+      {logos.map((l, j) => {
+        const linkCls = `pipe__logo-link${l.pill ? ' pipe__logo-link--pill' : ''}`;
+        return l.url ? (
+          <a key={j} href={l.url} target="_blank" rel="noreferrer" className={linkCls} aria-label={l.alt}>
+            <img src={l.src} alt="" className="pipe__logo" />
+          </a>
+        ) : (
+          <span key={j} className={linkCls}><img src={l.src} alt={l.alt} className="pipe__logo" /></span>
+        );
+      })}
     </div>
   );
 }
@@ -65,8 +64,7 @@ export default function Experience() {
         {stages.map((item, i) => (
           <li key={i} className={`pipe__st${item.current ? ' pipe__st--now' : ''}`}>
             <span className="pipe__year">{yearOf(item.period)}</span>
-            <span className="pipe__node" aria-hidden="true" />
-            <Plate item={item} />
+            <Node item={item} />
             <div className="pipe__body">
               <h3 className="pipe__title">
                 <Company item={item} />

@@ -99,7 +99,7 @@ export const translations = {
         logoColor: true,
         logos: [
           { src: PUBLIC + '/img/companies/rosbank.svg', alt: 'Росбанк', url: 'https://www.rosbank.ru' },
-          { src: PUBLIC + '/img/companies/tbank.png',   alt: 'ТБанк',   url: 'https://www.tbank.ru' },
+          { src: PUBLIC + '/img/companies/tbank.png',   alt: 'ТБанк',   url: 'https://www.tbank.ru', pill: true },
         ],
         period: 'Июн 2022 — Дек 2024', current: false,
       },
@@ -390,7 +390,7 @@ export const translations = {
         logoColor: true,
         logos: [
           { src: PUBLIC + '/img/companies/rosbank.svg', alt: 'Rosbank', url: 'https://www.rosbank.ru' },
-          { src: PUBLIC + '/img/companies/tbank.png',   alt: 'TBank',   url: 'https://www.tbank.ru' },
+          { src: PUBLIC + '/img/companies/tbank.png',   alt: 'TBank',   url: 'https://www.tbank.ru', pill: true },
         ],
         period: 'Jun 2022 — Dec 2024', current: false,
       },
