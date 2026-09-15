@@ -16,7 +16,6 @@ Thumbs.db
 .Trashes
 .VolumeIcon.icns
 .com.apple.timemachine.donotpresent
-*.icloud
 yandex_*.html
 
 # Coverage
@@ -102,3 +101,8 @@ skills-lock.json
 .env.test.local
 .env.production.local
 .env.local
+
+# iCloud Drive: conflict copies ("cli 2.py", "sbom 2/", also 3..9) and evicted-file stubs
+* [2-9]
+* [2-9].*
+*.icloud
