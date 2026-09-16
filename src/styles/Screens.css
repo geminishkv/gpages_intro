@@ -192,6 +192,17 @@
 .gp-on #skillset .gp-left .skills__stack-title { margin: 2px 0 0; }
 .gp-on #skillset .tools__show-more--full { display: none; }
 .gp-on #skillset .tools__certs-grid { grid-template-columns: repeat(4, 1fr); gap: 8px; }
+/* expanded list scrolls inside the panel instead of shrinking the whole screen */
+.gp-on #skillset .tools__certs-grid--expanded {
+  max-height: 34vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: 6px;
+  scrollbar-width: thin;
+  scrollbar-color: #2a2a2a transparent;
+}
+.gp-on #skillset .tools__certs-grid--expanded::-webkit-scrollbar { width: 6px; }
+.gp-on #skillset .tools__certs-grid--expanded::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 3px; }
 .gp-on #skillset .cert-card { padding: 10px 12px; gap: 4px; }
 .gp-on #skillset .cert-card__title { font-size: 0.8rem; line-height: 1.35; }
 .gp-on #skillset .tools { padding-bottom: 8px; }

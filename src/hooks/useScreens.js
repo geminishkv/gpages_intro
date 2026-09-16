@@ -11,6 +11,9 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 export const DESKTOP_MQ = '(min-width: 901px)';
 const REDUCE_MQ = '(prefers-reduced-motion: reduce)';
 const LEAVE_MS = 320;
+const LOCK_MS = 800;          // no second switch while the previous one is still animating
+const GESTURE_GAP_MS = 260;   // wheel events closer than this belong to the same gesture (trackpad inertia)
+const WHEEL_THRESHOLD = 60;
 
 const reduceMotion = () => window.matchMedia(REDUCE_MQ).matches;
 
@@ -54,7 +57,7 @@ export function useScreens({ count, ready }) {
     els[i].scrollTop = 0;
     setLeaving(from);
     setCur(i);
-    lockRef.current = Date.now() + (reduceMotion() ? 150 : 650);
+    lockRef.current = Date.now() + (reduceMotion() ? 150 : LOCK_MS);
     clearTimeout(leaveTimer.current);
     leaveTimer.current = setTimeout(() => setLeaving((l) => (l === from ? -1 : l)), LEAVE_MS);
   }, [screens]);
@@ -112,23 +115,46 @@ export function useScreens({ count, ready }) {
   useEffect(() => {
     if (!desktop || !ready) return undefined;
     const els = screens();
-    const canScroll = (dir) => {
-      const s = els[curRef.current];
-      if (!s) return false;
-      return dir > 0 ? s.scrollTop + s.clientHeight < s.scrollHeight - 2 : s.scrollTop > 2;
+    const scrollable = (el, dir) => {
+      if (!el || el.scrollHeight <= el.clientHeight + 2) return false;
+      const oy = getComputedStyle(el).overflowY;
+      if (oy !== 'auto' && oy !== 'scroll') return false;
+      return dir > 0 ? el.scrollTop + el.clientHeight < el.scrollHeight - 2 : el.scrollTop > 2;
+    };
+    const canScroll = (dir) => scrollable(els[curRef.current], dir);
+    // a scrollable box inside the screen (the certificate list, a long panel) scrolls first
+    const innerCanScroll = (target, dir) => {
+      const screen = els[curRef.current];
+      for (let el = target instanceof Element ? target : null; el && el !== screen; el = el.parentElement) {
+        if (scrollable(el, dir)) return true;
+      }
+      return false;
     };
     const next = () => goTo(curRef.current + 1);
     const prev = () => goTo(curRef.current - 1);
 
+    // One gesture, one switch: a trackpad keeps sending inertia events for a second or
+    // more after the fingers stop, so every event within GESTURE_GAP_MS of the previous
+    // one belongs to the gesture that already moved (or scrolled inside) the screen.
     let acc = 0;
+    let lastWheel = 0;
+    let gestureDone = false;
+    let gestureInner = false;
     const onWheel = (e) => {
       const dir = Math.sign(e.deltaY);
-      if (!dir || canScroll(dir)) return;          // the screen scrolls itself first
+      if (!dir) return;
+      const now = Date.now();
+      const fresh = now - lastWheel > GESTURE_GAP_MS;
+      lastWheel = now;
+      if (fresh) { acc = 0; gestureDone = false; gestureInner = innerCanScroll(e.target, dir) || canScroll(dir); }
+      if (innerCanScroll(e.target, dir) || canScroll(dir)) return;   // native scroll inside the screen
       e.preventDefault();
-      if (Date.now() < lockRef.current) return;
+      if (gestureDone || gestureInner) return;      // this gesture already did its job
+      if (now < lockRef.current) return;
       acc += e.deltaY;
-      if (Math.abs(acc) < 40) return;
+      if (Math.abs(acc) < WHEEL_THRESHOLD) return;
       acc = 0;
+      gestureDone = true;
       if (dir > 0) next(); else prev();
     };
 
@@ -138,7 +164,7 @@ export function useScreens({ count, ready }) {
       if (touchY === null) return;
       const dy = touchY - e.changedTouches[0].clientY;
       touchY = null;
-      if (Math.abs(dy) < 60 || Date.now() < lockRef.current || canScroll(Math.sign(dy))) return;
+      if (Math.abs(dy) < 60 || Date.now() < lockRef.current || canScroll(Math.sign(dy)) || innerCanScroll(e.target, Math.sign(dy))) return;
       if (dy > 0) next(); else prev();
     };
 
@@ -149,6 +175,7 @@ export function useScreens({ count, ready }) {
       const up = k === 'PageUp' || k === 'ArrowUp';
       if (!down && !up) return;
       const dir = down ? 1 : -1;
+      if (innerCanScroll(e.target, dir)) return;      // a focused inner list scrolls itself
       e.preventDefault();
       if (canScroll(dir)) { els[curRef.current].scrollBy({ top: dir * 160, behavior: 'smooth' }); return; }
       if (dir > 0) next(); else prev();
