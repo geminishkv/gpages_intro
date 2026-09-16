@@ -213,7 +213,6 @@ body {
   .projects__show-more,
   .tools__show-more,
   .ata-consent__btn,
-  .ata-legal__close,
   .lang-switch,
   .nav__burger {
     min-height: 44px;
@@ -224,12 +223,6 @@ body {
   .social-icon.social-icon {
     width: 44px;
     height: 44px;
-  }
-
-  .exp-card__logo-link {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
   }
 
   .pipe__company a,

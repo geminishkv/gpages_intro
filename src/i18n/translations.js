@@ -212,16 +212,13 @@ export const translations = {
     },
 
     blog: {
-      langNote: '',
       readBtn: 'Читать →',
       filtersLabel: 'Фильтр по тегам',
       filtersAll: 'все',
       readTime: (n) => `${n} мин`,
       empty: 'По этому тегу постов пока нет.',
-      openTelegram: 'Открыть в Telegram',
       ctaSub: 'Авторский канал про AppSec и DevSecOps',
       subscribeBtn: 'Подписаться →',
-      showMore: (n) => `Показать ещё ${n} ↓`,
       subscribersFmt: (n) => {
         const mod10 = n % 10;
         const mod100 = n % 100;
@@ -491,16 +488,13 @@ export const translations = {
     },
 
     blog: {
-      langNote: '',
       readBtn: 'Read →',
       filtersLabel: 'Filter by tag',
       filtersAll: 'all',
       readTime: (n) => `${n} min`,
       empty: 'No posts with this tag yet.',
-      openTelegram: 'Open in Telegram',
       ctaSub: 'AppSec and DevSecOps channel',
       subscribeBtn: 'Subscribe →',
-      showMore: (n) => `Show ${n} more ↓`,
       subscribersFmt: (n) => `${n} subscriber${n !== 1 ? 's' : ''}`,
     },
 
