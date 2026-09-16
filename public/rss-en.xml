@@ -8,13 +8,40 @@
     <atom:link href="https://geminishkv.tech/rss-en.xml" rel="self" type="application/rss+xml"/>
     <description>AppSec &amp; DevSecOps blog by Ilya Shmakov (geminishkv)</description>
     <language>en-US</language>
-    <lastBuildDate>Fri, 11 Sep 2026 10:14:06 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 14 Sep 2026 07:23:37 GMT</lastBuildDate>
     <managingEditor>shmakovis@inbox.ru (Ilya Shmakov)</managingEditor>
     <image>
       <url>https://geminishkv.tech/img/hero/avatar.jpg</url>
       <title>geminishkv — AppSec &amp; DevSecOps Blog (EN)</title>
       <link>https://geminishkv.tech/</link>
     </image>
+    <item>
+      <title>Beautiful</title>
+      <link>https://geminishkv.tech/blog/en/524/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/524/</guid>
+      <pubDate>Sun, 13 Sep 2026 00:00:00 GMT</pubDate>
+      <description>Beautiful 🙃 And it’s also fun to insert nbsp as an empty character  #lol</description>
+      <enclosure url="https://geminishkv.tech/img/blog/524.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>Some nice things have arrived, in fact I would like to do more for people</title>
+      <link>https://geminishkv.tech/blog/en/523/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/523/</guid>
+      <pubDate>Fri, 11 Sep 2026 00:00:00 GMT</pubDate>
+      <description>Some nice things have arrived, in fact I would like to do more for people 🙏🫶 #special #course #appsec</description>
+      <enclosure url="https://geminishkv.tech/img/blog/523.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>AppSec Labs to pump yourself Release v.2.2.0</title>
+      <link>https://geminishkv.tech/blog/en/522/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/522/</guid>
+      <pubDate>Fri, 11 Sep 2026 00:00:00 GMT</pubDate>
+      <description>🛠 AppSec Labs to pump yourself Release v.2.2.0 Salute, I&apos;m back with an update on the labs, I&apos;m tweaking and developing the project, I think it&apos;s cool Design and UI/UX: • Home rewritten as a custom template: dark canvas in the gpages palette, hero with a brand column (logo, “0”,</description>
+      <enclosure url="https://geminishkv.tech/img/blog/522.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
     <item>
       <title>A little style for your feed</title>
       <link>https://geminishkv.tech/blog/en/521/</link>
