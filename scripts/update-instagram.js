@@ -161,6 +161,12 @@ async function main() {
   try {
     data = await fetchPosts();
   } catch (e) {
+    // The source answers HTTP 503 "blocked" on its own schedule (from any network).
+    // That is not a bug in this script: keep the committed data and let the deploy go on.
+    if (/HTTP \d{3}|ECONN|ETIMEDOUT|ENOTFOUND/.test(e.message)) {
+      console.warn(`::warning::Instagram fetch failed (${e.message.slice(0, 160)}) — keeping ${OUTPUT} untouched.`);
+      process.exit(0);
+    }
     console.error(`✗ ${e.message}`);
     process.exit(1);
   }
