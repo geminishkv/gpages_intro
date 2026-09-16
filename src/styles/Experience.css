@@ -111,6 +111,8 @@
   object-fit: contain;
 }
 .pipe__node--pair .pipe__logo { max-height: 26px; }
+/* a rounded tile drawn on a black square (SberSpasibo): show only the tile on the white disc */
+.pipe__logo--round { clip-path: inset(1% round 22%); }
 .pipe__logo-link--pill .pipe__logo { max-height: 22px; width: auto; }
 
 /* ── Text ── */

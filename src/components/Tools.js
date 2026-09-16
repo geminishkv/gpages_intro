@@ -108,7 +108,7 @@ export default function Tools() {
 
           <div className="skills__panel">
             <h3 className="skills__panel-title">{t.sections.certifications}<small>{CERTS.length}</small></h3>
-            <div className="tools__certs-grid">
+            <div className={`tools__certs-grid${certsExpanded ? ' tools__certs-grid--expanded' : ''}`}>
               {visibleCerts.map((c) => (
                 <div key={c.title} className="cert-card">
                   <span className="cert-card__area">{c.area}</span>

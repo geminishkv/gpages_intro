@@ -194,146 +194,301 @@ function renderPost(post, lang) {
    INDEX PAGE
    ══════════════════════════════════════════════════════════ */
 
-const PER_PAGE = 15;
+const PER_PAGE = 15;      // static pages under /blog/page/N/ (the sitemap counts with the same size)
+const FIRST_PAGE = 24;    // cards on /blog/ before "show more"
+const TAG_LIMIT = 9;
+// tags that mark a substantive post: the featured slot skips memes
+const CONTENT_TAGS = ['appsec', 'devsecops', 'toolchain', 'reco', 'paper', 'techsolution', 'specialty', 'pmcases'];
 
+const L = {
+  ru: {
+    lang: 'ru', locale: 'ru-RU', heading: 'Блог', eyebrow: 'telegram · @appsecta',
+    desc: (y) => `Заметки о безопасной разработке, DevSecOps и жизни AppSec-лида. Посты из канала AppSecTA с ${y} года: инструменты, разборы, рекомендации, кейсы и немного мемов.`,
+    sub: 'Материалы по AppSec & DevSecOps', posts: 'постов', topics: 'тем', years: 'годы', all: 'все',
+    search: 'Поиск по постам', kicker: 'последний пост', read: 'Читать', more: 'Показать ещё', views: 'просм.',
+    empty: 'Ничего не нашлось. Попробуй другой тег или слово.',
+    subTitle: 'Свежие посты раньше сайта — в Telegram', subText: 'Канал @appsecta: новые посты каждую неделю, обсуждение в комментариях.',
+    subscribe: 'Подписаться', privacy: 'Политика конфиденциальности', home: 'На главную', page: 'Страница', prev: '← Назад', next: 'Далее →',
+    nav: { home: 'Главная', blog: 'Блог', experience: 'Опыт', skillset: 'Навыки', interests: 'Интересы', contacts: 'Контакты' },
+    other: 'EN', otherHref: '/blog/en/',
+  },
+  en: {
+    lang: 'en', locale: 'en-US', heading: 'Blog', eyebrow: 'telegram · @appsecta',
+    desc: (y) => `Notes on secure development, DevSecOps and the life of an AppSec lead. Posts from the AppSecTA channel since ${y}: tools, breakdowns, recommendations, cases and a few memes.`,
+    sub: 'AppSec & DevSecOps insights', posts: 'posts', topics: 'topics', years: 'years', all: 'all',
+    search: 'Search posts', kicker: 'latest post', read: 'Read', more: 'Show more', views: 'views',
+    empty: 'Nothing found. Try another tag or word.',
+    subTitle: 'Fresh posts land in Telegram first', subText: '@appsecta: new posts every week, discussion in the comments.',
+    subscribe: 'Subscribe', privacy: 'Privacy policy', home: 'Home', page: 'Page', prev: '← Prev', next: 'Next →',
+    nav: { home: 'Home', blog: 'Blog', experience: 'Career', skillset: 'Skillset', interests: 'Interests', contacts: 'Contacts' },
+    other: 'RU', otherHref: '/blog/',
+  },
+};
+
+const EMOJI = /[\u{1F300}-\u{1FAFF}☀-➿️‍]+/gu;
+const cleanLine = (l) => l.replace(EMOJI, '').trim();
+
+// Compact record per post for the index: title, excerpt, tags, thumbnail. Computed once per language.
+const indexCache = {};
+function indexItems(lang) {
+  if (indexCache[lang]) return indexCache[lang];
+  const items = posts.map((p) => {
+    const raw = (lang === 'en' && p.text_en) ? p.text_en : p.text;
+    const text = raw.replace(/#[\wЀ-ӿ]+/g, '').trim();
+    const lines = text.split('\n').map(cleanLine).filter(Boolean);
+    const title = (lines[0] || 'AppSec & DevSecOps').slice(0, 110);
+    const body = lines.slice(1).join(' ');
+    const excerpt = body.length > 230 ? body.slice(0, 230).replace(/\s+\S*$/, '') + '…' : body;
+    return { id: p.id, date: p.date, views: Number(p.views) || 0, tags: p.tags || [], title, excerpt, img: p.image || null };
+  }).sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : Number(b.id) - Number(a.id)));
+  indexCache[lang] = items;
+  return items;
+}
+
+function topTags() {
+  const count = new Map();
+  posts.forEach((p) => (p.tags || []).forEach((t) => count.set(t, (count.get(t) || 0) + 1)));
+  return [...count.entries()].sort((a, b) => b[1] - a[1]).slice(0, TAG_LIMIT);
+}
+
+const INDEX_CSS = `
+:root { --bg: #0a0a0a; --card: #111111; --line: #1f1f1f; --line2: #2a2a2a; --text: #e8e6e1; --muted: #a6a39d; --dim: #918f8a;
+  --red: #D51A1A; --gold: #F9B361; --display: 'Unbounded', 'Roboto', sans-serif; --body: 'Roboto', system-ui, sans-serif; --mono: 'Roboto Mono', ui-monospace, monospace;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1); --dur-fast: 160ms; --dur-ui: 220ms; --dur-reveal: 600ms; color-scheme: dark; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--bg); color: var(--text); }
+body { font-family: var(--body); font-size: 15px; line-height: 1.6; padding-inline: clamp(16px, 5vw, 120px); padding-block: 0 64px; position: relative; overflow-x: hidden; min-height: 100dvh; }
+body::before { content: ""; position: fixed; inset: 0; background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px); background-size: 64px 64px; pointer-events: none; -webkit-mask: radial-gradient(ellipse at 70% 20%, #000 20%, transparent 70%); mask: radial-gradient(ellipse at 70% 20%, #000 20%, transparent 70%); }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; }
+.wm { position: fixed; top: 40%; right: -14%; width: min(52vw, 760px); aspect-ratio: 1; background: url("/img/logotype/logo_white.svg") center/contain no-repeat; opacity: .06; pointer-events: none; transform: rotate(-8deg); z-index: 0; }
+.wrap { max-width: 1300px; margin: 0 auto; position: relative; z-index: 1; }
+.nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 18px 0; }
+.nav__brand { display: flex; align-items: center; gap: 10px; font-family: var(--display); font-weight: 700; font-size: 1.05rem; color: #fff; }
+.nav__logo { width: 38px; height: 38px; border-radius: 50%; background: #0a0a0a url("/img/logotype/logo_white.svg") center/contain no-repeat; box-shadow: 0 0 0 2px #D51A1A, 0 0 18px rgba(213,26,26,.55); }
+.nav__links { display: flex; gap: 4px; padding: 6px; border-radius: 40px; background: #111; border: 1px solid var(--line); }
+.nav__links a { font: 700 11px/1 var(--body); letter-spacing: .08em; text-transform: uppercase; padding: 10px 16px; border-radius: 30px; color: #fff; transition: background var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out); }
+.nav__links a:hover { background: #1c1c1c; } .nav__links a.is-active { background: #222; } .nav__links a:active { transform: scale(.97); }
+.nav__lang { font: 700 11px/1 var(--mono); letter-spacing: .12em; color: var(--muted); padding: 10px 14px; border: 1px solid var(--line); border-radius: 30px; transition: color var(--dur-fast), border-color var(--dur-fast); }
+.nav__lang:hover { color: #fff; border-color: var(--red); }
+.head { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 24px 48px; align-items: end; padding: 44px 0 26px; border-bottom: 1px solid var(--line); }
+.eyebrow { font: 700 11px/1 var(--mono); letter-spacing: .16em; text-transform: uppercase; color: var(--red); }
+h1 { font-family: var(--display); font-size: clamp(2.6rem, 5vw, 4.6rem); line-height: 1; letter-spacing: -.02em; margin: 12px 0 14px; color: #fff; text-wrap: balance; }
+.head p { margin: 0; max-width: 56ch; color: var(--muted); font-size: 1.02rem; text-wrap: pretty; }
+.stats { display: flex; gap: 28px; justify-content: flex-end; flex-wrap: wrap; }
+.stat b { display: block; font-family: var(--display); font-size: 1.7rem; color: #fff; font-variant-numeric: tabular-nums; }
+.stat span { font: 700 10px/1.6 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--dim); }
+.tools { display: flex; gap: 14px; align-items: center; justify-content: space-between; flex-wrap: wrap; padding: 18px 0 8px; position: sticky; top: 0; background: linear-gradient(var(--bg) 85%, transparent); z-index: 5; }
+.chips { display: flex; gap: 8px; flex-wrap: wrap; }
+.chip { font: 700 11px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; padding: 9px 13px; border: 1px solid var(--line2); border-radius: 30px; color: var(--muted); background: #0d0d0d; cursor: pointer; transition: border-color var(--dur-ui) var(--ease-out), color var(--dur-ui) var(--ease-out), background var(--dur-ui) var(--ease-out), transform var(--dur-fast) var(--ease-out); }
+.chip small { color: var(--dim); margin-left: 6px; font-weight: 400; }
+.chip:hover { border-color: var(--red); color: #fff; } .chip:active { transform: scale(.97); }
+.chip.is-on { border-color: var(--red); color: #fff; background: rgba(213,26,26,.12); }
+.search { display: flex; align-items: center; gap: 10px; border: 1px solid var(--line2); border-radius: 30px; padding: 0 14px; background: #0d0d0d; min-width: 260px; color: var(--muted); }
+.search input { background: transparent; border: 0; outline: 0; color: #fff; font: 400 14px/1 var(--body); padding: 11px 0; width: 100%; }
+.search input::placeholder { color: #8a8883; }
+.search:focus-within { border-color: var(--gold); }
+.feat { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); margin: 16px 0 22px; border: 1px solid var(--line2); border-radius: 10px; overflow: hidden; background: var(--card); transition: border-color var(--dur-ui) var(--ease-out), transform var(--dur-ui) var(--ease-out); }
+.feat__img { aspect-ratio: 16/10; min-height: 240px; width: 100%; height: 100%; object-fit: cover; display: block; background: #0d0d0d; }
+.feat__img--empty { background: linear-gradient(135deg, #171717, #0c0c0c) url("/img/logotype/logo_white.svg") center/40% no-repeat; }
+.feat__body { padding: 26px 28px; display: grid; gap: 12px; align-content: center; }
+.feat__kicker { font: 700 10px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--gold); }
+.feat h2 { font-family: var(--display); font-size: clamp(1.2rem, 1.9vw, 1.7rem); line-height: 1.2; margin: 0; color: #fff; }
+.feat p { margin: 0; color: var(--muted); }
+.meta { display: flex; gap: 14px; flex-wrap: wrap; font: 700 10px/1.6 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--dim); }
+.meta .tag { color: var(--red); }
+.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.card { display: grid; grid-template-rows: auto auto 1fr auto auto; gap: 10px; padding: 18px 20px; border: 1px solid var(--line); border-radius: 8px; background: var(--card); min-height: 190px; transition: border-color var(--dur-ui) var(--ease-out), transform var(--dur-ui) var(--ease-out); animation: in var(--dur-reveal) var(--ease-out) both; animation-delay: calc(var(--i, 0) * 20ms); }
+.card h3 { margin: 0; font-size: 1rem; line-height: 1.35; color: #fff; font-weight: 700; }
+.card p { margin: 0; color: var(--muted); font-size: .92rem; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.card__img { aspect-ratio: 16/9; width: 100%; border-radius: 6px; object-fit: cover; display: block; background: #0d0d0d; margin: -4px 0 4px; }
+.card__go { font: 700 11px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--gold); display: flex; gap: 8px; align-items: center; }
+.card__go i { font-style: normal; transition: transform var(--dur-ui) var(--ease-out); }
+@media (hover: hover) and (pointer: fine) { .card:hover, .feat:hover { border-color: var(--red); transform: translateY(-2px); } .card:hover .card__go i { transform: translateX(4px); } }
+.card:active { transform: translateY(0); }
+@keyframes in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.more { display: flex; justify-content: center; margin: 24px 0 0; }
+.btn { font: 700 12px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; padding: 14px 24px; border: 1px solid var(--line2); border-radius: 4px; background: #0a0a0a; color: #fff; cursor: pointer; position: relative; transition: border-color var(--dur-ui) var(--ease-out), box-shadow var(--dur-ui) var(--ease-out), transform var(--dur-fast) var(--ease-out); }
+.btn::before, .btn::after { content: ""; position: absolute; width: 7px; height: 4px; border: 2px solid var(--red); background: #0a0a0a; }
+.btn::before { top: -3.5px; left: 80%; } .btn::after { bottom: -3.5px; left: 20%; }
+.btn:hover { border-color: var(--red); box-shadow: 0 0 22px rgba(213,26,26,.3); } .btn:active { transform: scale(.97); }
+.btn--primary { background: linear-gradient(135deg, #D51A1A, #a01414); border-color: var(--red); }
+.empty { padding: 40px; text-align: center; color: var(--muted); border: 1px dashed var(--line2); border-radius: 8px; }
+.sub { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin: 36px 0 0; padding: 22px 26px; border: 1px solid var(--line2); border-radius: 10px; background: linear-gradient(135deg, #141414, #0d0d0d); flex-wrap: wrap; }
+.sub b { font-family: var(--display); font-size: 1.05rem; display: block; margin-bottom: 4px; color: #fff; }
+.sub span { color: var(--muted); font-size: .95rem; }
+.pag { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 32px; flex-wrap: wrap; font: 700 11px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+.pag__nums { display: flex; gap: 4px; flex-wrap: wrap; }
+.pag__link, .pag__current { display: inline-flex; align-items: center; justify-content: center; min-width: 32px; height: 32px; padding: 0 8px; border-radius: 4px; }
+.pag__link { color: var(--muted); border: 1px solid var(--line); } .pag__link:hover { border-color: var(--red); color: #fff; }
+.pag__current { background: var(--red); color: #fff; }
+.pag__arrow { color: var(--muted); border: 1px solid var(--line); border-radius: 4px; padding: 9px 14px; } .pag__arrow:hover { border-color: var(--red); color: #fff; }
+.pag__arrow--disabled { opacity: .3; pointer-events: none; }
+noscript .pag { margin-top: 24px; }
+footer { margin-top: 44px; padding-top: 16px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font: 400 11px/1.6 var(--mono); color: var(--dim); letter-spacing: .06em; }
+footer a { color: var(--muted); border-bottom: 1px solid #2a2a2a; }
+.disclaimer { width: 100%; font-size: 10px; color: var(--dim); }
+@media (max-width: 900px) { .head, .feat { grid-template-columns: 1fr; } .grid { grid-template-columns: 1fr 1fr; } .nav__links { display: none; } .stats { justify-content: flex-start; } .search { min-width: 0; width: 100%; } }
+@media (max-width: 600px) { .grid { grid-template-columns: 1fr; } .tools { position: static; } }
+@media (prefers-reduced-motion: reduce) { .card { animation: none; } .card, .feat, .chip, .btn, .card__go i { transition: none; } }
+`;
+
+function cardHtml(p, i, t, prefix) {
+  const tags = p.tags.slice(0, 3).map((x) => `<span class="tag">#${esc(x)}</span>`).join('');
+  return `<a class="card" style="--i:${i}" href="${prefix}/${p.id}/">` +
+    (p.img ? `<img class="card__img" src="${p.img}" alt="" loading="lazy" decoding="async">` : '') +
+    `<h3>${esc(p.title)}</h3><p>${esc(p.excerpt)}</p>` +
+    `<div class="meta"><span>${fmtDate(p.date, t.locale)}</span>${p.views ? `<span>${p.views} ${t.views}</span>` : ''}${tags}</div>` +
+    `<span class="card__go">${t.read} <i>→</i></span></a>`;
+}
+
+function featHtml(p, t, prefix) {
+  const tags = p.tags.slice(0, 3).map((x) => `<span class="tag">#${esc(x)}</span>`).join('');
+  return `<a class="feat" id="feat" href="${prefix}/${p.id}/">` +
+    (p.img ? `<img class="feat__img" src="${p.img}" alt="" decoding="async">` : '<div class="feat__img feat__img--empty"></div>') +
+    `<div class="feat__body"><span class="feat__kicker">${t.kicker}</span><h2>${esc(p.title)}</h2><p>${esc(p.excerpt)}</p>` +
+    `<div class="meta"><span>${fmtDate(p.date, t.locale)}</span>${p.views ? `<span>${p.views} ${t.views}</span>` : ''}${tags}</div></div></a>`;
+}
+
+// Page 1 is the interactive index (chips, search, "show more" over all posts); pages 2+
+// are the static slices behind /blog/page/N/ that the sitemap lists.
 function renderIndex(lang, pagePosts, pageNum, totalPages) {
+  const t = L[lang];
   const isEn = lang === 'en';
-  const heading = isEn ? 'Blog' : '\u0411\u043b\u043e\u0433';
-  const sub = isEn ? 'AppSec & DevSecOps insights' : '\u041c\u0430\u0442\u0435\u0440\u0438\u0430\u043b\u044b \u043f\u043e AppSec & DevSecOps';
-  const homeLabel = isEn ? '\u2190 Home' : '\u2190 \u0413\u043b\u0430\u0432\u043d\u0430\u044f';
-  const readLabel = isEn ? 'Read \u2192' : '\u0427\u0438\u0442\u0430\u0442\u044c \u2192';
-  const disclaimer = isEn ? DISCLAIMER_EN : DISCLAIMER_RU;
   const prefix = isEn ? '/blog/en' : '/blog';
+  const items = indexItems(lang);
+  const tags = topTags();
+  const years = [...new Set(items.map((p) => p.date.slice(0, 4)))].sort();
+  const first = pageNum === 1;
+  const disclaimer = isEn ? DISCLAIMER_EN : DISCLAIMER_RU;
+  const pageTitle = first ? `${t.heading} — geminishkv` : `${t.heading} — ${t.page} ${pageNum} — geminishkv`;
 
-  const cards = pagePosts.map(post => {
-    const text = (isEn && post.text_en) ? post.text_en : post.text;
-    const title = extractTitle(text);
-    const desc = truncate(text, 120);
-    const dateStr = fmtDate(post.date, isEn ? 'en-US' : 'ru-RU');
-    const href = isEn ? `/blog/en/${post.id}/` : `/blog/${post.id}/`;
-    const views = fmtViews(post.views);
-    const tags = post.tags?.slice(0, 3).map(t => `<span class="card-tag">#${esc(t)}</span>`).join('') || '';
-
-    return `<a href="${href}" class="card">
-        ${post.image ? `<img src="${post.image}" alt="" class="card__cover" loading="lazy" />` : ''}
-        <div class="card__body">
-          <div class="card__meta"><span>${dateStr}</span>${views ? `<span>\u00b7 ${views}</span>` : ''}</div>
-          <h2 class="card__title">${esc(title)}</h2>
-          <p class="card__desc">${esc(desc)}</p>
-          ${tags ? `<div class="card__tags">${tags}</div>` : ''}
-          <span class="card__read">${readLabel}</span>
-        </div>
-      </a>`;
-  }).join('\n');
-
-  // Pagination links
-  let paginationHtml = '';
-  if (totalPages > 1) {
-    const prevHref = pageNum > 1 ? (pageNum === 2 ? `${prefix}/` : `${prefix}/page/${pageNum - 1}/`) : null;
+  let main;
+  if (first) {
+    const featured = items.find((p) => p.tags.some((x) => CONTENT_TAGS.includes(x))) || items[0];
+    const rest = items.filter((p) => p !== featured);
+    const data = JSON.stringify(items).replace(/</g, '\\u003c');
+    const tagsJson = JSON.stringify(tags);
+    const chips = tags.map(([x, n]) => `<button class="chip" type="button" data-tag="${esc(x)}">#${esc(x)}<small>${n}</small></button>`).join('');
+    const noscriptPages = Array.from({ length: totalPages }, (_, i) => i + 1)
+      .map((i) => (i === 1 ? `<span class="pag__current">1</span>` : `<a class="pag__link" href="${prefix}/page/${i}/">${i}</a>`)).join('');
+    main = `
+<header class="head">
+  <div><span class="eyebrow">// ${t.eyebrow}</span><h1>${t.heading}</h1><p>${t.desc(years[0])}</p></div>
+  <div class="stats"><div class="stat"><b>${items.length}</b><span>${t.posts}</span></div><div class="stat"><b>${tags.length}</b><span>${t.topics}</span></div><div class="stat"><b>${years[0]}–${years[years.length - 1]}</b><span>${t.years}</span></div></div>
+</header>
+<div class="tools">
+  <div class="chips" id="chips" role="group"><button class="chip is-on" type="button" data-tag="">${t.all}<small>${items.length}</small></button>${chips}</div>
+  <label class="search"><span aria-hidden="true">⌕</span><input id="q" type="search" placeholder="${t.search}" autocomplete="off" aria-label="${t.search}"></label>
+</div>
+${featured ? featHtml(featured, t, prefix) : ''}
+<div class="grid" id="grid">${rest.slice(0, FIRST_PAGE).map((p, i) => cardHtml(p, i, t, prefix)).join('\n')}</div>
+<div class="empty" id="empty" hidden>${t.empty}</div>
+<div class="more"><button class="btn" id="more" type="button"${rest.length <= FIRST_PAGE ? ' hidden' : ''}>${t.more} ${Math.min(FIRST_PAGE, Math.max(0, rest.length - FIRST_PAGE))}</button></div>
+<noscript><nav class="pag"><div class="pag__nums">${noscriptPages}</div></nav></noscript>
+<div class="sub"><div><b>${t.subTitle}</b><span>${t.subText}</span></div><a class="btn btn--primary" href="https://t.me/appsecta" target="_blank" rel="noreferrer">${t.subscribe}</a></div>
+<script>
+(function () {
+  var POSTS = ${data};
+  var TAGS = ${tagsJson};
+  var PAGE = ${FIRST_PAGE}, PREFIX = '${prefix}', LOCALE = '${t.locale}', CONTENT = ${JSON.stringify(CONTENT_TAGS)};
+  var T = { kicker: '${t.kicker}', read: '${t.read}', more: '${t.more}', views: '${t.views}' };
+  var tag = '', q = '', shown = PAGE, dirty = false;
+  var grid = document.getElementById('grid'), feat = document.getElementById('feat'), more = document.getElementById('more'), empty = document.getElementById('empty'), chips = document.getElementById('chips');
+  var fmt = function (d) { return new Date(d + 'T00:00:00').toLocaleDateString(LOCALE, { day: 'numeric', month: 'long', year: 'numeric' }); };
+  var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+  function meta(p) { return '<div class="meta"><span>' + fmt(p.date) + '</span>' + (p.views ? '<span>' + p.views + ' ' + T.views + '</span>' : '') + p.tags.slice(0, 3).map(function (x) { return '<span class="tag">#' + esc(x) + '</span>'; }).join('') + '</div>'; }
+  function filtered() { return POSTS.filter(function (p) { return (!tag || p.tags.indexOf(tag) >= 0) && (!q || (p.title + ' ' + p.excerpt).toLowerCase().indexOf(q) >= 0); }); }
+  function render() {
+    var list = filtered();
+    var first = (!tag && !q) ? (list.filter(function (p) { return p.tags.some(function (x) { return CONTENT.indexOf(x) >= 0; }); })[0] || list[0]) : list[0];
+    if (feat) {
+      if (first) {
+        feat.hidden = false; feat.href = PREFIX + '/' + first.id + '/';
+        feat.innerHTML = (first.img ? '<img class="feat__img" src="' + first.img + '" alt="" decoding="async">' : '<div class="feat__img feat__img--empty"></div>') +
+          '<div class="feat__body"><span class="feat__kicker">' + T.kicker + '</span><h2>' + esc(first.title) + '</h2><p>' + esc(first.excerpt) + '</p>' + meta(first) + '</div>';
+      } else { feat.hidden = true; }
+    }
+    var rest = list.filter(function (p) { return p !== first; }).slice(0, shown);
+    grid.innerHTML = rest.map(function (p, i) {
+      return '<a class="card" style="--i:' + (i % PAGE) + '" href="' + PREFIX + '/' + p.id + '/">' + (p.img ? '<img class="card__img" src="' + p.img + '" alt="" loading="lazy" decoding="async">' : '') +
+        '<h3>' + esc(p.title) + '</h3><p>' + esc(p.excerpt) + '</p>' + meta(p) + '<span class="card__go">' + T.read + ' <i>→</i></span></a>';
+    }).join('');
+    empty.hidden = list.length > 0;
+    var left = Math.max(0, list.length - (first ? 1 : 0) - shown);
+    more.hidden = left <= 0; more.textContent = T.more + ' ' + Math.min(PAGE, left);
+  }
+  chips.addEventListener('click', function (e) { var b = e.target.closest('.chip'); if (!b) return; tag = b.getAttribute('data-tag'); Array.prototype.forEach.call(chips.children, function (c) { c.classList.toggle('is-on', c === b); }); shown = PAGE; render(); });
+  document.getElementById('q').addEventListener('input', function (e) { q = e.target.value.trim().toLowerCase(); shown = PAGE; render(); });
+  more.addEventListener('click', function () { shown += PAGE; render(); });
+})();
+</script>`;
+  } else {
+    const start = (pageNum - 1) * PER_PAGE;
+    const slice = items.slice(start, start + PER_PAGE);
+    const prevHref = pageNum === 2 ? `${prefix}/` : `${prefix}/page/${pageNum - 1}/`;
     const nextHref = pageNum < totalPages ? `${prefix}/page/${pageNum + 1}/` : null;
-    const prevLabel = isEn ? '\u2190 Prev' : '\u2190 \u041d\u0430\u0437\u0430\u0434';
-    const nextLabel = isEn ? 'Next \u2192' : '\u0414\u0430\u043b\u0435\u0435 \u2192';
-
-    let pages = '';
+    let nums = '';
     for (let i = 1; i <= totalPages; i++) {
       const href = i === 1 ? `${prefix}/` : `${prefix}/page/${i}/`;
-      pages += i === pageNum
-        ? `<span class="pag__current">${i}</span>`
-        : `<a href="${href}" class="pag__link">${i}</a>`;
+      nums += i === pageNum ? `<span class="pag__current">${i}</span>` : `<a href="${href}" class="pag__link">${i}</a>`;
     }
-
-    paginationHtml = `
-    <nav class="pag">
-      ${prevHref ? `<a href="${prevHref}" class="pag__arrow">${prevLabel}</a>` : `<span class="pag__arrow pag__arrow--disabled">${prevLabel}</span>`}
-      <div class="pag__nums">${pages}</div>
-      ${nextHref ? `<a href="${nextHref}" class="pag__arrow">${nextLabel}</a>` : `<span class="pag__arrow pag__arrow--disabled">${nextLabel}</span>`}
-    </nav>`;
+    main = `
+<header class="head">
+  <div><span class="eyebrow">// ${t.eyebrow}</span><h1>${t.heading}</h1><p>${t.sub} · ${t.page} ${pageNum}</p></div>
+  <div class="stats"><div class="stat"><b>${items.length}</b><span>${t.posts}</span></div></div>
+</header>
+<div class="grid" style="margin-top:22px">${slice.map((p, i) => cardHtml(p, i, t, prefix)).join('\n')}</div>
+<nav class="pag">
+  <a href="${prevHref}" class="pag__arrow">${t.prev}</a>
+  <div class="pag__nums">${nums}</div>
+  ${nextHref ? `<a href="${nextHref}" class="pag__arrow">${t.next}</a>` : `<span class="pag__arrow pag__arrow--disabled">${t.next}</span>`}
+</nav>`;
   }
 
-  const pageTitle = pageNum > 1 ? `${heading} \u2014 ${pageNum} \u2014 geminishkv` : `${heading} \u2014 geminishkv`;
-
+  const pageHref = first ? `${prefix}/` : `${prefix}/page/${pageNum}/`;
   return `<!DOCTYPE html>
-<html lang="${isEn ? 'en' : 'ru'}">
+<html lang="${t.lang}">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>${pageTitle}</title>
-  <meta name="description" content="${esc(sub)} \u2014 ${posts.length} ${isEn ? 'posts' : '\u043f\u043e\u0441\u0442\u043e\u0432'}" />
-  <meta name="author" content="${isEn ? 'Ilya Shmakov' : '\u0418\u043b\u044c\u044f \u0428\u043c\u0430\u043a\u043e\u0432'}" />
+  <meta name="description" content="${esc(t.sub)} — ${items.length} ${t.posts}" />
+  <meta name="author" content="${isEn ? 'Ilya Shmakov' : 'Илья Шмаков'}" />
   <meta name="keywords" content="appsec blog, devsecops blog, application security, geminishkv, безопасность приложений, блог по ИБ" />
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#0a0a0a" />
-  <link rel="canonical" href="${BASE_URL}${prefix}/" />
+  <link rel="canonical" href="${BASE_URL}${pageHref}" />
   <link rel="sitemap" href="/sitemap.xml" />
   <link rel="alternate" type="application/rss+xml" title="geminishkv blog" href="${isEn ? '/rss-en.xml' : '/rss.xml'}" />
   <link rel="alternate" hreflang="ru" href="${BASE_URL}/blog/" />
   <link rel="alternate" hreflang="en" href="${BASE_URL}/blog/en/" />
   <link rel="alternate" hreflang="x-default" href="${BASE_URL}/blog/" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="${BASE_URL}${prefix}/" />
-  <meta property="og:title" content="${heading} \u2014 geminishkv" />
-  <meta property="og:description" content="${esc(sub)}" />
+  <meta property="og:url" content="${BASE_URL}${pageHref}" />
+  <meta property="og:title" content="${t.heading} — geminishkv" />
+  <meta property="og:description" content="${esc(t.sub)}" />
   <meta property="og:image" content="${BASE_URL}/img/hero/avatar.jpg" />
   <meta property="og:locale" content="${isEn ? 'en_US' : 'ru_RU'}" />
   <meta property="og:site_name" content="geminishkv" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@geminishkv" />
-  <meta name="twitter:title" content="${heading} \u2014 geminishkv" />
+  <meta name="twitter:title" content="${t.heading} — geminishkv" />
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="stylesheet" href="/fonts/fonts.css" />
-  <style>${CSS}
-    .page { max-width: 1900px; padding: 0 clamp(24px, 5vw, 120px) 64px; }
-    .header { margin-bottom: 32px; }
-    .header h1 { font-family: 'Unbounded', sans-serif; font-size: 1.6rem; font-weight: 700; margin-bottom: 6px; background: linear-gradient(135deg, var(--accent), var(--gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .header p { font-size: 0.8rem; color: var(--muted); }
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 14px; }
-    .card { display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; transition: border-color .2s, transform .2s; }
-    .card:hover { border-color: var(--accent); transform: translateY(-2px); }
-    .card__cover { width: 100%; height: 200px; object-fit: cover; }
-    .card__body { padding: 14px 16px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
-    .card__meta { font-size: 0.58rem; color: var(--muted); display: flex; gap: 6px; letter-spacing: 0.06em; text-transform: uppercase; }
-    .card__title { font-size: 0.85rem; font-weight: 700; color: #fff; line-height: 1.3; }
-    .card__desc { font-size: 0.72rem; color: #aaa; line-height: 1.5; flex: 1; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-    .card__tags { display: flex; gap: 4px; flex-wrap: wrap; }
-    .card-tag { font-size: 0.55rem; color: var(--gold); background: rgba(249,179,97,.06); border: 1px solid rgba(249,179,97,.15); border-radius: 3px; padding: 2px 6px; }
-    .card__read { font-size: 0.62rem; color: var(--muted); letter-spacing: 0.06em; transition: color .2s; }
-    .card:hover .card__read { color: var(--accent); }
-
-    .pag { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 32px; }
-    .pag__nums { display: flex; gap: 4px; }
-    .pag__link, .pag__current { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 4px; font-size: 0.72rem; font-weight: 700; transition: background .2s, color .2s; }
-    .pag__link { color: var(--muted); border: 1px solid var(--border); }
-    .pag__link:hover { border-color: var(--accent); color: #fff; }
-    .pag__current { background: var(--accent); color: #fff; }
-    .pag__arrow { font-size: 0.68rem; font-weight: 600; color: var(--muted); border: 1px solid var(--border); border-radius: 4px; padding: 6px 14px; transition: border-color .2s, color .2s; letter-spacing: 0.04em; }
-    .pag__arrow:hover { border-color: var(--accent); color: #fff; }
-    .pag__arrow--disabled { opacity: 0.3; pointer-events: none; }
-
-    @media (max-width: 900px) { .grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); } }
-    @media (max-width: 576px) { .grid { grid-template-columns: 1fr; } .header h1 { font-size: 1.2rem; } .pag__nums { display: none; } }
-  </style>
+  <style>${INDEX_CSS}</style>
 </head>
 <body>
-  <div class="page">
-    <nav class="nav">
-      <a href="/" class="nav__brand"><img src="/img/logotype/logo_white.svg" alt="" />geminishkv</a>
-      <div class="nav__right-group">
-        <a href="${isEn ? '/blog/' : '/blog/en/'}" class="lang-toggle">${isEn ? 'RU' : 'EN'}</a>
-        <a href="/" class="nav__back">${homeLabel}</a>
-      </div>
-    </nav>
-    <div class="header">
-      <h1>${heading}</h1>
-      <p>${sub} \u00b7 ${posts.length} ${isEn ? 'posts' : '\u043f\u043e\u0441\u0442\u043e\u0432'}</p>
-    </div>
-    <div class="grid">${cards}</div>
-    ${paginationHtml}
-    <div class="divider"></div>
-    <footer class="footer">
-      <p>\u00a9 ${new Date().getFullYear()} <a href="/">geminishkv.tech</a></p>
-      <p class="disclaimer">${disclaimer}</p>
-    </footer>
-  </div>
+<div class="wm" aria-hidden="true"></div>
+<div class="wrap">
+<nav class="nav">
+  <a class="nav__brand" href="/"><span class="nav__logo"></span>geminishkv</a>
+  <div class="nav__links"><a href="/">${t.nav.home}</a><a class="is-active" href="${prefix}/">${t.nav.blog}</a><a href="/#experience">${t.nav.experience}</a><a href="/#skillset">${t.nav.skillset}</a><a href="/#interests">${t.nav.interests}</a><a href="/#contacts">${t.nav.contacts}</a><a href="https://my.idot.vip/geminishkv" target="_blank" rel="noreferrer">NFC</a></div>
+  <a class="nav__lang" href="${t.otherHref}">${t.other}</a>
+</nav>
+${main}
+<footer><span>© ${new Date().getFullYear()} Elijah S Shmakov</span><span><a href="/privacy/">${t.privacy}</a> · <a href="${isEn ? '/rss-en.xml' : '/rss.xml'}">RSS</a> · <a href="/">${t.home}</a></span><span class="disclaimer">${disclaimer}</span></footer>
+</div>
 </body>
 </html>`;
 }
