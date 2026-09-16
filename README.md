@@ -35,7 +35,7 @@
 |------|-----------|
 | UI-фреймворк | React 18 (CRA) |
 | Анимации | anime.js 3.2.2 + IntersectionObserver + CSS keyframes |
-| Стили | CSS Design System (90+ токенов, custom properties, clamp, clip-path) |
+| Стили | CSS Design System (100+ токенов, custom properties, clamp, clip-path) |
 | i18n | LangContext (RU/EN) — localStorage, без сторонних библиотек |
 | Деплой | `scripts/deploy.js` (git) → GitHub Pages, ветка `gh-pages` |
 | Домен | geminishkv.tech (reg.ru + GitHub Pages custom domain) |
@@ -76,7 +76,7 @@
 
 ### Design System
 
-90+ CSS-токенов в `:root` (App.css):
+100+ CSS-токенов в `:root` (App.css):
 
 | Категория | Токенов | Примеры |
 |-----------|---------|---------|
@@ -143,7 +143,7 @@ Hardening: pinned action SHA, least-privilege permissions (`contents: read` по
 ```bash
 git clone -b gpages https://github.com/geminishkv/gpages_intro.git
 cd gpages_intro
-npm install
+npm ci
 npm start                  # React dev → http://localhost:3000
 npm run build && node scripts/generate-blog-pages.js
 npx serve build -l 4000   # Статика + блог → http://localhost:4000
@@ -154,7 +154,7 @@ npx serve build -l 4000   # Статика + блог → http://localhost:4000
 ```bash
 node scripts/update-tg-posts.js        # Последние 20 постов (incremental merge)
 node scripts/update-tg-posts.js --all  # ВСЕ посты (пагинация, разовый)
-node scripts/update-instagram.js       # Instagram посты
+node scripts/update-instagram.js       # Instagram посты (источник отвечает 503 — данные заморожены)
 node scripts/update-stats.js           # GitHub stars/forks
 node scripts/generate-sitemap.js       # sitemap.xml (≈760 URL)
 node scripts/generate-rss.js           # rss.xml (RU) + rss-en.xml (EN)
@@ -191,7 +191,8 @@ gpages/
 │   ├── sitemap.xml           # ≈760 URL с hreflang
 │   ├── rss.xml / rss-en.xml  # RSS-фиды
 │   ├── llms.txt              # AI-краулеры
-│   └── robots.txt            # Yandex + scrapers block
+│   ├── robots.txt            # Yandex + scrapers block
+│   └── CNAME · .nojekyll · yandex_*.html  # Домен Pages, без Jekyll, верификация Вебмастера
 ├── src/
 │   ├── components/
 │   │   ├── SplashScreen.js   # Shader canvas + pretitle SVG (30 мин reshow)
@@ -211,7 +212,7 @@ gpages/
 │   │   ├── Tools.js          # Домены-чипы + сертификаты + стек
 │   │   ├── Instagram.js      # 8 последних постов Instagram
 │   │   ├── Footer.js         # 4 колонки + политика, смена выбора по cookie, RSS
-│   │   ├── SicParvisMagnaPill.js
+│   │   ├── SicParvisMagnaPill.js # Пилюля Sic Parvis Magna (BrandColumn)
 │   │   └── AboutModal.js     # Resume (hh.ru) + achievements
 │   ├── context/LangContext.js
 │   ├── lib/consent.js        # Хранение согласия + загрузка Plausible/Метрики
@@ -219,10 +220,10 @@ gpages/
 │   ├── i18n/translations.js  # RU/EN + nav + sections
 │   ├── constants/index.js
 │   ├── data/
-│   │   ├── tg-posts.json     # 182 поста Telegram (CI incremental)
+│   │   ├── tg-posts.json     # 350+ постов Telegram (CI incremental, переводы кешируются в text_en)
 │   │   └── instagram.json    # Instagram (CI)
 │   └── styles/
-│       ├── App.css           # 90+ design tokens (:root)
+│       ├── App.css           # 100+ design tokens (:root)
 │       ├── Buttons.css       # ContactBtn + ContentBtn + PackageBtn + DownloadBtn + SocialIcons
 │       ├── CardBase.css      # Общий фундамент карточек
 │       ├── SectionHead.css   # Заголовок секции
@@ -237,14 +238,17 @@ gpages/
 │       └── [Component].css   # Nav, Hero, Mac, Blog, etc.
 ├── scripts/
 │   ├── update-tg-posts.js    # Telegram scraper (--all для полного)
-│   ├── update-instagram.js   # Instagram + cleanup orphans
+│   ├── update-instagram.js   # Instagram + cleanup orphans (при 503 — ::warning, данные не трогает)
 │   ├── update-stats.js       # GitHub API
 │   ├── generate-sitemap.js   # ≈760 URL + hreflang + ping Yandex
 │   ├── generate-rss.js       # RSS RU + EN
 │   ├── generate-blog-pages.js # Index (пагинация) + post pages (RU+EN)
 │   └── deploy.js             # gh-pages (Node 25 compatible)
-├── .github/workflows/
-│   └── ci.yml                # Build (push) · Weekly Update + Deploy (cron)
+├── .github/
+│   ├── workflows/ci.yml      # Build (push) · Weekly Update + Deploy (cron)
+│   ├── dependabot.yml        # Пины actions + npm minor/patch; мажоры, которые CRA 5 не берёт, игнорируются
+│   └── CODEOWNERS
+├── LICENSE.md · NOTICE.md · SECURITY.md · CONTRIBUTING.md · CODE_OF_CONDUCT.md
 ├── package.json
 └── README.md
 ```
@@ -253,4 +257,7 @@ gpages/
 
 Copyright (c) 2026 Elijah S Shmakov
 
-![logo](public/img/logotype/logotypemd.jpg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="public/img/logotype/logo_white.svg">
+  <img src="public/img/logotype/logo_black.svg" alt="geminishkv" width="120">
+</picture>
