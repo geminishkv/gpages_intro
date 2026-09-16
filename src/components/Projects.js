@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import '../styles/Projects.css';
 import { useLang } from '../context/LangContext';
-import GlitchLabel from './GlitchLabel';
+import SectionHead from './SectionHead';
 
 const PROJECTS_INITIAL = 3;
 
@@ -30,17 +30,12 @@ export default function Projects({ isVisible }) {
 
   return (
     <section className={`projects${isVisible ? ' projects--visible' : ''}`}>
-      <div className="projects__header">
-        <GlitchLabel text={t.sections.projects} className="projects__label" />
-        <a
-          href="https://github.com/geminishkv"
-          target="_blank"
-          rel="noreferrer"
-          className="projects__github-link"
-        >
-          GitHub →
-        </a>
-      </div>
+      <SectionHead
+        eyebrow={t.sectionHead.projects.eyebrow}
+        title={t.sections.projects}
+        sub={t.sectionHead.projects.sub}
+        action={{ href: 'https://github.com/geminishkv', label: t.sectionHead.projects.action, external: true }}
+      />
 
       <div className="projects__grid">
         {visible.map((p) => (

@@ -8,19 +8,6 @@
   align-self: center;
 }
 
-.instagram__header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 28px;
-}
-
-.instagram__label {
-  font-size: 0.85rem;
-  font-weight: var(--font-bold, 700);
-  color: #ffffff;
-  letter-spacing: 0.04em;
-}
-
 /* 8 posts + the profile card = 9 items: three columns fill the grid exactly on
    desktop; on tablets the profile card spans the last row instead of sitting alone. */
 .instagram__grid {

@@ -27,10 +27,6 @@ export function setConsent(value) {
   if (value === 'accepted') loadAnalytics();
 }
 
-export function resetConsent() {
-  try { localStorage.removeItem(CONSENT_KEY); } catch { /* ignore */ }
-}
-
 function addScript(src, attrs = {}) {
   const el = document.createElement('script');
   el.src = src;
@@ -41,7 +37,7 @@ function addScript(src, attrs = {}) {
 
 // Plausible (cookieless) + Yandex Metrika. Only on the production hosts, so local
 // and preview builds never report anything.
-export function loadAnalytics() {
+function loadAnalytics() {
   if (analyticsLoaded || typeof window === 'undefined') return;
   if (!ANALYTICS_HOSTS.includes(window.location.hostname)) return;
   analyticsLoaded = true;

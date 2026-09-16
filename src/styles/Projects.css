@@ -15,33 +15,6 @@
   transform: translateY(0);
 }
 
-.projects__header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-
-.projects__label {
-  font-size: 0.85rem;
-  font-weight: var(--font-bold, 700);
-  color: #ffffff;
-  letter-spacing: 0.04em;
-}
-
-.projects__github-link {
-  font-size: 0.75rem;
-  color: var(--text-tertiary, #555555);
-  text-decoration: none;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  transition: color 0.2s;
-}
-
-.projects__github-link:hover {
-  color: #D51A1A;
-}
-
 /* ── Grid ── */
 .projects__grid {
   display: grid;

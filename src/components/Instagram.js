@@ -1,7 +1,7 @@
 import '../styles/Instagram.css';
 import IG_DATA from '../data/instagram.json';
 import { useLang } from '../context/LangContext';
-import GlitchLabel from './GlitchLabel';
+import SectionHead from './SectionHead';
 
 const IG_LIMIT = 8;
 
@@ -20,9 +20,12 @@ export default function Instagram() {
 
   return (
     <section className="instagram">
-      <div className="instagram__header">
-        <GlitchLabel text={t.sections.interests} className="instagram__label" />
-      </div>
+      <SectionHead
+        eyebrow={t.sectionHead.interests.eyebrow}
+        title={t.sections.interests}
+        sub={t.sectionHead.interests.sub}
+        action={{ href: 'https://www.instagram.com/geminishkv', label: t.sectionHead.interests.action, external: true }}
+      />
 
       <div className="instagram__grid">
         {posts.slice(0, IG_LIMIT).map((p) => (

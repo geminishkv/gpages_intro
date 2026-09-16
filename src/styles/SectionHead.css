@@ -1,0 +1,77 @@
+/* ── Section header: eyebrow → title → subtitle, action on the right ── */
+.sec-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.sec-head__main {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+.sec-head__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: var(--font-bold, 700);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-red, #D51A1A);
+}
+
+.sec-head__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.2vw, 2rem);
+  font-weight: var(--font-bold, 700);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  text-wrap: balance;
+}
+
+.sec-head__sub {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: var(--leading-normal, 1.5);
+  color: var(--text-secondary, #888888);
+  max-width: 640px;
+}
+
+.sec-head__action {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: var(--font-bold, 700);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-pale, #aaaaaa);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border-strong, #2a2a2a);
+  padding: 10px 0 6px;
+  white-space: nowrap;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.sec-head__action b {
+  color: var(--color-red, #D51A1A);
+}
+
+.sec-head__action:hover,
+.sec-head__action:focus-visible {
+  color: #ffffff;
+  border-color: var(--color-red, #D51A1A);
+}
+
+@media (max-width: 576px) {
+  .sec-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 22px;
+  }
+  .sec-head__title { font-size: 1.5rem; }
+}

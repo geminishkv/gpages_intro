@@ -6,8 +6,11 @@ import '../styles/LogoGlow.css';
 import { LOGO_IMG } from '../constants';
 import { useLang } from '../context/LangContext';
 
+const SECTION_LINKS = ['blog', 'experience', 'skillset', 'interests'];
+
 export default function Nav({ navRef, onAboutOpen }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeId, setActiveId] = useState(null);
   const { lang, setLang, t } = useLang();
   const n = t.nav;
 
@@ -24,6 +27,10 @@ export default function Nav({ navRef, onAboutOpen }) {
         window.scrollY
       );
       nav.classList.toggle('nav--scrolled', top > 10);
+      // reading progress line: whichever element actually scrolls
+      const scroller = mainPage && mainPage.scrollHeight > mainPage.clientHeight ? mainPage : document.documentElement;
+      const range = scroller.scrollHeight - scroller.clientHeight;
+      nav.style.setProperty('--nav-progress', range > 0 ? String(Math.min(1, top / range)) : '0');
     };
     if (mainPage) mainPage.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -32,6 +39,22 @@ export default function Nav({ navRef, onAboutOpen }) {
       window.removeEventListener('scroll', onScroll);
     };
   }, [navRef]);
+
+  // Highlight the pill of the section in the middle of the viewport
+  useEffect(() => {
+    const els = SECTION_LINKS.map(id => document.getElementById(id)).filter(Boolean);
+    if (!els.length || typeof IntersectionObserver === 'undefined') return undefined;
+    const visible = new Map();
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => visible.set(e.target.id, e.isIntersecting));
+      const current = SECTION_LINKS.find(id => visible.get(id));
+      setActiveId(current ?? null);
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    els.forEach(el => obs.observe(el));
+    return () => obs.disconnect();
+  }, []);
+
+  const linkProps = (id) => (activeId === id ? { className: 'nav__link--active', 'aria-current': 'location' } : {});
 
   // Блокируем скролл — iOS Safari требует position:fixed на body
   useEffect(() => {
@@ -84,7 +107,8 @@ export default function Nav({ navRef, onAboutOpen }) {
 
   return (
     <>
-      <nav ref={navRef} className="nav" style={{ opacity: 0 }}>
+      <nav ref={navRef} className="nav" style={{ opacity: 0 }} aria-label={n.ariaLabel}>
+        <span className="nav__progress" aria-hidden="true" />
         <div className="nav__logo">
           <div className="logo-glow logo-glow--nav">
             <span className="logo-glow__blur logo-glow__blur--1" />
@@ -100,10 +124,10 @@ export default function Nav({ navRef, onAboutOpen }) {
         <div className="nav__right">
           <div className="nav__links">
             <button className="nav__link-btn" onClick={onAboutOpen}>{n.about}</button>
-            <a href="/blog/">{n.blog}</a>
-            <a href="#experience">{n.experience}</a>
-            <a href="#skillset">{n.skillset}</a>
-            <a href="#interests">{n.interests}</a>
+            <a href="/blog/" {...linkProps('blog')}>{n.blog}</a>
+            <a href="#experience" {...linkProps('experience')}>{n.experience}</a>
+            <a href="#skillset" {...linkProps('skillset')}>{n.skillset}</a>
+            <a href="#interests" {...linkProps('interests')}>{n.interests}</a>
             <a href="https://my.idot.vip/geminishkv" target="_blank" rel="noreferrer">{n.nfcCard}</a>
             <a href="/privacy/" className="nav__link--secondary">{n.privacy}</a>
           </div>

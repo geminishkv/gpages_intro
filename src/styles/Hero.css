@@ -1,9 +1,12 @@
 .hero {
-  flex: 1;
+  position: relative;
+  /* grow into free space, never shrink below the content (the lead made it taller
+     than 85vh at 1440x900 and the next section overlapped the contacts row) */
+  flex: 1 0 auto;
   min-height: 85vh;
   display: flex;
   align-items: center;
-  padding: 0 clamp(40px, 5vw, 120px);
+  padding: 88px clamp(40px, 5vw, 120px) 32px;
   gap: clamp(40px, 6vw, 120px);
   max-width: 1900px;
   width: 100%;
@@ -238,4 +241,59 @@
   .hero__badge        { width: 70px; height: 96px; }
   .hero__badges-track { gap: 10px; }
 
+}
+
+/* ── Background: watermark chevrons + faint grid (behind everything, no hit-testing) ── */
+.hero__text,
+.hero__right {
+  position: relative;
+  z-index: 1;
+}
+
+.hero__watermark {
+  position: absolute;
+  right: 3%;
+  top: 6%;
+  width: min(40vw, 680px);
+  aspect-ratio: 1;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  opacity: 0.035;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(ellipse at 70% 30%, #000 20%, transparent 70%);
+  mask-image: radial-gradient(ellipse at 70% 30%, #000 20%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Positioning line above the title and the lead under the tagline ── */
+.hero__eyebrow {
+  font-family: var(--font-mono);
+  font-size: clamp(0.62rem, 0.75vw, 0.8rem);
+  font-weight: var(--font-bold, 700);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-red, #D51A1A);
+}
+
+.hero__lead {
+  font-size: clamp(0.95rem, 1.05vw, 1.15rem);
+  line-height: 1.55;
+  color: var(--text-pale, #aaaaaa);
+  max-width: 36em;
+}
+
+@media (max-width: 900px) {
+  .hero__watermark { width: 60vw; right: 0; top: 2%; opacity: 0.03; }
 }

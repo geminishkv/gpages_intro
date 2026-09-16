@@ -8,19 +8,6 @@
 }
 
 /* ── Header ── */
-.videos__header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.videos__label {
-  font-size: 0.85rem;
-  font-weight: var(--font-bold, 700);
-  color: #ffffff;
-  letter-spacing: 0.04em;
-}
-
 /* ── Grid — одна строка, две колонки ── */
 .videos__grid {
   display: grid;

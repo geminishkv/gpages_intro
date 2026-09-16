@@ -18,3 +18,14 @@ updates:
     groups:
       minor-and-patch:
         update-types: [minor, patch]
+    # react-scripts 5 (CRA) pins the toolchain: React 19, ESLint 9+ and animejs 4
+    # each need a migration first, so their majors are taken by hand, not by PR.
+    ignore:
+      - dependency-name: react
+        update-types: ["version-update:semver-major"]
+      - dependency-name: react-dom
+        update-types: ["version-update:semver-major"]
+      - dependency-name: eslint
+        update-types: ["version-update:semver-major"]
+      - dependency-name: animejs
+        update-types: ["version-update:semver-major"]

@@ -41,16 +41,6 @@ export default function CookieBanner({ animDone }) {
 
   return (
     <div className="ata-consent" role="dialog" aria-label={c.title}>
-      <div className="ata-consent__icon">
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5" />
-          <circle cx="8" cy="10" r="1.5" fill="currentColor" />
-          <circle cx="15" cy="8" r="1" fill="currentColor" />
-          <circle cx="13" cy="14" r="1.5" fill="currentColor" />
-          <circle cx="9" cy="15" r="1" fill="currentColor" />
-          <circle cx="16" cy="13" r="0.8" fill="currentColor" />
-        </svg>
-      </div>
       <p className="ata-consent__title">{c.title}</p>
       <p className="ata-consent__text">
         {c.text}

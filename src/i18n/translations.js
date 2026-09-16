@@ -7,6 +7,31 @@ export const translations = {
     hero: {
       contentLabel: 'Контент',
       contactsLabel: 'Контакты',
+      eyebrow: '// AppSec Team Lead · СберСпасибо · Москва',
+      lead: 'Строю AppSec-практику в финтехе: SSDLC, DevSecOps-конвейеры, Security Champions, риск-анализ. Преподаю в МГТУ и МФТИ, веду канал про безопасную разработку.',
+      cmdsHint: '# навигация: команды кликабельны',
+      cmds: [
+        { cmd: 'appsec whoami',              note: 'о себе',    action: 'about' },
+        { cmd: 'appsec ls projects',         note: 'проекты',   href: '#projects' },
+        { cmd: 'appsec tail blog',           note: '@appsecta', href: '#blog' },
+        { cmd: 'appsec skills --level core', note: 'навыки',    href: '#skillset' },
+      ],
+    },
+    now: {
+      label: 'Сейчас',
+      postsFmt: (n) => {
+        const mod10 = n % 10;
+        const mod100 = n % 100;
+        if (mod100 >= 11 && mod100 <= 19) return `${n} постов`;
+        if (mod10 === 1) return `${n} пост`;
+        if (mod10 >= 2 && mod10 <= 4) return `${n} поста`;
+        return `${n} постов`;
+      },
+      items: [
+        { text: 'Преподаю AppSec в МГТУ — поток 2026/27 стартовал 1 сентября', hint: 'course.geminishkv.tech', href: 'https://course.geminishkv.tech/' },
+        { text: 'Канал @appsecta — новые посты каждую неделю', channel: true, href: 'https://t.me/appsecta' },
+        { text: 'Guardconf — приглашаю на конференцию', hint: 'пост от 26 авг 2026', href: 'https://t.me/appsecta/515' },
+      ],
     },
 
     about: {
@@ -74,7 +99,7 @@ export const translations = {
         logoColor: true,
         logos: [
           { src: PUBLIC + '/img/companies/rosbank.svg', alt: 'Росбанк', url: 'https://www.rosbank.ru' },
-          { src: PUBLIC + '/img/companies/tbank.png',   alt: 'ТБанк',   url: 'https://www.tbank.ru' },
+          { src: PUBLIC + '/img/companies/tbank.png',   alt: 'ТБанк',   url: 'https://www.tbank.ru', pill: true },
         ],
         period: 'Июн 2022 — Дек 2024', current: false,
       },
@@ -98,6 +123,7 @@ export const translations = {
         company: 'Poly Play Inc', role: 'Senior IS Specialist (Lead)',
         url: 'https://alfabravo.us/',
         logo: PUBLIC + '/img/companies/polyplay.svg',
+        logoLight: true,
         period: 'Янв 2020 — Дек 2020', current: false,
       },
       {
@@ -186,12 +212,13 @@ export const translations = {
     },
 
     blog: {
-      langNote: '',
       readBtn: 'Читать →',
-      openTelegram: 'Открыть в Telegram',
+      filtersLabel: 'Фильтр по тегам',
+      filtersAll: 'все',
+      readTime: (n) => `${n} мин`,
+      empty: 'По этому тегу постов пока нет.',
       ctaSub: 'Авторский канал про AppSec и DevSecOps',
       subscribeBtn: 'Подписаться →',
-      showMore: (n) => `Показать ещё ${n} ↓`,
       subscribersFmt: (n) => {
         const mod10 = n % 10;
         const mod100 = n % 100;
@@ -202,18 +229,6 @@ export const translations = {
       },
     },
 
-    notice: {
-      ariaLabel: 'Уведомление',
-      title: 'Уведомление',
-      paragraphs: [
-        'Вся информация в материалах данного профиля, а также материалов включенных (согласно применимым формулировкам действующего законодательства РФ), то есть любые текстовых, графических произведений, — рассматривается исключительно в ознакомительных целях.',
-        'Любое использование представленной информации посредством данного профиля и/или любых текстовых, графических произведений, на практике без получения предварительного согласования на использование, подпадает под действие действующего законодательства РФ.',
-        'Автор не несет ответственности за любой возможный вред, причиненный предоставляемыми материалами, как любыми текстовыми, графическими произведениями.',
-        'Любые текстовые, графические произведения, включая ссылки носят ознакомительный характер в цели поделиться знаниями в продуктовой безопасности.',
-      ],
-      disclaimer: 'Instagram* — продукт компании Meta Platforms Inc., деятельность которой запрещена на территории РФ как экстремистская (решение Тверского районного суда г. Москвы от 21.03.2022). LinkedIn заблокирован на территории РФ за нарушение ФЗ-152 «О персональных данных».',
-      dismiss: 'Понятно',
-    },
     cookie: {
       title: 'Файлы cookie',
       text: 'Аналитика (Яндекс.Метрика и Plausible) включается только после вашего согласия. Технические cookie нужны для работы сайта. Подробнее — в документе ',
@@ -223,16 +238,42 @@ export const translations = {
     },
     sections: {
       blog: 'Блог',
-      experience: 'Опыт',
+      experience: 'Путь',
       domains: 'Домены',
       techStack: 'Тех. стек',
+      skills: 'Домены и стек',
       certifications: 'Сертификаты',
       interests: 'Интересы',
-      platinumWall: 'Платиновая стена',
-      gameHistory: 'История игр',
-      projects: 'Open-Source проекты',
+      videos: 'Эфиры',
+      projects: 'Проекты',
     },
+    sectionHead: {
+      projects:   { eyebrow: 'open-source', sub: 'Инструменты, которые закрывают реальные дыры в процессе: карта тулчейна, SBOM, правила Semgrep, лабы курса.', action: 'GitHub' },
+      videos:     { eyebrow: 'youtube', sub: 'Подкаст и интервью о безопасной разработке.' },
+      blog:       { eyebrow: 'telegram · @appsecta', sub: 'Заметки о безопасной разработке, DevSecOps и жизни AppSec-лида — на русском и английском.', action: 'Все посты' },
+      experience: { eyebrow: 'опыт', sub: 'Конвейер карьеры: этапы слева направо, поток по трубе, текущий узел горит.', action: 'Резюме на hh.ru', now: 'сейчас' },
+      skills:     { eyebrow: 'навыки', sub: 'Три уровня вместо процентов: ядро — ежедневно, сильное — регулярно, рабочее — по необходимости.' },
+      certs:      { eyebrow: 'обучение' },
+      interests:  { eyebrow: 'instagram*', sub: 'Три последних поста и профиль.', action: '@geminishkv' },
+    },
+    skills: {
+      levels: { core: 'ядро — ежедневно', strong: 'сильное — регулярно', work: 'рабочее — по необходимости' },
+      moreCerts: (n) => `Ещё ${n} ↓`,
+      moreGroups: (n) => `+${n} категории стека ↓`,
+    },
+    footer: {
+      about: 'AppSec & DevSecOps. Материалы носят ознакомительный характер; площадки, ограниченные в РФ, помечены звёздочкой.',
+      sections: 'Разделы',
+      contacts: 'Контакты',
+      projects: 'Проекты',
+      resume: 'Резюме на hh.ru',
+      course: 'Курс AppSec',
+      privacy: 'Политика конфиденциальности',
+      consent: 'Изменить выбор по cookie',
+    },
+    a11y: { skip: 'К содержанию' },
     nav: {
+      ariaLabel: 'Основная навигация',
       about: 'О СЕБЕ',
       blog: 'БЛОГ',
       experience: 'ОПЫТ',
@@ -249,6 +290,24 @@ export const translations = {
     hero: {
       contentLabel: 'Content',
       contactsLabel: 'Contacts',
+      eyebrow: '// AppSec Team Lead · SberSpasibo · Moscow',
+      lead: 'I build AppSec practice in fintech: SSDLC, DevSecOps pipelines, Security Champions, risk analysis. I teach at BMSTU and MIPT and run a channel on secure development.',
+      cmdsHint: '# navigation: commands are clickable',
+      cmds: [
+        { cmd: 'appsec whoami',              note: 'about',     action: 'about' },
+        { cmd: 'appsec ls projects',         note: 'projects',  href: '#projects' },
+        { cmd: 'appsec tail blog',           note: '@appsecta', href: '#blog' },
+        { cmd: 'appsec skills --level core', note: 'skills',    href: '#skillset' },
+      ],
+    },
+    now: {
+      label: 'Now',
+      postsFmt: (n) => `${n} post${n !== 1 ? 's' : ''}`,
+      items: [
+        { text: 'Teaching AppSec at BMSTU — the 2026/27 cohort started on September 1', hint: 'course.geminishkv.tech', href: 'https://course.geminishkv.tech/' },
+        { text: '@appsecta channel — new posts every week', channel: true, href: 'https://t.me/appsecta' },
+        { text: 'Guardconf — come to the conference', hint: 'post from 26 Aug 2026', href: 'https://t.me/appsecta/515' },
+      ],
     },
 
     about: {
@@ -316,7 +375,7 @@ export const translations = {
         logoColor: true,
         logos: [
           { src: PUBLIC + '/img/companies/rosbank.svg', alt: 'Rosbank', url: 'https://www.rosbank.ru' },
-          { src: PUBLIC + '/img/companies/tbank.png',   alt: 'TBank',   url: 'https://www.tbank.ru' },
+          { src: PUBLIC + '/img/companies/tbank.png',   alt: 'TBank',   url: 'https://www.tbank.ru', pill: true },
         ],
         period: 'Jun 2022 — Dec 2024', current: false,
       },
@@ -340,6 +399,7 @@ export const translations = {
         company: 'Poly Play Inc', role: 'Senior IS Specialist (Lead)',
         url: 'https://alfabravo.us/',
         logo: PUBLIC + '/img/companies/polyplay.svg',
+        logoLight: true,
         period: 'Jan 2020 — Dec 2020', current: false,
       },
       {
@@ -428,27 +488,16 @@ export const translations = {
     },
 
     blog: {
-      langNote: '',
       readBtn: 'Read →',
-      openTelegram: 'Open in Telegram',
+      filtersLabel: 'Filter by tag',
+      filtersAll: 'all',
+      readTime: (n) => `${n} min`,
+      empty: 'No posts with this tag yet.',
       ctaSub: 'AppSec and DevSecOps channel',
       subscribeBtn: 'Subscribe →',
-      showMore: (n) => `Show ${n} more ↓`,
       subscribersFmt: (n) => `${n} subscriber${n !== 1 ? 's' : ''}`,
     },
 
-    notice: {
-      ariaLabel: 'Notice',
-      title: 'Notice',
-      paragraphs: [
-        'All information in the materials of this profile, as well as any included materials, including any textual or graphical works, is provided for informational purposes only.',
-        'Any use of the information presented through this profile and/or any textual or graphical works without prior authorization is subject to applicable law.',
-        'The author bears no responsibility for any possible harm caused by the provided materials, including any textual or graphical works.',
-        'All textual and graphical works, including links, are for informational purposes only, intended to share knowledge in product security.',
-      ],
-      disclaimer: 'Instagram* is a product of Meta Platforms Inc., whose activities are banned in the Russian Federation as extremist (ruling of Tverskoy District Court, Moscow, 21.03.2022). LinkedIn is blocked in the Russian Federation for violation of Federal Law 152-FZ "On Personal Data".',
-      dismiss: 'Got it',
-    },
     cookie: {
       title: 'Cookies',
       text: 'Analytics (Yandex Metrica and Plausible) run only after you accept. Technical cookies are required for the site to work. Details in our ',
@@ -458,16 +507,42 @@ export const translations = {
     },
     sections: {
       blog: 'Blog',
-      experience: 'Experience',
+      experience: 'Career',
       domains: 'Domains',
       techStack: 'Tech Stack',
+      skills: 'Domains & stack',
       certifications: 'Certifications',
       interests: 'Interests',
-      platinumWall: 'Platinum Wall',
-      gameHistory: 'Game History',
-      projects: 'Open-Source Projects',
+      videos: 'On air',
+      projects: 'Projects',
     },
+    sectionHead: {
+      projects:   { eyebrow: 'open-source', sub: 'Tools that close real gaps in the process: a toolchain map, SBOM, Semgrep rules, course labs.', action: 'GitHub' },
+      videos:     { eyebrow: 'youtube', sub: 'A podcast and an interview on secure development.' },
+      blog:       { eyebrow: 'telegram · @appsecta', sub: 'Notes on secure development, DevSecOps and the life of an AppSec lead — in Russian and English.', action: 'All posts' },
+      experience: { eyebrow: 'experience', sub: 'Career as a pipeline: stages left to right, flow through the pipe, the current node lit.', action: 'Resume on hh.ru', now: 'now' },
+      skills:     { eyebrow: 'skills', sub: 'Three levels instead of percentages: core — daily, strong — regularly, working — when needed.' },
+      certs:      { eyebrow: 'training' },
+      interests:  { eyebrow: 'instagram*', sub: 'Three latest posts and the profile.', action: '@geminishkv' },
+    },
+    skills: {
+      levels: { core: 'core — daily', strong: 'strong — regularly', work: 'working — when needed' },
+      moreCerts: (n) => `${n} more ↓`,
+      moreGroups: (n) => `+${n} stack categories ↓`,
+    },
+    footer: {
+      about: 'AppSec & DevSecOps. Materials are for information only; platforms restricted in Russia are marked with an asterisk.',
+      sections: 'Sections',
+      contacts: 'Contacts',
+      projects: 'Projects',
+      resume: 'Resume on hh.ru',
+      course: 'AppSec course',
+      privacy: 'Privacy policy',
+      consent: 'Change cookie choice',
+    },
+    a11y: { skip: 'Skip to content' },
     nav: {
+      ariaLabel: 'Main navigation',
       about: 'ABOUT',
       blog: 'BLOG',
       experience: 'EXPERIENCE',

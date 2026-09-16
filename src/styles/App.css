@@ -21,6 +21,7 @@
   /* Typography */
   --font-display: 'Unbounded', 'Roboto', sans-serif;
   --font-body:    'Roboto', sans-serif;
+  --font-mono:    'Courier New', Courier, monospace;
 
   /* ── Surface & Borders (dark-theme grays) ── */
   --surface-primary:   #0a0a0a;
@@ -212,10 +213,10 @@ body {
   .projects__show-more,
   .tools__show-more,
   .ata-consent__btn,
-  .ata-legal__close,
   .lang-switch,
   .nav__burger {
     min-height: 44px;
+    min-width: 44px;
   }
 
   /* doubled class: Buttons.css sets 36px later in the bundle */
@@ -224,19 +225,52 @@ body {
     height: 44px;
   }
 
-  .exp-card__logo-link {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-  }
-
-  .projects__github-link,
-  .blog__channel-link,
-  .exp-card__company,
+  .pipe__company a,
   .ata-consent__text a {
     display: inline-block;
     min-width: 44px;
     padding-block: 15px;
     margin-block: -15px;
   }
+
+  .sec-head__action,
+  .blog__subs,
+  .blog-filter,
+  .footer__col a,
+  .footer__links a,
+  .footer__logo,
+  .tools__show-more {
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
 }
+
+/* ── Keyboard focus and the skip link ── */
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--color-red, #D51A1A);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: fixed;
+  top: -60px;
+  left: 16px;
+  z-index: 1300;
+  padding: 14px 18px;
+  border-radius: var(--radius-lg, 6px);
+  background: var(--color-red, #D51A1A);
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: var(--font-bold, 700);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: top 0.2s;
+}
+.skip-link:focus-visible { top: 12px; outline-color: #ffffff; }

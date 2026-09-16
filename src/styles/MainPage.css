@@ -1,3 +1,6 @@
+/* landmark wrapper that leaves the flex column untouched */
+.main-content { display: contents; }
+
 .main-page {
   position: fixed;
   inset: 0;
