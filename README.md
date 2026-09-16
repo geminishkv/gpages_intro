@@ -36,7 +36,7 @@
 |------|-----------|
 | UI-фреймворк | React 18 (CRA) |
 | Анимации | anime.js 3.2.2 + IntersectionObserver + CSS keyframes |
-| Стили | CSS Design System (100+ токенов, custom properties, clamp, clip-path) |
+| Стили | CSS Design System (85 токенов, custom properties, clamp, clip-path) |
 | i18n | LangContext (RU/EN) — localStorage, без сторонних библиотек |
 | Деплой | `scripts/deploy.js` (git) → GitHub Pages, ветка `gh-pages` |
 | Домен | geminishkv.tech (reg.ru + GitHub Pages custom domain) |
@@ -77,7 +77,7 @@
 
 ### Design System
 
-100+ CSS-токенов в `:root` (App.css):
+85 CSS-токенов в `:root` (App.css), только используемые:
 
 | Категория | Токенов | Примеры |
 |-----------|---------|---------|
@@ -85,14 +85,13 @@
 | Text grays | 8 | `--text-muted`, `--text-secondary`, `--text-pale` |
 | Spacing (4px grid) | 9 | `--space-1` (4px) → `--space-9` (64px) |
 | Typography | 8+ | `--text-xs` → `--text-3xl`, `--leading-*`, `--font-bold` |
-| Radius | 4 | `--radius-sm` (3px) → `--radius-full` (999px) |
-| Z-index | 9 | `--z-sticky` (100) → `--z-notice` (9000) |
-| Shadows | 5 | `--shadow-red-sm/md/lg`, `--shadow-dark-sm/md` |
-| Red alpha | 12 | `--color-red-a06` → `--color-red-a60` |
-| Gold alpha | 8 | `--color-gold-a06` → `--color-gold-a60` |
-| Black/White alpha | 7 | `--color-black-a20` → `--color-black-a80`, `--color-white-a*` |
+| Radius | 3 | `--radius-sm` (3px) → `--radius-lg` (6px) |
+| Z-index | 5 | `--z-sticky` (100) → `--z-consent` (9000) |
+| Red alpha | 10 | `--color-red-a06` → `--color-red-a50` |
+| Gold alpha | 7 | `--color-gold-a06` → `--color-gold-a60` |
+| Black/White alpha | 5 | `--color-black-a30` → `--color-black-a50`, `--color-white-a*` |
 | Nav backgrounds | 2 | `--nav-bg`, `--nav-bg-solid` |
-| Transitions | 5 | `--duration-fast` (0.15s), `--ease-spring` |
+| Motion | 7 | `--ease-out`, `--dur-fast` (160ms) / `--dur-ui` (220ms) / `--dur-reveal` (600ms), `--duration-normal/slow` |
 
 ***
 
@@ -227,7 +226,7 @@ gpages/
 │   │   ├── tg-posts.json     # 350+ постов Telegram (CI incremental, переводы кешируются в text_en)
 │   │   └── instagram.json    # Instagram (CI)
 │   └── styles/
-│       ├── App.css           # 100+ design tokens (:root), токены движения
+│       ├── App.css           # 85 design tokens (:root), токены движения
 │       ├── Screens.css       # Экраны: раскладка, точки, водяной знак, планшет и ультравайд
 │       ├── Contacts.css      # Экран контактов и NFC-визитка
 │       ├── Buttons.css       # ContactBtn + ContentBtn + PackageBtn + DownloadBtn + SocialIcons

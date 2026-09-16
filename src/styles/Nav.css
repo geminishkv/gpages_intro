@@ -43,14 +43,6 @@
   gap: 10px;
 }
 
-.nav__logo-img {
-  height: 28px;
-  width: 28px;
-  object-fit: contain;
-  border-radius: 50%;
-  mix-blend-mode: screen;
-  display: block;
-}
 
 .nav__brand {
   font-size: 1rem;
@@ -242,7 +234,6 @@
     z-index: var(--z-sticky, 100);
   }
 
-  .nav__logo-img { height: 36px; width: 36px; }
   .nav__brand    { font-size: 1.2rem; }
   .nav__right    { gap: var(--space-3, 12px); }
   .nav__burger   { display: block; }
