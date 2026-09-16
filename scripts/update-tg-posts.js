@@ -52,14 +52,21 @@ function translateChunk(text) {
   });
 }
 
+// A whitespace-only chunk comes back from the API as "" — that is a valid result,
+// not a failure. Only null (network or parse error) aborts the whole post.
+async function translateBatch(batch) {
+  if (!batch.trim()) return batch;
+  return translateChunk(batch);
+}
+
 async function translateText(text) {
   const paragraphs = text.split('\n');
   let batch = '', result = [];
   for (const line of paragraphs) {
     const next = batch ? batch + '\n' + line : line;
     if (encodeURIComponent(next).length > 900 && batch) {
-      const t = await translateChunk(batch);
-      if (!t) return null;
+      const t = await translateBatch(batch);
+      if (t === null) return null;
       result.push(t);
       batch = line;
       await sleep(300);
@@ -68,8 +75,8 @@ async function translateText(text) {
     }
   }
   if (batch) {
-    const t = await translateChunk(batch);
-    if (!t) return null;
+    const t = await translateBatch(batch);
+    if (t === null) return null;
     result.push(t);
   }
   return result.join('\n');
