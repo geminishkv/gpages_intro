@@ -17,6 +17,7 @@
 * **SplashScreen** — Canvas2D shader (brand red→gold) + SVG pretitle
 * **Holographic Monitor** — CSS floating monitor с glow + Python typewriter
 * **Typewriter** — DOS-стиль набор заголовка с glitch-эффектом по символам
+* **Экраны** — на десктопе главная листается по восьми экранам (колесо, клавиши, свайп, точки, `#`-ссылки), контент подгоняется под высоту; на телефонах тот же порядок одним документом
 * **Blog** — 350+ постов из Telegram с переводом RU→EN: последний крупно + компактный список, фильтры по тегам, пагинация на `/blog/`, статические SEO-страницы
 * **Instagram** — превью 8 последних постов и ссылка на профиль
 * **SEO** — JSON-LD, OG, Twitter Card, sitemap (≈760 URL), RSS (RU+EN), llms.txt, hreflang
@@ -54,19 +55,19 @@
 * **GlitchLabel** — заголовки секций печатаются с glitch при скролле (IntersectionObserver)
 * **Badges marquee** — бесконечный скролл логотипов достижений
 * **CookieBanner** — компактная карточка согласия на аналитику (ФЗ-152) внизу справа; выбор хранится 180 дней, сменить — `/#consent`
-* **Stats** — 5 ключевых метрик с анимацией count-up через requestAnimationFrame
-* **Projects** — карточки GitHub-репозиториев (stars, forks, язык)
+* **Stats** — 5 ключевых метрик с анимацией count-up при входе на экран
+* **Projects** — все репозитории плиткой 3×2 (stars, forks, язык), без пейджера
 * **Blog** — 350+ постов из Telegram `appsecta`; на главной последний пост крупно + 5 компактных, фильтры по тегам, карточка канала с подписчиками; `/blog/` с пагинацией по 15; статические SEO-страницы `/blog/{id}/` (RU) и `/blog/en/{id}/` (EN); переключатель RU/EN
 * **Videos** — YouTube-карточки: подкаст по безопасной разработке, интервью BISA
-* **Experience** — карьера как конвейер: 7 узлов с логотипами на трубе red→gold, текущий горит; вертикальная труба на планшетах и телефонах
-* **Hero** — позиционирующая строка и lead под тайтлом, команды-ссылки в терминале после интро (`appsec whoami`, `ls projects`, `tail blog`, `skills`), водяной логотип и сетка на фоне; полоса «Сейчас» с живыми цифрами канала
-* **Tools** — домены как чипы трёх уровней (ядро / сильное / рабочее), сертификаты, стек из 8 панелей с чипами инструментов
+* **Experience** — карьера как конвейер: 7 узлов с логотипами на трубе red→gold и кольцами, текущий горит; наведение или тап по узлу показывает результаты этапа под трубой; вертикальная труба на телефонах
+* **Hero** — позиционирующая строка, описание списком 2×2, чёрные пилюли логотипов, команды-ссылки в терминале после интро (`ls projects`, `tail blog`, `skills`, `contact`), кнопки скачивания с реальным прогрессом загрузки, водяной логотип и сетка на фоне; полоса «Сейчас» с живыми цифрами канала
+* **Tools** — домены как чипы трёх уровней (ядро / сильное / рабочее), стек из 8 панелей с чипами инструментов; справа дипломы и сертификаты по резюме (первые четыре, остальные по кнопке)
 * **Section headers** — единый `SectionHead`: eyebrow `// имя`, заголовок с glitch-typewriter, подзаголовок, действие справа
 * **Instagram** — 8 последних постов (обложки кешируются в `public/img/instagram/`), ссылка на профиль
-* **About modal** — попап с резюме (ссылка на hh.ru), навыками, достижениями; focus trap
-* **Nav** — i18n (RU/EN), SVG бургер с морфингом, LangSwitch toggle, glass-эффект при скролле, прогресс-линия чтения, активная пилюля секции (`aria-current`)
-* **Кнопки** — PackageBtn (hacker glitch), ContentBtn (cyber border), ContactBtn (pill + status dot), DownloadBtn (progress animation), SocialIcons (slide-in SVG)
-* **Responsive** — 5 breakpoints (1200/900/768/576/420px); заголовок hero масштабируется от колонки (`cqi`) и не переносится на ультравайде; проверено Playwright в Chromium/WebKit/Firefox от 390 до 2946 px
+* **Contacts** — экран «Давай поговорим»: Telegram и копирование email с тостом, NFC-визитка с наклоном при наведении, ссылки профиля и контента; футер на нём без дублирующих колонок
+* **Nav** — i18n (RU/EN), SVG бургер с морфингом, LangSwitch toggle, прогресс-линия (по экрану на десктопе, по скроллу на телефоне), активная пилюля секции (`aria-current`)
+* **Кнопки** — PackageBtn (hacker glitch, единый стиль всех ссылок под лентой логотипов), ContactBtn (pill + status dot в цветах бренда), DownloadBtn (заливка круга = реальный прогресс `fetch`, fallback по времени без CORS), SocialIcons (slide-in SVG)
+* **Responsive** — экраны на ≥901px (планшет-ландшафт 901–1300px плотнее, масштаб не ниже 0,85), документ на телефонах; ультравайд ≥2000px растит контент до 1,3; заголовок hero масштабируется от колонки (`cqi`); проверено Playwright на 1024/1280/1440/1920/2560/3440 от 390 до 2946 px
 * **A11y** — skip-link, красное кольцо `:focus-visible`, `<main>` landmark, тап-таргеты 44 px на телефонах, `prefers-reduced-motion`
 * **prefers-reduced-motion** — все анимации отключаются по системной настройке
 * **404** — дино-раннер в стиле Chrome, стилизован под бренд
@@ -196,10 +197,10 @@ gpages/
 ├── src/
 │   ├── components/
 │   │   ├── SplashScreen.js   # Shader canvas + pretitle SVG (30 мин reshow)
-│   │   ├── MainPage.js       # Корневой layout, scroll lock, skip-link, <main>
-│   │   ├── Nav.js            # SVG бургер морфинг, LangSwitch, i18n, прогресс-линия, активная пилюля
+│   │   ├── MainPage.js       # Корневой layout: восемь экранов, точки и счётчик, skip-link, <main>
+│   │   ├── Nav.js            # SVG бургер морфинг, LangSwitch, i18n, прогресс-линия, активная пилюля по экрану
 │   │   ├── CookieBanner.js   # Согласие на аналитику (180 дней, /#consent — сменить выбор)
-│   │   ├── Hero.js           # Holographic monitor + typewriter + badges + кнопки + команды-ссылки
+│   │   ├── Hero.js           # Holographic monitor + typewriter + lead 2×2 + пилюли логотипов + кнопки + команды
 │   │   ├── NowStrip.js       # Полоса «Сейчас» (тексты в i18n, цифры канала из данных)
 │   │   ├── SectionHead.js    # Единый заголовок секции
 │   │   ├── GlitchLabel.js    # Glitch typewriter для заголовков секций
@@ -208,22 +209,27 @@ gpages/
 │   │   ├── Projects.js       # GitHub cards
 │   │   ├── Blog.js           # Featured + 5 компактных, фильтры по тегам → /blog/{id}/
 │   │   ├── Videos.js         # YouTube cards
-│   │   ├── Experience.js     # Конвейер карьеры
-│   │   ├── Tools.js          # Домены-чипы + сертификаты + стек
+│   │   ├── Experience.js     # Конвейер карьеры + панель результатов этапа
+│   │   ├── Tools.js          # Домены-чипы + стек | дипломы + сертификаты
 │   │   ├── Instagram.js      # 8 последних постов Instagram
+│   │   ├── Contacts.js       # Экран контактов: CTA, NFC-визитка, группы ссылок, тост
 │   │   ├── Footer.js         # 4 колонки + политика, смена выбора по cookie, RSS
-│   │   ├── SicParvisMagnaPill.js # Пилюля Sic Parvis Magna (BrandColumn)
-│   │   └── AboutModal.js     # Resume (hh.ru) + achievements
+│   │   └── SicParvisMagnaPill.js # Пилюля Sic Parvis Magna (BrandColumn)
 │   ├── context/LangContext.js
+│   ├── context/ScreenContext.js # «мой экран активен» для заголовков и счётчиков
 │   ├── lib/consent.js        # Хранение согласия + загрузка Plausible/Метрики
-│   ├── hooks/useMainAnimation.js
+│   ├── hooks/useMainAnimation.js # Интро: консоль, печать, появление групп
+│   ├── hooks/useScreens.js   # Переключатель экранов: колесо/клавиши/свайп/#ссылки, подгонка масштаба
+│   ├── hooks/useDownload.js  # Реальная загрузка с прогрессом для dl-btn
 │   ├── i18n/translations.js  # RU/EN + nav + sections
 │   ├── constants/index.js
 │   ├── data/
 │   │   ├── tg-posts.json     # 350+ постов Telegram (CI incremental, переводы кешируются в text_en)
 │   │   └── instagram.json    # Instagram (CI)
 │   └── styles/
-│       ├── App.css           # 100+ design tokens (:root)
+│       ├── App.css           # 100+ design tokens (:root), токены движения
+│       ├── Screens.css       # Экраны: раскладка, точки, водяной знак, планшет и ультравайд
+│       ├── Contacts.css      # Экран контактов и NFC-визитка
 │       ├── Buttons.css       # ContactBtn + ContentBtn + PackageBtn + DownloadBtn + SocialIcons
 │       ├── CardBase.css      # Общий фундамент карточек
 │       ├── SectionHead.css   # Заголовок секции

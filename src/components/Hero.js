@@ -8,18 +8,49 @@ import {
   LIDER_IMG, SBERSPASIBO_IMG, BMSTU_IMG, MPFI_IMG, RBPO_IMG, INSECA_IMG,
   TAGLINE_TEXT,
 } from '../constants';
-import { useState } from 'react';
 import { useLang } from '../context/LangContext';
+import { useDownload } from '../hooks/useDownload';
+
+const DL_OSS_MAP = 'https://findevsecops.github.io/oss_toolchainmap/pdf_table/tools-map.pdf';
+const DL_PROCESS_MAP = 'https://storage.yandexcloud.net/aft-tilda/%D0%A2%D0%B8%D0%BF%D0%BE%D0%B2%D0%BE%D0%B9%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%20%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D0%B9%20%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B8%20%D0%B4%D0%BB%D1%8F%20%D1%84%D0%B8%D0%BD%D1%82%D0%B5%D1%85%D0%B0.pdf';
+
+// Logo strip: the order repeats twice for the seamless loop. Pure black marks get the
+// inverted (white) treatment; the coloured ones (Sber, BMSTU, MIPT, Lider) stay as they are.
+const BADGES = [
+  { src: LIDER_IMG,       alt: 'FinDevSecOps Лидер' },
+  { src: SBERSPASIBO_IMG, alt: 'СберСпасибо' },
+  { src: BMSTU_IMG,       alt: 'МГТУ им. Баумана' },
+  { src: MPFI_IMG,        alt: 'МФТИ' },
+  { src: INSECA_IMG,      alt: 'Inseca.tech', invert: true },
+  { src: RBPO_IMG,        alt: 'РБПО.РФ',     invert: true },
+];
+
+function DownloadBtn({ url, title, start }) {
+  const onKey = (e) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); start(e.currentTarget, url); }
+  };
+  return (
+    <span className="dl-btn" onClick={(e) => start(e.currentTarget, url)} onKeyDown={onKey} role="button" tabIndex={0}>
+      <span className="dl-btn__circle">
+        <svg className="dl-btn__icon" aria-hidden="true" viewBox="0 0 24 24" fill="none">
+          <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 19V5m0 14-4-4m4 4 4-4" />
+        </svg>
+        <span className="dl-btn__square" />
+      </span>
+      <span className="dl-btn__title">{title}</span>
+      <span className="dl-btn__title dl-btn__title--done">Open</span>
+    </span>
+  );
+}
 
 export default function Hero({
   titleRef, subtitleRef, taglineRef, socialsRef, liderRef,
   blinkerRef, whiteBoxRef, containerBoxRef, windowImgRef, uwuRef, workTextRef,
   progressWrapRef, progressBarRef, brandColRef, leadRef,
-  animDone, onAboutOpen,
+  animDone,
 }) {
-  const [dlActive, setDlActive] = useState(false);
-  const [dlOss, setDlOss] = useState(false);
   const { t } = useLang();
+  const startDownload = useDownload();
 
   return (
     <div className="hero">
@@ -35,24 +66,20 @@ export default function Hero({
         <p ref={taglineRef} className="hero__tagline" style={{ opacity: 0 }}>
           {TAGLINE_TEXT}
         </p>
-        <p ref={leadRef} className="hero__lead" style={{ opacity: 0 }}>{t.hero.lead}</p>
+        <ul ref={leadRef} className="hero__lead" style={{ opacity: 0 }}>
+          {t.hero.leadItems.map((item) => <li key={item}>{item}</li>)}
+        </ul>
 
         <div className="hero__badges-outer">
           <div ref={liderRef} className="hero__badges-track">
             {/* дубли — для бесшовного скролла */}
-            <img src={LIDER_IMG} alt="" aria-hidden="true" className="hero__badge hero__badge--dup" />
-            <img src={SBERSPASIBO_IMG} alt="" aria-hidden="true" className="hero__badge hero__badge--dup" />
-            <img src={BMSTU_IMG} alt="" aria-hidden="true" className="hero__badge hero__badge--dup" />
-            <img src={MPFI_IMG}   alt="" aria-hidden="true" className="hero__badge hero__badge--invert hero__badge--dup" />
-            <img src={INSECA_IMG} alt="" aria-hidden="true" className="hero__badge hero__badge--invert hero__badge--dup" />
-            <img src={RBPO_IMG}   alt="" aria-hidden="true" className="hero__badge hero__badge--invert hero__badge--dup" />
+            {BADGES.map((b) => (
+              <img key={`dup-${b.alt}`} src={b.src} alt="" aria-hidden="true" className={`hero__badge hero__badge--dup${b.invert ? ' hero__badge--invert' : ''}`} />
+            ))}
             {/* оригиналы */}
-            <img src={LIDER_IMG}  alt="FinDevSecOps Лидер" className="hero__badge" />
-            <img src={SBERSPASIBO_IMG} alt="СберСпасибо"   className="hero__badge" />
-            <img src={BMSTU_IMG}  alt="МГТУ им. Баумана"   className="hero__badge" />
-            <img src={MPFI_IMG}   alt="МФТИ"               className="hero__badge hero__badge--invert" />
-            <img src={INSECA_IMG} alt="Inseca.tech"        className="hero__badge hero__badge--invert" />
-            <img src={RBPO_IMG}   alt="РБПО.РФ"            className="hero__badge hero__badge--invert" />
+            {BADGES.map((b) => (
+              <img key={b.alt} src={b.src} alt={b.alt} className={`hero__badge${b.invert ? ' hero__badge--invert' : ''}`} />
+            ))}
           </div>
         </div>
 
@@ -72,59 +99,13 @@ export default function Hero({
           <div className="social-group">
             <span className="social-group__label">{t.hero.contentLabel}</span>
             <div className="social-group__btns">
-              <a href="https://t.me/appsecta" target="_blank" rel="noreferrer" className="content-btn"><i /><span>AppSecTA</span></a>
-              <a href="https://geminishkv.tech/blog/" target="_blank" rel="noreferrer" className="content-btn"><i /><span>Blog</span></a>
-              <a href="https://course.geminishkv.tech/" target="_blank" rel="noreferrer" className="content-btn"><i /><span>AppSec Course</span></a>
-              <a href="https://inseca.tech/security-champion-training" target="_blank" rel="noreferrer" className="content-btn"><i /><span>Security Champion Training</span></a>
-              <a href="https://kiberbez-tech.ru" target="_blank" rel="noreferrer" className="content-btn"><i /><span>MIPT DevSecOps Course</span></a>
-              <span
-                className={`dl-btn${dlOss ? ' dl-btn--active' : ''}`}
-                onClick={() => {
-                  if (!dlOss) {
-                    setDlOss(true);
-                    const w = window.open('about:blank', '_blank');
-                    setTimeout(() => {
-                      if (w) w.location.href = 'https://findevsecops.github.io/oss_toolchainmap/pdf_table/tools-map.pdf';
-                      setTimeout(() => setDlOss(false), 600);
-                    }, 3900);
-                  }
-                }}
-                role="button"
-                tabIndex={0}
-              >
-                <span className="dl-btn__circle">
-                  <svg className="dl-btn__icon" aria-hidden="true" viewBox="0 0 24 24" fill="none">
-                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 19V5m0 14-4-4m4 4 4-4" />
-                  </svg>
-                  <span className="dl-btn__square" />
-                </span>
-                <span className="dl-btn__title">OSS Toolchain Map</span>
-                <span className="dl-btn__title dl-btn__title--done">Open</span>
-              </span>
-              <span
-                className={`dl-btn${dlActive ? ' dl-btn--active' : ''}`}
-                onClick={() => {
-                  if (!dlActive) {
-                    setDlActive(true);
-                    const w = window.open('about:blank', '_blank');
-                    setTimeout(() => {
-                      if (w) w.location.href = 'https://storage.yandexcloud.net/aft-tilda/%D0%A2%D0%B8%D0%BF%D0%BE%D0%B2%D0%BE%D0%B9%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%20%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D0%B9%20%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B8%20%D0%B4%D0%BB%D1%8F%20%D1%84%D0%B8%D0%BD%D1%82%D0%B5%D1%85%D0%B0.pdf';
-                      setTimeout(() => setDlActive(false), 600);
-                    }, 3900);
-                  }
-                }}
-                role="button"
-                tabIndex={0}
-              >
-                <span className="dl-btn__circle">
-                  <svg className="dl-btn__icon" aria-hidden="true" viewBox="0 0 24 24" fill="none">
-                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 19V5m0 14-4-4m4 4 4-4" />
-                  </svg>
-                  <span className="dl-btn__square" />
-                </span>
-                <span className="dl-btn__title">56939-2024 Process Map</span>
-                <span className="dl-btn__title dl-btn__title--done">Open</span>
-              </span>
+              <a href="https://t.me/appsecta" target="_blank" rel="noreferrer" className="pkg-btn"><i /><span>AppSecTA</span></a>
+              <a href="https://geminishkv.tech/blog/" target="_blank" rel="noreferrer" className="pkg-btn"><i /><span>Blog</span></a>
+              <a href="https://course.geminishkv.tech/" target="_blank" rel="noreferrer" className="pkg-btn"><i /><span>AppSec Course</span></a>
+              <a href="https://inseca.tech/security-champion-training" target="_blank" rel="noreferrer" className="pkg-btn"><i /><span>Security Champion Training</span></a>
+              <a href="https://kiberbez-tech.ru" target="_blank" rel="noreferrer" className="pkg-btn"><i /><span>MIPT DevSecOps Course</span></a>
+              <DownloadBtn url={DL_OSS_MAP} title="OSS Toolchain Map" start={startDownload} />
+              <DownloadBtn url={DL_PROCESS_MAP} title="56939-2024 Process Map" start={startDownload} />
             </div>
           </div>
 
@@ -190,11 +171,7 @@ export default function Hero({
                   {/* Command navigation: shown once the intro is over, after the typed session */}
                   <div className={`mac-cmds${animDone ? ' mac-cmds--on' : ''}`} aria-hidden={!animDone}>
                     <span className="mac-cmds__hint">{t.hero.cmdsHint}</span>
-                    {t.hero.cmds.map((c) => c.action === 'about' ? (
-                      <button key={c.cmd} type="button" className="mac-cmds__line" onClick={onAboutOpen} tabIndex={animDone ? 0 : -1}>
-                        <span className="mac-cmds__ps">$ </span><span className="mac-cmds__cmd">{c.cmd}</span><span className="mac-cmds__note">→ {c.note}</span>
-                      </button>
-                    ) : (
+                    {t.hero.cmds.map((c) => (
                       <a key={c.cmd} className="mac-cmds__line" href={c.href} tabIndex={animDone ? 0 : -1}>
                         <span className="mac-cmds__ps">$ </span><span className="mac-cmds__cmd">{c.cmd}</span><span className="mac-cmds__note">→ {c.note}</span>
                       </a>

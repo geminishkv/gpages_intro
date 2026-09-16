@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import '../styles/Tools.css';
 import { useLang } from '../context/LangContext';
+import { BMSTU_IMG } from '../constants';
 import SectionHead from './SectionHead';
 
 /* Tool groups; the numbers are kept only to order the chips (they are no longer shown). */
@@ -33,6 +34,28 @@ function Chip({ level, children }) {
   return <span className={`chip chip--${level}`}>{children}</span>;
 }
 
+// Diplomas from the résumé: the BMSTU seal is the real mark, the rest a brand monogram.
+function Diplomas({ items, title }) {
+  return (
+    <div className="skills__panel gp-dipl">
+      <h3 className="skills__panel-title">{title}<small>{items.length}</small></h3>
+      <div className="gp-diplomas">
+        {items.map((d) => (
+          <div key={d.title} className="gp-dip">
+            <span className={`gp-dip__seal${d.seal === 'bmstu' ? '' : ' gp-dip__seal--mono'}`}>
+              {d.seal === 'bmstu' ? <img src={BMSTU_IMG} alt="" /> : d.seal}
+            </span>
+            <span className="gp-dip__body">
+              <span className="gp-dip__title">{d.title}</span>
+              <span className="gp-dip__note">{d.note}</span>
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function Tools() {
   const [stackExpanded, setStackExpanded] = useState(false);
   const [certsExpanded, setCertsExpanded] = useState(false);
@@ -47,52 +70,60 @@ export default function Tools() {
       <SectionHead eyebrow={t.sectionHead.skills.eyebrow} title={t.sections.skills} sub={t.sectionHead.skills.sub} />
 
       <div className="skills">
-        <div className="skills__panel">
-          <h3 className="skills__panel-title">{t.sections.domains}<small>{DOMAIN_ITEMS.length}</small></h3>
-          <div className="chips">
-            {DOMAIN_ITEMS.map(([name, pct]) => <Chip key={name} level={levelOf(pct)}>{name}</Chip>)}
+        {/* left: domains and the tool stack */}
+        <div className="gp-left">
+          <div className="skills__panel">
+            <h3 className="skills__panel-title">{t.sections.domains}<small>{DOMAIN_ITEMS.length}</small></h3>
+            <div className="chips">
+              {DOMAIN_ITEMS.map(([name, pct]) => <Chip key={name} level={levelOf(pct)}>{name}</Chip>)}
+            </div>
+            <div className="chips-legend" aria-hidden="true">
+              <span><i className="chips-legend__core" />{s.levels.core}</span>
+              <span><i className="chips-legend__strong" />{s.levels.strong}</span>
+              <span><i className="chips-legend__work" />{s.levels.work}</span>
+            </div>
           </div>
-          <div className="chips-legend" aria-hidden="true">
-            <span><i className="chips-legend__core" />{s.levels.core}</span>
-            <span><i className="chips-legend__strong" />{s.levels.strong}</span>
-            <span><i className="chips-legend__work" />{s.levels.work}</span>
-          </div>
-        </div>
 
-        <div className="skills__panel">
-          <h3 className="skills__panel-title">{t.sections.certifications}<small>{CERTS.length}</small></h3>
-          <div className="tools__certs-grid">
-            {visibleCerts.map((c, i) => (
-              <div key={i} className="cert-card">
-                <span className="cert-card__area">{c.area}</span>
-                <span className="cert-card__title">{c.title}</span>
+          <h3 className="skills__stack-title">{t.sections.techStack}</h3>
+          <div className="stack">
+            {visibleGroups.map(({ label, items }) => (
+              <div key={label} className="skills__panel skills__panel--stack">
+                <h3 className="skills__panel-title">{label}</h3>
+                <div className="chips">
+                  {items.map(([name]) => <Chip key={name} level="tool">{name}</Chip>)}
+                </div>
               </div>
             ))}
           </div>
-          {!certsExpanded && CERTS.length > CERTS_INITIAL && (
-            <button type="button" className="tools__show-more" onClick={() => setCertsExpanded(true)}>
-              {s.moreCerts(CERTS.length - CERTS_INITIAL)}
+          {!stackExpanded && TOOL_GROUPS.length > STACK_INITIAL && (
+            <button type="button" className="tools__show-more tools__show-more--full" onClick={() => setStackExpanded(true)}>
+              {s.moreGroups(TOOL_GROUPS.length - STACK_INITIAL)}
             </button>
           )}
         </div>
-      </div>
 
-      <h3 className="skills__stack-title">{t.sections.techStack}</h3>
-      <div className="stack">
-        {visibleGroups.map(({ label, items }) => (
-          <div key={label} className="skills__panel skills__panel--stack">
-            <h3 className="skills__panel-title">{label}</h3>
-            <div className="chips">
-              {items.map(([name]) => <Chip key={name} level="tool">{name}</Chip>)}
+        {/* right: diplomas above the certificates */}
+        <div className="gp-right">
+          <Diplomas items={t.diplomas} title={s.diplomas} />
+
+          <div className="skills__panel">
+            <h3 className="skills__panel-title">{t.sections.certifications}<small>{CERTS.length}</small></h3>
+            <div className="tools__certs-grid">
+              {visibleCerts.map((c) => (
+                <div key={c.title} className="cert-card">
+                  <span className="cert-card__area">{c.area}</span>
+                  <span className="cert-card__title">{c.title}</span>
+                </div>
+              ))}
             </div>
+            {CERTS.length > CERTS_INITIAL && (
+              <button type="button" className="tools__show-more" onClick={() => setCertsExpanded((v) => !v)}>
+                {certsExpanded ? s.lessCerts : s.moreCerts(CERTS.length - CERTS_INITIAL)}
+              </button>
+            )}
           </div>
-        ))}
+        </div>
       </div>
-      {!stackExpanded && TOOL_GROUPS.length > STACK_INITIAL && (
-        <button type="button" className="tools__show-more tools__show-more--full" onClick={() => setStackExpanded(true)}>
-          {s.moreGroups(TOOL_GROUPS.length - STACK_INITIAL)}
-        </button>
-      )}
     </section>
   );
 }

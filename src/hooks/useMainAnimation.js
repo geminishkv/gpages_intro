@@ -4,12 +4,14 @@ import { TITLE_TEXT, SUBTITLE_TEXT } from '../constants';
 
 const GLITCH_CHARS = '#@$%^&!?<>{}[]|/\\~*+=_';
 
-export function useMainAnimation(isVisible, onAllDone) {
+export function useMainAnimation(isVisible, onAllDone, { screens = false } = {}) {
   const navRef          = useRef(null);
   // MainPage передаёт onAllDone inline-стрелкой; держим актуальный колбэк в ref,
   // чтобы не включать его в deps эффекта и не перезапускать анимацию на каждом рендере.
   const onAllDoneRef    = useRef(onAllDone);
   useEffect(() => { onAllDoneRef.current = onAllDone; }, [onAllDone]);
+  const screensRef      = useRef(screens);
+  useEffect(() => { screensRef.current = screens; }, [screens]);
   const observerRef     = useRef(null);
   const blinkerRef      = useRef(null);
   const whiteBoxRef     = useRef(null);
@@ -34,7 +36,8 @@ export function useMainAnimation(isVisible, onAllDone) {
   const blogRef       = useRef(null);
   const experienceRef = useRef(null);
   const toolsRef      = useRef(null);
-  const interestsRef     = useRef(null);
+  const interestsRef  = useRef(null);
+  const contactsRef   = useRef(null);
   const footerRef     = useRef(null);
 
   const [statsActive, setStatsActive] = useState(false);
@@ -90,12 +93,12 @@ export function useMainAnimation(isVisible, onAllDone) {
     }
 
     // ── Title ──
-    typeString(titleRef.current, TITLE_TEXT, 165, () => {
+    typeString(titleRef.current, TITLE_TEXT, 70, () => {
 
       // ── Subtitle ──
       if (!subtitleRef.current) return;
       subtitleRef.current.style.opacity = '1';
-      typeString(subtitleRef.current, SUBTITLE_TEXT, 135, () => {
+      typeString(subtitleRef.current, SUBTITLE_TEXT, 60, () => {
         if (!taglineRef.current) return;
 
         // ── Tagline ──
@@ -118,7 +121,7 @@ export function useMainAnimation(isVisible, onAllDone) {
               targets: groups,
               opacity: [0, 1],
               translateY: [14, 0],
-              delay: anime.stagger(420),
+              delay: anime.stagger(180),
               duration: 580,
               easing: 'easeOutExpo',
               complete: () => {
@@ -129,7 +132,7 @@ export function useMainAnimation(isVisible, onAllDone) {
                     targets: liderRef.current.querySelectorAll('.hero__badge:not(.hero__badge--dup)'),
                     opacity: [0, 1],
                     translateY: [20, 0],
-                    delay: anime.stagger(480),
+                    delay: anime.stagger(200),
                     duration: 500,
                     easing: 'easeOutExpo',
                     complete: () => {
@@ -138,8 +141,11 @@ export function useMainAnimation(isVisible, onAllDone) {
 
                         liderRef.current.classList.add('hero__badges-track--scrolling');
 
-                        // ── Sections via IntersectionObserver ──
                         onAllDoneRef.current?.();
+
+                        // ── Sections via IntersectionObserver (document mode only: on desktop
+                        //    the screen switcher shows a whole screen at once) ──
+                        if (screensRef.current) return;
 
                         const sectionEls = [
                           nowRef.current,
@@ -150,6 +156,7 @@ export function useMainAnimation(isVisible, onAllDone) {
                           experienceRef.current,
                           toolsRef.current,
                           interestsRef.current,
+                          contactsRef.current,
                           footerRef.current,
                         ].filter(Boolean);
 
@@ -277,7 +284,7 @@ export function useMainAnimation(isVisible, onAllDone) {
       setStatsActive(true);
       onAllDoneRef.current?.();
       const allSections = [
-        nowRef, statsRef, projectsRef, videosRef, blogRef, experienceRef, toolsRef, interestsRef, footerRef,
+        nowRef, statsRef, projectsRef, videosRef, blogRef, experienceRef, toolsRef, interestsRef, contactsRef, footerRef,
       ];
       allSections.forEach(r => {
         if (!r.current) return;
@@ -328,7 +335,7 @@ export function useMainAnimation(isVisible, onAllDone) {
     blinkerRef, whiteBoxRef, containerBoxRef,
     windowImgRef, uwuRef, workTextRef, progressWrapRef, progressBarRef,
     titleRef, subtitleRef, taglineRef, leadRef, socialsRef, liderRef, brandColRef,
-    nowRef, statsRef, projectsRef, videosRef, blogRef, experienceRef, toolsRef, interestsRef, footerRef,
+    nowRef, statsRef, projectsRef, videosRef, blogRef, experienceRef, toolsRef, interestsRef, contactsRef, footerRef,
     statsActive,
   };
 }
