@@ -8,13 +8,31 @@
     <atom:link href="https://geminishkv.tech/rss.xml" rel="self" type="application/rss+xml"/>
     <description>Блог по AppSec &amp; DevSecOps — Илья Шмаков (geminishkv)</description>
     <language>ru-RU</language>
-    <lastBuildDate>Mon, 14 Sep 2026 07:23:37 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 16 Sep 2026 14:01:16 GMT</lastBuildDate>
     <managingEditor>shmakovis@inbox.ru (Илья Шмаков)</managingEditor>
     <image>
       <url>https://geminishkv.tech/img/hero/avatar.jpg</url>
       <title>geminishkv — AppSec &amp; DevSecOps Блог (RU)</title>
       <link>https://geminishkv.tech/</link>
     </image>
+    <item>
+      <title>OWASP Agentic Skills</title>
+      <link>https://geminishkv.tech/blog/527/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/527/</guid>
+      <pubDate>Wed, 16 Sep 2026 00:00:00 GMT</pubDate>
+      <description>🛠 OWASP Agentic Skills OWASP выпустил первый фреймворк по безопасности агентских скиллов. Покрывает OpenClaw (SKILL.md), Claude Code (skill.json), Cursor/ Codex (manifest.json), VS Code (package.json) Модель MCP определяет какие инструменты доступны, а скилл — как их оркестриров</description>
+      <enclosure url="https://geminishkv.tech/img/blog/527.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Надо использовать по максимуму - всегда</title>
+      <link>https://geminishkv.tech/blog/525/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/525/</guid>
+      <pubDate>Tue, 15 Sep 2026 00:00:00 GMT</pubDate>
+      <description>Надо использовать по максимуму - всегда #lol</description>
+      <enclosure url="https://geminishkv.tech/img/blog/525.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
     <item>
       <title>Красивое</title>
       <link>https://geminishkv.tech/blog/524/</link>

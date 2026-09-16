@@ -3,24 +3,25 @@
   "posts": [
     {
       "id": "527",
-      "text": "🛠 OWASP Agentic Skills\n\nOWASP выпустил первый фреймворк по безопасности агентских скиллов. Покрывает OpenClaw (SKILL.md), Claude Code (skill.json), Cursor/ Codex (manifest.json), VS Code (package.json)\n\nМодель\n\nMCP определяет какие инструменты доступны, а скилл — как их оркестрировать. Этот поведенческий слой не закрывается защитой ни модели, ни протокола\n\n- Конфиги репозитория стали execution layer: CVE-2025-59536 (CVSS 8.7) в Claude Code, по факту - это pre-consent code execution. Выглядит так: открытие проекта в агенте, config исполняет shell, эксфильтрация API-ключей\n\n- SKILL.md как вектор RCE: строки в YAML инструктируют агента прочитать ~/.ssh/id_rsa и эксфильтровать, которую агент исполняет как доверенную\n\n- Lethal Trifecta — условие критичности\n\n1. Private data   (SSH, API keys, wallets)\n2. Untrusted content (SKILL.md, MEMORY.md, email)\n3. External egress (network, webhooks, curl)\n\nПроблемный Tier\n\n- AST05: payload подтягивается из attacker-controlled URL в рантайме — обходит install-time скан by design\n- AST07 SkillJacking: висящие зависимости угоняются, где спасает только hash pinning\n- AST08: padding, логика в бинарниках, prompt-injection против LLM. Pattern-matching бесполезен\n\nUniversal Skill Format\npermissions:\n  files:\n    deny_write: [SOUL.md, MEMORY.md, AGENTS.md] # закрывает персистентный бэкдор\n  network:\n    allow: [api.example.com] # закрывает over-permission\n    deny: \"*\"\n  shell: false\nsignature: \"ed25519:...\" # Merkle-root верификация\ncontent_hash: \"sha256:...\" # Merkle-root верификация\nИтого (боже мой, а мы не знали - даёшь агенту доступ к файлам, сети и shell — создаёшь ровно ту attack surface, о которой этот Top 10)\n\n- Execution layer в конфигах: SKILL.md, settings.json исполняются, а не читаются — CVE-2025-59536 \n- pre-consent RCE через клонирование репо \n- сканеры обходятся за час, нужен behavioral pipeline \n- База: least privilege, sandbox, hash pinning, co-sign как доп (речь о механике, не туле)\n\n#AppSec #DevSecOps  #research",
+      "text": "🛠 OWASP Agentic Skills\n\nOWASP выпустил первый фреймворк по безопасности агентских скиллов. Покрывает OpenClaw (SKILL.md), Claude Code (skill.json), Cursor/ Codex (manifest.json), VS Code (package.json)\n\nМодель\n\nMCP определяет какие инструменты доступны, а скилл — как их оркестрировать. Этот поведенческий слой не закрывается защитой ни модели, ни протокола\n\n- Конфиги репозитория стали execution layer: CVE-2025-59536 (CVSS 8.7) в Claude Code, по факту - это pre-consent code execution. Выглядит так: открытие проекта в агенте, config исполняет shell, эксфильтрация API-ключей\n\n- SKILL.md как вектор RCE: строки в YAML инструктируют агента прочитать ~/.ssh/id_rsa и эксфильтровать, которую агент исполняет как доверенную\n\n- Lethal Trifecta — условие критичности\n\n1. Private data   (SSH, API keys, wallets)\n2. Untrusted content (SKILL.md, MEMORY.md, email)\n3. External egress (network, webhooks, curl)\n\nПроблемный Tier\n\n- AST05: payload подтягивается из attacker-controlled URL в рантайме — обходит install-time скан by design\n- AST07 SkillJacking: висящие зависимости угоняются, где спасает только hash pinning\n- AST08: padding, логика в бинарниках, prompt-injection против LLM. Pattern-matching бесполезен\n\nUniversal Skill Format\n\npermissions:\n  files:\n    deny_write: [SOUL.md, MEMORY.md, AGENTS.md] # закрывает персистентный бэкдор\n  network:\n    allow: [api.example.com] # закрывает over-permission\n    deny: \"*\"\n  shell: false\nsignature: \"ed25519:...\" # Merkle-root верификация\ncontent_hash: \"sha256:...\" # Merkle-root верификация\n\nИтого (боже мой, а мы не знали - даёшь агенту доступ к файлам, сети и shell — создаёшь ровно ту attack surface, о которой этот Top 10)\n\n- Execution layer в конфигах: SKILL.md, settings.json исполняются, а не читаются — CVE-2025-59536 \n- pre-consent RCE через клонирование репо \n- сканеры обходятся за час, нужен behavioral pipeline \n- База: least privilege, sandbox, hash pinning, co-sign как доп (речь о механике, не туле)\n\n#AppSec #DevSecOps #research #specialty",
       "date": "2026-09-16",
       "url": "https://t.me/appsecta/527",
-      "views": 6,
+      "views": 37,
       "tags": [
         "appsec",
         "devsecops",
-        "research"
+        "research",
+        "specialty"
       ],
       "image": "/img/blog/527.jpg",
-      "text_en": "🛠 OWASP Agentic Skills\n\nOWASP has released the first agent skills security framework. Covers OpenClaw (SKILL.md), Claude Code (skill.json), Cursor/ Codex (manifest.json), VS Code (package.json)\n\nModel\nMCP determines what instruments are available, and skill determines how to orchestrate them. This behavioral layer is not protected by either model or protocol.\n- The repository configs have become execution layer: CVE-2025-59536 (CVSS 8.7) in Claude Code, in fact this is pre-consent code execution. It looks like this: opening a project in the agent, config executes the shell, exfiltrating API keys\n- SKILL.md as an RCE vector: lines in YAML instruct the agent to read ~/.ssh/id_rsa and exfiltrate, which the agent executes as trusted\n\n- Lethal Trifecta - criticality condition\n\n1. Private data (SSH, API keys, wallets)\n2. Untrusted content (SKILL.md, MEMORY.md, email)\n3. External egress (network, webhooks, curl)\n\nProblematic Tier\n\n- AST05: payload is pulled from attacker-controlled URL at runtime - bypasses install-time scan by design\n- AST07 SkillJacking: dangling dependencies are hijacked, where only hash pinning saves\n- AST08: padding, logic in binaries, prompt-injection versus LLM. Pattern-matching is useless\n\nUniversal Skill Format\npermissions:\n  files:\n    deny_write: [SOUL.md, MEMORY.md, AGENTS.md] # closes persistent backdoor\n  network:\n    allow: [api.example.com] # closes over-permission\n    deny: \"*\"\n  shell: false\nsignature: \"ed25519:...\" # Merkle-root verification\ncontent_hash: \"sha256:...\" # Merkle-root verification\nTotal (my God, we didn’t know - you give the agent access to files, the network and the shell - you create exactly the attack surface that this Top 10 is about)\n- Execution layer in configs: SKILL.md, settings.json are executed, not read - CVE-2025-59536 \n- pre-consent RCE via repo cloning \n- scanners cost an hour, we need a behavioral pipeline\n- Base: least privilege, sandbox, hash pinning, co-sign as an extra (we’re talking about mechanics, not tools)\n\n#AppSec #DevSecOps #research"
+      "text_en": "🛠 OWASP Agentic Skills\n\nOWASP has released the first agent skills security framework. Covers OpenClaw (SKILL.md), Claude Code (skill.json), Cursor/ Codex (manifest.json), VS Code (package.json)\n\nModel\nMCP determines what instruments are available, and skill determines how to orchestrate them. This behavioral layer is not protected by either model or protocol.\n- The repository configs have become execution layer: CVE-2025-59536 (CVSS 8.7) in Claude Code, in fact this is pre-consent code execution. It looks like this: opening a project in the agent, config executes the shell, exfiltrating API keys\n- SKILL.md as an RCE vector: lines in YAML instruct the agent to read ~/.ssh/id_rsa and exfiltrate, which the agent executes as trusted\n\n- Lethal Trifecta - criticality condition\n\n1. Private data (SSH, API keys, wallets)\n2. Untrusted content (SKILL.md, MEMORY.md, email)\n3. External egress (network, webhooks, curl)\n\nProblematic Tier\n\n- AST05: payload is pulled from attacker-controlled URL at runtime - bypasses install-time scan by design\n- AST07 SkillJacking: dangling dependencies are hijacked, where only hash pinning saves\n- AST08: padding, logic in binaries, prompt-injection versus LLM. Pattern-matching is useless\n\nUniversal Skill Format\n\npermissions:\n  files:\n    deny_write: [SOUL.md, MEMORY.md, AGENTS.md] # closes persistent backdoor\n  network:\n    allow: [api.example.com] # closes over-permission\n    deny: \"*\"\n  shell: false\nsignature: \"ed25519:...\" # Merkle-root verification\ncontent_hash: \"sha256:...\" # Merkle-root verification\n\nTotal (my God, we didn’t know - you give the agent access to files, the network and the shell - you create exactly the attack surface that this Top 10 is about)\n- Execution layer in configs: SKILL.md, settings.json are executed, not read - CVE-2025-59536 \n- pre-consent RCE via repo cloning \n- scanners cost an hour, we need a behavioral pipeline\n- Base: least privilege, sandbox, hash pinning, co-sign as an extra (we’re talking about mechanics, not tools)\n\n#AppSec #DevSecOps #research #specialty"
     },
     {
       "id": "525",
       "text": "Надо использовать по максимуму - всегда\n\n#lol",
       "date": "2026-09-15",
       "url": "https://t.me/appsecta/525",
-      "views": 83,
+      "views": 92,
       "tags": [
         "lol"
       ],
@@ -32,7 +33,7 @@
       "text": "Красивое 🙃\n\nА еще по кайфу вставлять nbsp как пустой символ \n\n#lol",
       "date": "2026-09-13",
       "url": "https://t.me/appsecta/524",
-      "views": 107,
+      "views": 112,
       "tags": [
         "lol"
       ],
@@ -44,7 +45,7 @@
       "text": "Немного приятностей еще подъехало, на самом деле хотелось бы больше сделать для людей 🙏🫶\n\n#special #course #appsec",
       "date": "2026-09-11",
       "url": "https://t.me/appsecta/523",
-      "views": 154,
+      "views": 157,
       "tags": [
         "special",
         "course",
@@ -58,7 +59,7 @@
       "text": "🛠 AppSec Labs to pump yourself Release v.2.2.0\n\nСалют, я снова с апдейтом по лабам, докручиваю и развиваю преокт, думаю это круто\n\nДизайн и UI/UX:\n\n• Главная переписана как кастомный шаблон: тёмный холст в палитре gpages, hero с бренд-колонкой (логотип, «0», «1», Sic Parvis Magna), бейджи, «О курсе» тремя карточками, конвейер из 6 этапов с материалами над узлом и лабами под ним, шаги прохождения, требования и замечания, 9 плиток материалов, полоса канала\n• Шапка в стиле geminishkv.tech: логотип с вращающимся кольцом, пилюли разделов с активным состоянием, поиск-капсула, бургер; стекло при скролле\n• Единая палитра с gpages\n• Внутренние страницы: одно меню (пилюли шапки + сайдбар текущего раздела), минимальный сайдбар, страницы без раздела во всю ширину\n• Доступность: читаемый поиск на тёмной главной, кольца фокуса, print-стили, ARIA-ориентиры\n\nАрхитектура и сборка:\n\n• pyproject.toml + uv.lock с хэшами вместо requirements.txt; инструменты CI в группах лока; CI на uv sync --frozen, пины всех установщиков, hadolint с проверкой sha256, pip-audit по экспорту лока\n• Dependabot: экосистема uv, cooldown 7 дней для actions / npm / uv\n• Цифры hero считаются хуком при сборке; шаблоны и глоссарий исключены из сборки\n\n#appsec #devsecops #roadmap #specialty #toolchain #techsolution #gost #paper #course #reco #sast #sca #dast #sbom #containersecurity #secrets #riskanalys #techsolution",
       "date": "2026-09-11",
       "url": "https://t.me/appsecta/522",
-      "views": 135,
+      "views": 142,
       "tags": [
         "appsec",
         "devsecops",
@@ -86,7 +87,7 @@
       "text": "Немного стиля в ленту 😈🫶",
       "date": "2026-09-09",
       "url": "https://t.me/appsecta/521",
-      "views": 161,
+      "views": 166,
       "tags": [],
       "image": "/img/blog/521.jpg",
       "text_en": "A little style for your feed 😈🫶"
@@ -96,7 +97,7 @@
       "text": "Немного для развлечения 🤣\n\n#lol",
       "date": "2026-09-09",
       "url": "https://t.me/appsecta/520",
-      "views": 164,
+      "views": 167,
       "tags": [
         "lol"
       ],
@@ -108,7 +109,7 @@
       "text": "Ууу, актуалочка\n\n#lol",
       "date": "2026-09-04",
       "url": "https://t.me/appsecta/519",
-      "views": 242,
+      "views": 246,
       "tags": [
         "lol"
       ],
@@ -120,7 +121,7 @@
       "text": "Кстати, да - жиза 🤣\n\n#lol",
       "date": "2026-09-01",
       "url": "https://t.me/appsecta/518",
-      "views": 261,
+      "views": 264,
       "tags": [
         "lol"
       ],
@@ -132,7 +133,7 @@
       "text": "А, ой, с первым сентября, у меня же будут студенты\n\nПС: никогда не думал, что буду преподом, святые котейки 😅",
       "date": "2026-09-01",
       "url": "https://t.me/appsecta/517",
-      "views": 231,
+      "views": 234,
       "tags": [],
       "image": "/img/blog/517.jpg",
       "text_en": "Oh, oh, on the first of September, I will have students\n\nPS: I never thought that I would be a teacher, holy cats 😅"
@@ -142,7 +143,7 @@
       "text": "С пятничной, родное сердце \n\n#lol",
       "date": "2026-08-28",
       "url": "https://t.me/appsecta/516",
-      "views": 304,
+      "views": 307,
       "tags": [
         "lol"
       ],
@@ -154,7 +155,7 @@
       "text": "Салюты, \nОффтоп дня, скоро будет конфа Guardconf, которая подарила много интересного в прошлом году и я хочу тебя пригласить на нее. \n\nМеня пригласили на нее для участия в нескольких секциях, это будет хорошо 🙃\n\nВот тут почитай как было. \nВот тут почитай о том где и как регистрироваться, что бы кайфануть на ней 🫶\n\n#meetup",
       "date": "2026-08-26",
       "url": "https://t.me/appsecta/515",
-      "views": 272,
+      "views": 275,
       "tags": [
         "meetup"
       ],
@@ -166,7 +167,7 @@
       "text": "🚨 24 npm packages are turning unpkg into phishing infrastructure.\n\nThey serve fake Cloudflare CAPTCHA pages from trusted unpkg URLs and use attacker-controlled redirect logic.\n\nThe packages target visitors, not developers installing them.\n\nSee how it works - https://thehackernews.com/2026/08/24-npm-packages-abuse-unpkg-mirrors-to.html",
       "date": "2026-08-25",
       "url": "https://t.me/appsecta/514",
-      "views": 231,
+      "views": 240,
       "tags": [],
       "image": "/img/blog/514.jpg",
       "text_en": "🚨 24 npm packages are turning unpkg into phishing infrastructure.\n\nThey serve fake Cloudflare CAPTCHA pages from trusted unpkg URLs and use attacker-controlled redirect logic.\n\nThe packages target visitors, not developers installing them.\n\nSee how it works - https://thehackernews.com/2026/08/24-npm-packages-abuse-unpkg-mirrors-to.html"
@@ -176,7 +177,7 @@
       "text": "Вот это интересно. Почитай",
       "date": "2026-08-25",
       "url": "https://t.me/appsecta/513",
-      "views": 213,
+      "views": 214,
       "tags": [],
       "text_en": "This is interesting. Honor"
     },
@@ -185,7 +186,7 @@
       "text": "🛠 OSV-Scanner — SCA от Google\n\nСалют, возвращаемся в поток и сегодня познакомлю с относительно свежим инструментом. \n\nOSV-Scanner работает с OSV.dev — агрегированной базой данных с 30+ источниками: GitHub Advisory, NVD, PyPI Advisory, RustSec, Go Vuln DB, Maven Central и другие, то есть через распределенное хранилище данных\n\nПо сути уязвимость затрагивающая несколько пакетных менеджеров трекается как один ID — без дублирования, без расхождений в CVSS между источниками. Полная поддержка: npm и Maven\n\nИмеет сканирование контейнерных образов и guided remediation, имеют транзитивное сканирование Python через deps.dev API. Теперь requirements.txt показывает весь граф включая косвенные зависимости. Лицензия Apache 2.0\n\nПоддерживавает: Go, Python, JavaScript, Java, Rust, PHP, Ruby, Dart, Elixir, R, C/C++, также форматы lockfile: go.mod, package-lock.json, yarn.lock, pom.xml, Cargo.lock, Gemfile.lock, composer.lock, uv.lock и другие\n\nУстановка\n\n# Go install\ngo install github.com/google/osv-scanner/v2/cmd/osv-scanner@latest\n\n# Docker\ndocker pull ghcr.io/google/osv-scanner:latest\n\nКоманды\n\n# Рекурсивное сканирование директории\nosv-scanner scan --dir .\n\n# Конкретный lockfile\nosv-scanner scan --lockfile ./package-lock.json\n\n# Сканирование контейнерного образа\nosv-scanner scan --image myapp:latest\n\n# JSON-вывод для парсинга в CI\nosv-scanner scan --dir . --format json > osv-report.json\n\n# HTML интерактивный отчёт\nosv-scanner scan --dir . --format html > report.html\n\nGuided Remediation фича\n\n# Минимальный набор апгрейдов по severity, глубине зависимости и ROI\nosv-scanner fix --dir . --strategy relock\n\n# In-place: автоматически обновляет lockfile\nosv-scanner fix --dir . --strategy in-place\n\nИгнорирование\n\n# osv-scanner.toml\n[[IgnoredVulns]]\nid = \"GO-2022-0968\"\nignoreUntil = \"2026-12-01\"\nreason = \"Уязвимость в модуле который не используется в production\"\n\nCI/CD\n\n# GitHub Actions\n- name: OSV-Scanner\n  uses: google/osv-scanner-action@v2\n  with:\n    scan-args: |-\n      --recursive\n      --dir=.\n      --format=json\n      --severity=HIGH,CRITICAL\n\n# GitLab CI\nosv-scanner:\n  image: ghcr.io/google/osv-scanner:latest\n  stage: security\n  script:\n    - osv-scanner scan --dir . --format json\n        --severity CRITICAL,HIGH > osv-report.json\n  artifacts:\n    paths: [osv-report.json]\n  allow_failure: false\n\nCall Analysis\n\n# Проверяет вызывается ли уязвимая функция в реальном коде\n# Снижает шум: уязвимость есть, но в коде вызова нет\nosv-scanner scan --dir . --experimental-call-analysis\n\nИтого\n\n- Одна уязвимость - это один ID без дублей\n- Guided remediation: минимальный набор апгрейдов с ранжированием по ROI\n- Layer-aware сканирование контейнеров: видно какой слой принёс уязвимый пакет\n- Call analysis: уязвимость есть, функция не вызывается — не шумит\n\n#AppSec #SCA #DevSecOps #toolchain",
       "date": "2026-08-25",
       "url": "https://t.me/appsecta/512",
-      "views": 256,
+      "views": 258,
       "tags": [
         "appsec",
         "sca",
@@ -200,7 +201,7 @@
       "text": "простите, но это выглядит отлично \n\n#lol",
       "date": "2026-08-24",
       "url": "https://t.me/appsecta/511",
-      "views": 189,
+      "views": 191,
       "tags": [
         "lol"
       ],
@@ -212,7 +213,7 @@
       "text": "Ну и туда же:\n\nЭто точно заявка, а не penetration test корпоративной морали?",
       "date": "2026-08-20",
       "url": "https://t.me/appsecta/510",
-      "views": 246,
+      "views": 249,
       "tags": [],
       "text_en": "Well, here we go:\n\nIs this really an application and not a penetration test of corporate morality?"
     },
@@ -221,7 +222,7 @@
       "text": "Уровень доверия к домену: «занятно»\n\nУровень интереса SOC: критический\n\n#lol",
       "date": "2026-08-20",
       "url": "https://t.me/appsecta/509",
-      "views": 249,
+      "views": 252,
       "tags": [
         "lol"
       ],
@@ -233,7 +234,7 @@
       "text": "Умело - не спорю\n\n#lol",
       "date": "2026-08-19",
       "url": "https://t.me/appsecta/508",
-      "views": 237,
+      "views": 240,
       "tags": [
         "lol"
       ],
@@ -245,7 +246,7 @@
       "text": "«Не надо было грешить с маком»\n\n#lol",
       "date": "2026-08-17",
       "url": "https://t.me/appsecta/507",
-      "views": 221,
+      "views": 224,
       "tags": [
         "lol"
       ],

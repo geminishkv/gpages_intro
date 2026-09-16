@@ -8,13 +8,31 @@
     <atom:link href="https://geminishkv.tech/rss-en.xml" rel="self" type="application/rss+xml"/>
     <description>AppSec &amp; DevSecOps blog by Ilya Shmakov (geminishkv)</description>
     <language>en-US</language>
-    <lastBuildDate>Mon, 14 Sep 2026 07:23:37 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 16 Sep 2026 14:01:16 GMT</lastBuildDate>
     <managingEditor>shmakovis@inbox.ru (Ilya Shmakov)</managingEditor>
     <image>
       <url>https://geminishkv.tech/img/hero/avatar.jpg</url>
       <title>geminishkv — AppSec &amp; DevSecOps Blog (EN)</title>
       <link>https://geminishkv.tech/</link>
     </image>
+    <item>
+      <title>OWASP Agentic Skills</title>
+      <link>https://geminishkv.tech/blog/en/527/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/527/</guid>
+      <pubDate>Wed, 16 Sep 2026 00:00:00 GMT</pubDate>
+      <description>🛠 OWASP Agentic Skills OWASP has released the first agent skills security framework. Covers OpenClaw (SKILL.md), Claude Code (skill.json), Cursor/ Codex (manifest.json), VS Code (package.json) Model MCP determines what instruments are available, and skill determines how to orche</description>
+      <enclosure url="https://geminishkv.tech/img/blog/527.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>We must use it to the maximum - always</title>
+      <link>https://geminishkv.tech/blog/en/525/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/525/</guid>
+      <pubDate>Tue, 15 Sep 2026 00:00:00 GMT</pubDate>
+      <description>We must use it to the maximum - always #lol</description>
+      <enclosure url="https://geminishkv.tech/img/blog/525.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
     <item>
       <title>Beautiful</title>
       <link>https://geminishkv.tech/blog/en/524/</link>
@@ -3109,6 +3127,15 @@
       <pubDate>Wed, 01 Oct 2025 00:00:00 GMT</pubDate>
       <description>😅 The fresh guy has arrived, I plan to be a speaker at the conference 10/7/25 - “Optimizing tools for secure development processes.” An interesting conference that helps to listen to the non-trivial points of view of the guys in the market. We will discuss: • Practical cases of </description>
       <enclosure url="https://geminishkv.tech/img/blog/27.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>.gitignore: why is ignoring redundant artifacts important?</title>
+      <link>https://geminishkv.tech/blog/en/26/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/26/</guid>
+      <pubDate>Wed, 01 Oct 2025 00:00:00 GMT</pubDate>
+      <description>🛠 .gitignore: why is ignoring redundant artifacts important? Firework, It often happens that the development team in its projects does not exclude artifacts that do not participate in assemblies, but are stored in GitSCM project branches, and with a change history. Let&apos;s take a </description>
+      <enclosure url="https://geminishkv.tech/img/blog/26.jpg" type="image/jpeg" length="0"/>
       <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
     </item>
     <item>
