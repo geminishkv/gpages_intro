@@ -22,7 +22,7 @@
   border-radius: var(--radius-md, 4px);
   padding: clamp(6px, 0.6vh, 10px) clamp(14px, 1.5vw, 24px) clamp(6px, 0.6vh, 10px) clamp(6px, 0.6vh, 10px);
   cursor: pointer;
-  transition: border-color 0.3s, box-shadow 0.3s;
+  transition: border-color var(--dur-ui) var(--ease-out), box-shadow var(--dur-ui) var(--ease-out), transform var(--dur-fast) var(--ease-out);
   position: relative;
   overflow: hidden;
 }
@@ -63,7 +63,7 @@
 }
 
 .contact-btn:hover .contact-btn__avatar-inner svg {
-  animation: contact-slide-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: contact-slide-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 @keyframes contact-slide-in {
@@ -80,7 +80,7 @@
   border-radius: 50%;
   background: var(--color-red, #D51A1A);
   outline: 2px solid var(--surface-primary, #0a0a0a);
-  animation: contact-pulse 2s ease-in-out infinite;
+  animation: contact-pulse 3s ease-in-out infinite;
 }
 
 .contact-btn__label {
@@ -92,116 +92,21 @@
 }
 
 .contact-btn--telegram .contact-btn__avatar-inner {
-  background: rgba(42, 171, 238, 0.15);
+  background: var(--color-red-a15);
 }
 
 .contact-btn--telegram:hover .contact-btn__avatar-inner svg path {
-  fill: #2AABEE;
+  fill: var(--color-red, #D51A1A);
 }
 
 .contact-btn--telegram:hover {
-  border-color: #2AABEE;
-  box-shadow: 0 0 20px rgba(42, 171, 238, 0.15);
-}
-
-.contact-btn--telegram .contact-btn__status {
-  background: #2AABEE;
-  animation: contact-pulse-tg 2s ease-in-out infinite;
+  border-color: var(--color-red, #D51A1A);
+  box-shadow: 0 0 20px var(--color-red-a15);
 }
 
 @keyframes contact-pulse {
   0%, 100% { background: var(--color-red, #D51A1A); }
   50%      { background: var(--color-gold, #F9B361); }
-}
-
-@keyframes contact-pulse-tg {
-  0%, 100% { background: #2AABEE; }
-  50%      { background: #5bc8f5; }
-}
-
-/* ── Content link buttons (cyber-styled) ── */
-
-.content-btn {
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  padding: clamp(10px, 0.9vh, 16px) clamp(20px, 2vw, 36px);
-  transition: 0.5s;
-  position: relative;
-  font-size: clamp(0.72rem, 0.75vw, 0.95rem);
-  font-weight: 700;
-  font-family: inherit;
-  background: var(--surface-primary, #0a0a0a);
-  border: 1px solid var(--border-default, #1a1a1a);
-  border-radius: var(--radius-md, 4px);
-  color: var(--color-white, #fff);
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  white-space: nowrap;
-}
-
-.content-btn:hover {
-  letter-spacing: 0.14em;
-  background: var(--color-red, #D51A1A);
-  color: var(--color-red, #D51A1A);
-  box-shadow: 0 0 25px var(--color-red-a30);
-}
-
-.content-btn::before {
-  content: '';
-  position: absolute;
-  inset: 2px;
-  background: var(--surface-primary, #0a0a0a);
-}
-
-.content-btn span {
-  position: relative;
-  z-index: 1;
-}
-
-.content-btn i {
-  position: absolute;
-  inset: 0;
-  display: block;
-  font-style: normal;
-}
-
-.content-btn i::before {
-  content: '';
-  position: absolute;
-  border: 2px solid var(--color-red, #D51A1A);
-  width: 7px;
-  height: 4px;
-  top: -3.5px;
-  left: 80%;
-  background: var(--surface-primary, #0a0a0a);
-  transform: translateX(-50%);
-  transition: 0.5s;
-}
-
-.content-btn:hover i::before {
-  width: 20px;
-  left: 20%;
-}
-
-.content-btn i::after {
-  content: '';
-  position: absolute;
-  border: 2px solid var(--color-red, #D51A1A);
-  width: 7px;
-  height: 4px;
-  bottom: -3.5px;
-  left: 20%;
-  background: var(--surface-primary, #0a0a0a);
-  transform: translateX(-50%);
-  transition: 0.5s;
-}
-
-.content-btn:hover i::after {
-  width: 20px;
-  left: 80%;
 }
 
 /* ── Package link buttons (hacker glitch + cyber border) ── */
@@ -223,7 +128,7 @@
   border: 1px solid var(--border-default, #1a1a1a);
   border-radius: var(--radius-md, 4px);
   cursor: pointer;
-  transition: border-color 0.5s, box-shadow 0.5s, background 0.5s;
+  transition: border-color var(--dur-ui) var(--ease-out), box-shadow var(--dur-ui) var(--ease-out), background var(--dur-ui) var(--ease-out), transform var(--dur-fast) var(--ease-out);
   position: relative;
 }
 
@@ -341,7 +246,7 @@
   gap: 10px;
   border-radius: 50px;
   cursor: pointer;
-  transition: all 0.4s ease;
+  transition: transform var(--dur-fast) var(--ease-out), border-color var(--dur-ui) var(--ease-out), width var(--dur-ui) var(--ease-out), padding var(--dur-ui) var(--ease-out);
   padding: 4px 16px 4px 4px;
   position: relative;
   text-decoration: none;
@@ -359,7 +264,7 @@
   background-color: var(--color-white, #fff);
   width: 8px;
   height: 8px;
-  transition: all 0.4s ease;
+  transition: opacity var(--dur-ui) var(--ease-out), visibility var(--dur-ui);
   border-radius: 100%;
   margin: auto;
   opacity: 0;
@@ -373,7 +278,7 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--color-white, #fff);
-  transition: all 0.4s ease;
+  transition: opacity var(--dur-ui) var(--ease-out), visibility var(--dur-ui), right var(--dur-ui) var(--ease-out);
   white-space: nowrap;
 }
 
@@ -394,7 +299,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: all 0.4s ease;
+  transition: opacity var(--dur-ui) var(--ease-out), visibility var(--dur-ui), box-shadow var(--dur-ui) var(--ease-out);
   position: relative;
   box-shadow: 0 0 0 0 rgba(213, 26, 26, 0.4);
   overflow: hidden;
@@ -408,7 +313,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  transition: all 0.4s ease;
+  transition: opacity var(--dur-ui) var(--ease-out), visibility var(--dur-ui);
 }
 
 .dl-btn__square {
@@ -422,7 +327,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  transition: all 0.4s ease;
+  transition: opacity var(--dur-ui) var(--ease-out), visibility var(--dur-ui);
 }
 
 .dl-btn__circle::before {
@@ -433,8 +338,9 @@
   background-color: #a01414;
   width: 100%;
   height: 0;
-  transition: all 0.4s ease;
+  transition: height 0.25s linear;
 }
+.dl-btn:active { transform: scale(0.97); }
 
 .dl-btn--active {
   width: 47px;
@@ -506,6 +412,22 @@
   100% { opacity: 1; visibility: visible; right: 45px; }
 }
 
+/* live download (useDownload): the circle fills with the real progress (--dl-p), the orbit
+   spins until the bytes are in, then the same reveal with "Open" and the gold border */
+@keyframes dl-orbit {
+  0%   { transform: rotate(-90deg) translate(20px) rotate(0);       opacity: 1; visibility: visible; }
+  100% { transform: rotate(270deg) translate(20px) rotate(270deg);  opacity: 1; visibility: visible; }
+}
+.dl-btn--live { animation: none; }
+.dl-btn--live::before { animation: dl-orbit 2s linear 0.4s infinite; }
+.dl-btn--live .dl-btn__circle { animation: dl-pulse 1s forwards; }
+.dl-btn--live .dl-btn__circle::before { animation: none; height: var(--dl-p, 0%); }
+.dl-btn--live .dl-btn__title--done { animation: none; }
+.dl-btn--done { animation: dl-installed 0.4s ease forwards; }
+.dl-btn--done::before { animation: none; opacity: 0; visibility: hidden; }
+.dl-btn--done .dl-btn__circle { animation: dl-circle-hide 0.2s ease forwards; }
+.dl-btn--done .dl-btn__title--done { animation: dl-show-done 0.4s ease forwards; }
+
 /* ── Social media icon buttons ── */
 
 .social-icon {
@@ -570,12 +492,6 @@
   .contact-btn__status { animation: none; }
   .contact-btn:hover .contact-btn__avatar-inner svg { animation: none; }
 
-  .content-btn,
-  .content-btn i::before,
-  .content-btn i::after {
-    transition: none;
-  }
-
   .pkg-btn:hover span::before { animation: none; }
   .pkg-btn i::before,
   .pkg-btn i::after { transition: none; }
@@ -599,4 +515,10 @@
 
   .social-icon:hover .social-icon__svg { animation: none; }
   .social-icon { transition-duration: 0s; }
+}
+
+/* hover motion only where there is a real pointer: a tap on a tablet must not "stick" */
+@media (hover: none) {
+  .pkg-btn:hover span::before { animation: none; }
+  .contact-btn:hover .contact-btn__avatar-inner svg { animation: none; }
 }

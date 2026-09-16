@@ -250,9 +250,6 @@
     transition: letter-spacing 0.4s;
   }
 
-  .brand-col .spm-pill:hover .spm-pill__text {
-    letter-spacing: 0.05em;
-  }
 }
 
 /* ── Reduced motion ── */

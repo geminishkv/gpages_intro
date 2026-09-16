@@ -392,3 +392,6 @@
   .mac-cmds { transition: none; }
   .mac-cmds__cur { animation: none; }
 }
+
+/* the terminal image sits against the right edge so the typed lines on the left stay readable */
+.mac--play .mac-uwu { object-position: 100% 60%; }

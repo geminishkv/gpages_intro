@@ -115,8 +115,8 @@
 
 .hero__badges-track {
   display: flex;
-  gap: var(--space-4, 16px);
-  align-items: flex-end;
+  gap: 18px;
+  align-items: center;
   width: max-content;
   /* начальная позиция: оригиналы (правая половина трека) в зоне видимости */
   transform: translateX(-50%);
@@ -124,16 +124,25 @@
 }
 
 .hero__badge {
-  width: clamp(90px, 7.5vw, 140px);
-  height: clamp(120px, 10vw, 190px);
+  height: 76px;
+  width: auto;
+  max-width: 150px;
   object-fit: contain;
   display: block;
   opacity: 0;
   flex-shrink: 0;
+  /* every logo on the same black pill with a thin border */
+  background: #0d0d0d;
+  border: 1px solid #262626;
+  border-radius: 10px;
+  padding: 8px 12px;
 }
 
+/* pure black marks are inverted to white; the pill is set light so the inversion turns it black too */
 .hero__badge--invert {
-  filter: invert(1) brightness(2);
+  filter: invert(1) brightness(1.15);
+  background: #f2f2f2;
+  border-color: #d9d9d9;
 }
 
 /* дубли сразу видимы (для петли скролла) */
@@ -227,7 +236,7 @@
   .hero__badges-outer {
     max-width: calc(4 * 80px + 2 * 12px);
   }
-  .hero__badge        { width: 80px; height: 110px; }
+  .hero__badge        { height: 64px; max-width: 120px; padding: 6px 10px; }
   .hero__badges-track { gap: var(--space-3, 12px); }
 }
 
@@ -238,7 +247,7 @@
   .hero__badges-outer {
     max-width: calc(4 * 70px + 2 * 10px);
   }
-  .hero__badge        { width: 70px; height: 96px; }
+  .hero__badge        { height: 56px; max-width: 104px; padding: 6px 8px; }
   .hero__badges-track { gap: 10px; }
 
 }
@@ -288,12 +297,34 @@
 }
 
 .hero__lead {
-  font-size: clamp(0.95rem, 1.05vw, 1.15rem);
-  line-height: 1.55;
-  color: var(--text-pale, #aaaaaa);
-  max-width: 36em;
+  /* four points in a 2×2 grid, brand diamonds as bullets, same area as the paragraph before */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 20px;
+  max-width: 640px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: clamp(0.82rem, 0.9vw, 0.98rem);
+  line-height: 1.45;
+  color: #cfcdc8;
+}
+.hero__lead li { display: flex; gap: 9px; align-items: flex-start; }
+.hero__lead li::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 7px;
+  height: 7px;
+  margin-top: 0.5em;
+  border-radius: 1px;
+  background: linear-gradient(135deg, #D51A1A, #F9B361);
+  transform: rotate(45deg);
 }
 
 @media (max-width: 900px) {
   .hero__watermark { width: 60vw; right: 0; top: 2%; opacity: 0.03; }
+  .hero__lead { text-align: left; }
+}
+@media (max-width: 576px) {
+  .hero__lead { grid-template-columns: 1fr; }
 }
