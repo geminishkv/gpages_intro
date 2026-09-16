@@ -17,11 +17,11 @@
 * **SplashScreen** — Canvas2D shader (brand red→gold) + SVG pretitle
 * **Holographic Monitor** — CSS floating monitor с glow + Python typewriter
 * **Typewriter** — DOS-стиль набор заголовка с glitch-эффектом по символам
-* **Blog** — 352 поста из Telegram с переводом RU→EN: последний крупно + компактный список, фильтры по тегам, пагинация на `/blog/`, статические SEO-страницы
+* **Blog** — 350+ постов из Telegram с переводом RU→EN: последний крупно + компактный список, фильтры по тегам, пагинация на `/blog/`, статические SEO-страницы
 * **Instagram** — превью 8 последних постов и ссылка на профиль
-* **SEO** — JSON-LD, OG, Twitter Card, sitemap (390 URL), RSS (RU+EN), llms.txt, hreflang
+* **SEO** — JSON-LD, OG, Twitter Card, sitemap (≈760 URL), RSS (RU+EN), llms.txt, hreflang
 * **Security** — CSP, X-Frame-Options, Referrer-Policy, Permissions-Policy
-* **Privacy** — политика конфиденциальности (ФЗ-152), баннер согласия на аналитику (Метрика и Plausible грузятся только после «Принять»), дисклеймер Meta/LinkedIn
+* **Privacy** — политика конфиденциальности (ФЗ-152), баннер согласия на аналитику (Метрика и Plausible грузятся только после «Принять»), уведомление об использовании материалов — раздел 10 политики
 
 Сайт: **[geminishkv.tech](https://geminishkv.tech)**
 
@@ -39,7 +39,7 @@
 | i18n | LangContext (RU/EN) — localStorage, без сторонних библиотек |
 | Деплой | `scripts/deploy.js` (git) → GitHub Pages, ветка `gh-pages` |
 | Домен | geminishkv.tech (reg.ru + GitHub Pages custom domain) |
-| SEO | JSON-LD, OG, Twitter Card, hreflang, sitemap.xml (390 URL), RSS, llms.txt |
+| SEO | JSON-LD, OG, Twitter Card, hreflang, sitemap.xml (≈760 URL), RSS, llms.txt |
 | Security | CSP meta-tag, X-Frame-Options, Referrer-Policy, Permissions-Policy |
 | CI/CD | GitHub Actions — `ci.yml`: lint + audit + build на push, weekly update + deploy по cron |
 
@@ -53,11 +53,10 @@
 * **BrandColumn** — каскадная анимация: materialize → diamond rotate → pulse ring → slide-up (синхронизация с Mac)
 * **GlitchLabel** — заголовки секций печатаются с glitch при скролле (IntersectionObserver)
 * **Badges marquee** — бесконечный скролл логотипов достижений
-* **NoticeBar** — правовое уведомление + дисклеймер Meta/LinkedIn (ФЗ, решение суда), reshow раз в 15 мин
-* **CookieBanner** — cookie-consent (ФЗ-152), reshow раз в 30 мин
+* **CookieBanner** — компактная карточка согласия на аналитику (ФЗ-152) внизу справа; выбор хранится 180 дней, сменить — `/#consent`
 * **Stats** — 5 ключевых метрик с анимацией count-up через requestAnimationFrame
 * **Projects** — карточки GitHub-репозиториев (stars, forks, язык)
-* **Blog** — 352 поста из Telegram `appsecta`; на главной последний пост крупно + 5 компактных, фильтры по тегам, карточка канала с подписчиками; `/blog/` с пагинацией по 15; статические SEO-страницы `/blog/{id}/` (RU) и `/blog/en/{id}/` (EN); переключатель RU/EN
+* **Blog** — 350+ постов из Telegram `appsecta`; на главной последний пост крупно + 5 компактных, фильтры по тегам, карточка канала с подписчиками; `/blog/` с пагинацией по 15; статические SEO-страницы `/blog/{id}/` (RU) и `/blog/en/{id}/` (EN); переключатель RU/EN
 * **Videos** — YouTube-карточки: подкаст по безопасной разработке, интервью BISA
 * **Experience** — карьера как конвейер: 7 узлов с логотипами на трубе red→gold, текущий горит; вертикальная труба на планшетах и телефонах
 * **Hero** — позиционирующая строка и lead под тайтлом, команды-ссылки в терминале после интро (`appsec whoami`, `ls projects`, `tail blog`, `skills`), водяной логотип и сетка на фоне; полоса «Сейчас» с живыми цифрами канала
@@ -112,10 +111,12 @@
 
 | Workflow | Триггер | Секреты | Действие |
 |----------|---------|---------|----------|
-| `ci.yml` — **build** | push / PR → `gpages` | `YM_ID` | `npm install` → `eslint` → `npm audit` → `npm run build` |
+| `ci.yml` — **build** | push / PR → `gpages` | `YM_ID` | `npm ci` → `eslint` → `npm audit` → `npm run build` |
 | `ci.yml` — **update-and-deploy** | cron Пн 07:00 UTC / manual | `YM_ID`, `DATA_PUSH_SSH_KEY` | TG + Instagram + stats → sitemap + RSS → коммит → build → blog pages → deploy gh-pages → ping Yandex |
 
 Ручной запуск: `workflow_dispatch` с опцией `skip_data`.
+
+Шаги данных не роняют деплой: Telegram и Instagram при недоступном источнике пишут `::warning` и оставляют коммитнутые данные (источник Instagram-превью отвечает HTTP 503 «blocked» с сентября 2026, данные заморожены на последнем успешном прогоне); переводы кешируются в `tg-posts.json`, переводится только новое.
 
 Полный скрейп всех постов: `node scripts/update-tg-posts.js --all`
 
@@ -128,7 +129,7 @@ Hardening: pinned action SHA, least-privilege permissions (`contents: read` по
 | Компонент | Описание |
 |-----------|---------|
 | `index.html` | JSON-LD Person / ProfilePage / WebSite / BreadcrumbList, OG, Twitter Card, geo, Яндекс.Вебмастер, canonical, hreflang RU/EN, LCP preload, 120+ keywords |
-| `sitemap.xml` | 390 URL: главная + privacy + индексные страницы блога + 182 RU + EN постов; hreflang cross-links |
+| `sitemap.xml` | ≈760 URL: главная + privacy + индексные страницы блога + RU и EN страницы всех постов; hreflang cross-links |
 | `rss.xml` / `rss-en.xml` | RSS 2.0 фиды блога (RU и EN); atom:link, enclosure |
 | `llms.txt` | Описание для AI-краулеров (ChatGPT, Perplexity, Gemini, Copilot) |
 | `robots.txt` | Yandex Clean-param, блокировка scrapers (SemrushBot, AhrefsBot, MJ12bot) |
@@ -155,7 +156,7 @@ node scripts/update-tg-posts.js        # Последние 20 постов (inc
 node scripts/update-tg-posts.js --all  # ВСЕ посты (пагинация, разовый)
 node scripts/update-instagram.js       # Instagram посты
 node scripts/update-stats.js           # GitHub stars/forks
-node scripts/generate-sitemap.js       # sitemap.xml (390 URL)
+node scripts/generate-sitemap.js       # sitemap.xml (≈760 URL)
 node scripts/generate-rss.js           # rss.xml (RU) + rss-en.xml (EN)
 ```
 
@@ -187,7 +188,7 @@ gpages/
 │   ├── privacy/index.html    # Политика конфиденциальности (+ смена выбора по cookie)
 │   ├── 404.html              # SPA fallback + дино-раннер
 │   ├── index.html            # SEO: JSON-LD, OG, CSP, 72+ meta tags
-│   ├── sitemap.xml           # 390 URL с hreflang
+│   ├── sitemap.xml           # ≈760 URL с hreflang
 │   ├── rss.xml / rss-en.xml  # RSS-фиды
 │   ├── llms.txt              # AI-краулеры
 │   └── robots.txt            # Yandex + scrapers block
@@ -196,7 +197,6 @@ gpages/
 │   │   ├── SplashScreen.js   # Shader canvas + pretitle SVG (30 мин reshow)
 │   │   ├── MainPage.js       # Корневой layout, scroll lock, skip-link, <main>
 │   │   ├── Nav.js            # SVG бургер морфинг, LangSwitch, i18n, прогресс-линия, активная пилюля
-│   │   ├── NoticeBar.js      # Уведомление (45 мин reshow)
 │   │   ├── CookieBanner.js   # Согласие на аналитику (180 дней, /#consent — сменить выбор)
 │   │   ├── Hero.js           # Holographic monitor + typewriter + badges + кнопки + команды-ссылки
 │   │   ├── NowStrip.js       # Полоса «Сейчас» (тексты в i18n, цифры канала из данных)
@@ -239,7 +239,7 @@ gpages/
 │   ├── update-tg-posts.js    # Telegram scraper (--all для полного)
 │   ├── update-instagram.js   # Instagram + cleanup orphans
 │   ├── update-stats.js       # GitHub API
-│   ├── generate-sitemap.js   # 390 URL + hreflang + ping Yandex
+│   ├── generate-sitemap.js   # ≈760 URL + hreflang + ping Yandex
 │   ├── generate-rss.js       # RSS RU + EN
 │   ├── generate-blog-pages.js # Index (пагинация) + post pages (RU+EN)
 │   └── deploy.js             # gh-pages (Node 25 compatible)
