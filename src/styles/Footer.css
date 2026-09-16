@@ -40,13 +40,6 @@
   box-shadow: 0 0 14px var(--color-gold-a40);
 }
 
-.footer__motto {
-  font-family: var(--font-display);
-  font-weight: var(--font-bold, 700);
-  font-size: 1.05rem;
-  color: #ffffff;
-}
-
 .footer__about {
   margin: 0;
   max-width: 360px;

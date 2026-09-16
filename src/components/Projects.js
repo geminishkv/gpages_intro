@@ -1,9 +1,6 @@
-import { useState } from 'react';
 import '../styles/Projects.css';
 import { useLang } from '../context/LangContext';
 import SectionHead from './SectionHead';
-
-const PROJECTS_INITIAL = 3;
 
 function StarIcon() {
   return (
@@ -21,12 +18,9 @@ function ForkIcon() {
   );
 }
 
+// All projects as tiles, no pager: five cards fit the screen next to the numbers.
 export default function Projects({ isVisible }) {
-  const [expanded, setExpanded] = useState(false);
   const { t } = useLang();
-  const PROJECTS = t.projects;
-
-  const visible = expanded ? PROJECTS : PROJECTS.slice(0, PROJECTS_INITIAL);
 
   return (
     <section className={`projects${isVisible ? ' projects--visible' : ''}`}>
@@ -38,7 +32,7 @@ export default function Projects({ isVisible }) {
       />
 
       <div className="projects__grid">
-        {visible.map((p) => (
+        {t.projects.map((p) => (
           <a
             key={p.name}
             href={p.url}
@@ -64,11 +58,6 @@ export default function Projects({ isVisible }) {
             </div>
           </a>
         ))}
-        {!expanded && PROJECTS.length > PROJECTS_INITIAL && (
-          <button className="projects__show-more" onClick={() => setExpanded(true)}>
-            Show {PROJECTS.length - PROJECTS_INITIAL} more projects ↓
-          </button>
-        )}
       </div>
     </section>
   );

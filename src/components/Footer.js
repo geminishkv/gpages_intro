@@ -15,7 +15,6 @@ export default function Footer() {
             <img src={LOGO_IMG} alt="" width="28" height="28" />
             <span>geminishkv</span>
           </a>
-          <span className="footer__motto">Sic Parvis Magna</span>
           <p className="footer__about">{f.about}</p>
         </div>
 
