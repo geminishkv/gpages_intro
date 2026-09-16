@@ -1,0 +1,242 @@
+/* ═══════════════════════════════════════
+   Contacts screen: one message, the NFC card, profile and content links
+   ═══════════════════════════════════════ */
+.gp-cts {
+  padding: 24px clamp(40px, 5vw, 120px) 12px;
+  max-width: 1900px;
+  width: 100%;
+  align-self: center;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: 26px clamp(32px, 4vw, 72px);
+  align-items: start;
+}
+
+.gp-cts__head {
+  grid-column: 1;
+  display: grid;
+  gap: 14px;
+  align-content: start;
+}
+
+.gp-cts__title {
+  margin: 2px 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 4.2vw, 4.4rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  text-wrap: balance;
+}
+
+.gp-cts__sub {
+  margin: 0;
+  max-width: 52ch;
+  color: #b3b0aa;
+  font-size: 1.02rem;
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+.gp-cts__cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.pkg-btn.gp-btn--primary {
+  background: linear-gradient(135deg, #D51A1A, #a01414);
+  border-color: #D51A1A;
+  color: #ffffff;
+}
+.pkg-btn.gp-btn--primary span { background: transparent; }
+.pkg-btn.gp-btn--primary:hover {
+  box-shadow: 0 0 28px rgba(213, 26, 26, 0.45);
+  background: linear-gradient(135deg, #e42222, #a01414);
+}
+.pkg-btn.gp-btn--primary:hover span { color: #ffffff; }
+.pkg-btn.gp-btn--primary i::before,
+.pkg-btn.gp-btn--primary i::after { border-color: #F9B361; background: #a01414; }
+
+.gp-live {
+  margin: 4px 0 0;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.6;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #918f8a;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.gp-live__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #D51A1A;
+  box-shadow: 0 0 0 0 rgba(213, 26, 26, 0.5);
+  animation: gp-live 3s ease-in-out infinite;
+}
+@keyframes gp-live {
+  0%, 100% { background: #D51A1A; box-shadow: 0 0 0 0 rgba(213, 26, 26, 0.5); }
+  50%      { background: #F9B361; box-shadow: 0 0 0 8px rgba(249, 179, 97, 0); }
+}
+
+/* ── NFC card ── */
+.gp-nfc {
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: end;
+  width: min(100%, 380px);
+  aspect-ratio: 1.62;
+  border-radius: 16px;
+  border: 1px solid #2c2c2c;
+  background: linear-gradient(145deg, #171717 0%, #0c0c0c 55%, #140b0b 100%);
+  color: #ffffff;
+  text-decoration: none;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  padding: 20px 22px;
+  position: relative;
+  overflow: hidden;
+  transform: perspective(1100px) rotateX(0) rotateY(0);
+  transition:
+    transform var(--dur-ui) var(--ease-out),
+    border-color var(--dur-ui) var(--ease-out),
+    box-shadow var(--dur-ui) var(--ease-out);
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.9);
+}
+.gp-nfc__glow {
+  position: absolute;
+  inset: auto -30% -55% auto;
+  width: 70%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(213, 26, 26, 0.45), rgba(249, 179, 97, 0.12) 60%, transparent 72%);
+  pointer-events: none;
+}
+.gp-nfc__top { display: flex; justify-content: space-between; align-items: center; }
+.gp-nfc__brand { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; letter-spacing: -0.01em; }
+.gp-nfc__chip {
+  position: relative;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #0a0a0a;
+  border: 1px solid #2c2c2c;
+}
+.gp-nfc__ring {
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, #D51A1A, #F9B361, #D51A1A);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2.5px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2.5px));
+  animation: gp-spin 2.4s linear infinite;
+}
+.gp-nfc__label { font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: 0.14em; color: #F9B361; }
+.gp-nfc__mid { display: grid; gap: 6px; align-content: end; padding-bottom: 12px; }
+.gp-nfc__mid b { font-size: 1.35rem; letter-spacing: -0.01em; }
+.gp-nfc__mid small { color: #b3b0aa; font-size: 0.9rem; }
+.gp-nfc__bot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #F9B361;
+  border-top: 1px solid #262626;
+  padding-top: 12px;
+}
+.gp-nfc__arrow { font-size: 1.1rem; transition: transform var(--dur-ui) var(--ease-out); }
+@media (hover: hover) and (pointer: fine) {
+  .gp-nfc:hover {
+    transform: perspective(1100px) rotateX(3deg) rotateY(-5deg) translateY(-3px);
+    border-color: #D51A1A;
+    box-shadow: 0 40px 70px -30px rgba(213, 26, 26, 0.45);
+  }
+  .gp-nfc:hover .gp-nfc__arrow { transform: translateX(4px); }
+}
+.gp-nfc:active { transform: perspective(1100px) scale(0.99); }
+@keyframes gp-spin { to { transform: rotate(360deg); } }
+
+/* ── Link groups ── */
+.gp-cts__links {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 44px;
+  padding-top: 18px;
+  border-top: 1px solid #1e1e1e;
+}
+.gp-cts__group { display: grid; gap: 10px; }
+.gp-cts__label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #918f8a;
+}
+.gp-cts__btns { display: flex; flex-wrap: wrap; gap: 10px; }
+.gp-cts .pkg-btn { cursor: pointer; }
+.gp-cts__foot {
+  grid-column: 1 / -1;
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #918f8a;
+}
+
+/* ── Toast for the copied email ── */
+.gp-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 36px;
+  transform: translate(-50%, 12px);
+  padding: 10px 16px;
+  border: 1px solid #2a2a2a;
+  border-radius: 6px;
+  background: #111111;
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--dur-ui) var(--ease-out), transform var(--dur-ui) var(--ease-out), visibility 0s var(--dur-ui);
+  z-index: 1000;
+}
+.gp-toast.is-on { opacity: 1; visibility: visible; transform: translate(-50%, 0); transition-delay: 0s; }
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .gp-cts { grid-template-columns: 1fr; padding: 32px 24px 12px; }
+  .gp-cts__head, .gp-nfc { grid-column: 1; grid-row: auto; }
+  .gp-nfc { justify-self: start; }
+  .gp-cts__links { grid-template-columns: 1fr; }
+}
+@media (max-width: 576px) {
+  .gp-cts { padding: 28px 16px 8px; }
+  .gp-cts__title { font-size: 2rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gp-nfc__ring, .gp-live__dot { animation: none; }
+  .gp-nfc, .gp-nfc__arrow, .gp-toast { transition: none; }
+}

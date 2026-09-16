@@ -8,18 +8,22 @@ import { useLang } from '../context/LangContext';
 
 const SECTION_LINKS = ['blog', 'experience', 'skillset', 'interests'];
 
-export default function Nav({ navRef, onAboutOpen }) {
+// `activeId` and `progress` come from the screen switcher on desktop; in the document
+// mode both are undefined/null and the nav watches the scroll position itself.
+export default function Nav({ navRef, activeId, progress }) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeId, setActiveId] = useState(null);
+  const [scrolledId, setScrolledId] = useState(null);
   const { lang, setLang, t } = useLang();
   const n = t.nav;
+  const screensMode = activeId !== undefined;
+  const currentId = screensMode ? activeId : scrolledId;
 
   const close = () => setMenuOpen(false);
 
-  // Glass nav effect on scroll
+  // Glass nav effect and the reading progress line on scroll (document mode)
   useEffect(() => {
     const nav = navRef?.current;
-    if (!nav) return;
+    if (!nav || screensMode) return undefined;
     const mainPage = nav.closest('.main-page');
     const onScroll = () => {
       const top = Math.max(
@@ -38,23 +42,32 @@ export default function Nav({ navRef, onAboutOpen }) {
       if (mainPage) mainPage.removeEventListener('scroll', onScroll);
       window.removeEventListener('scroll', onScroll);
     };
-  }, [navRef]);
+  }, [navRef, screensMode]);
 
-  // Highlight the pill of the section in the middle of the viewport
+  // Screens mode: the line shows which screen of the set is on
   useEffect(() => {
+    const nav = navRef?.current;
+    if (!nav || progress === null || progress === undefined) return;
+    nav.classList.remove('nav--scrolled');
+    nav.style.setProperty('--nav-progress', String(progress));
+  }, [navRef, progress]);
+
+  // Document mode: highlight the pill of the section in the middle of the viewport
+  useEffect(() => {
+    if (screensMode) return undefined;
     const els = SECTION_LINKS.map(id => document.getElementById(id)).filter(Boolean);
     if (!els.length || typeof IntersectionObserver === 'undefined') return undefined;
     const visible = new Map();
     const obs = new IntersectionObserver((entries) => {
       entries.forEach(e => visible.set(e.target.id, e.isIntersecting));
       const current = SECTION_LINKS.find(id => visible.get(id));
-      setActiveId(current ?? null);
+      setScrolledId(current ?? null);
     }, { rootMargin: '-40% 0px -55% 0px' });
     els.forEach(el => obs.observe(el));
     return () => obs.disconnect();
-  }, []);
+  }, [screensMode]);
 
-  const linkProps = (id) => (activeId === id ? { className: 'nav__link--active', 'aria-current': 'location' } : {});
+  const linkProps = (id) => (currentId === id ? { className: 'nav__link--active', 'aria-current': 'location' } : {});
 
   // Блокируем скролл — iOS Safari требует position:fixed на body
   useEffect(() => {
@@ -123,7 +136,6 @@ export default function Nav({ navRef, onAboutOpen }) {
         {/* Desktop right side: links + lang toggle */}
         <div className="nav__right">
           <div className="nav__links">
-            <button className="nav__link-btn" onClick={onAboutOpen}>{n.about}</button>
             <a href="/blog/" {...linkProps('blog')}>{n.blog}</a>
             <a href="#experience" {...linkProps('experience')}>{n.experience}</a>
             <a href="#skillset" {...linkProps('skillset')}>{n.skillset}</a>
@@ -157,11 +169,11 @@ export default function Nav({ navRef, onAboutOpen }) {
             </svg>
           </button>
           <LangToggle overlay />
-          <button className="nav__link-btn" onClick={() => { onAboutOpen(); close(); }}>{n.about}</button>
           <a href="/blog/"      onClick={close}>{n.blog}</a>
           <a href="#experience" onClick={close}>{n.experience}</a>
           <a href="#skillset"   onClick={close}>{n.skillset}</a>
           <a href="#interests"  onClick={close}>{n.interests}</a>
+          <a href="#contacts"   onClick={close}>{t.screens.contacts}</a>
           <a href="https://my.idot.vip/geminishkv" target="_blank" rel="noreferrer" className="nav__link--secondary" onClick={close}>{n.nfcCard}</a>
           <a href="/privacy/" className="nav__link--secondary" onClick={close}>{n.privacy}</a>
         </div>,
