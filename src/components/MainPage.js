@@ -13,7 +13,6 @@ import Projects   from './Projects';
 import Instagram  from './Instagram';
 import Footer     from './Footer';
 import AboutModal from './AboutModal';
-import NoticeBar  from './NoticeBar';
 import Videos     from './Videos';
 import CookieBanner from './CookieBanner';
 
@@ -101,7 +100,6 @@ export default function MainPage({ isVisible }) {
         <Footer />
       </div>
       <AboutModal isOpen={aboutOpen} onClose={() => setAboutOpen(false)} />
-      <NoticeBar animDone={animDone} />
       <CookieBanner animDone={animDone} />
     </div>
   );

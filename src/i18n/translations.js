@@ -232,18 +232,6 @@ export const translations = {
       },
     },
 
-    notice: {
-      ariaLabel: 'Уведомление',
-      title: 'Уведомление',
-      paragraphs: [
-        'Вся информация в материалах данного профиля, а также материалов включенных (согласно применимым формулировкам действующего законодательства РФ), то есть любые текстовых, графических произведений, — рассматривается исключительно в ознакомительных целях.',
-        'Любое использование представленной информации посредством данного профиля и/или любых текстовых, графических произведений, на практике без получения предварительного согласования на использование, подпадает под действие действующего законодательства РФ.',
-        'Автор не несет ответственности за любой возможный вред, причиненный предоставляемыми материалами, как любыми текстовыми, графическими произведениями.',
-        'Любые текстовые, графические произведения, включая ссылки носят ознакомительный характер в цели поделиться знаниями в продуктовой безопасности.',
-      ],
-      disclaimer: 'Instagram* — продукт компании Meta Platforms Inc., деятельность которой запрещена на территории РФ как экстремистская (решение Тверского районного суда г. Москвы от 21.03.2022). LinkedIn заблокирован на территории РФ за нарушение ФЗ-152 «О персональных данных».',
-      dismiss: 'Понятно',
-    },
     cookie: {
       title: 'Файлы cookie',
       text: 'Аналитика (Яндекс.Метрика и Plausible) включается только после вашего согласия. Технические cookie нужны для работы сайта. Подробнее — в документе ',
@@ -516,18 +504,6 @@ export const translations = {
       subscribersFmt: (n) => `${n} subscriber${n !== 1 ? 's' : ''}`,
     },
 
-    notice: {
-      ariaLabel: 'Notice',
-      title: 'Notice',
-      paragraphs: [
-        'All information in the materials of this profile, as well as any included materials, including any textual or graphical works, is provided for informational purposes only.',
-        'Any use of the information presented through this profile and/or any textual or graphical works without prior authorization is subject to applicable law.',
-        'The author bears no responsibility for any possible harm caused by the provided materials, including any textual or graphical works.',
-        'All textual and graphical works, including links, are for informational purposes only, intended to share knowledge in product security.',
-      ],
-      disclaimer: 'Instagram* is a product of Meta Platforms Inc., whose activities are banned in the Russian Federation as extremist (ruling of Tverskoy District Court, Moscow, 21.03.2022). LinkedIn is blocked in the Russian Federation for violation of Federal Law 152-FZ "On Personal Data".',
-      dismiss: 'Got it',
-    },
     cookie: {
       title: 'Cookies',
       text: 'Analytics (Yandex Metrica and Plausible) run only after you accept. Technical cookies are required for the site to work. Details in our ',
