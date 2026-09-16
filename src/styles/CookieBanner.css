@@ -7,7 +7,7 @@
   position: fixed;
   right: 24px;
   bottom: 24px;
-  z-index: var(--z-notice, 9000);
+  z-index: var(--z-consent, 9000);
   width: 360px;
   max-width: calc(100vw - 32px);
   padding: 18px 20px;

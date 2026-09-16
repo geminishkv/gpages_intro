@@ -8,7 +8,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 // The hook owns the interaction and the fit-to-height zoom; the markup (classes
 // gp-screen / is-active / is-leaving) is rendered by MainPage from `cur`/`leaving`.
 
-export const DESKTOP_MQ = '(min-width: 901px)';
+const DESKTOP_MQ = '(min-width: 901px)';
 const REDUCE_MQ = '(prefers-reduced-motion: reduce)';
 const LEAVE_MS = 320;
 const LOCK_MS = 800;          // no second switch while the previous one is still animating
