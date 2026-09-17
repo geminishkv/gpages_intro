@@ -15,7 +15,9 @@ html.gp-snap {
   overflow-x: hidden;
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
+  scrollbar-width: none;        /* the dots and the counter are the position indicator */
 }
+html.gp-snap::-webkit-scrollbar { display: none; }
 html.gp-snap body, .gp-on #root, .gp-on .app {
   height: auto;
   min-height: 100%;
