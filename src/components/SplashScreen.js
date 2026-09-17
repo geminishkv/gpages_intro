@@ -6,7 +6,9 @@ const DURATION   = 3500;
 const FADE_MS    = 400;
 const RESHOW_MS  = 30 * 60 * 1000;
 
-function shouldShow() {
+// Decided before the first render (App), so a visitor inside the reshow window never
+// sees the splash for even a frame.
+export function shouldShowSplash() {
   try {
     const ts = localStorage.getItem('splash_ts');
     if (!ts) return true;
@@ -97,7 +99,6 @@ export default function SplashScreen({ onDone }) {
   const [fading, setFading] = useState(false);
 
   useEffect(() => {
-    if (!shouldShow()) { onDone(); return; }
     markShown();
 
     const t1 = setTimeout(() => setFading(true), DURATION);
