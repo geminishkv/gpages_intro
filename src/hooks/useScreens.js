@@ -1,32 +1,23 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-// Full-screen switcher for the home page (desktop and tablets in landscape).
-// The screens are absolutely positioned inside .main-page and only one is
-// visible; wheel, keys, swipe, the dots and any #hash link move between them.
-// Below 901px the same markup renders as a normal scrolling document.
-//
-// The hook owns the interaction and the fit-to-height zoom; the markup (classes
-// gp-screen / is-active / is-leaving) is rendered by MainPage from `cur`/`leaving`.
+// Screens of the home page (desktop and tablets in landscape). Every top-level block is
+// an in-flow section at least one viewport tall, and the document snaps to the start of
+// each one (html.gp-snap in Screens.css). Wheel, keys, swipe and #hash links are native;
+// the hook only tracks which screen is on (dots, counter, nav highlight, ScreenProvider)
+// and fits tall content into the viewport height. Below 901px the same markup renders as
+// a plain scrolling document.
 
 const DESKTOP_MQ = '(min-width: 901px)';
 const REDUCE_MQ = '(prefers-reduced-motion: reduce)';
-const LEAVE_MS = 320;
-const LOCK_MS = 500;          // no second switch while the previous one is still animating (enter runs 380ms)
-const GESTURE_GAP_MS = 260;   // wheel events closer than this belong to the same gesture (trackpad inertia)
-const NOTCH_GAP_MS = 40;      // events further apart than this are mouse notches or a new finger movement, not inertia
-const INERTIA_RATIO = 0.9;    // inside a dense stream a delta below this share of the peak is the decaying inertia tail
-const WHEEL_THRESHOLD = 60;
+const NOTCH_PX = 40;    // a wheel event at least this big is a mouse notch or a trackpad swipe
+const LOCK_MS = 800;    // one screen per notch: further notches are ignored while the scroll runs
 
 const reduceMotion = () => window.matchMedia(REDUCE_MQ).matches;
 
 export function useScreens({ count, ready }) {
   const [desktop, setDesktop] = useState(() => window.matchMedia(DESKTOP_MQ).matches);
   const [cur, setCur] = useState(0);
-  const [leaving, setLeaving] = useState(-1);
   const rootRef = useRef(null);
-  const curRef = useRef(0);
-  const lockRef = useRef(0);
-  const leaveTimer = useRef(null);
 
   const screens = useCallback(() => (rootRef.current ? [...rootRef.current.querySelectorAll('.gp-screen')] : []), []);
 
@@ -37,35 +28,27 @@ export function useScreens({ count, ready }) {
     return () => mq.removeEventListener('change', onChange);
   }, []);
 
-  // Body class drives the layout (Screens.css); the document mode keeps the page scrolling.
+  // Body class drives the layout (Screens.css); the snap container is the document
+  // itself, so the snap type lives on <html>.
   useEffect(() => {
     document.body.classList.toggle('gp-on', desktop);
     document.body.classList.toggle('gp-doc', !desktop);
-    if (desktop) {
-      // inline reveal styles from the document mode would hide screen content
-      screens().forEach((s) => {
-        s.querySelectorAll('.section-reveal').forEach((el) => { el.style.opacity = ''; el.style.transform = ''; });
-        s.style.opacity = ''; s.style.transform = '';
-      });
-    }
-    return () => { document.body.classList.remove('gp-on', 'gp-doc'); };
-  }, [desktop, screens]);
+    document.documentElement.classList.toggle('gp-snap', desktop);
+    return () => {
+      document.body.classList.remove('gp-on', 'gp-doc');
+      document.documentElement.classList.remove('gp-snap');
+    };
+  }, [desktop]);
 
   const goTo = useCallback((i) => {
     const els = screens();
-    if (i < 0 || i >= els.length || i === curRef.current) return;
-    const from = curRef.current;
-    curRef.current = i;
-    els[i].scrollTop = 0;
-    setLeaving(from);
-    setCur(i);
-    lockRef.current = Date.now() + (reduceMotion() ? 150 : LOCK_MS);
-    clearTimeout(leaveTimer.current);
-    leaveTimer.current = setTimeout(() => setLeaving((l) => (l === from ? -1 : l)), LEAVE_MS);
+    if (i < 0 || i >= els.length) return;
+    els[i].scrollIntoView({ behavior: reduceMotion() ? 'auto' : 'smooth', block: 'start' });
   }, [screens]);
 
   // Fit every screen into the viewport height: shrink down to a floor, grow on
   // ultra-wide monitors where the content would otherwise sit small in the middle.
+  // A screen grows with its content, so the budget is the viewport, not the screen.
   const fit = useCallback(() => {
     if (!desktop) return;
     const floor = window.innerWidth < 1300 ? 0.85 : 0.6;
@@ -73,7 +56,7 @@ export function useScreens({ count, ready }) {
       s.style.setProperty('--gp-zoom', '1');
       const cs = getComputedStyle(s);
       const pad = parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom);
-      const avail = s.clientHeight - pad;
+      const avail = window.innerHeight - pad;
       let need = s.scrollHeight - pad;
       if (need > avail + 2) {
         const z = Math.max(floor, avail / need);
@@ -113,114 +96,54 @@ export function useScreens({ count, ready }) {
     };
   }, [desktop, fit, screens, ready]);
 
-  // Input: wheel, swipe, keyboard, #hash links. Only once the intro animation is over.
+  // The screen that covers most of the viewport is the current one.
+  useEffect(() => {
+    if (!desktop) return undefined;
+    const els = screens();
+    if (!els.length) return undefined;
+    const ratios = new Map();
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => ratios.set(e.target, e.intersectionRatio));
+      let best = 0;
+      let bestRatio = -1;
+      els.forEach((el, i) => {
+        const r = ratios.get(el) ?? 0;
+        if (r > bestRatio) { bestRatio = r; best = i; }
+      });
+      setCur(best);
+    }, { threshold: [0, 0.25, 0.5, 0.75, 1] });
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, [desktop, screens, ready]);
+
+  // Wheel assist. Native snapping alone moves on only after more than half a screen of
+  // travel, which a 100px mouse notch never reaches, so it bounced back. A wheel event of
+  // NOTCH_PX or more moves exactly one screen and further events are ignored for LOCK_MS.
+  // Smaller deltas stay native, and a screen taller than the viewport scrolls natively
+  // until its edge is reached.
   useEffect(() => {
     if (!desktop || !ready) return undefined;
-    const els = screens();
-    const scrollable = (el, dir) => {
-      if (!el || el.scrollHeight <= el.clientHeight + 2) return false;
-      const oy = getComputedStyle(el).overflowY;
-      if (oy !== 'auto' && oy !== 'scroll') return false;
-      return dir > 0 ? el.scrollTop + el.clientHeight < el.scrollHeight - 2 : el.scrollTop > 2;
-    };
-    const canScroll = (dir) => scrollable(els[curRef.current], dir);
-    // a scrollable box inside the screen (the certificate list, a long panel) scrolls first
-    const innerCanScroll = (target, dir) => {
-      const screen = els[curRef.current];
-      for (let el = target instanceof Element ? target : null; el && el !== screen; el = el.parentElement) {
-        if (scrollable(el, dir)) return true;
-      }
-      return false;
-    };
-    const next = () => goTo(curRef.current + 1);
-    const prev = () => goTo(curRef.current - 1);
-
-    // One push, one switch. A trackpad keeps sending inertia events for a second or more
-    // after the fingers stop: a dense stream (< NOTCH_GAP_MS apart) whose delta decays
-    // from its peak. Inside a gesture only a non-decaying delta counts as a new push. A
-    // mouse wheel sends sparse notches, so every notch after the lock is a push and
-    // holding the wheel walks the screens one by one instead of waiting for a pause.
-    let acc = 0;
-    let lastWheel = 0;
-    let peak = 0;
-    let gestureInner = false;
+    let lockUntil = 0;
     const onWheel = (e) => {
+      if (e.ctrlKey) return;
       const dy = e.deltaMode === 1 ? e.deltaY * 16 : e.deltaMode === 2 ? e.deltaY * window.innerHeight : e.deltaY;
+      if (Math.abs(dy) < NOTCH_PX) return;
       const dir = Math.sign(dy);
-      if (!dir) return;
+      const els = screens();
+      const mid = window.innerHeight / 2;
+      const i = els.findIndex((el) => { const r = el.getBoundingClientRect(); return r.top <= mid && r.bottom > mid; });
+      if (i < 0) return;
+      const r = els[i].getBoundingClientRect();
+      if (dir > 0 ? r.bottom > window.innerHeight + 2 : r.top < -2) return;   // tall screen: native scroll to its edge
+      e.preventDefault();
       const now = Date.now();
-      const gap = now - lastWheel;
-      const fresh = gap > GESTURE_GAP_MS;
-      lastWheel = now;
-      if (fresh) { acc = 0; peak = 0; gestureInner = innerCanScroll(e.target, dir) || canScroll(dir); }
-      if (innerCanScroll(e.target, dir) || canScroll(dir)) return;   // native scroll inside the screen
-      e.preventDefault();
-      if (gestureInner) return;                     // this gesture is scrolling a box inside the screen
-      const mag = Math.abs(dy);
-      const push = fresh || gap > NOTCH_GAP_MS || mag >= peak * INERTIA_RATIO;
-      peak = Math.max(peak, mag);
-      if (!push || now < lockRef.current) return;   // inertia tail, or the previous switch is still animating
-      acc += dy;
-      if (Math.abs(acc) < WHEEL_THRESHOLD) return;
-      acc = 0;
-      peak = mag;
-      if (dir > 0) next(); else prev();
+      if (now < lockUntil) return;
+      lockUntil = now + LOCK_MS;
+      goTo(i + dir);
     };
-
-    let touchY = null;
-    const onTouchStart = (e) => { touchY = e.touches[0].clientY; };
-    const onTouchEnd = (e) => {
-      if (touchY === null) return;
-      const dy = touchY - e.changedTouches[0].clientY;
-      touchY = null;
-      if (Math.abs(dy) < 60 || Date.now() < lockRef.current || canScroll(Math.sign(dy)) || innerCanScroll(e.target, Math.sign(dy))) return;
-      if (dy > 0) next(); else prev();
-    };
-
-    const onKey = (e) => {
-      if (e.target.closest('input,textarea,select')) return;
-      const k = e.key;
-      const down = k === 'PageDown' || k === 'ArrowDown' || k === ' ';
-      const up = k === 'PageUp' || k === 'ArrowUp';
-      if (!down && !up) return;
-      const dir = down ? 1 : -1;
-      if (innerCanScroll(e.target, dir)) return;      // a focused inner list scrolls itself
-      e.preventDefault();
-      if (canScroll(dir)) { els[curRef.current].scrollBy({ top: dir * 160, behavior: 'smooth' }); return; }
-      if (dir > 0) next(); else prev();
-    };
-
-    // every id inside a screen maps to that screen, so #projects, #now, #footer, #top keep working
-    const idIndex = {};
-    els.forEach((s, i) => {
-      idIndex[s.id] = i;
-      s.querySelectorAll('[id]').forEach((el) => { idIndex[el.id] = i; });
-    });
-    Object.assign(idIndex, { top: 0, hero: 0, intro: 0, footer: els.length - 1, consent: els.length - 1 });
-    const onClick = (e) => {
-      const a = e.target.closest('a[href^="#"]');
-      if (!a || a.closest('.gp-dots')) return;
-      const i = idIndex[a.getAttribute('href').slice(1)];
-      if (i === undefined) return;
-      e.preventDefault();
-      goTo(i);
-    };
-
     window.addEventListener('wheel', onWheel, { passive: false });
-    window.addEventListener('touchstart', onTouchStart, { passive: true });
-    window.addEventListener('touchend', onTouchEnd, { passive: true });
-    window.addEventListener('keydown', onKey);
-    document.addEventListener('click', onClick);
-    return () => {
-      window.removeEventListener('wheel', onWheel);
-      window.removeEventListener('touchstart', onTouchStart);
-      window.removeEventListener('touchend', onTouchEnd);
-      window.removeEventListener('keydown', onKey);
-      document.removeEventListener('click', onClick);
-    };
-  }, [desktop, ready, goTo, screens]);
+    return () => window.removeEventListener('wheel', onWheel);
+  }, [desktop, ready, screens, goTo]);
 
-  useEffect(() => () => clearTimeout(leaveTimer.current), []);
-
-  return { mode: desktop ? 'screens' : 'doc', cur, leaving, goTo, count, rootRef };
+  return { mode: desktop ? 'screens' : 'doc', cur, goTo, count, rootRef };
 }

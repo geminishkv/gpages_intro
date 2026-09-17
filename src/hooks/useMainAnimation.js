@@ -4,14 +4,12 @@ import { TITLE_TEXT, SUBTITLE_TEXT } from '../constants';
 
 const GLITCH_CHARS = '#@$%^&!?<>{}[]|/\\~*+=_';
 
-export function useMainAnimation(isVisible, onAllDone, { screens = false } = {}) {
+export function useMainAnimation(isVisible, onAllDone) {
   const navRef          = useRef(null);
   // MainPage передаёт onAllDone inline-стрелкой; держим актуальный колбэк в ref,
   // чтобы не включать его в deps эффекта и не перезапускать анимацию на каждом рендере.
   const onAllDoneRef    = useRef(onAllDone);
   useEffect(() => { onAllDoneRef.current = onAllDone; }, [onAllDone]);
-  const screensRef      = useRef(screens);
-  useEffect(() => { screensRef.current = screens; }, [screens]);
   const observerRef     = useRef(null);
   const blinkerRef      = useRef(null);
   const whiteBoxRef     = useRef(null);
@@ -143,10 +141,7 @@ export function useMainAnimation(isVisible, onAllDone, { screens = false } = {})
 
                         onAllDoneRef.current?.();
 
-                        // ── Sections via IntersectionObserver (document mode only: on desktop
-                        //    the screen switcher shows a whole screen at once) ──
-                        if (screensRef.current) return;
-
+                        // ── Sections via IntersectionObserver (document and screen modes alike) ──
                         const sectionEls = [
                           nowRef.current,
                           statsRef.current,
