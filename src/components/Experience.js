@@ -8,7 +8,7 @@ import { RESUME_URL } from '../constants';
 const yearOf = (period) => (period.match(/\d{4}/) || [''])[0];
 
 function Node({ item }) {
-  const logos = item.logos ?? [{ src: item.logo, alt: item.company, url: item.url, round: item.logoRound }];
+  const logos = item.logos ?? [{ src: item.logo, alt: item.company, url: item.url, round: item.logoRound, inset: item.logoInset }];
   // White marks (Poly Play, the Rosbank wordmark) need a dark disc; everything else
   // sits on white. A logo flagged `pill` gets its own white pill inside a dark disc.
   const dark = item.logoLight || logos.length > 1;
@@ -17,7 +17,7 @@ function Node({ item }) {
     <div className={cls}>
       {logos.map((l, j) => {
         const linkCls = `pipe__logo-link${l.pill ? ' pipe__logo-link--pill' : ''}`;
-        const imgCls = `pipe__logo${l.round ? ' pipe__logo--round' : ''}`;
+        const imgCls = `pipe__logo${l.round ? ' pipe__logo--round' : ''}${l.inset ? ' pipe__logo--inset' : ''}`;
         return l.url ? (
           <a key={j} href={l.url} target="_blank" rel="noreferrer" className={linkCls} aria-label={l.alt}>
             <img src={l.src} alt="" className={imgCls} />

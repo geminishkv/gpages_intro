@@ -169,7 +169,7 @@ export const translations = {
       {
         company: 'LANIT', role: 'AppSec Team Lead',
         url: 'https://lanit.ru',
-        logo: PUBLIC + '/img/companies/lanit.png',
+        logo: PUBLIC + '/img/companies/lanit.png', logoInset: true,
         period: 'Дек 2024 — Июл 2026', current: false,
         results: RESULTS_RU.lanit,
       },
@@ -449,7 +449,7 @@ export const translations = {
       {
         company: 'LANIT', role: 'AppSec Team Lead',
         url: 'https://lanit.ru',
-        logo: PUBLIC + '/img/companies/lanit.png',
+        logo: PUBLIC + '/img/companies/lanit.png', logoInset: true,
         period: 'Dec 2024 — Jul 2026', current: false,
         results: RESULTS_EN.lanit,
       },

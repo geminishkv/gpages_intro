@@ -266,6 +266,7 @@
   .gp-on .pipe__node { width: 64px; height: 64px; grid-row: auto; }
   .gp-on .pipe__node::after { inset: -5px; }
   .gp-on .pipe__logo { max-width: 44px; }
+  .gp-on .pipe__logo--inset { max-width: 34px; }
   .gp-on .pipe__body { grid-column: auto; margin-top: 4px; }
   .gp-on .pipe__title { font-size: 0.86rem; }
   .gp-on .pipe__role { font-size: 0.74rem; }
