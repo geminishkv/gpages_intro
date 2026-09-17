@@ -17,11 +17,11 @@
 * **SplashScreen** — Canvas2D shader (brand red→gold) + SVG pretitle
 * **Holographic Monitor** — CSS floating monitor с glow + Python typewriter
 * **Typewriter** — DOS-стиль набор заголовка с glitch-эффектом по символам
-* **Экраны** — на десктопе главная листается по восьми экранам (колесо, клавиши, свайп, точки, `#`-ссылки), контент подгоняется под высоту; на телефонах тот же порядок одним документом
+* **Экраны** — на десктопе главная из восьми экранов в высоту окна с нативной привязкой CSS scroll-snap: один щелчок колеса — один экран, клавиши, свайп, точки и `#`-ссылки работают средствами браузера, контент подгоняется под высоту окна; на телефонах тот же порядок одним документом
 * **Blog** — 350+ постов из Telegram с переводом RU→EN: на главной последний крупно + компактный список; `/blog/` — фильтры по темам, поиск, избранный пост, «показать ещё», статические страницы для поисковиков
 * **Instagram** — превью 8 последних постов и ссылка на профиль
 * **SEO** — JSON-LD, OG, Twitter Card, sitemap (≈760 URL), RSS (RU+EN), llms.txt, hreflang
-* **Security** — CSP, X-Frame-Options, Referrer-Policy, Permissions-Policy
+* **Security** — CSP через `<meta>` без `'unsafe-inline'` в `script-src`, self-hosted шрифты, аналитика только после согласия
 * **Privacy** — политика конфиденциальности (ФЗ-152), баннер согласия на аналитику (Метрика и Plausible грузятся только после «Принять»), уведомление об использовании материалов — раздел 10 политики
 
 Сайт: **[geminishkv.tech](https://geminishkv.tech)**
@@ -67,7 +67,7 @@
 * **Contacts** — экран «Давай поговорим»: Telegram и копирование email с тостом, NFC-визитка с наклоном при наведении, ссылки профиля и контента; футер на нём без дублирующих колонок
 * **Nav** — i18n (RU/EN), SVG бургер с морфингом, LangSwitch toggle, прогресс-линия (по экрану на десктопе, по скроллу на телефоне), активная пилюля секции (`aria-current`)
 * **Кнопки** — PackageBtn (hacker glitch, единый стиль всех ссылок под лентой логотипов), ContactBtn (pill + status dot в цветах бренда), DownloadBtn (заливка круга = реальный прогресс `fetch`, fallback по времени без CORS), SocialIcons (slide-in SVG)
-* **Responsive** — экраны на ≥901px (планшет-ландшафт 901–1300px плотнее, масштаб не ниже 0,85), документ на телефонах; ультравайд ≥2000px растит контент до 1,3; заголовок hero масштабируется от колонки (`cqi`); проверено Playwright на 1024/1280/1440/1920/2560/3440 от 390 до 2946 px
+* **Responsive** — экраны на ≥901px (планшет-ландшафт 901–1300px плотнее, масштаб не ниже 0,8, экраны отступают от закреплённого меню на 104px), документ на телефонах; ультравайд ≥2000px растит контент до 1,3; заголовок hero масштабируется от колонки (`cqi`); проверено Playwright на 1024/1280/1440/1920/2560/3440 от 390 до 2946 px
 * **A11y** — skip-link, красное кольцо `:focus-visible`, `<main>` landmark, тап-таргеты 44 px на телефонах, `prefers-reduced-motion`
 * **prefers-reduced-motion** — все анимации отключаются по системной настройке
 * **404** — дино-раннер в стиле Chrome, стилизован под бренд
@@ -97,13 +97,17 @@
 
 ### Security
 
-| Заголовок | Значение |
-|-----------|---------|
-| Content-Security-Policy | `default-src 'self'`; `script-src` без `'unsafe-inline'` (`INLINE_RUNTIME_CHUNK=false`), шрифты self-hosted (`font-src 'self'`), аналитика — только после согласия |
-| X-Content-Type-Options | `nosniff` |
-| X-Frame-Options | `DENY` |
-| Referrer-Policy | `strict-origin-when-cross-origin` |
-| Permissions-Policy | `camera=(), microphone=(), geolocation=(), payment=()` |
+GitHub Pages не даёт настраивать заголовки ответа, поэтому политика задана `<meta http-equiv>` в `public/index.html`. Браузер применяет из них только CSP: остальных директив нет в списке pragma HTML, и как `<meta>` они не действуют.
+
+| Политика | Значение | Действует |
+|----------|----------|-----------|
+| Content-Security-Policy | `default-src 'self'`; `script-src` без `'unsafe-inline'` (`INLINE_RUNTIME_CHUNK=false`), `font-src 'self'`, аналитика только после согласия | ✅ через `<meta>`, кроме `frame-ancestors` |
+| X-Content-Type-Options | `nosniff` | ❌ нужен заголовок |
+| Referrer-Policy | `strict-origin-when-cross-origin` | ❌ нужен заголовок или `<meta name="referrer">` |
+| Permissions-Policy | `camera=(), microphone=(), geolocation=(), payment=()` | ❌ нужен заголовок |
+| X-Frame-Options | не задан | ❌ нужен заголовок |
+
+Настоящие заголовки и HSTS появятся с переездом на хостинг с управлением заголовками: ветка `feat/deploy-regru`, `public/.htaccess`.
 
 ***
 
@@ -111,16 +115,18 @@
 
 | Workflow | Триггер | Секреты | Действие |
 |----------|---------|---------|----------|
-| `ci.yml` — **build** | push / PR → `gpages` | `YM_ID` | `npm ci` → `eslint` → `npm audit` → `npm run build` |
-| `ci.yml` — **update-and-deploy** | cron Пн 07:00 UTC / manual | `YM_ID`, `DATA_PUSH_SSH_KEY` | TG + Instagram + stats → sitemap + RSS → коммит → build → blog pages → deploy gh-pages → ping Yandex |
+| `ci.yml` — **build** | push / PR → `gpages` | `YM_ID` | `npm ci` → `eslint src/ --max-warnings 0` → `npm audit --omit=dev --audit-level=high` → `npm run build` |
+| `ci.yml` — **update-and-deploy** | cron Пн 07:00 UTC / manual, после **build** | `YM_ID`, `DATA_PUSH_SSH_KEY` | TG + Instagram + stats → sitemap + RSS → коммит данных в `gpages` через deploy key → build → blog pages → deploy `gh-pages` → ping Yandex |
+| `pages-build-deployment` | push в `gh-pages` | — | GitHub Pages публикует `geminishkv.tech` |
+| Dependabot | Пн | — | PR на пины actions и npm minor/patch; мажоры, которые не берёт CRA 5, игнорируются |
 
 Ручной запуск: `workflow_dispatch` с опцией `skip_data`.
 
-Шаги данных не роняют деплой: Telegram и Instagram при недоступном источнике пишут `::warning` и оставляют коммитнутые данные (источник Instagram-превью отвечает HTTP 503 «blocked» с сентября 2026, данные заморожены на последнем успешном прогоне); переводы кешируются в `tg-posts.json`, переводится только новое.
+Шаги данных не роняют деплой: Telegram при недоступном источнике оставляет коммитнутые данные, статистика пропускает репозиторий с ошибкой, Instagram и коммит данных помечены `continue-on-error`, а сбой коммита красит прогон уже после деплоя. Источник Instagram-превью отвечает HTTP 503 «blocked», последнее успешное обновление — 11.05.2026. Переводы кешируются в `tg-posts.json`, переводится только новое. Коммит данных через deploy key сам запускает **build** на `gpages`.
 
 Полный скрейп всех постов: `node scripts/update-tg-posts.js --all`
 
-Hardening: pinned action SHA, least-privilege permissions (`contents: read` по умолчанию, `write` только для deploy).
+Hardening: пины action по SHA, least-privilege permissions (`contents: read` по умолчанию, `write` только для deploy), host key GitHub запинен для deploy key, логика коммита данных в `scripts/ci/commit-data.sh`, Dependabot, CODEOWNERS на `.github/`.
 
 ***
 
@@ -164,8 +170,56 @@ node scripts/generate-rss.js           # rss.xml (RU) + rss-en.xml (EN)
 
 ### Деплой
 
+Штатно — через CI: job **update-and-deploy** по расписанию или вручную.
+
+```bash
+gh workflow run CI --ref gpages
+```
+
+Локально, в обход CI:
+
 ```bash
 npm run predeploy && npm run deploy
+```
+
+***
+
+### Архитектура
+
+```mermaid
+%%{init: {"flowchart": {"curve": "step"}}}%%
+flowchart TB
+    accTitle: Конвейер CI и выкатки gpages
+    accDescr: Push и pull request в gpages только проверяют и собирают сайт. По расписанию или вручную после сборки обновляются данные, коммитятся в gpages через deploy key, собирается статика и выкладывается в ветку gh-pages, откуда GitHub Pages отдаёт сайт.
+
+    trigger(["push, PR, cron Пн 07:00 UTC, dispatch"])
+    build[["build: npm ci, eslint, npm audit, npm run build"]]
+    gate{"schedule или dispatch?"}
+    gate_fork[" "]
+    checked(["Проверка завершена"])
+    fetch[["update-tg-posts, update-instagram, update-stats"]]
+    data[/"src/data/*.json, public/img/"/]
+    generate[["generate-sitemap, generate-rss"]]
+    commit[["commit-data.sh: коммит в gpages через deploy key"]]
+    site[["npm run build, generate-blog-pages"]]
+    branch[/"ветка gh-pages"/]
+    live(["geminishkv.tech через GitHub Pages"])
+
+    trigger --> build --> gate
+    gate --- gate_fork
+    gate_fork -->|Нет| checked
+    gate_fork -->|Да| fetch
+    fetch --> data --> generate --> commit --> site --> branch --> live
+
+    classDef terminal fill:#1a1a1a,stroke:#d4a520,stroke-width:2px,color:#ffffff
+    classDef step fill:#2a0f08,stroke:#cc2200,stroke-width:1px,color:#ffffff
+    classDef artifact fill:#241c08,stroke:#d4a520,stroke-width:1px,color:#ffffff
+    classDef hidden fill:none,stroke:none,color:none
+
+    class trigger,checked,live terminal
+    class build,fetch,generate,commit,site,gate step
+    class data,branch artifact
+    class gate_fork hidden
 ```
 
 ***
@@ -218,7 +272,7 @@ gpages/
 │   ├── context/ScreenContext.js # «мой экран активен» для заголовков и счётчиков
 │   ├── lib/consent.js        # Хранение согласия + загрузка Plausible/Метрики
 │   ├── hooks/useMainAnimation.js # Интро: консоль, печать, появление групп
-│   ├── hooks/useScreens.js   # Переключатель экранов: колесо/клавиши/свайп/#ссылки, подгонка масштаба
+│   ├── hooks/useScreens.js   # Экраны на scroll-snap: текущий экран, правило колеса, подгонка масштаба
 │   ├── hooks/useDownload.js  # Реальная загрузка с прогрессом для dl-btn
 │   ├── i18n/translations.js  # RU/EN + nav + sections
 │   ├── constants/index.js
@@ -227,7 +281,7 @@ gpages/
 │   │   └── instagram.json    # Instagram (CI)
 │   └── styles/
 │       ├── App.css           # 85 design tokens (:root), токены движения
-│       ├── Screens.css       # Экраны: раскладка, точки, водяной знак, планшет и ультравайд
+│       ├── Screens.css       # Экраны: scroll-snap, отступ под меню, точки, водяной знак, планшет и ультравайд
 │       ├── Contacts.css      # Экран контактов и NFC-визитка
 │       ├── Buttons.css       # ContactBtn + ContentBtn + PackageBtn + DownloadBtn + SocialIcons
 │       ├── CardBase.css      # Общий фундамент карточек
