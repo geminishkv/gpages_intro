@@ -11,6 +11,8 @@ const DESKTOP_MQ = '(min-width: 901px)';
 const REDUCE_MQ = '(prefers-reduced-motion: reduce)';
 const NOTCH_PX = 40;    // a wheel event at least this big is a mouse notch or a trackpad swipe
 const LOCK_MS = 800;    // one screen per notch: further notches are ignored while the scroll runs
+const TAIL_PX = 32;    // a screen overhanging the viewport by this much still counts as fitting: the fit
+                       // zoom floor leaves a few px (13px on the intro at 1280x720)
 
 const reduceMotion = () => window.matchMedia(REDUCE_MQ).matches;
 
@@ -119,8 +121,9 @@ export function useScreens({ count, ready }) {
   // Wheel assist. Native snapping alone moves on only after more than half a screen of
   // travel, which a 100px mouse notch never reaches, so it bounced back. A wheel event of
   // NOTCH_PX or more moves exactly one screen and further events are ignored for LOCK_MS.
-  // Smaller deltas stay native, and a screen taller than the viewport scrolls natively
-  // until its edge is reached.
+  // Smaller deltas stay native, a screen taller than the viewport by more than TAIL_PX
+  // scrolls natively until its edge, and the first and last screens keep native scrolling
+  // towards the ends of the page, so the bottom of the last screen stays reachable.
   useEffect(() => {
     if (!desktop || !ready) return undefined;
     let lockUntil = 0;
@@ -132,9 +135,9 @@ export function useScreens({ count, ready }) {
       const els = screens();
       const mid = window.innerHeight / 2;
       const i = els.findIndex((el) => { const r = el.getBoundingClientRect(); return r.top <= mid && r.bottom > mid; });
-      if (i < 0) return;
+      if (i < 0 || !els[i + dir]) return;                                   // no screen that way: native
       const r = els[i].getBoundingClientRect();
-      if (dir > 0 ? r.bottom > window.innerHeight + 2 : r.top < -2) return;   // tall screen: native scroll to its edge
+      if (dir > 0 ? r.bottom > window.innerHeight + TAIL_PX : r.top < -TAIL_PX) return;   // tall screen: native to its edge
       e.preventDefault();
       const now = Date.now();
       if (now < lockUntil) return;
