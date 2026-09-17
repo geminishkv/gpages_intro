@@ -37,7 +37,7 @@ html.gp-snap body, .gp-on #root, .gp-on .app {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  padding-top: 96px;
+  padding-top: 104px;          /* clears the fixed 90px nav with room to spare */
   padding-bottom: 20px;
   scroll-snap-align: start;
   scroll-snap-stop: always;   /* a long flick never skips a screen */
@@ -45,7 +45,7 @@ html.gp-snap body, .gp-on #root, .gp-on .app {
 /* fit-to-height: the hook sets --gp-zoom per screen (shrink to a floor, grow on ultra-wide) */
 .gp-on .gp-screen > * { zoom: var(--gp-zoom, 1); }
 .gp-on .gp-screen > *:not(.gp-wmw) { position: relative; z-index: 1; }
-.gp-on .gp-screen--hero { padding-top: 96px; padding-bottom: 8px; }
+.gp-on .gp-screen--hero { padding-top: 104px; padding-bottom: 8px; }
 
 /* every screen's content starts on the same line under the nav */
 .gp-on .gp-screen > .section-reveal > section,
@@ -229,7 +229,6 @@ html.gp-snap body, .gp-on #root, .gp-on .app {
 
 /* ── Tablet in landscape, 901–1300px: the switcher stays, everything is tighter ── */
 @media (min-width: 901px) and (max-width: 1300px) {
-  .gp-on .gp-screen { padding-top: 84px; }
   .gp-on .sec-head { margin-bottom: 12px; }
   .gp-on .sec-head__title { font-size: clamp(1.6rem, 3vw, 2.2rem); }
   /* the pipe stays horizontal with smaller nodes */
