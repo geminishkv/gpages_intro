@@ -170,7 +170,6 @@ export default function Hero({
                   <div ref={workTextRef} className="mac-work-text" />
                   {/* Command navigation: shown once the intro is over, after the typed session */}
                   <div className={`mac-cmds${animDone ? ' mac-cmds--on' : ''}`} aria-hidden={!animDone}>
-                    <span className="mac-cmds__hint">{t.hero.cmdsHint}</span>
                     {t.hero.cmds.map((c) => (
                       <a key={c.cmd} className="mac-cmds__line" href={c.href} tabIndex={animDone ? 0 : -1}>
                         <span className="mac-cmds__ps">$ </span><span className="mac-cmds__cmd">{c.cmd}</span><span className="mac-cmds__note">→ {c.note}</span>

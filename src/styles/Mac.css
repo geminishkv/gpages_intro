@@ -337,7 +337,6 @@
   pointer-events: auto;
 }
 
-.mac-cmds__hint { color: var(--text-secondary, #888888); }
 
 .mac-cmds__line {
   display: flex;

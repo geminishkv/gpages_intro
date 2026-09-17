@@ -123,7 +123,6 @@ export const translations = {
         'Получил благодарственное письмо от В. Селина за значительный вклад в ГОСТ 71207 (SAST) в рамках взаимодействия со ФСТЭК России',
         'Лидер сообщества FinDevSecOps для российского финтех-рынка',
       ],
-      cmdsHint: '# навигация: команды кликабельны',
       cmds: [
         { cmd: 'appsec ls projects',         note: 'проекты',   href: '#projects' },
         { cmd: 'appsec tail blog',           note: '@appsecta', href: '#blog' },
@@ -411,7 +410,6 @@ export const translations = {
         'Received a letter of appreciation from V. Selin for a significant contribution to GOST 71207 (SAST) in cooperation with FSTEC of Russia',
         'Lead of the FinDevSecOps community for the Russian fintech market',
       ],
-      cmdsHint: '# navigation: commands are clickable',
       cmds: [
         { cmd: 'appsec ls projects',         note: 'projects',  href: '#projects' },
         { cmd: 'appsec tail blog',           note: '@appsecta', href: '#blog' },
