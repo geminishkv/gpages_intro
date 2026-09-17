@@ -50,10 +50,15 @@ html.gp-snap body, .gp-on #root, .gp-on .app {
 .gp-on .gp-screen > .section-reveal > .now { padding-top: 24px; }
 .gp-on .sec-head { margin-bottom: 18px; }
 
-/* ── Screens without tile grids sit in the middle of the viewport (the intro, on air,
-   projects and interests keep their content from the top); `safe` falls back to the
-   start when the content is taller than the screen, so nothing is clipped ── */
-.gp-on .gp-screen:not(.gp-screen--hero):not(#nowproj):not(#videos):not(#interests) { justify-content: safe center; }
+/* ── Screens without tile grids sit in the middle of the viewport (on air, projects and
+   interests keep their content from the top); `safe` falls back to the start when the
+   content is taller than the screen, so nothing is clipped ── */
+.gp-on .gp-screen:not(#nowproj):not(#videos):not(#interests) { justify-content: safe center; }
+/* the intro is centred too; the typed title and subtitle reserve their lines up front
+   (a zero-width space for the empty title, two lines for the wrapped subtitle), so the
+   block does not jump while the typewriter runs */
+.gp-on .hero__title:empty::before { content: "\200B"; }
+.gp-on .hero__subtitle { min-height: 2em; }
 
 /* ── Intro: columns from the top, so the console does not slide while the title types ── */
 .gp-on .hero {
