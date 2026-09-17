@@ -11,8 +11,10 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 const DESKTOP_MQ = '(min-width: 901px)';
 const REDUCE_MQ = '(prefers-reduced-motion: reduce)';
 const LEAVE_MS = 320;
-const LOCK_MS = 800;          // no second switch while the previous one is still animating
+const LOCK_MS = 500;          // no second switch while the previous one is still animating (enter runs 380ms)
 const GESTURE_GAP_MS = 260;   // wheel events closer than this belong to the same gesture (trackpad inertia)
+const NOTCH_GAP_MS = 40;      // events further apart than this are mouse notches or a new finger movement, not inertia
+const INERTIA_RATIO = 0.9;    // inside a dense stream a delta below this share of the peak is the decaying inertia tail
 const WHEEL_THRESHOLD = 60;
 
 const reduceMotion = () => window.matchMedia(REDUCE_MQ).matches;
@@ -133,28 +135,35 @@ export function useScreens({ count, ready }) {
     const next = () => goTo(curRef.current + 1);
     const prev = () => goTo(curRef.current - 1);
 
-    // One gesture, one switch: a trackpad keeps sending inertia events for a second or
-    // more after the fingers stop, so every event within GESTURE_GAP_MS of the previous
-    // one belongs to the gesture that already moved (or scrolled inside) the screen.
+    // One push, one switch. A trackpad keeps sending inertia events for a second or more
+    // after the fingers stop: a dense stream (< NOTCH_GAP_MS apart) whose delta decays
+    // from its peak. Inside a gesture only a non-decaying delta counts as a new push. A
+    // mouse wheel sends sparse notches, so every notch after the lock is a push and
+    // holding the wheel walks the screens one by one instead of waiting for a pause.
     let acc = 0;
     let lastWheel = 0;
-    let gestureDone = false;
+    let peak = 0;
     let gestureInner = false;
     const onWheel = (e) => {
-      const dir = Math.sign(e.deltaY);
+      const dy = e.deltaMode === 1 ? e.deltaY * 16 : e.deltaMode === 2 ? e.deltaY * window.innerHeight : e.deltaY;
+      const dir = Math.sign(dy);
       if (!dir) return;
       const now = Date.now();
-      const fresh = now - lastWheel > GESTURE_GAP_MS;
+      const gap = now - lastWheel;
+      const fresh = gap > GESTURE_GAP_MS;
       lastWheel = now;
-      if (fresh) { acc = 0; gestureDone = false; gestureInner = innerCanScroll(e.target, dir) || canScroll(dir); }
+      if (fresh) { acc = 0; peak = 0; gestureInner = innerCanScroll(e.target, dir) || canScroll(dir); }
       if (innerCanScroll(e.target, dir) || canScroll(dir)) return;   // native scroll inside the screen
       e.preventDefault();
-      if (gestureDone || gestureInner) return;      // this gesture already did its job
-      if (now < lockRef.current) return;
-      acc += e.deltaY;
+      if (gestureInner) return;                     // this gesture is scrolling a box inside the screen
+      const mag = Math.abs(dy);
+      const push = fresh || gap > NOTCH_GAP_MS || mag >= peak * INERTIA_RATIO;
+      peak = Math.max(peak, mag);
+      if (!push || now < lockRef.current) return;   // inertia tail, or the previous switch is still animating
+      acc += dy;
       if (Math.abs(acc) < WHEEL_THRESHOLD) return;
       acc = 0;
-      gestureDone = true;
+      peak = mag;
       if (dir > 0) next(); else prev();
     };
 
