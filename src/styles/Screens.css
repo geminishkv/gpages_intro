@@ -1,65 +1,49 @@
 /* ═══════════════════════════════════════
-   Screen switcher (useScreens): on desktop every top-level block of the home page is a
-   full-height screen; wheel, keys, swipe and the dots move between them. body.gp-on turns
-   the layout on, body.gp-doc is the scrolling document below 901px.
+   Screens (useScreens): on desktop every top-level block of the home page is an in-flow
+   section at least one viewport tall, and the document snaps to the start of each one.
+   Wheel, keys, swipe and #hash links are native. body.gp-on turns the layout on,
+   html.gp-snap carries the snap type, body.gp-doc is the scrolling document below 901px.
    ═══════════════════════════════════════ */
 
-/* ── Layout ── */
-.gp-on .main-page {
-  overflow: hidden;
-  height: 100vh;
-  min-height: 100vh;
+/* ── Layout: the document scrolls; the desktop overflow chain (App.css) is unlocked.
+   Only <html> clips horizontally: any other non-visible overflow down the chain would make
+   that element the screens' snap container instead of the viewport ── */
+html.gp-snap {
+  height: auto;
+  min-height: 100%;
+  overflow: visible;
+  overflow-x: hidden;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
 }
-.gp-on #root, .gp-on .app { height: 100vh; }
-
+html.gp-snap body, .gp-on #root, .gp-on .app {
+  height: auto;
+  min-height: 100%;
+  overflow: visible;
+}
+.gp-on .main-page {
+  position: relative;
+  inset: auto;
+  height: auto;
+  min-height: 100vh;
+  overflow: visible;
+}
+/* the nav is sticky in the document; on screens it floats over them, so the first screen starts at 0 */
+.gp-on .nav { position: fixed; top: 0; left: 0; right: 0; margin: 0 auto; }
 .gp-on .gp-screen {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
+  position: relative;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  overflow: auto;
-  overscroll-behavior: contain;
-  scrollbar-width: none;
   padding-top: 96px;
   padding-bottom: 20px;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(48px);
-  transition:
-    opacity 0.38s cubic-bezier(0.2, 0.7, 0.2, 1),
-    transform 0.38s cubic-bezier(0.2, 0.7, 0.2, 1),
-    visibility 0s 0.38s;
-  pointer-events: none;
-}
-.gp-on .gp-screen::-webkit-scrollbar { display: none; }
-.gp-on .gp-screen.is-active {
-  opacity: 1;
-  visibility: visible;
-  transform: none;
-  transition-delay: 0s, 0s, 0s;
-  pointer-events: auto;
-}
-.gp-on .gp-screen.is-leaving {
-  opacity: 0;
-  visibility: visible;
-  transform: translateY(-36px) scale(0.985);
-  transition:
-    opacity 0.3s cubic-bezier(0.4, 0, 0.6, 1),
-    transform 0.3s cubic-bezier(0.4, 0, 0.6, 1),
-    visibility 0s 0.3s;
-  pointer-events: none;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;   /* a long flick never skips a screen */
 }
 /* fit-to-height: the hook sets --gp-zoom per screen (shrink to a floor, grow on ultra-wide) */
 .gp-on .gp-screen > * { zoom: var(--gp-zoom, 1); }
 .gp-on .gp-screen > *:not(.gp-wmw) { position: relative; z-index: 1; }
 .gp-on .gp-screen--hero { padding-top: 96px; padding-bottom: 8px; }
-
-/* the document-mode reveal (opacity 0 until scrolled into view) does not apply to screens */
-.gp-on .section-reveal { opacity: 1; transform: none; will-change: auto; }
-.gp-on .projects { opacity: 1; transform: none; }
 
 /* every screen's content starts on the same line under the nav */
 .gp-on .gp-screen > .section-reveal > section,
@@ -197,17 +181,6 @@
 .gp-on #skillset .gp-left .skills__stack-title { margin: 2px 0 0; }
 .gp-on #skillset .tools__show-more--full { display: none; }
 .gp-on #skillset .tools__certs-grid { grid-template-columns: repeat(4, 1fr); gap: 8px; }
-/* expanded list scrolls inside the panel instead of shrinking the whole screen */
-.gp-on #skillset .tools__certs-grid--expanded {
-  max-height: 34vh;
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  padding-right: 6px;
-  scrollbar-width: thin;
-  scrollbar-color: #2a2a2a transparent;
-}
-.gp-on #skillset .tools__certs-grid--expanded::-webkit-scrollbar { width: 6px; }
-.gp-on #skillset .tools__certs-grid--expanded::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 3px; }
 .gp-on #skillset .cert-card { padding: 10px 12px; gap: 4px; }
 .gp-on #skillset .cert-card__title { font-size: 0.8rem; line-height: 1.35; }
 .gp-on #skillset .tools { padding-bottom: 8px; }
@@ -303,7 +276,6 @@
 .gp-doc .gp-cts { padding-top: 32px; }
 
 @media (prefers-reduced-motion: reduce) {
-  .gp-on .gp-screen,
-  .gp-on .gp-screen.is-leaving,
+  html.gp-snap { scroll-behavior: auto; }
   .gp-dots a { transition: none; }
 }

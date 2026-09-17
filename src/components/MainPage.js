@@ -30,7 +30,7 @@ export default function MainPage({ isVisible }) {
   const [animDone, setAnimDone] = useState(false);
   const screens = useScreens({ count: SCREENS.length, ready: animDone });
   const onScreens = screens.mode === 'screens';
-  const refs = useMainAnimation(isVisible, () => setAnimDone(true), { screens: onScreens });
+  const refs = useMainAnimation(isVisible, () => setAnimDone(true));
   const { t } = useLang();
 
   // Background chevron per screen: side alternates, the offset and tilt are
@@ -69,7 +69,7 @@ export default function MainPage({ isVisible }) {
   const index = (id) => SCREENS.indexOf(id);
   const isActive = (id) => screens.cur === index(id);
   const screenClass = (id) =>
-    `gp-screen${id === 'intro' ? ' gp-screen--hero' : ''}${isActive(id) ? ' is-active' : ''}${screens.leaving === index(id) ? ' is-leaving' : ''}`;
+    `gp-screen${id === 'intro' ? ' gp-screen--hero' : ''}${isActive(id) ? ' is-active' : ''}`;
 
   // One wrapper per screen: the id keeps #hash links working, the provider tells the
   // titles and counters inside when their screen is on.
