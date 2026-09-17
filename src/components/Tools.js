@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import '../styles/Tools.css';
 import { useLang } from '../context/LangContext';
-import { BMSTU_IMG } from '../constants';
+import { BMSTU_IMG, SUSU_IMG, SPECIALIST_IMG } from '../constants';
 import SectionHead from './SectionHead';
 
 /* Tool groups; the numbers are kept only to order the chips (they are no longer shown). */
@@ -34,7 +34,9 @@ function Chip({ level, children }) {
   return <span className={`chip chip--${level}`}>{children}</span>;
 }
 
-// Diplomas from the résumé: the BMSTU seal is the real mark, the rest a brand monogram.
+// Diplomas from the résumé: a seal named here is drawn as the institution's mark, any other
+// value is printed as a brand monogram.
+const SEALS = { bmstu: BMSTU_IMG, susu: SUSU_IMG, specialist: SPECIALIST_IMG };
 function Diplomas({ items, title }) {
   return (
     <div className="skills__panel gp-dipl">
@@ -42,8 +44,8 @@ function Diplomas({ items, title }) {
       <div className="gp-diplomas">
         {items.map((d) => (
           <div key={d.title} className="gp-dip">
-            <span className={`gp-dip__seal${d.seal === 'bmstu' ? '' : ' gp-dip__seal--mono'}`}>
-              {d.seal === 'bmstu' ? <img src={BMSTU_IMG} alt="" /> : d.seal}
+            <span className={`gp-dip__seal${SEALS[d.seal] ? '' : ' gp-dip__seal--mono'}`}>
+              {SEALS[d.seal] ? <img src={SEALS[d.seal]} alt="" /> : d.seal}
             </span>
             <span className="gp-dip__body">
               <span className="gp-dip__title">{d.title}</span>

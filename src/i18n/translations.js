@@ -254,9 +254,9 @@ export const translations = {
 
     diplomas: [
       { seal: 'bmstu', title: 'Магистр, факультет ИУ', note: 'МГТУ им. Н. Э. Баумана · 2019' },
-      { seal: 'ИБ',    title: 'Бакалавр, защита информации в телекоммуникационных системах', note: 'ЮУрГУ, приборостроительный факультет · 2017' },
-      { seal: 'DEV',   title: 'DevOps-инженер', note: 'УЦ «Специалист» при МГТУ · 2023' },
-      { seal: 'LEAD',  title: 'Руководитель команды разработки', note: 'УЦ «Специалист» при МГТУ · 2021' },
+      { seal: 'susu',  title: 'Бакалавр, защита информации в телекоммуникационных системах', note: 'ЮУрГУ, приборостроительный факультет · 2017' },
+      { seal: 'specialist', title: 'DevOps-инженер', note: 'УЦ «Специалист» при МГТУ · 2023' },
+      { seal: 'specialist', title: 'Руководитель команды разработки', note: 'УЦ «Специалист» при МГТУ · 2021' },
     ],
 
     certs: [
@@ -534,9 +534,9 @@ export const translations = {
 
     diplomas: [
       { seal: 'bmstu', title: 'Master\u2019s, Computer Science and Control faculty', note: 'Bauman MSTU · 2019' },
-      { seal: 'IS',    title: 'Bachelor\u2019s, information security in telecom systems', note: 'SUSU, Instrument Engineering faculty · 2017' },
-      { seal: 'DEV',   title: 'DevOps engineer', note: 'Specialist Training Center at BMSTU · 2023' },
-      { seal: 'LEAD',  title: 'Software development team lead', note: 'Specialist Training Center at BMSTU · 2021' },
+      { seal: 'susu',  title: 'Bachelor\u2019s, information security in telecom systems', note: 'SUSU, Instrument Engineering faculty · 2017' },
+      { seal: 'specialist', title: 'DevOps engineer', note: 'Specialist Training Center at BMSTU · 2023' },
+      { seal: 'specialist', title: 'Software development team lead', note: 'Specialist Training Center at BMSTU · 2021' },
     ],
 
     certs: [
