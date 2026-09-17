@@ -53,7 +53,10 @@ export function useScreens({ count, ready }) {
   // A screen grows with its content, so the budget is the viewport, not the screen.
   const fit = useCallback(() => {
     if (!desktop) return;
-    const floor = window.innerWidth < 1300 ? 0.85 : 0.6;
+    // 0.8 below 1300px: with the screens clearing the fixed nav (104px top padding) the
+    // intro needs 0.81 at 1280x720, and a screen left taller than the viewport would cost
+    // the first wheel notch
+    const floor = window.innerWidth < 1300 ? 0.8 : 0.6;
     screens().forEach((s) => {
       const prev = s.style.getPropertyValue('--gp-zoom') || '1';
       s.style.setProperty('--gp-zoom', '1');
