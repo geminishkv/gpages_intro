@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Зачем AppSec для бизнеса? — geminishkv</title>
+  <meta name="description" content="🤔 Зачем AppSec для бизнеса? Салют,  Снова по больному, когда есть недопонимание зачем вообще ИБешечка и почему мы вообще существуем. Давай посмотрим, как можн…" />
+  <meta name="keywords" content="devsecops, appsec, paper, reco, pmi, humanres, appsec, devsecops, geminishkv" />
+  <meta name="author" content="Илья Шмаков" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="canonical" href="https://geminishkv.tech/blog/306/" />
+  <link rel="sitemap" href="/sitemap.xml" />
+  <link rel="alternate" type="application/rss+xml" title="geminishkv blog" href="/rss.xml" />
+  <link rel="alternate" hreflang="ru" href="https://geminishkv.tech/blog/306/" />
+  <link rel="alternate" hreflang="en" href="https://geminishkv.tech/blog/en/306/" />
+  <link rel="alternate" hreflang="x-default" href="https://geminishkv.tech/blog/306/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://geminishkv.tech/blog/306/" />
+  <meta property="og:title" content="Зачем AppSec для бизнеса? — geminishkv" />
+  <meta property="og:description" content="🤔 Зачем AppSec для бизнеса? Салют,  Снова по больному, когда есть недопонимание зачем вообще ИБешечка и почему мы вообще существуем. Давай посмотрим, как можн…" />
+  <meta property="og:image" content="https://geminishkv.tech/img/blog/306.jpg" />
+  <meta property="og:image:alt" content="Зачем AppSec для бизнеса?" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:site_name" content="geminishkv" />
+  <meta property="article:published_time" content="2026-04-08" />
+  <meta property="article:author" content="Илья Шмаков" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@geminishkv" />
+  <meta name="twitter:title" content="Зачем AppSec для бизнеса?" />
+  <meta name="twitter:description" content="🤔 Зачем AppSec для бизнеса? Салют,  Снова по больному, когда есть недопонимание зачем вообще ИБешечка и почему мы вообще существуем. Давай посмотрим, как можн…" />
+  <meta name="twitter:image" content="https://geminishkv.tech/img/blog/306.jpg" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Зачем AppSec для бизнеса?","description":"🤔 Зачем AppSec для бизнеса? Салют,  Снова по больному, когда есть недопонимание зачем вообще ИБешечка и почему мы вообще существуем. Давай посмотрим, как можн…","url":"https://geminishkv.tech/blog/306/","datePublished":"2026-04-08","dateModified":"2026-04-08","image":"https://geminishkv.tech/img/blog/306.jpg","inLanguage":"ru","author":{"@type":"Person","name":"Илья Шмаков","url":"https://geminishkv.tech"},"publisher":{"@type":"Organization","name":"geminishkv","url":"https://geminishkv.tech"}}</script>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="/fonts/fonts.css" />
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0a0a0a; --card: #111111; --border: #1a1a1a;
+  --text: #e8e8e8; --muted: #888888; --accent: #D51A1A; --gold: #F9B361;
+}
+html, body { background: var(--bg); color: var(--text); font-family: 'Roboto', system-ui, sans-serif; min-height: 100dvh; line-height: 1.7; }
+a { color: inherit; text-decoration: none; }
+
+.page { max-width: 800px; margin: 0 auto; padding: 0 24px 64px; }
+
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 24px 0 32px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+.nav__brand { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 700; color: #fff; }
+.nav__brand img { width: 28px; height: 28px; border-radius: 50%; }
+.nav__back { font-size: 12px; color: var(--muted); border: 1px solid var(--border); border-radius: 4px; padding: 6px 14px; transition: color .2s, border-color .2s; letter-spacing: 0.06em; text-transform: uppercase; }
+.nav__back:hover { color: #fff; border-color: var(--accent); }
+
+.nav__right-group { display: flex; align-items: center; gap: 10px; }
+.lang-toggle { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; color: var(--accent); border: 1px solid var(--accent); border-radius: 4px; padding: 5px 10px; transition: background .2s, color .2s; }
+.lang-toggle:hover { background: var(--accent); color: #fff; }
+
+.divider { height: 1px; background: linear-gradient(to right, var(--accent), rgba(204,34,0,.15), transparent); margin: 40px 0 20px; }
+.footer { font-size: 0.65rem; color: var(--muted); text-align: center; }
+.footer a { color: var(--accent); transition: color .2s; }
+.footer a:hover { color: var(--gold); }
+.disclaimer { font-size: 0.55rem; color: #555; text-align: center; margin-top: 12px; line-height: 1.4; }
+
+@media (max-width: 600px) { .page { padding: 0 16px 48px; } }
+
+    .cover { width: 100%; border-radius: 8px; overflow: hidden; margin-bottom: 28px; max-height: 400px; }
+    .cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .meta { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; font-size: 0.72rem; color: var(--muted); }
+    .content p { font-size: 0.85rem; line-height: 1.85; margin-bottom: 8px; }
+    .content .gap { height: 10px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 24px; }
+    .tag { font-size: 0.6rem; color: var(--gold); background: rgba(249,179,97,.06); border: 1px solid rgba(249,179,97,.15); border-radius: 3px; padding: 2px 8px; }
+    .tg-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 28px; padding: 10px 20px; background: rgba(204,34,0,.1); border: 1px solid rgba(204,34,0,.25); border-radius: 6px; color: #fff; font-size: 0.75rem; font-weight: 600; transition: background .2s; }
+    .tg-link:hover { background: rgba(204,34,0,.18); }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="nav">
+      <a href="/" class="nav__brand"><img src="/img/logotype/logo_white.svg" alt="" />geminishkv</a>
+      <div class="nav__right-group">
+        <a href="/blog/en/306/" class="lang-toggle">EN</a>
+        <a href="/blog/" class="nav__back">← Все посты</a>
+      </div>
+    </nav>
+    <div class="cover"><img src="/img/blog/306.jpg" alt="Зачем AppSec для бизнеса?" /></div>
+    <article>
+      <div class="meta"><span>8 апреля 2026 г.</span><span>·</span><span>168 views</span></div>
+      <div class="content"><p>🤔 Зачем AppSec для бизнеса?</p>
+<div class="gap"></div>
+<p>Салют, </p>
+<p>Снова по больному, когда есть недопонимание зачем вообще ИБешечка и почему мы вообще существуем.</p>
+<p>Давай посмотрим, как можно по другому обьяснить и донести такую мысль до ключевого человека о принятии решения.</p>
+<p>Вот какой вариант я могу предложить исходя из своего профиля и что обычно внедряю, когда говорю об этом на конференциях или в целом делюсь с тобой.</p>
+<div class="gap"></div>
+<p>1. Что это и зачем нужно?</p>
+<div class="gap"></div>
+<p>Мы строим систему, при которой каждая поставка кода в прод проверяется на безопасность автоматически. Сейчас у вас код уходит в продакшн без проверки ИБ, или проверка происходит хаотично — раз в квартал, перед аудитом, после инцидента и т.д. Это как пожарная проверка раз в год вместо пожарной сигнализации и вслучае воспламенения возникают риски которые приходится решать в моменте времени.</p>
+<div class="gap"></div>
+<p>2. Что конкретно получается? </p>
+<div class="gap"></div>
+<p>Автоматический pipeline, который на каждый commit проверяет код статически (SAST), проверяет зависимости (SCA), сканирует контейнеры, ищет секреты в коде. А также ручное DAST-тестирование web-приложений и API. А также процесс управления найденных уязвимостей — не просто «вот вам PDF-отчёт на 200 страниц», а маршрутизация задач в Jira на конкретных разработчиков с приоритетами и сроками.</p>
+<div class="gap"></div>
+<p>3. Почему мы вообще это делаем? </p>
+<div class="gap"></div>
+<p>Снижение реального риска инцидента, компрометации, утечки и т.д. Стоимость инцидента против стоимости предотвращения — разница в десятки раз.</p>
+<div class="gap"></div>
+<p>4. Почему не может кто-то другой?</p>
+<div class="gap"></div>
+<p>Самое простое в этом ответе: нет компетенций в данной области, направления и возможностей правильно строить сразу, а не обучаться в процессе и тратить на это неимоверные косты, иначе бы не было вакансий в поиске для данных позиций. (обычно это работает там, где реально строится все с нуля)</p>
+<div class="gap"></div>
+<p>Например, купить лицензию на инструмент типа Checkmarx, PT Application Inspector, Solar appScreener и делать самим разработчикам ручками, где инструмент без экспертизы — это как МРТ-аппарат без врача. Именно поэтому нужен человек, который настроит правила под ваш стек, отфильтрует ложные срабатывания (достигают более 70% от общих сработок), приоритизирует по реальному риску для бизнеса, встроит в pipeline и т.д. Просто купить сканер и запустить — получите отчёт на 500 страниц, с которым никто не знает что делать и как это решается, плюс что бы получить отчет придется повозиться с настройкой, даже если будет интеграция и настройка от вендора/ интегратора - это дополнительные косты, которые во много раз дороже обойдутся</p>
+<div class="gap"></div>
+<p>Но мы внутри уже знаем инфраструктуру, процессы, контуры, Gitlab, Nexus. Мы не тратим 2 месяца на погружение. Плюс мы не просто сканируем и отдаём отчёт — мы строим процесс, который работает после нашего ухода. Автоматизация остаётся у вас, pipeline остаётся у вас, команда обучается и начинает реально работать с этим руками, а не просто бездумно выполняет очередные требования, которые не заточены под их стек.</p>
+<div class="gap"></div>
+<p>5. Что получает в итоге заказчик?</p>
+<div class="gap"></div>
+<p>• Полностью развёрнутая и настроенная инфраструктура ИБ-тестирования</p>
+<p>• Результаты комплексного анализа защищённости</p>
+<p>• Работающий автоматизированный pipeline ИБ в CI/CD с Quality Gate</p>
+<p>• Процесс управления уязвимостями через ASOC/ ASPM и Jira</p>
+<p>• Управление секретами (Vault)</p>
+<p>• Процесс обработки инцидентов ИБ</p>
+<p>• Аналитические отчёты с оценкой рисков, триажем и рекомендациями</p>
+<p>• Документация: UML pipeline, технический мануал, рекомендации</p>
+<p>• Обученная команда — через совместную работу, консультации и отработку ложно позитивных срабатываний уязвимостей</p>
+<p>• Готовый фундамент для дальнейшего повышения зрелости DevSecOps</p>
+<div class="gap"></div>
+<p>ПС: ну и накидывай сверху от своего кейса, но явно ты, как и я, периодами уже замучался отвечать на такие вопросы и какой то шаблон тебе пригодится</p>
+<div class="gap"></div>
+<p>ППС: а скоро тронем еще маркетинг и немного воронки для AppSec, ну да - тут приходится тоже как то с этим работать и как бы только так прокачиваешься 🙃</p>
+<div class="gap"></div>
+<p>#devsecops #appsec #paper #reco #pmi #humanres</p></div>
+      <div class="tags"><span class="tag">#devsecops</span><span class="tag">#appsec</span><span class="tag">#paper</span><span class="tag">#reco</span><span class="tag">#pmi</span><span class="tag">#humanres</span></div>
+      <a href="https://t.me/appsecta/306" target="_blank" rel="noreferrer" class="tg-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+        Открыть в Telegram
+      </a>
+    </article>
+    <div class="divider"></div>
+    <footer class="footer">
+      <p>© 2026 <a href="/">geminishkv.tech</a></p>
+      <p class="disclaimer">Instagram* — продукт компании Meta Platforms Inc., деятельность которой запрещена на территории РФ как экстремистская.</p>
+    </footer>
+  </div>
+</body>
+</html>

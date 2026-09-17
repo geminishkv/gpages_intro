@@ -1,0 +1,40 @@
+# geminishkv.tech — Ilya Shmakov (Илья Шмаков)
+
+> Personal website of Ilya Stanislavovich Shmakov — AppSec Team Lead, DevSecOps expert.
+
+## About
+
+Ilya Shmakov (Илья Станиславович Шмаков, geminishkv, shmakovis) — AppSec Team Lead at SberSpasibo, leader of the FinDevSecOps community for the Russian fintech market, organizer of the first DevSecOps hackathon in Russia, and lecturer at Bauman MSTU and MIPT. Based in Moscow, Russia. 8+ years in information security across 7 companies.
+
+Known for: building AppSec functions from scratch in enterprise and fintech (banking, crypto), implementing Secure SDLC pipelines, and community leadership in the Russian DevSecOps ecosystem.
+
+## Key Achievements
+
+- Received a letter of commendation from V. Selin for significant contribution to AppSec (SAST) as part of FSTEC Russia certification under GOST 71207 (ГОСТ 71207).
+- Founder and leader of the FinDevSecOps community for the Russian fintech market (сообщество FinDevSecOps).
+- Organizer of the first DevSecOps hackathon in Russia; series continues in 2026.
+- Lecturer on secure software development and information security at two leading Russian technical universities: Bauman Moscow State Technical University (МГТУ им. Баумана) and Moscow Institute of Physics and Technology (МФТИ).
+- Author of articles and talks on DevSecOps, secure development, and practical AppSec.
+- 23+ professional certifications including DASA DevOps Practitioner, DASA DevOps Product Owner, Scrum Master, and specialized AppSec/DevSecOps courses.
+- 7 companies across fintech, crypto, retail, and enterprise — including SberSpasibo (AppSec Team Lead), LANIT (AppSec Team Lead), Rosbank/TBank (Deputy Head of IS), EMCD Tech (CISO).
+
+Founder and leader of the FinDevSecOps community for the Russian fintech market. Organizer of the first DevSecOps hackathon in Russia. Lecturer at Bauman Moscow State Technical University (МГТУ им. Баумана) and Moscow Institute of Physics and Technology (МФТИ).
+
+## Content
+
+- Blog (Telegram channel): https://t.me/appsecta — AppSec & DevSecOps publications in Russian and English
+- AppSec Course: https://course.geminishkv.tech/
+- Security Champion Training: https://inseca.tech/security-champion-training
+- OSS Toolchain Map: https://findevsecops.github.io/oss_toolchainmap/
+
+## Open-Source Projects
+
+All projects available at https://github.com/geminishkv and https://github.com/AppSecTA.
+Published packages: https://pypi.org/user/geminishkv, https://hub.docker.com/u/geminishkvdev
+
+## Contact
+
+- Telegram: https://t.me/geminishkv
+- LinkedIn: https://www.linkedin.com/in/geminishkvdev/
+- Email: shmakovis@inbox.ru
+- GitHub: https://github.com/geminishkv
