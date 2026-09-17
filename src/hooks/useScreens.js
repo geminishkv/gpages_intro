@@ -55,16 +55,18 @@ export function useScreens({ count, ready }) {
     if (!desktop) return;
     const floor = window.innerWidth < 1300 ? 0.85 : 0.6;
     screens().forEach((s) => {
+      const prev = s.style.getPropertyValue('--gp-zoom') || '1';
       s.style.setProperty('--gp-zoom', '1');
       const cs = getComputedStyle(s);
       const pad = parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom);
       const avail = window.innerHeight - pad;
       let need = s.scrollHeight - pad;
+      let next = '1';
       if (need > avail + 2) {
         const z = Math.max(floor, avail / need);
         s.style.setProperty('--gp-zoom', z.toFixed(3));
         need = s.scrollHeight - pad;
-        if (need > avail + 2) s.style.setProperty('--gp-zoom', Math.max(floor, (z * avail) / need).toFixed(3));
+        next = (need > avail + 2 ? Math.max(floor, (z * avail) / need) : z).toFixed(3);
       } else if (window.innerWidth >= 2000) {
         // union rectangle of the in-flow children: decor (watermark, hero grid) is absolute and skipped
         const rects = [...s.children]
@@ -72,8 +74,12 @@ export function useScreens({ count, ready }) {
           .map((c) => c.getBoundingClientRect());
         const content = rects.length ? Math.max(...rects.map((r) => r.bottom)) - Math.min(...rects.map((r) => r.top)) : need;
         const z = Math.min(1.3, (window.innerWidth - 160) / 1900, (avail / content) * 0.94);
-        if (z > 1.02) s.style.setProperty('--gp-zoom', z.toFixed(3));
+        if (z > 1.02) next = z.toFixed(3);
       }
+      // Keep the previous zoom when the new one is within 0.01: the measurement at zoom 1
+      // and at the fitted zoom disagree by a few thousandths, and writing that difference
+      // back resized the screen, re-triggered the observer and oscillated (0.850/0.853).
+      s.style.setProperty('--gp-zoom', Math.abs(parseFloat(next) - parseFloat(prev)) < 0.01 ? prev : next);
     });
   }, [desktop, screens]);
 
@@ -81,19 +87,26 @@ export function useScreens({ count, ready }) {
   // (language switch, "show more", images loading).
   useEffect(() => {
     if (!desktop) return undefined;
+    // Observer and resize callbacks only schedule a fit for the next frame: fitting inside
+    // the ResizeObserver callback changes the sizes it reports on and raised
+    // "ResizeObserver loop completed with undelivered notifications" at 1280x720
+    // (in development the error overlay then covered the page and swallowed the wheel).
+    let raf = 0;
+    const schedule = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(fit); };
     fit();
-    const t1 = setTimeout(fit, 50);
-    const t2 = setTimeout(fit, 1500);
-    if (document.fonts) document.fonts.ready.then(fit);
-    window.addEventListener('resize', fit);
+    const t1 = setTimeout(schedule, 50);
+    const t2 = setTimeout(schedule, 1500);
+    if (document.fonts) document.fonts.ready.then(schedule);
+    window.addEventListener('resize', schedule);
     let ro = null;
     if (typeof ResizeObserver !== 'undefined') {
-      ro = new ResizeObserver(() => fit());
+      ro = new ResizeObserver(schedule);
       screens().forEach((s) => [...s.children].forEach((c) => ro.observe(c)));
     }
     return () => {
       clearTimeout(t1); clearTimeout(t2);
-      window.removeEventListener('resize', fit);
+      cancelAnimationFrame(raf);
+      window.removeEventListener('resize', schedule);
       if (ro) ro.disconnect();
     };
   }, [desktop, fit, screens, ready]);
