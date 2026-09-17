@@ -57,6 +57,8 @@
   background: linear-gradient(135deg, #e42222, #a01414);
 }
 .pkg-btn.gp-btn--primary:hover span { color: #ffffff; }
+/* the span is transparent (no gradient seam), so the glitch overlay needs the hover gradient itself to hide the label */
+.pkg-btn.gp-btn--primary:hover span::before { background: linear-gradient(135deg, #e42222, #a01414); }
 .pkg-btn.gp-btn--primary i::before,
 .pkg-btn.gp-btn--primary i::after { border-color: #F9B361; background: #a01414; }
 
