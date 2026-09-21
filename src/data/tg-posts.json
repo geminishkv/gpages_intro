@@ -1,12 +1,37 @@
 {
-  "subscribers": 373,
+  "subscribers": 377,
   "posts": [
+    {
+      "id": "537",
+      "text": "из Че с любовью\n\n#lol",
+      "date": "2026-09-21",
+      "url": "https://t.me/appsecta/537",
+      "views": 50,
+      "tags": [
+        "lol"
+      ],
+      "image": "/img/blog/537.jpg"
+    },
+    {
+      "id": "528",
+      "text": "🏆 AppSec Labs v.2.3.0 и новое в бренде\n\nСалют,\nUwU, жирный апдейт по лабам и заодно показываю брендинг: над визуалкой посидел - кайфую 🫶\n\ncourse.geminishkv.tech — тёмный холст, счётчики считаются при сборке, главная фишка, - конвейер курса: над узлом материалы, под узлом сами лабки\n\nИнтересности:\n\n• Углублённый трек по Docker — две лабы: как безопасно запустить контейнер и почему образу можно доверять (seccomp, SBOM, cosign, гейт допуска)\n• Фолсы в лабах заложены намеренно — разбирайся, где сканер врёт\n• Схемы по ГОСТ, включая ход атаки по каждому классу OWASP и риску CI/CD\n• Новые шпаргалки и справочники, Troubleshooting расширен\n\nБрендинг: geminishkv.tech — canvas, карьера в виде конвейера (можем посмотреть чем занимался там та и там та), блог из 350+ постов канала и дино на 404\n\nПокликай карусель\n\nКосячки по-любому есть, но с ними же интереснее,\nОбнял-приподнял, родное сердце 🫶\n\nSic Parvis Magna\n\n#appsec #devsecops #course #specialty",
+      "date": "2026-09-18",
+      "url": "https://t.me/appsecta/528",
+      "views": 106,
+      "tags": [
+        "appsec",
+        "devsecops",
+        "course",
+        "specialty"
+      ],
+      "image": "/img/blog/528.jpg"
+    },
     {
       "id": "527",
       "text": "🛠 OWASP Agentic Skills\n\nOWASP выпустил первый фреймворк по безопасности агентских скиллов. Покрывает OpenClaw (SKILL.md), Claude Code (skill.json), Cursor/ Codex (manifest.json), VS Code (package.json)\n\nМодель\n\nMCP определяет какие инструменты доступны, а скилл — как их оркестрировать. Этот поведенческий слой не закрывается защитой ни модели, ни протокола\n\n- Конфиги репозитория стали execution layer: CVE-2025-59536 (CVSS 8.7) в Claude Code, по факту - это pre-consent code execution. Выглядит так: открытие проекта в агенте, config исполняет shell, эксфильтрация API-ключей\n\n- SKILL.md как вектор RCE: строки в YAML инструктируют агента прочитать ~/.ssh/id_rsa и эксфильтровать, которую агент исполняет как доверенную\n\n- Lethal Trifecta — условие критичности\n\n1. Private data   (SSH, API keys, wallets)\n2. Untrusted content (SKILL.md, MEMORY.md, email)\n3. External egress (network, webhooks, curl)\n\nПроблемный Tier\n\n- AST05: payload подтягивается из attacker-controlled URL в рантайме — обходит install-time скан by design\n- AST07 SkillJacking: висящие зависимости угоняются, где спасает только hash pinning\n- AST08: padding, логика в бинарниках, prompt-injection против LLM. Pattern-matching бесполезен\n\nUniversal Skill Format\n\npermissions:\n  files:\n    deny_write: [SOUL.md, MEMORY.md, AGENTS.md] # закрывает персистентный бэкдор\n  network:\n    allow: [api.example.com] # закрывает over-permission\n    deny: \"*\"\n  shell: false\nsignature: \"ed25519:...\" # Merkle-root верификация\ncontent_hash: \"sha256:...\" # Merkle-root верификация\n\nИтого (боже мой, а мы не знали - даёшь агенту доступ к файлам, сети и shell — создаёшь ровно ту attack surface, о которой этот Top 10)\n\n- Execution layer в конфигах: SKILL.md, settings.json исполняются, а не читаются — CVE-2025-59536 \n- pre-consent RCE через клонирование репо \n- сканеры обходятся за час, нужен behavioral pipeline \n- База: least privilege, sandbox, hash pinning, co-sign как доп (речь о механике, не туле)\n\n#AppSec #DevSecOps #research #specialty",
       "date": "2026-09-16",
       "url": "https://t.me/appsecta/527",
-      "views": 93,
+      "views": 150,
       "tags": [
         "appsec",
         "devsecops",
@@ -21,7 +46,7 @@
       "text": "Надо использовать по максимуму - всегда\n\n#lol",
       "date": "2026-09-15",
       "url": "https://t.me/appsecta/525",
-      "views": 109,
+      "views": 149,
       "tags": [
         "lol"
       ],
@@ -33,7 +58,7 @@
       "text": "Красивое 🙃\n\nА еще по кайфу вставлять nbsp как пустой символ \n\n#lol",
       "date": "2026-09-13",
       "url": "https://t.me/appsecta/524",
-      "views": 131,
+      "views": 168,
       "tags": [
         "lol"
       ],
@@ -45,7 +70,7 @@
       "text": "Немного приятностей еще подъехало, на самом деле хотелось бы больше сделать для людей 🙏🫶\n\n#special #course #appsec",
       "date": "2026-09-11",
       "url": "https://t.me/appsecta/523",
-      "views": 168,
+      "views": 204,
       "tags": [
         "special",
         "course",
@@ -59,7 +84,7 @@
       "text": "🛠 AppSec Labs to pump yourself Release v.2.2.0\n\nСалют, я снова с апдейтом по лабам, докручиваю и развиваю преокт, думаю это круто\n\nДизайн и UI/UX:\n\n• Главная переписана как кастомный шаблон: тёмный холст в палитре gpages, hero с бренд-колонкой (логотип, «0», «1», Sic Parvis Magna), бейджи, «О курсе» тремя карточками, конвейер из 6 этапов с материалами над узлом и лабами под ним, шаги прохождения, требования и замечания, 9 плиток материалов, полоса канала\n• Шапка в стиле geminishkv.tech: логотип с вращающимся кольцом, пилюли разделов с активным состоянием, поиск-капсула, бургер; стекло при скролле\n• Единая палитра с gpages\n• Внутренние страницы: одно меню (пилюли шапки + сайдбар текущего раздела), минимальный сайдбар, страницы без раздела во всю ширину\n• Доступность: читаемый поиск на тёмной главной, кольца фокуса, print-стили, ARIA-ориентиры\n\nАрхитектура и сборка:\n\n• pyproject.toml + uv.lock с хэшами вместо requirements.txt; инструменты CI в группах лока; CI на uv sync --frozen, пины всех установщиков, hadolint с проверкой sha256, pip-audit по экспорту лока\n• Dependabot: экосистема uv, cooldown 7 дней для actions / npm / uv\n• Цифры hero считаются хуком при сборке; шаблоны и глоссарий исключены из сборки\n\n#appsec #devsecops #roadmap #specialty #toolchain #techsolution #gost #paper #course #reco #sast #sca #dast #sbom #containersecurity #secrets #riskanalys #techsolution",
       "date": "2026-09-11",
       "url": "https://t.me/appsecta/522",
-      "views": 156,
+      "views": 187,
       "tags": [
         "appsec",
         "devsecops",
@@ -87,7 +112,7 @@
       "text": "Немного стиля в ленту 😈🫶",
       "date": "2026-09-09",
       "url": "https://t.me/appsecta/521",
-      "views": 174,
+      "views": 191,
       "tags": [],
       "image": "/img/blog/521.jpg",
       "text_en": "A little style for your feed 😈🫶"
@@ -97,7 +122,7 @@
       "text": "Немного для развлечения 🤣\n\n#lol",
       "date": "2026-09-09",
       "url": "https://t.me/appsecta/520",
-      "views": 172,
+      "views": 189,
       "tags": [
         "lol"
       ],
@@ -109,7 +134,7 @@
       "text": "Ууу, актуалочка\n\n#lol",
       "date": "2026-09-04",
       "url": "https://t.me/appsecta/519",
-      "views": 253,
+      "views": 266,
       "tags": [
         "lol"
       ],
@@ -121,7 +146,7 @@
       "text": "Кстати, да - жиза 🤣\n\n#lol",
       "date": "2026-09-01",
       "url": "https://t.me/appsecta/518",
-      "views": 268,
+      "views": 282,
       "tags": [
         "lol"
       ],
@@ -133,7 +158,7 @@
       "text": "А, ой, с первым сентября, у меня же будут студенты\n\nПС: никогда не думал, что буду преподом, святые котейки 😅",
       "date": "2026-09-01",
       "url": "https://t.me/appsecta/517",
-      "views": 235,
+      "views": 245,
       "tags": [],
       "image": "/img/blog/517.jpg",
       "text_en": "Oh, oh, on the first of September, I will have students\n\nPS: I never thought that I would be a teacher, holy cats 😅"
@@ -143,7 +168,7 @@
       "text": "С пятничной, родное сердце \n\n#lol",
       "date": "2026-08-28",
       "url": "https://t.me/appsecta/516",
-      "views": 309,
+      "views": 314,
       "tags": [
         "lol"
       ],

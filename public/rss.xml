@@ -8,13 +8,31 @@
     <atom:link href="https://geminishkv.tech/rss.xml" rel="self" type="application/rss+xml"/>
     <description>Блог по AppSec &amp; DevSecOps — Илья Шмаков (geminishkv)</description>
     <language>ru-RU</language>
-    <lastBuildDate>Thu, 17 Sep 2026 14:51:21 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 21 Sep 2026 07:24:55 GMT</lastBuildDate>
     <managingEditor>shmakovis@inbox.ru (Илья Шмаков)</managingEditor>
     <image>
       <url>https://geminishkv.tech/img/hero/avatar.jpg</url>
       <title>geminishkv — AppSec &amp; DevSecOps Блог (RU)</title>
       <link>https://geminishkv.tech/</link>
     </image>
+    <item>
+      <title>из Че с любовью</title>
+      <link>https://geminishkv.tech/blog/537/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/537/</guid>
+      <pubDate>Mon, 21 Sep 2026 00:00:00 GMT</pubDate>
+      <description>из Че с любовью #lol</description>
+      <enclosure url="https://geminishkv.tech/img/blog/537.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>AppSec Labs v.2.3.0 и новое в бренде</title>
+      <link>https://geminishkv.tech/blog/528/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/528/</guid>
+      <pubDate>Fri, 18 Sep 2026 00:00:00 GMT</pubDate>
+      <description>🏆 AppSec Labs v.2.3.0 и новое в бренде Салют, UwU, жирный апдейт по лабам и заодно показываю брендинг: над визуалкой посидел - кайфую 🫶 course.geminishkv.tech — тёмный холст, счётчики считаются при сборке, главная фишка, - конвейер курса: над узлом материалы, под узлом сами лаб</description>
+      <enclosure url="https://geminishkv.tech/img/blog/528.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
     <item>
       <title>OWASP Agentic Skills</title>
       <link>https://geminishkv.tech/blog/527/</link>
