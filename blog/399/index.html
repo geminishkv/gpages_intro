@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Риск- и бизнес-ориентированная модель в ИБ — geminishkv</title>
+  <meta name="description" content="🤔 Риск- и бизнес-ориентированная модель в ИБ В ГОСТ Р ИСО/ МЭК 15408 и в материалах по управлению рисками всегда описывается одна и таже схема, которая вроде …" />
+  <meta name="keywords" content="appsec, devsecops, term, tiskanalysis, pmi, reco, specialty, paper, appsec, devsecops, geminishkv" />
+  <meta name="author" content="Илья Шмаков" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="canonical" href="https://geminishkv.tech/blog/399/" />
+  <link rel="sitemap" href="/sitemap.xml" />
+  <link rel="alternate" type="application/rss+xml" title="geminishkv blog" href="/rss.xml" />
+  <link rel="alternate" hreflang="ru" href="https://geminishkv.tech/blog/399/" />
+  <link rel="alternate" hreflang="en" href="https://geminishkv.tech/blog/en/399/" />
+  <link rel="alternate" hreflang="x-default" href="https://geminishkv.tech/blog/399/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://geminishkv.tech/blog/399/" />
+  <meta property="og:title" content="Риск- и бизнес-ориентированная модель в ИБ — geminishkv" />
+  <meta property="og:description" content="🤔 Риск- и бизнес-ориентированная модель в ИБ В ГОСТ Р ИСО/ МЭК 15408 и в материалах по управлению рисками всегда описывается одна и таже схема, которая вроде …" />
+  <meta property="og:image" content="https://geminishkv.tech/img/blog/399.jpg" />
+  <meta property="og:image:alt" content="Риск- и бизнес-ориентированная модель в ИБ" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:site_name" content="geminishkv" />
+  <meta property="article:published_time" content="2026-05-29" />
+  <meta property="article:author" content="Илья Шмаков" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@geminishkv" />
+  <meta name="twitter:title" content="Риск- и бизнес-ориентированная модель в ИБ" />
+  <meta name="twitter:description" content="🤔 Риск- и бизнес-ориентированная модель в ИБ В ГОСТ Р ИСО/ МЭК 15408 и в материалах по управлению рисками всегда описывается одна и таже схема, которая вроде …" />
+  <meta name="twitter:image" content="https://geminishkv.tech/img/blog/399.jpg" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Риск- и бизнес-ориентированная модель в ИБ","description":"🤔 Риск- и бизнес-ориентированная модель в ИБ В ГОСТ Р ИСО/ МЭК 15408 и в материалах по управлению рисками всегда описывается одна и таже схема, которая вроде …","url":"https://geminishkv.tech/blog/399/","datePublished":"2026-05-29","dateModified":"2026-05-29","image":"https://geminishkv.tech/img/blog/399.jpg","inLanguage":"ru","author":{"@type":"Person","name":"Илья Шмаков","url":"https://geminishkv.tech"},"publisher":{"@type":"Organization","name":"geminishkv","url":"https://geminishkv.tech"}}</script>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="/fonts/fonts.css" />
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0a0a0a; --card: #111111; --border: #1a1a1a;
+  --text: #e8e8e8; --muted: #888888; --accent: #D51A1A; --gold: #F9B361;
+}
+html, body { background: var(--bg); color: var(--text); font-family: 'Roboto', system-ui, sans-serif; min-height: 100dvh; line-height: 1.7; }
+a { color: inherit; text-decoration: none; }
+
+.page { max-width: 800px; margin: 0 auto; padding: 0 24px 64px; }
+
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 24px 0 32px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+.nav__brand { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 700; color: #fff; }
+.nav__brand img { width: 28px; height: 28px; border-radius: 50%; }
+.nav__back { font-size: 12px; color: var(--muted); border: 1px solid var(--border); border-radius: 4px; padding: 6px 14px; transition: color .2s, border-color .2s; letter-spacing: 0.06em; text-transform: uppercase; }
+.nav__back:hover { color: #fff; border-color: var(--accent); }
+
+.nav__right-group { display: flex; align-items: center; gap: 10px; }
+.lang-toggle { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; color: var(--accent); border: 1px solid var(--accent); border-radius: 4px; padding: 5px 10px; transition: background .2s, color .2s; }
+.lang-toggle:hover { background: var(--accent); color: #fff; }
+
+.divider { height: 1px; background: linear-gradient(to right, var(--accent), rgba(204,34,0,.15), transparent); margin: 40px 0 20px; }
+.footer { font-size: 0.65rem; color: var(--muted); text-align: center; }
+.footer a { color: var(--accent); transition: color .2s; }
+.footer a:hover { color: var(--gold); }
+.disclaimer { font-size: 0.55rem; color: #555; text-align: center; margin-top: 12px; line-height: 1.4; }
+
+@media (max-width: 600px) { .page { padding: 0 16px 48px; } }
+
+    .cover { width: 100%; border-radius: 8px; overflow: hidden; margin-bottom: 28px; max-height: 400px; }
+    .cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .meta { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; font-size: 0.72rem; color: var(--muted); }
+    .content p { font-size: 0.85rem; line-height: 1.85; margin-bottom: 8px; }
+    .content .gap { height: 10px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 24px; }
+    .tag { font-size: 0.6rem; color: var(--gold); background: rgba(249,179,97,.06); border: 1px solid rgba(249,179,97,.15); border-radius: 3px; padding: 2px 8px; }
+    .tg-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 28px; padding: 10px 20px; background: rgba(204,34,0,.1); border: 1px solid rgba(204,34,0,.25); border-radius: 6px; color: #fff; font-size: 0.75rem; font-weight: 600; transition: background .2s; }
+    .tg-link:hover { background: rgba(204,34,0,.18); }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="nav">
+      <a href="/" class="nav__brand"><img src="/img/logotype/logo_white.svg" alt="" />geminishkv</a>
+      <div class="nav__right-group">
+        <a href="/blog/en/399/" class="lang-toggle">EN</a>
+        <a href="/blog/" class="nav__back">← Все посты</a>
+      </div>
+    </nav>
+    <div class="cover"><img src="/img/blog/399.jpg" alt="Риск- и бизнес-ориентированная модель в ИБ" /></div>
+    <article>
+      <div class="meta"><span>29 мая 2026 г.</span><span>·</span><span>328 views</span></div>
+      <div class="content"><p>🤔 Риск- и бизнес-ориентированная модель в ИБ</p>
+<div class="gap"></div>
+<p>В ГОСТ Р ИСО/ МЭК 15408 и в материалах по управлению рисками всегда описывается одна и таже схема, которая вроде бы выглядит понятно, но все же по ней возникают работы, а обычно мало кто обьяснет принцип ее действия.</p>
+<div class="gap"></div>
+<p>Начиная работать по ней в проекте появляется «реестр рисков» без владельцев, без сроков и без связи с реальными активами, что обычная практика на сегодняшний день для многих.</p>
+<div class="gap"></div>
+<p>Приведенные элементы описывают, как организация защищает то, что ценно, а именно активы, от того, кто хочет причинить ущерб, используя уязвимости, и как этому противостоит, - контрмеры. В следствии половина людей называет угрозой то, что на самом деле является уязвимостью.</p>
+<div class="gap"></div>
+<p>Опишем детально</p>
+<div class="gap"></div>
+<p>• Активы: данные, сервисы, бизнес-процессы, репутация. Если не можешь оценить ущерб от потери — у тебя не актив, а просто пассив. Пример: </p>
+<p>— возможность обрабатывать платежи, база клиентов — активы</p>
+<p>— сервера, ВМ, контейнера — носители, не активы</p>
+<p>• Владелец: лицо или роль, отвечающее за актив и принимающее решения о его защите, то есть не ИБ и не администратор. Владелец фиксируется вместе с активом и принимает решение принять / минимизировать / делегировать / избежать. Без владельца модель не работает — некому говорить «да, готов жить с этим риском»</p>
+<p>• Угроза: потенциальное событие, способное нанести ущерб активу — сценарий, как пример кража токена, вывод средств через скомпрометированную сессию. Угроза — что может случиться; уязвимость — слабость, через которую это происходит. Угроза без актива — абстракция, а без уязвимости — пока не реализуется</p>
+<p>• Злоумышленник: субъект угрозы — кто способен и мотивирован причинить ущерб: инсайдер, APT и т.д. Модель нарушителя: категория, мотивация (финансы, разведка, идеология), ресурсы, доступ, потенциал. Без модели нарушителя контрмеры подбираются вслепую — нельзя одинаково защищаться от скриптов и от группировки</p>
+<p>• Вектора атак: путь и способ реализации угрозы через уязвимости, такие как - фишинговое письмо, далее макрос, нагрузка и утечка C2</p>
+<p>• Уязвимости: слабость, которую может использовать угроза, как пример CVE, процессная (нет триажа), недостаток архитектуры. Уязвимость без угрозы - это гипотеза, а без контрмеры - открытый риск</p>
+<p>• Меры минимизации: снижают уязвимости, вероятность реализации угроз или ущерб активу и работает только при правильной настройке, контроле эффективности. Принципы: defense-in-depth и соразмерность. Каждой мере минимизации нужны владелец и метрика, иначе она деградирует</p>
+<p>• Риски: возможность реализации угрозы через уязвимость с ущербом для актива. Уязвимость и угроза вместе — потенциал, а риск — его оценка в деньгах, времени, последствиях. Принятый риск без срока и условий пересмотра — это не принятие, а забвение всем нам</p>
+<div class="gap"></div>
+<p>Типовые ошибки</p>
+<div class="gap"></div>
+<p>• Приравнивание угрозы и уязвимости, в следствии реестр рисков превращается в перечень CVE без сценариев</p>
+<p>• Называют активом сервер, а не данные и процессы на нём</p>
+<p>• Нет владельца актива и некому принимать решения по риску</p>
+<p>• Контрмеры подбирают по аналогии без привязки к конкретной уязвимости или угрозе</p>
+<p>• Оценка риска без модели нарушителя, где все угрозы выглядят одинаково вероятными</p>
+<p>• Принимаем риск без срока и условий пересмотра</p>
+<p>• Контрмеры считают по факту установки, а не по факту работоспособности</p>
+<div class="gap"></div>
+<p>Итого</p>
+<div class="gap"></div>
+<p>• Следует инвентаризовать активы, назначить владельцев</p>
+<p>• Построить модель нарушителя: категория, мотивация, ресурсы, доступ, потенциал (желательно под кейсы, а именно сценарно и не по ФСТЭК России, иначе закопаешься)</p>
+<p>• Идентифицировать угрозы по каталогам и привязать к активам</p>
+<p>• Выявить уязвимости и связать с активами и угрозами</p>
+<p>• Оценить риски по матрице вероятность на ущерб с учётом модели нарушителя и достижимости</p>
+<p>• Подобрать контрмеры под уязвимости, зафиксировать ответственных и метрики эффективности</p>
+<p>• Согласовать решение по каждому риску с владельцем</p>
+<p>• Принятые риски вести со сроком пересмотра</p>
+<p>• Пересматривать модель при изменениях</p>
+<div class="gap"></div>
+<p>#appsec #devsecops #term #tiskanalysis #pmi #reco #specialty #paper</p></div>
+      <div class="tags"><span class="tag">#appsec</span><span class="tag">#devsecops</span><span class="tag">#term</span><span class="tag">#tiskanalysis</span><span class="tag">#pmi</span><span class="tag">#reco</span><span class="tag">#specialty</span><span class="tag">#paper</span></div>
+      <a href="https://t.me/appsecta/399" target="_blank" rel="noreferrer" class="tg-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+        Открыть в Telegram
+      </a>
+    </article>
+    <div class="divider"></div>
+    <footer class="footer">
+      <p>© 2026 <a href="/">geminishkv.tech</a></p>
+      <p class="disclaimer">Instagram* — продукт компании Meta Platforms Inc., деятельность которой запрещена на территории РФ как экстремистская.</p>
+    </footer>
+  </div>
+</body>
+</html>

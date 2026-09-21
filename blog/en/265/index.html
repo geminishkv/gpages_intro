@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Security SBOM generator with vulnerability chechup — geminishkv</title>
+  <meta name="description" content="🛠Security SBOM generator with vulnerability chechup Salute, Today I want to share a tula that I twirled on the yoke. This tool helps you quickly and in a more…" />
+  <meta name="keywords" content="appsec, devsecops, specialty, toolchain, techsolution, paper, sbom, appsec, devsecops, geminishkv" />
+  <meta name="author" content="Ilya Shmakov" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="canonical" href="https://geminishkv.tech/blog/en/265/" />
+  <link rel="sitemap" href="/sitemap.xml" />
+  <link rel="alternate" type="application/rss+xml" title="geminishkv blog" href="/rss-en.xml" />
+  <link rel="alternate" hreflang="ru" href="https://geminishkv.tech/blog/265/" />
+  <link rel="alternate" hreflang="en" href="https://geminishkv.tech/blog/en/265/" />
+  <link rel="alternate" hreflang="x-default" href="https://geminishkv.tech/blog/265/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://geminishkv.tech/blog/en/265/" />
+  <meta property="og:title" content="Security SBOM generator with vulnerability chechup — geminishkv" />
+  <meta property="og:description" content="🛠Security SBOM generator with vulnerability chechup Salute, Today I want to share a tula that I twirled on the yoke. This tool helps you quickly and in a more…" />
+  <meta property="og:image" content="https://geminishkv.tech/img/blog/265.jpg" />
+  <meta property="og:image:alt" content="Security SBOM generator with vulnerability chechup" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="ru_RU" />
+  <meta property="og:site_name" content="geminishkv" />
+  <meta property="article:published_time" content="2026-03-23" />
+  <meta property="article:author" content="Ilya Shmakov" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@geminishkv" />
+  <meta name="twitter:title" content="Security SBOM generator with vulnerability chechup" />
+  <meta name="twitter:description" content="🛠Security SBOM generator with vulnerability chechup Salute, Today I want to share a tula that I twirled on the yoke. This tool helps you quickly and in a more…" />
+  <meta name="twitter:image" content="https://geminishkv.tech/img/blog/265.jpg" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Security SBOM generator with vulnerability chechup","description":"🛠Security SBOM generator with vulnerability chechup Salute, Today I want to share a tula that I twirled on the yoke. This tool helps you quickly and in a more…","url":"https://geminishkv.tech/blog/en/265/","datePublished":"2026-03-23","dateModified":"2026-03-23","image":"https://geminishkv.tech/img/blog/265.jpg","inLanguage":"en","author":{"@type":"Person","name":"Ilya Shmakov","url":"https://geminishkv.tech"},"publisher":{"@type":"Organization","name":"geminishkv","url":"https://geminishkv.tech"}}</script>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="/fonts/fonts.css" />
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0a0a0a; --card: #111111; --border: #1a1a1a;
+  --text: #e8e8e8; --muted: #888888; --accent: #D51A1A; --gold: #F9B361;
+}
+html, body { background: var(--bg); color: var(--text); font-family: 'Roboto', system-ui, sans-serif; min-height: 100dvh; line-height: 1.7; }
+a { color: inherit; text-decoration: none; }
+
+.page { max-width: 800px; margin: 0 auto; padding: 0 24px 64px; }
+
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 24px 0 32px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+.nav__brand { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 700; color: #fff; }
+.nav__brand img { width: 28px; height: 28px; border-radius: 50%; }
+.nav__back { font-size: 12px; color: var(--muted); border: 1px solid var(--border); border-radius: 4px; padding: 6px 14px; transition: color .2s, border-color .2s; letter-spacing: 0.06em; text-transform: uppercase; }
+.nav__back:hover { color: #fff; border-color: var(--accent); }
+
+.nav__right-group { display: flex; align-items: center; gap: 10px; }
+.lang-toggle { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; color: var(--accent); border: 1px solid var(--accent); border-radius: 4px; padding: 5px 10px; transition: background .2s, color .2s; }
+.lang-toggle:hover { background: var(--accent); color: #fff; }
+
+.divider { height: 1px; background: linear-gradient(to right, var(--accent), rgba(204,34,0,.15), transparent); margin: 40px 0 20px; }
+.footer { font-size: 0.65rem; color: var(--muted); text-align: center; }
+.footer a { color: var(--accent); transition: color .2s; }
+.footer a:hover { color: var(--gold); }
+.disclaimer { font-size: 0.55rem; color: #555; text-align: center; margin-top: 12px; line-height: 1.4; }
+
+@media (max-width: 600px) { .page { padding: 0 16px 48px; } }
+
+    .cover { width: 100%; border-radius: 8px; overflow: hidden; margin-bottom: 28px; max-height: 400px; }
+    .cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .meta { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; font-size: 0.72rem; color: var(--muted); }
+    .content p { font-size: 0.85rem; line-height: 1.85; margin-bottom: 8px; }
+    .content .gap { height: 10px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 24px; }
+    .tag { font-size: 0.6rem; color: var(--gold); background: rgba(249,179,97,.06); border: 1px solid rgba(249,179,97,.15); border-radius: 3px; padding: 2px 8px; }
+    .tg-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 28px; padding: 10px 20px; background: rgba(204,34,0,.1); border: 1px solid rgba(204,34,0,.25); border-radius: 6px; color: #fff; font-size: 0.75rem; font-weight: 600; transition: background .2s; }
+    .tg-link:hover { background: rgba(204,34,0,.18); }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="nav">
+      <a href="/" class="nav__brand"><img src="/img/logotype/logo_white.svg" alt="" />geminishkv</a>
+      <div class="nav__right-group">
+        <a href="/blog/265/" class="lang-toggle">RU</a>
+        <a href="/blog/" class="nav__back">← All posts</a>
+      </div>
+    </nav>
+    <div class="cover"><img src="/img/blog/265.jpg" alt="Security SBOM generator with vulnerability chechup" /></div>
+    <article>
+      <div class="meta"><span>March 23, 2026</span><span>·</span><span>222 views</span></div>
+      <div class="content"><p>🛠Security SBOM generator with vulnerability chechup</p>
+<div class="gap"></div>
+<p>Salute,</p>
+<p>Today I want to share a tula that I twirled on the yoke. This tool helps you quickly and in a more convenient form collect SBOM for a project; this will be especially useful for certification according to FSTEC of Russia, including monitoring your supply-chain.</p>
+<p>Tula is built in such a way that you don’t have to fumble around with dependencies, but get a normal, structured picture of the software’s composition. that is, a clear map of components, versions and metadata, which further helps with auditing, supply chain risks and checking vulnerabilities for each component.</p>
+<p>It is this approach that fits well in practices where the SBOM is generated automatically from a repository or assembly artifact, and then used further in pipelines and control systems.</p>
+<p>How does it work?</p>
+<div class="gap"></div>
+<p>• Generates a project SBOM in one of the standard formats so that it can be further transferred to other tools or stored as an artifact</p>
+<p>• Helps bring the result into a more convenient form, so that the SBOM is not just a “damp sheet”, but is readable</p>
+<p>• Suitable for automation in CI/CD, as a permanent part of the supply-chain process</p>
+<p>• Can be used as a starting point for further analysis of dependencies, licenses and vulnerabilities</p>
+<p>• Can be used for certification in FSTEC of Russia according to the requirements of the testing laboratory, including</p>
+<p>• Works well in scenarios where you need to quickly export dependencies and then run them through security tools or load them into an external loop</p>
+<p>Functionally</p>
+<div class="gap"></div>
+<p>• Generates SBOM from a local directory or Git repository (GitHub / GitLab)</p>
+<p>• Scans vulnerabilities via Trivy, OWASP Dependency-Check, Clair</p>
+<p>• Embeds detected vulnerabilities into SBOM (CycloneDX 1.5)</p>
+<p>• Exports readable reports: Excel (.xlsx), Word (.docx), ODT (.odt)</p>
+<p>• Signs the resulting SBOM (SHA-256)</p>
+<div class="gap"></div>
+<p>Why?</p>
+<div class="gap"></div>
+<p>• Before release, to understand what it consists of and what dependencies are used</p>
+<p>• In CI/CD, so that the SBOM is automatically generated for each build or release and it is possible to check workarounds from commands for used dependencies</p>
+<p>• For security review, when you need to quickly show the composition of dependencies and risk points</p>
+<p>• For compliance and supply-chain control</p>
+<div class="gap"></div>
+<p>I plan to tighten it up</p>
+<p>• More flexible generation modes for different types of projects</p>
+<p>• Make post-processing and result validation more convenient</p>
+<div class="gap"></div>
+<p>Links</p>
+<div class="gap"></div>
+<p>• PyPi</p>
+<p>• DockerHub</p>
+<p>• Github Package</p>
+<div class="gap"></div>
+<p>Structure</p>
+<div class="gap"></div>
+<p>sbom_genform/</p>
+<p>├── src/sbom_pipeline/</p>
+<p>│ ├── cli.py #secsbom/secsbom-pipeline (typer)</p>
+<p>│ ├── pipeline.py # orchestrator</p>
+<p>│ ├── generate.py # SBOM generation</p>
+<p>│ ├── dedup.py # deduplication</p>
+<p>│ ├── sign.py # SHA-256 signature</p>
+<p>│ ├── exporter.py #xlsx/docx/odt</p>
+<p>│ ├── vuln_merger.py # embedding vulnerabilities</p>
+<p>│ ├── config.py # configuration</p>
+<p>│ └── scanner/</p>
+<p>│ ├── trivy.py</p>
+<p>│ ├── depcheck.py</p>
+<p>│ └──clair.py</p>
+<p>├──docker/</p>
+<p>│ └── Dockerfile.secgensbom</p>
+<p>├── examples/project_inject/ # vulnerable PHP</p>
+<p>├── secgensbom/secgensbom.yml # GitLab CI shared template</p>
+<p>├── .github/workflows/</p>
+<p>│ ├── ci.yml</p>
+<p>│ ├── secgensbom.yml</p>
+<p>│ └── publish.yml</p>
+<p>├── tests/test_smoke.py</p>
+<p>├── pyproject.toml</p>
+<p>└── .env.example</p>
+<div class="gap"></div>
+<p>#appsec #devsecops #specialty #toolchain #techsolution #paper #sbom</p></div>
+      <div class="tags"><span class="tag">#appsec</span><span class="tag">#devsecops</span><span class="tag">#specialty</span><span class="tag">#toolchain</span><span class="tag">#techsolution</span><span class="tag">#paper</span><span class="tag">#sbom</span></div>
+      <a href="https://t.me/appsecta/265" target="_blank" rel="noreferrer" class="tg-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+        Open in Telegram
+      </a>
+    </article>
+    <div class="divider"></div>
+    <footer class="footer">
+      <p>© 2026 <a href="/">geminishkv.tech</a></p>
+      <p class="disclaimer">Instagram* is a product of Meta Platforms Inc., banned in Russia as extremist.</p>
+    </footer>
+  </div>
+</body>
+</html>
