@@ -2,36 +2,91 @@
   "subscribers": 377,
   "posts": [
     {
-      "id": "537",
-      "text": "из Че с любовью\n\n#lol",
-      "date": "2026-09-21",
-      "url": "https://t.me/appsecta/537",
-      "views": 50,
+      "id": "546",
+      "text": "Ну слушайте, даже как-то теплее стало на душе\n\n #lol",
+      "date": "2026-09-25",
+      "url": "https://t.me/appsecta/546",
+      "views": 81,
       "tags": [
         "lol"
       ],
-      "image": "/img/blog/537.jpg"
+      "image": "/img/blog/546.jpg",
+      "text_en": "Well, listen, somehow my soul became warmer\n\n #lol"
+    },
+    {
+      "id": "545",
+      "text": "Оставлю это тут 🙃\n\n#lol",
+      "date": "2026-09-23",
+      "url": "https://t.me/appsecta/545",
+      "views": 113,
+      "tags": [
+        "lol"
+      ],
+      "image": "/img/blog/545.jpg",
+      "text_en": "I'll leave this here 🙃\n\n#lol"
+    },
+    {
+      "id": "544",
+      "text": "Я вот думаю, что тема целевой аудитории вот именно эта 😅\n\n#lol",
+      "date": "2026-09-22",
+      "url": "https://t.me/appsecta/544",
+      "views": 110,
+      "tags": [
+        "lol"
+      ],
+      "image": "/img/blog/544.jpg",
+      "text_en": "I think that the topic of the target audience is exactly this 😅\n\n#lol"
+    },
+    {
+      "id": "538",
+      "text": "🏆 OWASP CI/CD InfoSec Risks / часть 1\n\nOWASP Top 10 — это качественный и полезный материал, который может тебе помочь понять как в итоге выглядит в бое реальная атака. Можешь посмотреть на схемки и сам документ по этому линку\n\nВ карусели я привел описание первых рисков OWASP с его описанием, посмотри - я думаю тебе понравится. А пока давай посмотрим на пример:\n\nSEC-3 Dependency Chain Abuse\n\nbuild-система автоматически резолвит и исполняет сторонний код при установке зависимостей: npm install или pip install. Три вектора:\n\n• Dependency confusion. Внутренний пакет myorg-utils живёт в приватном registry. Атакующий публикует пакет с тем же именем в public npm/PyPI, но версией повыше. Резолвер по умолчанию тянет самую свежую, а внутреннее имя утекает легко: в package.json\n• Typosquatting. Reqiests вместо requests, python-dateutils вместо python-dateutil. Опечатка в имени и ставится пакет атакующего с install-хуком\n• Мейнтейнер удалил аккаунт, истёк домен почты, забросил проект — злоумышленник перерегистрирует и выкатывает malicious-версию под доверенным именем\n\nКейс\n\nФевраль 2021, Alex Birsan: одной техникой dependency confusion зашёл в сборки Apple, Microsoft, PayPal, Shopify, Tesla, Uber опубликовав в public npm/ PyPI/ RubyGems пакеты с именами их внутренних библиотек и версией повыше — сборки сами их подтянули. Больше &#036;130k суммарно в баунти, и это была не дыра в коде, а логика резолва пакетов\n\nИтого\n\n• Scopes/ namespace для внутренних пакетов (@myorg/...) с жёсткой привязкой к приватному registry \n• Lock и криптохеши: pip install --require-hashes, npm ci по package-lock.json \n• Приватный proxy (Nexus/ Artifactory): единая точка, где внутренние имена не резолвятся наружу\n• Namespace protection: заранее занять свои имена, как defensive registration — SCA на каждый PR OSV-Scanner, Trivy\n\nКак работает?\n\n# .npmrc — внутренний scope только на приватный registry\n@myorg:registry=https://nexus.internal/repository/npm-private/\n\n# всё остальное — через proxy, без прямого выхода в npmjs\nregistry=https://nexus.internal/repository/npm-proxy/\n\n#appsec #devsecops #specialty #research #course #sca",
+      "date": "2026-09-21",
+      "url": "https://t.me/appsecta/538",
+      "views": 138,
+      "tags": [
+        "appsec",
+        "devsecops",
+        "specialty",
+        "research",
+        "course",
+        "sca"
+      ],
+      "image": "/img/blog/538.jpg",
+      "text_en": "🏆 OWASP CI/CD InfoSec Risks / part 1\nOWASP Top 10 is high-quality and useful material that can help you understand what a real attack ultimately looks like in battle. You can look at the diagrams and the document itself at this link\nIn the carousel I provided a description of the first OWASP risks with its description, take a look - I think you will like it. For now, let's look at an example:\n\nSEC-3 Dependency Chain Abuse\nThe build system automatically resolves and executes third-party code when installing dependencies: npm install or pip install. Three vectors:\n• Dependency confusion. The internal package myorg-utils lives in a private registry. The attacker publishes a package with the same name in public npm/PyPI, but with a higher version. The resolver by default pulls the latest one, and the internal name leaks easily: into package.json\n• Typosquatting. Reqiests instead of requests, python-dateutils instead of python-dateutil. There is a typo in the name and the attacker's package with an install hook is installed\n• The maintainer deleted the account, the email domain expired, abandoned the project - the attacker re-registers and rolls out the malicious version under a trusted name\n\nCase\nFebruary 2021, Alex Birsan: using one dependency confusion technique, I entered the assemblies of Apple, Microsoft, PayPal, Shopify, Tesla, Uber, publishing packages in public npm/ PyPI/ RubyGems with the names of their internal libraries and a higher version - the assemblies themselves pulled them up. More than $130k in total in the bounty, and it was not a hole in the code, but the logic of resolving packages\nTotal\n\n• Scopes/ namespace for internal packages (@myorg/...) with a strict link to the private registry \n• Lock and crypto hashes: pip install --require-hashes, npm ci by package-lock.json\n• Private proxy (Nexus/ Artifactory): a single point where internal names are not resolved outside\n• Namespace protection: take your names in advance as defensive registration - SCA for each PR OSV-Scanner, Trivy\n\nHow does it work?\n# .npmrc - internal scope only for private registry\n@myorg:registry=https://nexus.internal/repository/npm-private/\n\n# everything else is done via proxy, without direct access to npmjs\nregistry=https://nexus.internal/repository/npm-proxy/\n\n#appsec #devsecops #specialty #research #course #sca"
+    },
+    {
+      "id": "537",
+      "text": "🫶 из Че с любовью\n\n#lol",
+      "date": "2026-09-21",
+      "url": "https://t.me/appsecta/537",
+      "views": 121,
+      "tags": [
+        "lol"
+      ],
+      "image": "/img/blog/537.jpg",
+      "text_en": "🫶 from Che with love\n\n#lol"
     },
     {
       "id": "528",
       "text": "🏆 AppSec Labs v.2.3.0 и новое в бренде\n\nСалют,\nUwU, жирный апдейт по лабам и заодно показываю брендинг: над визуалкой посидел - кайфую 🫶\n\ncourse.geminishkv.tech — тёмный холст, счётчики считаются при сборке, главная фишка, - конвейер курса: над узлом материалы, под узлом сами лабки\n\nИнтересности:\n\n• Углублённый трек по Docker — две лабы: как безопасно запустить контейнер и почему образу можно доверять (seccomp, SBOM, cosign, гейт допуска)\n• Фолсы в лабах заложены намеренно — разбирайся, где сканер врёт\n• Схемы по ГОСТ, включая ход атаки по каждому классу OWASP и риску CI/CD\n• Новые шпаргалки и справочники, Troubleshooting расширен\n\nБрендинг: geminishkv.tech — canvas, карьера в виде конвейера (можем посмотреть чем занимался там та и там та), блог из 350+ постов канала и дино на 404\n\nПокликай карусель\n\nКосячки по-любому есть, но с ними же интереснее,\nОбнял-приподнял, родное сердце 🫶\n\nSic Parvis Magna\n\n#appsec #devsecops #course #specialty",
       "date": "2026-09-18",
       "url": "https://t.me/appsecta/528",
-      "views": 106,
+      "views": 186,
       "tags": [
         "appsec",
         "devsecops",
         "course",
         "specialty"
       ],
-      "image": "/img/blog/528.jpg"
+      "image": "/img/blog/528.jpg",
+      "text_en": "🏆 AppSec Labs v.2.3.0 and new in the brand\n\nSalute,\nUwU, a big update on the labs and at the same time showing the branding: I sat on the visual and had a blast 🫶\ncourse.geminishkv.tech - dark canvas, counters are counted during assembly, the main feature is the course conveyor: above the node are the materials, below the node are the labs themselves\n\nInteresting things:\n• In-depth track on Docker - two labs: how to safely launch a container and why the image can be trusted (seccomp, SBOM, cosign, admission gate)\n• Falls in the labs are intentional - figure out where the scanner is lying\n• Schemes according to GOST, including the course of the attack for each OWASP class and CI/CD risk\n• New cheat sheets and reference books, Troubleshooting expanded\nBranding: geminishkv.tech - canvas, career in the form of a conveyor belt (we can see what this one did there and that one there), a blog of 350+ channel posts and a dino on 404\n\nClick on the carousel\nThere are spliffs anyway, but it’s more interesting with them,\nHugged and lifted, dear heart 🫶\n\nSic Parvis Magna\n\n#appsec #devsecops #course #specialty"
     },
     {
       "id": "527",
       "text": "🛠 OWASP Agentic Skills\n\nOWASP выпустил первый фреймворк по безопасности агентских скиллов. Покрывает OpenClaw (SKILL.md), Claude Code (skill.json), Cursor/ Codex (manifest.json), VS Code (package.json)\n\nМодель\n\nMCP определяет какие инструменты доступны, а скилл — как их оркестрировать. Этот поведенческий слой не закрывается защитой ни модели, ни протокола\n\n- Конфиги репозитория стали execution layer: CVE-2025-59536 (CVSS 8.7) в Claude Code, по факту - это pre-consent code execution. Выглядит так: открытие проекта в агенте, config исполняет shell, эксфильтрация API-ключей\n\n- SKILL.md как вектор RCE: строки в YAML инструктируют агента прочитать ~/.ssh/id_rsa и эксфильтровать, которую агент исполняет как доверенную\n\n- Lethal Trifecta — условие критичности\n\n1. Private data   (SSH, API keys, wallets)\n2. Untrusted content (SKILL.md, MEMORY.md, email)\n3. External egress (network, webhooks, curl)\n\nПроблемный Tier\n\n- AST05: payload подтягивается из attacker-controlled URL в рантайме — обходит install-time скан by design\n- AST07 SkillJacking: висящие зависимости угоняются, где спасает только hash pinning\n- AST08: padding, логика в бинарниках, prompt-injection против LLM. Pattern-matching бесполезен\n\nUniversal Skill Format\n\npermissions:\n  files:\n    deny_write: [SOUL.md, MEMORY.md, AGENTS.md] # закрывает персистентный бэкдор\n  network:\n    allow: [api.example.com] # закрывает over-permission\n    deny: \"*\"\n  shell: false\nsignature: \"ed25519:...\" # Merkle-root верификация\ncontent_hash: \"sha256:...\" # Merkle-root верификация\n\nИтого (боже мой, а мы не знали - даёшь агенту доступ к файлам, сети и shell — создаёшь ровно ту attack surface, о которой этот Top 10)\n\n- Execution layer в конфигах: SKILL.md, settings.json исполняются, а не читаются — CVE-2025-59536 \n- pre-consent RCE через клонирование репо \n- сканеры обходятся за час, нужен behavioral pipeline \n- База: least privilege, sandbox, hash pinning, co-sign как доп (речь о механике, не туле)\n\n#AppSec #DevSecOps #research #specialty",
       "date": "2026-09-16",
       "url": "https://t.me/appsecta/527",
-      "views": 150,
+      "views": 186,
       "tags": [
         "appsec",
         "devsecops",
@@ -46,7 +101,7 @@
       "text": "Надо использовать по максимуму - всегда\n\n#lol",
       "date": "2026-09-15",
       "url": "https://t.me/appsecta/525",
-      "views": 149,
+      "views": 169,
       "tags": [
         "lol"
       ],

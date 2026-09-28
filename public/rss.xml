@@ -8,7 +8,7 @@
     <atom:link href="https://geminishkv.tech/rss.xml" rel="self" type="application/rss+xml"/>
     <description>Блог по AppSec &amp; DevSecOps — Илья Шмаков (geminishkv)</description>
     <language>ru-RU</language>
-    <lastBuildDate>Mon, 21 Sep 2026 07:24:55 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 28 Sep 2026 07:32:11 GMT</lastBuildDate>
     <managingEditor>shmakovis@inbox.ru (Илья Шмаков)</managingEditor>
     <image>
       <url>https://geminishkv.tech/img/hero/avatar.jpg</url>
@@ -16,11 +16,47 @@
       <link>https://geminishkv.tech/</link>
     </image>
     <item>
+      <title>Ну слушайте, даже как-то теплее стало на душе</title>
+      <link>https://geminishkv.tech/blog/546/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/546/</guid>
+      <pubDate>Fri, 25 Sep 2026 00:00:00 GMT</pubDate>
+      <description>Ну слушайте, даже как-то теплее стало на душе  #lol</description>
+      <enclosure url="https://geminishkv.tech/img/blog/546.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Оставлю это тут</title>
+      <link>https://geminishkv.tech/blog/545/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/545/</guid>
+      <pubDate>Wed, 23 Sep 2026 00:00:00 GMT</pubDate>
+      <description>Оставлю это тут 🙃 #lol</description>
+      <enclosure url="https://geminishkv.tech/img/blog/545.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Я вот думаю, что тема целевой аудитории вот именно эта</title>
+      <link>https://geminishkv.tech/blog/544/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/544/</guid>
+      <pubDate>Tue, 22 Sep 2026 00:00:00 GMT</pubDate>
+      <description>Я вот думаю, что тема целевой аудитории вот именно эта 😅 #lol</description>
+      <enclosure url="https://geminishkv.tech/img/blog/544.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>OWASP CI/CD InfoSec Risks / часть 1</title>
+      <link>https://geminishkv.tech/blog/538/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/538/</guid>
+      <pubDate>Mon, 21 Sep 2026 00:00:00 GMT</pubDate>
+      <description>🏆 OWASP CI/CD InfoSec Risks / часть 1 OWASP Top 10 — это качественный и полезный материал, который может тебе помочь понять как в итоге выглядит в бое реальная атака. Можешь посмотреть на схемки и сам документ по этому линку В карусели я привел описание первых рисков OWASP с его</description>
+      <enclosure url="https://geminishkv.tech/img/blog/538.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
       <title>из Че с любовью</title>
       <link>https://geminishkv.tech/blog/537/</link>
       <guid isPermaLink="true">https://geminishkv.tech/blog/537/</guid>
       <pubDate>Mon, 21 Sep 2026 00:00:00 GMT</pubDate>
-      <description>из Че с любовью #lol</description>
+      <description>🫶 из Че с любовью #lol</description>
       <enclosure url="https://geminishkv.tech/img/blog/537.jpg" type="image/jpeg" length="0"/>
       <author>shmakovis@inbox.ru (Илья Шмаков)</author>
     </item>

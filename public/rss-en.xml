@@ -8,13 +8,67 @@
     <atom:link href="https://geminishkv.tech/rss-en.xml" rel="self" type="application/rss+xml"/>
     <description>AppSec &amp; DevSecOps blog by Ilya Shmakov (geminishkv)</description>
     <language>en-US</language>
-    <lastBuildDate>Mon, 21 Sep 2026 07:24:55 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 28 Sep 2026 07:32:11 GMT</lastBuildDate>
     <managingEditor>shmakovis@inbox.ru (Ilya Shmakov)</managingEditor>
     <image>
       <url>https://geminishkv.tech/img/hero/avatar.jpg</url>
       <title>geminishkv — AppSec &amp; DevSecOps Blog (EN)</title>
       <link>https://geminishkv.tech/</link>
     </image>
+    <item>
+      <title>Well, listen, somehow my soul became warmer</title>
+      <link>https://geminishkv.tech/blog/en/546/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/546/</guid>
+      <pubDate>Fri, 25 Sep 2026 00:00:00 GMT</pubDate>
+      <description>Well, listen, somehow my soul became warmer  #lol</description>
+      <enclosure url="https://geminishkv.tech/img/blog/546.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>I&apos;ll leave this here</title>
+      <link>https://geminishkv.tech/blog/en/545/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/545/</guid>
+      <pubDate>Wed, 23 Sep 2026 00:00:00 GMT</pubDate>
+      <description>I&apos;ll leave this here 🙃 #lol</description>
+      <enclosure url="https://geminishkv.tech/img/blog/545.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>I think that the topic of the target audience is exactly this</title>
+      <link>https://geminishkv.tech/blog/en/544/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/544/</guid>
+      <pubDate>Tue, 22 Sep 2026 00:00:00 GMT</pubDate>
+      <description>I think that the topic of the target audience is exactly this 😅 #lol</description>
+      <enclosure url="https://geminishkv.tech/img/blog/544.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>OWASP CI/CD InfoSec Risks / part 1</title>
+      <link>https://geminishkv.tech/blog/en/538/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/538/</guid>
+      <pubDate>Mon, 21 Sep 2026 00:00:00 GMT</pubDate>
+      <description>🏆 OWASP CI/CD InfoSec Risks / part 1 OWASP Top 10 is high-quality and useful material that can help you understand what a real attack ultimately looks like in battle. You can look at the diagrams and the document itself at this link In the carousel I provided a description of th</description>
+      <enclosure url="https://geminishkv.tech/img/blog/538.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>from Che with love</title>
+      <link>https://geminishkv.tech/blog/en/537/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/537/</guid>
+      <pubDate>Mon, 21 Sep 2026 00:00:00 GMT</pubDate>
+      <description>🫶 from Che with love #lol</description>
+      <enclosure url="https://geminishkv.tech/img/blog/537.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>AppSec Labs v.2.3.0 and new in the brand</title>
+      <link>https://geminishkv.tech/blog/en/528/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/528/</guid>
+      <pubDate>Fri, 18 Sep 2026 00:00:00 GMT</pubDate>
+      <description>🏆 AppSec Labs v.2.3.0 and new in the brand Salute, UwU, a big update on the labs and at the same time showing the branding: I sat on the visual and had a blast 🫶 course.geminishkv.tech - dark canvas, counters are counted during assembly, the main feature is the course conveyor:</description>
+      <enclosure url="https://geminishkv.tech/img/blog/528.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
     <item>
       <title>OWASP Agentic Skills</title>
       <link>https://geminishkv.tech/blog/en/527/</link>
