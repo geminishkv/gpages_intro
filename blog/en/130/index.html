@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cilium as Container Network Interface k8s — geminishkv</title>
+  <meta name="description" content="🛠 Cilium as Container Network Interface k8s Salute, Today I want to share with you a description regarding CNI controls under Kubernetes. We'll take a look at…" />
+  <meta name="keywords" content="appsec, toolchain, containersecurity, reco, techsolution, paper, appsec, devsecops, geminishkv" />
+  <meta name="author" content="Ilya Shmakov" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="canonical" href="https://geminishkv.tech/blog/en/130/" />
+  <link rel="sitemap" href="/sitemap.xml" />
+  <link rel="alternate" type="application/rss+xml" title="geminishkv blog" href="/rss-en.xml" />
+  <link rel="alternate" hreflang="ru" href="https://geminishkv.tech/blog/130/" />
+  <link rel="alternate" hreflang="en" href="https://geminishkv.tech/blog/en/130/" />
+  <link rel="alternate" hreflang="x-default" href="https://geminishkv.tech/blog/130/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://geminishkv.tech/blog/en/130/" />
+  <meta property="og:title" content="Cilium as Container Network Interface k8s — geminishkv" />
+  <meta property="og:description" content="🛠 Cilium as Container Network Interface k8s Salute, Today I want to share with you a description regarding CNI controls under Kubernetes. We'll take a look at…" />
+  <meta property="og:image" content="https://geminishkv.tech/img/blog/130.jpg" />
+  <meta property="og:image:alt" content="Cilium as Container Network Interface k8s" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="ru_RU" />
+  <meta property="og:site_name" content="geminishkv" />
+  <meta property="article:published_time" content="2025-12-04" />
+  <meta property="article:author" content="Ilya Shmakov" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@geminishkv" />
+  <meta name="twitter:title" content="Cilium as Container Network Interface k8s" />
+  <meta name="twitter:description" content="🛠 Cilium as Container Network Interface k8s Salute, Today I want to share with you a description regarding CNI controls under Kubernetes. We'll take a look at…" />
+  <meta name="twitter:image" content="https://geminishkv.tech/img/blog/130.jpg" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Cilium as Container Network Interface k8s","description":"🛠 Cilium as Container Network Interface k8s Salute, Today I want to share with you a description regarding CNI controls under Kubernetes. We'll take a look at…","url":"https://geminishkv.tech/blog/en/130/","datePublished":"2025-12-04","dateModified":"2025-12-04","image":"https://geminishkv.tech/img/blog/130.jpg","inLanguage":"en","author":{"@type":"Person","name":"Ilya Shmakov","url":"https://geminishkv.tech"},"publisher":{"@type":"Organization","name":"geminishkv","url":"https://geminishkv.tech"}}</script>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="/fonts/fonts.css" />
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0a0a0a; --card: #111111; --border: #1a1a1a;
+  --text: #e8e8e8; --muted: #888888; --accent: #D51A1A; --gold: #F9B361;
+}
+html, body { background: var(--bg); color: var(--text); font-family: 'Roboto', system-ui, sans-serif; min-height: 100dvh; line-height: 1.7; }
+a { color: inherit; text-decoration: none; }
+
+.page { max-width: 800px; margin: 0 auto; padding: 0 24px 64px; }
+
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 24px 0 32px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+.nav__brand { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 700; color: #fff; }
+.nav__brand img { width: 28px; height: 28px; border-radius: 50%; }
+.nav__back { font-size: 12px; color: var(--muted); border: 1px solid var(--border); border-radius: 4px; padding: 6px 14px; transition: color .2s, border-color .2s; letter-spacing: 0.06em; text-transform: uppercase; }
+.nav__back:hover { color: #fff; border-color: var(--accent); }
+
+.nav__right-group { display: flex; align-items: center; gap: 10px; }
+.lang-toggle { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; color: var(--accent); border: 1px solid var(--accent); border-radius: 4px; padding: 5px 10px; transition: background .2s, color .2s; }
+.lang-toggle:hover { background: var(--accent); color: #fff; }
+
+.divider { height: 1px; background: linear-gradient(to right, var(--accent), rgba(204,34,0,.15), transparent); margin: 40px 0 20px; }
+.footer { font-size: 0.65rem; color: var(--muted); text-align: center; }
+.footer a { color: var(--accent); transition: color .2s; }
+.footer a:hover { color: var(--gold); }
+.disclaimer { font-size: 0.55rem; color: #555; text-align: center; margin-top: 12px; line-height: 1.4; }
+
+@media (max-width: 600px) { .page { padding: 0 16px 48px; } }
+
+    .cover { width: 100%; border-radius: 8px; overflow: hidden; margin-bottom: 28px; max-height: 400px; }
+    .cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .meta { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; font-size: 0.72rem; color: var(--muted); }
+    .content p { font-size: 0.85rem; line-height: 1.85; margin-bottom: 8px; }
+    .content .gap { height: 10px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 24px; }
+    .tag { font-size: 0.6rem; color: var(--gold); background: rgba(249,179,97,.06); border: 1px solid rgba(249,179,97,.15); border-radius: 3px; padding: 2px 8px; }
+    .tg-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 28px; padding: 10px 20px; background: rgba(204,34,0,.1); border: 1px solid rgba(204,34,0,.25); border-radius: 6px; color: #fff; font-size: 0.75rem; font-weight: 600; transition: background .2s; }
+    .tg-link:hover { background: rgba(204,34,0,.18); }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="nav">
+      <a href="/" class="nav__brand"><img src="/img/logotype/logo_white.svg" alt="" />geminishkv</a>
+      <div class="nav__right-group">
+        <a href="/blog/130/" class="lang-toggle">RU</a>
+        <a href="/blog/" class="nav__back">← All posts</a>
+      </div>
+    </nav>
+    <div class="cover"><img src="/img/blog/130.jpg" alt="Cilium as Container Network Interface k8s" /></div>
+    <article>
+      <div class="meta"><span>December 4, 2025</span><span>·</span><span>191 views</span></div>
+      <div class="content"><p>🛠 Cilium as Container Network Interface k8s</p>
+<div class="gap"></div>
+<p>Salute,</p>
+<p>Today I want to share with you a description regarding CNI controls under Kubernetes. We'll take a look at the Cilium CNI plugin. But we will look at it more from the technical side.</p>
+<p>Serves to provide network connectivity, security, and observability between workloads, like pods in Kubernetes. Works at the OS level. Cilium uses eBPF to flexibly and efficiently manage network traffic and security policies by configuring the pod network through eBPF programs in the host kernel. License type: Open-source Apache 2.0.</p>
+<p>Features:</p>
+<div class="gap"></div>
+<p>- Networking capabilities: CNI, LoadBalancer like CiliumClusterMesh</p>
+<p>- Security policies based on identity-aware, traffic encryption, DDoS protection, DNS filtering, FIPS compliance</p>
+<p>- Can be used via minikube or kind to test network policies and behavior </p>
+<p>- CiliumNetworkPolicy can be used as manifests</p>
+<p>- Policy work at the L7 application level for HTTP, gRPC, Kafka, etc., and not just at the L3/L4 network level</p>
+<p>- CiliumNetworkPolicy themselves are declarative rules and you can configure default-deny mode</p>
+<p>Application</p>
+<div class="gap"></div>
+<p>helm repo add cilium https://helm.cilium.io/</p>
+<div class="gap"></div>
+<p># Installing Cilium in a Kubernetes cluster</p>
+<p>helm install cilium cilium/cilium --version 1.14.4 \</p>
+<p>  --namespace kube-system\</p>
+<p>  --set cluster.name=my-cluster \</p>
+<p>  --set cluster.id=1</p>
+<div class="gap"></div>
+<p>Policy &amp; Deploy</p>
+<div class="gap"></div>
+<p>deploy_cilium:</p>
+<p>  stage: deploy</p>
+<p>  image:</p>
+<p>    name: alpine/helm:latest</p>
+<p>    entrypoint: ['']</p>
+<p>  script:</p>
+<p>    - helm repo add cilium https://helm.cilium.io/</p>
+<p>    - helm upgrade --install cilium cilium/cilium</p>
+<p>      --version 1.14.4</p>
+<p>--namespace kube-system</p>
+<p>      --set cluster.name=${CLUSTER_NAME}</p>
+<p>      --set cluster.id=1</p>
+<p>      --set hubble.relay.enabled=true</p>
+<p>      --set hubble.ui.enabled=true</p>
+<div class="gap"></div>
+<p>security_policies:</p>
+<p>  stage: deploy</p>
+<p>  image:</p>
+<p>    name: bitnami/kubectl:latest</p>
+<p>    entrypoint: ['']</p>
+<p>  script:</p>
+<p>    - kubectl apply -f manifests/cilium-network-policies/</p>
+<p>  dependencies: []</p>
+<div class="gap"></div>
+<p>CiliumNetworkPolicy example</p>
+<div class="gap"></div>
+<p>apiVersion: &quot;cilium.io/v2&quot;</p>
+<p>kind: CiliumNetworkPolicy</p>
+<p>metadata:</p>
+<p>  name: &quot;l7-rule&quot;</p>
+<p>spec:</p>
+<p>  endpointSelector:</p>
+<p>    matchLabels:</p>
+<p>      app: myService</p>
+<p>  ingress:</p>
+<p>  - fromEndpoints:</p>
+<p>- matchLabels:</p>
+<p>        app: frontend</p>
+<p>    toPorts:</p>
+<p>    - ports:</p>
+<p>      - port: '80'</p>
+<p>        protocol: TCP</p>
+<p>      rules:</p>
+<p>        http:</p>
+<p>        - method: &quot;GET&quot; # Allow only GET requests</p>
+<p>          path: &quot;/api/v1/data.*&quot; # to all paths starting with /api/v1/data</p>
+<p>        - method: &quot;POST&quot;</p>
+<p>path: &quot;/api/v1/upload&quot; # and specifically to this path</p>
+<p>        - method: &quot;GET&quot;</p>
+<p>          path: &quot;/public/.*&quot; # Allow access to public resources</p>
+<div class="gap"></div>
+<p>&quot;default-deny&quot; policy for namespace</p>
+<div class="gap"></div>
+<p>apiVersion: cilium.io/v2</p>
+<p>kind: CiliumNetworkPolicy</p>
+<p>metadata:</p>
+<p>  name: allow-dns</p>
+<p>  namespace:production</p>
+<p>spec:</p>
+<p>  endpointSelector: {} # All pods</p>
+<p>egress:</p>
+<p>  - toEndpoints:</p>
+<p>    - matchLabels:</p>
+<p>        k8s-app: kube-dns</p>
+<p>    toPorts:</p>
+<p>    - ports:</p>
+<p>      - port: &quot;53&quot;</p>
+<p>        protocol: UDP</p>
+<p>      - port: &quot;53&quot;</p>
+<p>        protocol: TCP</p>
+<div class="gap"></div>
+<p>Total:</p>
+<div class="gap"></div>
+<p>- Cilium completely replaces kube-proxy, implementing eBPF-based load balancing</p>
+<p>- For applications with REST API or gRPC, Cilium allows you to implement a &quot;least privilege&quot; policy</p>
+<p>- Cluster Mesh allows you to securely connect multiple Kubernetes clusters,</p>
+<p>- Instead of filtering by IP addresses, it assigns a security identifier to groups of pods with the same labels, where it is built into each network packet, which allows you to check communication rights on the recipient node, regardless of where the pod is running</p>
+<p>- Extends standard NetworkPolicy Kubernetes, allowing you to describe rules based on the HTTP, gRPC and Kafka protocols. This allows you to allow or deny specific API calls, HTTP methods (GET, POST) or URL paths</p>
+<p>- Can automatically encrypt all traffic between pods in a cluster or even between clusters using IPsec or WireGuard</p>
+<p>- Security of outgoing traffic can be implemented through policies tied to DNS names</p>
+<div class="gap"></div>
+<p>#appsec #toolchain #containersecurity #reco #techsolution #paper</p></div>
+      <div class="tags"><span class="tag">#appsec</span><span class="tag">#toolchain</span><span class="tag">#containersecurity</span><span class="tag">#reco</span><span class="tag">#techsolution</span><span class="tag">#paper</span></div>
+      <a href="https://t.me/appsecta/130" target="_blank" rel="noreferrer" class="tg-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+        Open in Telegram
+      </a>
+    </article>
+    <div class="divider"></div>
+    <footer class="footer">
+      <p>© 2026 <a href="/">geminishkv.tech</a></p>
+      <p class="disclaimer">Instagram* is a product of Meta Platforms Inc., banned in Russia as extremist.</p>
+    </footer>
+  </div>
+</body>
+</html>

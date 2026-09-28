@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Error codes and information leakage via HTTP methods — geminishkv</title>
+  <meta name="description" content="🛠 Error codes and information leakage via HTTP methods Salute, I’m actually torn, there will be some cool news soon, we’ll see how it goes and what happens. T…" />
+  <meta name="keywords" content="appsec, devsecops, reco, specialty, dast, appsec, devsecops, geminishkv" />
+  <meta name="author" content="Ilya Shmakov" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="canonical" href="https://geminishkv.tech/blog/en/404/" />
+  <link rel="sitemap" href="/sitemap.xml" />
+  <link rel="alternate" type="application/rss+xml" title="geminishkv blog" href="/rss-en.xml" />
+  <link rel="alternate" hreflang="ru" href="https://geminishkv.tech/blog/404/" />
+  <link rel="alternate" hreflang="en" href="https://geminishkv.tech/blog/en/404/" />
+  <link rel="alternate" hreflang="x-default" href="https://geminishkv.tech/blog/404/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://geminishkv.tech/blog/en/404/" />
+  <meta property="og:title" content="Error codes and information leakage via HTTP methods — geminishkv" />
+  <meta property="og:description" content="🛠 Error codes and information leakage via HTTP methods Salute, I’m actually torn, there will be some cool news soon, we’ll see how it goes and what happens. T…" />
+  <meta property="og:image" content="https://geminishkv.tech/img/blog/404.jpg" />
+  <meta property="og:image:alt" content="Error codes and information leakage via HTTP methods" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="ru_RU" />
+  <meta property="og:site_name" content="geminishkv" />
+  <meta property="article:published_time" content="2026-06-04" />
+  <meta property="article:author" content="Ilya Shmakov" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@geminishkv" />
+  <meta name="twitter:title" content="Error codes and information leakage via HTTP methods" />
+  <meta name="twitter:description" content="🛠 Error codes and information leakage via HTTP methods Salute, I’m actually torn, there will be some cool news soon, we’ll see how it goes and what happens. T…" />
+  <meta name="twitter:image" content="https://geminishkv.tech/img/blog/404.jpg" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Error codes and information leakage via HTTP methods","description":"🛠 Error codes and information leakage via HTTP methods Salute, I’m actually torn, there will be some cool news soon, we’ll see how it goes and what happens. T…","url":"https://geminishkv.tech/blog/en/404/","datePublished":"2026-06-04","dateModified":"2026-06-04","image":"https://geminishkv.tech/img/blog/404.jpg","inLanguage":"en","author":{"@type":"Person","name":"Ilya Shmakov","url":"https://geminishkv.tech"},"publisher":{"@type":"Organization","name":"geminishkv","url":"https://geminishkv.tech"}}</script>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="/fonts/fonts.css" />
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0a0a0a; --card: #111111; --border: #1a1a1a;
+  --text: #e8e8e8; --muted: #888888; --accent: #D51A1A; --gold: #F9B361;
+}
+html, body { background: var(--bg); color: var(--text); font-family: 'Roboto', system-ui, sans-serif; min-height: 100dvh; line-height: 1.7; }
+a { color: inherit; text-decoration: none; }
+
+.page { max-width: 800px; margin: 0 auto; padding: 0 24px 64px; }
+
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 24px 0 32px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+.nav__brand { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 700; color: #fff; }
+.nav__brand img { width: 28px; height: 28px; border-radius: 50%; }
+.nav__back { font-size: 12px; color: var(--muted); border: 1px solid var(--border); border-radius: 4px; padding: 6px 14px; transition: color .2s, border-color .2s; letter-spacing: 0.06em; text-transform: uppercase; }
+.nav__back:hover { color: #fff; border-color: var(--accent); }
+
+.nav__right-group { display: flex; align-items: center; gap: 10px; }
+.lang-toggle { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; color: var(--accent); border: 1px solid var(--accent); border-radius: 4px; padding: 5px 10px; transition: background .2s, color .2s; }
+.lang-toggle:hover { background: var(--accent); color: #fff; }
+
+.divider { height: 1px; background: linear-gradient(to right, var(--accent), rgba(204,34,0,.15), transparent); margin: 40px 0 20px; }
+.footer { font-size: 0.65rem; color: var(--muted); text-align: center; }
+.footer a { color: var(--accent); transition: color .2s; }
+.footer a:hover { color: var(--gold); }
+.disclaimer { font-size: 0.55rem; color: #555; text-align: center; margin-top: 12px; line-height: 1.4; }
+
+@media (max-width: 600px) { .page { padding: 0 16px 48px; } }
+
+    .cover { width: 100%; border-radius: 8px; overflow: hidden; margin-bottom: 28px; max-height: 400px; }
+    .cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .meta { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; font-size: 0.72rem; color: var(--muted); }
+    .content p { font-size: 0.85rem; line-height: 1.85; margin-bottom: 8px; }
+    .content .gap { height: 10px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 24px; }
+    .tag { font-size: 0.6rem; color: var(--gold); background: rgba(249,179,97,.06); border: 1px solid rgba(249,179,97,.15); border-radius: 3px; padding: 2px 8px; }
+    .tg-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 28px; padding: 10px 20px; background: rgba(204,34,0,.1); border: 1px solid rgba(204,34,0,.25); border-radius: 6px; color: #fff; font-size: 0.75rem; font-weight: 600; transition: background .2s; }
+    .tg-link:hover { background: rgba(204,34,0,.18); }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="nav">
+      <a href="/" class="nav__brand"><img src="/img/logotype/logo_white.svg" alt="" />geminishkv</a>
+      <div class="nav__right-group">
+        <a href="/blog/404/" class="lang-toggle">RU</a>
+        <a href="/blog/" class="nav__back">← All posts</a>
+      </div>
+    </nav>
+    <div class="cover"><img src="/img/blog/404.jpg" alt="Error codes and information leakage via HTTP methods" /></div>
+    <article>
+      <div class="meta"><span>June 4, 2026</span><span>·</span><span>305 views</span></div>
+      <div class="content"><p>🛠 Error codes and information leakage via HTTP methods</p>
+<div class="gap"></div>
+<p>Salute, I’m actually torn, there will be some cool news soon, we’ll see how it goes and what happens.</p>
+<p>Today I want to talk to you about the topic of HTTP methods, so let’s start with the fact that DAST is not only a search for XSS and injections, but specifically when the application itself gives away confidential information in responses to crooked or non-standard requests.</p>
+<p>Example: GET with redundant information, POST without a body, TRACE - and the server begins to tell more about itself than it should</p>
+<div class="gap"></div>
+<p>What is leaking and where from?</p>
+<p>• Error codes - 500 Internal Server Error with stack trace in the body of the response is the name of the framework, version, path to files, sometimes the connection string to the database. Let’s say 403 Forbidden differs from 404 Not Found, where we can search for closed endpoints. And 405 Method Not Allowed directly says that the endpoint exists</p>
+<p>• Verbose errors in the body - for example, ASP.NET in development mode gives a full stack trace in HTML. And Spring Boot without server.error.include-stacktrace=never does the same thing in JSON. Besides, Django with DEBUG=True is a different story and very hemorrhoidal</p>
+<p>• Response headers - Server: Microsoft-IIS/10.0, X-Powered-By: ASP.NET, X-AspNet-Version: 4.0.30319 give us an understanding of the stack, runtime version and the platform itself, that is, the very first thing before the exploit</p>
+<p>• TRACE method - reflects the request back in its entirety, including headers, where you can see the internal headers that are added by the reverse proxy or balancer, sometimes tokens (here I looked in more detail)</p>
+<p>Let's poke curl</p>
+<div class="gap"></div>
+<p># GET with a non-existent path - see what errors are in the body</p>
+<p>curl -i https://example.com/api/v1/doesnotexist123</p>
+<div class="gap"></div>
+<p># POST without body and Content-Type - trigger a parsing error</p>
+<p>curl -i -X POST https://example.com/api/v1/orders</p>
+<p># POST with curved JSON - often pulls out stack trace</p>
+<p>curl -i -X POST https://example.com/api/v1/orders\</p>
+<p>  -H &quot;Content-Type: application/json&quot; \</p>
+<p>  -d '{&quot;broken json'</p>
+<div class="gap"></div>
+<p># TRACE - check whether the method is enabled</p>
+<p>curl -i -X TRACE https://example.com</p>
+<div class="gap"></div>
+<p># We look only at the headers - we look for Server, X-Powered-By, X-AspNet-Version</p>
+<p>curl -s -D - https://example.com -o /dev/null | grep -iE\</p>
+<p>  &quot;server:|x-powered|x-aspnet|x-generator|x-runtime&quot;</p>
+<div class="gap"></div>
+<p>What do we see?</p>
+<div class="gap"></div>
+<p># verbose error with stack details</p>
+<p>HTTP/1.1 500 Internal Server Error</p>
+<p>X-Powered-By: ASP.NET</p>
+<div class="gap"></div>
+<p>{</p>
+<p>  &quot;message&quot;: &quot;Object reference not set to an instance of an object&quot;,</p>
+<p>  &quot;stackTrace&quot;: &quot;at ProjectQueryRepository.GetById(Int32 id)\r\n</p>
+<p>                 at C:\\inetpub\\b2b\\src\\Repositories\\ProjectQueryRepository.cs:75&quot;</p>
+<p>}</p>
+<p># TRACE reflects the request back</p>
+<p>HTTP/1.1 200 OK</p>
+<p>TRACE /api/test HTTP/1.1</p>
+<p>Host: example.com</p>
+<p>Authorization: Bearer eyJhbGc... ← token in reflection</p>
+<div class="gap"></div>
+<p># But there’s nothing superfluous here</p>
+<p>HTTP/1.1 500 Internal Server Error</p>
+<div class="gap"></div>
+<p>{ &quot;error&quot;: &quot;Internal server error&quot;, &quot;requestId&quot;: &quot;a3f9c2&quot; }</p>
+<div class="gap"></div>
+<p>Total</p>
+<p>• 500 with error body - the first thing DAST checks</p>
+<p>• The difference between 403 and 404 on closed endpoints is enumeration, non-existent and inaccessible should be indistinguishable from the outside</p>
+<p>• Server: and X-Powered-By: remove at the nginx/IIS level - they are not needed by the client</p>
+<p>• The only thing we give in case of an error is requestId, everything else is hidden in internal logs</p>
+<p>• Bursts of 500 and non-standard methods - detectable active search pattern</p>
+<p>• Consistency of response codes - a non-existent resource and a resource that cannot be accessed should be indistinguishable from the outside - both return 404</p>
+<p>• Server:, X-Powered-By:, X-AspNet-Version:, X-AspNetMvc-Version:, X-Generator:, X-Runtime: remove at the web server or reverse proxy level, since it does not provide any value for business functions</p>
+<p>• Make a Whitelist of allowed methods: GET, HEAD, POST, PUT, DELETE, PATCH depending on the API, TRACE itself is disabled everywhere</p>
+<p>• Content-Security-Policy, X-Content-Type-Options: nosniff, X-Frame-Options and other security headers are a separate layer that closes exploitation even if some information is leaked. Without them, a leak of a framework version in conjunction with a known CVE and the absence of a CSP turns into a chain in one step</p>
+<p>#appsec #devsecops #reco #specialty #dast</p></div>
+      <div class="tags"><span class="tag">#appsec</span><span class="tag">#devsecops</span><span class="tag">#reco</span><span class="tag">#specialty</span><span class="tag">#dast</span></div>
+      <a href="https://t.me/appsecta/404" target="_blank" rel="noreferrer" class="tg-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+        Open in Telegram
+      </a>
+    </article>
+    <div class="divider"></div>
+    <footer class="footer">
+      <p>© 2026 <a href="/">geminishkv.tech</a></p>
+      <p class="disclaimer">Instagram* is a product of Meta Platforms Inc., banned in Russia as extremist.</p>
+    </footer>
+  </div>
+</body>
+</html>

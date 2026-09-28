@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WSO2 InfoSec Reco — geminishkv</title>
+  <meta name="description" content="🤔 WSO2 InfoSec Reco Салют, давай в догонку, с тобой, ко вчерашнему посту, посмотрим на требования ИБ, которые помогут нам при интеграциях.  Эти требования поз…" />
+  <meta name="keywords" content="reco, devsecops, pmicases, specialty, techsolution, compliance, paper, appsec, devsecops, geminishkv" />
+  <meta name="author" content="Илья Шмаков" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="canonical" href="https://geminishkv.tech/blog/254/" />
+  <link rel="sitemap" href="/sitemap.xml" />
+  <link rel="alternate" type="application/rss+xml" title="geminishkv blog" href="/rss.xml" />
+  <link rel="alternate" hreflang="ru" href="https://geminishkv.tech/blog/254/" />
+  <link rel="alternate" hreflang="en" href="https://geminishkv.tech/blog/en/254/" />
+  <link rel="alternate" hreflang="x-default" href="https://geminishkv.tech/blog/254/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://geminishkv.tech/blog/254/" />
+  <meta property="og:title" content="WSO2 InfoSec Reco — geminishkv" />
+  <meta property="og:description" content="🤔 WSO2 InfoSec Reco Салют, давай в догонку, с тобой, ко вчерашнему посту, посмотрим на требования ИБ, которые помогут нам при интеграциях.  Эти требования поз…" />
+  <meta property="og:image" content="https://geminishkv.tech/img/blog/254.jpg" />
+  <meta property="og:image:alt" content="WSO2 InfoSec Reco" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:site_name" content="geminishkv" />
+  <meta property="article:published_time" content="2026-03-17" />
+  <meta property="article:author" content="Илья Шмаков" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@geminishkv" />
+  <meta name="twitter:title" content="WSO2 InfoSec Reco" />
+  <meta name="twitter:description" content="🤔 WSO2 InfoSec Reco Салют, давай в догонку, с тобой, ко вчерашнему посту, посмотрим на требования ИБ, которые помогут нам при интеграциях.  Эти требования поз…" />
+  <meta name="twitter:image" content="https://geminishkv.tech/img/blog/254.jpg" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"WSO2 InfoSec Reco","description":"🤔 WSO2 InfoSec Reco Салют, давай в догонку, с тобой, ко вчерашнему посту, посмотрим на требования ИБ, которые помогут нам при интеграциях.  Эти требования поз…","url":"https://geminishkv.tech/blog/254/","datePublished":"2026-03-17","dateModified":"2026-03-17","image":"https://geminishkv.tech/img/blog/254.jpg","inLanguage":"ru","author":{"@type":"Person","name":"Илья Шмаков","url":"https://geminishkv.tech"},"publisher":{"@type":"Organization","name":"geminishkv","url":"https://geminishkv.tech"}}</script>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="/fonts/fonts.css" />
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0a0a0a; --card: #111111; --border: #1a1a1a;
+  --text: #e8e8e8; --muted: #888888; --accent: #D51A1A; --gold: #F9B361;
+}
+html, body { background: var(--bg); color: var(--text); font-family: 'Roboto', system-ui, sans-serif; min-height: 100dvh; line-height: 1.7; }
+a { color: inherit; text-decoration: none; }
+
+.page { max-width: 800px; margin: 0 auto; padding: 0 24px 64px; }
+
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 24px 0 32px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+.nav__brand { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 700; color: #fff; }
+.nav__brand img { width: 28px; height: 28px; border-radius: 50%; }
+.nav__back { font-size: 12px; color: var(--muted); border: 1px solid var(--border); border-radius: 4px; padding: 6px 14px; transition: color .2s, border-color .2s; letter-spacing: 0.06em; text-transform: uppercase; }
+.nav__back:hover { color: #fff; border-color: var(--accent); }
+
+.nav__right-group { display: flex; align-items: center; gap: 10px; }
+.lang-toggle { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; color: var(--accent); border: 1px solid var(--accent); border-radius: 4px; padding: 5px 10px; transition: background .2s, color .2s; }
+.lang-toggle:hover { background: var(--accent); color: #fff; }
+
+.divider { height: 1px; background: linear-gradient(to right, var(--accent), rgba(204,34,0,.15), transparent); margin: 40px 0 20px; }
+.footer { font-size: 0.65rem; color: var(--muted); text-align: center; }
+.footer a { color: var(--accent); transition: color .2s; }
+.footer a:hover { color: var(--gold); }
+.disclaimer { font-size: 0.55rem; color: #555; text-align: center; margin-top: 12px; line-height: 1.4; }
+
+@media (max-width: 600px) { .page { padding: 0 16px 48px; } }
+
+    .cover { width: 100%; border-radius: 8px; overflow: hidden; margin-bottom: 28px; max-height: 400px; }
+    .cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .meta { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; font-size: 0.72rem; color: var(--muted); }
+    .content p { font-size: 0.85rem; line-height: 1.85; margin-bottom: 8px; }
+    .content .gap { height: 10px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 24px; }
+    .tag { font-size: 0.6rem; color: var(--gold); background: rgba(249,179,97,.06); border: 1px solid rgba(249,179,97,.15); border-radius: 3px; padding: 2px 8px; }
+    .tg-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 28px; padding: 10px 20px; background: rgba(204,34,0,.1); border: 1px solid rgba(204,34,0,.25); border-radius: 6px; color: #fff; font-size: 0.75rem; font-weight: 600; transition: background .2s; }
+    .tg-link:hover { background: rgba(204,34,0,.18); }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="nav">
+      <a href="/" class="nav__brand"><img src="/img/logotype/logo_white.svg" alt="" />geminishkv</a>
+      <div class="nav__right-group">
+        <a href="/blog/en/254/" class="lang-toggle">EN</a>
+        <a href="/blog/" class="nav__back">← Все посты</a>
+      </div>
+    </nav>
+    <div class="cover"><img src="/img/blog/254.jpg" alt="WSO2 InfoSec Reco" /></div>
+    <article>
+      <div class="meta"><span>17 марта 2026 г.</span><span>·</span><span>229 views</span></div>
+      <div class="content"><p>🤔 WSO2 InfoSec Reco</p>
+<div class="gap"></div>
+<p>Салют, давай в догонку, с тобой, ко вчерашнему посту, посмотрим на требования ИБ, которые помогут нам при интеграциях. </p>
+<p>Эти требования позволят снизить риски связанные с киберпреступлениями, утечками, не соответствия Compliance. Требования рассматриваем ближе для финтех‑интеграций.</p>
+<div class="gap"></div>
+<p>Поделюсь именно своей подборкой, которая поможет тебе предусмотреть массу проблем, с которыми не придется дальше разбираться. </p>
+<div class="gap"></div>
+<p>• Учитывать стандарты безопасности Открытых API</p>
+<div class="gap"></div>
+<p>— СТО БР ФАПИ.СЕК‑1.6‑2024 (безопасность OpenID API)</p>
+<p>— СТО БР ФАПИ.ПАОК‑1.0‑2024 (аутентификация по отдельному каналу)</p>
+<div class="gap"></div>
+<p>• ГОСТ 57580.1 и процессы</p>
+<div class="gap"></div>
+<p>— Для фин информации и ПДн применять состав мер ГОСТ 57580.1: защита каналов, контроль доступа, регистрация событий, управление уязвимостями, обеспечение целостности и актуальности ПО</p>
+<p>— Логи WSO2 и бэкенд‑сервисов по API должны попадать в централизованный журнал</p>
+<p>— Для каждого API, обрабатывающего ПДн, должна быть проведена оценка рисков ИБ в рамках 57580.1 и внутренних политик по 152‑ФЗ</p>
+<div class="gap"></div>
+<p>• Требования по персональным данным</p>
+<div class="gap"></div>
+<p>— Факт передачи ПДн через WSO2 должен быть отражён в договорных документах и в перечне информационных систем ПДн, и трансграничных передач</p>
+<p>— Внутренние документы должны описывать порядок уведомления Роскомнадзора об инцидентах с ПДн (72 часа на расследование и отчёт) и ответственность ролей</p>
+<p>— Для API, где минимально возможен объём ПДн, следует применять минимизацию, маскировку и обезличивание: передавать только необходимый набор атрибутов, а также, где можно, использовать токены/ псевдонимы вместо прямых идентификаторов клиента</p>
+<div class="gap"></div>
+<p>• Архитектурные требования</p>
+<div class="gap"></div>
+<p>— Настроить WSO2 с использованием HTTPS/ TLS 1.2+ с Forward Secrecy для всех публичных endpoint’ов, включить проверку клиентских сертификатов, если используется mutual TLS</p>
+<p>— Использовать OAuth 2.0 + OpenID Connect как основной механизм аутентификации клиентов API (в соответствии с ФАПИ.СЕК), ограничивать доступ по scope/ role и, при необходимости, по IP/ ASN</p>
+<p>— Обеспечить защиту от типичных атак на API: rate limiting, throttling, защита от replay‑атак, CSRF, injection, а также валидацию схемы JSON/ REST</p>
+<div class="gap"></div>
+<p>• Дополнение</p>
+<div class="gap"></div>
+<p>— Для каждого интеграционного кейса должна быть выполнена модель угроз и оценка рисков с фиксацией мер защиты в архитектуре</p>
+<p>— Необходим отдельный регламент «Управление внешними интеграциями», описывающий: жизненный цикл API, ответственность Integration Layer, порядок ревью ИБ и архитекторов, требования к логированию и мониторингу</p>
+<p>— Нужен регламент по управлению уязвимостями и интеграционных сервисов: периодичность сканов, порядок установки обновлений, SLA по устранению критичных уязвимостей</p>
+<p>— Доступ с BYOD во внутренний контур должен быть ограничен путем контроля привелегированных пользователей путем Segregation-of-Duties</p>
+<p>— Необходимо реализовать отсутствие прав доступа во внутренним системам</p>
+<p>— Предшествующая аутентификация является необходимой для источников данных и при ее отсутствии, используемые каналы связи и используемые ресурсы должны быть зашифрованы (блокировка целостности, шифрование, контроль источника и т.п.)</p>
+<p>— Все файлы, которые передаются (также для последующих случаев - в обе стороны, если будут использоваться) должны быть зашифрованы и проходить через песочницу</p>
+<p>— Доступ к данным по id из внешнего периметра должен исключать инкрементальный id</p>
+<p>— При проектировании API через WSO2 ориентироваться на профили безопасности OpenID/ OAuth2: обязательно TLS, защищённое хранение и передача токенов, защита от подмены запросов/ ответов</p>
+<div class="gap"></div>
+<p>#reco #devsecops #pmicases #specialty #techsolution #compliance #paper</p></div>
+      <div class="tags"><span class="tag">#reco</span><span class="tag">#devsecops</span><span class="tag">#pmicases</span><span class="tag">#specialty</span><span class="tag">#techsolution</span><span class="tag">#compliance</span><span class="tag">#paper</span></div>
+      <a href="https://t.me/appsecta/254" target="_blank" rel="noreferrer" class="tg-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+        Открыть в Telegram
+      </a>
+    </article>
+    <div class="divider"></div>
+    <footer class="footer">
+      <p>© 2026 <a href="/">geminishkv.tech</a></p>
+      <p class="disclaimer">Instagram* — продукт компании Meta Platforms Inc., деятельность которой запрещена на территории РФ как экстремистская.</p>
+    </footer>
+  </div>
+</body>
+</html>

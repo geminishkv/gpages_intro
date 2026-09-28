@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Semgrep Rules OWASP A08:2024 – Software and Data Integrity Failures — geminishkv</title>
+  <meta name="description" content="🛠  Semgrep Rules OWASP A08:2024 – Software and Data Integrity Failures Салют,  Cегодня хочу поделиться с тобой правилами для semgrep по нарушениям целостности…" />
+  <meta name="keywords" content="toolchain, sast, appsec, course, reco, techsolution, appsec, devsecops, geminishkv" />
+  <meta name="author" content="Илья Шмаков" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="canonical" href="https://geminishkv.tech/blog/212/" />
+  <link rel="sitemap" href="/sitemap.xml" />
+  <link rel="alternate" type="application/rss+xml" title="geminishkv blog" href="/rss.xml" />
+  <link rel="alternate" hreflang="ru" href="https://geminishkv.tech/blog/212/" />
+  <link rel="alternate" hreflang="en" href="https://geminishkv.tech/blog/en/212/" />
+  <link rel="alternate" hreflang="x-default" href="https://geminishkv.tech/blog/212/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://geminishkv.tech/blog/212/" />
+  <meta property="og:title" content="Semgrep Rules OWASP A08:2024 – Software and Data Integrity Failures — geminishkv" />
+  <meta property="og:description" content="🛠  Semgrep Rules OWASP A08:2024 – Software and Data Integrity Failures Салют,  Cегодня хочу поделиться с тобой правилами для semgrep по нарушениям целостности…" />
+  <meta property="og:image" content="https://geminishkv.tech/img/blog/212.jpg" />
+  <meta property="og:image:alt" content="Semgrep Rules OWASP A08:2024 – Software and Data Integrity Failures" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:site_name" content="geminishkv" />
+  <meta property="article:published_time" content="2026-02-11" />
+  <meta property="article:author" content="Илья Шмаков" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@geminishkv" />
+  <meta name="twitter:title" content="Semgrep Rules OWASP A08:2024 – Software and Data Integrity Failures" />
+  <meta name="twitter:description" content="🛠  Semgrep Rules OWASP A08:2024 – Software and Data Integrity Failures Салют,  Cегодня хочу поделиться с тобой правилами для semgrep по нарушениям целостности…" />
+  <meta name="twitter:image" content="https://geminishkv.tech/img/blog/212.jpg" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Semgrep Rules OWASP A08:2024 – Software and Data Integrity Failures","description":"🛠  Semgrep Rules OWASP A08:2024 – Software and Data Integrity Failures Салют,  Cегодня хочу поделиться с тобой правилами для semgrep по нарушениям целостности…","url":"https://geminishkv.tech/blog/212/","datePublished":"2026-02-11","dateModified":"2026-02-11","image":"https://geminishkv.tech/img/blog/212.jpg","inLanguage":"ru","author":{"@type":"Person","name":"Илья Шмаков","url":"https://geminishkv.tech"},"publisher":{"@type":"Organization","name":"geminishkv","url":"https://geminishkv.tech"}}</script>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="/fonts/fonts.css" />
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0a0a0a; --card: #111111; --border: #1a1a1a;
+  --text: #e8e8e8; --muted: #888888; --accent: #D51A1A; --gold: #F9B361;
+}
+html, body { background: var(--bg); color: var(--text); font-family: 'Roboto', system-ui, sans-serif; min-height: 100dvh; line-height: 1.7; }
+a { color: inherit; text-decoration: none; }
+
+.page { max-width: 800px; margin: 0 auto; padding: 0 24px 64px; }
+
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 24px 0 32px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+.nav__brand { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 700; color: #fff; }
+.nav__brand img { width: 28px; height: 28px; border-radius: 50%; }
+.nav__back { font-size: 12px; color: var(--muted); border: 1px solid var(--border); border-radius: 4px; padding: 6px 14px; transition: color .2s, border-color .2s; letter-spacing: 0.06em; text-transform: uppercase; }
+.nav__back:hover { color: #fff; border-color: var(--accent); }
+
+.nav__right-group { display: flex; align-items: center; gap: 10px; }
+.lang-toggle { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; color: var(--accent); border: 1px solid var(--accent); border-radius: 4px; padding: 5px 10px; transition: background .2s, color .2s; }
+.lang-toggle:hover { background: var(--accent); color: #fff; }
+
+.divider { height: 1px; background: linear-gradient(to right, var(--accent), rgba(204,34,0,.15), transparent); margin: 40px 0 20px; }
+.footer { font-size: 0.65rem; color: var(--muted); text-align: center; }
+.footer a { color: var(--accent); transition: color .2s; }
+.footer a:hover { color: var(--gold); }
+.disclaimer { font-size: 0.55rem; color: #555; text-align: center; margin-top: 12px; line-height: 1.4; }
+
+@media (max-width: 600px) { .page { padding: 0 16px 48px; } }
+
+    .cover { width: 100%; border-radius: 8px; overflow: hidden; margin-bottom: 28px; max-height: 400px; }
+    .cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .meta { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; font-size: 0.72rem; color: var(--muted); }
+    .content p { font-size: 0.85rem; line-height: 1.85; margin-bottom: 8px; }
+    .content .gap { height: 10px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 24px; }
+    .tag { font-size: 0.6rem; color: var(--gold); background: rgba(249,179,97,.06); border: 1px solid rgba(249,179,97,.15); border-radius: 3px; padding: 2px 8px; }
+    .tg-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 28px; padding: 10px 20px; background: rgba(204,34,0,.1); border: 1px solid rgba(204,34,0,.25); border-radius: 6px; color: #fff; font-size: 0.75rem; font-weight: 600; transition: background .2s; }
+    .tg-link:hover { background: rgba(204,34,0,.18); }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="nav">
+      <a href="/" class="nav__brand"><img src="/img/logotype/logo_white.svg" alt="" />geminishkv</a>
+      <div class="nav__right-group">
+        <a href="/blog/en/212/" class="lang-toggle">EN</a>
+        <a href="/blog/" class="nav__back">← Все посты</a>
+      </div>
+    </nav>
+    <div class="cover"><img src="/img/blog/212.jpg" alt="Semgrep Rules OWASP A08:2024 – Software and Data Integrity Failures" /></div>
+    <article>
+      <div class="meta"><span>11 февраля 2026 г.</span><span>·</span><span>200 views</span></div>
+      <div class="content"><p>🛠  Semgrep Rules OWASP A08:2024 – Software and Data Integrity Failures</p>
+<div class="gap"></div>
+<p>Салют, </p>
+<p>Cегодня хочу поделиться с тобой правилами для semgrep по нарушениям целостности программного обеспечения и данных - OWASP A08:2024. </p>
+<div class="gap"></div>
+<p>Это категория, которая включает в себя “Insecure Deserialization”, где приложение не проверяет целостность кода, данных или обновлений, что позволяет внедрять вредоносное ПО или модифицировать данные.</p>
+<div class="gap"></div>
+<p>Типичные векторы атаки А08</p>
+<div class="gap"></div>
+<p>• Недостаточная проверка подлинности и подгрущка кода из недоверенных источников</p>
+<p>• Небезопасная десериализация, включая подделку объектов в памяти. Опасность в Remote Code Execution через сериализованные объекты.</p>
+<p>• Отсутствие проверки целостности, как пример использование CDN без SRI (Subresource Integrity) и обновления без валидации.</p>
+<div class="gap"></div>
+<p>Примеры атак</p>
+<div class="gap"></div>
+<p>• SolarWinds (2020): атакующие взломали CI/CD пайплайн SolarWinds и внедрили бэкдор в обновление Orion, где федеральные агенства США его поставили напрямую</p>
+<p>• 3CX Desktop App (2023): злоумышленники скомпрометировали официальную версию приложения 3CX, добавив в неё malware</p>
+<p>• Codecov (2021): атака на процесс сборки Docker-образа Codecov, где модифицированный bash-скрипт крал credentials, токены и PII из CI/CD окружений пользователей</p>
+<div class="gap"></div>
+<p>Пример сценария атаки</p>
+<div class="gap"></div>
+<p>• Небезопасная десериализация в Java</p>
+<div class="gap"></div>
+<p>// React вызывает Spring Boot микросервисы, где состояние</p>
+<p>// пользователя сериализуется и передаётся с каждым запросом</p>
+<p>// отслеживается сигнатура Java &quot;rO0&quot; (base64), где</p>
+<p>// реализуется Java Serial Killer для RCE</p>
+<div class="gap"></div>
+<p>ObjectInputStream in = new ObjectInputStream(request.getInputStream());</p>
+<p>UserState state = (UserState) in.readObject();</p>
+<div class="gap"></div>
+<p>• JS из недоверенных источников</p>
+<div class="gap"></div>
+<p>&lt;&amp;#33;-- Нет SRI и проверки целостности --&gt;</p>
+<div class="gap"></div>
+<p>&lt;script src=&quot;https://untrusted-cdn.com/library.js&quot;&gt;&lt;/script&gt;</p>
+<div class="gap"></div>
+<p>Пример правил Semgrep по A08:2024</p>
+<div class="gap"></div>
+<p>rules:</p>
+<p>  # Небезопасная десериализация Java</p>
+<p>  - id: unsafe-java-deserialization</p>
+<p>    patterns:</p>
+<p>      - pattern-either:</p>
+<p>          - pattern: |</p>
+<p>              ObjectInputStream &amp;#036;IN = new ObjectInputStream(...);</p>
+<p>              ...</p>
+<p>              &amp;#036;IN.readObject()</p>
+<p>          - pattern: (ObjectInputStream &amp;#036;IN).readObject()</p>
+<p>      - pattern-not-inside: |</p>
+<p>          class &amp;#036;CLASS extends ValidatingObjectInputStream {</p>
+<p>            ...</p>
+<p>          }</p>
+<p>    message: |</p>
+<p>      Обнаружена небезопасная десериализация через JAVA ObjectInputStream </p>
+<p>      и может привести к Remote Code Execution.</p>
+<p>    severity: ERROR</p>
+<p>    languages:</p>
+<p>      - java</p>
+<p>    meta</p>
+<p>      cwe: &quot;CWE-502&quot;</p>
+<p>      owasp: &quot;A08:2021&quot;</p>
+<p>      category: security</p>
+<div class="gap"></div>
+<p>  # npm-пакеты без проверки</p>
+<p>  - id: npm-install-without-lock-file</p>
+<p>    patterns:</p>
+<p>      - pattern-either:</p>
+<p>          - pattern: |</p>
+<p>              exec(&quot;npm install ...&quot;)</p>
+<p>          - pattern: |</p>
+<p>              subprocess.run([&quot;npm&quot;, &quot;install&quot;, ...])</p>
+<p>          - pattern: |</p>
+<p>              os.system(&quot;npm install ...&quot;)</p>
+<p>      - pattern-not-inside: |</p>
+<p>          ...</p>
+<p>          &quot;package-lock.json&quot;</p>
+<p>          ...</p>
+<p>    message: |</p>
+<p>      Установка npm-пакетов без проверки package-lock.json</p>
+<p>    severity: WARNING</p>
+<p>    languages:</p>
+<p>      - python</p>
+<p>      - javascript</p>
+<p>    meta</p>
+<p>      cwe: &quot;CWE-829&quot;</p>
+<p>      owasp: &quot;A08:2021&quot;</p>
+<div class="gap"></div>
+<p>  # Динамическое выполнение кода из недоверенных источников</p>
+<p>  - id: dangerous-code-execution</p>
+<p>    patterns:</p>
+<p>      - pattern-either:</p>
+<p>          - pattern: eval(&amp;#036;INPUT)</p>
+<p>          - pattern: exec(&amp;#036;INPUT)</p>
+<p>          - pattern: __import__(&amp;#036;INPUT)</p>
+<p>          - pattern: compile(&amp;#036;INPUT, ...)</p>
+<p>      - pattern-either:</p>
+<p>          - pattern-inside: |</p>
+<p>              &amp;#036;INPUT = request.&amp;#036;METHOD(...)</p>
+<p>              ...</p>
+<p>          - pattern-inside: |</p>
+<p>              &amp;#036;INPUT = &amp;#036;_GET[...]</p>
+<p>              ...</p>
+<p>          - pattern-inside: |</p>
+<p>              &amp;#036;INPUT = input(...)</p>
+<p>              ...</p>
+<p>    message: |</p>
+<p>      Динамическое выполнение кода из недоверенного источника</p>
+<p>      eval()/ exec() на данных приводящий к Remote Code Execution</p>
+<p>    severity: ERROR</p>
+<p>    languages:</p>
+<p>      - python</p>
+<p>      - javascript</p>
+<p>      - php</p>
+<p>    meta</p>
+<p>      cwe: &quot;CWE-94&quot;</p>
+<p>      owasp: &quot;A08:2021&quot;</p>
+<p>      likelihood: MEDIUM</p>
+<p>      impact: CRITICAL</p>
+<div class="gap"></div>
+<p>#toolchain #sast #appsec #course #reco #techsolution</p></div>
+      <div class="tags"><span class="tag">#toolchain</span><span class="tag">#sast</span><span class="tag">#appsec</span><span class="tag">#course</span><span class="tag">#reco</span><span class="tag">#techsolution</span></div>
+      <a href="https://t.me/appsecta/212" target="_blank" rel="noreferrer" class="tg-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+        Открыть в Telegram
+      </a>
+    </article>
+    <div class="divider"></div>
+    <footer class="footer">
+      <p>© 2026 <a href="/">geminishkv.tech</a></p>
+      <p class="disclaimer">Instagram* — продукт компании Meta Platforms Inc., деятельность которой запрещена на территории РФ как экстремистская.</p>
+    </footer>
+  </div>
+</body>
+</html>

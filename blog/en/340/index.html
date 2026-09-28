@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Segregation-of-Duties as privileged user control — geminishkv</title>
+  <meta name="description" content="🤔 Segregation-of-Duties as privileged user control Salute, I often mention this mechanism, I think it’s worth making a link to its description, but before we …" />
+  <meta name="keywords" content="devsecops, pmi, humanres, term, paper, appsec, devsecops, geminishkv" />
+  <meta name="author" content="Ilya Shmakov" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="canonical" href="https://geminishkv.tech/blog/en/340/" />
+  <link rel="sitemap" href="/sitemap.xml" />
+  <link rel="alternate" type="application/rss+xml" title="geminishkv blog" href="/rss-en.xml" />
+  <link rel="alternate" hreflang="ru" href="https://geminishkv.tech/blog/340/" />
+  <link rel="alternate" hreflang="en" href="https://geminishkv.tech/blog/en/340/" />
+  <link rel="alternate" hreflang="x-default" href="https://geminishkv.tech/blog/340/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://geminishkv.tech/blog/en/340/" />
+  <meta property="og:title" content="Segregation-of-Duties as privileged user control — geminishkv" />
+  <meta property="og:description" content="🤔 Segregation-of-Duties as privileged user control Salute, I often mention this mechanism, I think it’s worth making a link to its description, but before we …" />
+  <meta property="og:image" content="https://geminishkv.tech/img/blog/340.jpg" />
+  <meta property="og:image:alt" content="Segregation-of-Duties as privileged user control" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="ru_RU" />
+  <meta property="og:site_name" content="geminishkv" />
+  <meta property="article:published_time" content="2026-04-24" />
+  <meta property="article:author" content="Ilya Shmakov" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@geminishkv" />
+  <meta name="twitter:title" content="Segregation-of-Duties as privileged user control" />
+  <meta name="twitter:description" content="🤔 Segregation-of-Duties as privileged user control Salute, I often mention this mechanism, I think it’s worth making a link to its description, but before we …" />
+  <meta name="twitter:image" content="https://geminishkv.tech/img/blog/340.jpg" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Segregation-of-Duties as privileged user control","description":"🤔 Segregation-of-Duties as privileged user control Salute, I often mention this mechanism, I think it’s worth making a link to its description, but before we …","url":"https://geminishkv.tech/blog/en/340/","datePublished":"2026-04-24","dateModified":"2026-04-24","image":"https://geminishkv.tech/img/blog/340.jpg","inLanguage":"en","author":{"@type":"Person","name":"Ilya Shmakov","url":"https://geminishkv.tech"},"publisher":{"@type":"Organization","name":"geminishkv","url":"https://geminishkv.tech"}}</script>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="/fonts/fonts.css" />
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0a0a0a; --card: #111111; --border: #1a1a1a;
+  --text: #e8e8e8; --muted: #888888; --accent: #D51A1A; --gold: #F9B361;
+}
+html, body { background: var(--bg); color: var(--text); font-family: 'Roboto', system-ui, sans-serif; min-height: 100dvh; line-height: 1.7; }
+a { color: inherit; text-decoration: none; }
+
+.page { max-width: 800px; margin: 0 auto; padding: 0 24px 64px; }
+
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 24px 0 32px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+.nav__brand { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 700; color: #fff; }
+.nav__brand img { width: 28px; height: 28px; border-radius: 50%; }
+.nav__back { font-size: 12px; color: var(--muted); border: 1px solid var(--border); border-radius: 4px; padding: 6px 14px; transition: color .2s, border-color .2s; letter-spacing: 0.06em; text-transform: uppercase; }
+.nav__back:hover { color: #fff; border-color: var(--accent); }
+
+.nav__right-group { display: flex; align-items: center; gap: 10px; }
+.lang-toggle { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; color: var(--accent); border: 1px solid var(--accent); border-radius: 4px; padding: 5px 10px; transition: background .2s, color .2s; }
+.lang-toggle:hover { background: var(--accent); color: #fff; }
+
+.divider { height: 1px; background: linear-gradient(to right, var(--accent), rgba(204,34,0,.15), transparent); margin: 40px 0 20px; }
+.footer { font-size: 0.65rem; color: var(--muted); text-align: center; }
+.footer a { color: var(--accent); transition: color .2s; }
+.footer a:hover { color: var(--gold); }
+.disclaimer { font-size: 0.55rem; color: #555; text-align: center; margin-top: 12px; line-height: 1.4; }
+
+@media (max-width: 600px) { .page { padding: 0 16px 48px; } }
+
+    .cover { width: 100%; border-radius: 8px; overflow: hidden; margin-bottom: 28px; max-height: 400px; }
+    .cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .meta { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; font-size: 0.72rem; color: var(--muted); }
+    .content p { font-size: 0.85rem; line-height: 1.85; margin-bottom: 8px; }
+    .content .gap { height: 10px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 24px; }
+    .tag { font-size: 0.6rem; color: var(--gold); background: rgba(249,179,97,.06); border: 1px solid rgba(249,179,97,.15); border-radius: 3px; padding: 2px 8px; }
+    .tg-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 28px; padding: 10px 20px; background: rgba(204,34,0,.1); border: 1px solid rgba(204,34,0,.25); border-radius: 6px; color: #fff; font-size: 0.75rem; font-weight: 600; transition: background .2s; }
+    .tg-link:hover { background: rgba(204,34,0,.18); }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="nav">
+      <a href="/" class="nav__brand"><img src="/img/logotype/logo_white.svg" alt="" />geminishkv</a>
+      <div class="nav__right-group">
+        <a href="/blog/340/" class="lang-toggle">RU</a>
+        <a href="/blog/" class="nav__back">← All posts</a>
+      </div>
+    </nav>
+    <div class="cover"><img src="/img/blog/340.jpg" alt="Segregation-of-Duties as privileged user control" /></div>
+    <article>
+      <div class="meta"><span>April 24, 2026</span><span>·</span><span>200 views</span></div>
+      <div class="content"><p>🤔 Segregation-of-Duties as privileged user control</p>
+<div class="gap"></div>
+<p>Salute,</p>
+<p>I often mention this mechanism, I think it’s worth making a link to its description, but before we talk about it, we need to agree on what it is?</p>
+<p>A role-based access model is when we manage not the rights of specific people, but roles tied to tasks and areas of their responsibility, where for each role it is clearly defined: what is allowed and what is not allowed</p>
+<p>That is, the point is that Role-Based Access Control (RBAC) is based on two principles: least privilege, that is, everyone receives only what is needed for work and segregation of duties - the division of conflicting powers between different roles, so that the same person cannot create access for himself, carry out an operation and coordinate it</p>
+<p>Base</p>
+<p>Segregation-of-Duties is used to separate conflicting powers between different roles, so that one person cannot come up with access, carry out an operation and approve it.</p>
+<p>I would like to note that formally and the general principle of information security requirements, SoD itself is present almost everywhere: information security policies, among auditors, in ISO 27001. In practice, it often looks like this: “we have one admin who does everything, but he’s a good one.” There is control on paper, but not in processes.</p>
+<p>The basis of SoD is that no one person can carry out the entire sensitive operation alone: ​​from creation to approval and change of rules - in fact, simply the implementation of unauthorized access and escalation of privileges, where further you can bomb the infrastructure and the business itself</p>
+<p>Conflicting stories (example)</p>
+<div class="gap"></div>
+<p>• The one who sets up a counterparty does not make payments on it</p>
+<p>• The one who issues access does not approve his own applications</p>
+<p>• Anyone who changes network security rules does not agree on them alone</p>
+<p>• The developer does not go directly to the production database, etc.</p>
+<div class="gap"></div>
+<p>What to do?</p>
+<p>• Together with the business, we describe roles and key processes</p>
+<p>• We are looking for points where one person can “initiate, agree and execute” - these are SoD conflicts</p>
+<p>• We put everything into a SoD matrix: what combinations of roles and rights are prohibited</p>
+<p>• We set up these rules in IAM and access services so that the system simply does not allow us to collect a “toxic” set of privileges</p>
+<p>• We regularly run reports on SoD violations and clear exceptions, rather than accumulating them for years</p>
+<div class="gap"></div>
+<p>Total:</p>
+<p>The point of Segregation-of-Duties is that it becomes part of the architecture. That is, it is important for us to be able to not just grant access, rights and share responsibilities, but to prevent conflicts so that uniform coverage of rights is achieved on all sides. We still need to be able to orchestrate and correctly divide the powers of people.</p>
+<p>#devsecops #pmi #humanres #term #paper</p></div>
+      <div class="tags"><span class="tag">#devsecops</span><span class="tag">#pmi</span><span class="tag">#humanres</span><span class="tag">#term</span><span class="tag">#paper</span></div>
+      <a href="https://t.me/appsecta/340" target="_blank" rel="noreferrer" class="tg-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+        Open in Telegram
+      </a>
+    </article>
+    <div class="divider"></div>
+    <footer class="footer">
+      <p>© 2026 <a href="/">geminishkv.tech</a></p>
+      <p class="disclaimer">Instagram* is a product of Meta Platforms Inc., banned in Russia as extremist.</p>
+    </footer>
+  </div>
+</body>
+</html>
