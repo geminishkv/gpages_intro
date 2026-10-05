@@ -8,13 +8,58 @@
     <atom:link href="https://geminishkv.tech/rss.xml" rel="self" type="application/rss+xml"/>
     <description>Блог по AppSec &amp; DevSecOps — Илья Шмаков (geminishkv)</description>
     <language>ru-RU</language>
-    <lastBuildDate>Mon, 28 Sep 2026 07:32:11 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 05 Oct 2026 07:37:28 GMT</lastBuildDate>
     <managingEditor>shmakovis@inbox.ru (Илья Шмаков)</managingEditor>
     <image>
       <url>https://geminishkv.tech/img/hero/avatar.jpg</url>
       <title>geminishkv — AppSec &amp; DevSecOps Блог (RU)</title>
       <link>https://geminishkv.tech/</link>
     </image>
+    <item>
+      <title>#lol</title>
+      <link>https://geminishkv.tech/blog/558/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/558/</guid>
+      <pubDate>Thu, 01 Oct 2026 00:00:00 GMT</pubDate>
+      <description>#lol</description>
+      <enclosure url="https://geminishkv.tech/img/blog/558.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>CSuite phishing can turn one phish into both Microsoft 365 session theft and remote endpoint access.</title>
+      <link>https://geminishkv.tech/blog/557/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/557/</guid>
+      <pubDate>Wed, 30 Sep 2026 00:00:00 GMT</pubDate>
+      <description>🚨  CSuite phishing can turn one phish into both Microsoft 365 session theft and remote endpoint access. ANYRUN traced 351 related sandbox analyses. Some chains deployed ScreenConnect or Action1, and 51% of submissions came from the U.S. 🔗 How the chain works → https://thehacker</description>
+      <enclosure url="https://geminishkv.tech/img/blog/557.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>И оффтопом, есть еще интересный кейс: Март 2025 - скомпрометировали tj-actions/changed-files (CVE-2025-30066): SEC-8</title>
+      <link>https://geminishkv.tech/blog/555/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/555/</guid>
+      <pubDate>Tue, 29 Sep 2026 00:00:00 GMT</pubDate>
+      <description>И оффтопом, есть еще интересный кейс: Март 2025 - скомпрометировали tj-actions/changed-files (CVE-2025-30066): SEC-8 Что произошло Атакующий увёл PAT бота @tj-actions-bot и перепривязал теги версий на один вредоносный коммит. Пейлоад дампил память раннера с секретами прямо в лог </description>
+      <enclosure url="https://geminishkv.tech/img/hero/avatar.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>OWASP CI/CD InfoSec Risks / часть 2</title>
+      <link>https://geminishkv.tech/blog/549/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/549/</guid>
+      <pubDate>Tue, 29 Sep 2026 00:00:00 GMT</pubDate>
+      <description>🏆 OWASP CI/CD InfoSec Risks / часть 2 Салюты, Давай посмотрим дальше на риски CI/CD, Вот тут мы разобрали пример и я привел в карусели описание для первых 5.  Оставшиеся риски включают из себя гигиену секретов до логирования. В карусели описания, а ниже разберём несколько блоков</description>
+      <enclosure url="https://geminishkv.tech/img/blog/549.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Салюты, вот это интересно, при поддержке ФСТЭК России причем, я думаю скоро мы сможем синкнуться с коллегами по карте которую делал в FinDevSecOps, описание тут.</title>
+      <link>https://geminishkv.tech/blog/548/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/548/</guid>
+      <pubDate>Mon, 28 Sep 2026 00:00:00 GMT</pubDate>
+      <description>😅Салюты, вот это интересно, при поддержке ФСТЭК России причем, я думаю скоро мы сможем синкнуться с коллегами по карте которую делал в FinDevSecOps, описание тут.  Stay Tuned 🙃</description>
+      <enclosure url="https://geminishkv.tech/img/hero/avatar.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
     <item>
       <title>Ну слушайте, даже как-то теплее стало на душе</title>
       <link>https://geminishkv.tech/blog/546/</link>

@@ -2,11 +2,69 @@
   "subscribers": 377,
   "posts": [
     {
+      "id": "558",
+      "text": "#lol",
+      "date": "2026-10-01",
+      "url": "https://t.me/appsecta/558",
+      "views": 85,
+      "tags": [
+        "lol"
+      ],
+      "image": "/img/blog/558.jpg"
+    },
+    {
+      "id": "557",
+      "text": "🚨  CSuite phishing can turn one phish into both Microsoft 365 session theft and remote endpoint access.\n\nANYRUN traced 351 related sandbox analyses. Some chains deployed ScreenConnect or Action1, and 51% of submissions came from the U.S.\n\n🔗 How the chain works → https://thehackernews.com/2026/09/us-focused-csuite-phishing-steals.html",
+      "date": "2026-09-30",
+      "url": "https://t.me/appsecta/557",
+      "views": 94,
+      "tags": [],
+      "image": "/img/blog/557.jpg"
+    },
+    {
+      "id": "555",
+      "text": "И оффтопом, есть еще интересный кейс: Март 2025 - скомпрометировали tj-actions/changed-files (CVE-2025-30066): SEC-8\n\nЧто произошло\n\nАтакующий увёл PAT бота @tj-actions-bot и перепривязал теги версий на один вредоносный коммит. Пейлоад дампил память раннера с секретами прямо в лог сборки — двойным base64\n\nВнешнего C2 не было: секреты просто ложились в логи публичного репозитория куда полетели AWS-ключи, GitHub PAT, npm-токены, приватные RSA-ключи\n\nСначала ломанули reviewdog/action-setup (CVE-2025-30154), и уже через него, судя по всему, утёк тот самый PAT. Одна supply-chain цепочка потянула за собой другую — SEC-3 и SEC-8 в связке\n\n• SEC-8 как точка входа\n• SEC-9 измененный тег, где нет привязки артефакта к коду \n• SEC-6 — секреты в логах и вечные креды\n• SEC-10 — заметили не жертвы, а StepSecurity со стороны\n\nПочему пин на тег не спас из реко? \n\nТеги переставили на malicious-коммит, и все, кто ссылался @v45/@v44, подтянули зловред автоматически\n\nЧто делать при анализе рисков? (вот всегда говорю, что лучше смотреть на кейс комплексно и понимать само тех решение)\n\n• пинить экшены только на commit SHA - uses: owner/action@<40-hex> \n• allow-list разрешённых экшенов на уровне организации\n• короткоживущие OIDC-токены вместо статических облачных ключей\n• после инцидента — ротация всех засветившихся секретов и аудит прошлых прогонов (а лучше вообще воткнуть все порядково в supply-chain\n\nИтого\n\nРеальная атака на пайплайн — это не «сломали приложение», а увели один PAT и переставили тег, далее собрали секреты со всех, кто доверился по имени\n\n#research #devsecop #appsec #pmcases #riskanalysis",
+      "date": "2026-09-29",
+      "url": "https://t.me/appsecta/555",
+      "views": 93,
+      "tags": [
+        "research",
+        "devsecop",
+        "appsec",
+        "pmcases",
+        "riskanalysis"
+      ]
+    },
+    {
+      "id": "549",
+      "text": "🏆 OWASP CI/CD InfoSec Risks / часть 2\n\nСалюты,\nДавай посмотрим дальше на риски CI/CD,\nВот тут мы разобрали пример и я привел в карусели описание для первых 5. \n\nОставшиеся риски включают из себя гигиену секретов до логирования.\nВ карусели описания, а ниже разберём несколько блоков с реальным кейсом из боя\n\nSEC-7 Insecure System Configuration\n\n• Непропатченные CVE - Self-hosted раннеры и билд-серверы с известными дырами\n• Дефолтные креды и открытые админки - панель управления CI торчит в интернет без MFA\n• Избыточная сеть - раннер видит весь внутренний контур, а не только то, что нужно сборке\n\nКейс\n\nЯнварь 2024, Jenkins CVE-2024-23897: баг в CLI (args4j раскрывал @file) давал чтение произвольных файлов на контроллере — включая ключи и credentials.xml — с эскалацией до RCE\n\nРеко\n\n• CIS Benchmark для SCM/CI/registry, отключить анонимный доступ\n• Не выставлять админки CI в интернет — только через VPN/bastion + MFA\n• Раннеры в изолированном сегменте, минимум сетевого доступа\n\nSEC-9 Improper Artifact Integrity Validation\n\n• Неподписанные коммиты и артефакты\n• Скачивание без проверки - инсталляторы и тулы тянутся в пайплайн без сверки checksum\n• Деплой по тегу - :latest вместо digest\n• Нет SBOM и provenance, то есть не видно, из чего и как собран артефакт\n\nКейс\n\nДекабрь 2020, SolarWinds (SUNBURST): атакующие внедрились в сам процесс сборки Orion и подложили бэкдор в билд. Вредонос попал в официально подписанное обновление и разъехался примерно на 18к клиентов, включая госорганы США. Код в репозитории был чист — скомпрометирован был build, а артефакт никто не сверял с источником\n\nРеко\n\n• Подпись коммитов и артефактов (Sigstore/ cosign), проверка перед деплоем\n• Верификация checksum всех скачиваемых в пайплайн тулов\n• Деплой образа строго по digest (@sha256:...), не по тегу\n• SBOM (CycloneDX) и provenance (SLSA)\n• Изоляция и контроль целостности build-среды\n\nКак работает?\n\n# keyless cosign\ncosign sign   &#036;IMG@sha256:<digest>\ncosign verify --certificate-identity=... &#036;IMG@sha256:<digest>\n\n# деплой строго по digest (на кубе), не по :latest\nkubectl set image deploy/app app=&#036;IMG@sha256:<digest>\n\n#appsec #devsecops #specialty #research #course #sca",
+      "date": "2026-09-29",
+      "url": "https://t.me/appsecta/549",
+      "views": 94,
+      "tags": [
+        "appsec",
+        "devsecops",
+        "specialty",
+        "research",
+        "course",
+        "sca"
+      ],
+      "image": "/img/blog/549.jpg"
+    },
+    {
+      "id": "548",
+      "text": "😅Салюты, вот это интересно, при поддержке ФСТЭК России причем, я думаю скоро мы сможем синкнуться с коллегами по карте которую делал в FinDevSecOps, описание тут. \n\nStay Tuned 🙃",
+      "date": "2026-09-28",
+      "url": "https://t.me/appsecta/548",
+      "views": 106,
+      "tags": []
+    },
+    {
       "id": "546",
       "text": "Ну слушайте, даже как-то теплее стало на душе\n\n #lol",
       "date": "2026-09-25",
       "url": "https://t.me/appsecta/546",
-      "views": 81,
+      "views": 166,
       "tags": [
         "lol"
       ],
@@ -18,7 +76,7 @@
       "text": "Оставлю это тут 🙃\n\n#lol",
       "date": "2026-09-23",
       "url": "https://t.me/appsecta/545",
-      "views": 113,
+      "views": 165,
       "tags": [
         "lol"
       ],
@@ -30,7 +88,7 @@
       "text": "Я вот думаю, что тема целевой аудитории вот именно эта 😅\n\n#lol",
       "date": "2026-09-22",
       "url": "https://t.me/appsecta/544",
-      "views": 110,
+      "views": 157,
       "tags": [
         "lol"
       ],
@@ -42,7 +100,7 @@
       "text": "🏆 OWASP CI/CD InfoSec Risks / часть 1\n\nOWASP Top 10 — это качественный и полезный материал, который может тебе помочь понять как в итоге выглядит в бое реальная атака. Можешь посмотреть на схемки и сам документ по этому линку\n\nВ карусели я привел описание первых рисков OWASP с его описанием, посмотри - я думаю тебе понравится. А пока давай посмотрим на пример:\n\nSEC-3 Dependency Chain Abuse\n\nbuild-система автоматически резолвит и исполняет сторонний код при установке зависимостей: npm install или pip install. Три вектора:\n\n• Dependency confusion. Внутренний пакет myorg-utils живёт в приватном registry. Атакующий публикует пакет с тем же именем в public npm/PyPI, но версией повыше. Резолвер по умолчанию тянет самую свежую, а внутреннее имя утекает легко: в package.json\n• Typosquatting. Reqiests вместо requests, python-dateutils вместо python-dateutil. Опечатка в имени и ставится пакет атакующего с install-хуком\n• Мейнтейнер удалил аккаунт, истёк домен почты, забросил проект — злоумышленник перерегистрирует и выкатывает malicious-версию под доверенным именем\n\nКейс\n\nФевраль 2021, Alex Birsan: одной техникой dependency confusion зашёл в сборки Apple, Microsoft, PayPal, Shopify, Tesla, Uber опубликовав в public npm/ PyPI/ RubyGems пакеты с именами их внутренних библиотек и версией повыше — сборки сами их подтянули. Больше &#036;130k суммарно в баунти, и это была не дыра в коде, а логика резолва пакетов\n\nИтого\n\n• Scopes/ namespace для внутренних пакетов (@myorg/...) с жёсткой привязкой к приватному registry \n• Lock и криптохеши: pip install --require-hashes, npm ci по package-lock.json \n• Приватный proxy (Nexus/ Artifactory): единая точка, где внутренние имена не резолвятся наружу\n• Namespace protection: заранее занять свои имена, как defensive registration — SCA на каждый PR OSV-Scanner, Trivy\n\nКак работает?\n\n# .npmrc — внутренний scope только на приватный registry\n@myorg:registry=https://nexus.internal/repository/npm-private/\n\n# всё остальное — через proxy, без прямого выхода в npmjs\nregistry=https://nexus.internal/repository/npm-proxy/\n\n#appsec #devsecops #specialty #research #course #sca",
       "date": "2026-09-21",
       "url": "https://t.me/appsecta/538",
-      "views": 138,
+      "views": 184,
       "tags": [
         "appsec",
         "devsecops",
@@ -59,7 +117,7 @@
       "text": "🫶 из Че с любовью\n\n#lol",
       "date": "2026-09-21",
       "url": "https://t.me/appsecta/537",
-      "views": 121,
+      "views": 137,
       "tags": [
         "lol"
       ],
