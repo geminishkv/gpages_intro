@@ -1,39 +1,149 @@
 {
-  "subscribers": 377,
+  "subscribers": 378,
   "posts": [
+    {
+      "id": "575",
+      "text": "Хохлы просто не знают, что для создания россиянам неудобств в интернете — бомбить надо Нидерланды.",
+      "date": "2026-10-11",
+      "url": "https://t.me/appsecta/575",
+      "views": 100,
+      "tags": [],
+      "text_en": "crests simply don’t know that in order to create inconvenience for Russians on the Internet, they need to bomb the Netherlands."
+    },
+    {
+      "id": "569",
+      "text": "https://music.apple.com/kz/artist/digimortal/343545376\n\nWelcome 🤘",
+      "date": "2026-10-10",
+      "url": "https://t.me/appsecta/569",
+      "views": 107,
+      "tags": [],
+      "text_en": "https://music.apple.com/kz/artist/digimortal/343545376\n\nWelcome 🤘"
+    },
+    {
+      "id": "567",
+      "text": "Digimortal - «я узнаю как дышит страх»\n\nКак работаем, так и отдыхаем 🫶🙃",
+      "date": "2026-10-10",
+      "url": "https://t.me/appsecta/567",
+      "views": 103,
+      "tags": [],
+      "text_en": "Digimortal - “I will find out how fear breathes”\n\nAs we work, so we rest 🫶🙃"
+    },
+    {
+      "id": "565",
+      "text": "CVE-2026-107181 Telegram Desktop  one-click account takeover via IPC injection\n*\nPOC + writeUP",
+      "date": "2026-10-09",
+      "url": "https://t.me/appsecta/565",
+      "views": 110,
+      "tags": [],
+      "image": "/img/blog/565.jpg",
+      "text_en": "CVE-2026-107181 Telegram Desktop one-click account takeover via IPC injection\n*\nPOC+writeUP"
+    },
+    {
+      "id": "564",
+      "text": "Салют, \nЯ как то писал про игру интересную, почему то актуалочка вспомнилась 😅🤣\n\n#lol",
+      "date": "2026-10-09",
+      "url": "https://t.me/appsecta/564",
+      "views": 119,
+      "tags": [
+        "lol"
+      ],
+      "image": "/img/blog/564.jpg",
+      "text_en": "Salute, \nI once wrote about an interesting game, for some reason the actual thing came to mind 😅🤣\n\n#lol"
+    },
+    {
+      "id": "563",
+      "text": "Салюты, \nНемного новенького по ПДн, а также игрушки с модификацией своих и/или чужих фоток, у меня тут ребятки на одной из конф прогоняли так фотку, так вот:\n\nИИ-контент с изображениями россиян без правовых оснований признан нарушением законодательства о ПД по решению Таганского районного суда Москвы, который удовлетворил иск РКН к иностранному регистратору доменов NameSilo, LLC (решение от 04.06.2026 по делу №2-1452/2026)\n\nСпор касался сайта slygen.ai, на котором РКН в ходе мониторинга выявил контент, созданный ИИ с использованием фото и видео российских граждан\n\nДетали почитать можно у коллег\n\n#compliance #gost #specialty",
+      "date": "2026-10-08",
+      "url": "https://t.me/appsecta/563",
+      "views": 130,
+      "tags": [
+        "compliance",
+        "gost",
+        "specialty"
+      ],
+      "image": "/img/blog/563.jpg",
+      "text_en": "Fireworks, \nA little something new in PD, as well as toys with modifications of their own and/or other people’s photos, I had some guys at one of the conferences running a photo like this, so here it is:\nAI content with images of Russians without legal basis was recognized as a violation of the legislation on personal data by the decision of the Tagansky District Court of Moscow, which satisfied the claim of RKN against the foreign domain registrar NameSilo, LLC (decision dated 06/04/2026 in case No. 2-1452/2026)\nThe dispute concerned the site slygen.ai, on which RKN, during monitoring, identified content created by AI using photos and videos of Russian citizens\nYou can read the details from your colleagues\n\n#compliance #gost #specialty"
+    },
+    {
+      "id": "562",
+      "text": "Монетизируют как могут, простите \n\n#lol",
+      "date": "2026-10-07",
+      "url": "https://t.me/appsecta/562",
+      "views": 139,
+      "tags": [
+        "lol"
+      ],
+      "image": "/img/blog/562.jpg",
+      "text_en": "Monetize as best they can, sorry \n\n#lol"
+    },
+    {
+      "id": "561",
+      "text": "А Касперского кто помнит с его знаменитым, пугающим до истерики поросячим визгом? 🤣\n\n#lol",
+      "date": "2026-10-07",
+      "url": "https://t.me/appsecta/561",
+      "views": 142,
+      "tags": [
+        "lol"
+      ],
+      "image": "/img/blog/561.jpg",
+      "text_en": "And who remembers Kaspersky with his famous, hysterically frightening pig squeal? 🤣\n\n#lol"
+    },
+    {
+      "id": "560",
+      "text": "Собрал GitLab видео PoC's  🔍\n\nПри ресерче различных CVE под GitLab появилась необходимость в наглядной демонстрации PoC некоторых из них. Залил такие кейсы к себе на YouTube, вдруг кому-то тоже пригодится. \n\nИИшки поисковых систем, кстати, вообще говорят, что на эти CVE не существует публичного proof of concept. Эксклюзив, получается)\n\nRCE / command injection\n➡️ CVE-2022-0751 - Недостоверная информация, отображаемая в веб-интерфейсе Gitlab.com, позволяет жертве выполнять произвольные команды.\n➡️ CVE-2023-1708 - Копирование информации в буфер обмена может привести к выполнению команд\n➡️ CVE-2024-8402 - Maintainer может внедрить шелл-код в конфигурацию Google integration, который выполнится на компьютере жертвы при настройке интеграции.\n➡️ CVE-2024-9773 - shell injection через Harbor project name / helper scripts\n➡️ CVE-2024-8640 - Reverse shell with root access to analytics Cube instance\n\nSSRF\n➡️ CVE-2024-9870 - Full SSRF через Workspaces\n➡️ CVE-2022-4335 - Blind SSRF на repository mirroring (DNS rebinding)\n➡️ CVE-2021-22179 - SSRF в webhook / outbound requests\n➡️CVE-2025-6454 - CRLF Injection in Webhook custom header could lead to blind SSRF\n➡️CVE-2024-8977 - Full read SSRF\n\nXSS\n➡️ CVE-2024-8312 - Stored XSS with CSP bypass\n➡️ CVE-2025-7734 - Stored XSS in blob viewer\n\nDoS\n➡️ CVE-2026-1456 - DoS через tasks / GraphQL-ish нагрузку\n➡️ CVE-2026-1458 - DoS + path traversal в том же духе\n➡️ CVE-2024-8177 - Harbor DoS\n➡️ CVE-2024-12379 - серия screen recordings под нагрузкой\n\nПрочее\n➡️ CVE-2026-1230 - Несоответствие между отображаемыми и загруженными файлами\n➡️ CVE-2024-6502 - Веб-интерфейс GitLab не гарантирует целостность информации при загрузке исходного кода из релизов.\n➡️ CVE-2024-8970 - Account takeover\n➡️ CVE-2021-22203 - Arbitrary file read\n\n💫 @pentestnotes",
+      "date": "2026-10-06",
+      "url": "https://t.me/appsecta/560",
+      "views": 130,
+      "tags": [],
+      "image": "/img/blog/560.jpg",
+      "text_en": "Collected GitLab video PoC's 🔍\nWhen researching various CVEs under GitLab, it became necessary to clearly demonstrate the PoC of some of them. I uploaded such cases to my YouTube, in case someone else finds it useful.\nSearch engine AI, by the way, generally says that there is no public proof of concept for these CVEs. Exclusive, it turns out)\n\nRCE/command injection\n➡️ CVE-2022-0751 – Misleading information displayed in the Gitlab.com web interface allows a victim to execute arbitrary commands.\n➡️ CVE-2023-1708 - Copying information to the clipboard may lead to command execution\n➡️ CVE-2024-8402 - Maintainer can inject shellcode into the Google integration configuration, which will be executed on the victim’s computer when setting up the integration.\n➡️ CVE-2024-9773 - shell injection via Harbor project name / helper scripts\n➡️ CVE-2024-8640 - Reverse shell with root access to analytics Cube instance\n\nSSRF\n➡️ CVE-2024-9870 - Full SSRF via Workspaces\n➡️ CVE-2022-4335 - Blind SSRF on repository mirroring (DNS rebinding)\n➡️ CVE-2021-22179 - SSRF in webhook/outbound requests\n➡️CVE-2025-6454 - CRLF Injection in Webhook custom header could lead to blind SSRF\n➡️CVE-2024-8977 - Full read SSRF\n\nXSS\n➡️ CVE-2024-8312 - Stored XSS with CSP bypass\n➡️ CVE-2025-7734 - Stored XSS in blob viewer\n\nDoS\n➡️ CVE-2026-1456 - DoS via tasks / GraphQL-ish load\n➡️ CVE-2026-1458 - DoS + path traversal in the same spirit\n➡️ CVE-2024-8177 - Harbor DoS\n➡️ CVE-2024-12379 - a series of screen recordings under load\n\nOther\n➡️ CVE-2026-1230 - Inconsistency between displayed and downloaded files\n➡️ CVE-2024-6502 - The GitLab web interface does not guarantee the integrity of information when downloading source code from releases.\n➡️ CVE-2024-8970 - Account takeover\n➡️ CVE-2021-22203 - Arbitrary file read\n\n💫 @pentestnotes"
+    },
+    {
+      "id": "559",
+      "text": "Салюты, всех причастных с праздничком 🙏🫶🙃",
+      "date": "2026-10-05",
+      "url": "https://t.me/appsecta/559",
+      "views": 145,
+      "tags": [],
+      "image": "/img/blog/559.jpg",
+      "text_en": "Fireworks, happy holiday to everyone involved 🙏🫶🙃"
+    },
     {
       "id": "558",
       "text": "#lol",
       "date": "2026-10-01",
       "url": "https://t.me/appsecta/558",
-      "views": 85,
+      "views": 222,
       "tags": [
         "lol"
       ],
-      "image": "/img/blog/558.jpg"
+      "image": "/img/blog/558.jpg",
+      "text_en": "#lol"
     },
     {
       "id": "557",
       "text": "🚨  CSuite phishing can turn one phish into both Microsoft 365 session theft and remote endpoint access.\n\nANYRUN traced 351 related sandbox analyses. Some chains deployed ScreenConnect or Action1, and 51% of submissions came from the U.S.\n\n🔗 How the chain works → https://thehackernews.com/2026/09/us-focused-csuite-phishing-steals.html",
       "date": "2026-09-30",
       "url": "https://t.me/appsecta/557",
-      "views": 94,
+      "views": 224,
       "tags": [],
-      "image": "/img/blog/557.jpg"
+      "image": "/img/blog/557.jpg",
+      "text_en": "🚨 CSuite phishing can turn one phish into both Microsoft 365 session theft and remote endpoint access.\n\nANYRUN traced 351 related sandbox analyses. Some chains deployed ScreenConnect or Action1, and 51% of submissions came from the U.S.\n\n🔗 How the chain works → https://thehackernews.com/2026/09/us-focused-csuite-phishing-steals.html"
     },
     {
       "id": "555",
       "text": "И оффтопом, есть еще интересный кейс: Март 2025 - скомпрометировали tj-actions/changed-files (CVE-2025-30066): SEC-8\n\nЧто произошло\n\nАтакующий увёл PAT бота @tj-actions-bot и перепривязал теги версий на один вредоносный коммит. Пейлоад дампил память раннера с секретами прямо в лог сборки — двойным base64\n\nВнешнего C2 не было: секреты просто ложились в логи публичного репозитория куда полетели AWS-ключи, GitHub PAT, npm-токены, приватные RSA-ключи\n\nСначала ломанули reviewdog/action-setup (CVE-2025-30154), и уже через него, судя по всему, утёк тот самый PAT. Одна supply-chain цепочка потянула за собой другую — SEC-3 и SEC-8 в связке\n\n• SEC-8 как точка входа\n• SEC-9 измененный тег, где нет привязки артефакта к коду \n• SEC-6 — секреты в логах и вечные креды\n• SEC-10 — заметили не жертвы, а StepSecurity со стороны\n\nПочему пин на тег не спас из реко? \n\nТеги переставили на malicious-коммит, и все, кто ссылался @v45/@v44, подтянули зловред автоматически\n\nЧто делать при анализе рисков? (вот всегда говорю, что лучше смотреть на кейс комплексно и понимать само тех решение)\n\n• пинить экшены только на commit SHA - uses: owner/action@<40-hex> \n• allow-list разрешённых экшенов на уровне организации\n• короткоживущие OIDC-токены вместо статических облачных ключей\n• после инцидента — ротация всех засветившихся секретов и аудит прошлых прогонов (а лучше вообще воткнуть все порядково в supply-chain\n\nИтого\n\nРеальная атака на пайплайн — это не «сломали приложение», а увели один PAT и переставили тег, далее собрали секреты со всех, кто доверился по имени\n\n#research #devsecop #appsec #pmcases #riskanalysis",
       "date": "2026-09-29",
       "url": "https://t.me/appsecta/555",
-      "views": 93,
+      "views": 172,
       "tags": [
         "research",
         "devsecop",
         "appsec",
         "pmcases",
         "riskanalysis"
-      ]
+      ],
+      "text_en": "And offtopic, there is another interesting case: March 2025 - tj-actions/changed-files was compromised (CVE-2025-30066): SEC-8\n\nWhat happened\nThe attacker stole the PAT of the @tj-actions-bot bot and relinked the version tags to one malicious commit. Payload dumped the runner's memory with secrets directly into the build log - double base64\nThere was no external C2: the secrets were simply placed in the logs of the public repository where AWS keys, GitHub PAT, npm tokens, private RSA keys were sent\nFirst, reviewdog/action-setup (CVE-2025-30154) was hacked, and apparently the same PAT was leaked through it. One supply-chain pulled another - SEC-3 and SEC-8 in conjunction\n\n• SEC-8 as an entry point\n• SEC-9 modified tag, where there is no link between the artifact and the code \n• SEC-6 - secrets in logs and eternal creeds\n• SEC-10 - noticed not by the victims, but by StepSecurity from the outside\nWhy didn't the pin on the tag save me from the reko? \n\nThe tags were moved to the malicious commit, and everyone who linked @v45/@v44 automatically pulled up the malware\nWhat to do when analyzing risks? (I always say that it’s better to look at the case comprehensively and understand the technical solution itself)\n\n• pin actions only on commit SHA - uses: owner/action@<40-hex>\n• allow-list of allowed actions at the organization level\n• short-lived OIDC tokens instead of static cloud keys\n• after the incident - rotation of all the revealed secrets and audit of past runs (or better yet, stick everything in order in the supply-chain\n\nTotal\nA real attack on the pipeline is not “breaking the application”, but stealing one PAT and rearranging the tag, then collecting secrets from everyone who trusted by name\n\n#research #devsecop #appsec #pmcases #riskanalysis"
     },
     {
       "id": "549",
@@ -49,7 +159,8 @@
         "course",
         "sca"
       ],
-      "image": "/img/blog/549.jpg"
+      "image": "/img/blog/549.jpg",
+      "text_en": "🏆 OWASP CI/CD InfoSec Risks / part 2\n\nFireworks,\nLet's look further at the risks of CI/CD,\nHere we looked at an example and I gave a description for the first 5 in the carousel.\nRemaining risks include hygiene of secrets before logging.\nThere are descriptions in the carousel, and below we will analyze several blocks with a real case from the battle\n\nSEC-7 Insecure System Configuration\n• Unpatched CVEs - Self-hosted runners and build servers with known holes\n• Default credentials and open admin panels - the CI control panel sticks out onto the Internet without MFA\n• Redundant network - the runner sees the entire internal circuit, and not just what the assembly needs\n\nCase\nJanuary 2024, Jenkins CVE-2024-23897: a bug in the CLI (args4j expanded @file) allowed arbitrary files to be read on the controller - including keys and credentials.xml - escalating to RCE\n\nReko\n• CIS Benchmark for SCM/CI/registry, disable anonymous access\n• Do not expose CI admins to the Internet - only through VPN/bastion + MFA\n• Runners in an isolated segment, minimum network access\nSEC-9 Improper Artifact Integrity Validation\n\n• Unsigned commits and artifacts\n• Downloading without checking - installers and tools are pulled into the pipeline without checking checksum\n• Deploy by tag - :latest instead of digest\n• There is no SBOM and provenance, that is, it is not visible from what and how the artifact is assembled\n\nCase\nDecember 2020, SolarWinds (SUNBURST): attackers infiltrated the Orion build process itself and planted a backdoor in the build. The malware was included in an officially signed update and distributed to approximately 18k clients, including US government agencies. The code in the repository was clean - build was compromised, and no one checked the artifact with the source\nReko\n\n• Signing commits and artifacts (Sigstore/ cosign), checking before deployment\n• Checksum verification of all tools downloaded into the pipeline\n• Deploy the image strictly by digest (@sha256:...), not by tag\n• SBOM (CycloneDX) and provenance (SLSA)\n• Isolation and control of the integrity of the build environment\n\nHow does it work?\n\n# keyless cosign\ncosign sign $IMG@sha256:<digest>\ncosign verify --certificate-identity=... $IMG@sha256:<digest>\n\n# Deploy strictly according to digest (on cube), not according to :latest\nkubectl set image deploy/app app=$IMG@sha256:<digest>\n#appsec #devsecops #specialty #research #course #sca"
     },
     {
       "id": "548",
@@ -57,7 +168,8 @@
       "date": "2026-09-28",
       "url": "https://t.me/appsecta/548",
       "views": 106,
-      "tags": []
+      "tags": [],
+      "text_en": "😅Fireworks, this is interesting, with the support of the FSTEC of Russia, I think soon we will be able to communicate with our colleagues on the map that I made in FinDevSecOps, description here. \n\nStay Tuned 🙃"
     },
     {
       "id": "546",

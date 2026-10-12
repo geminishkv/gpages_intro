@@ -8,13 +8,148 @@
     <atom:link href="https://geminishkv.tech/rss-en.xml" rel="self" type="application/rss+xml"/>
     <description>AppSec &amp; DevSecOps blog by Ilya Shmakov (geminishkv)</description>
     <language>en-US</language>
-    <lastBuildDate>Mon, 05 Oct 2026 07:37:28 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 12 Oct 2026 07:41:49 GMT</lastBuildDate>
     <managingEditor>shmakovis@inbox.ru (Ilya Shmakov)</managingEditor>
     <image>
       <url>https://geminishkv.tech/img/hero/avatar.jpg</url>
       <title>geminishkv — AppSec &amp; DevSecOps Blog (EN)</title>
       <link>https://geminishkv.tech/</link>
     </image>
+    <item>
+      <title>crests simply don’t know that in order to create inconvenience for Russians on the Internet, they need to bomb the Netherlands.</title>
+      <link>https://geminishkv.tech/blog/en/575/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/575/</guid>
+      <pubDate>Sun, 11 Oct 2026 00:00:00 GMT</pubDate>
+      <description>crests simply don’t know that in order to create inconvenience for Russians on the Internet, they need to bomb the Netherlands.</description>
+      <enclosure url="https://geminishkv.tech/img/hero/avatar.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>https://music.apple.com/kz/artist/digimortal/343545376</title>
+      <link>https://geminishkv.tech/blog/en/569/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/569/</guid>
+      <pubDate>Sat, 10 Oct 2026 00:00:00 GMT</pubDate>
+      <description>https://music.apple.com/kz/artist/digimortal/343545376 Welcome 🤘</description>
+      <enclosure url="https://geminishkv.tech/img/hero/avatar.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>Digimortal - “I will find out how fear breathes”</title>
+      <link>https://geminishkv.tech/blog/en/567/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/567/</guid>
+      <pubDate>Sat, 10 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Digimortal - “I will find out how fear breathes” As we work, so we rest 🫶🙃</description>
+      <enclosure url="https://geminishkv.tech/img/hero/avatar.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>CVE-2026-107181 Telegram Desktop one-click account takeover via IPC injection</title>
+      <link>https://geminishkv.tech/blog/en/565/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/565/</guid>
+      <pubDate>Fri, 09 Oct 2026 00:00:00 GMT</pubDate>
+      <description>CVE-2026-107181 Telegram Desktop one-click account takeover via IPC injection * POC+writeUP</description>
+      <enclosure url="https://geminishkv.tech/img/blog/565.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>Salute,</title>
+      <link>https://geminishkv.tech/blog/en/564/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/564/</guid>
+      <pubDate>Fri, 09 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Salute,  I once wrote about an interesting game, for some reason the actual thing came to mind 😅🤣 #lol</description>
+      <enclosure url="https://geminishkv.tech/img/blog/564.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>Fireworks,</title>
+      <link>https://geminishkv.tech/blog/en/563/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/563/</guid>
+      <pubDate>Thu, 08 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Fireworks,  A little something new in PD, as well as toys with modifications of their own and/or other people’s photos, I had some guys at one of the conferences running a photo like this, so here it is: AI content with images of Russians without legal basis was recognized as a v</description>
+      <enclosure url="https://geminishkv.tech/img/blog/563.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>Monetize as best they can, sorry</title>
+      <link>https://geminishkv.tech/blog/en/562/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/562/</guid>
+      <pubDate>Wed, 07 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Monetize as best they can, sorry  #lol</description>
+      <enclosure url="https://geminishkv.tech/img/blog/562.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>And who remembers Kaspersky with his famous, hysterically frightening pig squeal?</title>
+      <link>https://geminishkv.tech/blog/en/561/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/561/</guid>
+      <pubDate>Wed, 07 Oct 2026 00:00:00 GMT</pubDate>
+      <description>And who remembers Kaspersky with his famous, hysterically frightening pig squeal? 🤣 #lol</description>
+      <enclosure url="https://geminishkv.tech/img/blog/561.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>Collected GitLab video PoC&apos;s</title>
+      <link>https://geminishkv.tech/blog/en/560/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/560/</guid>
+      <pubDate>Tue, 06 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Collected GitLab video PoC&apos;s 🔍 When researching various CVEs under GitLab, it became necessary to clearly demonstrate the PoC of some of them. I uploaded such cases to my YouTube, in case someone else finds it useful. Search engine AI, by the way, generally says that there is no</description>
+      <enclosure url="https://geminishkv.tech/img/blog/560.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>Fireworks, happy holiday to everyone involved</title>
+      <link>https://geminishkv.tech/blog/en/559/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/559/</guid>
+      <pubDate>Mon, 05 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Fireworks, happy holiday to everyone involved 🙏🫶🙃</description>
+      <enclosure url="https://geminishkv.tech/img/blog/559.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>#lol</title>
+      <link>https://geminishkv.tech/blog/en/558/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/558/</guid>
+      <pubDate>Thu, 01 Oct 2026 00:00:00 GMT</pubDate>
+      <description>#lol</description>
+      <enclosure url="https://geminishkv.tech/img/blog/558.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>CSuite phishing can turn one phish into both Microsoft 365 session theft and remote endpoint access.</title>
+      <link>https://geminishkv.tech/blog/en/557/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/557/</guid>
+      <pubDate>Wed, 30 Sep 2026 00:00:00 GMT</pubDate>
+      <description>🚨 CSuite phishing can turn one phish into both Microsoft 365 session theft and remote endpoint access. ANYRUN traced 351 related sandbox analyses. Some chains deployed ScreenConnect or Action1, and 51% of submissions came from the U.S. 🔗 How the chain works → https://thehackern</description>
+      <enclosure url="https://geminishkv.tech/img/blog/557.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>And offtopic, there is another interesting case: March 2025 - tj-actions/changed-files was compromised (CVE-2025-30066): SEC-8</title>
+      <link>https://geminishkv.tech/blog/en/555/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/555/</guid>
+      <pubDate>Tue, 29 Sep 2026 00:00:00 GMT</pubDate>
+      <description>And offtopic, there is another interesting case: March 2025 - tj-actions/changed-files was compromised (CVE-2025-30066): SEC-8 What happened The attacker stole the PAT of the @tj-actions-bot bot and relinked the version tags to one malicious commit. Payload dumped the runner&apos;s me</description>
+      <enclosure url="https://geminishkv.tech/img/hero/avatar.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>OWASP CI/CD InfoSec Risks / part 2</title>
+      <link>https://geminishkv.tech/blog/en/549/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/549/</guid>
+      <pubDate>Tue, 29 Sep 2026 00:00:00 GMT</pubDate>
+      <description>🏆 OWASP CI/CD InfoSec Risks / part 2 Fireworks, Let&apos;s look further at the risks of CI/CD, Here we looked at an example and I gave a description for the first 5 in the carousel. Remaining risks include hygiene of secrets before logging. There are descriptions in the carousel, and</description>
+      <enclosure url="https://geminishkv.tech/img/blog/549.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
+    <item>
+      <title>Fireworks, this is interesting, with the support of the FSTEC of Russia, I think soon we will be able to communicate with our colleagues on the map that I made in FinDevSecOps, description here.</title>
+      <link>https://geminishkv.tech/blog/en/548/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/en/548/</guid>
+      <pubDate>Mon, 28 Sep 2026 00:00:00 GMT</pubDate>
+      <description>😅Fireworks, this is interesting, with the support of the FSTEC of Russia, I think soon we will be able to communicate with our colleagues on the map that I made in FinDevSecOps, description here.  Stay Tuned 🙃</description>
+      <enclosure url="https://geminishkv.tech/img/hero/avatar.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
+    </item>
     <item>
       <title>Well, listen, somehow my soul became warmer</title>
       <link>https://geminishkv.tech/blog/en/546/</link>

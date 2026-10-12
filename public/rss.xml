@@ -8,13 +8,103 @@
     <atom:link href="https://geminishkv.tech/rss.xml" rel="self" type="application/rss+xml"/>
     <description>Блог по AppSec &amp; DevSecOps — Илья Шмаков (geminishkv)</description>
     <language>ru-RU</language>
-    <lastBuildDate>Mon, 05 Oct 2026 07:37:28 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 12 Oct 2026 07:41:49 GMT</lastBuildDate>
     <managingEditor>shmakovis@inbox.ru (Илья Шмаков)</managingEditor>
     <image>
       <url>https://geminishkv.tech/img/hero/avatar.jpg</url>
       <title>geminishkv — AppSec &amp; DevSecOps Блог (RU)</title>
       <link>https://geminishkv.tech/</link>
     </image>
+    <item>
+      <title>Хохлы просто не знают, что для создания россиянам неудобств в интернете — бомбить надо Нидерланды.</title>
+      <link>https://geminishkv.tech/blog/575/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/575/</guid>
+      <pubDate>Sun, 11 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Хохлы просто не знают, что для создания россиянам неудобств в интернете — бомбить надо Нидерланды.</description>
+      <enclosure url="https://geminishkv.tech/img/hero/avatar.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>https://music.apple.com/kz/artist/digimortal/343545376</title>
+      <link>https://geminishkv.tech/blog/569/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/569/</guid>
+      <pubDate>Sat, 10 Oct 2026 00:00:00 GMT</pubDate>
+      <description>https://music.apple.com/kz/artist/digimortal/343545376 Welcome 🤘</description>
+      <enclosure url="https://geminishkv.tech/img/hero/avatar.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Digimortal - «я узнаю как дышит страх»</title>
+      <link>https://geminishkv.tech/blog/567/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/567/</guid>
+      <pubDate>Sat, 10 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Digimortal - «я узнаю как дышит страх» Как работаем, так и отдыхаем 🫶🙃</description>
+      <enclosure url="https://geminishkv.tech/img/hero/avatar.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>CVE-2026-107181 Telegram Desktop  one-click account takeover via IPC injection</title>
+      <link>https://geminishkv.tech/blog/565/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/565/</guid>
+      <pubDate>Fri, 09 Oct 2026 00:00:00 GMT</pubDate>
+      <description>CVE-2026-107181 Telegram Desktop  one-click account takeover via IPC injection * POC + writeUP</description>
+      <enclosure url="https://geminishkv.tech/img/blog/565.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Салют,</title>
+      <link>https://geminishkv.tech/blog/564/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/564/</guid>
+      <pubDate>Fri, 09 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Салют,  Я как то писал про игру интересную, почему то актуалочка вспомнилась 😅🤣 #lol</description>
+      <enclosure url="https://geminishkv.tech/img/blog/564.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Салюты,</title>
+      <link>https://geminishkv.tech/blog/563/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/563/</guid>
+      <pubDate>Thu, 08 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Салюты,  Немного новенького по ПДн, а также игрушки с модификацией своих и/или чужих фоток, у меня тут ребятки на одной из конф прогоняли так фотку, так вот: ИИ-контент с изображениями россиян без правовых оснований признан нарушением законодательства о ПД по решению Таганского р</description>
+      <enclosure url="https://geminishkv.tech/img/blog/563.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Монетизируют как могут, простите</title>
+      <link>https://geminishkv.tech/blog/562/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/562/</guid>
+      <pubDate>Wed, 07 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Монетизируют как могут, простите  #lol</description>
+      <enclosure url="https://geminishkv.tech/img/blog/562.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>А Касперского кто помнит с его знаменитым, пугающим до истерики поросячим визгом?</title>
+      <link>https://geminishkv.tech/blog/561/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/561/</guid>
+      <pubDate>Wed, 07 Oct 2026 00:00:00 GMT</pubDate>
+      <description>А Касперского кто помнит с его знаменитым, пугающим до истерики поросячим визгом? 🤣 #lol</description>
+      <enclosure url="https://geminishkv.tech/img/blog/561.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Собрал GitLab видео PoC&apos;s</title>
+      <link>https://geminishkv.tech/blog/560/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/560/</guid>
+      <pubDate>Tue, 06 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Собрал GitLab видео PoC&apos;s  🔍 При ресерче различных CVE под GitLab появилась необходимость в наглядной демонстрации PoC некоторых из них. Залил такие кейсы к себе на YouTube, вдруг кому-то тоже пригодится.  ИИшки поисковых систем, кстати, вообще говорят, что на эти CVE не существ</description>
+      <enclosure url="https://geminishkv.tech/img/blog/560.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Салюты, всех причастных с праздничком</title>
+      <link>https://geminishkv.tech/blog/559/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/559/</guid>
+      <pubDate>Mon, 05 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Салюты, всех причастных с праздничком 🙏🫶🙃</description>
+      <enclosure url="https://geminishkv.tech/img/blog/559.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
     <item>
       <title>#lol</title>
       <link>https://geminishkv.tech/blog/558/</link>
