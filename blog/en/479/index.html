@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bearer is like a data-centric SAST, not code-centric — geminishkv</title>
+  <meta name="description" content="🛠 Bearer is like a data-centric SAST, not code-centric Salute, look, today let's take a look at the cool SAST, which can be used in PDn. The functionality in …" />
+  <meta name="keywords" content="appsec, devsecops, toolshain, sast, appsec, devsecops, geminishkv" />
+  <meta name="author" content="Ilya Shmakov" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="canonical" href="https://geminishkv.tech/blog/en/479/" />
+  <link rel="sitemap" href="/sitemap.xml" />
+  <link rel="alternate" type="application/rss+xml" title="geminishkv blog" href="/rss-en.xml" />
+  <link rel="alternate" hreflang="ru" href="https://geminishkv.tech/blog/479/" />
+  <link rel="alternate" hreflang="en" href="https://geminishkv.tech/blog/en/479/" />
+  <link rel="alternate" hreflang="x-default" href="https://geminishkv.tech/blog/479/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://geminishkv.tech/blog/en/479/" />
+  <meta property="og:title" content="Bearer is like a data-centric SAST, not code-centric — geminishkv" />
+  <meta property="og:description" content="🛠 Bearer is like a data-centric SAST, not code-centric Salute, look, today let's take a look at the cool SAST, which can be used in PDn. The functionality in …" />
+  <meta property="og:image" content="https://geminishkv.tech/img/blog/479.jpg" />
+  <meta property="og:image:alt" content="Bearer is like a data-centric SAST, not code-centric" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="ru_RU" />
+  <meta property="og:site_name" content="geminishkv" />
+  <meta property="article:published_time" content="2026-07-17" />
+  <meta property="article:author" content="Ilya Shmakov" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@geminishkv" />
+  <meta name="twitter:title" content="Bearer is like a data-centric SAST, not code-centric" />
+  <meta name="twitter:description" content="🛠 Bearer is like a data-centric SAST, not code-centric Salute, look, today let's take a look at the cool SAST, which can be used in PDn. The functionality in …" />
+  <meta name="twitter:image" content="https://geminishkv.tech/img/blog/479.jpg" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Bearer is like a data-centric SAST, not code-centric","description":"🛠 Bearer is like a data-centric SAST, not code-centric Salute, look, today let's take a look at the cool SAST, which can be used in PDn. The functionality in …","url":"https://geminishkv.tech/blog/en/479/","datePublished":"2026-07-17","dateModified":"2026-07-17","image":"https://geminishkv.tech/img/blog/479.jpg","inLanguage":"en","author":{"@type":"Person","name":"Ilya Shmakov","url":"https://geminishkv.tech"},"publisher":{"@type":"Organization","name":"geminishkv","url":"https://geminishkv.tech"}}</script>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="/fonts/fonts.css" />
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0a0a0a; --card: #111111; --border: #1a1a1a;
+  --text: #e8e8e8; --muted: #888888; --accent: #D51A1A; --gold: #F9B361;
+}
+html, body { background: var(--bg); color: var(--text); font-family: 'Roboto', system-ui, sans-serif; min-height: 100dvh; line-height: 1.7; }
+a { color: inherit; text-decoration: none; }
+
+.page { max-width: 800px; margin: 0 auto; padding: 0 24px 64px; }
+
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 24px 0 32px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+.nav__brand { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 700; color: #fff; }
+.nav__brand img { width: 28px; height: 28px; border-radius: 50%; }
+.nav__back { font-size: 12px; color: var(--muted); border: 1px solid var(--border); border-radius: 4px; padding: 6px 14px; transition: color .2s, border-color .2s; letter-spacing: 0.06em; text-transform: uppercase; }
+.nav__back:hover { color: #fff; border-color: var(--accent); }
+
+.nav__right-group { display: flex; align-items: center; gap: 10px; }
+.lang-toggle { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; color: var(--accent); border: 1px solid var(--accent); border-radius: 4px; padding: 5px 10px; transition: background .2s, color .2s; }
+.lang-toggle:hover { background: var(--accent); color: #fff; }
+
+.divider { height: 1px; background: linear-gradient(to right, var(--accent), rgba(204,34,0,.15), transparent); margin: 40px 0 20px; }
+.footer { font-size: 0.65rem; color: var(--muted); text-align: center; }
+.footer a { color: var(--accent); transition: color .2s; }
+.footer a:hover { color: var(--gold); }
+.disclaimer { font-size: 0.55rem; color: #555; text-align: center; margin-top: 12px; line-height: 1.4; }
+
+@media (max-width: 600px) { .page { padding: 0 16px 48px; } }
+
+    .cover { width: 100%; border-radius: 8px; overflow: hidden; margin-bottom: 28px; max-height: 400px; }
+    .cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .meta { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; font-size: 0.72rem; color: var(--muted); }
+    .content p { font-size: 0.85rem; line-height: 1.85; margin-bottom: 8px; }
+    .content .gap { height: 10px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 24px; }
+    .tag { font-size: 0.6rem; color: var(--gold); background: rgba(249,179,97,.06); border: 1px solid rgba(249,179,97,.15); border-radius: 3px; padding: 2px 8px; }
+    .tg-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 28px; padding: 10px 20px; background: rgba(204,34,0,.1); border: 1px solid rgba(204,34,0,.25); border-radius: 6px; color: #fff; font-size: 0.75rem; font-weight: 600; transition: background .2s; }
+    .tg-link:hover { background: rgba(204,34,0,.18); }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="nav">
+      <a href="/" class="nav__brand"><img src="/img/logotype/logo_white.svg" alt="" />geminishkv</a>
+      <div class="nav__right-group">
+        <a href="/blog/479/" class="lang-toggle">RU</a>
+        <a href="/blog/" class="nav__back">← All posts</a>
+      </div>
+    </nav>
+    <div class="cover"><img src="/img/blog/479.jpg" alt="Bearer is like a data-centric SAST, not code-centric" /></div>
+    <article>
+      <div class="meta"><span>July 17, 2026</span><span>·</span><span>209 views</span></div>
+      <div class="content"><p>🛠 Bearer is like a data-centric SAST, not code-centric</p>
+<div class="gap"></div>
+<p>Salute, look, today let's take a look at the cool SAST, which can be used in PDn.</p>
+<p>The functionality in the style is not “SQL injection on line 42”, but: “SQL injection on line 42, which processes user.email and user.phone, and the result goes to the external API on line 87.”</p>
+<p>A cool variation of working with sensitive data flow tracking? I think so. That is, the tool determines where PD gets into the application - user input, API, database, as well as how it moves through functions and where it ends up in the end - in logs, in an external service, in an API response. In this case, finds are ranked according to the presence of sensitive data in the chain.</p>
+<p>Out of the box - 473 rules, OWASP Top 10 and CWE Top 25. Plus privacy scanner: automatically generates a report on where and how personal data is processed - straight to the topic for those who work with 152-FZ and RKN. CLI open source for ELv2.</p>
+<p>Teams</p>
+<div class="gap"></div>
+<p># Basic scan of current repo</p>
+<p>bearer scan.</p>
+<div class="gap"></div>
+<p># Only critical and high</p>
+<p>bearer scan. --severity critical,high</p>
+<div class="gap"></div>
+<p># Privacy report on how PD moves and where it goes</p>
+<p>bearer scan. --report privacy</p>
+<div class="gap"></div>
+<p># Data flow map - a complete picture of data movement</p>
+<p>bearer scan. --report dataflow</p>
+<div class="gap"></div>
+<p>CI/CD integration</p>
+<div class="gap"></div>
+<p># GitHubActions</p>
+<p>- uses: bearer/bearer-action@v2</p>
+<p>  with:</p>
+<p>    severity: critical,high</p>
+<p>    format: sarif</p>
+<div class="gap"></div>
+<p># GitLab CI</p>
+<p>bearer:</p>
+<p>  image: bearer/bearer:latest</p>
+<p>  stage: security</p>
+<p>  script:</p>
+<p>    - bearer scan. --format sarif --severity critical,high &gt; bearer.sarif</p>
+<p>  artifacts:</p>
+<p>    reports:</p>
+<p>      sast: bearer.sarif</p>
+<p>  allow_failure: false</p>
+<div class="gap"></div>
+<p>Custom rule: PD in logs</p>
+<div class="gap"></div>
+<p># rules/no_pii_in_logger.yml</p>
+<p>languages:</p>
+<p>  - python</p>
+<p>metadata:</p>
+<p>id: custom_no_pii_in_logger</p>
+<p>  description: &quot;The user's personal data is included in the logger&quot;</p>
+<p>  severity: high</p>
+<p>patterns:</p>
+<p>  - pattern: |</p>
+<p>      logger.$method($user.$pii)</p>
+<div class="gap"></div>
+<p>Typical finds</p>
+<div class="gap"></div>
+<p># Email leak to the log - Bearer will catch it, but Semgrep may miss it</p>
+<p>logger.info(f&quot;Processing payment for {user.email}&quot;)</p>
+<p># PD goes to external API without masking</p>
+<p>requests.post(external_url, json={&quot;phone&quot;: user.phone, &quot;amount&quot;: amount})</p>
+<div class="gap"></div>
+<p># Passport data in the request parameters (GET = see proxy logs)</p>
+<p>redirect(f&quot;/verify?passport={user.passport_number}&quot;)</p>
+<div class="gap"></div>
+<p>Total</p>
+<p>• Not just “a vulnerability found”, but “the vulnerability and chain of movement of PD, as well as where it leaks”</p>
+<p>• Privacy report out of the box - for teams working with 152-FZ, this is a ready-made artifact for compliance</p>
+<p>• Weak point: cross-file analysis only in Pro (Cycode)</p>
+<p>• Paired with Semgrep, it covers different niches: Semgrep - business logic and custom patterns, Bearer - data privacy and personal data flows</p>
+<div class="gap"></div>
+<p>#appsec #devsecops #toolshain #sast</p></div>
+      <div class="tags"><span class="tag">#appsec</span><span class="tag">#devsecops</span><span class="tag">#toolshain</span><span class="tag">#sast</span></div>
+      <a href="https://t.me/appsecta/479" target="_blank" rel="noreferrer" class="tg-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+        Open in Telegram
+      </a>
+    </article>
+    <div class="divider"></div>
+    <footer class="footer">
+      <p>© 2026 <a href="/">geminishkv.tech</a></p>
+      <p class="disclaimer">Instagram* is a product of Meta Platforms Inc., banned in Russia as extremist.</p>
+    </footer>
+  </div>
+</body>
+</html>

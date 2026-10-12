@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Docker Level Security — geminishkv</title>
+  <meta name="description" content="🛠 Docker Level Security  Давай еще поговорим про Docker и посмотрим повнимательнее на namespaces, cgroups, chroot, capabilities, seccomp.  Понимание того, что…" />
+  <meta name="keywords" content="appsec, devsecops, reco, specialty, containersecurity, appsec, devsecops, geminishkv" />
+  <meta name="author" content="Илья Шмаков" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="canonical" href="https://geminishkv.tech/blog/279/" />
+  <link rel="sitemap" href="/sitemap.xml" />
+  <link rel="alternate" type="application/rss+xml" title="geminishkv blog" href="/rss.xml" />
+  <link rel="alternate" hreflang="ru" href="https://geminishkv.tech/blog/279/" />
+  <link rel="alternate" hreflang="en" href="https://geminishkv.tech/blog/en/279/" />
+  <link rel="alternate" hreflang="x-default" href="https://geminishkv.tech/blog/279/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://geminishkv.tech/blog/279/" />
+  <meta property="og:title" content="Docker Level Security — geminishkv" />
+  <meta property="og:description" content="🛠 Docker Level Security  Давай еще поговорим про Docker и посмотрим повнимательнее на namespaces, cgroups, chroot, capabilities, seccomp.  Понимание того, что…" />
+  <meta property="og:image" content="https://geminishkv.tech/img/blog/279.jpg" />
+  <meta property="og:image:alt" content="Docker Level Security" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:site_name" content="geminishkv" />
+  <meta property="article:published_time" content="2026-03-30" />
+  <meta property="article:author" content="Илья Шмаков" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@geminishkv" />
+  <meta name="twitter:title" content="Docker Level Security" />
+  <meta name="twitter:description" content="🛠 Docker Level Security  Давай еще поговорим про Docker и посмотрим повнимательнее на namespaces, cgroups, chroot, capabilities, seccomp.  Понимание того, что…" />
+  <meta name="twitter:image" content="https://geminishkv.tech/img/blog/279.jpg" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Docker Level Security","description":"🛠 Docker Level Security  Давай еще поговорим про Docker и посмотрим повнимательнее на namespaces, cgroups, chroot, capabilities, seccomp.  Понимание того, что…","url":"https://geminishkv.tech/blog/279/","datePublished":"2026-03-30","dateModified":"2026-03-30","image":"https://geminishkv.tech/img/blog/279.jpg","inLanguage":"ru","author":{"@type":"Person","name":"Илья Шмаков","url":"https://geminishkv.tech"},"publisher":{"@type":"Organization","name":"geminishkv","url":"https://geminishkv.tech"}}</script>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="/fonts/fonts.css" />
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0a0a0a; --card: #111111; --border: #1a1a1a;
+  --text: #e8e8e8; --muted: #888888; --accent: #D51A1A; --gold: #F9B361;
+}
+html, body { background: var(--bg); color: var(--text); font-family: 'Roboto', system-ui, sans-serif; min-height: 100dvh; line-height: 1.7; }
+a { color: inherit; text-decoration: none; }
+
+.page { max-width: 800px; margin: 0 auto; padding: 0 24px 64px; }
+
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 24px 0 32px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+.nav__brand { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 700; color: #fff; }
+.nav__brand img { width: 28px; height: 28px; border-radius: 50%; }
+.nav__back { font-size: 12px; color: var(--muted); border: 1px solid var(--border); border-radius: 4px; padding: 6px 14px; transition: color .2s, border-color .2s; letter-spacing: 0.06em; text-transform: uppercase; }
+.nav__back:hover { color: #fff; border-color: var(--accent); }
+
+.nav__right-group { display: flex; align-items: center; gap: 10px; }
+.lang-toggle { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; color: var(--accent); border: 1px solid var(--accent); border-radius: 4px; padding: 5px 10px; transition: background .2s, color .2s; }
+.lang-toggle:hover { background: var(--accent); color: #fff; }
+
+.divider { height: 1px; background: linear-gradient(to right, var(--accent), rgba(204,34,0,.15), transparent); margin: 40px 0 20px; }
+.footer { font-size: 0.65rem; color: var(--muted); text-align: center; }
+.footer a { color: var(--accent); transition: color .2s; }
+.footer a:hover { color: var(--gold); }
+.disclaimer { font-size: 0.55rem; color: #555; text-align: center; margin-top: 12px; line-height: 1.4; }
+
+@media (max-width: 600px) { .page { padding: 0 16px 48px; } }
+
+    .cover { width: 100%; border-radius: 8px; overflow: hidden; margin-bottom: 28px; max-height: 400px; }
+    .cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .meta { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; font-size: 0.72rem; color: var(--muted); }
+    .content p { font-size: 0.85rem; line-height: 1.85; margin-bottom: 8px; }
+    .content .gap { height: 10px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 24px; }
+    .tag { font-size: 0.6rem; color: var(--gold); background: rgba(249,179,97,.06); border: 1px solid rgba(249,179,97,.15); border-radius: 3px; padding: 2px 8px; }
+    .tg-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 28px; padding: 10px 20px; background: rgba(204,34,0,.1); border: 1px solid rgba(204,34,0,.25); border-radius: 6px; color: #fff; font-size: 0.75rem; font-weight: 600; transition: background .2s; }
+    .tg-link:hover { background: rgba(204,34,0,.18); }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="nav">
+      <a href="/" class="nav__brand"><img src="/img/logotype/logo_white.svg" alt="" />geminishkv</a>
+      <div class="nav__right-group">
+        <a href="/blog/en/279/" class="lang-toggle">EN</a>
+        <a href="/blog/" class="nav__back">← Все посты</a>
+      </div>
+    </nav>
+    <div class="cover"><img src="/img/blog/279.jpg" alt="Docker Level Security" /></div>
+    <article>
+      <div class="meta"><span>30 марта 2026 г.</span><span>·</span><span>173 views</span></div>
+      <div class="content"><p>🛠 Docker Level Security </p>
+<div class="gap"></div>
+<p>Давай еще поговорим про Docker и посмотрим повнимательнее на namespaces, cgroups, chroot, capabilities, seccomp. </p>
+<div class="gap"></div>
+<p>Понимание того, что происходит под капотом и как оно работает, помогает выстраивать нормальную модель безопасности, которая позволяет контролировать сборку и разделять процессы, что решает огромные проблемы при экаплуатации. </p>
+<div class="gap"></div>
+<p>Поэтому мы разберем то, на что тебе стоит обратить внимание в первую очередь.</p>
+<div class="gap"></div>
+<p>• FS: chroot и mount</p>
+<div class="gap"></div>
+<p>Внутри контейнера процессы видят корень как результат mount-операций и chroot. Поэтому следует не монтировать чувствительные директории (/var/run/docker.sock, /etc, /var/lib/docker) внутрь рабочих контейнеров. Тем более для stateful сервисов использовать чётко выделенные volume.</p>
+<div class="gap"></div>
+<p># Смотрим mount-namespace контейнера</p>
+<div class="gap"></div>
+<p>pid=&amp;#036;(docker inspect -f '{{.State.Pid}}' my-container)</p>
+<p>lsns -t mnt -p &quot;&amp;#036;pid&quot;</p>
+<div class="gap"></div>
+<p>• Namespaces: изоляция процессов, сети и хостнейма</p>
+<div class="gap"></div>
+<p>Напомню, что контейнер — это набор пространств имён: PID, NET, MNT, UTS, USER. Они отвечают за то, какие процессы ты видишь, какие точки монтирования доступны и т.д. Поэтому никогда не используй --pid=host и --network=host в обычных сервисах, потому что это антипаттерн изоляции. Для отладки следует использовать nsenter, а не пробрасывать сервисы напрямую на хост.</p>
+<div class="gap"></div>
+<p># Сравниваем namespace контейнера с хостом</p>
+<div class="gap"></div>
+<p>pid=&amp;#036;(docker inspect -f '{{.State.Pid}}' ns-demo)</p>
+<p>lsns -p &quot;&amp;#036;pid&quot;</p>
+<div class="gap"></div>
+<p># Войти в namespace контейнера для отладки</p>
+<p>nsenter -t &quot;&amp;#036;pid&quot; -n ip addr</p>
+<div class="gap"></div>
+<p>• cgroups лимиты</p>
+<div class="gap"></div>
+<p>Они контролируют, сколько CPU/ памяти может потреблять группа процессов. Docker создаёт группы под каждый контейнер автоматически, но лимиты нужно задавать ручками. Поэтому для всех боевых сервисов обязательно задавать лимиты --cpus и -m, иначе один runaway процесс кладёт всю ноду. В мониторинге следить за OOMKilled и CPU throttling и при превышении необходимо пересмотреть лимиты.</p>
+<div class="gap"></div>
+<p># Ограничить контейнер по ресурсам</p>
+<p>docker run -d --name web &amp;#092;</p>
+<p>  --cpus=&quot;1.0&quot; &amp;#092;</p>
+<p>  -m 512m --memory-reservation=256m &amp;#092;</p>
+<p>  nginx:stable</p>
+<div class="gap"></div>
+<p># Смотреть потребление в реальном времени</p>
+<p>docker stats web</p>
+<div class="gap"></div>
+<p>• Capabilities</p>
+<div class="gap"></div>
+<p>Docker по умолчанию урезает capabilities контейнера и выдает только часть привилегий ядра. Поэтому следует не использовать --privileged в проде ни при каких условиях, а также стартовая формула: --cap-drop=ALL и точечный --cap-add только того, без чего сервис реально не работает, как пример, - NET_BIND_SERVICE для портов 80/ 443.</p>
+<div class="gap"></div>
+<p># Посмотреть набор capabilities</p>
+<p>docker run --rm -it alpine sh</p>
+<p>apk add libcap &amp;&amp; capsh --print | grep cap_</p>
+<div class="gap"></div>
+<p># Дропаем все, добавляем только нужное ручками</p>
+<p>docker run --rm -it &amp;#092;</p>
+<p>  --cap-drop=ALL &amp;#092;</p>
+<p>  --cap-add=NET_BIND_SERVICE &amp;#092;</p>
+<p>  -p 80:80 nginx:stable</p>
+<div class="gap"></div>
+<p>• Seccomp и AppArmor</p>
+<div class="gap"></div>
+<p>Даже когда злоумышленник внутри контейнера, - ядро может запретить опасные syscalls или операции с файлами через seccomp/ AppArmor. Docker применяет дефолтный профиль, но для чувствительных сервисов его нужно ужимать под конкретное приложение. Рекомендую включить логирование нарушений профиля, чтобы видеть попытки эскалирований и т.д. до того, как они станут эксплойтом.</p>
+<div class="gap"></div>
+<p># Запустить с кастомным профилем</p>
+<p>docker run --rm -it &amp;#092;</p>
+<p>  --security-opt seccomp=/opt/seccomp/web.json &amp;#092;</p>
+<p>  alpine sh</p>
+<div class="gap"></div>
+<p># AppArmor</p>
+<p>docker run --rm -it &amp;#092;</p>
+<p>  --security-opt apparmor=docker-default &amp;#092;</p>
+<p>  alpine sh</p>
+<div class="gap"></div>
+<p>• Docker daemon и docker.sock</p>
+<div class="gap"></div>
+<p>docker.sock это как root на хосте. Любой, у кого есть доступ к сокету, может запустить привилегированный контейнер и выйти на хост. Поэтому следует:</p>
+<p>• не поднимать -H tcp://0.0.0.0:2375 без TLS и mTLS </p>
+<p>• не монтировать /var/run/docker.sock в рабочие контейнеры</p>
+<p>• для CI-раннеров использовать отдельный нод с отдельными правилами</p>
+<p>• доступ к группам docker выдавать только с контролем Segregation-of-Duties</p>
+<div class="gap"></div>
+<p># Кто имеет доступ к сокету</p>
+<p>ls -l /var/run/docker.sock</p>
+<p>getent group docker</p>
+<div class="gap"></div>
+<p># Минимальный systemd-конфиг: только unix-сокет</p>
+<p>ExecStart=/usr/bin/dockerd -H unix:///var/run/docker.sock</p>
+<div class="gap"></div>
+<p>#appsec #devsecops #reco #specialty #containersecurity</p></div>
+      <div class="tags"><span class="tag">#appsec</span><span class="tag">#devsecops</span><span class="tag">#reco</span><span class="tag">#specialty</span><span class="tag">#containersecurity</span></div>
+      <a href="https://t.me/appsecta/279" target="_blank" rel="noreferrer" class="tg-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+        Открыть в Telegram
+      </a>
+    </article>
+    <div class="divider"></div>
+    <footer class="footer">
+      <p>© 2026 <a href="/">geminishkv.tech</a></p>
+      <p class="disclaimer">Instagram* — продукт компании Meta Platforms Inc., деятельность которой запрещена на территории РФ как экстремистская.</p>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MultiSig for blockchain: real case — geminishkv</title>
+  <meta name="description" content="🤔 MultiSig for blockchain: real case Salute,  Today I want to share a case study that was interesting to me and was key for a crypto exchange. I think such a …" />
+  <meta name="keywords" content="devsecops, pmi, reco, research, pmcases, techsolution, term, appsec, devsecops, geminishkv" />
+  <meta name="author" content="Ilya Shmakov" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="canonical" href="https://geminishkv.tech/blog/en/409/" />
+  <link rel="sitemap" href="/sitemap.xml" />
+  <link rel="alternate" type="application/rss+xml" title="geminishkv blog" href="/rss-en.xml" />
+  <link rel="alternate" hreflang="ru" href="https://geminishkv.tech/blog/409/" />
+  <link rel="alternate" hreflang="en" href="https://geminishkv.tech/blog/en/409/" />
+  <link rel="alternate" hreflang="x-default" href="https://geminishkv.tech/blog/409/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://geminishkv.tech/blog/en/409/" />
+  <meta property="og:title" content="MultiSig for blockchain: real case — geminishkv" />
+  <meta property="og:description" content="🤔 MultiSig for blockchain: real case Salute,  Today I want to share a case study that was interesting to me and was key for a crypto exchange. I think such a …" />
+  <meta property="og:image" content="https://geminishkv.tech/img/blog/409.jpg" />
+  <meta property="og:image:alt" content="MultiSig for blockchain: real case" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="ru_RU" />
+  <meta property="og:site_name" content="geminishkv" />
+  <meta property="article:published_time" content="2026-06-10" />
+  <meta property="article:author" content="Ilya Shmakov" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@geminishkv" />
+  <meta name="twitter:title" content="MultiSig for blockchain: real case" />
+  <meta name="twitter:description" content="🤔 MultiSig for blockchain: real case Salute,  Today I want to share a case study that was interesting to me and was key for a crypto exchange. I think such a …" />
+  <meta name="twitter:image" content="https://geminishkv.tech/img/blog/409.jpg" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"MultiSig for blockchain: real case","description":"🤔 MultiSig for blockchain: real case Salute,  Today I want to share a case study that was interesting to me and was key for a crypto exchange. I think such a …","url":"https://geminishkv.tech/blog/en/409/","datePublished":"2026-06-10","dateModified":"2026-06-10","image":"https://geminishkv.tech/img/blog/409.jpg","inLanguage":"en","author":{"@type":"Person","name":"Ilya Shmakov","url":"https://geminishkv.tech"},"publisher":{"@type":"Organization","name":"geminishkv","url":"https://geminishkv.tech"}}</script>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="/fonts/fonts.css" />
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0a0a0a; --card: #111111; --border: #1a1a1a;
+  --text: #e8e8e8; --muted: #888888; --accent: #D51A1A; --gold: #F9B361;
+}
+html, body { background: var(--bg); color: var(--text); font-family: 'Roboto', system-ui, sans-serif; min-height: 100dvh; line-height: 1.7; }
+a { color: inherit; text-decoration: none; }
+
+.page { max-width: 800px; margin: 0 auto; padding: 0 24px 64px; }
+
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 24px 0 32px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+.nav__brand { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 700; color: #fff; }
+.nav__brand img { width: 28px; height: 28px; border-radius: 50%; }
+.nav__back { font-size: 12px; color: var(--muted); border: 1px solid var(--border); border-radius: 4px; padding: 6px 14px; transition: color .2s, border-color .2s; letter-spacing: 0.06em; text-transform: uppercase; }
+.nav__back:hover { color: #fff; border-color: var(--accent); }
+
+.nav__right-group { display: flex; align-items: center; gap: 10px; }
+.lang-toggle { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; color: var(--accent); border: 1px solid var(--accent); border-radius: 4px; padding: 5px 10px; transition: background .2s, color .2s; }
+.lang-toggle:hover { background: var(--accent); color: #fff; }
+
+.divider { height: 1px; background: linear-gradient(to right, var(--accent), rgba(204,34,0,.15), transparent); margin: 40px 0 20px; }
+.footer { font-size: 0.65rem; color: var(--muted); text-align: center; }
+.footer a { color: var(--accent); transition: color .2s; }
+.footer a:hover { color: var(--gold); }
+.disclaimer { font-size: 0.55rem; color: #555; text-align: center; margin-top: 12px; line-height: 1.4; }
+
+@media (max-width: 600px) { .page { padding: 0 16px 48px; } }
+
+    .cover { width: 100%; border-radius: 8px; overflow: hidden; margin-bottom: 28px; max-height: 400px; }
+    .cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .meta { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; font-size: 0.72rem; color: var(--muted); }
+    .content p { font-size: 0.85rem; line-height: 1.85; margin-bottom: 8px; }
+    .content .gap { height: 10px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 24px; }
+    .tag { font-size: 0.6rem; color: var(--gold); background: rgba(249,179,97,.06); border: 1px solid rgba(249,179,97,.15); border-radius: 3px; padding: 2px 8px; }
+    .tg-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 28px; padding: 10px 20px; background: rgba(204,34,0,.1); border: 1px solid rgba(204,34,0,.25); border-radius: 6px; color: #fff; font-size: 0.75rem; font-weight: 600; transition: background .2s; }
+    .tg-link:hover { background: rgba(204,34,0,.18); }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="nav">
+      <a href="/" class="nav__brand"><img src="/img/logotype/logo_white.svg" alt="" />geminishkv</a>
+      <div class="nav__right-group">
+        <a href="/blog/409/" class="lang-toggle">RU</a>
+        <a href="/blog/" class="nav__back">← All posts</a>
+      </div>
+    </nav>
+    <div class="cover"><img src="/img/blog/409.jpg" alt="MultiSig for blockchain: real case" /></div>
+    <article>
+      <div class="meta"><span>June 10, 2026</span><span>·</span><span>253 views</span></div>
+      <div class="content"><p>🤔 MultiSig for blockchain: real case</p>
+<div class="gap"></div>
+<p>Salute, </p>
+<p>Today I want to share a case study that was interesting to me and was key for a crypto exchange.</p>
+<p>I think such a thing with a non-standard approach will be useful for enriching your experience and seeing practice, so as not to make any additional mistakes, but to see them right away.</p>
+<p>Task: it is necessary to ensure the security of 800+ BTC per day passing through the crypto pool. Without a seed phrase on one device, without a single point of failure, without the ability to display everything with one compromised signature.</p>
+<p>How the transaction works</p>
+<p>The BTC on the address is always spent entirely - it is divided into several outgoing addresses, the remainder goes to a new address (change output), the difference between the incoming and outgoing amounts is a commission. The address contains a hash in the chain and allows you to allow specific coins to be spent. Multisignature changes this hash: instead of &quot;one signature&quot; it becomes &quot;M of N signatures&quot;</p>
+<p>M-of-N schemes</p>
+<p>• 2/3 - hot wallet of the exchange. The exchange holds one key, the second is a reserve key, and the third is held by the cybersecurity team. A minimum of two is required to confirm a transaction. The security team signs only after checking for AML and kill-switch</p>
+<p>• 3/5 – wallet with a low level of trust. Any three of the five owners can spend. Anyone can initiate a transfer, but execute it only when the required number of signatures is reached. Reduces three risks at the same time: embezzlement by one participant, hacking, loss of access</p>
+<p>• 2/3 – escrow scheme. Buyer, seller, arbitrator. Normally, the deal is closed with the signatures of both parties without an arbitrator. In case of a dispute, the arbitrator signs in favor of one of the parties. The platform physically cannot withdraw money unilaterally</p>
+<p>Case solution - how is it implemented in practice?</p>
+<p>• Signature scheme: 2/3 with separation of roles - the automatic service signs routine payments, the security key is isolated and connected only for non-standard operations or large withdrawals above the AML threshold</p>
+<p>• Checks before signing: validating the recipient’s address against the whitelist, checking the amount, checking that the change output returns to our controlled address and does not go somewhere else</p>
+<p>• Key storage: hot key in HSM on the server, backup key offline in physically isolated storage, security key from the information security team with hardware token PKCS#11 (at that time). No seed phrase in plaintext, no keys in ENV variables</p>
+<p>• Monitoring: each signed transaction is logged with metadata - who signed, at what time, amount, recipient address. Alert when signing above threshold and other AML checks</p>
+<p>Why is this more important than it seems?</p>
+<p>• Most hacks are not a blockchain hack, but a compromise of a single key: ENV leak, server hack, insider, etc. Therefore, Multisig takes the question to the level of compromise M out of N at the same time - this is a fundamentally different level of attack</p>
+<p>• For fintech products, this is also an architectural argument: if the platform is physically unable to sign a transaction unilaterally, it is not only safer, but also legally cleaner in terms of liability</p>
+<p>Total (read the full case with transaction analysis and diagrams here)</p>
+<div class="gap"></div>
+<p>• Multisig is not a feature, but an architectural principle: M out of N owners must agree on the operation</p>
+<p>• 2/3 – the minimum reasonable threshold for a hot wallet with real money</p>
+<p>• 5/7 - recommended threshold for cold storage and distribution of funds from nodes</p>
+<p>• Separation of roles, such as automatic service/security/backup reduces both operational and information security risks at the same time</p>
+<p>• Whitelist of addresses with threshold checks connected to monitoring are independent layers on top of the multi-signature itself</p>
+<p>• Compromising one key with a 2/3 scheme, and especially Escrow, is problematic</p>
+<div class="gap"></div>
+<p>Footnote</p>
+<div class="gap"></div>
+<p>• Address hash (locking script) - each unspent transaction output is protected by a condition</p>
+<p>• M-of-N (threshold signature) - scheme where N is the total number of participants with keys, M is the minimum number of signatures to complete the operation</p>
+<p>• Escrow - escrow mechanism: funds are blocked with a neutral third party until the terms of the transaction are fulfilled</p>
+<div class="gap"></div>
+<p>#devsecops #pmi #reco #research #pmcases #techsolution #term</p></div>
+      <div class="tags"><span class="tag">#devsecops</span><span class="tag">#pmi</span><span class="tag">#reco</span><span class="tag">#research</span><span class="tag">#pmcases</span><span class="tag">#techsolution</span><span class="tag">#term</span></div>
+      <a href="https://t.me/appsecta/409" target="_blank" rel="noreferrer" class="tg-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+        Open in Telegram
+      </a>
+    </article>
+    <div class="divider"></div>
+    <footer class="footer">
+      <p>© 2026 <a href="/">geminishkv.tech</a></p>
+      <p class="disclaimer">Instagram* is a product of Meta Platforms Inc., banned in Russia as extremist.</p>
+    </footer>
+  </div>
+</body>
+</html>

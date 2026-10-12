@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hacktrick for Application Security — geminishkv</title>
+  <meta name="description" content="🛠 Hacktrick for Application Security Салют, Сегодня хочу поделиться с тобой очень объемным материалом, который залетит (как дети в школу) для твоей прокачки и…" />
+  <meta name="keywords" content="appsec, devsecops, course, specialty, containersecurity, mast, dast, appsec, devsecops, geminishkv" />
+  <meta name="author" content="Илья Шмаков" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="canonical" href="https://geminishkv.tech/blog/276/" />
+  <link rel="sitemap" href="/sitemap.xml" />
+  <link rel="alternate" type="application/rss+xml" title="geminishkv blog" href="/rss.xml" />
+  <link rel="alternate" hreflang="ru" href="https://geminishkv.tech/blog/276/" />
+  <link rel="alternate" hreflang="en" href="https://geminishkv.tech/blog/en/276/" />
+  <link rel="alternate" hreflang="x-default" href="https://geminishkv.tech/blog/276/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://geminishkv.tech/blog/276/" />
+  <meta property="og:title" content="Hacktrick for Application Security — geminishkv" />
+  <meta property="og:description" content="🛠 Hacktrick for Application Security Салют, Сегодня хочу поделиться с тобой очень объемным материалом, который залетит (как дети в школу) для твоей прокачки и…" />
+  <meta property="og:image" content="https://geminishkv.tech/img/blog/276.jpg" />
+  <meta property="og:image:alt" content="Hacktrick for Application Security" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:site_name" content="geminishkv" />
+  <meta property="article:published_time" content="2026-03-27" />
+  <meta property="article:author" content="Илья Шмаков" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@geminishkv" />
+  <meta name="twitter:title" content="Hacktrick for Application Security" />
+  <meta name="twitter:description" content="🛠 Hacktrick for Application Security Салют, Сегодня хочу поделиться с тобой очень объемным материалом, который залетит (как дети в школу) для твоей прокачки и…" />
+  <meta name="twitter:image" content="https://geminishkv.tech/img/blog/276.jpg" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Hacktrick for Application Security","description":"🛠 Hacktrick for Application Security Салют, Сегодня хочу поделиться с тобой очень объемным материалом, который залетит (как дети в школу) для твоей прокачки и…","url":"https://geminishkv.tech/blog/276/","datePublished":"2026-03-27","dateModified":"2026-03-27","image":"https://geminishkv.tech/img/blog/276.jpg","inLanguage":"ru","author":{"@type":"Person","name":"Илья Шмаков","url":"https://geminishkv.tech"},"publisher":{"@type":"Organization","name":"geminishkv","url":"https://geminishkv.tech"}}</script>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="/fonts/fonts.css" />
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0a0a0a; --card: #111111; --border: #1a1a1a;
+  --text: #e8e8e8; --muted: #888888; --accent: #D51A1A; --gold: #F9B361;
+}
+html, body { background: var(--bg); color: var(--text); font-family: 'Roboto', system-ui, sans-serif; min-height: 100dvh; line-height: 1.7; }
+a { color: inherit; text-decoration: none; }
+
+.page { max-width: 800px; margin: 0 auto; padding: 0 24px 64px; }
+
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 24px 0 32px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+.nav__brand { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 700; color: #fff; }
+.nav__brand img { width: 28px; height: 28px; border-radius: 50%; }
+.nav__back { font-size: 12px; color: var(--muted); border: 1px solid var(--border); border-radius: 4px; padding: 6px 14px; transition: color .2s, border-color .2s; letter-spacing: 0.06em; text-transform: uppercase; }
+.nav__back:hover { color: #fff; border-color: var(--accent); }
+
+.nav__right-group { display: flex; align-items: center; gap: 10px; }
+.lang-toggle { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; color: var(--accent); border: 1px solid var(--accent); border-radius: 4px; padding: 5px 10px; transition: background .2s, color .2s; }
+.lang-toggle:hover { background: var(--accent); color: #fff; }
+
+.divider { height: 1px; background: linear-gradient(to right, var(--accent), rgba(204,34,0,.15), transparent); margin: 40px 0 20px; }
+.footer { font-size: 0.65rem; color: var(--muted); text-align: center; }
+.footer a { color: var(--accent); transition: color .2s; }
+.footer a:hover { color: var(--gold); }
+.disclaimer { font-size: 0.55rem; color: #555; text-align: center; margin-top: 12px; line-height: 1.4; }
+
+@media (max-width: 600px) { .page { padding: 0 16px 48px; } }
+
+    .cover { width: 100%; border-radius: 8px; overflow: hidden; margin-bottom: 28px; max-height: 400px; }
+    .cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .meta { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; font-size: 0.72rem; color: var(--muted); }
+    .content p { font-size: 0.85rem; line-height: 1.85; margin-bottom: 8px; }
+    .content .gap { height: 10px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 24px; }
+    .tag { font-size: 0.6rem; color: var(--gold); background: rgba(249,179,97,.06); border: 1px solid rgba(249,179,97,.15); border-radius: 3px; padding: 2px 8px; }
+    .tg-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 28px; padding: 10px 20px; background: rgba(204,34,0,.1); border: 1px solid rgba(204,34,0,.25); border-radius: 6px; color: #fff; font-size: 0.75rem; font-weight: 600; transition: background .2s; }
+    .tg-link:hover { background: rgba(204,34,0,.18); }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="nav">
+      <a href="/" class="nav__brand"><img src="/img/logotype/logo_white.svg" alt="" />geminishkv</a>
+      <div class="nav__right-group">
+        <a href="/blog/en/276/" class="lang-toggle">EN</a>
+        <a href="/blog/" class="nav__back">← Все посты</a>
+      </div>
+    </nav>
+    <div class="cover"><img src="/img/blog/276.jpg" alt="Hacktrick for Application Security" /></div>
+    <article>
+      <div class="meta"><span>27 марта 2026 г.</span><span>·</span><span>224 views</span></div>
+      <div class="content"><p>🛠 Hacktrick for Application Security</p>
+<div class="gap"></div>
+<p>Салют,</p>
+<p>Сегодня хочу поделиться с тобой очень объемным материалом, который залетит (как дети в школу) для твоей прокачки и понимание глубоких принципов работы безопасности - от сокета и TLS до namespaces, cgroups и секьюрных профилей ядра и т.д. Материал с описанием и деталями как ломают и как противодействовать на реальных техниках эскалации, а не только best practices из мануалов.</p>
+<div class="gap"></div>
+<p>Что важно тебе сразу взять?</p>
+<div class="gap"></div>
+<p>• В разделе Pentesting Methodology расписан весь цикл теста: от сбора активов и сканирования до эксплуатации и пост‑эксплуатации, с конкретными командами и тулзами</p>
+<p>• Для Windows и Linux есть чек‑листы локальной привилегии: что смотреть в службах, правах, реестре, драйверах, файловой системе, чтобы быстро найти точку эскалации</p>
+<p>• Отдельный раздел по Docker Security: как правильно настраивать engine, какие флаги и security‑опции использовать, как работать с сокетом, capabilities, seccomp/ AppArmor</p>
+<p>• Есть практические страницы по Docker breakout / privilege escalation — сценарии, когда у тебя есть доступ к контейнеру или docker.sock, и ты шаг за шагом превращаешь это в root на хосте через mount’ы, привилегированные контейнеры и т.п.</p>
+<p>• Для AWS/ GCP/ Azure есть отдельные гайды по перечислению ресурсов, поиску мисконфигов, уязвимых политикам и типовым сценариям атак в облаке</p>
+<p>• Обучалки формата AWS Red Team Expert / GCP Red Team Expert</p>
+<p>• Большой кусок посвящён специфике отдельных технологий: AD, SQL, веб‑фреймворки, криптопримитивы</p>
+<div class="gap"></div>
+<p>То есть, сам HackTricks даёт не теоретическую, а операционную картинку атакующего мышления: «какие команды я запускаю, что именно проверяю, что делаю дальше, если нашёл X». </p>
+<div class="gap"></div>
+<p>Из этого удобно собирать свои чек‑листы для ревью инфраструктуры: Docker, Windows, облака и т.д. — буквально адаптируешь под себя.</p>
+<div class="gap"></div>
+<p>Смотри, вот пример такого чек листа под Docker Security Checklist (приметив)</p>
+<div class="gap"></div>
+<p>**Цель:** быстро проверить, не превращён ли ваш Docker‑хост в лёгкую цель</p>
+<div class="gap"></div>
+<p>---</p>
+<div class="gap"></div>
+<p>## Docker Engine и daemon</p>
+<div class="gap"></div>
+<p>- Не светить `docker.sock`  — только HTTPS + клиентские сертификаты</p>
+<p>- Не поднимать `-H tcp://0.0.0.0:2375` без TLS</p>
+<p>- Включить rootless‑режим и обновлять Docker/ host до актуальных патчей</p>
+<div class="gap"></div>
+<p>***</p>
+<div class="gap"></div>
+<p>## Образы и registry</p>
+<div class="gap"></div>
+<p>- Использовать только официальные или свои базовые образы, не наследоваться от случайных `user/some-ubuntu-with-magic`</p>
+<p>- В Dockerfile по возможности использовать **COPY вместо ADD**, чтобы не тянуть внешние URL и не распаковывать архивы</p>
+<p>- Настроить регулярный пересбор образов, чтобы тянуть security‑патчи</p>
+<p>- Подключить сканирование образов (docker scan / Trivy / Grype) — в CI и по расписанию по registry</p>
+<div class="gap"></div>
+<p>***</p>
+<div class="gap"></div>
+<p>## Секреты и конфиги</p>
+<div class="gap"></div>
+<p>- Не класть токены/ ключи в image или в ENV, использовать секреты оркестратора (docker secrets/ k8s secrets/ vault)</p>
+<p>- Проверять сохранённые образы/ слои на наличие секретов (git‑history, слои tar внутри image)</p>
+<div class="gap"></div>
+<p>***</p>
+<div class="gap"></div>
+<p>## Runtime‑ограничения</p>
+<div class="gap"></div>
+<p>- Ограничить ресурсы контейнера (CPU, RAM, IO) через cgroups  </p>
+<p>- Настроить seccomp/ AppArmor/ SELinux‑профили, сузив доступные syscalls и операции до минимума</p>
+<div class="gap"></div>
+<p>***</p>
+<div class="gap"></div>
+<p>## Capabilities</p>
+<div class="gap"></div>
+<p>- Не использовать `--privileged` в проде: он даёт контейнеру почти полный набор прав ядра и сильно упрощает escape</p>
+<p>- Базовый подход: `--cap-drop=ALL` и затем точечно `--cap-add` только тех возможностей, без которых сервис не работает (например, `NET_BIND_SERVICE` для портов 80/443)</p>
+<div class="gap"></div>
+<p>&gt; Capabilities позволяют вместо «полного root» выдавать контейнеру только необходимые возможности ядра; чем их меньше, тем сложнее атакующему выйти из контейнера</p>
+<div class="gap"></div>
+<p>#appsec #devsecops #course #specialty #containersecurity #mast #dast</p></div>
+      <div class="tags"><span class="tag">#appsec</span><span class="tag">#devsecops</span><span class="tag">#course</span><span class="tag">#specialty</span><span class="tag">#containersecurity</span><span class="tag">#mast</span><span class="tag">#dast</span></div>
+      <a href="https://t.me/appsecta/276" target="_blank" rel="noreferrer" class="tg-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+        Открыть в Telegram
+      </a>
+    </article>
+    <div class="divider"></div>
+    <footer class="footer">
+      <p>© 2026 <a href="/">geminishkv.tech</a></p>
+      <p class="disclaimer">Instagram* — продукт компании Meta Platforms Inc., деятельность которой запрещена на территории РФ как экстремистская.</p>
+    </footer>
+  </div>
+</body>
+</html>
