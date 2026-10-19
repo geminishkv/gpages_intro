@@ -1,12 +1,53 @@
 {
-  "subscribers": 378,
+  "subscribers": 377,
   "posts": [
+    {
+      "id": "579",
+      "text": "❗️️️️️️️В МГТУ им. Н.Э. Баумана создадут факультет информационной безопасности\n\n15 октября в МГТУ им. Н.Э. Баумана состоялось заседание Учёного совета с участием министра науки и высшего образования РФ Валерия Фалькова. На заседании было принято решение о создании факультета информационной безопасности.\n\nНовый факультет появится в рамках структурных изменений научно-учебного комплекса «Информатика и системы управления». В состав факультета войдут две профильные кафедры — ИУ10 «Защита информации» и ИУ8 «Информационная безопасность». На факультете будет сосредоточено обучение по 10-й группе специальностей.\n\nДля БАУМАНТЕХа (кафедра ИУ10 «Защита информации» + РУНЦ «Безопасность») это важный этап развития направления информационной безопасности в университете: профильные кафедры объединяются в рамках самостоятельного факультета, а подготовка специалистов по ИБ получает единый организационный контур.\n\nМихаил Сычев, основатель кафедры ИУ10, первый заместитель зав. кафедрой, директор РУНЦ «Безопасность» МГТУ им. Н.Э. Баумана:\n\n«Было ясно, что создание отдельного факультета информационной безопасности необходимо, и мы давно ждали этого решения. Это закономерное развитие нашего направления».\n\nВ ближайщее время предстоит решить много орг. вопросов — со всеми справимся&#33;\n\n🤝️️️️️️ Дорогие коллеги, партнёры и студенты, поздравляем вас с этим значимым событием&#33; Для информационной безопасности в Бауманке начинается новая глава.\n\n#ИУ10_важное",
+      "date": "2026-10-16",
+      "url": "https://t.me/appsecta/579",
+      "views": 100,
+      "tags": [
+        "иу10_важное"
+      ],
+      "image": "/img/blog/579.jpg"
+    },
+    {
+      "id": "578",
+      "text": "Ну и для настроения \n\n#lol",
+      "date": "2026-10-16",
+      "url": "https://t.me/appsecta/578",
+      "views": 131,
+      "tags": [
+        "lol"
+      ],
+      "image": "/img/blog/578.jpg"
+    },
+    {
+      "id": "577",
+      "text": "Салюты,\nРодное сердце, просто хочу напомнить тебе, что в этот день, как и всегда, - лучшая (ий) 🫶🙃",
+      "date": "2026-10-16",
+      "url": "https://t.me/appsecta/577",
+      "views": 120,
+      "tags": []
+    },
+    {
+      "id": "576",
+      "text": "Только «тсссс»\n\n#lol",
+      "date": "2026-10-13",
+      "url": "https://t.me/appsecta/576",
+      "views": 163,
+      "tags": [
+        "lol"
+      ],
+      "image": "/img/blog/576.jpg"
+    },
     {
       "id": "575",
       "text": "Хохлы просто не знают, что для создания россиянам неудобств в интернете — бомбить надо Нидерланды.",
       "date": "2026-10-11",
       "url": "https://t.me/appsecta/575",
-      "views": 100,
+      "views": 195,
       "tags": [],
       "text_en": "crests simply don’t know that in order to create inconvenience for Russians on the Internet, they need to bomb the Netherlands."
     },
@@ -15,7 +56,7 @@
       "text": "https://music.apple.com/kz/artist/digimortal/343545376\n\nWelcome 🤘",
       "date": "2026-10-10",
       "url": "https://t.me/appsecta/569",
-      "views": 107,
+      "views": 146,
       "tags": [],
       "text_en": "https://music.apple.com/kz/artist/digimortal/343545376\n\nWelcome 🤘"
     },
@@ -24,7 +65,7 @@
       "text": "Digimortal - «я узнаю как дышит страх»\n\nКак работаем, так и отдыхаем 🫶🙃",
       "date": "2026-10-10",
       "url": "https://t.me/appsecta/567",
-      "views": 103,
+      "views": 142,
       "tags": [],
       "text_en": "Digimortal - “I will find out how fear breathes”\n\nAs we work, so we rest 🫶🙃"
     },
@@ -33,7 +74,7 @@
       "text": "CVE-2026-107181 Telegram Desktop  one-click account takeover via IPC injection\n*\nPOC + writeUP",
       "date": "2026-10-09",
       "url": "https://t.me/appsecta/565",
-      "views": 110,
+      "views": 160,
       "tags": [],
       "image": "/img/blog/565.jpg",
       "text_en": "CVE-2026-107181 Telegram Desktop one-click account takeover via IPC injection\n*\nPOC+writeUP"
@@ -43,7 +84,7 @@
       "text": "Салют, \nЯ как то писал про игру интересную, почему то актуалочка вспомнилась 😅🤣\n\n#lol",
       "date": "2026-10-09",
       "url": "https://t.me/appsecta/564",
-      "views": 119,
+      "views": 179,
       "tags": [
         "lol"
       ],
@@ -52,24 +93,23 @@
     },
     {
       "id": "563",
-      "text": "Салюты, \nНемного новенького по ПДн, а также игрушки с модификацией своих и/или чужих фоток, у меня тут ребятки на одной из конф прогоняли так фотку, так вот:\n\nИИ-контент с изображениями россиян без правовых оснований признан нарушением законодательства о ПД по решению Таганского районного суда Москвы, который удовлетворил иск РКН к иностранному регистратору доменов NameSilo, LLC (решение от 04.06.2026 по делу №2-1452/2026)\n\nСпор касался сайта slygen.ai, на котором РКН в ходе мониторинга выявил контент, созданный ИИ с использованием фото и видео российских граждан\n\nДетали почитать можно у коллег\n\n#compliance #gost #specialty",
+      "text": "😅Салюты, \nНемного новенького по ПДн, а также игрушки с модификацией своих и/или чужих фоток, у меня тут ребятки на одной из конф прогоняли так фотку, так вот:\n\nИИ-контент с изображениями россиян без правовых оснований признан нарушением законодательства о ПД по решению Таганского районного суда Москвы, который удовлетворил иск РКН к иностранному регистратору доменов NameSilo, LLC (решение от 04.06.2026 по делу №2-1452/2026)\n\nСпор касался сайта slygen.ai, на котором РКН в ходе мониторинга выявил контент, созданный ИИ с использованием фото и видео российских граждан\n\nДетали почитать можно у коллег\n\n#compliance #gost #specialty",
       "date": "2026-10-08",
       "url": "https://t.me/appsecta/563",
-      "views": 130,
+      "views": 175,
       "tags": [
         "compliance",
         "gost",
         "specialty"
       ],
-      "image": "/img/blog/563.jpg",
-      "text_en": "Fireworks, \nA little something new in PD, as well as toys with modifications of their own and/or other people’s photos, I had some guys at one of the conferences running a photo like this, so here it is:\nAI content with images of Russians without legal basis was recognized as a violation of the legislation on personal data by the decision of the Tagansky District Court of Moscow, which satisfied the claim of RKN against the foreign domain registrar NameSilo, LLC (decision dated 06/04/2026 in case No. 2-1452/2026)\nThe dispute concerned the site slygen.ai, on which RKN, during monitoring, identified content created by AI using photos and videos of Russian citizens\nYou can read the details from your colleagues\n\n#compliance #gost #specialty"
+      "image": "/img/blog/563.jpg"
     },
     {
       "id": "562",
       "text": "Монетизируют как могут, простите \n\n#lol",
       "date": "2026-10-07",
       "url": "https://t.me/appsecta/562",
-      "views": 139,
+      "views": 152,
       "tags": [
         "lol"
       ],
@@ -81,7 +121,7 @@
       "text": "А Касперского кто помнит с его знаменитым, пугающим до истерики поросячим визгом? 🤣\n\n#lol",
       "date": "2026-10-07",
       "url": "https://t.me/appsecta/561",
-      "views": 142,
+      "views": 155,
       "tags": [
         "lol"
       ],
@@ -93,7 +133,7 @@
       "text": "Собрал GitLab видео PoC's  🔍\n\nПри ресерче различных CVE под GitLab появилась необходимость в наглядной демонстрации PoC некоторых из них. Залил такие кейсы к себе на YouTube, вдруг кому-то тоже пригодится. \n\nИИшки поисковых систем, кстати, вообще говорят, что на эти CVE не существует публичного proof of concept. Эксклюзив, получается)\n\nRCE / command injection\n➡️ CVE-2022-0751 - Недостоверная информация, отображаемая в веб-интерфейсе Gitlab.com, позволяет жертве выполнять произвольные команды.\n➡️ CVE-2023-1708 - Копирование информации в буфер обмена может привести к выполнению команд\n➡️ CVE-2024-8402 - Maintainer может внедрить шелл-код в конфигурацию Google integration, который выполнится на компьютере жертвы при настройке интеграции.\n➡️ CVE-2024-9773 - shell injection через Harbor project name / helper scripts\n➡️ CVE-2024-8640 - Reverse shell with root access to analytics Cube instance\n\nSSRF\n➡️ CVE-2024-9870 - Full SSRF через Workspaces\n➡️ CVE-2022-4335 - Blind SSRF на repository mirroring (DNS rebinding)\n➡️ CVE-2021-22179 - SSRF в webhook / outbound requests\n➡️CVE-2025-6454 - CRLF Injection in Webhook custom header could lead to blind SSRF\n➡️CVE-2024-8977 - Full read SSRF\n\nXSS\n➡️ CVE-2024-8312 - Stored XSS with CSP bypass\n➡️ CVE-2025-7734 - Stored XSS in blob viewer\n\nDoS\n➡️ CVE-2026-1456 - DoS через tasks / GraphQL-ish нагрузку\n➡️ CVE-2026-1458 - DoS + path traversal в том же духе\n➡️ CVE-2024-8177 - Harbor DoS\n➡️ CVE-2024-12379 - серия screen recordings под нагрузкой\n\nПрочее\n➡️ CVE-2026-1230 - Несоответствие между отображаемыми и загруженными файлами\n➡️ CVE-2024-6502 - Веб-интерфейс GitLab не гарантирует целостность информации при загрузке исходного кода из релизов.\n➡️ CVE-2024-8970 - Account takeover\n➡️ CVE-2021-22203 - Arbitrary file read\n\n💫 @pentestnotes",
       "date": "2026-10-06",
       "url": "https://t.me/appsecta/560",
-      "views": 130,
+      "views": 142,
       "tags": [],
       "image": "/img/blog/560.jpg",
       "text_en": "Collected GitLab video PoC's 🔍\nWhen researching various CVEs under GitLab, it became necessary to clearly demonstrate the PoC of some of them. I uploaded such cases to my YouTube, in case someone else finds it useful.\nSearch engine AI, by the way, generally says that there is no public proof of concept for these CVEs. Exclusive, it turns out)\n\nRCE/command injection\n➡️ CVE-2022-0751 – Misleading information displayed in the Gitlab.com web interface allows a victim to execute arbitrary commands.\n➡️ CVE-2023-1708 - Copying information to the clipboard may lead to command execution\n➡️ CVE-2024-8402 - Maintainer can inject shellcode into the Google integration configuration, which will be executed on the victim’s computer when setting up the integration.\n➡️ CVE-2024-9773 - shell injection via Harbor project name / helper scripts\n➡️ CVE-2024-8640 - Reverse shell with root access to analytics Cube instance\n\nSSRF\n➡️ CVE-2024-9870 - Full SSRF via Workspaces\n➡️ CVE-2022-4335 - Blind SSRF on repository mirroring (DNS rebinding)\n➡️ CVE-2021-22179 - SSRF in webhook/outbound requests\n➡️CVE-2025-6454 - CRLF Injection in Webhook custom header could lead to blind SSRF\n➡️CVE-2024-8977 - Full read SSRF\n\nXSS\n➡️ CVE-2024-8312 - Stored XSS with CSP bypass\n➡️ CVE-2025-7734 - Stored XSS in blob viewer\n\nDoS\n➡️ CVE-2026-1456 - DoS via tasks / GraphQL-ish load\n➡️ CVE-2026-1458 - DoS + path traversal in the same spirit\n➡️ CVE-2024-8177 - Harbor DoS\n➡️ CVE-2024-12379 - a series of screen recordings under load\n\nOther\n➡️ CVE-2026-1230 - Inconsistency between displayed and downloaded files\n➡️ CVE-2024-6502 - The GitLab web interface does not guarantee the integrity of information when downloading source code from releases.\n➡️ CVE-2024-8970 - Account takeover\n➡️ CVE-2021-22203 - Arbitrary file read\n\n💫 @pentestnotes"

@@ -8,13 +8,49 @@
     <atom:link href="https://geminishkv.tech/rss.xml" rel="self" type="application/rss+xml"/>
     <description>Блог по AppSec &amp; DevSecOps — Илья Шмаков (geminishkv)</description>
     <language>ru-RU</language>
-    <lastBuildDate>Mon, 12 Oct 2026 07:41:49 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 19 Oct 2026 07:31:18 GMT</lastBuildDate>
     <managingEditor>shmakovis@inbox.ru (Илья Шмаков)</managingEditor>
     <image>
       <url>https://geminishkv.tech/img/hero/avatar.jpg</url>
       <title>geminishkv — AppSec &amp; DevSecOps Блог (RU)</title>
       <link>https://geminishkv.tech/</link>
     </image>
+    <item>
+      <title>️️️️️️️В МГТУ им. Н.Э. Баумана создадут факультет информационной безопасности</title>
+      <link>https://geminishkv.tech/blog/579/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/579/</guid>
+      <pubDate>Fri, 16 Oct 2026 00:00:00 GMT</pubDate>
+      <description>❗️️️️️️️В МГТУ им. Н.Э. Баумана создадут факультет информационной безопасности 15 октября в МГТУ им. Н.Э. Баумана состоялось заседание Учёного совета с участием министра науки и высшего образования РФ Валерия Фалькова. На заседании было принято решение о создании факультета инфор</description>
+      <enclosure url="https://geminishkv.tech/img/blog/579.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Ну и для настроения</title>
+      <link>https://geminishkv.tech/blog/578/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/578/</guid>
+      <pubDate>Fri, 16 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Ну и для настроения  #lol</description>
+      <enclosure url="https://geminishkv.tech/img/blog/578.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Салюты,</title>
+      <link>https://geminishkv.tech/blog/577/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/577/</guid>
+      <pubDate>Fri, 16 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Салюты, Родное сердце, просто хочу напомнить тебе, что в этот день, как и всегда, - лучшая (ий) 🫶🙃</description>
+      <enclosure url="https://geminishkv.tech/img/hero/avatar.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Только «тсссс»</title>
+      <link>https://geminishkv.tech/blog/576/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/576/</guid>
+      <pubDate>Tue, 13 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Только «тсссс» #lol</description>
+      <enclosure url="https://geminishkv.tech/img/blog/576.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
     <item>
       <title>Хохлы просто не знают, что для создания россиянам неудобств в интернете — бомбить надо Нидерланды.</title>
       <link>https://geminishkv.tech/blog/575/</link>
@@ -65,7 +101,7 @@
       <link>https://geminishkv.tech/blog/563/</link>
       <guid isPermaLink="true">https://geminishkv.tech/blog/563/</guid>
       <pubDate>Thu, 08 Oct 2026 00:00:00 GMT</pubDate>
-      <description>Салюты,  Немного новенького по ПДн, а также игрушки с модификацией своих и/или чужих фоток, у меня тут ребятки на одной из конф прогоняли так фотку, так вот: ИИ-контент с изображениями россиян без правовых оснований признан нарушением законодательства о ПД по решению Таганского р</description>
+      <description>😅Салюты,  Немного новенького по ПДн, а также игрушки с модификацией своих и/или чужих фоток, у меня тут ребятки на одной из конф прогоняли так фотку, так вот: ИИ-контент с изображениями россиян без правовых оснований признан нарушением законодательства о ПД по решению Таганского</description>
       <enclosure url="https://geminishkv.tech/img/blog/563.jpg" type="image/jpeg" length="0"/>
       <author>shmakovis@inbox.ru (Илья Шмаков)</author>
     </item>

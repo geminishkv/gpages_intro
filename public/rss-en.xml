@@ -8,7 +8,7 @@
     <atom:link href="https://geminishkv.tech/rss-en.xml" rel="self" type="application/rss+xml"/>
     <description>AppSec &amp; DevSecOps blog by Ilya Shmakov (geminishkv)</description>
     <language>en-US</language>
-    <lastBuildDate>Mon, 12 Oct 2026 07:41:49 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 19 Oct 2026 07:31:18 GMT</lastBuildDate>
     <managingEditor>shmakovis@inbox.ru (Ilya Shmakov)</managingEditor>
     <image>
       <url>https://geminishkv.tech/img/hero/avatar.jpg</url>
@@ -58,15 +58,6 @@
       <pubDate>Fri, 09 Oct 2026 00:00:00 GMT</pubDate>
       <description>Salute,  I once wrote about an interesting game, for some reason the actual thing came to mind 😅🤣 #lol</description>
       <enclosure url="https://geminishkv.tech/img/blog/564.jpg" type="image/jpeg" length="0"/>
-      <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
-    </item>
-    <item>
-      <title>Fireworks,</title>
-      <link>https://geminishkv.tech/blog/en/563/</link>
-      <guid isPermaLink="true">https://geminishkv.tech/blog/en/563/</guid>
-      <pubDate>Thu, 08 Oct 2026 00:00:00 GMT</pubDate>
-      <description>Fireworks,  A little something new in PD, as well as toys with modifications of their own and/or other people’s photos, I had some guys at one of the conferences running a photo like this, so here it is: AI content with images of Russians without legal basis was recognized as a v</description>
-      <enclosure url="https://geminishkv.tech/img/blog/563.jpg" type="image/jpeg" length="0"/>
       <author>shmakovis@inbox.ru (Ilya Shmakov)</author>
     </item>
     <item>
