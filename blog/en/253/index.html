@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WSO2 MI/ APIM from an AppSec point of view — geminishkv</title>
+  <meta name="description" content="🛠 WSO2 MI/ APIM from an AppSec point of view Salute,  It was a bit stuffy last week, I hope I’m the only one who experienced this, and the memes were useful f…" />
+  <meta name="keywords" content="appsec, pmicases, devsecops, techsolution, reco, toolchain, appsec, devsecops, geminishkv" />
+  <meta name="author" content="Ilya Shmakov" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="canonical" href="https://geminishkv.tech/blog/en/253/" />
+  <link rel="sitemap" href="/sitemap.xml" />
+  <link rel="alternate" type="application/rss+xml" title="geminishkv blog" href="/rss-en.xml" />
+  <link rel="alternate" hreflang="ru" href="https://geminishkv.tech/blog/253/" />
+  <link rel="alternate" hreflang="en" href="https://geminishkv.tech/blog/en/253/" />
+  <link rel="alternate" hreflang="x-default" href="https://geminishkv.tech/blog/253/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://geminishkv.tech/blog/en/253/" />
+  <meta property="og:title" content="WSO2 MI/ APIM from an AppSec point of view — geminishkv" />
+  <meta property="og:description" content="🛠 WSO2 MI/ APIM from an AppSec point of view Salute,  It was a bit stuffy last week, I hope I’m the only one who experienced this, and the memes were useful f…" />
+  <meta property="og:image" content="https://geminishkv.tech/img/blog/253.jpg" />
+  <meta property="og:image:alt" content="WSO2 MI/ APIM from an AppSec point of view" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="ru_RU" />
+  <meta property="og:site_name" content="geminishkv" />
+  <meta property="article:published_time" content="2026-03-16" />
+  <meta property="article:author" content="Ilya Shmakov" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@geminishkv" />
+  <meta name="twitter:title" content="WSO2 MI/ APIM from an AppSec point of view" />
+  <meta name="twitter:description" content="🛠 WSO2 MI/ APIM from an AppSec point of view Salute,  It was a bit stuffy last week, I hope I’m the only one who experienced this, and the memes were useful f…" />
+  <meta name="twitter:image" content="https://geminishkv.tech/img/blog/253.jpg" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"WSO2 MI/ APIM from an AppSec point of view","description":"🛠 WSO2 MI/ APIM from an AppSec point of view Salute,  It was a bit stuffy last week, I hope I’m the only one who experienced this, and the memes were useful f…","url":"https://geminishkv.tech/blog/en/253/","datePublished":"2026-03-16","dateModified":"2026-03-16","image":"https://geminishkv.tech/img/blog/253.jpg","inLanguage":"en","author":{"@type":"Person","name":"Ilya Shmakov","url":"https://geminishkv.tech"},"publisher":{"@type":"Organization","name":"geminishkv","url":"https://geminishkv.tech"}}</script>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="/fonts/fonts.css" />
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0a0a0a; --card: #111111; --border: #1a1a1a;
+  --text: #e8e8e8; --muted: #888888; --accent: #D51A1A; --gold: #F9B361;
+}
+html, body { background: var(--bg); color: var(--text); font-family: 'Roboto', system-ui, sans-serif; min-height: 100dvh; line-height: 1.7; }
+a { color: inherit; text-decoration: none; }
+
+.page { max-width: 800px; margin: 0 auto; padding: 0 24px 64px; }
+
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 24px 0 32px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+.nav__brand { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 700; color: #fff; }
+.nav__brand img { width: 28px; height: 28px; border-radius: 50%; }
+.nav__back { font-size: 12px; color: var(--muted); border: 1px solid var(--border); border-radius: 4px; padding: 6px 14px; transition: color .2s, border-color .2s; letter-spacing: 0.06em; text-transform: uppercase; }
+.nav__back:hover { color: #fff; border-color: var(--accent); }
+
+.nav__right-group { display: flex; align-items: center; gap: 10px; }
+.lang-toggle { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; color: var(--accent); border: 1px solid var(--accent); border-radius: 4px; padding: 5px 10px; transition: background .2s, color .2s; }
+.lang-toggle:hover { background: var(--accent); color: #fff; }
+
+.divider { height: 1px; background: linear-gradient(to right, var(--accent), rgba(204,34,0,.15), transparent); margin: 40px 0 20px; }
+.footer { font-size: 0.65rem; color: var(--muted); text-align: center; }
+.footer a { color: var(--accent); transition: color .2s; }
+.footer a:hover { color: var(--gold); }
+.disclaimer { font-size: 0.55rem; color: #555; text-align: center; margin-top: 12px; line-height: 1.4; }
+
+@media (max-width: 600px) { .page { padding: 0 16px 48px; } }
+
+    .cover { width: 100%; border-radius: 8px; overflow: hidden; margin-bottom: 28px; max-height: 400px; }
+    .cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .meta { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; font-size: 0.72rem; color: var(--muted); }
+    .content p { font-size: 0.85rem; line-height: 1.85; margin-bottom: 8px; }
+    .content .gap { height: 10px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 24px; }
+    .tag { font-size: 0.6rem; color: var(--gold); background: rgba(249,179,97,.06); border: 1px solid rgba(249,179,97,.15); border-radius: 3px; padding: 2px 8px; }
+    .tg-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 28px; padding: 10px 20px; background: rgba(204,34,0,.1); border: 1px solid rgba(204,34,0,.25); border-radius: 6px; color: #fff; font-size: 0.75rem; font-weight: 600; transition: background .2s; }
+    .tg-link:hover { background: rgba(204,34,0,.18); }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="nav">
+      <a href="/" class="nav__brand"><img src="/img/logotype/logo_white.svg" alt="" />geminishkv</a>
+      <div class="nav__right-group">
+        <a href="/blog/253/" class="lang-toggle">RU</a>
+        <a href="/blog/" class="nav__back">← All posts</a>
+      </div>
+    </nav>
+    <div class="cover"><img src="/img/blog/253.jpg" alt="WSO2 MI/ APIM from an AppSec point of view" /></div>
+    <article>
+      <div class="meta"><span>March 16, 2026</span><span>·</span><span>197 views</span></div>
+      <div class="content"><p>🛠 WSO2 MI/ APIM from an AppSec point of view</p>
+<div class="gap"></div>
+<p>Salute, </p>
+<p>It was a bit stuffy last week,</p>
+<p>I hope I’m the only one who experienced this, and the memes were useful for you, sometimes you need to melt your brain 🙃</p>
+<p>Often in practice and when researching integration cases, I look towards WSO2, since the days of RB, so now I want to tell you why this solution has an advantage. WSO2 is always perceived as just another ESB and API gateway, but for a secure architecture it is a cool layer between the external and internal segment of the network.</p>
+<p>Micro Integrator is responsible for integration and data exchange (you can add authentication, authorization, WS‑Security, encryption, logging and transformation of traffic before it gets into business services), and API Manager for publishing and protection, access control, traffic and developers (in fact, the border for all HTTP/ REST/ gRPC API with OAuth2/ OIDC, JWT, rate‑limit and etc.).</p>
+<p>The feature for AppSec is that Security policies are like a configuration, not a code. Passwords, certificates, signature/encryption and authentication rules are formalized as policies and MI/APIM artifacts, versioned and code-reviewed as part of the infrastructure code. AppSec Toolchain scans both the API layer and integration services in MI. That is, MI/APM logs go to SIEM, where it is possible to build a correlation between vulnerabilities and real traffic. Zero-trust approach at the integration level.</p>
+<p>Key features</p>
+<div class="gap"></div>
+<p>• Authentication and authorization at the integration level - you can check username, token, roles and rights before accessing the backend, including through WS‑Security</p>
+<p>• Encryption and signing of SOAP/WS messages, up to 16 typical WS‑Security scenarios (sign, encrypt, username token, X.509 and their combinations)</p>
+<p>• Encryption and management of secrets via keystore/truststore - protection of SSL/mutual TLS, keys and passwords, refusal of default storages</p>
+<p>• Data validation and sanitizing: checking XSD/JSON schemas, filtering fields, cutting out sensitive data before logging</p>
+<p>• Centralization of integration policies</p>
+<p>A typical circuit that protects the entire flow of API calls through common policies</p>
+<div class="gap"></div>
+<p>• Clients/partners are knocking via WSO2 APIM</p>
+<p>• APIM authenticates the request depending on the policy, validates tokens, applies throttling, IP filters, CORS, etc.</p>
+<p>• The request goes to a microservice, or to WSO2 MI, where integration flows are executed: routing, enrichment, transformation, system calls</p>
+<p>• The MI layer includes WS‑Security, message signing and encryption, additional authentication/authorization, schema verification, and payload validation.</p>
+<p>• All events go to logs, and metrics and errors go to APIM analytics and platform monitoring</p>
+<div class="gap"></div>
+<p>Total</p>
+<p>• WSO2 as a way to bring security and integration into a single managed layer</p>
+<p>• Single perimeter for APIs and integrations</p>
+<p>• Fewer application vulnerabilities</p>
+<p>• Teams focus on business logic, and typical integration and security problems are solved with ready-made WSO2 MI/APIM features; new integrations are added by configuration, not by custom code</p>
+<p>• Out of the box there is call tracing, metrics, logging and API analytics</p>
+<p>• WSO2 is tailored for scenarios where there is a cloud, on-prem, microservices, and old SOAP systems</p>
+<p>Footnote</p>
+<p>• ESB (Enterprise Service Bus) is an integration bus, that is, a centralized software layer that connects heterogeneous applications and services, taking on the routing, transformation and security of messages between them.</p>
+<p>• API Gateway - a single entry point for API clients, a reverse proxy in front of the backend set, which accepts requests, routes them to services, aggregates responses and simultaneously implements security policies (authentication, authorization, rate limiting, monitoring)</p>
+<p>#appsec #pmicases #devsecops #techsolution #reco #toolchain</p></div>
+      <div class="tags"><span class="tag">#appsec</span><span class="tag">#pmicases</span><span class="tag">#devsecops</span><span class="tag">#techsolution</span><span class="tag">#reco</span><span class="tag">#toolchain</span></div>
+      <a href="https://t.me/appsecta/253" target="_blank" rel="noreferrer" class="tg-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+        Open in Telegram
+      </a>
+    </article>
+    <div class="divider"></div>
+    <footer class="footer">
+      <p>© 2026 <a href="/">geminishkv.tech</a></p>
+      <p class="disclaimer">Instagram* is a product of Meta Platforms Inc., banned in Russia as extremist.</p>
+    </footer>
+  </div>
+</body>
+</html>

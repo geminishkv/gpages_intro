@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Information security risk analysis: why do we need risks? — geminishkv</title>
+  <meta name="description" content="🥶 Information security risk analysis: why do we need risks?  So let's get started This process - Risk Analysis, describes the practice of Shift Left (early in…" />
+  <meta name="keywords" content="riskanalys, pmi, compliance, pmcases, techsolution, appsec, devsecops, geminishkv" />
+  <meta name="author" content="Ilya Shmakov" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="canonical" href="https://geminishkv.tech/blog/en/14/" />
+  <link rel="sitemap" href="/sitemap.xml" />
+  <link rel="alternate" type="application/rss+xml" title="geminishkv blog" href="/rss-en.xml" />
+  <link rel="alternate" hreflang="ru" href="https://geminishkv.tech/blog/14/" />
+  <link rel="alternate" hreflang="en" href="https://geminishkv.tech/blog/en/14/" />
+  <link rel="alternate" hreflang="x-default" href="https://geminishkv.tech/blog/14/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://geminishkv.tech/blog/en/14/" />
+  <meta property="og:title" content="Information security risk analysis: why do we need risks? — geminishkv" />
+  <meta property="og:description" content="🥶 Information security risk analysis: why do we need risks?  So let's get started This process - Risk Analysis, describes the practice of Shift Left (early in…" />
+  <meta property="og:image" content="https://geminishkv.tech/img/blog/14.jpg" />
+  <meta property="og:image:alt" content="Information security risk analysis: why do we need risks?" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="ru_RU" />
+  <meta property="og:site_name" content="geminishkv" />
+  <meta property="article:published_time" content="2025-09-26" />
+  <meta property="article:author" content="Ilya Shmakov" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@geminishkv" />
+  <meta name="twitter:title" content="Information security risk analysis: why do we need risks?" />
+  <meta name="twitter:description" content="🥶 Information security risk analysis: why do we need risks?  So let's get started This process - Risk Analysis, describes the practice of Shift Left (early in…" />
+  <meta name="twitter:image" content="https://geminishkv.tech/img/blog/14.jpg" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Information security risk analysis: why do we need risks?","description":"🥶 Information security risk analysis: why do we need risks?  So let's get started This process - Risk Analysis, describes the practice of Shift Left (early in…","url":"https://geminishkv.tech/blog/en/14/","datePublished":"2025-09-26","dateModified":"2025-09-26","image":"https://geminishkv.tech/img/blog/14.jpg","inLanguage":"en","author":{"@type":"Person","name":"Ilya Shmakov","url":"https://geminishkv.tech"},"publisher":{"@type":"Organization","name":"geminishkv","url":"https://geminishkv.tech"}}</script>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="/fonts/fonts.css" />
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0a0a0a; --card: #111111; --border: #1a1a1a;
+  --text: #e8e8e8; --muted: #888888; --accent: #D51A1A; --gold: #F9B361;
+}
+html, body { background: var(--bg); color: var(--text); font-family: 'Roboto', system-ui, sans-serif; min-height: 100dvh; line-height: 1.7; }
+a { color: inherit; text-decoration: none; }
+
+.page { max-width: 800px; margin: 0 auto; padding: 0 24px 64px; }
+
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 24px 0 32px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+.nav__brand { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 700; color: #fff; }
+.nav__brand img { width: 28px; height: 28px; border-radius: 50%; }
+.nav__back { font-size: 12px; color: var(--muted); border: 1px solid var(--border); border-radius: 4px; padding: 6px 14px; transition: color .2s, border-color .2s; letter-spacing: 0.06em; text-transform: uppercase; }
+.nav__back:hover { color: #fff; border-color: var(--accent); }
+
+.nav__right-group { display: flex; align-items: center; gap: 10px; }
+.lang-toggle { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; color: var(--accent); border: 1px solid var(--accent); border-radius: 4px; padding: 5px 10px; transition: background .2s, color .2s; }
+.lang-toggle:hover { background: var(--accent); color: #fff; }
+
+.divider { height: 1px; background: linear-gradient(to right, var(--accent), rgba(204,34,0,.15), transparent); margin: 40px 0 20px; }
+.footer { font-size: 0.65rem; color: var(--muted); text-align: center; }
+.footer a { color: var(--accent); transition: color .2s; }
+.footer a:hover { color: var(--gold); }
+.disclaimer { font-size: 0.55rem; color: #555; text-align: center; margin-top: 12px; line-height: 1.4; }
+
+@media (max-width: 600px) { .page { padding: 0 16px 48px; } }
+
+    .cover { width: 100%; border-radius: 8px; overflow: hidden; margin-bottom: 28px; max-height: 400px; }
+    .cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .meta { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; font-size: 0.72rem; color: var(--muted); }
+    .content p { font-size: 0.85rem; line-height: 1.85; margin-bottom: 8px; }
+    .content .gap { height: 10px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 24px; }
+    .tag { font-size: 0.6rem; color: var(--gold); background: rgba(249,179,97,.06); border: 1px solid rgba(249,179,97,.15); border-radius: 3px; padding: 2px 8px; }
+    .tg-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 28px; padding: 10px 20px; background: rgba(204,34,0,.1); border: 1px solid rgba(204,34,0,.25); border-radius: 6px; color: #fff; font-size: 0.75rem; font-weight: 600; transition: background .2s; }
+    .tg-link:hover { background: rgba(204,34,0,.18); }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="nav">
+      <a href="/" class="nav__brand"><img src="/img/logotype/logo_white.svg" alt="" />geminishkv</a>
+      <div class="nav__right-group">
+        <a href="/blog/14/" class="lang-toggle">RU</a>
+        <a href="/blog/" class="nav__back">← All posts</a>
+      </div>
+    </nav>
+    <div class="cover"><img src="/img/blog/14.jpg" alt="Information security risk analysis: why do we need risks?" /></div>
+    <article>
+      <div class="meta"><span>September 26, 2025</span><span>·</span><span>190 views</span></div>
+      <div class="content"><p>🥶 Information security risk analysis: why do we need risks? </p>
+<div class="gap"></div>
+<p>So let's get started</p>
+<p>This process - Risk Analysis, describes the practice of Shift Left (early involvement) at the design stages (we'll also see how this works later?), developing a technical solution and making changes to the architecture already at the operation stage.</p>
+<p>Risk Analysis serves as a source of requirements for the team within the Lean-Agile approach when developing a product or project. This approach is especially useful and relevant when assessing the impact of features on business logic.</p>
+<p>It allows:</p>
+<p>• Control the scaling of the product and resulting problems in incidents (oh no), additional costs for urgency, regulatory requirements, sanctions and other</p>
+<p>• Timely identify and cover problems with direct, collateral damage to the business, as well as unacceptable events</p>
+<p>• Work out risk mitigation measures</p>
+<p>• Determine the minimum sufficient amount of input and output data</p>
+<div class="gap"></div>
+<p>One of the most frequently asked questions on projects:</p>
+<p>“How can we explain to businesses that our AppSec is needed and not just slowing down releases?”</p>
+<p>The answer is simple - through the influence of these information security risks on the final product and reducing its final value to the consumer. But if you just throw in your face “the vulnerability is critical, it needs to be fixed,” you will hear the eternal: “there is no budget,” “let’s get into technical debt,” “we don’t consider this a problem,” “we have never experienced problems,” “it won’t affect us.”</p>
+<p>This is why information security risk analysis is needed - a language that is equally understood by developers, business, and us as engineers.</p>
+<div class="gap"></div>
+<p>Basic steps:</p>
+<p>1. Identify where it can arrive: feature, change in infrastructure specification, change in processes, new people.</p>
+<p>2. Classify - describe (vulnerability description), by source of occurrence (threat description), impact (scenario impact description).</p>
+<p>If necessary, group, determine the implementation vector, to what extent the vulnerability is sane for the product, and then work out PRE-measures (mandatory conditions before delivery to the production environment - namely critics, blockers), POST-measures (which can be eliminated subsequently)3. Rate - probability (0 to 1) × damage × elimination × impact = level of risk. Predictive metrics (for example, % of closed findings before release) and classic legging metrics (primary and base approach) help here.</p>
+<p>4. Compare with business functions that are either changes to a technical solution, or affecting components, functions, API endpoints, etc.</p>
+<p>5. Make a decision depending on the principle of working with risks: acceptance, refusal, delegation, minimization</p>
+<div class="gap"></div>
+<p>What does it give:</p>
+<p>1. Conversation with business in clear terms (“losses”, “TTM”, “stop factor”)</p>
+<p>2. Prioritization (we don’t fix everything, but what really matters in terms of money/time)</p>
+<p>3. Transparency: the team understands why fixing these particular tasks is important</p>
+<p>The mistake of many companies is the lack of competent and understandable monitoring, namely the grouping of vulnerabilities and the impact on product risks.</p>
+<p>Working approach: map of risks of the Critical, Medium level with assessment and measures to reduce them.</p>
+<p>Conceptual example: devops needs to monitor a critical service, for this they need to understand what and when can fail in order to track a denial of service incident in time. Consequently, a very cool thought appears: “let’s send notifications to ourselves in a common chat like a cart?” The idea is very powerful and cool, but for example, for the fintech sector there may be reasonable risks caused, such as.. (see picture of the post). We need to think about what measures will reduce the risks of information security, this could be a link to an internal proxy with 2fa, cleaning logs in the channel, moderating with a bot, using channel encryption (WSO2? We’ll look at it), DAM, depersonalizing/masking sensitive data, preparing predefined templates, etc. This approach either reduces risks or gives the business insight for real responsibility.</p>
+<p>Conclusion: this is why it is important to evaluate the correct use of certain features and give them an assessment of the impact of the resulting information security risks.</p>
+<div class="gap"></div>
+<p>#riskanalys #pmi #compliance #pmcases #techsolution</p></div>
+      <div class="tags"><span class="tag">#riskanalys</span><span class="tag">#pmi</span><span class="tag">#compliance</span><span class="tag">#pmcases</span><span class="tag">#techsolution</span></div>
+      <a href="https://t.me/appsecta/14" target="_blank" rel="noreferrer" class="tg-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+        Open in Telegram
+      </a>
+    </article>
+    <div class="divider"></div>
+    <footer class="footer">
+      <p>© 2026 <a href="/">geminishkv.tech</a></p>
+      <p class="disclaimer">Instagram* is a product of Meta Platforms Inc., banned in Russia as extremist.</p>
+    </footer>
+  </div>
+</body>
+</html>

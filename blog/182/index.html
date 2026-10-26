@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Checkov SAST для IAC — geminishkv</title>
+  <meta name="description" content="🛠 Checkov SAST для IAC Салют,  Давай продолжим с тобой смотреть дальше в сторону инструментов и сегодня мы поговорим про Антона Павл.. Checkov (doc): Это инст…" />
+  <meta name="keywords" content="toolchain, sast, appsec, course, sca, sbom, containersecurity, reco, techsolution, appsec, devsecops, geminishkv" />
+  <meta name="author" content="Илья Шмаков" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="canonical" href="https://geminishkv.tech/blog/182/" />
+  <link rel="sitemap" href="/sitemap.xml" />
+  <link rel="alternate" type="application/rss+xml" title="geminishkv blog" href="/rss.xml" />
+  <link rel="alternate" hreflang="ru" href="https://geminishkv.tech/blog/182/" />
+  <link rel="alternate" hreflang="en" href="https://geminishkv.tech/blog/en/182/" />
+  <link rel="alternate" hreflang="x-default" href="https://geminishkv.tech/blog/182/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://geminishkv.tech/blog/182/" />
+  <meta property="og:title" content="Checkov SAST для IAC — geminishkv" />
+  <meta property="og:description" content="🛠 Checkov SAST для IAC Салют,  Давай продолжим с тобой смотреть дальше в сторону инструментов и сегодня мы поговорим про Антона Павл.. Checkov (doc): Это инст…" />
+  <meta property="og:image" content="https://geminishkv.tech/img/blog/182.jpg" />
+  <meta property="og:image:alt" content="Checkov SAST для IAC" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:site_name" content="geminishkv" />
+  <meta property="article:published_time" content="2026-01-19" />
+  <meta property="article:author" content="Илья Шмаков" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@geminishkv" />
+  <meta name="twitter:title" content="Checkov SAST для IAC" />
+  <meta name="twitter:description" content="🛠 Checkov SAST для IAC Салют,  Давай продолжим с тобой смотреть дальше в сторону инструментов и сегодня мы поговорим про Антона Павл.. Checkov (doc): Это инст…" />
+  <meta name="twitter:image" content="https://geminishkv.tech/img/blog/182.jpg" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Checkov SAST для IAC","description":"🛠 Checkov SAST для IAC Салют,  Давай продолжим с тобой смотреть дальше в сторону инструментов и сегодня мы поговорим про Антона Павл.. Checkov (doc): Это инст…","url":"https://geminishkv.tech/blog/182/","datePublished":"2026-01-19","dateModified":"2026-01-19","image":"https://geminishkv.tech/img/blog/182.jpg","inLanguage":"ru","author":{"@type":"Person","name":"Илья Шмаков","url":"https://geminishkv.tech"},"publisher":{"@type":"Organization","name":"geminishkv","url":"https://geminishkv.tech"}}</script>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="/fonts/fonts.css" />
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0a0a0a; --card: #111111; --border: #1a1a1a;
+  --text: #e8e8e8; --muted: #888888; --accent: #D51A1A; --gold: #F9B361;
+}
+html, body { background: var(--bg); color: var(--text); font-family: 'Roboto', system-ui, sans-serif; min-height: 100dvh; line-height: 1.7; }
+a { color: inherit; text-decoration: none; }
+
+.page { max-width: 800px; margin: 0 auto; padding: 0 24px 64px; }
+
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 24px 0 32px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+.nav__brand { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 700; color: #fff; }
+.nav__brand img { width: 28px; height: 28px; border-radius: 50%; }
+.nav__back { font-size: 12px; color: var(--muted); border: 1px solid var(--border); border-radius: 4px; padding: 6px 14px; transition: color .2s, border-color .2s; letter-spacing: 0.06em; text-transform: uppercase; }
+.nav__back:hover { color: #fff; border-color: var(--accent); }
+
+.nav__right-group { display: flex; align-items: center; gap: 10px; }
+.lang-toggle { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; color: var(--accent); border: 1px solid var(--accent); border-radius: 4px; padding: 5px 10px; transition: background .2s, color .2s; }
+.lang-toggle:hover { background: var(--accent); color: #fff; }
+
+.divider { height: 1px; background: linear-gradient(to right, var(--accent), rgba(204,34,0,.15), transparent); margin: 40px 0 20px; }
+.footer { font-size: 0.65rem; color: var(--muted); text-align: center; }
+.footer a { color: var(--accent); transition: color .2s; }
+.footer a:hover { color: var(--gold); }
+.disclaimer { font-size: 0.55rem; color: #555; text-align: center; margin-top: 12px; line-height: 1.4; }
+
+@media (max-width: 600px) { .page { padding: 0 16px 48px; } }
+
+    .cover { width: 100%; border-radius: 8px; overflow: hidden; margin-bottom: 28px; max-height: 400px; }
+    .cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .meta { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; font-size: 0.72rem; color: var(--muted); }
+    .content p { font-size: 0.85rem; line-height: 1.85; margin-bottom: 8px; }
+    .content .gap { height: 10px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 24px; }
+    .tag { font-size: 0.6rem; color: var(--gold); background: rgba(249,179,97,.06); border: 1px solid rgba(249,179,97,.15); border-radius: 3px; padding: 2px 8px; }
+    .tg-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 28px; padding: 10px 20px; background: rgba(204,34,0,.1); border: 1px solid rgba(204,34,0,.25); border-radius: 6px; color: #fff; font-size: 0.75rem; font-weight: 600; transition: background .2s; }
+    .tg-link:hover { background: rgba(204,34,0,.18); }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="nav">
+      <a href="/" class="nav__brand"><img src="/img/logotype/logo_white.svg" alt="" />geminishkv</a>
+      <div class="nav__right-group">
+        <a href="/blog/en/182/" class="lang-toggle">EN</a>
+        <a href="/blog/" class="nav__back">← Все посты</a>
+      </div>
+    </nav>
+    <div class="cover"><img src="/img/blog/182.jpg" alt="Checkov SAST для IAC" /></div>
+    <article>
+      <div class="meta"><span>19 января 2026 г.</span><span>·</span><span>222 views</span></div>
+      <div class="content"><p>🛠 Checkov SAST для IAC</p>
+<div class="gap"></div>
+<p>Салют, </p>
+<p>Давай продолжим с тобой смотреть дальше в сторону инструментов и сегодня мы поговорим про Антона Павл.. Checkov (doc):</p>
+<div class="gap"></div>
+<p>Это инструмент для статического анализа (SAST) инфраструктуры как кода (IaC), который сканирует конфигурации на предмет ошибок безопасности и соответствия стандартам до их развертывания. Open-source (Apache 2.0). Форматы отчетов: CLI, JSON, JUnit XML, GitHub Failed Only, GitLab SAST, SARIF, CSV, CycloneDX.</p>
+<div class="gap"></div>
+<p>Фишки</p>
+<div class="gap"></div>
+<p>• Анализирует Terraform, CloudFormation, Kubernetes‑манифесты, Dockerfile и другие инфраструктурные файлы на ошибки конфигурации</p>
+<p>• Подходит для автоматической проверки Docker/IaC в пайплайнах, чтобы не пропускать небезопасные настройки в образах и инфраструктуре</p>
+<p>• Может использоваться для быстрой проверки конфигураций перед коммитом, чтобы исключить базовые misconfiguration</p>
+<p>• SARIF → GitHub Security, GitLab SAST</p>
+<p>• JSON → DefectDojo, Jira</p>
+<p>• Поддержка как атрибутных (на Python), так и графовых (на YAML) политик для анализа взаимосвязей ресурсов</p>
+<div class="gap"></div>
+<p>Команды</p>
+<div class="gap"></div>
+<p>pip install checkov</p>
+<div class="gap"></div>
+<p># Сканирование директории</p>
+<p>checkov -d /path/to/terraform/code</p>
+<div class="gap"></div>
+<p># Запуск только определенных проверок (по ID или severity)</p>
+<p>checkov -d . --check CKV_AWS_20,CKV_AWS_57</p>
+<p>checkov -d . --check HIGH</p>
+<div class="gap"></div>
+<p># Пропуск определенных проверок</p>
+<p>checkov -d . --skip-check CKV_AWS_20</p>
+<div class="gap"></div>
+<p># Вывод в формате JUnit XML (для CI/CD)</p>
+<p>checkov -d . -o junitxml &gt; checkov.xml</p>
+<div class="gap"></div>
+<p># Сканирование с загрузкой внешних Terraform модулей</p>
+<p>checkov -d . --download-external-modules true</p>
+<div class="gap"></div>
+<p># Подавление конкретной проверки в коде (inline comment) checkov:skip=CKV_AWS_20</p>
+<p>resource &quot;aws_s3_bucket&quot; &quot;example&quot; {</p>
+<p>  bucket = &quot;my-bucket&quot;</p>
+<p>  acl    = &quot;private&quot;</p>
+<p>}</p>
+<div class="gap"></div>
+<p>Встраивание</p>
+<div class="gap"></div>
+<p>stage('Checkov') {</p>
+<p>  steps {</p>
+<p>    script {</p>
+<p>      docker.image('bridgecrew/checkov:latest').inside(&quot;--entrypoint=''&quot;) {</p>
+<p>        unstash 'terragoat'</p>
+<p>        try {</p>
+<p>          sh '''</p>
+<p>            checkov -d . --use-enforcement-rules -o cli -o junitxml &amp;#092;</p>
+<p>              --output-file-path console,results.xml &amp;#092;</p>
+<p>              --repo-id example/terragoat --branch master</p>
+<p>          '''</p>
+<p>          junit skipPublishingChecks: true, testResults: 'results.xml'</p>
+<p>        } catch (err) {</p>
+<p>          junit skipPublishingChecks: true, testResults: 'results.xml'</p>
+<p>          throw err</p>
+<p>        }</p>
+<p>      }</p>
+<p>    }</p>
+<p>  }</p>
+<p>  options {</p>
+<p>    preserveStashes()</p>
+<p>    timestamps()</p>
+<p>  }</p>
+<p>}</p>
+<div class="gap"></div>
+<p>Пример политик</p>
+<div class="gap"></div>
+<p>enforcement_rules:</p>
+<p>  - name: &quot;prod-enforcement&quot;</p>
+<p>    description: &quot;Строгие политики для прод-веток: блокируем Critical/High, предупреждаем по Medium.&quot;</p>
+<p>    is_default: true</p>
+<p>    criteria:</p>
+<p>      provider: &quot;terraform&quot;          # к каким сканам применяем</p>
+<p>      filter:</p>
+<p>        # пример — применять к репо terragoat в ветке master/main</p>
+<p>        repo_id: &quot;example/terragoat&quot;</p>
+<p>        branches:</p>
+<p>          - &quot;master&quot;</p>
+<p>          - &quot;main&quot;</p>
+<p>    rules:</p>
+<p>      - rule_id: &quot;CKV_AWS_*&quot;         # все AWS-политики</p>
+<p>        soft_fail_threshold: &quot;MEDIUM&quot;</p>
+<p>        hard_fail_threshold: &quot;HIGH&quot;</p>
+<div class="gap"></div>
+<p>      - rule_id: &quot;CKV_K8S_*&quot;         # все политики по Kubernetes</p>
+<p>        soft_fail_threshold: &quot;MEDIUM&quot;</p>
+<p>        hard_fail_threshold: &quot;HIGH&quot;</p>
+<div class="gap"></div>
+<p>      - rule_id: &quot;CKV_SECRET_*&quot;      # поиск секретов</p>
+<p>        soft_fail_threshold: &quot;LOW&quot;</p>
+<p>        hard_fail_threshold: &quot;MEDIUM&quot;</p>
+<div class="gap"></div>
+<p>  - name: &quot;dev-relaxed&quot;</p>
+<p>    description: &quot;Более мягкие политики для dev/feature-веток.&quot;</p>
+<p>    is_default: false</p>
+<p>    criteria:</p>
+<p>      provider: &quot;terraform&quot;</p>
+<p>      filter:</p>
+<p>        branches:</p>
+<p>          - &quot;develop&quot;</p>
+<p>          - &quot;feature/*&quot;</p>
+<p>    rules:</p>
+<p>      - rule_id: &quot;CKV_AWS_*&quot;</p>
+<p>        soft_fail_threshold: &quot;HIGH&quot;   # Medium только как инфо</p>
+<p>        hard_fail_threshold: &quot;CRITICAL&quot;</p>
+<div class="gap"></div>
+<p>      - rule_id: &quot;CKV_K8S_*&quot;</p>
+<p>        soft_fail_threshold: &quot;HIGH&quot;</p>
+<p>        hard_fail_threshold: &quot;CRITICAL&quot;</p>
+<div class="gap"></div>
+<p>      - rule_id: &quot;CKV_SECRET_*&quot;</p>
+<p>        soft_fail_threshold: &quot;MEDIUM&quot;</p>
+<p>        hard_fail_threshold: &quot;HIGH&quot;</p>
+<div class="gap"></div>
+<p>Итого: что бы тебе самому окунуться в него будет круто потыкать вот эту лабку, там ты сразу потыкаешь в Semgrep, который описывал вот тут и SCA Dependency Check.</p>
+<div class="gap"></div>
+<p>#toolchain #sast #appsec #course #sca #sbom #containersecurity #reco #techsolution</p></div>
+      <div class="tags"><span class="tag">#toolchain</span><span class="tag">#sast</span><span class="tag">#appsec</span><span class="tag">#course</span><span class="tag">#sca</span><span class="tag">#sbom</span><span class="tag">#containersecurity</span><span class="tag">#reco</span><span class="tag">#techsolution</span></div>
+      <a href="https://t.me/appsecta/182" target="_blank" rel="noreferrer" class="tg-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+        Открыть в Telegram
+      </a>
+    </article>
+    <div class="divider"></div>
+    <footer class="footer">
+      <p>© 2026 <a href="/">geminishkv.tech</a></p>
+      <p class="disclaimer">Instagram* — продукт компании Meta Platforms Inc., деятельность которой запрещена на территории РФ как экстремистская.</p>
+    </footer>
+  </div>
+</body>
+</html>

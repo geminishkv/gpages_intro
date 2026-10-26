@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cilium CNI Secure Profile — geminishkv</title>
+  <meta name="description" content="🛠 Cilium CNI Secure Profile Салют, я ранее вот тут описывал, что такое CNI, да и рассказал на примерах про Cilium, а сегодня хочу поделиться с тобой полным пр…" />
+  <meta name="keywords" content="appsec, toolchain, containersecurity, reco, techsolution, appsec, devsecops, geminishkv" />
+  <meta name="author" content="Илья Шмаков" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="canonical" href="https://geminishkv.tech/blog/193/" />
+  <link rel="sitemap" href="/sitemap.xml" />
+  <link rel="alternate" type="application/rss+xml" title="geminishkv blog" href="/rss.xml" />
+  <link rel="alternate" hreflang="ru" href="https://geminishkv.tech/blog/193/" />
+  <link rel="alternate" hreflang="en" href="https://geminishkv.tech/blog/en/193/" />
+  <link rel="alternate" hreflang="x-default" href="https://geminishkv.tech/blog/193/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://geminishkv.tech/blog/193/" />
+  <meta property="og:title" content="Cilium CNI Secure Profile — geminishkv" />
+  <meta property="og:description" content="🛠 Cilium CNI Secure Profile Салют, я ранее вот тут описывал, что такое CNI, да и рассказал на примерах про Cilium, а сегодня хочу поделиться с тобой полным пр…" />
+  <meta property="og:image" content="https://geminishkv.tech/img/blog/193.jpg" />
+  <meta property="og:image:alt" content="Cilium CNI Secure Profile" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:site_name" content="geminishkv" />
+  <meta property="article:published_time" content="2026-01-26" />
+  <meta property="article:author" content="Илья Шмаков" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@geminishkv" />
+  <meta name="twitter:title" content="Cilium CNI Secure Profile" />
+  <meta name="twitter:description" content="🛠 Cilium CNI Secure Profile Салют, я ранее вот тут описывал, что такое CNI, да и рассказал на примерах про Cilium, а сегодня хочу поделиться с тобой полным пр…" />
+  <meta name="twitter:image" content="https://geminishkv.tech/img/blog/193.jpg" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Cilium CNI Secure Profile","description":"🛠 Cilium CNI Secure Profile Салют, я ранее вот тут описывал, что такое CNI, да и рассказал на примерах про Cilium, а сегодня хочу поделиться с тобой полным пр…","url":"https://geminishkv.tech/blog/193/","datePublished":"2026-01-26","dateModified":"2026-01-26","image":"https://geminishkv.tech/img/blog/193.jpg","inLanguage":"ru","author":{"@type":"Person","name":"Илья Шмаков","url":"https://geminishkv.tech"},"publisher":{"@type":"Organization","name":"geminishkv","url":"https://geminishkv.tech"}}</script>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="/fonts/fonts.css" />
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0a0a0a; --card: #111111; --border: #1a1a1a;
+  --text: #e8e8e8; --muted: #888888; --accent: #D51A1A; --gold: #F9B361;
+}
+html, body { background: var(--bg); color: var(--text); font-family: 'Roboto', system-ui, sans-serif; min-height: 100dvh; line-height: 1.7; }
+a { color: inherit; text-decoration: none; }
+
+.page { max-width: 800px; margin: 0 auto; padding: 0 24px 64px; }
+
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 24px 0 32px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+.nav__brand { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 700; color: #fff; }
+.nav__brand img { width: 28px; height: 28px; border-radius: 50%; }
+.nav__back { font-size: 12px; color: var(--muted); border: 1px solid var(--border); border-radius: 4px; padding: 6px 14px; transition: color .2s, border-color .2s; letter-spacing: 0.06em; text-transform: uppercase; }
+.nav__back:hover { color: #fff; border-color: var(--accent); }
+
+.nav__right-group { display: flex; align-items: center; gap: 10px; }
+.lang-toggle { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; color: var(--accent); border: 1px solid var(--accent); border-radius: 4px; padding: 5px 10px; transition: background .2s, color .2s; }
+.lang-toggle:hover { background: var(--accent); color: #fff; }
+
+.divider { height: 1px; background: linear-gradient(to right, var(--accent), rgba(204,34,0,.15), transparent); margin: 40px 0 20px; }
+.footer { font-size: 0.65rem; color: var(--muted); text-align: center; }
+.footer a { color: var(--accent); transition: color .2s; }
+.footer a:hover { color: var(--gold); }
+.disclaimer { font-size: 0.55rem; color: #555; text-align: center; margin-top: 12px; line-height: 1.4; }
+
+@media (max-width: 600px) { .page { padding: 0 16px 48px; } }
+
+    .cover { width: 100%; border-radius: 8px; overflow: hidden; margin-bottom: 28px; max-height: 400px; }
+    .cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .meta { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; font-size: 0.72rem; color: var(--muted); }
+    .content p { font-size: 0.85rem; line-height: 1.85; margin-bottom: 8px; }
+    .content .gap { height: 10px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 24px; }
+    .tag { font-size: 0.6rem; color: var(--gold); background: rgba(249,179,97,.06); border: 1px solid rgba(249,179,97,.15); border-radius: 3px; padding: 2px 8px; }
+    .tg-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 28px; padding: 10px 20px; background: rgba(204,34,0,.1); border: 1px solid rgba(204,34,0,.25); border-radius: 6px; color: #fff; font-size: 0.75rem; font-weight: 600; transition: background .2s; }
+    .tg-link:hover { background: rgba(204,34,0,.18); }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="nav">
+      <a href="/" class="nav__brand"><img src="/img/logotype/logo_white.svg" alt="" />geminishkv</a>
+      <div class="nav__right-group">
+        <a href="/blog/en/193/" class="lang-toggle">EN</a>
+        <a href="/blog/" class="nav__back">← Все посты</a>
+      </div>
+    </nav>
+    <div class="cover"><img src="/img/blog/193.jpg" alt="Cilium CNI Secure Profile" /></div>
+    <article>
+      <div class="meta"><span>26 января 2026 г.</span><span>·</span><span>282 views</span></div>
+      <div class="content"><p>🛠 Cilium CNI Secure Profile</p>
+<div class="gap"></div>
+<p>Салют, я ранее вот тут описывал, что такое CNI, да и рассказал на примерах про Cilium, а сегодня хочу поделиться с тобой полным профилем для него. </p>
+<div class="gap"></div>
+<p>В этом профиле пара политик на кластерный baseline и приклад. Давай посмотрим на него поближе. Профиль дает сегментацию кластера и дополнительный app‑aware контроль на уровне HTTP, то есть best practice: кластерный каркас и специфичные правила.</p>
+<div class="gap"></div>
+<p>Что делает?</p>
+<div class="gap"></div>
+<p>- Вводит default‑deny egress для Pod’ов, кроме DNS и FQDN, чтобы скомпрометированный сервис не мог свободно сливать данные</p>
+<p>- CiliumClusterwideNetworkPolicy задаёт жёсткий baseline для всего кластера и базовую защиту multi-tenant</p>
+<p>- Ограничивает пути до backend только для БД и конкретных API, а frontend для namespaces</p>
+<p>- На L7 (HTTP, gRPC, DNS, SQL‑протоколы, запросы/ методы/ URL внутри трафика) разрешает только определённые методы, тем самым уменьшая API и предотвращая вызовы</p>
+<div class="gap"></div>
+<p>apiVersion: &quot;cilium.io/v2&quot;</p>
+<p>kind: CiliumClusterwideNetworkPolicy</p>
+<p>meta</p>
+<p>  name: &quot;cluster-baseline-default-deny-egress&quot;</p>
+<p>spec:</p>
+<p>  description: |</p>
+<p>    Кластерный baseline:</p>
+<p>      - DNS (kube-dns/CoreDNS);</p>
+<p>      - явный список внешних эндпоинтов</p>
+<div class="gap"></div>
+<p>  # Политика применяется ко всем endpoint'ам в кластере</p>
+<p>  # если CNP не переопределяет узким matchLabels</p>
+<p>  endpointSelector:</p>
+<p>    matchLabels: {}</p>
+<div class="gap"></div>
+<p>  egress:</p>
+<p>    # namespace kube-system</p>
+<p>    - toEndpoints:</p>
+<p>        - matchLabels:</p>
+<p>            &quot;k8s:io.kubernetes.pod.namespace&quot;: kube-system</p>
+<p>            &quot;k8s-app&quot;: kube-dns</p>
+<p>      toPorts:</p>
+<p>        - ports:</p>
+<p>            - port: &quot;53&quot;</p>
+<p>              protocol: ANY</p>
+<p>          rules:</p>
+<p>            dns:</p>
+<p>              - matchPattern: &quot;*&quot;  # любые домены</p>
+<div class="gap"></div>
+<p>    # трафик к ограниченному списку внешних хостов</p>
+<p>    - toFQDNs:</p>
+<p>        - matchName: &quot;api.payment.example.com&quot;</p>
+<p>      toPorts:</p>
+<p>        - ports:</p>
+<p>            - port: &quot;443&quot;</p>
+<p>              protocol: TCP</p>
+<div class="gap"></div>
+<p>  # default-deny для egress</p>
+<p>  egressDeny:</p>
+<p>    - {}</p>
+<div class="gap"></div>
+<p>apiVersion: &quot;cilium.io/v2&quot;</p>
+<p>kind: CiliumNetworkPolicy</p>
+<p>meta</p>
+<p>  name: &quot;app-frontend-backend-policy&quot;</p>
+<p>  namespace: &quot;app-namespace&quot;</p>
+<p>spec:</p>
+<p>  description: |</p>
+<p>      - ingress: только от frontend к backend</p>
+<p>      - egress backend'а: только к БД и внешнему API</p>
+<p>      - L7 принимает безопасный набор методов</p>
+<div class="gap"></div>
+<p>  # backend‑pods по метке</p>
+<p>  endpointSelector:</p>
+<p>    matchLabels:</p>
+<p>      app: my-backend</p>
+<div class="gap"></div>
+<p>ingress:</p>
+<p>    # трафик от Pod'ов с app=my-frontend</p>
+<p>    - fromEndpoints:</p>
+<p>        - matchLabels:</p>
+<p>            &quot;k8s:io.kubernetes.pod.namespace&quot;: app-namespace</p>
+<p>            app: my-frontend</p>
+<p>      toPorts:</p>
+<p>        - ports:</p>
+<p>            - port: &quot;8080&quot;</p>
+<p>              protocol: TCP</p>
+<p>          rules:</p>
+<p>            http:</p>
+<p>              - method: &quot;GET&quot;</p>
+<p>                path: &quot;^/healthz&amp;#036;&quot;</p>
+<p>              - method: &quot;GET&quot;</p>
+<p>                path: &quot;^/api/public/.*&amp;#036;&quot;</p>
+<p>              - method: &quot;POST&quot;</p>
+<p>                path: &quot;^/api/orders&amp;#036;&quot;</p>
+<p>              - headers:</p>
+<p>                 - &quot;X-API-KEY: .+&quot;</p>
+<div class="gap"></div>
+<p>  egress:</p>
+<p>    # backend'у к базе данных в том же namespace</p>
+<p>    - toEndpoints:</p>
+<p>        - matchLabels:</p>
+<p>            &quot;k8s:io.kubernetes.pod.namespace&quot;: app-namespace</p>
+<p>            app: my-database</p>
+<p>      toPorts:</p>
+<p>        - ports:</p>
+<p>            - port: &quot;5432&quot;</p>
+<p>              protocol: TCP  # PostgreSQL</p>
+<p>    # доступ к внешнему API ограниченному кластерным CNP по FQDN</p>
+<p>    - toFQDNs:</p>
+<p>        - matchName: &quot;api.payment.example.com&quot;</p>
+<p>      toPorts:</p>
+<p>        - ports:</p>
+<p>            - port: &quot;443&quot;</p>
+<p>              protocol: TCP</p>
+<div class="gap"></div>
+<p>#appsec #toolchain #containersecurity #reco #techsolution</p></div>
+      <div class="tags"><span class="tag">#appsec</span><span class="tag">#toolchain</span><span class="tag">#containersecurity</span><span class="tag">#reco</span><span class="tag">#techsolution</span></div>
+      <a href="https://t.me/appsecta/193" target="_blank" rel="noreferrer" class="tg-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+        Открыть в Telegram
+      </a>
+    </article>
+    <div class="divider"></div>
+    <footer class="footer">
+      <p>© 2026 <a href="/">geminishkv.tech</a></p>
+      <p class="disclaimer">Instagram* — продукт компании Meta Platforms Inc., деятельность которой запрещена на территории РФ как экстремистская.</p>
+    </footer>
+  </div>
+</body>
+</html>
