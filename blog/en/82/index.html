@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Typical &quot;sins&quot; of using JWT — geminishkv</title>
+  <meta name="description" content="Typical &quot;sins&quot; of using JWT  Salute,  I recently crossed paths with colleagues with whom I recorded a podcast on secure development - info here. It so happens …" />
+  <meta name="keywords" content="reco, reserch, secrets, pmcases, appsec, devsecops, geminishkv" />
+  <meta name="author" content="Ilya Shmakov" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="canonical" href="https://geminishkv.tech/blog/en/82/" />
+  <link rel="sitemap" href="/sitemap.xml" />
+  <link rel="alternate" type="application/rss+xml" title="geminishkv blog" href="/rss-en.xml" />
+  <link rel="alternate" hreflang="ru" href="https://geminishkv.tech/blog/82/" />
+  <link rel="alternate" hreflang="en" href="https://geminishkv.tech/blog/en/82/" />
+  <link rel="alternate" hreflang="x-default" href="https://geminishkv.tech/blog/82/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://geminishkv.tech/blog/en/82/" />
+  <meta property="og:title" content="Typical &quot;sins&quot; of using JWT — geminishkv" />
+  <meta property="og:description" content="Typical &quot;sins&quot; of using JWT  Salute,  I recently crossed paths with colleagues with whom I recorded a podcast on secure development - info here. It so happens …" />
+  <meta property="og:image" content="https://geminishkv.tech/img/blog/82.jpg" />
+  <meta property="og:image:alt" content="Typical &quot;sins&quot; of using JWT" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="ru_RU" />
+  <meta property="og:site_name" content="geminishkv" />
+  <meta property="article:published_time" content="2025-10-28" />
+  <meta property="article:author" content="Ilya Shmakov" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@geminishkv" />
+  <meta name="twitter:title" content="Typical &quot;sins&quot; of using JWT" />
+  <meta name="twitter:description" content="Typical &quot;sins&quot; of using JWT  Salute,  I recently crossed paths with colleagues with whom I recorded a podcast on secure development - info here. It so happens …" />
+  <meta name="twitter:image" content="https://geminishkv.tech/img/blog/82.jpg" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Typical \"sins\" of using JWT","description":"Typical \"sins\" of using JWT  Salute,  I recently crossed paths with colleagues with whom I recorded a podcast on secure development - info here. It so happens …","url":"https://geminishkv.tech/blog/en/82/","datePublished":"2025-10-28","dateModified":"2025-10-28","image":"https://geminishkv.tech/img/blog/82.jpg","inLanguage":"en","author":{"@type":"Person","name":"Ilya Shmakov","url":"https://geminishkv.tech"},"publisher":{"@type":"Organization","name":"geminishkv","url":"https://geminishkv.tech"}}</script>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="/fonts/fonts.css" />
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0a0a0a; --card: #111111; --border: #1a1a1a;
+  --text: #e8e8e8; --muted: #888888; --accent: #D51A1A; --gold: #F9B361;
+}
+html, body { background: var(--bg); color: var(--text); font-family: 'Roboto', system-ui, sans-serif; min-height: 100dvh; line-height: 1.7; }
+a { color: inherit; text-decoration: none; }
+
+.page { max-width: 800px; margin: 0 auto; padding: 0 24px 64px; }
+
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 24px 0 32px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+.nav__brand { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 700; color: #fff; }
+.nav__brand img { width: 28px; height: 28px; border-radius: 50%; }
+.nav__back { font-size: 12px; color: var(--muted); border: 1px solid var(--border); border-radius: 4px; padding: 6px 14px; transition: color .2s, border-color .2s; letter-spacing: 0.06em; text-transform: uppercase; }
+.nav__back:hover { color: #fff; border-color: var(--accent); }
+
+.nav__right-group { display: flex; align-items: center; gap: 10px; }
+.lang-toggle { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; color: var(--accent); border: 1px solid var(--accent); border-radius: 4px; padding: 5px 10px; transition: background .2s, color .2s; }
+.lang-toggle:hover { background: var(--accent); color: #fff; }
+
+.divider { height: 1px; background: linear-gradient(to right, var(--accent), rgba(204,34,0,.15), transparent); margin: 40px 0 20px; }
+.footer { font-size: 0.65rem; color: var(--muted); text-align: center; }
+.footer a { color: var(--accent); transition: color .2s; }
+.footer a:hover { color: var(--gold); }
+.disclaimer { font-size: 0.55rem; color: #555; text-align: center; margin-top: 12px; line-height: 1.4; }
+
+@media (max-width: 600px) { .page { padding: 0 16px 48px; } }
+
+    .cover { width: 100%; border-radius: 8px; overflow: hidden; margin-bottom: 28px; max-height: 400px; }
+    .cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .meta { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; font-size: 0.72rem; color: var(--muted); }
+    .content p { font-size: 0.85rem; line-height: 1.85; margin-bottom: 8px; }
+    .content .gap { height: 10px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 24px; }
+    .tag { font-size: 0.6rem; color: var(--gold); background: rgba(249,179,97,.06); border: 1px solid rgba(249,179,97,.15); border-radius: 3px; padding: 2px 8px; }
+    .tg-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 28px; padding: 10px 20px; background: rgba(204,34,0,.1); border: 1px solid rgba(204,34,0,.25); border-radius: 6px; color: #fff; font-size: 0.75rem; font-weight: 600; transition: background .2s; }
+    .tg-link:hover { background: rgba(204,34,0,.18); }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="nav">
+      <a href="/" class="nav__brand"><img src="/img/logotype/logo_white.svg" alt="" />geminishkv</a>
+      <div class="nav__right-group">
+        <a href="/blog/82/" class="lang-toggle">RU</a>
+        <a href="/blog/" class="nav__back">← All posts</a>
+      </div>
+    </nav>
+    <div class="cover"><img src="/img/blog/82.jpg" alt="Typical &quot;sins&quot; of using JWT" /></div>
+    <article>
+      <div class="meta"><span>October 28, 2025</span><span>·</span><span>210 views</span></div>
+      <div class="content"><p>Typical &quot;sins&quot; of using JWT </p>
+<div class="gap"></div>
+<p>Salute, </p>
+<p>I recently crossed paths with colleagues with whom I recorded a podcast on secure development - info here.</p>
+<p>It so happens that I would like to share with you an interesting approach, somewhat reminiscent of the classic model. These guys involved in consulting and Compliance have reviews regarding information security risks on the topic of vulnerabilities in development.</p>
+<p>One of the interesting posts is this one. The author examines bypassing authentication on the web, describes attack vectors and how to minimize them. After reading, you can see that depending on the case, we can focus on the principle itself and tighten it up.</p>
+<p>Let's look at JWT sessions in the same vein using the example of a regular implementation</p>
+<p>Let's look at such a case, when JWT is used, but the issuing mechanism is simply implemented without any security measures, which usually happens in practice, since they pay for a quick feature in the product that would work and be easy. First, let's figure out what it is:</p>
+<p>JWT (Json Web Token) is an authentication token for a user session, that is, the user himself for requests to API methods. Needed to transfer credentials to the server for each called method.</p>
+<p>Thus, the mechanism itself shows that we can limit the availability of credentials externally when interacting, for example, with a counterparty and us via API, and at the same time we do not need to contact the database directly for validation, which extends the time for executing the procedure. You can read in detail here.</p>
+<p>In this way, we explicitly ensure that encrypted values ​​can always help reduce the risk of leakage and hacking of user data if it is intercepted. It is also worth supplementing the mechanisms with special methods, such as:</p>
+<p>- by limiting its lifetime </p>
+<p>- validation initially checks the token lifetime </p>
+<p>- blacklist</p>
+<p>- secure data transmission channel</p>
+<p>- session reset after the end of the token's lifetime in an inactive state</p>
+<p>- binding to the action button in case of user activity inside the authenticated application window</p>
+<p>- debug on jwt.io outside the development team for information security tests by modification</p>
+<p>- do not transmit sensitive user data (base)</p>
+<p>- use long key phrases and change them periodically</p>
+<p>- forced change of tokens</p>
+<p>- implement a white list of allowed algorithms on the application side</p>
+<p>- sanitize data received from users</p>
+<p>- we can simply revoke the token at any time, and then reissue it </p>
+<p>- we can additionally use version control</p>
+<p>- strengthen the signature scheme according to the Escrow model</p>
+<p>- cover with salt (salt) in specific cases</p>
+<p>It turns out that we have an access token - access for each request, a refresh token - re-issue of the pair, as well as a specified time-delay life value. The structure itself consists of data in the payload, header as a type and an encryption algorithm, cripto signature.</p>
+<p>Total: the basic mechanism only implements updating and transmission, but without additional security measures attacks of the following type can be implemented:</p>
+<p>- lack of signature verification, where if you set alg none, the server will accept the unsigned token explicitly with payload and rights for example admin</p>
+<p>- manipulation of key identifiers due to the lack of key id complexity</p>
+<p>- selection of a symmetric signature key and selection of a key phrase</p>
+<p>- for asymmetric ones by changing the algorithm via hex using logical implementation errors</p>
+<p>- token interception and UrlDecode</p>
+<p>And yes, it’s still worth looking at colleagues and their cases at AKTIV.CONSULTING @aktivcons.</p>
+<div class="gap"></div>
+<p>#reco #research #secrets #pmcases</p></div>
+      <div class="tags"><span class="tag">#reco</span><span class="tag">#reserch</span><span class="tag">#secrets</span><span class="tag">#pmcases</span></div>
+      <a href="https://t.me/appsecta/82" target="_blank" rel="noreferrer" class="tg-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+        Open in Telegram
+      </a>
+    </article>
+    <div class="divider"></div>
+    <footer class="footer">
+      <p>© 2026 <a href="/">geminishkv.tech</a></p>
+      <p class="disclaimer">Instagram* is a product of Meta Platforms Inc., banned in Russia as extremist.</p>
+    </footer>
+  </div>
+</body>
+</html>

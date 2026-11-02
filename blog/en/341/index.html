@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Attack on Greenex — geminishkv</title>
+  <meta name="description" content="🙃 Attack on Greenex Oh, look, they came to me and asked for my vision on this attack, and I would like to be the first to share my thoughts with you, but firs…" />
+  <meta name="keywords" content="paper, specialty, reco, кулуарка, podster, appsec, devsecops, geminishkv" />
+  <meta name="author" content="Ilya Shmakov" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="canonical" href="https://geminishkv.tech/blog/en/341/" />
+  <link rel="sitemap" href="/sitemap.xml" />
+  <link rel="alternate" type="application/rss+xml" title="geminishkv blog" href="/rss-en.xml" />
+  <link rel="alternate" hreflang="ru" href="https://geminishkv.tech/blog/341/" />
+  <link rel="alternate" hreflang="en" href="https://geminishkv.tech/blog/en/341/" />
+  <link rel="alternate" hreflang="x-default" href="https://geminishkv.tech/blog/341/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://geminishkv.tech/blog/en/341/" />
+  <meta property="og:title" content="Attack on Greenex — geminishkv" />
+  <meta property="og:description" content="🙃 Attack on Greenex Oh, look, they came to me and asked for my vision on this attack, and I would like to be the first to share my thoughts with you, but firs…" />
+  <meta property="og:image" content="https://geminishkv.tech/img/blog/341.jpg" />
+  <meta property="og:image:alt" content="Attack on Greenex" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="ru_RU" />
+  <meta property="og:site_name" content="geminishkv" />
+  <meta property="article:published_time" content="2026-04-24" />
+  <meta property="article:author" content="Ilya Shmakov" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@geminishkv" />
+  <meta name="twitter:title" content="Attack on Greenex" />
+  <meta name="twitter:description" content="🙃 Attack on Greenex Oh, look, they came to me and asked for my vision on this attack, and I would like to be the first to share my thoughts with you, but firs…" />
+  <meta name="twitter:image" content="https://geminishkv.tech/img/blog/341.jpg" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Attack on Greenex","description":"🙃 Attack on Greenex Oh, look, they came to me and asked for my vision on this attack, and I would like to be the first to share my thoughts with you, but firs…","url":"https://geminishkv.tech/blog/en/341/","datePublished":"2026-04-24","dateModified":"2026-04-24","image":"https://geminishkv.tech/img/blog/341.jpg","inLanguage":"en","author":{"@type":"Person","name":"Ilya Shmakov","url":"https://geminishkv.tech"},"publisher":{"@type":"Organization","name":"geminishkv","url":"https://geminishkv.tech"}}</script>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="/fonts/fonts.css" />
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0a0a0a; --card: #111111; --border: #1a1a1a;
+  --text: #e8e8e8; --muted: #888888; --accent: #D51A1A; --gold: #F9B361;
+}
+html, body { background: var(--bg); color: var(--text); font-family: 'Roboto', system-ui, sans-serif; min-height: 100dvh; line-height: 1.7; }
+a { color: inherit; text-decoration: none; }
+
+.page { max-width: 800px; margin: 0 auto; padding: 0 24px 64px; }
+
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 24px 0 32px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+.nav__brand { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 700; color: #fff; }
+.nav__brand img { width: 28px; height: 28px; border-radius: 50%; }
+.nav__back { font-size: 12px; color: var(--muted); border: 1px solid var(--border); border-radius: 4px; padding: 6px 14px; transition: color .2s, border-color .2s; letter-spacing: 0.06em; text-transform: uppercase; }
+.nav__back:hover { color: #fff; border-color: var(--accent); }
+
+.nav__right-group { display: flex; align-items: center; gap: 10px; }
+.lang-toggle { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; color: var(--accent); border: 1px solid var(--accent); border-radius: 4px; padding: 5px 10px; transition: background .2s, color .2s; }
+.lang-toggle:hover { background: var(--accent); color: #fff; }
+
+.divider { height: 1px; background: linear-gradient(to right, var(--accent), rgba(204,34,0,.15), transparent); margin: 40px 0 20px; }
+.footer { font-size: 0.65rem; color: var(--muted); text-align: center; }
+.footer a { color: var(--accent); transition: color .2s; }
+.footer a:hover { color: var(--gold); }
+.disclaimer { font-size: 0.55rem; color: #555; text-align: center; margin-top: 12px; line-height: 1.4; }
+
+@media (max-width: 600px) { .page { padding: 0 16px 48px; } }
+
+    .cover { width: 100%; border-radius: 8px; overflow: hidden; margin-bottom: 28px; max-height: 400px; }
+    .cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .meta { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; font-size: 0.72rem; color: var(--muted); }
+    .content p { font-size: 0.85rem; line-height: 1.85; margin-bottom: 8px; }
+    .content .gap { height: 10px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 24px; }
+    .tag { font-size: 0.6rem; color: var(--gold); background: rgba(249,179,97,.06); border: 1px solid rgba(249,179,97,.15); border-radius: 3px; padding: 2px 8px; }
+    .tg-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 28px; padding: 10px 20px; background: rgba(204,34,0,.1); border: 1px solid rgba(204,34,0,.25); border-radius: 6px; color: #fff; font-size: 0.75rem; font-weight: 600; transition: background .2s; }
+    .tg-link:hover { background: rgba(204,34,0,.18); }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="nav">
+      <a href="/" class="nav__brand"><img src="/img/logotype/logo_white.svg" alt="" />geminishkv</a>
+      <div class="nav__right-group">
+        <a href="/blog/341/" class="lang-toggle">RU</a>
+        <a href="/blog/" class="nav__back">← All posts</a>
+      </div>
+    </nav>
+    <div class="cover"><img src="/img/blog/341.jpg" alt="Attack on Greenex" /></div>
+    <article>
+      <div class="meta"><span>April 24, 2026</span><span>·</span><span>266 views</span></div>
+      <div class="content"><p>🙃 Attack on Greenex</p>
+<p>Oh, look, they came to me and asked for my vision on this attack, and I would like to be the first to share my thoughts with you, but first let me send you a certificate:</p>
+<p>The leading crypto-ruble exchange Grinex, which provides settlements between Russian businesses and citizens in digital assets, was subjected to a large-scale cyber attack with signs of the participation of foreign intelligence services.</p>
+<p>As a result of the hack, funds of Russian users worth more than 1 billion rubles were stolen. The digital footprints and nature of the attack indicate an unprecedented level of resources and technology available exclusively to the structures of unfriendly states.</p>
+<p>Due to the attack, the Grinex exchange is forced to suspend operations. All available information has been transferred to law enforcement agencies. An application to initiate a criminal case has been filed at the location of the infrastructure.</p>
+<p>Beautiful</p>
+<p>Attacks on financial infrastructure are the most common, with the aim of obtaining double benefits from both the attack itself and the business owners. These types of attacks against groups are prepared by professional people who are either disillusioned with the profession and know how business operates, or who initially pursued research goals, but then it grew into groups with resources where bug bounty programs are no longer able to satisfy requests.</p>
+<p>Typically, researchers release exploits after an unsuccessful attempt to negotiate with a business owner, but based on practice, it is increasingly common for leaks to go directly into the network and be sold to attack groups, so they have access to 0-day vulnerabilities, a high level of operational security and the ability to remain undetected in the victim’s infrastructure for a long time.</p>
+<p>The incident with Grinex clearly illustrates the trend described above, where, according to the business itself, the attack led to the withdrawal of about 1 billion rubles (about $13 million) from dozens of crypto wallets, and then the funds were quickly converted and transferred to other addresses in TRON and Ethereum (altcoins). This requires both serious technical training and a pre-built infrastructure for money laundering.</p>
+<p>In this format, it is always impossible to correctly implement the AML mechanism and some kind of kill-switch mechanisms that would allow controlling these flows, because the owners usually consider themselves safe before an incident occurs.</p>
+<p>Points</p>
+<p>- Strict management of keys and wallets: hardware HSM, multi-signature schemes (multisig and preferably the use of 3/5 signature schemes), separation of hot wallets, strict withdrawal procedures. This not only reduces the likelihood of hacking, but rather limits the possible damage when a single node or account is compromised, naturally implying that storage nodes should be distributed</p>
+<p>- It is important to perceive attacks on infrastructure not only as a technical, but also as a geopolitical factor. If a business works with sensitive categories of clients, bypasses sanctions restrictions or is part of a critical financial ecosystem, then the level of a potential adversary should be automatically raised to take into account all possible attackers and take into account interests not only for the purpose of fraud</p>
+<p>- Segregation of duties and role models of access. One person should not be able to initiate a major operation, coordinate it, and carry it out technically. This applies to both financial transactions and the management of wallets, keys, and combat system configurations</p>
+<p>Total:</p>
+<p>Among large financial institutions and the most mature crypto platforms, such measures have already become a de facto standard. But if you look at the market as a whole, especially at rapidly growing services, some players are limited to a basic set of protection tools, not having time to rebuild the architecture and processes to meet the new level of threats. It is in this “maturity gap” that such incidents arise. Similarly, we take into account maturity models based on the lack of competencies</p>
+<p>#paper #specialty #reco #backstage #podster</p></div>
+      <div class="tags"><span class="tag">#paper</span><span class="tag">#specialty</span><span class="tag">#reco</span><span class="tag">#кулуарка</span><span class="tag">#podster</span></div>
+      <a href="https://t.me/appsecta/341" target="_blank" rel="noreferrer" class="tg-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+        Open in Telegram
+      </a>
+    </article>
+    <div class="divider"></div>
+    <footer class="footer">
+      <p>© 2026 <a href="/">geminishkv.tech</a></p>
+      <p class="disclaimer">Instagram* is a product of Meta Platforms Inc., banned in Russia as extremist.</p>
+    </footer>
+  </div>
+</body>
+</html>

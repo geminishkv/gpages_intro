@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OWASP CI/CD InfoSec Risks / part 2 — geminishkv</title>
+  <meta name="description" content="🏆 OWASP CI/CD InfoSec Risks / part 2 Fireworks, Let's look further at the risks of CI/CD, Here we looked at an example and I gave a description for the first …" />
+  <meta name="keywords" content="appsec, devsecops, specialty, research, course, sca, appsec, devsecops, geminishkv" />
+  <meta name="author" content="Ilya Shmakov" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="canonical" href="https://geminishkv.tech/blog/en/549/" />
+  <link rel="sitemap" href="/sitemap.xml" />
+  <link rel="alternate" type="application/rss+xml" title="geminishkv blog" href="/rss-en.xml" />
+  <link rel="alternate" hreflang="ru" href="https://geminishkv.tech/blog/549/" />
+  <link rel="alternate" hreflang="en" href="https://geminishkv.tech/blog/en/549/" />
+  <link rel="alternate" hreflang="x-default" href="https://geminishkv.tech/blog/549/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://geminishkv.tech/blog/en/549/" />
+  <meta property="og:title" content="OWASP CI/CD InfoSec Risks / part 2 — geminishkv" />
+  <meta property="og:description" content="🏆 OWASP CI/CD InfoSec Risks / part 2 Fireworks, Let's look further at the risks of CI/CD, Here we looked at an example and I gave a description for the first …" />
+  <meta property="og:image" content="https://geminishkv.tech/img/blog/549.jpg" />
+  <meta property="og:image:alt" content="OWASP CI/CD InfoSec Risks / part 2" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="ru_RU" />
+  <meta property="og:site_name" content="geminishkv" />
+  <meta property="article:published_time" content="2026-09-29" />
+  <meta property="article:author" content="Ilya Shmakov" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@geminishkv" />
+  <meta name="twitter:title" content="OWASP CI/CD InfoSec Risks / part 2" />
+  <meta name="twitter:description" content="🏆 OWASP CI/CD InfoSec Risks / part 2 Fireworks, Let's look further at the risks of CI/CD, Here we looked at an example and I gave a description for the first …" />
+  <meta name="twitter:image" content="https://geminishkv.tech/img/blog/549.jpg" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"OWASP CI/CD InfoSec Risks / part 2","description":"🏆 OWASP CI/CD InfoSec Risks / part 2 Fireworks, Let's look further at the risks of CI/CD, Here we looked at an example and I gave a description for the first …","url":"https://geminishkv.tech/blog/en/549/","datePublished":"2026-09-29","dateModified":"2026-09-29","image":"https://geminishkv.tech/img/blog/549.jpg","inLanguage":"en","author":{"@type":"Person","name":"Ilya Shmakov","url":"https://geminishkv.tech"},"publisher":{"@type":"Organization","name":"geminishkv","url":"https://geminishkv.tech"}}</script>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="/fonts/fonts.css" />
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0a0a0a; --card: #111111; --border: #1a1a1a;
+  --text: #e8e8e8; --muted: #888888; --accent: #D51A1A; --gold: #F9B361;
+}
+html, body { background: var(--bg); color: var(--text); font-family: 'Roboto', system-ui, sans-serif; min-height: 100dvh; line-height: 1.7; }
+a { color: inherit; text-decoration: none; }
+
+.page { max-width: 800px; margin: 0 auto; padding: 0 24px 64px; }
+
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 24px 0 32px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+.nav__brand { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 700; color: #fff; }
+.nav__brand img { width: 28px; height: 28px; border-radius: 50%; }
+.nav__back { font-size: 12px; color: var(--muted); border: 1px solid var(--border); border-radius: 4px; padding: 6px 14px; transition: color .2s, border-color .2s; letter-spacing: 0.06em; text-transform: uppercase; }
+.nav__back:hover { color: #fff; border-color: var(--accent); }
+
+.nav__right-group { display: flex; align-items: center; gap: 10px; }
+.lang-toggle { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; color: var(--accent); border: 1px solid var(--accent); border-radius: 4px; padding: 5px 10px; transition: background .2s, color .2s; }
+.lang-toggle:hover { background: var(--accent); color: #fff; }
+
+.divider { height: 1px; background: linear-gradient(to right, var(--accent), rgba(204,34,0,.15), transparent); margin: 40px 0 20px; }
+.footer { font-size: 0.65rem; color: var(--muted); text-align: center; }
+.footer a { color: var(--accent); transition: color .2s; }
+.footer a:hover { color: var(--gold); }
+.disclaimer { font-size: 0.55rem; color: #555; text-align: center; margin-top: 12px; line-height: 1.4; }
+
+@media (max-width: 600px) { .page { padding: 0 16px 48px; } }
+
+    .cover { width: 100%; border-radius: 8px; overflow: hidden; margin-bottom: 28px; max-height: 400px; }
+    .cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .meta { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; font-size: 0.72rem; color: var(--muted); }
+    .content p { font-size: 0.85rem; line-height: 1.85; margin-bottom: 8px; }
+    .content .gap { height: 10px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 24px; }
+    .tag { font-size: 0.6rem; color: var(--gold); background: rgba(249,179,97,.06); border: 1px solid rgba(249,179,97,.15); border-radius: 3px; padding: 2px 8px; }
+    .tg-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 28px; padding: 10px 20px; background: rgba(204,34,0,.1); border: 1px solid rgba(204,34,0,.25); border-radius: 6px; color: #fff; font-size: 0.75rem; font-weight: 600; transition: background .2s; }
+    .tg-link:hover { background: rgba(204,34,0,.18); }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="nav">
+      <a href="/" class="nav__brand"><img src="/img/logotype/logo_white.svg" alt="" />geminishkv</a>
+      <div class="nav__right-group">
+        <a href="/blog/549/" class="lang-toggle">RU</a>
+        <a href="/blog/" class="nav__back">← All posts</a>
+      </div>
+    </nav>
+    <div class="cover"><img src="/img/blog/549.jpg" alt="OWASP CI/CD InfoSec Risks / part 2" /></div>
+    <article>
+      <div class="meta"><span>September 29, 2026</span><span>·</span><span>94 views</span></div>
+      <div class="content"><p>🏆 OWASP CI/CD InfoSec Risks / part 2</p>
+<div class="gap"></div>
+<p>Fireworks,</p>
+<p>Let's look further at the risks of CI/CD,</p>
+<p>Here we looked at an example and I gave a description for the first 5 in the carousel.</p>
+<p>Remaining risks include hygiene of secrets before logging.</p>
+<p>There are descriptions in the carousel, and below we will analyze several blocks with a real case from the battle</p>
+<div class="gap"></div>
+<p>SEC-7 Insecure System Configuration</p>
+<p>• Unpatched CVEs - Self-hosted runners and build servers with known holes</p>
+<p>• Default credentials and open admin panels - the CI control panel sticks out onto the Internet without MFA</p>
+<p>• Redundant network - the runner sees the entire internal circuit, and not just what the assembly needs</p>
+<div class="gap"></div>
+<p>Case</p>
+<p>January 2024, Jenkins CVE-2024-23897: a bug in the CLI (args4j expanded @file) allowed arbitrary files to be read on the controller - including keys and credentials.xml - escalating to RCE</p>
+<div class="gap"></div>
+<p>Reko</p>
+<p>• CIS Benchmark for SCM/CI/registry, disable anonymous access</p>
+<p>• Do not expose CI admins to the Internet - only through VPN/bastion + MFA</p>
+<p>• Runners in an isolated segment, minimum network access</p>
+<p>SEC-9 Improper Artifact Integrity Validation</p>
+<div class="gap"></div>
+<p>• Unsigned commits and artifacts</p>
+<p>• Downloading without checking - installers and tools are pulled into the pipeline without checking checksum</p>
+<p>• Deploy by tag - :latest instead of digest</p>
+<p>• There is no SBOM and provenance, that is, it is not visible from what and how the artifact is assembled</p>
+<div class="gap"></div>
+<p>Case</p>
+<p>December 2020, SolarWinds (SUNBURST): attackers infiltrated the Orion build process itself and planted a backdoor in the build. The malware was included in an officially signed update and distributed to approximately 18k clients, including US government agencies. The code in the repository was clean - build was compromised, and no one checked the artifact with the source</p>
+<p>Reko</p>
+<div class="gap"></div>
+<p>• Signing commits and artifacts (Sigstore/ cosign), checking before deployment</p>
+<p>• Checksum verification of all tools downloaded into the pipeline</p>
+<p>• Deploy the image strictly by digest (@sha256:...), not by tag</p>
+<p>• SBOM (CycloneDX) and provenance (SLSA)</p>
+<p>• Isolation and control of the integrity of the build environment</p>
+<div class="gap"></div>
+<p>How does it work?</p>
+<div class="gap"></div>
+<p># keyless cosign</p>
+<p>cosign sign $IMG@sha256:&lt;digest&gt;</p>
+<p>cosign verify --certificate-identity=... $IMG@sha256:&lt;digest&gt;</p>
+<div class="gap"></div>
+<p># Deploy strictly according to digest (on cube), not according to :latest</p>
+<p>kubectl set image deploy/app app=$IMG@sha256:&lt;digest&gt;</p>
+<p>#appsec #devsecops #specialty #research #course #sca</p></div>
+      <div class="tags"><span class="tag">#appsec</span><span class="tag">#devsecops</span><span class="tag">#specialty</span><span class="tag">#research</span><span class="tag">#course</span><span class="tag">#sca</span></div>
+      <a href="https://t.me/appsecta/549" target="_blank" rel="noreferrer" class="tg-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+        Open in Telegram
+      </a>
+    </article>
+    <div class="divider"></div>
+    <footer class="footer">
+      <p>© 2026 <a href="/">geminishkv.tech</a></p>
+      <p class="disclaimer">Instagram* is a product of Meta Platforms Inc., banned in Russia as extremist.</p>
+    </footer>
+  </div>
+</body>
+</html>
