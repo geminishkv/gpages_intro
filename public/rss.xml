@@ -8,13 +8,85 @@
     <atom:link href="https://geminishkv.tech/rss.xml" rel="self" type="application/rss+xml"/>
     <description>Блог по AppSec &amp; DevSecOps — Илья Шмаков (geminishkv)</description>
     <language>ru-RU</language>
-    <lastBuildDate>Mon, 26 Oct 2026 07:46:30 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 02 Nov 2026 07:12:07 GMT</lastBuildDate>
     <managingEditor>shmakovis@inbox.ru (Илья Шмаков)</managingEditor>
     <image>
       <url>https://geminishkv.tech/img/hero/avatar.jpg</url>
       <title>geminishkv — AppSec &amp; DevSecOps Блог (RU)</title>
       <link>https://geminishkv.tech/</link>
     </image>
+    <item>
+      <title>Свой образ cdxgen в условиях ограничений: зачем и как?</title>
+      <link>https://geminishkv.tech/blog/607/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/607/</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>🏆 Свой образ cdxgen в условиях ограничений: зачем и как? Салют, Давай сегодня посмотрим на задачку, когда готовый cdxgen-python312 не прошёл внутренний гейт, потому что его база SLES 15.6 несёт 4 Critical и 130 High на любой версии. Но как-то странно, не? 12.6.0 тащит tar с Crit</description>
+      <enclosure url="https://geminishkv.tech/img/blog/607.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Official Claude Code VS Code extension compromised in a supply chain attack.</title>
+      <link>https://geminishkv.tech/blog/606/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/606/</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>🚨 Official Claude Code VS Code extension compromised in a supply chain attack. Attackers injected a malicious loader into v2.1.313 to install a persistent SSH backdoor, add their SSH key, and send host data. Up to 5,000 users installed the malicious version. Read: https://thehac</description>
+      <enclosure url="https://geminishkv.tech/img/blog/606.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Наша обожаемая балалайка открыла цепочку атаки</title>
+      <link>https://geminishkv.tech/blog/603/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/603/</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Наша обожаемая балалайка открыла цепочку атаки Начинай ресерчить че происходит у тебя на пк: Для VS Code в плагин Claude Code доложили: - персистанс в системе через authorized_keys, LaunchAgent на macOs и scheduled task на Windows; - reverse SSH-туннель к 134.209.82.225 #research</description>
+      <enclosure url="https://geminishkv.tech/img/blog/603.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>UPD:</title>
+      <link>https://geminishkv.tech/blog/602/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/602/</guid>
+      <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
+      <description>UPD:  • Для контекста связки - https://www.cve.org/CVERecord?id=CVE-2026-111497 • А номер по скрину - https://www.cve.org/CVERecord?id=CVE-2026-42069</description>
+      <enclosure url="https://geminishkv.tech/img/hero/avatar.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Ууу, смотри, еще красивое прилетело (байтинг)</title>
+      <link>https://geminishkv.tech/blog/601/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/601/</guid>
+      <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Ууу, смотри, еще красивое прилетело (байтинг) В тему этого разбора  #research #appsec</description>
+      <enclosure url="https://geminishkv.tech/img/blog/601.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Немного милоты</title>
+      <link>https://geminishkv.tech/blog/600/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/600/</guid>
+      <pubDate>Wed, 28 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Немного милоты 🙃</description>
+      <enclosure url="https://geminishkv.tech/img/blog/600.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Салюты,</title>
+      <link>https://geminishkv.tech/blog/599/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/599/</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Салюты,  Родное сердце, немного для настроения, послушай - меня прям драйвит 🫶🙃 Линк</description>
+      <enclosure url="https://geminishkv.tech/img/blog/599.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Преследование мемом</title>
+      <link>https://geminishkv.tech/blog/598/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/598/</guid>
+      <pubDate>Mon, 26 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Преследование мемом #lol</description>
+      <enclosure url="https://geminishkv.tech/img/blog/598.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
     <item>
       <title>AppSec &amp; DevSecOps</title>
       <link>https://geminishkv.tech/blog/596/</link>
@@ -39,7 +111,7 @@
       <guid isPermaLink="true">https://geminishkv.tech/blog/591/</guid>
       <pubDate>Thu, 22 Oct 2026 00:00:00 GMT</pubDate>
       <description>🧪 PHP2Shell - от громких заголовков к практической эксплуатации После раскрытия PHP2Shell в СМИ заговорили о массовых взломах серверов с PHP. Однако наличие критической уязвимости еще не означает, что для нее существует универсальный и стабильный RCE-эксплойт. Мы проанализировал</description>
-      <enclosure url="https://geminishkv.techhttps://cdn4.telesco.pe/file/gAhqXndho-KK_WC8KxJ58HcGfXA0jzMnn4fFulq_1WPBVrpbZs0cC-jDmkeMzUD1gTeHebc2nGOI3IMrPKzyGtdUmJkgh9yEneMsglsCeGpr_1QURmuZWQRT0CP3NOTrO3WEhgSFMHxdclAzZLKKa8iHNVKPX6qnM4zpE3I04XpfKPzCRPJ4idrhjgZzknf11nY-_icunwV3TnkCyQODVFNFMKidwPa0XjpMs_y2dP0aWABsPfy9kF0cQ_oOQ3TBWjM9bDrfm_hItJYhCIXi3P_kZSINOaIowWK8BG9nutX4a0EKTbpmfao6F1TFOvEUBToAmg2c7nf2lQJGJVGelw.jpg" type="image/jpeg" length="0"/>
+      <enclosure url="https://geminishkv.tech/img/blog/591.jpg" type="image/jpeg" length="0"/>
       <author>shmakovis@inbox.ru (Илья Шмаков)</author>
     </item>
     <item>

@@ -1,12 +1,102 @@
 {
-  "subscribers": 377,
+  "subscribers": 375,
   "posts": [
+    {
+      "id": "607",
+      "text": "🏆 Свой образ cdxgen в условиях ограничений: зачем и как?\n\nСалют,\nДавай сегодня посмотрим на задачку, когда готовый cdxgen-python312 не прошёл внутренний гейт, потому что его база SLES 15.6 несёт 4 Critical и 130 High на любой версии. Но как-то странно, не?\n\n12.6.0 тащит tar с Critical, и overrides тут не спасают, так как гейт смотрит опубликованный пакет, а не итоговое дерево.\n\nВзяли 12.8.3 с чистым собственным lock, а undici 7.28.0 (High CVE-2026-13697) подняли через overrides до 7.30.1 — уже для чистоты своего образа и просто для кайфа\n\nЭто уязвимости базы, а не cdxgen, но гейту это безразлично и поэтому приходится решать не стандарный кейс. Есть конечно еще временный вариант под Java 11, но ставил проект через pip внутри образа, то есть исполнял чужой сборочный код - что тоже не самое корректное\n\nЧто пришлось собрать и сделать безопасным?\n\n• Многоэтапная сборка: \n— node:24-alpine\n— npm игнорирование --omit=dev, --ignore-scripts\n— lock-файл с хешами, также все базы по digest (версия cdxgen берётся из package.json, в конфиг шага CI уходит адрес образа по digest)\n• Вшита учётку реестра и корень внутреннего УЦ, которая приходят секретами сборки и в слоях их нет\n• База distroless/nodejs24-debian13:nonroot без shell и пакетного менеджера\n• Стоит USER 65532, а HEALTHCHECK NONE так как одноразовый CLI\n— uv и Python 3.12 (stdlib без pip, ensurepip, idle и tkinter) только для резолва проектов без lock-файла\n— при сборке: hadolint, Checkov, trivy config, SBOM образа, trivy image\n— Публикация в registry только при нуле Critical и High сработок\n\nКак запускаем?\n\n• Каждый каталог проекта — это отдельный запуск с --no-recurse (рекурсивный проход брал uv.lock и терял requirements.txt соседнего каталога)\n• Каталог монтируется только на чтение, SBOM забирается docker cp, а на агентах docker rootless\n• Есть lock-файл: --network none, --no-install-deps\n• Нет lock-файла: \n— uv pip compile --no-build --no-config --no-python-downloads по внутреннему индексу, то есть ничего не ставится и не собирается, код проекта и зависимостей не исполняется\n— --no-config не даёт проекту подменить индекс через uv.toml\n• cdxgen строит SBOM по полученному requirements.txt уже без сети\n• Учётка индекса попадает в контейнер только по имени переменной окружения\n• Вход в реестр — во временный DOCKER_CONFIG, который удаляется \n• Dev-зависимости режет отдельный фильтр по разметке lock-файлов (npm, yarn, pnpm, uv, poetry, pdm, Pipfile, composer) \n• Для Frontend зависимости бандла часто лежат в devDependencies и едут в прод\n\nКак контролируем?\n\n• Образ пересобирается при новой версии cdxgen и обновлении баз отдельной джобой с теми же проверками\n• Trivy не видит интерпретатор Python в /usr/local: пакетных метаданных у него нет (обновление путем смены digest базы)\n• Пакет без колёс или проект с динамическими метаданными через --no-build не проходит: шаг падает громко, с именем пакета, а не отдаёт пустой SBOM\n\nTroubleshoot\n\n• BuildKit при --network host пишет свой /etc/hosts: имя внутреннего реестра уходит во внешний DNS и лечится --add-host\n• В сетях контейнеров на агентах нет DNS: резолв идёт с --network host, режим lock-файла — с --network none\n• netrc под rootless не читается, uv молча идёт без учётки\n\nИтог\n\n• Для тебя готовый образ может оказаться не подходящим длявнутреннего контура, потому что база не проходила гейт, а режим без lock-файла исполнял код проекта\n• При этом свой образ на distroless закрыл обе проблемы: без shell, от nonroot, по digest, ноль Critical и High уязвимостей - а логика и функционал не потеряны, только ограничены тем, что у тебя используется в контуре\n• SBOM строится по каждому каталогу: с lock-файлом без сети, без lock-файла — через uv без сборки\n• Боль — поддержка образа и пара записанных слепых пятен (лучше чем безусловное принятие рисков ИБ)\n\n#appsec #devsecops #specialty #toolchain #techsolution #paper #sbom #sca #containersecurity #pmcases",
+      "date": "2026-10-30",
+      "url": "https://t.me/appsecta/607",
+      "views": 69,
+      "tags": [
+        "appsec",
+        "devsecops",
+        "specialty",
+        "toolchain",
+        "techsolution",
+        "paper",
+        "sbom",
+        "sca",
+        "containersecurity",
+        "pmcases"
+      ],
+      "image": "/img/blog/607.jpg"
+    },
+    {
+      "id": "606",
+      "text": "🚨 Official Claude Code VS Code extension compromised in a supply chain attack.\n\nAttackers injected a malicious loader into v2.1.313 to install a persistent SSH backdoor, add their SSH key, and send host data.\n\nUp to 5,000 users installed the malicious version.\n\nRead: https://thehackernews.com/2026/10/official-claude-code-vs-code-extension.html",
+      "date": "2026-10-30",
+      "url": "https://t.me/appsecta/606",
+      "views": 90,
+      "tags": [],
+      "image": "/img/blog/606.jpg"
+    },
+    {
+      "id": "603",
+      "text": "Наша обожаемая балалайка открыла цепочку атаки\n\nНачинай ресерчить че происходит у тебя на пк:\n\nДля VS Code в плагин Claude Code доложили:\n- персистанс в системе через authorized_keys, LaunchAgent на macOs и scheduled task на Windows;\n- reverse SSH-туннель к 134.209.82.225\n\n#research #appsec",
+      "date": "2026-10-30",
+      "url": "https://t.me/appsecta/603",
+      "views": 110,
+      "tags": [
+        "research",
+        "appsec"
+      ],
+      "image": "/img/blog/603.jpg"
+    },
+    {
+      "id": "602",
+      "text": "UPD: \n\n• Для контекста связки - https://www.cve.org/CVERecord?id=CVE-2026-111497\n• А номер по скрину - https://www.cve.org/CVERecord?id=CVE-2026-42069",
+      "date": "2026-10-29",
+      "url": "https://t.me/appsecta/602",
+      "views": 111,
+      "tags": []
+    },
+    {
+      "id": "601",
+      "text": "Ууу, смотри, еще красивое прилетело (байтинг)\nВ тему этого разбора \n\n#research #appsec",
+      "date": "2026-10-29",
+      "url": "https://t.me/appsecta/601",
+      "views": 117,
+      "tags": [
+        "research",
+        "appsec"
+      ],
+      "image": "/img/blog/601.jpg"
+    },
+    {
+      "id": "600",
+      "text": "Немного милоты 🙃",
+      "date": "2026-10-28",
+      "url": "https://t.me/appsecta/600",
+      "views": 122,
+      "tags": [],
+      "image": "/img/blog/600.jpg"
+    },
+    {
+      "id": "599",
+      "text": "Салюты, \nРодное сердце, немного для настроения, послушай - меня прям драйвит 🫶🙃\n\nЛинк",
+      "date": "2026-10-27",
+      "url": "https://t.me/appsecta/599",
+      "views": 139,
+      "tags": [],
+      "image": "/img/blog/599.jpg"
+    },
+    {
+      "id": "598",
+      "text": "Преследование мемом\n\n#lol",
+      "date": "2026-10-26",
+      "url": "https://t.me/appsecta/598",
+      "views": 140,
+      "tags": [
+        "lol"
+      ],
+      "image": "/img/blog/598.jpg"
+    },
     {
       "id": "596",
       "text": "🙃\n\n#lol",
       "date": "2026-10-23",
       "url": "https://t.me/appsecta/596",
-      "views": 88,
+      "views": 195,
       "tags": [
         "lol"
       ],
@@ -17,7 +107,7 @@
       "text": "Не понял 🌚",
       "date": "2026-10-23",
       "url": "https://t.me/appsecta/592",
-      "views": 83,
+      "views": 163,
       "tags": [],
       "image": "/img/blog/592.jpg"
     },
@@ -26,7 +116,7 @@
       "text": "🧪 PHP2Shell - от громких заголовков к практической эксплуатации\n\nПосле раскрытия PHP2Shell в СМИ заговорили о массовых взломах серверов с PHP. Однако наличие критической уязвимости еще не означает, что для нее существует универсальный и стабильный RCE-эксплойт.\n\nМы проанализировали публичные PoC и развернули 11 лабораторных стендов с PHP 7.2-8.5, включая полноценный WordPress с MySQL, чтобы оценить воспроизводимость атак на разных версиях и конфигурациях.\n\n🔬 Результаты испытаний:\n1. PHP 8.4.26 и 8.5.11 - подтверждено удаленное выполнение команд (RCE)\n2. WordPress - успешная эксплуатация в 2 из 3 попыток на свежем PHP worker\n3. PHP 8.3.35 - получена утечка адресов памяти, но RCE не достигнуто\n4. PHP 8.2 и 7.x - используемая цепочка не сработала, это не исключает других способов эксплуатации\n5. PHP 8.4.27 - контрольная сборка с исправлением, эксплуатация не воспроизвелась\n\n🛠 Разработали собственный инструмент:\n1. Сканер для обнаружения признаков уязвимости по реакции PHP на исчерпание памяти\n2. На 11 стендах сканер выявил признаки во всех 10 неисправленных конфигурациях и корректно определил исправленную сборку\n3. Экспериментальный RCE-модуль с адаптацией к конкретной сборке PHP\n\n⁉️ Что ограничивает эксплуатацию:\n1. Проверенная цепочка ориентирована на Apache с mod_php и определенные настройки PHP\n2. Нужно учитывать расположение функций в памяти и различия между сборками и библиотеками\n3. Даже при выполнении этих условий эксплуатация остается нестабильной\n4. Добиться аварийного завершения PHP-процесса значительно проще, чем удаленного выполнения команд\n5. Отсутствие RCE в наших тестах не означает, что другие версии или конфигурации с PHP-FPM защищены\n\nPHP2Shell представляет серьезную угрозу, но массовая автоматизированная эксплуатация значительно сложнее, чем может показаться из публикаций. Результаты лабораторных испытаний не отменяют необходимости своевременно ставить исправления.\n\n⚠️ Важно: Сканер намеренно вызывает исчерпание памяти PHP-процесса, что может привести к DoS. Использовать только в контролируемой среде, не запускать на продуктивных серверах без оценки рисков\n\n🔗 https://github.com/cleverg0d/php2shell\n🔗 и интересный разбор https://calif.io/php2shell/\n#PHP2Shell #PHP #RCE #Pentest #RedTeam",
       "date": "2026-10-22",
       "url": "https://t.me/appsecta/591",
-      "views": 95,
+      "views": 169,
       "tags": [
         "php2shell",
         "php",
@@ -34,14 +124,14 @@
         "pentest",
         "redteam"
       ],
-      "image": "https://cdn4.telesco.pe/file/gAhqXndho-KK_WC8KxJ58HcGfXA0jzMnn4fFulq_1WPBVrpbZs0cC-jDmkeMzUD1gTeHebc2nGOI3IMrPKzyGtdUmJkgh9yEneMsglsCeGpr_1QURmuZWQRT0CP3NOTrO3WEhgSFMHxdclAzZLKKa8iHNVKPX6qnM4zpE3I04XpfKPzCRPJ4idrhjgZzknf11nY-_icunwV3TnkCyQODVFNFMKidwPa0XjpMs_y2dP0aWABsPfy9kF0cQ_oOQ3TBWjM9bDrfm_hItJYhCIXi3P_kZSINOaIowWK8BG9nutX4a0EKTbpmfao6F1TFOvEUBToAmg2c7nf2lQJGJVGelw.jpg"
+      "image": "/img/blog/591.jpg"
     },
     {
       "id": "590",
       "text": "Туда же в топку 😅",
       "date": "2026-10-22",
       "url": "https://t.me/appsecta/590",
-      "views": 89,
+      "views": 122,
       "tags": []
     },
     {
@@ -49,7 +139,7 @@
       "text": "🖋️ PHP2Shell: Two Unpatched Critical PHP RCE Flaws (CVSS 9.2) Trigger Emergency Security Alert 🖋️\n\nThis story is developing and was written before PHP's scheduled 1400 UTC release on October 21. Once the release is out, the affected and fixed versions below are confirmed by the official advisory.  PHP will ship an outofcycle security release at 1400 UTC today, October 21, for two critical vulnerabilities that its security team has rated 9.2 on the CVSS v4.0 scale but has not described.  .\n\n📖 Read more.\n\n🔗 Via \"The Hacker News\"\n\n----------\n👁️ Seen on @cibsecurity",
       "date": "2026-10-22",
       "url": "https://t.me/appsecta/588",
-      "views": 94,
+      "views": 150,
       "tags": []
     },
     {
@@ -57,7 +147,7 @@
       "text": "😅 Салюты, \nДень начинается с жаришки?\nКто в судороге пошел смотреть версии php в проектах, сборках Docker и инфра? \n\n«Бегите дети мои» (с)\n\nНа самом деле это прям больно для прода, так как многие на VM оборачивают версии и запускают их. Поэтому обратите внимание на эту историю, сегодня и сейчас. \n\nCVE-2026-108619\nCVE-2026-109618\n\nКраткая суть:\n\nUse-adter-free возникает когда софтина продолжает использовать память (его блок) после того, как он был высвобожден. В этот блок успевает попасть структура определенная злоумышленником и исполняется по его волеизъявлению. \n\nСодержится ауяза в session.upload_progress, где херндлер кеширует указатели на бакеты HashTable, после чего злоумышленник ппреиспользует освобожденную память fcall-структурой через исполнение zend_call_function - фактически system().\n\nРеализуется путем отправки отработанного POST-запроса к любой веб морде и получаем выполнение команд от имени сервера. Прикольно? 🙃\n\n#research #appsec #specialty",
       "date": "2026-10-22",
       "url": "https://t.me/appsecta/587",
-      "views": 97,
+      "views": 151,
       "tags": [
         "research",
         "appsec",
@@ -69,7 +159,7 @@
       "text": "Божечки, передаём своим \n\n#lol",
       "date": "2026-10-21",
       "url": "https://t.me/appsecta/584",
-      "views": 114,
+      "views": 163,
       "tags": [
         "lol"
       ],
