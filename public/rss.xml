@@ -8,13 +8,85 @@
     <atom:link href="https://geminishkv.tech/rss.xml" rel="self" type="application/rss+xml"/>
     <description>Блог по AppSec &amp; DevSecOps — Илья Шмаков (geminishkv)</description>
     <language>ru-RU</language>
-    <lastBuildDate>Mon, 02 Nov 2026 07:12:07 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 09 Nov 2026 07:11:10 GMT</lastBuildDate>
     <managingEditor>shmakovis@inbox.ru (Илья Шмаков)</managingEditor>
     <image>
       <url>https://geminishkv.tech/img/hero/avatar.jpg</url>
       <title>geminishkv — AppSec &amp; DevSecOps Блог (RU)</title>
       <link>https://geminishkv.tech/</link>
     </image>
+    <item>
+      <title>Для ценителей архитектуры</title>
+      <link>https://geminishkv.tech/blog/646/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/646/</guid>
+      <pubDate>Fri, 06 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Для ценителей архитектуры 🫡</description>
+      <enclosure url="https://geminishkv.tech/img/blog/646.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>cdxgen-distroless: SBOM в CI без оболочки и зависимостей</title>
+      <link>https://geminishkv.tech/blog/618/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/618/</guid>
+      <pubDate>Fri, 06 Nov 2026 00:00:00 GMT</pubDate>
+      <description>😁 cdxgen-distroless: SBOM в CI без оболочки и зависимостей Салют, Выложил в открытый доступ образ генератора SBOM cdxgen, - distroless Лайкни репу, порадуй, что тебе зашло, родное сердце ;) Зачем он нам? На агенте сборки исполняется чужой сборочный код, скрипты пакетов, - cdxgen</description>
+      <enclosure url="https://geminishkv.tech/img/blog/618.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Снова здорова,</title>
+      <link>https://geminishkv.tech/blog/616/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/616/</guid>
+      <pubDate>Thu, 05 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Снова здорова,  Ну как бы снова говорить, что в ИБешечку могут только после инца - это уже классика, которая все никак не может дойти до людей. Вроде странно, но хотим же косты сохранить, но чет не выходит 🙃️️️️️️ #lol</description>
+      <enclosure url="https://geminishkv.tech/img/hero/avatar.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Небольшое напоминание про https://guardconf.ru</title>
+      <link>https://geminishkv.tech/blog/615/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/615/</guid>
+      <pubDate>Thu, 05 Nov 2026 00:00:00 GMT</pubDate>
+      <description>🏆 Небольшое напоминание про https://guardconf.ru Буду рад видеть тебя 🫶🙏 #appsec #conf #meetup #devsecops #pmcases #vulnmanagement #riskanalys #кулуарка</description>
+      <enclosure url="https://geminishkv.tech/img/blog/615.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Салют,</title>
+      <link>https://geminishkv.tech/blog/613/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/613/</guid>
+      <pubDate>Thu, 05 Nov 2026 00:00:00 GMT</pubDate>
+      <description>🫶 Салют, Понаблюдай над разрывом с ИИ и как мощно шатнуло прод у людей на 10+к Бачей Ну тип явно потушил как просили 😅🤣😟 #lol</description>
+      <enclosure url="https://geminishkv.tech/img/blog/613.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Салюты,</title>
+      <link>https://geminishkv.tech/blog/612/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/612/</guid>
+      <pubDate>Wed, 04 Nov 2026 00:00:00 GMT</pubDate>
+      <description>😁 Салюты,  С праздником, а ты знал, что благодаря Минину и второму ополчению казна была пополнена при 20% сборах (1/5 с населения) для защиты и отбития от поляк? Поэтому появился этот праздник и изначальная дата у него была 7, да и кстати, интересный факт - такой же праздник сей</description>
+      <enclosure url="https://geminishkv.tech/img/blog/612.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Свой образ cdxgen на distroless по шагам</title>
+      <link>https://geminishkv.tech/blog/609/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/609/</guid>
+      <pubDate>Mon, 02 Nov 2026 00:00:00 GMT</pubDate>
+      <description>🏆 Свой образ cdxgen на distroless по шагам Салют, Давай продолжим тему прошлого поста, но сейчас мы рассмотрим техническую реализацию Dockerfile - distroless без shell: базы по digest, зависимости по lock, секреты сборки вне слоёв • Образ cdxgen: SBOM по lock-файлам без сети • Р</description>
+      <enclosure url="https://geminishkv.tech/img/blog/609.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Официальное расширение Claude Code на маркетплейсе Cursor подменили версией с бэкдором</title>
+      <link>https://geminishkv.tech/blog/608/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/608/</guid>
+      <pubDate>Mon, 02 Nov 2026 00:00:00 GMT</pubDate>
+      <description>😈 Официальное расширение Claude Code на маркетплейсе Cursor подменили версией с бэкдором  — Через маркетплейс расширений для Cursor на протяжении почти 12 часов распространялась вредоносная версия официального расширения Anthropic Claude Code, за это время ее успели установить п</description>
+      <enclosure url="https://geminishkv.tech/img/blog/608.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
     <item>
       <title>Свой образ cdxgen в условиях ограничений: зачем и как?</title>
       <link>https://geminishkv.tech/blog/607/</link>

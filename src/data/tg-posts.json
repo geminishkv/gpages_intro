@@ -2,6 +2,117 @@
   "subscribers": 375,
   "posts": [
     {
+      "id": "646",
+      "text": "Для ценителей архитектуры 🫡",
+      "date": "2026-11-06",
+      "url": "https://t.me/appsecta/646",
+      "views": 83,
+      "tags": [],
+      "image": "/img/blog/646.jpg"
+    },
+    {
+      "id": "618",
+      "text": "😁 cdxgen-distroless: SBOM в CI без оболочки и зависимостей\n\nСалют,\nВыложил в открытый доступ образ генератора SBOM cdxgen, - distroless\n\nЛайкни репу, порадуй, что тебе зашло, родное сердце ;)\n\nЗачем он нам?\n\nНа агенте сборки исполняется чужой сборочный код, скрипты пакетов, - cdxgen только читает манифесты и lock-файлы, проект монтируется на чтение, сеть контейнеру не нужна\n\nЧто внутри?\n\n- cdxgen 12.9.0 (Debian 13, Node.js 24), то есть версия образа равна версии cdxgen\n- Нет оболочки, apt, npm и pip\n- Пользователь непривилегированный, capabilities не нужны\n- uv и Python 3.12 (без lock-файла uv сначала разрешает зависимости, а cdxgen строит SBOM уже без сети)\n- linux/amd64 и linux/arm64, около 90 МБ в сжатом виде\n\nОсобенности\n\n- Базовые образы закреплены по digest\n- Перед каждой публикацией пайплайн запускает gitleaks, hadolint и Trivy (critical и high с доступным исправлением останавливают выпуск), само наличие критикала и хаев - выпилено, false positive почитай тут\n- Образ подписан cosign со SBOM\n- В GitHub Release лежат SBOM самого образа в SPDX\n- zlib из базового образа заменён исправленной версией из Debian sid: CVE-2026-76844 и CVE-2026-85091 закрыты (в Debian 13 исправления ещё нет)\n\nЧто по уязам?\n\nНа сегодня находит в образе 37 medium и 11 low. Critical и high нет, если учесть исключения из репозитория. Без них Trivy покажет в zlib CVE-2026-76844 и CVE-2026-85091 как high и CVE-2026-27171 как medium: он сверяется со статусом пакета в Debian 13, где исправлений ещё нет. В образе лежит исправленный zlib1g 1.3.2-4 из sid\n\nЧего в образе нет?\n\nJDK, Maven, Gradle, Go, .NET SDK. cdxgen видит только то, что записано в манифестах и lock-файлах\n\nДопилим по ходу, пока на таком уровне давай глянем по твоему интересу\n\nЛинки\n\n- GitHub: https://github.com/geminishkv/cdxgen-distroless\n- Релиз 12.9.0: https://github.com/geminishkv/cdxgen-distroless/releases/tag/v12.9.0\n- Docker Hub: https://hub.docker.com/r/geminishkvdev/cdxgen-distroless\n- GHCR: https://github.com/geminishkv/cdxgen-distroless/pkgs/container/cdxgen-distroless\n- cdxgen: https://github.com/CycloneDX/cdxgen\n\n#appsec #devsecops #specialty #toolchain #techsolution #paper #sbom #sca #containersecurity #pmcases",
+      "date": "2026-11-06",
+      "url": "https://t.me/appsecta/618",
+      "views": 90,
+      "tags": [
+        "appsec",
+        "devsecops",
+        "specialty",
+        "toolchain",
+        "techsolution",
+        "paper",
+        "sbom",
+        "sca",
+        "containersecurity",
+        "pmcases"
+      ],
+      "image": "/img/blog/618.jpg"
+    },
+    {
+      "id": "616",
+      "text": "Снова здорова, \nНу как бы снова говорить, что в ИБешечку могут только после инца - это уже классика, которая все никак не может дойти до людей.\n\nВроде странно, но хотим же косты сохранить, но чет не выходит 🙃️️️️️️\n\n#lol",
+      "date": "2026-11-05",
+      "url": "https://t.me/appsecta/616",
+      "views": 75,
+      "tags": [
+        "lol"
+      ]
+    },
+    {
+      "id": "615",
+      "text": "🏆 Небольшое напоминание про https://guardconf.ru\n\nБуду рад видеть тебя 🫶🙏\n\n#appsec #conf #meetup #devsecops #pmcases #vulnmanagement #riskanalys #кулуарка",
+      "date": "2026-11-05",
+      "url": "https://t.me/appsecta/615",
+      "views": 85,
+      "tags": [
+        "appsec",
+        "conf",
+        "meetup",
+        "devsecops",
+        "pmcases",
+        "vulnmanagement",
+        "riskanalys",
+        "кулуарка"
+      ],
+      "image": "/img/blog/615.jpg"
+    },
+    {
+      "id": "613",
+      "text": "🫶 Салют,\nПонаблюдай над разрывом с ИИ и как мощно шатнуло прод у людей на 10+к Бачей\n\nНу тип явно потушил как просили 😅🤣😟\n\n#lol",
+      "date": "2026-11-05",
+      "url": "https://t.me/appsecta/613",
+      "views": 89,
+      "tags": [
+        "lol"
+      ],
+      "image": "/img/blog/613.jpg"
+    },
+    {
+      "id": "612",
+      "text": "😁 Салюты, \nС праздником, а ты знал, что благодаря Минину и второму ополчению казна была пополнена при 20% сборах (1/5 с населения) для защиты и отбития от поляк? Поэтому появился этот праздник и изначальная дата у него была 7, да и кстати, интересный факт - такой же праздник сейчас в Италии)",
+      "date": "2026-11-04",
+      "url": "https://t.me/appsecta/612",
+      "views": 94,
+      "tags": [],
+      "image": "/img/blog/612.jpg"
+    },
+    {
+      "id": "609",
+      "text": "🏆 Свой образ cdxgen на distroless по шагам\n\nСалют,\nДавай продолжим тему прошлого поста, но сейчас мы рассмотрим техническую реализацию\n\nDockerfile - distroless без shell: базы по digest, зависимости по lock, секреты сборки вне слоёв\n\n• Образ cdxgen: SBOM по lock-файлам без сети\n• Резолв Python-проектов без lock через uv без установки и сборки\n• Базы и npm-пакеты только через Nexus\n• Интерпретатор для uv pip compile без загрузки CPython из интернета: stdlib без pip, ensurepip, idle и tkinter\n• Явный непривилегированный uid базы nonroot\n\nARG BUILD_IMAGE=&#036;REG/node:24-alpine@sha256:…\nARG UV_IMAGE=&#036;REG/astral-sh/uv:0.12.23@sha256:…\nARG PYTHON_IMAGE=&#036;REG/python:3.12.12-slim@sha256:…\nARG BASE_IMAGE=&#036;REG/distroless/nodejs24-debian13:nonroot@sha256:…\n\nFROM &#036;{UV_IMAGE} AS uv\nFROM &#036;{PYTHON_IMAGE} AS python\nWORKDIR /usr/local/lib/python3.12\nRUN rm -rf ensurepip idlelib tkinter turtledemo pydoc_data config-3.12-* site-packages/*\n\nFROM &#036;{BUILD_IMAGE} AS build\nWORKDIR /opt/cdxgen\nCOPY package.json package-lock.json ./\nRUN --mount=type=secret,id=npmrc,target=/root/.npmrc &#092;\n    --mount=type=secret,id=ca,target=/root/ca.pem &#092;\n    NODE_EXTRA_CA_CERTS=/root/ca.pem &#092;\n    npm ci --omit=dev --omit=optional --ignore-scripts --no-audit --no-fund\n\nFROM &#036;{BASE_IMAGE}\nCOPY --from=build /opt/cdxgen /opt/cdxgen\nCOPY --from=uv /uv /usr/local/bin/uv\nCOPY --from=python /usr/local/bin/python3.12 /usr/local/bin/\nENV HOME=/tmp\nWORKDIR /app\nUSER 65532:65532\nHEALTHCHECK NONE\nENTRYPOINT [\"/nodejs/bin/node\", \"/opt/cdxgen/node_modules/@cyclonedx/cdxgen/bin/cdxgen.js\"]\n\nJenkins (упрощенный пример)\n\n// Образ на агенте с docker или podman: сборка, проверка SBOM, Trivy\n// Сборка в сети агента и rootless docker не пишет в каталоги агента, контейнер временный\n\nclass CdxgenStep {\n\n    static void run(def steps, Map project, String image, String index, String credentialsId) {\n        steps.withCredentials([steps.usernamePassword(credentialsId: credentialsId,\n                usernameVariable: 'UV_INDEX_NEXUS_USERNAME', passwordVariable: 'UV_INDEX_NEXUS_PASSWORD')]) {\n            steps.sh script(project, image, index)\n        }\n    }\n\n    static String script(Map project, String image, String index) {\n        String registry = image.tokenize('/')[0]\n        String mount = project.dir == '.' ? '\"&#036;PWD\"' : \"&#092;\"&#092;&#036;PWD/&#036;{project.dir}&#092;\"\"\n        String source = mount\n        String s = 'set -e&#092;ncfg=&#036;(mktemp -d); req=&#036;(mktemp -d); cid=\"\"&#092;n' +\n            'trap &#092;'[ -n \"&#036;cid\" ] && docker rm -f \"&#036;cid\" >/dev/null 2>&1; rm -rf \"&#036;cfg\" \"&#036;req\"&#092;' EXIT&#092;n' +\n            'export DOCKER_CONFIG=\"&#036;cfg\"&#092;n' +\n            '{ set +x; } 2>/dev/null&#092;n' +\n            \"printf '%s' &#092;\"&#092;&#036;UV_INDEX_NEXUS_PASSWORD&#092;\" | docker login &#036;{registry} -u &#092;\"&#092;&#036;UV_INDEX_NEXUS_USERNAME&#092;\" --password-stdin&#092;n\" +\n            'set -x&#092;n'\n        if (&#33;project.lock) {\n            s += \"cid=&#092;&#036;(docker create -e HOME=/tmp -e UV_INDEX_NEXUS_USERNAME -e UV_INDEX_NEXUS_PASSWORD -v &#036;{mount}:/app:ro \" +\n                \"--entrypoint /usr/local/bin/uv &#036;{image} pip compile /app/pyproject.toml --no-config --no-build --no-python-downloads \" +\n                \"--python-version 3.12 --python-platform x86_64-manylinux_2_28 --default-index nexus=&#036;{index} -o /tmp/requirements.txt)&#092;n\" +\n                'docker start -a \"&#036;cid\" || { echo \"uv не разрешил зависимости: пакет без колёс, динамические метаданные или версии нет в индексе; надёжный путь - lock-файл\"; exit 1; }&#092;n' +\n                'docker cp \"&#036;cid\":/tmp/requirements.txt \"&#036;req\"/requirements.txt&#092;n' +\n                'docker rm \"&#036;cid\" >/dev/null; cid=\"\"&#092;n'\n            source = '\"&#036;req\"'\n        }\n        s += \"cid=&#092;&#036;(docker create --network none -e HOME=/tmp -v &#036;{source}:/app:ro -w /app &#036;{image} \" +\n            \"-t python --spec-version 1.6 --no-install-deps --no-recurse -o /tmp/&#036;{project.bom} /app)&#092;n\" +\n            \"docker start -a &#092;\"&#092;&#036;cid&#092;\"&#092;ndocker cp &#092;\"&#092;&#036;cid&#092;\":/tmp/&#036;{project.bom} &#036;{project.bom}\"\n        return s\n    }\n}\n\n#appsec #devsecops #specialty #toolchain #techsolution #paper #sbom #sca #containersecurity #pmcases",
+      "date": "2026-11-02",
+      "url": "https://t.me/appsecta/609",
+      "views": 110,
+      "tags": [
+        "appsec",
+        "devsecops",
+        "specialty",
+        "toolchain",
+        "techsolution",
+        "paper",
+        "sbom",
+        "sca",
+        "containersecurity",
+        "pmcases"
+      ],
+      "image": "/img/blog/609.jpg"
+    },
+    {
+      "id": "608",
+      "text": "😈 Официальное расширение Claude Code на маркетплейсе Cursor подменили версией с бэкдором\n\n — Через маркетплейс расширений для Cursor на протяжении почти 12 часов распространялась вредоносная версия официального расширения Anthropic Claude Code, за это время ее успели установить примерно 5000 пользователей\n\nМалварь пыталась развернуть SSH-бэкдор в Windows, macOS и Linux. Запускалась автоматически при загрузке расширения и не требовала никаких действий со стороны пользователя\n\nНа зараженной машине вредонос собирал информацию: имя пользователя и хоста, версию ОС, данные об архитектуре, Git-email, публичный IP-адрес, пути к домашней и рабочей директориям\n\nТакже он отдельно проверял названия переменных окружения и искал среди них, содержащие KEY, TOKEN, SECRET, PASS, AWS или GCP\n\nПроблема затрагивала версии 2.1.312 и 2.1.313.\n\n➡️https://xakep.ru/2026/11/02/claude-code-fake/\n\n#News #AI #ClaudeCode #Cursor // @nsis // max.ru/nsis",
+      "date": "2026-11-02",
+      "url": "https://t.me/appsecta/608",
+      "views": 101,
+      "tags": [
+        "news",
+        "ai",
+        "claudecode",
+        "cursor"
+      ],
+      "image": "/img/blog/608.jpg"
+    },
+    {
       "id": "607",
       "text": "🏆 Свой образ cdxgen в условиях ограничений: зачем и как?\n\nСалют,\nДавай сегодня посмотрим на задачку, когда готовый cdxgen-python312 не прошёл внутренний гейт, потому что его база SLES 15.6 несёт 4 Critical и 130 High на любой версии. Но как-то странно, не?\n\n12.6.0 тащит tar с Critical, и overrides тут не спасают, так как гейт смотрит опубликованный пакет, а не итоговое дерево.\n\nВзяли 12.8.3 с чистым собственным lock, а undici 7.28.0 (High CVE-2026-13697) подняли через overrides до 7.30.1 — уже для чистоты своего образа и просто для кайфа\n\nЭто уязвимости базы, а не cdxgen, но гейту это безразлично и поэтому приходится решать не стандарный кейс. Есть конечно еще временный вариант под Java 11, но ставил проект через pip внутри образа, то есть исполнял чужой сборочный код - что тоже не самое корректное\n\nЧто пришлось собрать и сделать безопасным?\n\n• Многоэтапная сборка: \n— node:24-alpine\n— npm игнорирование --omit=dev, --ignore-scripts\n— lock-файл с хешами, также все базы по digest (версия cdxgen берётся из package.json, в конфиг шага CI уходит адрес образа по digest)\n• Вшита учётку реестра и корень внутреннего УЦ, которая приходят секретами сборки и в слоях их нет\n• База distroless/nodejs24-debian13:nonroot без shell и пакетного менеджера\n• Стоит USER 65532, а HEALTHCHECK NONE так как одноразовый CLI\n— uv и Python 3.12 (stdlib без pip, ensurepip, idle и tkinter) только для резолва проектов без lock-файла\n— при сборке: hadolint, Checkov, trivy config, SBOM образа, trivy image\n— Публикация в registry только при нуле Critical и High сработок\n\nКак запускаем?\n\n• Каждый каталог проекта — это отдельный запуск с --no-recurse (рекурсивный проход брал uv.lock и терял requirements.txt соседнего каталога)\n• Каталог монтируется только на чтение, SBOM забирается docker cp, а на агентах docker rootless\n• Есть lock-файл: --network none, --no-install-deps\n• Нет lock-файла: \n— uv pip compile --no-build --no-config --no-python-downloads по внутреннему индексу, то есть ничего не ставится и не собирается, код проекта и зависимостей не исполняется\n— --no-config не даёт проекту подменить индекс через uv.toml\n• cdxgen строит SBOM по полученному requirements.txt уже без сети\n• Учётка индекса попадает в контейнер только по имени переменной окружения\n• Вход в реестр — во временный DOCKER_CONFIG, который удаляется \n• Dev-зависимости режет отдельный фильтр по разметке lock-файлов (npm, yarn, pnpm, uv, poetry, pdm, Pipfile, composer) \n• Для Frontend зависимости бандла часто лежат в devDependencies и едут в прод\n\nКак контролируем?\n\n• Образ пересобирается при новой версии cdxgen и обновлении баз отдельной джобой с теми же проверками\n• Trivy не видит интерпретатор Python в /usr/local: пакетных метаданных у него нет (обновление путем смены digest базы)\n• Пакет без колёс или проект с динамическими метаданными через --no-build не проходит: шаг падает громко, с именем пакета, а не отдаёт пустой SBOM\n\nTroubleshoot\n\n• BuildKit при --network host пишет свой /etc/hosts: имя внутреннего реестра уходит во внешний DNS и лечится --add-host\n• В сетях контейнеров на агентах нет DNS: резолв идёт с --network host, режим lock-файла — с --network none\n• netrc под rootless не читается, uv молча идёт без учётки\n\nИтог\n\n• Для тебя готовый образ может оказаться не подходящим длявнутреннего контура, потому что база не проходила гейт, а режим без lock-файла исполнял код проекта\n• При этом свой образ на distroless закрыл обе проблемы: без shell, от nonroot, по digest, ноль Critical и High уязвимостей - а логика и функционал не потеряны, только ограничены тем, что у тебя используется в контуре\n• SBOM строится по каждому каталогу: с lock-файлом без сети, без lock-файла — через uv без сборки\n• Боль — поддержка образа и пара записанных слепых пятен (лучше чем безусловное принятие рисков ИБ)\n\n#appsec #devsecops #specialty #toolchain #techsolution #paper #sbom #sca #containersecurity #pmcases",
       "date": "2026-10-30",
