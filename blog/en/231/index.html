@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Review of OWASP Top 10 2025 for Java — geminishkv</title>
+  <meta name="description" content="🛠 Review of OWASP Top 10 2025 for Java Salute, You and I recently started looking towards OWASP TOP 10 (here) for Semgrep rules. I think it would be cool to d…" />
+  <meta name="keywords" content="devsecops, toolchain, sast, dast, secretmanagement, specialty, appsec, appsec, devsecops, geminishkv" />
+  <meta name="author" content="Ilya Shmakov" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="canonical" href="https://geminishkv.tech/blog/en/231/" />
+  <link rel="sitemap" href="/sitemap.xml" />
+  <link rel="alternate" type="application/rss+xml" title="geminishkv blog" href="/rss-en.xml" />
+  <link rel="alternate" hreflang="ru" href="https://geminishkv.tech/blog/231/" />
+  <link rel="alternate" hreflang="en" href="https://geminishkv.tech/blog/en/231/" />
+  <link rel="alternate" hreflang="x-default" href="https://geminishkv.tech/blog/231/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://geminishkv.tech/blog/en/231/" />
+  <meta property="og:title" content="Review of OWASP Top 10 2025 for Java — geminishkv" />
+  <meta property="og:description" content="🛠 Review of OWASP Top 10 2025 for Java Salute, You and I recently started looking towards OWASP TOP 10 (here) for Semgrep rules. I think it would be cool to d…" />
+  <meta property="og:image" content="https://geminishkv.tech/img/blog/231.jpg" />
+  <meta property="og:image:alt" content="Review of OWASP Top 10 2025 for Java" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="ru_RU" />
+  <meta property="og:site_name" content="geminishkv" />
+  <meta property="article:published_time" content="2026-02-24" />
+  <meta property="article:author" content="Ilya Shmakov" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@geminishkv" />
+  <meta name="twitter:title" content="Review of OWASP Top 10 2025 for Java" />
+  <meta name="twitter:description" content="🛠 Review of OWASP Top 10 2025 for Java Salute, You and I recently started looking towards OWASP TOP 10 (here) for Semgrep rules. I think it would be cool to d…" />
+  <meta name="twitter:image" content="https://geminishkv.tech/img/blog/231.jpg" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Review of OWASP Top 10 2025 for Java","description":"🛠 Review of OWASP Top 10 2025 for Java Salute, You and I recently started looking towards OWASP TOP 10 (here) for Semgrep rules. I think it would be cool to d…","url":"https://geminishkv.tech/blog/en/231/","datePublished":"2026-02-24","dateModified":"2026-02-24","image":"https://geminishkv.tech/img/blog/231.jpg","inLanguage":"en","author":{"@type":"Person","name":"Ilya Shmakov","url":"https://geminishkv.tech"},"publisher":{"@type":"Organization","name":"geminishkv","url":"https://geminishkv.tech"}}</script>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="/fonts/fonts.css" />
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0a0a0a; --card: #111111; --border: #1a1a1a;
+  --text: #e8e8e8; --muted: #888888; --accent: #D51A1A; --gold: #F9B361;
+}
+html, body { background: var(--bg); color: var(--text); font-family: 'Roboto', system-ui, sans-serif; min-height: 100dvh; line-height: 1.7; }
+a { color: inherit; text-decoration: none; }
+
+.page { max-width: 800px; margin: 0 auto; padding: 0 24px 64px; }
+
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 24px 0 32px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+.nav__brand { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 700; color: #fff; }
+.nav__brand img { width: 28px; height: 28px; border-radius: 50%; }
+.nav__back { font-size: 12px; color: var(--muted); border: 1px solid var(--border); border-radius: 4px; padding: 6px 14px; transition: color .2s, border-color .2s; letter-spacing: 0.06em; text-transform: uppercase; }
+.nav__back:hover { color: #fff; border-color: var(--accent); }
+
+.nav__right-group { display: flex; align-items: center; gap: 10px; }
+.lang-toggle { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; color: var(--accent); border: 1px solid var(--accent); border-radius: 4px; padding: 5px 10px; transition: background .2s, color .2s; }
+.lang-toggle:hover { background: var(--accent); color: #fff; }
+
+.divider { height: 1px; background: linear-gradient(to right, var(--accent), rgba(204,34,0,.15), transparent); margin: 40px 0 20px; }
+.footer { font-size: 0.65rem; color: var(--muted); text-align: center; }
+.footer a { color: var(--accent); transition: color .2s; }
+.footer a:hover { color: var(--gold); }
+.disclaimer { font-size: 0.55rem; color: #555; text-align: center; margin-top: 12px; line-height: 1.4; }
+
+@media (max-width: 600px) { .page { padding: 0 16px 48px; } }
+
+    .cover { width: 100%; border-radius: 8px; overflow: hidden; margin-bottom: 28px; max-height: 400px; }
+    .cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .meta { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; font-size: 0.72rem; color: var(--muted); }
+    .content p { font-size: 0.85rem; line-height: 1.85; margin-bottom: 8px; }
+    .content .gap { height: 10px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 24px; }
+    .tag { font-size: 0.6rem; color: var(--gold); background: rgba(249,179,97,.06); border: 1px solid rgba(249,179,97,.15); border-radius: 3px; padding: 2px 8px; }
+    .tg-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 28px; padding: 10px 20px; background: rgba(204,34,0,.1); border: 1px solid rgba(204,34,0,.25); border-radius: 6px; color: #fff; font-size: 0.75rem; font-weight: 600; transition: background .2s; }
+    .tg-link:hover { background: rgba(204,34,0,.18); }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="nav">
+      <a href="/" class="nav__brand"><img src="/img/logotype/logo_white.svg" alt="" />geminishkv</a>
+      <div class="nav__right-group">
+        <a href="/blog/231/" class="lang-toggle">RU</a>
+        <a href="/blog/" class="nav__back">← All posts</a>
+      </div>
+    </nav>
+    <div class="cover"><img src="/img/blog/231.jpg" alt="Review of OWASP Top 10 2025 for Java" /></div>
+    <article>
+      <div class="meta"><span>February 24, 2026</span><span>·</span><span>273 views</span></div>
+      <div class="content"><p>🛠 Review of OWASP Top 10 2025 for Java</p>
+<div class="gap"></div>
+<p>Salute,</p>
+<p>You and I recently started looking towards OWASP TOP 10 (here) for Semgrep rules.</p>
+<p>I think it would be cool to do a review on OWASP with specifics for Java, where I can further show why it’s cool in a custom way for this language. Moreover, I’m currently preparing a resource project for Semgrep, so let’s make it together more useful if you’re in JAVA, or work with it somehow related (and in general, you can reuse constructs for other languages).</p>
+<p>Now let's look at the main types with examples</p>
+<div class="gap"></div>
+<p>A01:2025 – Broken Access Control</p>
+<p>Access violation - there is no restriction on user actions beyond their authority - actions without authorization</p>
+<p>// There is no owner check, hence user `id=123` is changed to `id=124` and receives information without any checks</p>
+<div class="gap"></div>
+<p>public Order getOrder(@PathVariable Long id) {</p>
+<p>    return orderRepository.findById(id)</p>
+<p>.orElseThrow(() -&gt; new ResponseStatusException(HttpStatus.NOT_FOUND));</p>
+<p>}</p>
+<div class="gap"></div>
+<p>A02:2025 – Security Misconfiguration</p>
+<div class="gap"></div>
+<p>Incorrect configuration - insecure default settings, open Actuator-endpoints, disabled security headers</p>
+<div class="gap"></div>
+<p>A03:2025 – Software Supply Chain Failures</p>
+<p>Supply chain failures - vulnerable dependencies, pipelines without checks and verification of artifacts, compromised repositories, Maven/Gradle repositories over direct HTTP, lack of checksum verification, snapshot in prod</p>
+<p>A04:2025 – Cryptographic Failures</p>
+<div class="gap"></div>
+<p>Cryptographic failures - weak algorithms, primitive hashing, insufficient key lengths</p>
+<div class="gap"></div>
+<p>// MD5 without salt, rainbow tables are hacked</p>
+<div class="gap"></div>
+<p>String hash = DigestUtils.md5Hex(password);</p>
+<p>userRepository.save(new User(username, hash));</p>
+<p>A05:2025 – Injection</p>
+<div class="gap"></div>
+<p>Injections - injection without sanitization such as FreeMarker, Velocity, Thymeleaf, JNDI</p>
+<div class="gap"></div>
+<p>// String concatenation in SQL</p>
+<div class="gap"></div>
+<p>String query = &quot;SELECT * FROM users WHERE username = '&quot; + username + &quot;'&quot;;</p>
+<p>Statement stmt = connection.createStatement();</p>
+<p>ResultSet rs = stmt.executeQuery(query);</p>
+<div class="gap"></div>
+<p>A06:2025 – Insecure Design</p>
+<p>Unsafe design - problems are inherent at the architectural level: no rate limit, no logic checks, fail-safe is not provided</p>
+<p>// There are no rate limits on the password and the attacker tries OTP without restrictions</p>
+<div class="gap"></div>
+<p>public ResponseEntity&lt;?&gt; resetPassword(@RequestBody ResetRequest req){</p>
+<p>    return passwordService.reset(req.getEmail(), req.getOtp());</p>
+<p>}</p>
+<div class="gap"></div>
+<p>A07:2025 – Authentication Failures</p>
+<p>Authentication failures - weak passwords, lack of MFA, insecure sessions, lack of brute force protection, insecure storage of credentials</p>
+<p>// JWT is accepted without signature verification</p>
+<div class="gap"></div>
+<p>Claims claims = Jwts.parser()</p>
+<p>    .parse(token)</p>
+<p>    .getBody();</p>
+<p>String role = claims.get(&quot;role&quot;, String.class);</p>
+<div class="gap"></div>
+<p>A08:2025 – Software or Data Integrity Failures</p>
+<p>Integrity failures - deserialization of objects without declaring restrictions, lack of signature verification, disabled verification of TLS certificates, JNDI injection, HTTP updates without hash verification</p>
+<p>// Deserialization without a type filter, RCE is possible via gadget chains</p>
+<div class="gap"></div>
+<p>ObjectInputStream ois = new ObjectInputStream(request.getInputStream());</p>
+<p>Object obj = ois.readObject();</p>
+<div class="gap"></div>
+<p>A09:2025 – Security Logging &amp; Alerting Failures</p>
+<p>Logging failures - lack of recording of information security events, such as failed logins, access denied, privilege escalation, logging of passwords and tokens in clear text, lack of alerts for SIEM</p>
+<div class="gap"></div>
+<p>A10:2025 – Mishandling of Exceptional Conditions</p>
+<p>Incorrect exception handling - empty catch blocks, stacktrace in HTTP responses, fail-open behavior, i.e. returning true on an exception, loss of exceptions in async code, incorrect HTTP status error codes</p>
+<p>public boolean isAuthorized(String token) {</p>
+<p>    try {</p>
+<p>        return jwtService.verify(token);</p>
+<p>    } catch (Exception e) {</p>
+<p>        return true; // gain access</p>
+<p>    }</p>
+<p>}</p>
+<div class="gap"></div>
+<p>#devsecops #toolchain #sast #dast #secretmanagement #specialty #appsec</p></div>
+      <div class="tags"><span class="tag">#devsecops</span><span class="tag">#toolchain</span><span class="tag">#sast</span><span class="tag">#dast</span><span class="tag">#secretmanagement</span><span class="tag">#specialty</span><span class="tag">#appsec</span></div>
+      <a href="https://t.me/appsecta/231" target="_blank" rel="noreferrer" class="tg-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+        Open in Telegram
+      </a>
+    </article>
+    <div class="divider"></div>
+    <footer class="footer">
+      <p>© 2026 <a href="/">geminishkv.tech</a></p>
+      <p class="disclaimer">Instagram* is a product of Meta Platforms Inc., banned in Russia as extremist.</p>
+    </footer>
+  </div>
+</body>
+</html>
