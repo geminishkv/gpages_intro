@@ -1,12 +1,144 @@
 {
-  "subscribers": 375,
+  "subscribers": 378,
   "posts": [
+    {
+      "id": "665",
+      "text": "🏆 Исключение и принятие рисков ИБ без владельца и коммитментов — это бэкдор\n\nСалют,\nПоделюсь с тобой презой со вчерашнего выступления\n\nПопросили помочь коллегам из зала стратегии, вышел как к разрабам, грузанул сильно, сложно - но не мог же не помочь ребятам?\n\nПосмотри, думаю тебе будет полезно в тюнинге исключений и работы с рисками ИБ\n\n#appsec #conf #meetup #devsecops #pmcases #vulnmanagement #riskanalys #кулуарка",
+      "date": "2026-11-13",
+      "url": "https://t.me/appsecta/665",
+      "views": 241,
+      "tags": [
+        "appsec",
+        "conf",
+        "meetup",
+        "devsecops",
+        "pmcases",
+        "vulnmanagement",
+        "riskanalys",
+        "кулуарка"
+      ],
+      "image": "/img/blog/665.jpg"
+    },
+    {
+      "id": "664",
+      "text": "‼️ Hackers hijacked telecom networks across Asia to intercept SMS 2FA codes and spy on mobile users.\n\nA newly uncovered espionage group, SilentAir, compromised telecom equipment in at least 6 countries, targeting users primarily in Taiwan.\n\nHere's how they pulled it off: https://thehackernews.com/2026/11/silentair-hijacks-asian-telecom.html",
+      "date": "2026-11-13",
+      "url": "https://t.me/appsecta/664",
+      "views": 99,
+      "tags": [],
+      "image": "/img/blog/664.jpg"
+    },
+    {
+      "id": "663",
+      "text": "Атака на базовые станции (вышки операторов связи) становится нормой, почекай интересный вброс - на сколько это может быть контролируемо?",
+      "date": "2026-11-13",
+      "url": "https://t.me/appsecta/663",
+      "views": 93,
+      "tags": []
+    },
+    {
+      "id": "662",
+      "text": "Крепостное право отменено в 1861, но чет, походу, есть нюансы\n\n#lol",
+      "date": "2026-11-13",
+      "url": "https://t.me/appsecta/662",
+      "views": 104,
+      "tags": [
+        "lol"
+      ],
+      "image": "/img/blog/662.jpg"
+    },
+    {
+      "id": "661",
+      "text": "Можешь посмотреть онлайн - https://guardconf.ru/online-video\n\n#appsec #conf #meetup #devsecops #pmcases #vulnmanagement #riskanalys #кулуарка",
+      "date": "2026-11-12",
+      "url": "https://t.me/appsecta/661",
+      "views": 109,
+      "tags": [
+        "appsec",
+        "conf",
+        "meetup",
+        "devsecops",
+        "pmcases",
+        "vulnmanagement",
+        "riskanalys",
+        "кулуарка"
+      ]
+    },
+    {
+      "id": "660",
+      "text": "Салюты,\nНа базе 🙃\n\n#appsec #conf #meetup #devsecops #pmcases #vulnmanagement #riskanalys #кулуарка",
+      "date": "2026-11-12",
+      "url": "https://t.me/appsecta/660",
+      "views": 98,
+      "tags": [
+        "appsec",
+        "conf",
+        "meetup",
+        "devsecops",
+        "pmcases",
+        "vulnmanagement",
+        "riskanalys",
+        "кулуарка"
+      ],
+      "image": "/img/blog/660.jpg"
+    },
+    {
+      "id": "652",
+      "text": "🏆 Guardconf2026\n\nСалюты,\nЗавтра конфа guardconf2026, подробнее как попасть сюда - тут.\n\nРанее писал о ней - тут, а сейчас хочу поделиться немного контентом, который залетит завтра\n\n#appsec #conf #meetup #devsecops #pmcases #vulnmanagement #riskanalys #кулуарка",
+      "date": "2026-11-11",
+      "url": "https://t.me/appsecta/652",
+      "views": 107,
+      "tags": [
+        "appsec",
+        "conf",
+        "meetup",
+        "devsecops",
+        "pmcases",
+        "vulnmanagement",
+        "riskanalys",
+        "кулуарка"
+      ],
+      "image": "/img/blog/652.jpg"
+    },
+    {
+      "id": "651",
+      "text": "#lol",
+      "date": "2026-11-10",
+      "url": "https://t.me/appsecta/651",
+      "views": 111,
+      "tags": [
+        "lol"
+      ],
+      "image": "/img/blog/651.jpg"
+    },
+    {
+      "id": "650",
+      "text": "😎 Теперь мы — новый факультет «Системы безопасности»&#33;\n\nВ МГТУ им. Н.Э. Баумана вышел приказ о создании факультета «Системы безопасности». Для нашей кафедры это важное событие&#33;\n\nВ новый факультет вошли кафедры ИУ10 «Защита информации» и ИУ8 «Информационная безопасность». За этим стоят годы работы преподавателей, научные исследования, студенческие проекты, сотрудничество с индустрией и практическая подготовка будущих инженеров.\n\n❗️️ Исполняющей обязанности декана назначена Екатерина Вайц, кандидат технических наук, доцент, заместитель заведующего кафедрой ИУ10 «Защита информации», заместитель директора РУНЦ «Безопасность» МГТУ им. Н.Э. Баумана. Екатерина Викторовна много лет занимается подготовкой специалистов по информационной безопасности, развитием образовательных программ, научной работой и сотрудничеством с индустриальными партнёрами.\n\n👏 Поздравляем всех с созданием нового факультета&#33;\n\nВпереди много работы, новых задач и возможностей для развития нашей инженерной школы. И студенты, и преподаватели ИУ10 — её важная часть.\n\n#ИУ10_важное",
+      "date": "2026-11-09",
+      "url": "https://t.me/appsecta/650",
+      "views": 126,
+      "tags": [
+        "иу10_важное"
+      ],
+      "image": "/img/blog/650.jpg"
+    },
+    {
+      "id": "649",
+      "text": "я не должен один испытывать тут птср\n\n#lol",
+      "date": "2026-11-09",
+      "url": "https://t.me/appsecta/649",
+      "views": 116,
+      "tags": [
+        "lol"
+      ],
+      "image": "/img/blog/649.jpg"
+    },
     {
       "id": "646",
       "text": "Для ценителей архитектуры 🫡",
       "date": "2026-11-06",
       "url": "https://t.me/appsecta/646",
-      "views": 83,
+      "views": 170,
       "tags": [],
       "image": "/img/blog/646.jpg"
     },

@@ -8,13 +8,103 @@
     <atom:link href="https://geminishkv.tech/rss.xml" rel="self" type="application/rss+xml"/>
     <description>Блог по AppSec &amp; DevSecOps — Илья Шмаков (geminishkv)</description>
     <language>ru-RU</language>
-    <lastBuildDate>Mon, 09 Nov 2026 07:11:10 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 16 Nov 2026 07:18:17 GMT</lastBuildDate>
     <managingEditor>shmakovis@inbox.ru (Илья Шмаков)</managingEditor>
     <image>
       <url>https://geminishkv.tech/img/hero/avatar.jpg</url>
       <title>geminishkv — AppSec &amp; DevSecOps Блог (RU)</title>
       <link>https://geminishkv.tech/</link>
     </image>
+    <item>
+      <title>Исключение и принятие рисков ИБ без владельца и коммитментов — это бэкдор</title>
+      <link>https://geminishkv.tech/blog/665/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/665/</guid>
+      <pubDate>Fri, 13 Nov 2026 00:00:00 GMT</pubDate>
+      <description>🏆 Исключение и принятие рисков ИБ без владельца и коммитментов — это бэкдор Салют, Поделюсь с тобой презой со вчерашнего выступления Попросили помочь коллегам из зала стратегии, вышел как к разрабам, грузанул сильно, сложно - но не мог же не помочь ребятам? Посмотри, думаю тебе </description>
+      <enclosure url="https://geminishkv.tech/img/blog/665.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>‼️ Hackers hijacked telecom networks across Asia to intercept SMS 2FA codes and spy on mobile users.</title>
+      <link>https://geminishkv.tech/blog/664/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/664/</guid>
+      <pubDate>Fri, 13 Nov 2026 00:00:00 GMT</pubDate>
+      <description>‼️ Hackers hijacked telecom networks across Asia to intercept SMS 2FA codes and spy on mobile users. A newly uncovered espionage group, SilentAir, compromised telecom equipment in at least 6 countries, targeting users primarily in Taiwan. Here&apos;s how they pulled it off: https://th</description>
+      <enclosure url="https://geminishkv.tech/img/blog/664.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Атака на базовые станции (вышки операторов связи) становится нормой, почекай интересный вброс - на сколько это может быть контролируемо?</title>
+      <link>https://geminishkv.tech/blog/663/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/663/</guid>
+      <pubDate>Fri, 13 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Атака на базовые станции (вышки операторов связи) становится нормой, почекай интересный вброс - на сколько это может быть контролируемо?</description>
+      <enclosure url="https://geminishkv.tech/img/hero/avatar.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Крепостное право отменено в 1861, но чет, походу, есть нюансы</title>
+      <link>https://geminishkv.tech/blog/662/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/662/</guid>
+      <pubDate>Fri, 13 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Крепостное право отменено в 1861, но чет, походу, есть нюансы #lol</description>
+      <enclosure url="https://geminishkv.tech/img/blog/662.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Можешь посмотреть онлайн - https://guardconf.ru/online-video</title>
+      <link>https://geminishkv.tech/blog/661/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/661/</guid>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Можешь посмотреть онлайн - https://guardconf.ru/online-video #appsec #conf #meetup #devsecops #pmcases #vulnmanagement #riskanalys #кулуарка</description>
+      <enclosure url="https://geminishkv.tech/img/hero/avatar.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Салюты,</title>
+      <link>https://geminishkv.tech/blog/660/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/660/</guid>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Салюты, На базе 🙃 #appsec #conf #meetup #devsecops #pmcases #vulnmanagement #riskanalys #кулуарка</description>
+      <enclosure url="https://geminishkv.tech/img/blog/660.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Guardconf2026</title>
+      <link>https://geminishkv.tech/blog/652/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/652/</guid>
+      <pubDate>Wed, 11 Nov 2026 00:00:00 GMT</pubDate>
+      <description>🏆 Guardconf2026 Салюты, Завтра конфа guardconf2026, подробнее как попасть сюда - тут. Ранее писал о ней - тут, а сейчас хочу поделиться немного контентом, который залетит завтра #appsec #conf #meetup #devsecops #pmcases #vulnmanagement #riskanalys #кулуарка</description>
+      <enclosure url="https://geminishkv.tech/img/blog/652.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>#lol</title>
+      <link>https://geminishkv.tech/blog/651/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/651/</guid>
+      <pubDate>Tue, 10 Nov 2026 00:00:00 GMT</pubDate>
+      <description>#lol</description>
+      <enclosure url="https://geminishkv.tech/img/blog/651.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Теперь мы — новый факультет «Системы безопасности»&amp;#33;</title>
+      <link>https://geminishkv.tech/blog/650/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/650/</guid>
+      <pubDate>Mon, 09 Nov 2026 00:00:00 GMT</pubDate>
+      <description>😎 Теперь мы — новый факультет «Системы безопасности»&amp;#33; В МГТУ им. Н.Э. Баумана вышел приказ о создании факультета «Системы безопасности». Для нашей кафедры это важное событие&amp;#33; В новый факультет вошли кафедры ИУ10 «Защита информации» и ИУ8 «Информационная безопасность». За</description>
+      <enclosure url="https://geminishkv.tech/img/blog/650.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>я не должен один испытывать тут птср</title>
+      <link>https://geminishkv.tech/blog/649/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/649/</guid>
+      <pubDate>Mon, 09 Nov 2026 00:00:00 GMT</pubDate>
+      <description>я не должен один испытывать тут птср #lol</description>
+      <enclosure url="https://geminishkv.tech/img/blog/649.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
     <item>
       <title>Для ценителей архитектуры</title>
       <link>https://geminishkv.tech/blog/646/</link>
