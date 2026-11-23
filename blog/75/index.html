@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Autoswagger: легкая проверка на доступность без авторизации — geminishkv</title>
+  <meta name="description" content="🛠 Autoswagger: легкая проверка на доступность без авторизации Салют,  Сталкивался пару раз с общим описанием Autoswagger by intruder.io. Решил посмотреть быст…" />
+  <meta name="keywords" content="toolchain, reserch, dast, appsec, devsecops, geminishkv" />
+  <meta name="author" content="Илья Шмаков" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="canonical" href="https://geminishkv.tech/blog/75/" />
+  <link rel="sitemap" href="/sitemap.xml" />
+  <link rel="alternate" type="application/rss+xml" title="geminishkv blog" href="/rss.xml" />
+  <link rel="alternate" hreflang="ru" href="https://geminishkv.tech/blog/75/" />
+  <link rel="alternate" hreflang="en" href="https://geminishkv.tech/blog/en/75/" />
+  <link rel="alternate" hreflang="x-default" href="https://geminishkv.tech/blog/75/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://geminishkv.tech/blog/75/" />
+  <meta property="og:title" content="Autoswagger: легкая проверка на доступность без авторизации — geminishkv" />
+  <meta property="og:description" content="🛠 Autoswagger: легкая проверка на доступность без авторизации Салют,  Сталкивался пару раз с общим описанием Autoswagger by intruder.io. Решил посмотреть быст…" />
+  <meta property="og:image" content="https://geminishkv.tech/img/blog/75.jpg" />
+  <meta property="og:image:alt" content="Autoswagger: легкая проверка на доступность без авторизации" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:site_name" content="geminishkv" />
+  <meta property="article:published_time" content="2025-10-23" />
+  <meta property="article:author" content="Илья Шмаков" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@geminishkv" />
+  <meta name="twitter:title" content="Autoswagger: легкая проверка на доступность без авторизации" />
+  <meta name="twitter:description" content="🛠 Autoswagger: легкая проверка на доступность без авторизации Салют,  Сталкивался пару раз с общим описанием Autoswagger by intruder.io. Решил посмотреть быст…" />
+  <meta name="twitter:image" content="https://geminishkv.tech/img/blog/75.jpg" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Autoswagger: легкая проверка на доступность без авторизации","description":"🛠 Autoswagger: легкая проверка на доступность без авторизации Салют,  Сталкивался пару раз с общим описанием Autoswagger by intruder.io. Решил посмотреть быст…","url":"https://geminishkv.tech/blog/75/","datePublished":"2025-10-23","dateModified":"2025-10-23","image":"https://geminishkv.tech/img/blog/75.jpg","inLanguage":"ru","author":{"@type":"Person","name":"Илья Шмаков","url":"https://geminishkv.tech"},"publisher":{"@type":"Organization","name":"geminishkv","url":"https://geminishkv.tech"}}</script>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="/fonts/fonts.css" />
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0a0a0a; --card: #111111; --border: #1a1a1a;
+  --text: #e8e8e8; --muted: #888888; --accent: #D51A1A; --gold: #F9B361;
+}
+html, body { background: var(--bg); color: var(--text); font-family: 'Roboto', system-ui, sans-serif; min-height: 100dvh; line-height: 1.7; }
+a { color: inherit; text-decoration: none; }
+
+.page { max-width: 800px; margin: 0 auto; padding: 0 24px 64px; }
+
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 24px 0 32px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+.nav__brand { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 700; color: #fff; }
+.nav__brand img { width: 28px; height: 28px; border-radius: 50%; }
+.nav__back { font-size: 12px; color: var(--muted); border: 1px solid var(--border); border-radius: 4px; padding: 6px 14px; transition: color .2s, border-color .2s; letter-spacing: 0.06em; text-transform: uppercase; }
+.nav__back:hover { color: #fff; border-color: var(--accent); }
+
+.nav__right-group { display: flex; align-items: center; gap: 10px; }
+.lang-toggle { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; color: var(--accent); border: 1px solid var(--accent); border-radius: 4px; padding: 5px 10px; transition: background .2s, color .2s; }
+.lang-toggle:hover { background: var(--accent); color: #fff; }
+
+.divider { height: 1px; background: linear-gradient(to right, var(--accent), rgba(204,34,0,.15), transparent); margin: 40px 0 20px; }
+.footer { font-size: 0.65rem; color: var(--muted); text-align: center; }
+.footer a { color: var(--accent); transition: color .2s; }
+.footer a:hover { color: var(--gold); }
+.disclaimer { font-size: 0.55rem; color: #555; text-align: center; margin-top: 12px; line-height: 1.4; }
+
+@media (max-width: 600px) { .page { padding: 0 16px 48px; } }
+
+    .cover { width: 100%; border-radius: 8px; overflow: hidden; margin-bottom: 28px; max-height: 400px; }
+    .cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .meta { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; font-size: 0.72rem; color: var(--muted); }
+    .content p { font-size: 0.85rem; line-height: 1.85; margin-bottom: 8px; }
+    .content .gap { height: 10px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 24px; }
+    .tag { font-size: 0.6rem; color: var(--gold); background: rgba(249,179,97,.06); border: 1px solid rgba(249,179,97,.15); border-radius: 3px; padding: 2px 8px; }
+    .tg-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 28px; padding: 10px 20px; background: rgba(204,34,0,.1); border: 1px solid rgba(204,34,0,.25); border-radius: 6px; color: #fff; font-size: 0.75rem; font-weight: 600; transition: background .2s; }
+    .tg-link:hover { background: rgba(204,34,0,.18); }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="nav">
+      <a href="/" class="nav__brand"><img src="/img/logotype/logo_white.svg" alt="" />geminishkv</a>
+      <div class="nav__right-group">
+        <a href="/blog/en/75/" class="lang-toggle">EN</a>
+        <a href="/blog/" class="nav__back">← Все посты</a>
+      </div>
+    </nav>
+    <div class="cover"><img src="/img/blog/75.jpg" alt="Autoswagger: легкая проверка на доступность без авторизации" /></div>
+    <article>
+      <div class="meta"><span>23 октября 2025 г.</span><span>·</span><span>332 views</span></div>
+      <div class="content"><p>🛠 Autoswagger: легкая проверка на доступность без авторизации</p>
+<div class="gap"></div>
+<p>Салют, </p>
+<p>Сталкивался пару раз с общим описанием Autoswagger by intruder.io. Решил посмотреть быстрый и легковесный инструмент.</p>
+<div class="gap"></div>
+<p>Инструмент позволяет пробежаться по торчащим ручкам API наружу у продукта. Поэтому мне захотелось поделиться с тобой его особенностями. Тип лицензии: BSD 3-Clause License. Установка как python библиотекf, для использования в CLI. </p>
+<div class="gap"></div>
+<p>Какой функционал может:</p>
+<div class="gap"></div>
+<p>- Сканирует домены для обнаружения открытой документации API, где есть возможность указания отдельно OpenAPI спецификации</p>
+<p>- Анализ спецификации и формирование списка конечных точек для тестирования. Отправляет запросы с допустимыми параметрами из документации и помечает любые конечные точки, возвращающие данные без надлежащего контроля доступа, т.е. без ошибок 401 или 403</p>
+<div class="gap"></div>
+<p>Пример: сработал явно на вектор по 429 - Too Many Requests и позволил понять, что надо смотреть в сторону тестирования лимитов запросов (простое)</p>
+<div class="gap"></div>
+<p>- Определяет конфиденциальные данные в ответе, как учетные данные, персональную информацию PII</p>
+<p>- Использование флага --brute, чтобы попытаться обойти проверки, что помогает выявить уязвимости в конечных точках, которые отклоняют стандартные входные данные, но принимают определённые форматы данных, значений</p>
+<div class="gap"></div>
+<p>Применение:</p>
+<div class="gap"></div>
+<p>git clone git@github.com:intruder-io/autoswagger.git</p>
+<p>pip install -r requirements.txt</p>
+<p>python3 autoswagger.py -h</p>
+<p>autoswagger--help </p>
+<p>python3 autoswagger.py https://example.ru/api/users/swagger/v1/swagger.json  -v -risk -all</p>
+<div class="gap"></div>
+<p>Флаги:</p>
+<div class="gap"></div>
+<p>autoswagger.py [-h] [-v] [-risk] [-all] [-product] [-stats] [-rate RATE] [-b] [-json] [urls ...]</p>
+<div class="gap"></div>
+<p>-h, --help # Показать это справочное сообщение и выйти</p>
+<p>-v, --verbose # Включить подробный вывод</p>
+<p>-risk # Включить в тестирование запросы, отличные от GET</p>
+<p>-all # Включить все коды состояния HTTP в результаты, исключая 401 и 403</p>
+<p>-product # Вывести все эндпоинты в формате JSON, пометив те, что содержат PII или имеют большие ответы</p>
+<p>-stats # Показать статистику сканирования. Включается в JSON при использовании -product или -json</p>
+<p>-rate RATE # Установить лимит скорости в запросах в секунду</p>
+<p>-b, --brute # Включить исчерпывающее тестирование значений параметров</p>
+<p>-json # Вывести результаты в формате JSON в режиме по умолчанию</p>
+<div class="gap"></div>
+<p>Сценарии:</p>
+<div class="gap"></div>
+<p> 1. Режим автообнаружения OpenAPI-спецификации</p>
+<p>- принимает доменное имя - example.com</p>
+<p>- выполняет сканирование целевого домена, проверяя стандартные пути к OpenAPI/ Swagger-документации типа /openapi.json, /swagger.json, /api-docs, /v3/api-docs</p>
+<p>- если спецификация обнаружена, инструмент парсит её и извлекает все доступные эндпоинты</p>
+<p>- для каждого эндпоинта выполняет автоматизированные запросы GET, POST, PUT, DELETE и др., если они указаны, без авторизации, анализируя ответы: статус-коды, тело ответа, headers</p>
+<div class="gap"></div>
+<p>2. Режим работы с предоставленной спецификацией</p>
+<p>- инструмент принимает на вход одну или несколько OpenAPI-спецификаций в формате JSON/YAML, локальные файлы или URL</p>
+<p>- парсит каждую спецификацию, извлекая все эндпоинты и поддерживаемые HTTP-методы</p>
+<p>- для каждого эндпоинта выполняет автоматизированные запросы без авторизации, фиксируя отклонения - ошибки 5xx, неожиданные 200/403, утечки данных и т. д.</p>
+<div class="gap"></div>
+<p>Итого: инструмент имеет быстрый запуск и минимальные зависимости, легковесный, не требует сборки проекта, работает по исходникам, а также поверхностный как легкий старт и ты можешь с ним работать без проблем, просто прочекав начальный вектор.</p>
+<div class="gap"></div>
+<p>#toolchain #reserch #dast</p></div>
+      <div class="tags"><span class="tag">#toolchain</span><span class="tag">#reserch</span><span class="tag">#dast</span></div>
+      <a href="https://t.me/appsecta/75" target="_blank" rel="noreferrer" class="tg-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+        Открыть в Telegram
+      </a>
+    </article>
+    <div class="divider"></div>
+    <footer class="footer">
+      <p>© 2026 <a href="/">geminishkv.tech</a></p>
+      <p class="disclaimer">Instagram* — продукт компании Meta Platforms Inc., деятельность которой запрещена на территории РФ как экстремистская.</p>
+    </footer>
+  </div>
+</body>
+</html>
