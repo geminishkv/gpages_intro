@@ -1,12 +1,75 @@
 {
-  "subscribers": 378,
+  "subscribers": 379,
   "posts": [
+    {
+      "id": "684",
+      "text": "Ну и для Вайба 🫶🙏",
+      "date": "2026-11-19",
+      "url": "https://t.me/appsecta/684",
+      "views": 79,
+      "tags": []
+    },
+    {
+      "id": "677",
+      "text": "Давай немного поделюсь одним из своих самых важных для меня хобби, а именно шоссейно-кольцевые гонки, которые многое дали мне и позволили повысить свой скилл, возможности езды ;)",
+      "date": "2026-11-19",
+      "url": "https://t.me/appsecta/677",
+      "views": 82,
+      "tags": [],
+      "image": "/img/blog/677.jpg"
+    },
+    {
+      "id": "676",
+      "text": "Всех причастных 🙏🫶",
+      "date": "2026-11-19",
+      "url": "https://t.me/appsecta/676",
+      "views": 97,
+      "tags": [],
+      "image": "/img/blog/676.jpg"
+    },
+    {
+      "id": "675",
+      "text": "NGINX2Root\n\nВ nginx нашли сразу 5 CVE 🍺\n\n🟣CVE-2026-123007 - переполнение при обработке HTTP/2 WINDOW_UPDATE.\n🟣CVE-2026-123633 - HTTP/2 и проксирование upstream.\n🟣CVE-2026-123634 - resolver, proxy_pass и mirror.\n🟣CVE-2026-121810 - HTTP/3 и upstream.\n🟣CVE-2026-113425 - mail proxy и auth_http.\n\n➡️Unauth RCE PoC\n\n💫 @pentestnotes",
+      "date": "2026-11-18",
+      "url": "https://t.me/appsecta/675",
+      "views": 100,
+      "tags": []
+    },
+    {
+      "id": "674",
+      "text": "О, красивое \n\n#lol",
+      "date": "2026-11-18",
+      "url": "https://t.me/appsecta/674",
+      "views": 108,
+      "tags": [
+        "lol"
+      ],
+      "image": "/img/blog/674.jpg"
+    },
+    {
+      "id": "667",
+      "text": "Салюты, решил, что можно поделиться немного фоточками с конфы 🫶\n\n#appsec #conf #meetup #devsecops #pmcases #vulnmanagement #riskanalys #кулуарка",
+      "date": "2026-11-17",
+      "url": "https://t.me/appsecta/667",
+      "views": 114,
+      "tags": [
+        "appsec",
+        "conf",
+        "meetup",
+        "devsecops",
+        "pmcases",
+        "vulnmanagement",
+        "riskanalys",
+        "кулуарка"
+      ],
+      "image": "/img/blog/667.jpg"
+    },
     {
       "id": "665",
       "text": "🏆 Исключение и принятие рисков ИБ без владельца и коммитментов — это бэкдор\n\nСалют,\nПоделюсь с тобой презой со вчерашнего выступления\n\nПопросили помочь коллегам из зала стратегии, вышел как к разрабам, грузанул сильно, сложно - но не мог же не помочь ребятам?\n\nПосмотри, думаю тебе будет полезно в тюнинге исключений и работы с рисками ИБ\n\n#appsec #conf #meetup #devsecops #pmcases #vulnmanagement #riskanalys #кулуарка",
       "date": "2026-11-13",
       "url": "https://t.me/appsecta/665",
-      "views": 241,
+      "views": 338,
       "tags": [
         "appsec",
         "conf",

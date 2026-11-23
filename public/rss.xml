@@ -8,13 +8,67 @@
     <atom:link href="https://geminishkv.tech/rss.xml" rel="self" type="application/rss+xml"/>
     <description>Блог по AppSec &amp; DevSecOps — Илья Шмаков (geminishkv)</description>
     <language>ru-RU</language>
-    <lastBuildDate>Mon, 16 Nov 2026 07:18:17 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 23 Nov 2026 07:11:18 GMT</lastBuildDate>
     <managingEditor>shmakovis@inbox.ru (Илья Шмаков)</managingEditor>
     <image>
       <url>https://geminishkv.tech/img/hero/avatar.jpg</url>
       <title>geminishkv — AppSec &amp; DevSecOps Блог (RU)</title>
       <link>https://geminishkv.tech/</link>
     </image>
+    <item>
+      <title>Ну и для Вайба</title>
+      <link>https://geminishkv.tech/blog/684/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/684/</guid>
+      <pubDate>Thu, 19 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Ну и для Вайба 🫶🙏</description>
+      <enclosure url="https://geminishkv.tech/img/hero/avatar.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Давай немного поделюсь одним из своих самых важных для меня хобби, а именно шоссейно-кольцевые гонки, которые многое дали мне и позволили повысить свой скилл, возможности езды ;)</title>
+      <link>https://geminishkv.tech/blog/677/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/677/</guid>
+      <pubDate>Thu, 19 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Давай немного поделюсь одним из своих самых важных для меня хобби, а именно шоссейно-кольцевые гонки, которые многое дали мне и позволили повысить свой скилл, возможности езды ;)</description>
+      <enclosure url="https://geminishkv.tech/img/blog/677.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Всех причастных</title>
+      <link>https://geminishkv.tech/blog/676/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/676/</guid>
+      <pubDate>Thu, 19 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Всех причастных 🙏🫶</description>
+      <enclosure url="https://geminishkv.tech/img/blog/676.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>NGINX2Root</title>
+      <link>https://geminishkv.tech/blog/675/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/675/</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
+      <description>NGINX2Root В nginx нашли сразу 5 CVE 🍺 🟣CVE-2026-123007 - переполнение при обработке HTTP/2 WINDOW_UPDATE. 🟣CVE-2026-123633 - HTTP/2 и проксирование upstream. 🟣CVE-2026-123634 - resolver, proxy_pass и mirror. 🟣CVE-2026-121810 - HTTP/3 и upstream. 🟣CVE-2026-113425 - mail pro</description>
+      <enclosure url="https://geminishkv.tech/img/hero/avatar.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>О, красивое</title>
+      <link>https://geminishkv.tech/blog/674/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/674/</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
+      <description>О, красивое  #lol</description>
+      <enclosure url="https://geminishkv.tech/img/blog/674.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
+    <item>
+      <title>Салюты, решил, что можно поделиться немного фоточками с конфы</title>
+      <link>https://geminishkv.tech/blog/667/</link>
+      <guid isPermaLink="true">https://geminishkv.tech/blog/667/</guid>
+      <pubDate>Tue, 17 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Салюты, решил, что можно поделиться немного фоточками с конфы 🫶 #appsec #conf #meetup #devsecops #pmcases #vulnmanagement #riskanalys #кулуарка</description>
+      <enclosure url="https://geminishkv.tech/img/blog/667.jpg" type="image/jpeg" length="0"/>
+      <author>shmakovis@inbox.ru (Илья Шмаков)</author>
+    </item>
     <item>
       <title>Исключение и принятие рисков ИБ без владельца и коммитментов — это бэкдор</title>
       <link>https://geminishkv.tech/blog/665/</link>
